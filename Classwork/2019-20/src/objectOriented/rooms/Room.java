@@ -1,5 +1,7 @@
 package objectOriented.rooms;
 
+import static java.lang.String.format;
+
 class Room {
 	private String name;
 	private int sqFeet;
@@ -29,7 +31,7 @@ class Room {
 	}
 
 	public String toString() {
-		return "This room is the " + name + ", which has a size of " + sqFeet + " ft².";
+		return format("This room is the %s, which has a size of %d ft².", name, sqFeet);
 	}
 
 	/*public static void main(String[] args) {

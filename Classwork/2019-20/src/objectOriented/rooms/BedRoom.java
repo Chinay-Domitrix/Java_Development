@@ -1,13 +1,16 @@
 package objectOriented.rooms;
 
-public class BedRoom extends Room {
-	private int numBeds;
-	private String[] bedSizes;
+import static java.lang.String.format;
 
-	public BedRoom(String name, int sqFeet, int numBeds, String[] bedSizes) {
+public class BedRoom extends Room {
+	private String bedSize;
+
+	public BedRoom(String name, int sqFeet, String bedSize) {
 		super(name, sqFeet);
-		this.numBeds = numBeds;
-		this.bedSizes = bedSizes;
+		this.bedSize = bedSize;
 	}
-	
+
+	public String toString() {
+		return format("%s and has a %s sized bed.", super.toString().replace(".", ""), bedSize);
+	}
 }
