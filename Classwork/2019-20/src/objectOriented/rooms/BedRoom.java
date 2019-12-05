@@ -12,7 +12,7 @@ class BedRoom extends Room {
 	}
 
 	public String toString() {
-		return format("%s and has a %s sized bed.", super.toString().replace(".", ""), bedSize);
+		return format("%s and has a %s sized bed.", super.toString().replace(".", ""), getBedSize());
 	}
 
 	@Override
@@ -20,5 +20,9 @@ class BedRoom extends Room {
 		if (sqFeet >= 70) return super.setSqFeet(sqFeet);
 		err.println("Only values greater than or equal to seventy are accepted.");
 		return false;
+	}
+
+	public String getBedSize() {
+		return bedSize;
 	}
 }
