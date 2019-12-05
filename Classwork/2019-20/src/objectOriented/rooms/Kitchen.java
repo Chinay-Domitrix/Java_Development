@@ -1,8 +1,10 @@
 package objectOriented.rooms;
 
+import static java.lang.String.format;
 import static java.lang.System.err;
 
 class Kitchen extends Room {
+	public static final int MIN_SIZE = 70;
 	private String stoveType;
 	private boolean hasOven;
 
@@ -22,8 +24,13 @@ class Kitchen extends Room {
 
 	@Override
 	public boolean setSqFeet(int sqFeet) {
-		if (sqFeet >= 70) return super.setSqFeet(sqFeet);
+		if (sqFeet >= MIN_SIZE) return super.setSqFeet(sqFeet);
 		err.println("Only values greater than or equal to seventy are accepted.");
 		return false;
+	}
+
+	@Override
+	public String toString() {
+		return getHasOven() ? format("%s and has a(n) " + getStoveType() + " stove with an oven.", super.toString().replace(".", "")) : format("%s and has a(n) " + getStoveType() + " stove without an oven.", super.toString().replace(".", ""));
 	}
 }
