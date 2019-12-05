@@ -33,14 +33,6 @@ class Room {
 	}
 
 	public String toString() {
-		return format("This room is the %s, which has a size of %d ft².", name, sqFeet);
+		return format("This room is the %s, which has a size of %d ft².", name, getSqFeet());
 	}
-
-	/*public static void main(String[] args) {
-		var mb = new Room("Master Bedroom", 420);
-		System.out.println(mb);
-		mb.setName("Nursery");
-		mb.setSqFeet(210);
-		System.out.println(mb.getName() + " - " + mb.getSqFeet());
-	}*/
 }

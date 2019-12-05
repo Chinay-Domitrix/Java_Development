@@ -2,18 +2,14 @@ package whileLoops;
 
 import java.util.Scanner;
 
-import static java.lang.System.err;
 import static java.lang.System.out;
 
 final class WhileLoopsYouTry {
 	public static void main(String[] args) {
 		try (Scanner in = new Scanner(System.in)) {
 			out.print("Which sub-program do you want to run? ");
-			int x;
-			switch (in.nextInt()) {
-				default:
-					err.println("Error");
-					break;
+			int x, y = in.nextInt();
+			switch (y) {
 				case 1:
 					x = 1;
 					while (x < 10) {
@@ -49,6 +45,8 @@ final class WhileLoopsYouTry {
 						x += 5;
 					}
 					break;
+				default:
+					throw new IllegalStateException("Unexpected value: " + y);
 			}
 		}
 	}

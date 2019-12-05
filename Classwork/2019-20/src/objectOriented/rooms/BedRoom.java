@@ -1,6 +1,7 @@
 package objectOriented.rooms;
 
 import static java.lang.String.format;
+import static java.lang.System.err;
 
 class BedRoom extends Room {
 	private String bedSize;
@@ -17,7 +18,7 @@ class BedRoom extends Room {
 	@Override
 	public boolean setSqFeet(int sqFeet) {
 		if (sqFeet >= 70) return super.setSqFeet(sqFeet);
-		System.err.println("Only values greater than or equal to seventy are accepted.");
+		err.println("Only values greater than or equal to seventy are accepted.");
 		return false;
 	}
 }
