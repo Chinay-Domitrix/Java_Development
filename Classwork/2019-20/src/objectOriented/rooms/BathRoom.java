@@ -26,9 +26,10 @@ class BathRoom extends Room {
 		return format("%s and doesn't have a shower.", super.toString().replace(".", ""));
 	}
 
+	@Override
 	public boolean setSqFeet(int sqFeet) {
-		if (sqFeet >= 10) return super.setSqFeet(sqFeet);
-		System.err.println("Only values greater than ten are accepted.");
+		if (sqFeet >= 40) return super.setSqFeet(sqFeet);
+		System.err.println("Only values greater than or equal to forty are accepted.");
 		return false;
 	}
 }

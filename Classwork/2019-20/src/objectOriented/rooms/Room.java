@@ -24,10 +24,12 @@ class Room {
 	}
 
 	public boolean setSqFeet(int sqFeet) {
+		var result = false;
 		if (sqFeet > 0) {
 			this.sqFeet = sqFeet;
-			return true;
-		} else return false;
+			result = true;
+		}
+		return result;
 	}
 
 	public String toString() {
