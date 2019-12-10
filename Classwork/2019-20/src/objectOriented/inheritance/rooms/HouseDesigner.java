@@ -1,4 +1,4 @@
-package objectOriented.rooms;
+package objectOriented.inheritance.rooms;
 
 import static java.lang.System.out;
 

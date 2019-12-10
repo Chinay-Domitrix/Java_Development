@@ -1,11 +1,11 @@
-package objectOriented.rooms;
+package objectOriented.inheritance.rooms;
 
 import static java.lang.String.format;
 import static java.lang.System.err;
 
 class BedRoom extends Room {
 	public static final int MIN_SIZE = 70;
-	private String bedSize;
+	private final String bedSize;
 
 	public BedRoom(String name, int sqFeet, String bedSize) {
 		super(name, sqFeet);

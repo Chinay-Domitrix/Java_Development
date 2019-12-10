@@ -1,11 +1,11 @@
-package objectOriented.rooms;
+package objectOriented.inheritance.rooms;
 
 import static java.lang.String.format;
 import static java.lang.System.err;
 
 class BathRoom extends Room {
 	private static final int MIN_SIZE = 40;
-	public boolean hasShower;
+	public final boolean hasShower;
 
 	BathRoom(String name, int sqFeet, boolean hasShower) {
 		super(name, sqFeet);

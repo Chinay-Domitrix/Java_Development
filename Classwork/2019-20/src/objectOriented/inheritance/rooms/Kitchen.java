@@ -1,12 +1,12 @@
-package objectOriented.rooms;
+package objectOriented.inheritance.rooms;
 
 import static java.lang.String.format;
 import static java.lang.System.err;
 
 class Kitchen extends Room {
 	public static final int MIN_SIZE = 70;
-	private String stoveType;
-	private boolean hasOven;
+	private final String stoveType;
+	private final boolean hasOven;
 
 	public Kitchen(String name, int sqFeet, String stoveType, boolean hasOven) {
 		super(name, sqFeet);
