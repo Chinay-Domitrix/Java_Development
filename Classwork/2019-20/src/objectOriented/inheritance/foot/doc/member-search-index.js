@@ -1,29 +1,49 @@
 memberSearchIndex = [{
-	"p": "<Unnamed>",
-	"c": "Boots",
-	"l": "Boots(String, boolean, boolean)",
-	"url": "%3Cinit%3E(java.lang.String,boolean,boolean)"
+	"p": "objectOriented.inheritance.foot",
+	"c": "Footwear",
+	"l": "clone()"
 }, {
-	"p": "<Unnamed>",
+	"p": "objectOriented.inheritance.foot",
+	"c": "Footwear",
+	"l": "equals(Object)",
+	"url": "equals(java.lang.Object)"
+}, {
+	"p": "objectOriented.inheritance.foot",
+	"c": "Footwear",
+	"l": "finalize()"
+}, {
+	"p": "objectOriented.inheritance.foot",
+	"c": "Footwear",
+	"l": "Footwear(String)",
+	"url": "%3Cinit%3E(java.lang.String)"
+}, {
+	"p": "objectOriented.inheritance.foot",
 	"c": "Footwear",
 	"l": "Footwear(String, boolean, boolean)",
 	"url": "%3Cinit%3E(java.lang.String,boolean,boolean)"
-}, {"p": "<Unnamed>", "c": "Footwear", "l": "getLeftOn()"}, {
-	"p": "<Unnamed>",
+}, {
+	"p": "objectOriented.inheritance.foot",
 	"c": "Footwear",
-	"l": "getName()"
-}, {"p": "<Unnamed>", "c": "Footwear", "l": "getRightOn()"}, {
-	"p": "<Unnamed>",
-	"c": "Boots",
-	"l": "main(String[])",
-	"url": "main(java.lang.String[])"
-}, {"p": "<Unnamed>", "c": "Boots", "l": "putOn(String)", "url": "putOn(java.lang.String)"}, {
-	"p": "<Unnamed>",
+	"l": "getLeftOn()"
+}, {"p": "objectOriented.inheritance.foot", "c": "Footwear", "l": "getName()"}, {
+	"p": "objectOriented.inheritance.foot",
+	"c": "Footwear",
+	"l": "getRightOn()"
+}, {
+	"p": "objectOriented.inheritance.foot",
+	"c": "Footwear",
+	"l": "hashCode()"
+}, {
+	"p": "objectOriented.inheritance.foot",
 	"c": "Footwear",
 	"l": "putOn(String)",
 	"url": "putOn(java.lang.String)"
-}, {"p": "<Unnamed>", "c": "Footwear", "l": "setLeftOn(boolean)"}, {
-	"p": "<Unnamed>",
+}, {
+	"p": "objectOriented.inheritance.foot",
+	"c": "Footwear",
+	"l": "setLeftOn(boolean)"
+}, {
+	"p": "objectOriented.inheritance.foot",
 	"c": "Footwear",
 	"l": "setRightOn(boolean)"
-}, {"p": "<Unnamed>", "c": "Footwear", "l": "toString()"}];
+}, {"p": "objectOriented.inheritance.foot", "c": "Footwear", "l": "toString()"}];

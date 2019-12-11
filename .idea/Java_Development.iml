@@ -7,8 +7,8 @@
       <sourceFolder url="file://$MODULE_DIR$/Classwork/2018-19/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/Classwork/2018-19/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/HelloWorld/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RandomWork/hackPHS2019" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/RandomWork/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RandomWork/hackPHS2019" isTestSource="false" generated="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

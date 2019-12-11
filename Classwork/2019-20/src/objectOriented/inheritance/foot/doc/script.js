@@ -23,18 +23,18 @@
  *
  */
 
-var moduleSearchIndex;
-var packageSearchIndex;
-var typeSearchIndex;
-var memberSearchIndex;
-var tagSearchIndex;
+let moduleSearchIndex;
+let packageSearchIndex;
+let typeSearchIndex;
+let memberSearchIndex;
+let tagSearchIndex;
 
 function loadScripts(doc, tag) {
-	createElem(doc, tag, 'jquery/jszip/dist/jszip.js');
-	createElem(doc, tag, 'jquery/jszip-utils/dist/jszip-utils.js');
+	createElem(doc, tag, 'script-dir/jszip/dist/jszip.js');
+	createElem(doc, tag, 'script-dir/jszip-utils/dist/jszip-utils.js');
 	if (window.navigator.userAgent.indexOf('MSIE ') > 0 || window.navigator.userAgent.indexOf('Trident/') > 0 ||
 		window.navigator.userAgent.indexOf('Edge/') > 0) {
-		createElem(doc, tag, 'jquery/jszip-utils/dist/jszip-utils-ie.js');
+		createElem(doc, tag, 'script-dir/jszip-utils/dist/jszip-utils-ie.js');
 	}
 	createElem(doc, tag, 'search.js');
 
@@ -109,16 +109,16 @@ function loadScripts(doc, tag) {
 }
 
 function createElem(doc, tag, path) {
-	var script = doc.createElement(tag);
-	var scriptElement = doc.getElementsByTagName(tag)[0];
+	const script = doc.createElement(tag);
+	const scriptElement = doc.getElementsByTagName(tag)[0];
 	script.src = pathtoroot + path;
 	scriptElement.parentNode.insertBefore(script, scriptElement);
 }
 
 function show(type) {
 	count = 0;
-	for (var key in data) {
-		var row = document.getElementById(key);
+	for (let key in data) {
+		const row = document.getElementById(key);
 		if ((data[key] & type) !== 0) {
 			row.style.display = '';
 			row.className = (count++ % 2) ? rowColor : altColor;
@@ -129,10 +129,10 @@ function show(type) {
 }
 
 function updateTabs(type) {
-	var firstRow = document.getElementById(Object.keys(data)[0]);
-	var table = firstRow.closest('table');
-	for (var value in tabs) {
-		var tab = document.getElementById(tabs[value][0]);
+	const firstRow = document.getElementById(Object.keys(data)[0]);
+	const table = firstRow.closest('table');
+	for (let value in tabs) {
+		const tab = document.getElementById(tabs[value][0]);
 		if (value == type) {
 			tab.className = activeTableTab;
 			tab.innerHTML = tabs[value][1];
@@ -147,11 +147,6 @@ function updateTabs(type) {
 			tab.innerHTML = tabs[value][1];
 		}
 	}
-}
-
-function updateModuleFrame(pFrame, cFrame) {
-	top.packageFrame.location = pFrame;
-	top.classFrame.location = cFrame;
 }
 
 function switchTab(e) {

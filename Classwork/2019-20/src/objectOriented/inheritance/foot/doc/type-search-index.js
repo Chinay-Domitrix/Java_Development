@@ -1,4 +1,4 @@
 typeSearchIndex = [{"l": "All Classes", "url": "allclasses-index.html"}, {
-	"p": "<Unnamed>",
-	"l": "Boots"
-}, {"p": "<Unnamed>", "l": "Footwear"}];
+	"p": "objectOriented.inheritance.foot",
+	"l": "Footwear"
+}];

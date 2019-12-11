@@ -10,19 +10,20 @@ Dual licenced under the MIT license or GPLv3. See https://raw.github.com/Stuk/js
 !function (e) {
 	"object" == typeof exports ? module.exports = e() : "function" == typeof define && define.amd ? define(e) : "undefined" != typeof window ? window.JSZipUtils = e() : "undefined" != typeof global ? global.JSZipUtils = e() : "undefined" != typeof self && (self.JSZipUtils = e())
 }(function () {
-	var define, module, exports;
+	let define, module, exports;
+	// noinspection DuplicatedCode
 	return (function e(t, n, r) {
 		function s(o, u) {
 			if (!n[o]) {
 				if (!t[o]) {
-					var a = typeof require == "function" && require;
+					const a = typeof require == "function" && require;
 					if (!u && a) return a(o, !0);
 					if (i) return i(o, !0);
 					throw new Error("Cannot find module '" + o + "'")
 				}
-				var f = n[o] = {exports: {}};
+				const f = n[o] = {exports: {}};
 				t[o][0].call(f.exports, function (e) {
-					var n = t[o][1][e];
+					const n = t[o][1][e];
 					return s(n ? n : e)
 				}, f, f.exports, e, t, n, r)
 			}
@@ -36,7 +37,7 @@ Dual licenced under the MIT license or GPLv3. See https://raw.github.com/Stuk/js
 		1: [function (require, module, exports) {
 			'use strict';
 
-			var JSZipUtils = {};
+			const JSZipUtils = {};
 // just use the responseText with xhr1, response with xhr2.
 // The transformation doesn't throw away high-order byte (with responseText)
 // because JSZip handles that case. If not used with JSZip, you may need to
@@ -62,7 +63,7 @@ Dual licenced under the MIT license or GPLv3. See https://raw.github.com/Stuk/js
 			}
 
 // Create the request object
-			var createXHR = window.ActiveXObject ?
+			const createXHR = window.ActiveXObject ?
 				/* Microsoft failed to properly
 				 * implement the XMLHttpRequest in IE7 (can't request local files),
 				 * so we use the ActiveXObject when it is available
@@ -93,7 +94,7 @@ Dual licenced under the MIT license or GPLv3. See https://raw.github.com/Stuk/js
 				 */
 				try {
 
-					var xhr = createXHR();
+					const xhr = createXHR();
 
 					xhr.open('GET', path, true);
 
@@ -108,7 +109,7 @@ Dual licenced under the MIT license or GPLv3. See https://raw.github.com/Stuk/js
 					}
 
 					xhr.onreadystatechange = function (evt) {
-						var file, err;
+						let file, err;
 						// use `xhr` and not `this`... thanks IE
 						if (xhr.readyState === 4) {
 							if (xhr.status === 200 || xhr.status === 0) {

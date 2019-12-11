@@ -5,12 +5,16 @@ import org.jetbrains.annotations.NotNull;
 import static java.lang.System.out;
 
 public class Boots extends Footwear {
+	public Boots(String name) {
+		super(name);
+	}
+
 	public Boots(String name, boolean leftOn, boolean rightOn) {
 		super(name, leftOn, rightOn);
 	}
 
 	public static void main(String[] args) {
-		Boots boots = new Boots("Winter Boots", true, true);
+		Boots boots = new Boots("Winter Boots");
 		if (boots.putOn("both")) out.println("Both boots are on!");
 		else if (boots.putOn("left")) out.println("The left boot is on!");
 		else if (boots.putOn("right")) out.println("The right boot is on!");

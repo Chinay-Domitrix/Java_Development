@@ -11,14 +11,14 @@ Dual licenced under the MIT license or GPLv3. See https://raw.github.com/Stuk/js
 	function s(o, u) {
 		if (!n[o]) {
 			if (!t[o]) {
-				var a = typeof require == "function" && require;
+				const a = typeof require == "function" && require;
 				if (!u && a) return a(o, !0);
 				if (i) return i(o, !0);
 				throw new Error("Cannot find module '" + o + "'")
 			}
-			var f = n[o] = {exports: {}};
+			const f = n[o] = {exports: {}};
 			t[o][0].call(f.exports, function (e) {
-				var n = t[o][1][e];
+				const n = t[o][1][e];
 				return s(n ? n : e)
 			}, f, f.exports, e, t, n, r)
 		}
@@ -30,12 +30,12 @@ Dual licenced under the MIT license or GPLv3. See https://raw.github.com/Stuk/js
 	return s
 })({
 	1: [function (require, module, exports) {
-		var global = typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};/* jshint evil: true, newcap: false */
+		const global = typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};/* jshint evil: true, newcap: false */
 		/* global IEBinaryToArray_ByteStr, IEBinaryToArray_ByteStr_Last */
 		"use strict";
 
 // Adapted from http://stackoverflow.com/questions/1095102/how-do-i-load-binary-image-data-using-javascript-and-xmlhttprequest
-		var IEBinaryToArray_ByteStr_Script =
+		const IEBinaryToArray_ByteStr_Script =
 			"<!-- IEBinaryToArray_ByteStr -->\r\n" +
 			"<script type='text/vbscript'>\r\n" +
 			"Function IEBinaryToArray_ByteStr(Binary)\r\n" +
@@ -56,16 +56,16 @@ Dual licenced under the MIT license or GPLv3. See https://raw.github.com/Stuk/js
 		document.write(IEBinaryToArray_ByteStr_Script);
 
 		global.JSZipUtils._getBinaryFromXHR = function (xhr) {
-			var binary = xhr.responseBody;
-			var byteMapping = {};
-			for (var i = 0; i < 256; i++) {
-				for (var j = 0; j < 256; j++) {
+			const binary = xhr.responseBody;
+			const byteMapping = {};
+			for (let i = 0; i < 256; i++) {
+				for (let j = 0; j < 256; j++) {
 					byteMapping[String.fromCharCode(i + (j << 8))] =
 						String.fromCharCode(i) + String.fromCharCode(j);
 				}
 			}
-			var rawBytes = IEBinaryToArray_ByteStr(binary);
-			var lastChr = IEBinaryToArray_ByteStr_Last(binary);
+			const rawBytes = IEBinaryToArray_ByteStr(binary);
+			const lastChr = IEBinaryToArray_ByteStr_Last(binary);
 			return rawBytes.replace(/[\s\S]/g, function (match) {
 				return byteMapping[match];
 			}) + lastChr;

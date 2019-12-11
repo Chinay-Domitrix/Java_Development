@@ -60,7 +60,7 @@ class GridDriver extends Thread {
 	}
 
 	/**
-	 * first iteration; original code, no modifications
+	 * First iteration; original code, no modifications
 	 */
 	private static void iteration1() {
 		x[0] = new Grid();
@@ -72,7 +72,7 @@ class GridDriver extends Thread {
 	}
 
 	/**
-	 * second iteration; modified code, runs on a "char" array and runs the additional two methods
+	 * Second iteration; modified code, runs on a {@code char} array and runs the additional two methods
 	 */
 	private static void iteration2() {
 		x[1] = new Grid(numRows, numCols);

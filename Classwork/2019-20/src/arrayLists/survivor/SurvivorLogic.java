@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 import static java.lang.Math.*;
+import static java.lang.String.format;
 import static java.lang.System.out;
 
 class SurvivorLogic {
@@ -19,25 +20,24 @@ class SurvivorLogic {
 	}
 
 	private void looper() {
-		for (int i = 0; i < runs; i++) {
+		for (var i = 0; i < runs; i++) {
 			survivorLogic();
 			out.println('\n');
 		}
 	}
 
 	private void survivorLogic() {
-		ArrayList<Integer> survivorLogic = new ArrayList<>();
-		int counter = 2;
-		int bounds = 10;
-		for (int i = 0; i < bounds; i++)
-			survivorLogic.add(toIntExact(round((random() * 99) + 2)));
-		out.println("The starting numbers are:\n" + survivorLogic);
+		var survivorLogic = new ArrayList<Integer>();
+		var counter = 2;
+		var bounds = 10;
+		for (var i = 0; i < bounds; i++) survivorLogic.add(toIntExact(round((random() * 99) + 2)));
+		out.printf("The starting numbers are:\n%s%n", survivorLogic);
 		do {
-			int random = toIntExact(round((random() * 99) + 2));
-			for (int i = 0; i < survivorLogic.size(); i++) {
-				int a = survivorLogic.get(i);
+			var random = toIntExact(round((random() * 99) + 2));
+			for (var i = 0; i < survivorLogic.size(); i++) {
+				var a = survivorLogic.get(i);
 				if (((a % random) == 0) && (a != 0)) {
-					out.println("Round #" + counter + " removed " + a + " because (" + a + " % " + random + "==0)");
+					out.printf("Round #%d removed %d because (%d %% %d==0)%n", counter, a, a, random);
 					survivorLogic.remove(i);
 					i--;
 					bounds--;
@@ -45,7 +45,7 @@ class SurvivorLogic {
 			}
 			counter++;
 			out.println(survivorLogic);
-			if (bounds == 1) out.println("The winner after " + counter + " rounds is " + survivorLogic.get(0) + '.');
+			if (bounds == 1) out.printf("The winner after %d rounds is %d.%n", counter, survivorLogic.get(0));
 			else if (bounds < 1) out.println("There is no winner this round.");
 		} while (bounds > 1);
 		specialSauceCounter.add(counter);
@@ -54,8 +54,8 @@ class SurvivorLogic {
 	@NotNull
 	@Contract(pure = true)
 	private String specialSauce() {
-		int x = 0;
-		for (Integer integer : specialSauceCounter) x += integer;
-		return "The average number of tries it took to finish the " + runs + (runs > 1 ? " rounds " : " round ") + "was " + (x / (double) runs) + " tries.";
+		var x = 0;
+		for (var integer : specialSauceCounter) x += integer;
+		return format("The average number of tries it took to finish the %d%s was %s tries.", runs, runs > 1 ? "rounds" : "round", x / (double) runs);
 	}
 }

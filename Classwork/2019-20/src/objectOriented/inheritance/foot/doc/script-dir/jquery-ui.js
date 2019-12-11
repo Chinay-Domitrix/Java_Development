@@ -17,7 +17,7 @@
 
 	$.ui = $.ui || {};
 
-	var version = $.ui.version = "1.12.1";
+	const version = $.ui.version = "1.12.1";
 
 
 	/*!
@@ -36,12 +36,12 @@
 //>>demos: http://jqueryui.com/widget/
 
 
-	var widgetUuid = 0;
-	var widgetSlice = Array.prototype.slice;
+	let widgetUuid = 0;
+	const widgetSlice = Array.prototype.slice;
 
 	$.cleanData = (function (orig) {
 		return function (elems) {
-			var events, elem, i;
+			let events, elem, i;
 			for (i = 0; (elem = elems[i]) != null; i++) {
 				try {
 
@@ -60,15 +60,15 @@
 	})($.cleanData);
 
 	$.widget = function (name, base, prototype) {
-		var existingConstructor, constructor, basePrototype;
+		let existingConstructor, constructor, basePrototype;
 
 		// ProxiedPrototype allows the provided prototype to remain unmodified
 		// so that it can be used as a mixin for multiple widgets (#8876)
-		var proxiedPrototype = {};
+		const proxiedPrototype = {};
 
-		var namespace = name.split(".")[0];
+		const namespace = name.split(".")[0];
 		name = name.split(".")[1];
-		var fullName = namespace + "-" + name;
+		const fullName = namespace + "-" + name;
 
 		if (!prototype) {
 			prototype = base;
@@ -134,9 +134,9 @@
 				}
 
 				return function () {
-					var __super = this._super;
-					var __superApply = this._superApply;
-					var returnValue;
+					const __super = this._super;
+					const __superApply = this._superApply;
+					let returnValue;
 
 					this._super = _super;
 					this._superApply = _superApply;
@@ -169,7 +169,7 @@
 		// level in the prototype chain.
 		if (existingConstructor) {
 			$.each(existingConstructor._childConstructors, function (i, child) {
-				var childPrototype = child.prototype;
+				const childPrototype = child.prototype;
 
 				// Redefine the child widget using the same prototype that was
 				// originally used, but inherit from the new version of the base
@@ -190,11 +190,11 @@
 	};
 
 	$.widget.extend = function (target) {
-		var input = widgetSlice.call(arguments, 1);
-		var inputIndex = 0;
-		var inputLength = input.length;
-		var key;
-		var value;
+		const input = widgetSlice.call(arguments, 1);
+		let inputIndex = 0;
+		const inputLength = input.length;
+		let key;
+		let value;
 
 		for (; inputIndex < inputLength; inputIndex++) {
 			for (key in input[inputIndex]) {
@@ -220,11 +220,11 @@
 	};
 
 	$.widget.bridge = function (name, object) {
-		var fullName = object.prototype.widgetFullName || name;
+		const fullName = object.prototype.widgetFullName || name;
 		$.fn[name] = function (options) {
-			var isMethodCall = typeof options === "string";
-			var args = widgetSlice.call(arguments, 1);
-			var returnValue = this;
+			const isMethodCall = typeof options === "string";
+			const args = widgetSlice.call(arguments, 1);
+			let returnValue = this;
 
 			if (isMethodCall) {
 
@@ -234,8 +234,8 @@
 					returnValue = undefined;
 				} else {
 					this.each(function () {
-						var methodValue;
-						var instance = $.data(this, fullName);
+						let methodValue;
+						const instance = $.data(this, fullName);
 
 						if (options === "instance") {
 							returnValue = instance;
@@ -271,7 +271,7 @@
 				}
 
 				this.each(function () {
-					var instance = $.data(this, fullName);
+					const instance = $.data(this, fullName);
 					if (instance) {
 						instance.option(options || {});
 						if (instance._init) {
@@ -360,7 +360,7 @@
 		_init: $.noop,
 
 		destroy: function () {
-			var that = this;
+			const that = this;
 
 			this._destroy();
 			$.each(this.classesElementLookup, function (key, value) {
@@ -387,10 +387,10 @@
 		},
 
 		option: function (key, value) {
-			var options = key;
-			var parts;
-			var curOption;
-			var i;
+			let options = key;
+			let parts;
+			let curOption;
+			let i;
 
 			if (arguments.length === 0) {
 
@@ -429,7 +429,7 @@
 		},
 
 		_setOptions: function (options) {
-			var key;
+			let key;
 
 			for (key in options) {
 				this._setOption(key, options[key]);
@@ -453,7 +453,7 @@
 		},
 
 		_setOptionClasses: function (value) {
-			var classKey, elements, currentElements;
+			let classKey, elements, currentElements;
 
 			for (classKey in value) {
 				currentElements = this.classesElementLookup[classKey];
@@ -502,8 +502,8 @@
 		},
 
 		_classes: function (options) {
-			var full = [];
-			var that = this;
+			const full = [];
+			const that = this;
 
 			options = $.extend({
 				element: this.element,
@@ -511,7 +511,7 @@
 			}, options);
 
 			function processClassString(classes, checkOption) {
-				var current, i;
+				let current, i;
 				for (i = 0; i < classes.length; i++) {
 					current = that.classesElementLookup[classes[i]] || $();
 					if (options.add) {
@@ -542,7 +542,7 @@
 		},
 
 		_untrackClassesElement: function (event) {
-			var that = this;
+			const that = this;
 			$.each(that.classesElementLookup, function (key, value) {
 				if ($.inArray(event.target, value) !== -1) {
 					that.classesElementLookup[key] = $(value.not(event.target).get());
@@ -560,7 +560,7 @@
 
 		_toggleClass: function (element, keys, extra, add) {
 			add = (typeof add === "boolean") ? add : extra;
-			var shift = (typeof element === "string" || element === null),
+			const shift = (typeof element === "string" || element === null),
 				options = {
 					extra: shift ? keys : extra,
 					keys: shift ? element : keys,
@@ -572,8 +572,8 @@
 		},
 
 		_on: function (suppressDisabledCheck, element, handlers) {
-			var delegateElement;
-			var instance = this;
+			let delegateElement;
+			const instance = this;
 
 			// No suppressDisabledCheck flag, shuffle arguments
 			if (typeof suppressDisabledCheck !== "boolean") {
@@ -613,9 +613,9 @@
 						handler.guid || handlerProxy.guid || $.guid++;
 				}
 
-				var match = event.match(/^([\w:-]*)\s*(.*)$/);
-				var eventName = match[1] + instance.eventNamespace;
-				var selector = match[2];
+				const match = event.match(/^([\w:-]*)\s*(.*)$/);
+				const eventName = match[1] + instance.eventNamespace;
+				const selector = match[2];
 
 				if (selector) {
 					delegateElement.on(eventName, selector, handlerProxy);
@@ -671,8 +671,8 @@
 		},
 
 		_trigger: function (type, event, data) {
-			var prop, orig;
-			var callback = this.options[type];
+			let prop, orig;
+			const callback = this.options[type];
 
 			data = data || {};
 			event = $.Event(event);
@@ -707,8 +707,8 @@
 				options = {effect: options};
 			}
 
-			var hasOptions;
-			var effectName = !options ?
+			let hasOptions;
+			const effectName = !options ?
 				method :
 				options === true || typeof options === "number" ?
 					defaultEffect :
@@ -742,7 +742,7 @@
 		};
 	});
 
-	var widget = $.widget;
+	const widget = $.widget;
 
 
 	/*!
@@ -764,12 +764,12 @@
 
 
 	(function () {
-		var cachedScrollbarWidth,
-			max = Math.max,
+		let cachedScrollbarWidth;
+		const max = Math.max,
 			abs = Math.abs,
 			rhorizontal = /left|center|right/,
 			rvertical = /top|center|bottom/,
-			roffset = /[\+\-]\d+(\.[\d]+)?%?/,
+			roffset = /[+\-]\d+(\.[\d]+)?%?/,
 			rposition = /^\w+/,
 			rpercent = /%$/,
 			_position = $.fn.position;
@@ -786,7 +786,7 @@
 		}
 
 		function getDimensions(elem) {
-			var raw = elem[0];
+			const raw = elem[0];
 			if (raw.nodeType === 9) {
 				return {
 					width: elem.width(),
@@ -820,10 +820,10 @@
 				if (cachedScrollbarWidth !== undefined) {
 					return cachedScrollbarWidth;
 				}
-				var w1, w2,
-					div = $("<div " +
-						"style='display:block;position:absolute;width:50px;height:50px;overflow:hidden;'>" +
-						"<div style='height:100px;width:auto;'></div></div>"),
+				let w1, w2;
+				const div = $("<div " +
+					"style='display:block;position:absolute;width:50px;height:50px;overflow:hidden;'>" +
+					"<div style='height:100px;width:auto;'></div></div>"),
 					innerDiv = div.children()[0];
 
 				$("body").append(div);
@@ -841,7 +841,7 @@
 				return (cachedScrollbarWidth = w1 - w2);
 			},
 			getScrollInfo: function (within) {
-				var overflowX = within.isWindow || within.isDocument ? "" :
+				const overflowX = within.isWindow || within.isDocument ? "" :
 					within.element.css("overflow-x"),
 					overflowY = within.isWindow || within.isDocument ? "" :
 						within.element.css("overflow-y"),
@@ -855,7 +855,7 @@
 				};
 			},
 			getWithinInfo: function (element) {
-				var withinElement = $(element || window),
+				const withinElement = $(element || window),
 					isWindow = $.isWindow(withinElement[0]),
 					isDocument = !!withinElement[0] && withinElement[0].nodeType === 9,
 					hasOffset = !isWindow && !isDocument;
@@ -880,8 +880,8 @@
 			// Make a copy, we don't want to modify arguments
 			options = $.extend({}, options);
 
-			var atOffset, targetWidth, targetHeight, targetOffset, basePosition, dimensions,
-				target = $(options.of),
+			let atOffset, targetWidth, targetHeight, targetOffset, basePosition, dimensions;
+			const target = $(options.of),
 				within = $.position.getWithinInfo(options.within),
 				scrollInfo = $.position.getScrollInfo(within),
 				collision = (options.collision || "flip").split(" "),
@@ -903,7 +903,7 @@
 			// Force my and at to have valid horizontal and vertical positions
 			// if a value is missing or invalid, it will be converted to center
 			$.each(["my", "at"], function () {
-				var pos = (options[this] || "").split(" "),
+				let pos = (options[this] || "").split(" "),
 					horizontalOffset,
 					verticalOffset;
 
@@ -954,8 +954,8 @@
 			basePosition.top += atOffset[1];
 
 			return this.each(function () {
-				var collisionPosition, using,
-					elem = $(this),
+				let collisionPosition, using;
+				const elem = $(this),
 					elemWidth = elem.outerWidth(),
 					elemHeight = elem.outerHeight(),
 					marginLeft = parseCss(this, "marginLeft"),
@@ -1010,7 +1010,7 @@
 
 					// Adds feedback as second argument to using callback, if present
 					using = function (props) {
-						var left = targetOffset.left - position.left,
+						const left = targetOffset.left - position.left,
 							right = left + targetWidth - elemWidth,
 							top = targetOffset.top - position.top,
 							bottom = top + targetHeight - elemHeight,
@@ -1054,13 +1054,13 @@
 		$.ui.position = {
 			fit: {
 				left: function (position, data) {
-					var within = data.within,
+					const within = data.within,
 						withinOffset = within.isWindow ? within.scrollLeft : within.offset.left,
 						outerWidth = within.width,
 						collisionPosLeft = position.left - data.collisionPosition.marginLeft,
 						overLeft = withinOffset - collisionPosLeft,
-						overRight = collisionPosLeft + data.collisionWidth - outerWidth - withinOffset,
-						newOverRight;
+						overRight = collisionPosLeft + data.collisionWidth - outerWidth - withinOffset;
+					let newOverRight;
 
 					// Element is wider than within
 					if (data.collisionWidth > outerWidth) {
@@ -1098,13 +1098,13 @@
 					}
 				},
 				top: function (position, data) {
-					var within = data.within,
+					const within = data.within,
 						withinOffset = within.isWindow ? within.scrollTop : within.offset.top,
 						outerHeight = data.within.height,
 						collisionPosTop = position.top - data.collisionPosition.marginTop,
 						overTop = withinOffset - collisionPosTop,
-						overBottom = collisionPosTop + data.collisionHeight - outerHeight - withinOffset,
-						newOverBottom;
+						overBottom = collisionPosTop + data.collisionHeight - outerHeight - withinOffset;
+					let newOverBottom;
 
 					// Element is taller than within
 					if (data.collisionHeight > outerHeight) {
@@ -1144,7 +1144,7 @@
 			},
 			flip: {
 				left: function (position, data) {
-					var within = data.within,
+					const within = data.within,
 						withinOffset = within.offset.left + within.scrollLeft,
 						outerWidth = within.width,
 						offsetLeft = within.isWindow ? within.scrollLeft : within.offset.left,
@@ -1161,8 +1161,8 @@
 							data.at[0] === "right" ?
 								-data.targetWidth :
 								0,
-						offset = -2 * data.offset[0],
-						newOverRight,
+						offset = -2 * data.offset[0];
+					let newOverRight,
 						newOverLeft;
 
 					if (overLeft < 0) {
@@ -1180,7 +1180,7 @@
 					}
 				},
 				top: function (position, data) {
-					var within = data.within,
+					const within = data.within,
 						withinOffset = within.offset.top + within.scrollTop,
 						outerHeight = within.height,
 						offsetTop = within.isWindow ? within.scrollTop : within.offset.top,
@@ -1198,8 +1198,8 @@
 							data.at[1] === "bottom" ?
 								-data.targetHeight :
 								0,
-						offset = -2 * data.offset[1],
-						newOverTop,
+						offset = -2 * data.offset[1];
+					let newOverTop,
 						newOverBottom;
 					if (overTop < 0) {
 						newOverBottom = position.top + myOffset + atOffset + offset + data.collisionHeight -
@@ -1248,7 +1248,7 @@
 //>>docs: http://api.jqueryui.com/jQuery.ui.keyCode/
 
 
-	var keycode = $.ui.keyCode = {
+	const keycode = $.ui.keyCode = {
 		BACKSPACE: 8,
 		COMMA: 188,
 		DELETE: 46,
@@ -1283,9 +1283,9 @@
 //>>docs: http://api.jqueryui.com/uniqueId/
 
 
-	var uniqueId = $.fn.extend({
+	const uniqueId = $.fn.extend({
 		uniqueId: (function () {
-			var uuid = 0;
+			let uuid = 0;
 
 			return function () {
 				return this.each(function () {
@@ -1306,8 +1306,8 @@
 	});
 
 
-	var safeActiveElement = $.ui.safeActiveElement = function (document) {
-		var activeElement;
+	const safeActiveElement = $.ui.safeActiveElement = function (document) {
+		let activeElement;
 
 		// Support: IE 9 only
 		// IE9 throws an "Unspecified error" accessing document.activeElement from an <iframe>
@@ -1354,7 +1354,7 @@
 //>>css.theme: ../../themes/base/theme.css
 
 
-	var widgetsMenu = $.widget("ui.menu", {
+	const widgetsMenu = $.widget("ui.menu", {
 		version: "1.12.1",
 		defaultElement: "<ul>",
 		delay: 300,
@@ -1398,8 +1398,8 @@
 					event.preventDefault();
 				},
 				"click .ui-menu-item": function (event) {
-					var target = $(event.target);
-					var active = $($.ui.safeActiveElement(this.document[0]));
+					const target = $(event.target);
+					const active = $($.ui.safeActiveElement(this.document[0]));
 					if (!this.mouseHandled && target.not(".ui-state-disabled").length) {
 						this.select(event);
 
@@ -1434,7 +1434,7 @@
 						return;
 					}
 
-					var actualTarget = $(event.target).closest(".ui-menu-item"),
+					const actualTarget = $(event.target).closest(".ui-menu-item"),
 						target = $(event.currentTarget);
 
 					// Ignore bubbled events on parent items, see #11641
@@ -1454,7 +1454,7 @@
 
 					// If there's already an active item, keep it active
 					// If not, activate the first item
-					var item = this.active || this.element.find(this.options.items).eq(0);
+					const item = this.active || this.element.find(this.options.items).eq(0);
 
 					if (!keepActiveItem) {
 						this.focus(event, item);
@@ -1462,7 +1462,7 @@
 				},
 				blur: function (event) {
 					this._delay(function () {
-						var notContained = !$.contains(
+						const notContained = !$.contains(
 							this.element[0],
 							$.ui.safeActiveElement(this.document[0])
 						);
@@ -1490,7 +1490,7 @@
 		},
 
 		_destroy: function () {
-			var items = this.element.find(".ui-menu-item")
+			const items = this.element.find(".ui-menu-item")
 					.removeAttr("role aria-disabled"),
 				submenus = items.children(".ui-menu-item-wrapper")
 					.removeUniqueId()
@@ -1506,7 +1506,7 @@
 				.show();
 
 			submenus.children().each(function () {
-				var elem = $(this);
+				const elem = $(this);
 				if (elem.data("ui-menu-submenu-caret")) {
 					elem.remove();
 				}
@@ -1514,7 +1514,7 @@
 		},
 
 		_keydown: function (event) {
-			var match, prev, character, skip,
+			let match, prev, character, skip,
 				preventDefault = true;
 
 			switch (event.keyCode) {
@@ -1607,8 +1607,8 @@
 		},
 
 		refresh: function () {
-			var menus, items, newSubmenus, newItems, newWrappers,
-				that = this,
+			let menus, items, newSubmenus, newItems, newWrappers;
+			const that = this,
 				icon = this.options.icons.submenu,
 				submenus = this.element.find(this.options.menus);
 
@@ -1623,7 +1623,7 @@
 					"aria-expanded": "false"
 				})
 				.each(function () {
-					var menu = $(this),
+					const menu = $(this),
 						item = menu.prev(),
 						submenuCaret = $("<span>").data("ui-menu-submenu-caret", true);
 
@@ -1641,7 +1641,7 @@
 
 			// Initialize menu-items containing spaces and/or dashes only as dividers
 			items.not(".ui-menu-item").each(function () {
-				var item = $(this);
+				const item = $(this);
 				if (that._isDivider(item)) {
 					that._addClass(item, "ui-menu-divider", "ui-widget-content");
 				}
@@ -1677,7 +1677,7 @@
 
 		_setOption: function (key, value) {
 			if (key === "icons") {
-				var icons = this.element.find(".ui-menu-icon");
+				const icons = this.element.find(".ui-menu-icon");
 				this._removeClass(icons, null, this.options.icons.submenu)
 					._addClass(icons, null, value.submenu);
 			}
@@ -1692,7 +1692,7 @@
 		},
 
 		focus: function (event, item) {
-			var nested, focused, activeParent;
+			let nested, focused, activeParent;
 			this.blur(event, event && event.type === "focus");
 
 			this._scrollIntoView(item);
@@ -1733,7 +1733,7 @@
 		},
 
 		_scrollIntoView: function (item) {
-			var borderTop, paddingTop, offset, scroll, elementHeight, itemHeight;
+			let borderTop, paddingTop, offset, scroll, elementHeight, itemHeight;
 			if (this._hasScroll()) {
 				borderTop = parseFloat($.css(this.activeMenu[0], "borderTopWidth")) || 0;
 				paddingTop = parseFloat($.css(this.activeMenu[0], "paddingTop")) || 0;
@@ -1782,7 +1782,7 @@
 		},
 
 		_open: function (submenu) {
-			var position = $.extend({
+			const position = $.extend({
 				of: this.active
 			}, this.options.position);
 
@@ -1803,7 +1803,7 @@
 			this.timer = this._delay(function () {
 
 				// If we were passed an event, look for the submenu that contains the event
-				var currentMenu = all ? this.element :
+				let currentMenu = all ? this.element :
 					$(event && event.target).closest(this.element.find(".ui-menu"));
 
 				// If we found no valid submenu ancestor, use the main menu to close all
@@ -1847,7 +1847,7 @@
 		},
 
 		collapse: function (event) {
-			var newItem = this.active &&
+			const newItem = this.active &&
 				this.active.parent().closest(".ui-menu-item", this.element);
 			if (newItem && newItem.length) {
 				this._close();
@@ -1856,7 +1856,7 @@
 		},
 
 		expand: function (event) {
-			var newItem = this.active &&
+			const newItem = this.active &&
 				this.active
 					.children(".ui-menu ")
 					.find(this.options.items)
@@ -1889,7 +1889,7 @@
 		},
 
 		_move: function (direction, filter, event) {
-			var next;
+			let next;
 			if (this.active) {
 				if (direction === "first" || direction === "last") {
 					next = this.active
@@ -1909,7 +1909,7 @@
 		},
 
 		nextPage: function (event) {
-			var item, base, height;
+			let item, base, height;
 
 			if (!this.active) {
 				this.next(event);
@@ -1934,7 +1934,7 @@
 		},
 
 		previousPage: function (event) {
-			var item, base, height;
+			let item, base, height;
 			if (!this.active) {
 				this.next(event);
 				return;
@@ -1965,7 +1965,7 @@
 			// TODO: It should never be possible to not have an active item at this
 			// point, but the tests don't trigger mouseenter before click.
 			this.active = this.active || $(event.target).closest(".ui-menu-item");
-			var ui = {item: this.active};
+			const ui = {item: this.active};
 			if (!this.active.has(".ui-menu").length) {
 				this.collapseAll(event, true);
 			}
@@ -1973,7 +1973,7 @@
 		},
 
 		_filterMenuItems: function (character) {
-			var escapedCharacter = character.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&"),
+			const escapedCharacter = character.replace(/[\-\[\]{}()*+?.,\\^$|#\s]/g, "\\$&"),
 				regex = new RegExp("^" + escapedCharacter, "i");
 
 			return this.activeMenu
@@ -2045,8 +2045,8 @@
 			// so we use the suppressKeyPressRepeat flag to avoid handling keypress
 			// events when we know the keydown event was used to modify the
 			// search term. #7799
-			var suppressKeyPress, suppressKeyPressRepeat, suppressInput,
-				nodeName = this.element[0].nodeName.toLowerCase(),
+			let suppressKeyPress, suppressKeyPressRepeat, suppressInput;
+			const nodeName = this.element[0].nodeName.toLowerCase(),
 				isTextarea = nodeName === "textarea",
 				isInput = nodeName === "input";
 
@@ -2074,7 +2074,7 @@
 					suppressKeyPress = false;
 					suppressInput = false;
 					suppressKeyPressRepeat = false;
-					var keyCode = $.ui.keyCode;
+					const keyCode = $.ui.keyCode;
 					switch (event.keyCode) {
 						case keyCode.PAGE_UP:
 							suppressKeyPress = true;
@@ -2143,7 +2143,7 @@
 					}
 
 					// Replicate some key handlers to allow them to repeat in Firefox and Opera
-					var keyCode = $.ui.keyCode;
+					const keyCode = $.ui.keyCode;
 					switch (event.keyCode) {
 						case keyCode.PAGE_UP:
 							this._move("previousPage", event);
@@ -2219,7 +2219,7 @@
 					});
 				},
 				menufocus: function (event, ui) {
-					var label, item;
+					let label, item;
 
 					// support: Firefox
 					// Prevent accidental activation of menu items in Firefox (#7024 #9118)
@@ -2253,7 +2253,7 @@
 					}
 				},
 				menuselect: function (event, ui) {
-					var item = ui.item.data("ui-autocomplete-item"),
+					const item = ui.item.data("ui-autocomplete-item"),
 						previous = this.previous;
 
 					// Only trigger when focus was lost (click on menu)
@@ -2323,7 +2323,7 @@
 		},
 
 		_isEventTargetInWidget: function (event) {
-			var menuElement = this.menu.element[0];
+			const menuElement = this.menu.element[0];
 
 			return event.target === this.element[0] ||
 				event.target === menuElement ||
@@ -2337,7 +2337,7 @@
 		},
 
 		_appendTo: function () {
-			var element = this.options.appendTo;
+			let element = this.options.appendTo;
 
 			if (element) {
 				element = element.jquery || element.nodeType ?
@@ -2357,8 +2357,8 @@
 		},
 
 		_initSource: function () {
-			var array, url,
-				that = this;
+			let array, url;
+			const that = this;
 			if ($.isArray(this.options.source)) {
 				array = this.options.source;
 				this.source = function (request, response) {
@@ -2392,7 +2392,7 @@
 			this.searching = this._delay(function () {
 
 				// Search if the value has changed, or if the user retypes the same value (see #7434)
-				var equalValues = this.term === this._value(),
+				const equalValues = this.term === this._value(),
 					menuVisible = this.menu.element.is(":visible"),
 					modifierKey = event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
 
@@ -2429,7 +2429,7 @@
 		},
 
 		_response: function () {
-			var index = ++this.requestIndex;
+			const index = ++this.requestIndex;
 
 			return $.proxy(function (content) {
 				if (index === this.requestIndex) {
@@ -2503,7 +2503,7 @@
 		},
 
 		_suggest: function (items) {
-			var ul = this.menu.element.empty();
+			const ul = this.menu.element.empty();
 			this._renderMenu(ul, items);
 			this.isNewMenu = true;
 			this.menu.refresh();
@@ -2526,7 +2526,7 @@
 		},
 
 		_resizeMenu: function () {
-			var ul = this.menu.element;
+			const ul = this.menu.element;
 			ul.outerWidth(Math.max(
 				// Firefox wraps long text (possibly a rounding bug)
 				// so we add 1px to avoid the wrapping (#7513)
@@ -2536,7 +2536,7 @@
 		},
 
 		_renderMenu: function (ul, items) {
-			var that = this;
+			const that = this;
 			$.each(items, function (index, item) {
 				that._renderItemData(ul, item);
 			});
@@ -2596,7 +2596,7 @@
 				return false;
 			}
 
-			var editable = element.prop("contentEditable");
+			const editable = element.prop("contentEditable");
 
 			if (editable === "inherit") {
 				return this._isContentEditable(element.parent());
@@ -2608,10 +2608,10 @@
 
 	$.extend($.ui.autocomplete, {
 		escapeRegex: function (value) {
-			return value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
+			return value.replace(/[\-\[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 		},
 		filter: function (array, term) {
-			var matcher = new RegExp($.ui.autocomplete.escapeRegex(term), "i");
+			const matcher = new RegExp($.ui.autocomplete.escapeRegex(term), "i");
 			return $.grep(array, function (value) {
 				return matcher.test(value.label || value.value || value);
 			});
@@ -2633,7 +2633,7 @@
 		},
 
 		__response: function (content) {
-			var message;
+			let message;
 			this._superApply(arguments);
 			if (this.options.disabled || this.cancelSearch) {
 				return;
@@ -2648,7 +2648,7 @@
 		}
 	});
 
-	var widgetsAutocomplete = $.ui.autocomplete;
+	const widgetsAutocomplete = $.ui.autocomplete;
 
 
 }));
