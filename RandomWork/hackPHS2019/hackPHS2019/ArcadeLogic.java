@@ -5,6 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 import static java.awt.Color.blue;
 import static java.awt.Font.PLAIN;
@@ -24,24 +26,17 @@ class ArcadeLogic {
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setSize(1000, 1000);
 		frame.setVisible(true);
-		JButton[] b = new JButton[3];
-		b[0] = new JButton("Tic-Tac-Toe");
-		b[1] = new JButton("Hangman");
-		b[2] = new JButton("Rock Paper Scissors Lizard Spock");
-		Font bFont = new Font("Comic Sans MS", PLAIN, 20);
-		for (JButton jButton : b) {
+		var b = new JButton[]{new JButton("Tic-Tac-Toe"), new JButton("Hangman"), new JButton("Rock Paper Scissors Lizard Spock")};
+		var bFont = new Font("Comic Sans MS", PLAIN, 20);
+		Stream<JButton> x = Arrays.stream(b);
+		x.forEachOrdered(jButton -> {
 			jButton.setBounds(100, 150, 100, 100);
 			jButton.setForeground(blue);
 			jButton.setFont(bFont);
 			setJButtonTextPosition(jButton);
-		}
-		ArcadeLogic.contentPane.add(b[0]);
-		ArcadeLogic.contentPane.add(b[1]);
-		ArcadeLogic.contentPane.add(b[2]);
-		b[0].addActionListener(e -> {
-			frame.setVisible(false);
-			new TicTacToeProject();
 		});
+		x.forEachOrdered(i -> ArcadeLogic.contentPane.add(i));
+		b[0].addActionListener(this::actionPerformedB1);
 		b[1].addActionListener(this::actionPerformedB2);
 		b[2].addActionListener(this::actionPerformedB3);
 	}
@@ -51,6 +46,8 @@ class ArcadeLogic {
 	}
 
 	private void actionPerformedB1(ActionEvent e) {
+		frame.setVisible(false);
+		new TicTacToeProject();
 	}
 
 	private void actionPerformedB2(ActionEvent e) {

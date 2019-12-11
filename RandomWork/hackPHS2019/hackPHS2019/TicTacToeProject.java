@@ -5,60 +5,57 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static java.awt.Color.BLUE;
 import static java.awt.Color.RED;
 import static java.lang.System.out;
 import static java.lang.Thread.sleep;
-import static java.util.Arrays.fill;
 import static javax.imageio.ImageIO.read;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 class TicTacToeProject {
 	TicTacToeProject() {
-		TicTacToeBoard board = new TicTacToeBoard(620, 700);
+		var board = new TicTacToeBoard(620, 700);
 		board.displayGame(false);
-		try (Scanner in = new Scanner(System.in)) {
-			int[][] grid = {{0, 200, 600, 200}, {0, 400, 600, 400}, {200, 0, 200, 600},
-					{400, 0, 400, 600}};
+		try (var in = new Scanner(System.in)) {
+			var grid = new int[][]{{0, 200, 600, 200}, {0, 400, 600, 400}, {200, 0, 200, 600}, {400, 0, 400, 600}};
 			board.defineBoard(grid);
-			String ifn = "TicTacToe", ft = ".png";
-			String[] fPs = {ifn + 'X' + ft, ifn + 'O' + ft};
+			var ifn = "TicTacToe";
+			var ft = ".png";
+			var fPs = new String[]{ifn + 'X' + ft, ifn + 'O' + ft};
 			board.setFiles(fPs[0], fPs[1]);
-			char[][] play = new char[3][3];
-			// noinspection SuspiciousArrayMethodCall
-			fill(play, ' ');
+			var play = new char[3][3];
+			for (var chars : play) Arrays.fill(chars, ' ');
 			board.setBoard(play);
 			out.print("How many players? ");
 			board.displayGame(true);
-			int counter = 0;
-			int[] pieces = new int[2];
+			var counter = 0;
+			var pieces = new int[2];
 			switch (in.nextInt()) {
 				case 1:
 					do {
 						do {
 							counter++;
 							out.print("Player's turn: ");
-							int placementIn = in.nextInt();
+							var placementIn = in.nextInt();
 							placementDetector(placementIn, pieces);
 							placePiece(placementIn, play, counter, pieces);
 							board.repaint();
 							board.delay();
-							if (play[pieces[0]][pieces[1]] != ' ')
-								break;
+							if (play[pieces[0]][pieces[1]] != ' ') break;
 						} while (play[pieces[0]][pieces[1]] == ' ');
 						do {
 							counter++;
 							out.print("Computer's turn: ");
-							int placementIn = (int) (Math.random() * 10) + 1;
+							var placementIn = (int) (Math.random() * 10) + 1;
 							out.println(placementIn);
 							placementDetector(placementIn, pieces);
 							placePiece(placementIn, play, counter, pieces);
 							board.repaint();
 							board.delay();
-							if (play[pieces[0]][pieces[1]] != ' ')
-								break;
+							if (play[pieces[0]][pieces[1]] != ' ') break;
 						} while (play[pieces[0]][pieces[1]] == ' ');
 					} while (play[pieces[0]][pieces[1]] == ' ');
 					break;
@@ -67,24 +64,22 @@ class TicTacToeProject {
 						do {
 							counter++;
 							out.print("Player 1's turn: ");
-							int placementIn = in.nextInt();
+							var placementIn = in.nextInt();
 							placementDetector(placementIn, pieces);
 							placePiece(placementIn, play, counter, pieces);
 							board.repaint();
 							board.delay();
-							if (play[pieces[0]][pieces[1]] != ' ')
-								break;
+							if (play[pieces[0]][pieces[1]] != ' ') break;
 						} while (play[pieces[0]][pieces[1]] == ' ');
 						do {
 							counter++;
 							out.print("Player 2's turn: ");
-							int placementIn = in.nextInt();
+							var placementIn = in.nextInt();
 							placementDetector(placementIn, pieces);
 							placePiece(placementIn, play, counter, pieces);
 							board.repaint();
 							board.delay();
-							if (play[pieces[0]][pieces[1]] != ' ')
-								break;
+							if (play[pieces[0]][pieces[1]] != ' ') break;
 						} while (play[pieces[0]][pieces[1]] == ' ');
 					} while (play[pieces[0]][pieces[1]] == ' ');
 					break;
@@ -189,9 +184,9 @@ class TicTacToeProject {
 			private BufferedImage[] images = new BufferedImage[2];
 
 			private DrawTicTacToeBoard(String a, String b) {
-				String[] y = {a, b};
+				var y = new String[]{a, b};
 				setBackground(RED);
-				for (int i = 0; i < 2; i++) {
+				for (var i = 0; i < 2; i++) {
 					try {
 						images[i] = read(new File(y[i]));
 					} catch (IOException e) {
@@ -203,18 +198,38 @@ class TicTacToeProject {
 			@Override
 			protected void paintComponent(Graphics a) {
 				super.paintComponent(a);
-				for (int i = 0; i < 3; i++)
-					for (int j = 0; j < 3; j++)
+				for (var i = 0; i < 3; i++)
+					for (var j = 0; j < 3; j++)
 						if (p[i][j] == 'x')
-							a.drawImage(images[0], j * 200 + 25, i * 200 + 25, null, null);
+							a.drawImage(images[0],
+									(j * 200) + 25,
+									(i * 200) + 25,
+									null,
+									null);
 						else if (p[i][j] == 'o')
-							a.drawImage(images[1], j * 200 + 25, i * 200 + 25, null, null);
+							a.drawImage(images[1],
+									(j * 200) + 25,
+									(i * 200) + 25,
+									null,
+									null);
 				a.setColor(BLUE);
-				for (int i = 0; i < 6; i++) {
-					a.drawLine(b[0][0], b[0][1] + i, b[0][2], b[0][3] + i);
-					a.drawLine(b[1][0], b[1][1] + i, b[1][2], b[1][3] + i);
-					a.drawLine(b[2][0] + i, b[2][1], b[2][2] + i, b[2][3]);
-					a.drawLine(b[3][0] + i, b[3][1], b[3][2] + i, b[3][3]);
+				for (var i = 0; i < 6; i++) {
+					a.drawLine(b[0][0],
+							b[0][1] + i,
+							b[0][2],
+							b[0][3] + i);
+					a.drawLine(b[1][0],
+							b[1][1] + i,
+							b[1][2],
+							b[1][3] + i);
+					a.drawLine(b[2][0] + i,
+							b[2][1],
+							b[2][2] + i,
+							b[2][3]);
+					a.drawLine(b[3][0] + i,
+							b[3][1],
+							b[3][2] + i,
+							b[3][3]);
 				}
 			}
 		}
