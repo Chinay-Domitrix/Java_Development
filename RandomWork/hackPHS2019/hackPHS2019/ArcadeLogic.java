@@ -5,11 +5,10 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.Arrays;
-import java.util.stream.Stream;
 
 import static java.awt.Color.blue;
 import static java.awt.Font.PLAIN;
+import static java.util.Arrays.stream;
 import static java.util.Objects.requireNonNull;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -28,7 +27,7 @@ class ArcadeLogic {
 		frame.setVisible(true);
 		var b = new JButton[]{new JButton("Tic-Tac-Toe"), new JButton("Hangman"), new JButton("Rock Paper Scissors Lizard Spock")};
 		var bFont = new Font("Comic Sans MS", PLAIN, 20);
-		Stream<JButton> x = Arrays.stream(b);
+		var x = stream(b);
 		x.forEachOrdered(jButton -> {
 			jButton.setBounds(100, 150, 100, 100);
 			jButton.setForeground(blue);
@@ -52,7 +51,11 @@ class ArcadeLogic {
 
 	private void actionPerformedB2(ActionEvent e) {
 		frame.setVisible(false);
-		new HangmanProject();
+		try {
+			new HangmanProject();
+		} catch (InterruptedException ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	private void actionPerformedB3(ActionEvent e) {

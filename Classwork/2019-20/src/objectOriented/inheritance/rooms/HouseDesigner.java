@@ -2,7 +2,7 @@ package objectOriented.inheritance.rooms;
 
 import static java.lang.System.out;
 
-class HouseDesigner {
+final class HouseDesigner {
 	private HouseDesigner() {
 		out.println("Java House Layout");
 		for (var i = 0; i < 20; i++) out.println("―");

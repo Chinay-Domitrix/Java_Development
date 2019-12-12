@@ -4,27 +4,29 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Scanner;
 
+import static java.lang.Math.random;
 import static java.lang.System.out;
 import static java.lang.Thread.sleep;
 import static java.util.Objects.requireNonNull;
 
-class RockPaperScissorsLizardSpock {
-	private int playerWins = 0, compWins = 0, counter = 0, rounds;
-	private Scanner in = new Scanner(System.in);
+final class RockPaperScissorsLizardSpock {
+	private static final Scanner in = new Scanner(System.in);
+	private int playerWins = 0;
+	private int compWins = 0;
+	private int counter = 0;
+	private int rounds;
 	private String compPicks = null, name, RPSLS;
 
 	RockPaperScissorsLizardSpock() throws Exception {
-		var a = "Welcome to Rock, Paper, Scissors, Lizard, Spock! Please enter your first name, contestant. ";
-		out.print(a);
+		out.print("Welcome to Rock, Paper, Scissors, Lizard, Spock! Please enter your first name, contestant. ");
 		name = in.nextLine();
-		out.print("Hello " + name
-				+ "! How many rounds do you want? (Please enter an odd number from one to nine in numerical form.) ");
+		out.printf("Hello %s! How many rounds do you want? (Please enter an odd number from one to nine in numerical form.) ", name);
 		rounds = in.nextInt();
-		if (rounds == 2 || rounds == 4 || rounds == 6 || rounds == 8 || rounds < 1 || rounds > 9)
+		if ((rounds == 2) || (rounds == 4) || (rounds == 6) || (rounds == 8) || (rounds < 1) || (rounds > 9))
 			throw new IllegalStateException("Unexpected value: " + rounds);
 		out.print("Please enter a difficulty level from one to nine in numerical form: ");
 		var diff = in.nextInt();
-		if (diff < 1 || diff > 9) throw new IllegalStateException("Unexpected value: " + diff);
+		if ((diff < 1) || (diff > 9)) throw new IllegalStateException("Unexpected value: " + diff);
 		in.nextLine();
 		switch (diff) {
 			case 1:
@@ -58,11 +60,11 @@ class RockPaperScissorsLizardSpock {
 				throw new IllegalStateException("Unexpected value: " + diff);
 		}
 		if (compWins > playerWins)
-			out.println("\nYou lost the match, " + name + ". Too bad... You can try again though!");
+			out.printf("\nYou lost the match, %s. Too bad... You can try again though!%n", name);
 		else if (playerWins > compWins)
-			out.println("\nYou won the match, " + name + "! Congratulations!");
+			out.printf("\nYou won the match, %s! Congratulations!%n", name);
 		else
-			out.println("It's a tie, " + name + ".");
+			out.printf("It's a tie, %s.%n", name);
 	}
 
 	private void l1() throws Exception {
@@ -71,7 +73,7 @@ class RockPaperScissorsLizardSpock {
 			out.println("\nRound " + counter);
 			out.print("Please enter an RPSLS choice " + name + ": ");
 			RPSLS = in.nextLine();
-			var r = (int) (Math.random() * 6);
+			var r = (int) (random() * 6);
 			if ((playerWins == 1) || (compWins == 1))
 				break;
 			else if ((playerWins == compWins) && ((playerWins > 0) || (compWins > 0))
@@ -110,7 +112,7 @@ class RockPaperScissorsLizardSpock {
 			out.println("\nRound " + counter);
 			out.print("Please enter an RPSLS choice " + name + ": ");
 			RPSLS = in.nextLine();
-			var r = (int) (Math.random() * 26);
+			var r = (int) (random() * 26);
 			if (playerWins == 1 || compWins == 1)
 				break;
 			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
@@ -149,7 +151,7 @@ class RockPaperScissorsLizardSpock {
 			out.println("\nRound " + counter);
 			out.print("Please enter an RPSLS choice " + name + ": ");
 			RPSLS = in.nextLine();
-			var r = (int) (Math.random() * 126);
+			var r = (int) (random() * 126);
 			if (playerWins == 1 || compWins == 1)
 				break;
 			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
@@ -188,7 +190,7 @@ class RockPaperScissorsLizardSpock {
 			out.println("\nRound " + counter);
 			out.print("Please enter an RPSLS choice " + name + ": ");
 			RPSLS = in.nextLine();
-			var r = (int) (Math.random() * 626);
+			var r = (int) (random() * 626);
 			if (playerWins == 1 || compWins == 1)
 				break;
 			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
@@ -227,7 +229,7 @@ class RockPaperScissorsLizardSpock {
 			out.println("\nRound " + counter);
 			out.print("Please enter an RPSLS choice " + name + ": ");
 			RPSLS = in.nextLine();
-			var r = (int) (Math.random() * 3126);
+			var r = (int) (random() * 3126);
 			if (playerWins == 1 || compWins == 1)
 				break;
 			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
@@ -266,7 +268,7 @@ class RockPaperScissorsLizardSpock {
 			out.println("\nRound " + counter);
 			out.print("Please enter an RPSLS choice " + name + ": ");
 			RPSLS = in.nextLine();
-			var r = (int) (Math.random() * 15626);
+			var r = (int) (random() * 15626);
 			if (playerWins == 1 || compWins == 1)
 				break;
 			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
@@ -305,7 +307,7 @@ class RockPaperScissorsLizardSpock {
 			out.println("\nRound " + counter);
 			out.print("Please enter an RPSLS choice " + name + ": ");
 			RPSLS = in.nextLine();
-			var r = (int) (Math.random() * 78126);
+			var r = (int) (random() * 78126);
 			if (playerWins == 1 || compWins == 1)
 				break;
 			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
@@ -344,7 +346,7 @@ class RockPaperScissorsLizardSpock {
 			out.println("\nRound " + counter);
 			out.print("Please enter an RPSLS choice " + name + ": ");
 			RPSLS = in.nextLine();
-			var r = (int) (Math.random() * 390626);
+			var r = (int) (random() * 390626);
 			if (playerWins == 1 || compWins == 1)
 				break;
 			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
@@ -383,7 +385,7 @@ class RockPaperScissorsLizardSpock {
 			out.println("\nRound " + counter);
 			out.print("Please enter an RPSLS choice " + name + ": ");
 			RPSLS = in.nextLine();
-			var r = (int) (Math.random() * 1953126);
+			var r = (int) (random() * 1953126);
 			if (playerWins == 1 || compWins == 1)
 				break;
 			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
@@ -416,7 +418,7 @@ class RockPaperScissorsLizardSpock {
 		}
 	}
 
-	private void switcher(@NotNull String RPSLS) throws IllegalStateException {
+	private void switcher(@NotNull String RPSLS) {
 		this.RPSLS = requireNonNull(RPSLS);
 		switch (RPSLS) {
 			case "rock":

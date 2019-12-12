@@ -15,12 +15,12 @@ import static java.lang.Thread.sleep;
 import static javax.imageio.ImageIO.read;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
-class TicTacToeProject {
+final class TicTacToeProject {
 	TicTacToeProject() {
 		var board = new TicTacToeBoard(620, 700);
 		board.displayGame(false);
 		try (var in = new Scanner(System.in)) {
-			var grid = new int[][]{{0, 200, 600, 200}, {0, 400, 600, 400}, {200, 0, 200, 600}, {400, 0, 400, 600}};
+			final int[][] grid = new int[][]{new int[]{0, 200, 600, 200}, new int[]{0, 400, 600, 400}, new int[]{200, 0, 200, 600}, new int[]{400, 0, 400, 600}};
 			board.defineBoard(grid);
 			var ifn = "TicTacToe";
 			var ft = ".png";

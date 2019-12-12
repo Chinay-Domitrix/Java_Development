@@ -3,7 +3,7 @@ package objectOriented.inheritance.rooms;
 import static java.lang.String.format;
 import static java.lang.System.err;
 
-class Kitchen extends Room {
+final class Kitchen extends Room {
 	public static final int MIN_SIZE = 70;
 	private final String stoveType;
 	private final boolean hasOven;

@@ -9,7 +9,7 @@ import static java.lang.System.out;
 import static java.lang.Thread.sleep;
 import static java.util.Arrays.fill;
 
-class HangmanProject {
+final class HangmanProject {
 	/**
 	 * This is where most of the variables which are significant to the game are
 	 * declared, so the methods, excluding {@code main}, require no parameters.
@@ -23,7 +23,7 @@ class HangmanProject {
 	 * This is where the game actually starts. Here, the method {@code game} is invoked and
 	 * the Scanner is passed on to "game", and eventually "logic."
 	 */
-	HangmanProject() {
+	HangmanProject() throws InterruptedException {
 		game();
 	}
 
@@ -32,7 +32,7 @@ class HangmanProject {
 	 * then passes logic flow to the method {@code logic} to run the game itself, and then
 	 * takes over again for the (potential) home stretch.
 	 */
-	private void game() {
+	private void game() throws InterruptedException {
 //		This is the loop allowing the user to play another round.
 		do {
 			/*
@@ -129,7 +129,7 @@ class HangmanProject {
 	 * This method contains the primary logic for the game and the ASCII art
 	 * messages for both a winning instance and a losing instance.
 	 */
-	private void logic(Scanner in) {
+	private void logic(Scanner in) throws InterruptedException {
 		/*
 		 * This is the ASCII art for the win and lose messages. For the sake of a
 		 * surprise, it is not declared with the rest of the variables, as the formatter
@@ -280,11 +280,7 @@ class HangmanProject {
 			}
 			out.println();
 			/* This causes a break between the rounds. */
-			try {
-				sleep(750);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			sleep(750);
 			/* The following five lines determine whether or not the round is complete. */
 			var y = new StringBuilder();
 			for (var x : hangman) y.append(x);
