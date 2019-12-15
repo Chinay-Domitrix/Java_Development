@@ -1,8 +1,5 @@
 package arrayLists.survivor;
 
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 
 import static java.lang.Math.*;
@@ -51,8 +48,6 @@ class SurvivorLogic {
 		specialSauceCounter.add(counter);
 	}
 
-	@NotNull
-	@Contract(pure = true)
 	private String specialSauce() {
 		var x = 0;
 		for (var integer : specialSauceCounter) x += integer;

@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager">
-    <output url="file://$MODULE_DIR$/../out/production/Java_Development" />
-    <output-test url="file://$MODULE_DIR$/../out/test/Java_Development" />
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/Classwork/2019-20/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Classwork/2018-19/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/Classwork/2018-19/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Classwork/2018-19/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/HelloWorld/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RandomWork/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/RandomWork/hackPHS2019" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/Classwork/2019-20/PracticeIt Submissions" />
+      <sourceFolder url="file://$MODULE_DIR$/RandomWork/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="" scope="PROVIDED">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/annotations/17.0.0/annotations-17.0.0.jar!/" />

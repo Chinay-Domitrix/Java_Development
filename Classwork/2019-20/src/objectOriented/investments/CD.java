@@ -1,25 +1,27 @@
 package objectOriented.investments;
 
+import objectOriented.Name;
+
 import static java.lang.System.out;
+import static objectOriented.investments.InterestRate.doubleValue;
 
-public class CD extends Investment {
-	private double interestRate;
+final class CD extends Investment {
+	private InterestRate interestRate;
 
-	public CD(String name, double interestRate) {
+	public CD() {
+		this(new Name("Certificate of Deposit"), new InterestRate("2.2%"));
+	}
+
+	public CD(Name name, InterestRate interestRate) {
 		super(name);
 		this.interestRate = interestRate;
 	}
 
-	public static void main(String[] args) {
-		out.println(format(new CD("CD with 2% yield", 0.02).invest1Year(100)));
-	}
-
-	public double invest1Year(double amt) {
-//		Must use this step each time to keep track of overall yield from this investment object
-		addToYield(amt * interestRate);
-		amt += amt * interestRate;
-		out.printf("%s returned a yield of %s for a total of %s%n", getName(), format(amt * interestRate), format(amt));
-		return amt; // returns new total
+	public final double invest1Year(double amount) {
+		addToYield(amount * interestRate.doubleValue());
+		amount *= doubleValue(interestRate) + 1;
+		out.printf("%s returned a yield of %s for a total of %s.%n", getName(), format(amount * interestRate.doubleValue()), format(amount));
+		return amount;
 	}
 
 }

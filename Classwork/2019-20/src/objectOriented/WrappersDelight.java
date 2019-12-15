@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
+import static java.lang.Double.parseDouble;
 import static java.lang.Math.*;
 
 final class WrappersDelight {
@@ -29,7 +30,7 @@ final class WrappersDelight {
 //		This is a utilization of ArrayList's default constructor. Since it is a constructor, it is an instance method.
 		ArrayList<Object> arrayList = new ArrayList<>();
 //		The method Double.parseDouble(String s) is a static method which extracts the double value of a number from a String.
-		var a = Double.parseDouble(s);
+		var a = parseDouble(s);
 		var b = toIntExact(round(a));
 //		The add(Object e) method from ArrayList is an instance method which inserts the parameter Object at the end of the ArrayList.
 		arrayList.add(a);
