@@ -25,7 +25,7 @@ class GridDriver extends Thread {
 	/**
 	 * {@link Grid}s to be used by the two iteration sets
 	 */
-	private static Grid[] x = new Grid[3];
+	private static final Grid[] x = new Grid[3];
 
 	/**
 	 * main data-flow processor for GridDriver

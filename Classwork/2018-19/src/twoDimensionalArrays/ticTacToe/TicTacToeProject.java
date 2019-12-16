@@ -13,17 +13,18 @@ import static javax.imageio.ImageIO.read;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 class TicTacToeProject {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		class TicTacToeBoard {
-			private JFrame f;
+			private final JFrame f;
 			private int[][] b;
 			private char[][] p;
 
-			private TicTacToeBoard(int width, int height) {
+			private TicTacToeBoard() {
 				f = new JFrame("Tic-Tac-Toe");
-				f.setIconImage(new ImageIcon("C:\\Users\\Chirag\\Data\\Devlopment\\ClassWork\\2018-19\\resources\\twoDimensionalArrays.ticTackToe\\Tic-tac-toe.png").getImage());
+				//noinspection SpellCheckingInspection
+				f.setIconImage(new ImageIcon("C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\2018-19\\resources\\twoDimensionalArrays\\ticTacToe\\Tic-tac-toe.png").getImage());
 				f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				f.setSize(width, height);
+				f.setSize(620, 700);
 			}
 
 			private void defineBoard(int[][] a) {
@@ -55,7 +56,7 @@ class TicTacToeProject {
 
 			class DrawTicTacToeBoard extends JPanel {
 				long serialVersionUID = 1874491386632721516L;
-				BufferedImage[] images = new BufferedImage[2];
+				final BufferedImage[] images = new BufferedImage[2];
 
 				private DrawTicTacToeBoard(String a, String b) {
 					String[] y = {a, b};
@@ -86,14 +87,14 @@ class TicTacToeProject {
 				}
 			}
 		}
-		TicTacToeBoard board = new TicTacToeBoard(620, 700);
+		TicTacToeBoard board = new TicTacToeBoard();
 		board.displayGame(false);
 		try (Scanner in = new Scanner(System.in)) {
 			int[][] grid = {{0, 200, 600, 200}, {0, 400, 600, 400}, {200, 0, 200, 600},
 					{400, 0, 400, 600}};
 			board.defineBoard(grid);
 //		    This line changes from device to device.
-			String ifp = "C:\\Users\\Chirag\\Data\\Devlopment\\ClassWork\\2018-19\\resources\\twoDimensionalArrays.ticTackToe\\", ifn = "TicTacToe", fi = ifp + ifn, ft = ".png";
+			String ifp = "C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\2018-19\\resources\\twoDimensionalArrays\\ticTacToe\\", ifn = "TicTacToe", fi = ifp + ifn, ft = ".png";
 			String[] fPs = {fi + 'X' + ft, fi + 'O' + ft};
 			board.setFiles(fPs[0], fPs[1]);
 			char[][] play = new char[3][3];

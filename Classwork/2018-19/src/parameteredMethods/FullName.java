@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import static java.lang.System.out;
 
 class FullName {
+	@SuppressWarnings("SameReturnValue")
 	@NotNull
 	@Contract(pure = true)
 	private static String firstName() {

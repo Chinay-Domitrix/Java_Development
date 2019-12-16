@@ -33,6 +33,8 @@ import * as Buffer from "./jszip";
 })(function () {
 
 	return (function e(t, n, r) {
+		const i = typeof require == "function" && require;
+
 		function s(o, u) {
 			if (!n[o]) {
 				if (!t[o]) {
@@ -51,8 +53,7 @@ import * as Buffer from "./jszip";
 			return n[o].exports
 		}
 
-		var i = typeof require == "function" && require;
-		for (var o = 0; o < r.length; o++) s(r[o]);
+		for (let o = 0; o < r.length; o++) s(r[o]);
 		return s
 	})({
 		1: [function (require, module, exports) {
@@ -1386,6 +1387,54 @@ import * as Buffer from "./jszip";
 
 		}, {}],
 		15: [function (require, module) {
+			/**
+			 * Add a (sub) folder in the current folder.
+			 * @private
+			 * @param {string} name the folder's name
+			 * @param {boolean=} [createFolders] If true, automatically create sub
+			 *  folders. Defaults to false.
+			 * @return {Object} the new folder.
+			 */
+			const folderAdd = function (name, createFolders) {
+				createFolders = (typeof createFolders !== 'undefined') ? createFolders : defaults.createFolders;
+
+				name = forceTrailingSlash(name);
+
+				// Does this folder already exist?
+				if (!this.files[name]) {
+					fileAdd.call(this, name, null, {
+						dir: true,
+						createFolders: createFolders
+					});
+				}
+				return this.files[name];
+			};
+			/**
+			 * Returns the path with a slash at the end.
+			 * @private
+			 * @param {String} path the path to check.
+			 * @return {String} the path with a trailing slash.
+			 */
+			const forceTrailingSlash = function (path) {
+				// Check the name ends with a /
+				if (path.slice(-1) !== "/") {
+					path += "/"; // IE doesn't like substr(-1)
+				}
+				return path;
+			};
+			/**
+			 * Find the parent folder of the path.
+			 * @private
+			 * @param {string} path the path to use
+			 * @return {string} the parent folder, or ""
+			 */
+			const parentFolder = function (path) {
+				if (path.slice(-1) === '/') {
+					path = path.substring(0, path.length - 1);
+				}
+				const lastSlash = path.lastIndexOf('/');
+				return (lastSlash > 0) ? path.substring(0, lastSlash) : "";
+			};
 			'use strict';
 			const utf8 = require('./utf8');
 			const utils = require('./utils');
@@ -1486,56 +1535,6 @@ import * as Buffer from "./jszip";
     */
 			};
 
-			/**
-			 * Find the parent folder of the path.
-			 * @private
-			 * @param {string} path the path to use
-			 * @return {string} the parent folder, or ""
-			 */
-			var parentFolder = function (path) {
-				if (path.slice(-1) === '/') {
-					path = path.substring(0, path.length - 1);
-				}
-				const lastSlash = path.lastIndexOf('/');
-				return (lastSlash > 0) ? path.substring(0, lastSlash) : "";
-			};
-
-			/**
-			 * Returns the path with a slash at the end.
-			 * @private
-			 * @param {String} path the path to check.
-			 * @return {String} the path with a trailing slash.
-			 */
-			var forceTrailingSlash = function (path) {
-				// Check the name ends with a /
-				if (path.slice(-1) !== "/") {
-					path += "/"; // IE doesn't like substr(-1)
-				}
-				return path;
-			};
-
-			/**
-			 * Add a (sub) folder in the current folder.
-			 * @private
-			 * @param {string} name the folder's name
-			 * @param {boolean=} [createFolders] If true, automatically create sub
-			 *  folders. Defaults to false.
-			 * @return {Object} the new folder.
-			 */
-			var folderAdd = function (name, createFolders) {
-				createFolders = (typeof createFolders !== 'undefined') ? createFolders : defaults.createFolders;
-
-				name = forceTrailingSlash(name);
-
-				// Does this folder already exist?
-				if (!this.files[name]) {
-					fileAdd.call(this, name, null, {
-						dir: true,
-						createFolders: createFolders
-					});
-				}
-				return this.files[name];
-			};
 
 			/**
 			 * Cross-window, cross-Node-context regular expression detection
@@ -2601,7 +2600,7 @@ import * as Buffer from "./jszip";
 			 * example, it's easier to work with an U8intArray and finally do the
 			 * ArrayBuffer/Blob conversion.
 			 * @param {String} type the name of the final type
-			 * @param {unknown[]} content the content to transform
+			 * @param {string} content the content to transform
 			 * @param {String} mimeType the mime type of the content, if applicable.
 			 * @return {String|Uint8Array|ArrayBuffer|Buffer|Blob} the content in the right format.
 			 */
@@ -2620,7 +2619,7 @@ import * as Buffer from "./jszip";
 			 * Concatenate an array of data of the given type.
 			 * @param {String} type the type of the data in the given array.
 			 * @param {Array} dataArray the array containing the data chunks to concatenate
-			 * @return {string} the concatenated data
+			 * @return {unknown[]} the concatenated data
 			 * @throws Error if the asked type is unsupported
 			 */
 			function concat(type, dataArray) {
@@ -3141,7 +3140,7 @@ import * as Buffer from "./jszip";
 			 * Convert a string that pass as a "binary string": it should represent a byte
 			 * array but may have > 255 char codes. Be sure to take only the first byte
 			 * and returns the byte array.
-			 * @param {String} str the string to transform.
+			 * @param {Object} str the string to transform.
 			 * @return {Array|Uint8Array} the string in a binary format.
 			 */
 			function string2binary(str) {
@@ -3204,7 +3203,7 @@ import * as Buffer from "./jszip";
 
 			/**
 			 * Fill in an array with a string.
-			 * @param {String} str the string to use.
+			 * @param {Object} str the string to use.
 			 * @param {Array|ArrayBuffer|Uint8Array|Buffer} array the array to fill in (will be mutated).
 			 * @return {Array|ArrayBuffer|Uint8Array|Buffer} the updated array.
 			 */
@@ -3429,7 +3428,7 @@ import * as Buffer from "./jszip";
 			 * The supported output type are : string, array, uint8array, arraybuffer, nodebuffer.
 			 * If no output type is specified, the unmodified input will be returned.
 			 * @param {String} outputType the output type.
-			 * @param {String|Array|ArrayBuffer|Uint8Array|Buffer} input the input to convert.
+			 * @param {Object} input the input to convert.
 			 * @throws {Error} an Error if the browser doesn't support the requested output type.
 			 */
 			exports.transformTo = function (outputType, input) {
@@ -11539,7 +11538,7 @@ exports.inflateUndermine = inflateUndermine;
 				let prevlen = -1;          /* last emitted length */
 				let curlen;                /* length of current code */
 
-				let nextlen = tree[0 + 1]/*.Len*/; /* length of next code */
+				let nextlen = tree[1]/*.Len*/; /* length of next code */
 
 				let count = 0;             /* repeat count of the current code */
 				let max_count = 7;         /* max repeat count */
@@ -11607,7 +11606,7 @@ exports.inflateUndermine = inflateUndermine;
 				let prevlen = -1;          /* last emitted length */
 				let curlen;                /* length of current code */
 
-				let nextlen = tree[0 + 1]/*.Len*/; /* length of next code */
+				let nextlen = tree[1]/*.Len*/; /* length of next code */
 
 				let count = 0;             /* repeat count of the current code */
 				let max_count = 7;         /* max repeat count */

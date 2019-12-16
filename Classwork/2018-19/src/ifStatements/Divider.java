@@ -70,32 +70,27 @@ class Divider {
 				//noinspection DuplicateCondition
 				if (b1)
 					out.println("Your number is divisible evenly by all those numbers except 2, 5, and 11.");
-				else if (b)
-					out.println("Your number is divisible evenly by all those numbers except 2, 5, and 7.");
-				else //noinspection DuplicateCondition
-					if (b1)
-						out.println("Your number is divisible evenly by all those numbers except 2, 5, and 11.");
-					else if ((a % 2 != 0) && (a % 3 == 0) && (a % 5 == 0) && (a % 7 != 0) && (a % 11 != 0))
-						out.println("Your number is divisible evenly by all those numbers except 2, 7, and 11.");
-					else if ((a % 2 == 0) && (a % 3 != 0) && (a % 5 != 0) && (a % 7 != 0) && (a % 11 == 0))
-						out.println("Your number is divisible evenly by all those numbers except 3, 5, and 7.");
-					else if ((a % 2 == 0) && (a % 3 != 0) && (a % 5 != 0) && (a % 7 == 0) && (a % 11 != 0))
-						out.println("Your number is divisible evenly by all those numbers except 3, 5, and 11.");
-					else if ((a % 2 == 0) && (a % 3 != 0) && (a % 5 == 0) && (a % 7 != 0) && (a % 11 != 0))
-						out.println("Your number is divisible evenly by all those numbers except 3, 7, and 11.");
-					else if ((a % 2 == 0) && (a % 3 == 0) && (a % 5 != 0) && (a % 7 != 0) && (a % 11 != 0))
-						out.println("Your number is divisible evenly by all those numbers except 5, 7, and 11.");
-					else if ((a % 2 != 0) && (a % 3 != 0) && (a % 5 != 0) && (a % 7 != 0) && (a % 11 == 0))
-						out.println("Your number is only divisible evenly by 11.");
-					else if ((a % 2 != 0) && (a % 3 != 0) && (a % 5 != 0) && (a % 7 == 0) && (a % 11 != 0))
-						out.println("Your number is only divisible evenly by 7.");
-					else if ((a % 2 != 0) && (a % 3 != 0) && (a % 5 == 0) && (a % 7 != 0) && (a % 11 != 0))
-						out.println("Your number is only divisible evenly by 5.");
-					else if ((a % 2 != 0) && (a % 3 == 0) && (a % 5 != 0) && (a % 7 != 0) && (a % 11 != 0))
-						out.println("Your number is only divisible evenly by 3.");
-					else if ((a % 2 != 0) && (a % 3 != 0) && (a % 5 != 0) && (a % 7 != 0) && (a % 11 != 0))
-						out.println("Your number is not divisible evenly by of those numbers.");
-					else out.println("Syntax or Computational Error.");
+				else if ((a % 2 != 0) && (a % 3 == 0) && (a % 5 == 0) && (a % 7 != 0) && (a % 11 != 0))
+					out.println("Your number is divisible evenly by all those numbers except 2, 7, and 11.");
+				else if ((a % 2 == 0) && (a % 3 != 0) && (a % 5 != 0) && (a % 7 != 0) && (a % 11 == 0))
+					out.println("Your number is divisible evenly by all those numbers except 3, 5, and 7.");
+				else if ((a % 2 == 0) && (a % 3 != 0) && (a % 5 != 0) && (a % 7 == 0) && (a % 11 != 0))
+					out.println("Your number is divisible evenly by all those numbers except 3, 5, and 11.");
+				else if ((a % 2 == 0) && (a % 3 != 0) && (a % 5 == 0) && (a % 7 != 0) && (a % 11 != 0))
+					out.println("Your number is divisible evenly by all those numbers except 3, 7, and 11.");
+				else if ((a % 2 == 0) && (a % 3 == 0) && (a % 5 != 0) && (a % 7 != 0) && (a % 11 != 0))
+					out.println("Your number is divisible evenly by all those numbers except 5, 7, and 11.");
+				else if ((a % 2 != 0) && (a % 3 != 0) && (a % 5 != 0) && (a % 7 != 0) && (a % 11 == 0))
+					out.println("Your number is only divisible evenly by 11.");
+				else if ((a % 2 != 0) && (a % 3 != 0) && (a % 5 != 0) && (a % 7 == 0) && (a % 11 != 0))
+					out.println("Your number is only divisible evenly by 7.");
+				else if ((a % 2 != 0) && (a % 3 != 0) && (a % 5 == 0) && (a % 7 != 0) && (a % 11 != 0))
+					out.println("Your number is only divisible evenly by 5.");
+				else if ((a % 2 != 0) && (a % 3 == 0) && (a % 5 != 0) && (a % 7 != 0) && (a % 11 != 0))
+					out.println("Your number is only divisible evenly by 3.");
+				else if ((a % 2 != 0) && (a % 3 != 0) && (a % 5 != 0) && (a % 7 != 0) && (a % 11 != 0))
+					out.println("Your number is not divisible evenly by of those numbers.");
+				else out.println("Syntax or Computational Error.");
 			}
 		}
 	}

@@ -9,9 +9,9 @@ class Day1YouTry {
 		try (Scanner in = new Scanner(System.in)) {
 			int[][] a = new int[10][10];
 			out.print("Which program do you want to run? Original or Modified (O or M)? ");
-			String prog = in.nextLine();
+			String program = in.nextLine();
 			int counter;
-			switch (prog) {
+			switch (program) {
 				default:
 					err.println("Error");
 					exit(0);

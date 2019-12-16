@@ -49,7 +49,7 @@ class Day2Practice {
 		}
 		int f;
 		int e;
-		if (d.equalsIgnoreCase("acending")) {
+		if (d.equalsIgnoreCase("ascending")) {
 			for (int i = 0; i < c.length - 1; i++) {
 				e = i;
 				for (int j = i + 1; j < c.length; j++)
@@ -59,7 +59,7 @@ class Day2Practice {
 				c[i] = c[e];
 				c[e] = f;
 			}
-		} else if (d.equalsIgnoreCase("Decending")) {
+		} else if (d.equalsIgnoreCase("descending")) {
 			for (int i = c.length - 1; i >= 0; i--) {
 				e = i;
 				//noinspection OverflowingLoopIndex
@@ -87,7 +87,7 @@ class Day2Practice {
 		print("How many values are you going to input? ");
 		bounds = in.nextInt();
 		in.nextLine();
-		print("Will the order be acending or decending? ");
+		print("Will the order be ascending or descending? ");
 		order = in.nextLine();
 		if (datatype.equalsIgnoreCase("int")) {
 			arrI = new int[bounds];

@@ -17,7 +17,6 @@ class VerticalSineWave {
 	private VerticalSineWave() {
 		out.println("This is a program that \"infinitely\" prints out a vertical sine wave.");
 		out.print("Do you want to start on the left or right? I want to start on the ");
-		startingSide = "";
 		try (Scanner in = new Scanner(System.in)) {
 			startingSide = in.nextLine();
 		}

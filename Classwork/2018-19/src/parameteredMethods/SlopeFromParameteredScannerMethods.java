@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import static java.lang.System.out;
 
-class SlopeFromParametedScannerMethods {
+class SlopeFromParameteredScannerMethods {
 	public static void main(String[] args) {
 		double x1;
 		double y1;

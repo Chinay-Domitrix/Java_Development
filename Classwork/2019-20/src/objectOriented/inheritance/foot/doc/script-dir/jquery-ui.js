@@ -637,12 +637,13 @@
 		},
 
 		_delay: function (handler, delay) {
+			const instance = this;
+
 			function handlerProxy() {
 				return (typeof handler === "string" ? instance[handler] : handler)
 					.apply(instance, arguments);
 			}
 
-			var instance = this;
 			return setTimeout(handlerProxy, delay || 0);
 		},
 
@@ -1230,7 +1231,7 @@
 
 	})();
 
-	var position = $.ui.position;
+	const position = $.ui.position;
 
 
 	/*!

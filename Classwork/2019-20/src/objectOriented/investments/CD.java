@@ -6,22 +6,23 @@ import static java.lang.System.out;
 import static objectOriented.investments.InterestRate.doubleValue;
 
 final class CD extends Investment {
-	private InterestRate interestRate;
+	private final InterestRate interestRate;
 
-	public CD() {
+	CD() {
 		this(new Name("Certificate of Deposit"), new InterestRate("2.2%"));
 	}
 
-	public CD(Name name, InterestRate interestRate) {
+	CD(Name name, InterestRate interestRate) {
 		super(name);
 		this.interestRate = interestRate;
 	}
 
-	public final double invest1Year(double amount) {
-		addToYield(amount * interestRate.doubleValue());
+	@Override
+	final double invest1Year(double amount) {
+		var x = amount * interestRate.doubleValue();
+		addToYield(x);
 		amount *= doubleValue(interestRate) + 1;
-		out.printf("%s returned a yield of %s for a total of %s.%n", getName(), format(amount * interestRate.doubleValue()), format(amount));
+		out.printf("%s returned a yield of %s for a total of %s.%n", getName(), format(x), format(amount));
 		return amount;
 	}
-
 }

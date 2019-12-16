@@ -133,7 +133,7 @@ function updateTabs(type) {
 	const table = firstRow.closest('table');
 	for (let value in tabs) {
 		const tab = document.getElementById(tabs[value][0]);
-		if (value == type) {
+		if (value === type) {
 			tab.className = activeTableTab;
 			tab.innerHTML = tabs[value][1];
 			tab.setAttribute('aria-selected', true);
@@ -150,11 +150,11 @@ function updateTabs(type) {
 }
 
 function switchTab(e) {
-	if (e.keyCode == 37 || e.keyCode == 38) {
+	if (e.keyCode === 37 || e.keyCode === 38) {
 		$("[aria-selected=true]").prev().click().focus();
 		e.preventDefault();
 	}
-	if (e.keyCode == 39 || e.keyCode == 40) {
+	if (e.keyCode === 39 || e.keyCode === 40) {
 		$("[aria-selected=true]").next().click().focus();
 		e.preventDefault();
 	}

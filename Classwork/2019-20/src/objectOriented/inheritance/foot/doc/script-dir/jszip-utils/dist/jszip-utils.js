@@ -13,6 +13,8 @@ Dual licenced under the MIT license or GPLv3. See https://raw.github.com/Stuk/js
 	let define, module, exports;
 	// noinspection DuplicatedCode
 	return (function e(t, n, r) {
+		const i = typeof require == "function" && require;
+
 		function s(o, u) {
 			if (!n[o]) {
 				if (!t[o]) {
@@ -30,8 +32,7 @@ Dual licenced under the MIT license or GPLv3. See https://raw.github.com/Stuk/js
 			return n[o].exports
 		}
 
-		var i = typeof require == "function" && require;
-		for (var o = 0; o < r.length; o++) s(r[o]);
+		for (let o = 0; o < r.length; o++) s(r[o]);
 		return s
 	})({
 		1: [function (require, module, exports) {

@@ -8,8 +8,8 @@ import static java.lang.System.out;
 
 class SurvivorLogic {
 	/*These declarations are just so all the methods have the ability to */
-	private ArrayList<Integer> specialSauceCounter = new ArrayList<>();
-	private int runs = toIntExact(round(random() * 50) + 1);
+	private final ArrayList<Integer> specialSauceCounter = new ArrayList<>();
+	private final int runs = toIntExact(round(random() * 50) + 1);
 
 	SurvivorLogic() {
 		looper();

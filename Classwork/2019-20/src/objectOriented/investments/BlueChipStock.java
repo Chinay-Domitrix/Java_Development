@@ -2,31 +2,37 @@ package objectOriented.investments;
 
 import objectOriented.Name;
 
+import java.util.Random;
+
 import static java.lang.Math.random;
 import static java.lang.System.out;
 import static objectOriented.investments.InterestRate.doubleValue;
 
-public class BlueChipStock extends Investment {
+final class BlueChipStock extends Investment {
 	private InterestRate interestRate;
 
-	public BlueChipStock() {
+	BlueChipStock() {
 		this(new Name("Blue Chip Stock"));
 	}
 
-	public BlueChipStock(Name name) {
+	BlueChipStock(Name name) {
 		super(name);
 		interestRate = new InterestRate(((random() * 24) - 8) + "%");
 	}
 
 	@Override
-	public double invest1Year(double amount) {
-		var chance = (int) ((random() * 100) + 1);
-		if (chance == 1) amount = 0;
-		else {
-			addToYield(amount * interestRate.doubleValue());
+	final double invest1Year(double amount) {
+		var chance = new Random().nextInt(100) + 1;
+		double x;
+		if (chance == 1) {
+			amount = 0;
+			x = amount;
+		} else {
+			x = amount * interestRate.doubleValue();
+			addToYield(x);
 			amount *= doubleValue(interestRate) + 1;
 		}
-		out.printf("%s returned a yield of %s for a total of %s.%n", getName(), format((amount * interestRate.doubleValue()) - 20), format(amount));
+		out.printf("%s returned a yield of %s for a total of %s.%n", getName(), format(x), format(amount));
 		return amount;
 	}
 }

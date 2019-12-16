@@ -54,22 +54,22 @@ class Geometry {
 	}
 
 	private static double rectArea(double b, double h) {
-		return Math.round((b * h) * 100) / 100;
+		return Math.round((b * h) * 100) / 100.0;
 	}
 
 	private static double triArea(double b, double h) {
-		return Math.round((0.5 * b * h) * 100) / 100;
+		return Math.round((0.5 * b * h) * 100) / 100.0;
 	}
 
 	private static double squarePeri(double s) {
-		return Math.round((s * 4) * 100) / 100;
+		return Math.round((s * 4) * 100) / 100.0;
 	}
 
 	private static double circDiam(double d) {
-		return Math.round((Math.PI * d) * 100) / 100;
+		return Math.round((Math.PI * d) * 100) / 100.0;
 	}
 
 	private static double circRadi(double r) {
-		return Math.round((2 * Math.PI * r) * 100) / 100;
+		return Math.round((2 * Math.PI * r) * 100) / 100.0;
 	}
 }

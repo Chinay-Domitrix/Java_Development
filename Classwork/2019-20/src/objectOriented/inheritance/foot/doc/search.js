@@ -53,7 +53,7 @@ function getURLPrefix(ui) {
 		return ui.item.m + slash;
 	} else if ((ui.item.category === catTypes && ui.item.p) || ui.item.category === catMembers) {
 		$.each(packageSearchIndex, function (index, item) {
-			if (item.m && ui.item.p == item.l) {
+			if (item.m && ui.item.p === item.l) {
 				urlPrefix = item.m + slash;
 			}
 		});
@@ -100,12 +100,12 @@ $(function () {
 	$("#reset").prop("disabled", false);
 	$("#search").val(watermark).addClass('watermark');
 	$("#search").blur(function () {
-		if ($(this).val().length == 0) {
+		if ($(this).val().length === 0) {
 			$(this).val(watermark).addClass('watermark');
 		}
 	});
 	$("#search").on('click keydown paste', function () {
-		if ($(this).val() == watermark) {
+		if ($(this).val() === watermark) {
 			$(this).val('').removeClass('watermark');
 		}
 	});

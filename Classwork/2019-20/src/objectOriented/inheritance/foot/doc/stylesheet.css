@@ -13,7 +13,7 @@
  */
 
 body {
-    background-color: #ffffff;
+    background-color: white;
     color: #353833;
     font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
     font-size: 14px;
@@ -133,7 +133,7 @@ button {
 }
 
 .bar a, .bar a:link, .bar a:visited, .bar a:active {
-    color: #FFFFFF;
+    color: white;
     text-decoration: none;
 }
 
@@ -143,7 +143,7 @@ button {
 
 .tab {
     background-color: #0066FF;
-    color: #ffffff;
+    color: white;
     padding: 8px;
     width: 5em;
     font-weight: bold;
@@ -161,12 +161,12 @@ button {
     position: fixed;
     width: 100%;
     z-index: 999;
-    background-color: #ffffff;
+    background-color: white;
 }
 
 .topNav {
     background-color: #4D7A97;
-    color: #FFFFFF;
+    color: white;
     float: left;
     width: 100%;
     clear: right;
@@ -179,7 +179,7 @@ button {
 .bottomNav {
     margin-top: 10px;
     background-color: #4D7A97;
-    color: #FFFFFF;
+    color: white;
     float: left;
     width: 100%;
     clear: right;
@@ -240,7 +240,7 @@ ul.subNavList li {
 }
 
 .topNav a:link, .topNav a:active, .topNav a:visited, .bottomNav a:link, .bottomNav a:active, .bottomNav a:visited {
-    color: #FFFFFF;
+    color: white;
     text-decoration: none;
     text-transform: uppercase;
 }
@@ -467,7 +467,7 @@ table tr td dl, table tr td dl dt, table tr td dl dd {
 .deprecatedSummary caption a:visited,
 .requiresSummary caption a:visited, .packagesSummary caption a:visited, .providesSummary caption a:visited,
 .usesSummary caption a:visited {
-    color: #FFFFFF;
+    color: white;
 }
 
 .overviewSummary caption span, .memberSummary caption span, .typeSummary caption span,
@@ -511,7 +511,7 @@ table tr td dl, table tr td dl dt, table tr td dl dd {
 .overviewSummary [role=tablist] .tableTab, .memberSummary [role=tablist] .tableTab,
 .typeSummary [role=tablist] .tableTab, .packagesSummary [role=tablist] .tableTab {
     background: #4D7A97;
-    color: #FFFFFF;
+    color: white;
 }
 
 .rowColor th, .altColor th {
@@ -587,7 +587,7 @@ th.colDeprecatedItemName a:link, th.colDeprecatedItemName a:visited,
 }
 
 .altColor, .altColor th {
-    background-color: #FFFFFF;
+    background-color: white;
 }
 
 .rowColor, .rowColor th {
@@ -672,7 +672,7 @@ main, nav, header, footer, section {
     font-size: 15px;
     padding: 7px 0 7px 3px;
     background-color: #4D7A97;
-    color: #FFFFFF;
+    color: white;
 }
 
 ul.ui-autocomplete li {
@@ -746,7 +746,7 @@ section.description {
 
 .inheritedList, section[class$="Details"] .detail {
     padding: 0 0 5px 8px;
-    background-color: #ffffff;
+    background-color: white;
     border: none;
 }
 

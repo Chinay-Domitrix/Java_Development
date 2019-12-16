@@ -28,7 +28,7 @@ class CollatzSequence {
 			if ((counter % 10) == 0) out.println();
 		}
 		range(0, 2).forEach(i -> out.println());
-		out.printf("The largest number was %d, which occured on Step %d.%n", f, h);
+		out.printf("The largest number was %d, which occurred on Step %d.%n", f, h);
 		in.close();
 	}
 }

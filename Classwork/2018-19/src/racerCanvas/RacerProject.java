@@ -125,7 +125,7 @@ class RacerProject {
 		final RacerCanvas race = new RacerCanvas();
 		try (Scanner in = new Scanner(System.in)) {
 //		    Sets the path for the images (Must be modified to be usable on the user's device)
-			final String path = "C:\\Users\\Chirag\\Data\\Devlopment\\ClassWork\\resources\\racerCanvas\\",
+			final String path = "C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\2018-19\\resources\\racerCanvas\\",
 					fileType = ".png";
 //		    Forces user to finalize the file path of the images
 			out.println(

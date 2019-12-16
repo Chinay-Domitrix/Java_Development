@@ -342,7 +342,8 @@
 			return typeof Ctor === "function" && fnToString.call(Ctor) === ObjectFunctionString;
 		},
 
-		isEmptyObject: function (obj),
+		isEmptyObject: obj => {
+		},
 
 		// Evaluates a script in a global context
 		globalEval: function (code, options) {
@@ -1587,7 +1588,7 @@
 
 			/**
 			 * Utility function for retrieving the text value of an array of DOM nodes
-			 * @param {Array|Element} elem
+			 * @param {ChildNode} elem
 			 */
 			getText = Sizzle.getText = function (elem) {
 				let node,
@@ -1686,6 +1687,9 @@
 						return match;
 					},
 
+					/**
+					 * @return {null}
+					 */
 					"PSEUDO": function (match) {
 						let excess;
 						const unquoted = !match[6] && match[2];
@@ -2627,7 +2631,7 @@
 			 *  selector functions
 			 * @param {String|Function} selector A selector or a pre-compiled
 			 *  selector function built with Sizzle.compile
-			 * @param {Element} context
+			 * @param {Node & ParentNode} context
 			 * @param {Array} [results]
 			 * @param {Array} [seed] A set of elements to match against
 			 */
@@ -2781,7 +2785,7 @@
 	jQuery.escapeSelector = Sizzle.escape;
 
 
-	var dir = function (elem, dir, until) {
+	const dir = function (elem, dir, until) {
 		const matched = [],
 			truncate = until !== undefined;
 
@@ -2913,7 +2917,7 @@
 
 
 // A central reference to the root jQuery(document)
-	var rootjQuery,
+	let rootjQuery,
 
 		// A simple way to check for HTML strings
 		// Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
@@ -3473,7 +3477,8 @@
 	jQuery.extend({
 
 		Deferred: function (func) {
-			var tuples = [
+			let deferred = {};
+			let tuples = [
 
 					// action, add listener, callbacks,
 					// ... .then handlers, argument index, [final state]
@@ -3699,8 +3704,7 @@
 					promise: function (obj) {
 						return obj != null ? jQuery.extend(obj, promise) : promise;
 					}
-				},
-				deferred = {};
+				};
 
 			// Add list-specific methods
 			jQuery.each(tuples, function (i, tuple) {
@@ -4759,7 +4763,7 @@
 	}
 
 
-	var rhtml = /<|&#?\w+;/;
+	const rhtml = /<|&#?\w+;/;
 
 	function buildFragment(elems, context, scripts, selection, ignored) {
 		let elem, tmp, tag, wrap, attached, j;
@@ -6220,7 +6224,15 @@
 	(function () {
 
 		// Executing both pixelPosition & boxSizingReliable tests require only one layout
-		// so they're executed at the same time to save the second computation.
+		let pixelPositionVal;
+		let boxSizingReliableVal;
+		let scrollboxSizeVal;
+		let pixelBoxStylesVal;
+		let reliableMarginLeftVal;
+		let container = document.createElement("div");
+		let div;
+
+// so they're executed at the same time to save the second computation.
 		function computeStyleTests() {
 
 			// This is a singleton, we need to execute it only once
@@ -6269,10 +6281,7 @@
 			return Math.round(parseFloat(measure));
 		}
 
-		var pixelPositionVal, boxSizingReliableVal, scrollboxSizeVal, pixelBoxStylesVal,
-			reliableMarginLeftVal,
-			container = document.createElement("div"),
-			div = document.createElement("div");
+		div = document.createElement("div");
 
 		// Finish early in limited (non-browser) environments
 		if (!div.style) {
@@ -7259,7 +7268,82 @@
 	}
 
 	function Animation(elem, properties, options) {
-		var result,
+		let tick = function () {
+			if (stopped) {
+				return false;
+			}
+			const currentTime = fxNow || createFxNow(),
+				remaining = Math.max(0, animation.startTime + animation.duration - currentTime),
+
+				// Support: Android 2.3 only
+				// Archaic crash bug won't allow us to use `1 - ( 0.5 || 0 )` (#12497)
+				temp = remaining / animation.duration || 0,
+				percent = 1 - temp;
+			let index = 0;
+			const length = animation.tweens.length;
+
+			for (; index < length; index++) {
+				animation.tweens[index].run(percent);
+			}
+
+			deferred.notifyWith(elem, [animation, percent, remaining]);
+
+			// If there's more to do, yield
+			if (percent < 1 && length) {
+				return remaining;
+			}
+
+			// If this was an empty animation, synthesize a final progress notification
+			if (!length) {
+				deferred.notifyWith(elem, [animation, 1, 0]);
+			}
+
+			// Resolve the animation and report its conclusion
+			deferred.resolveWith(elem, [animation]);
+			return false;
+		};
+		let animation = deferred.promise({
+			elem: elem,
+			props: jQuery.extend({}, properties),
+			opts: jQuery.extend(true, {
+				specialEasing: {},
+				easing: jQuery.easing._default
+			}, options),
+			originalProperties: properties,
+			originalOptions: options,
+			startTime: fxNow || createFxNow(),
+			duration: options.duration,
+			tweens: [],
+			createTween: function (prop, end) {
+				const tween = jQuery.Tween(elem, animation.opts, prop, end,
+					animation.opts.specialEasing[prop] || animation.opts.easing);
+				animation.tweens.push(tween);
+				return tween;
+			},
+			stop: function (gotoEnd) {
+				let index = 0;
+				const // If we are going to the end, we want to run all the tweens
+					// otherwise we skip this part
+					length = gotoEnd ? animation.tweens.length : 0;
+				if (stopped) {
+					return this;
+				}
+				stopped = true;
+				for (; index < length; index++) {
+					animation.tweens[index].run(1);
+				}
+
+				// Resolve when we played the last frame; otherwise, reject
+				if (gotoEnd) {
+					deferred.notifyWith(elem, [animation, 1, 0]);
+					deferred.resolveWith(elem, [animation, gotoEnd]);
+				} else {
+					deferred.rejectWith(elem, [animation, gotoEnd]);
+				}
+				return this;
+			}
+		});
+		let result,
 			stopped,
 			index = 0,
 			length = Animation.prefilters.length,
@@ -7267,81 +7351,6 @@
 
 				// Don't match elem in the :animated selector
 				delete tick.elem;
-			}),
-			tick = function () {
-				if (stopped) {
-					return false;
-				}
-				const currentTime = fxNow || createFxNow(),
-					remaining = Math.max(0, animation.startTime + animation.duration - currentTime),
-
-					// Support: Android 2.3 only
-					// Archaic crash bug won't allow us to use `1 - ( 0.5 || 0 )` (#12497)
-					temp = remaining / animation.duration || 0,
-					percent = 1 - temp;
-				let index = 0;
-				const length = animation.tweens.length;
-
-				for (; index < length; index++) {
-					animation.tweens[index].run(percent);
-				}
-
-				deferred.notifyWith(elem, [animation, percent, remaining]);
-
-				// If there's more to do, yield
-				if (percent < 1 && length) {
-					return remaining;
-				}
-
-				// If this was an empty animation, synthesize a final progress notification
-				if (!length) {
-					deferred.notifyWith(elem, [animation, 1, 0]);
-				}
-
-				// Resolve the animation and report its conclusion
-				deferred.resolveWith(elem, [animation]);
-				return false;
-			},
-			animation = deferred.promise({
-				elem: elem,
-				props: jQuery.extend({}, properties),
-				opts: jQuery.extend(true, {
-					specialEasing: {},
-					easing: jQuery.easing._default
-				}, options),
-				originalProperties: properties,
-				originalOptions: options,
-				startTime: fxNow || createFxNow(),
-				duration: options.duration,
-				tweens: [],
-				createTween: function (prop, end) {
-					const tween = jQuery.Tween(elem, animation.opts, prop, end,
-						animation.opts.specialEasing[prop] || animation.opts.easing);
-					animation.tweens.push(tween);
-					return tween;
-				},
-				stop: function (gotoEnd) {
-					let index = 0;
-					const // If we are going to the end, we want to run all the tweens
-						// otherwise we skip this part
-						length = gotoEnd ? animation.tweens.length : 0;
-					if (stopped) {
-						return this;
-					}
-					stopped = true;
-					for (; index < length; index++) {
-						animation.tweens[index].run(1);
-					}
-
-					// Resolve when we played the last frame; otherwise, reject
-					if (gotoEnd) {
-						deferred.notifyWith(elem, [animation, 1, 0]);
-						deferred.resolveWith(elem, [animation, gotoEnd]);
-					} else {
-						deferred.rejectWith(elem, [animation, gotoEnd]);
-					}
-					return this;
-				}
 			}),
 			props = animation.props;
 
@@ -8291,7 +8300,7 @@
 
 						/* eslint-disable no-cond-assign */
 
-						if (option.selected ==
+						if (option.selected ===
 							jQuery.inArray(jQuery.valHooks.option.get(option), values) > -1
 						) {
 							optionSet = true;

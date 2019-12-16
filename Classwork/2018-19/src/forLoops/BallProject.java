@@ -175,7 +175,7 @@ public class BallProject {
 
 		}
 
-		class Ball extends JPanel {
+		static class Ball extends JPanel {
 			private static final long serialVersionUID = 8051694504739059413L;
 			final Color c;
 			int xPos, yPos;

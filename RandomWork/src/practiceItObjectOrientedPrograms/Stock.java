@@ -1,6 +1,6 @@
 package practiceItObjectOrientedPrograms;
 
-public class Stock {
+final class Stock {
 	private String symbol;        // stock symbol, e.g. "YHOO"
 	private int totalShares;      // total shares purchased
 	private double totalCost;     // total cost for all shares

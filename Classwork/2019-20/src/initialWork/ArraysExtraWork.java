@@ -9,7 +9,7 @@ import static java.lang.System.out;
 import static java.util.Arrays.setAll;
 
 class ArraysExtraWork {
-	private Scanner in = new Scanner(System.in);
+	private final Scanner in = new Scanner(System.in);
 
 	private ArraysExtraWork() {
 		out.println("Program 4");

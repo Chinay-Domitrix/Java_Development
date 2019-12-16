@@ -4,22 +4,22 @@ import org.jetbrains.annotations.NotNull;
 
 import static java.lang.Double.parseDouble;
 
-public final class InterestRate {
-	public double interestRate;
+final class InterestRate {
+	private double interestRate;
 
-	public InterestRate(String interestRate) {
-		this.interestRate = parseDouble(new StringBuilder(interestRate).deleteCharAt(interestRate.indexOf("%")).toString());
+	InterestRate(String interestRate) {
+		this.interestRate = parseDouble(new StringBuilder(interestRate).deleteCharAt(interestRate.indexOf("%")).toString()) / 100;
 	}
 
-	public static double doubleValue(@NotNull InterestRate a) {
+	static double doubleValue(@NotNull InterestRate a) {
 		return a.doubleValue();
 	}
 
-	public static double doubleValue(double a) {
+	static double doubleValue(double a) {
 		return a;
 	}
 
-	public final double doubleValue() {
+	final double doubleValue() {
 		return interestRate;
 	}
 

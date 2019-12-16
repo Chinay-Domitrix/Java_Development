@@ -5,13 +5,13 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 import static java.awt.Color.BLUE;
 import static java.awt.Color.RED;
 import static java.lang.System.out;
 import static java.lang.Thread.sleep;
+import static java.util.Arrays.fill;
 import static javax.imageio.ImageIO.read;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
@@ -27,7 +27,7 @@ final class TicTacToeProject {
 			var fPs = new String[]{ifn + 'X' + ft, ifn + 'O' + ft};
 			board.setFiles(fPs[0], fPs[1]);
 			var play = new char[3][3];
-			for (var chars : play) Arrays.fill(chars, ' ');
+			for (var chars : play) fill(chars, ' ');
 			board.setBoard(play);
 			out.print("How many players? ");
 			board.displayGame(true);

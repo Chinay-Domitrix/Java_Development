@@ -1,7 +1,7 @@
 package objectOriented;
 
 public final class Name {
-	public String name;
+	private final String name;
 
 	public Name(String name) {
 		this.name = name;

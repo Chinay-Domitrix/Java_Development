@@ -17,7 +17,7 @@ class HangmanProject {
 	private static char[] hangman, guessList;
 	private static String main, redo = null, inputCopy = null;
 	private static int wins = 0, losses = 0;
-	private Scanner in = new Scanner(System.in);
+	private final Scanner in = new Scanner(System.in);
 
 	private HangmanProject() {
 		/*

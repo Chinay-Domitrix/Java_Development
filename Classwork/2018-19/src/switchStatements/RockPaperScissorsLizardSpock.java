@@ -10,9 +10,14 @@ import static java.lang.Thread.sleep;
 import static java.util.Objects.requireNonNull;
 
 class RockPaperScissorsLizardSpock {
-	private int playerWins = 0, compWins = 0, counter = 0, rounds;
-	private Scanner in = new Scanner(System.in);
-	private String compPicks = null, name, RPSLS;
+	private final int rounds;
+	private final Scanner in = new Scanner(System.in);
+	private final String name;
+	private int playerWins = 0;
+	private int compWins = 0;
+	private int counter = 0;
+	private String compPicks = null;
+	private String RPSLS;
 
 	private RockPaperScissorsLizardSpock() throws Exception {
 		String a = "Welcome to Rock, Paper, Scissors, Lizard, Spock! Please enter your first name, contestant. ";
@@ -84,20 +89,15 @@ class RockPaperScissorsLizardSpock {
 			int r = (int) (Math.random() * 6);
 			if ((playerWins == 1) || (compWins == 1))
 				break;
-			else if ((playerWins == compWins) && ((playerWins > 0) || (compWins > 0))
-					&& (RPSLS.equals("rock") || RPSLS.equals("Rock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("rock") || RPSLS.equals("Rock")))
 				out.println("Computer picks Spock");
-			else if ((playerWins == compWins) && ((playerWins > 0) || (compWins > 0))
-					&& (RPSLS.equals("paper") || RPSLS.equals("Paper")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("paper") || RPSLS.equals("Paper")))
 				out.println("Computer picks lizard");
-			else if ((playerWins == compWins) && ((playerWins > 0) || (compWins > 0))
-					&& (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
 				out.println("Computer picks Spock");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
 				out.println("Computer picks scissors");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("spock") || RPSLS.equals("Spock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("spock") || RPSLS.equals("Spock")))
 				out.println("Computer picks lizard");
 			else if (r == 1)
 				compPicks = "Computer picks rock";
@@ -123,20 +123,15 @@ class RockPaperScissorsLizardSpock {
 			int r = (int) (Math.random() * 26);
 			if (playerWins == 1 || compWins == 1)
 				break;
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("rock") || RPSLS.equals("Rock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("rock") || RPSLS.equals("Rock")))
 				out.println("Computer picks Spock");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("paper") || RPSLS.equals("Paper")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("paper") || RPSLS.equals("Paper")))
 				out.println("Computer picks lizard");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
 				out.println("Computer picks Spock");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
 				out.println("Computer picks scissors");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("spock") || RPSLS.equals("Spock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("spock") || RPSLS.equals("Spock")))
 				out.println("Computer picks lizard");
 			else if (r > 0 && r < 6)
 				compPicks = "Computer picks rock";
@@ -162,20 +157,15 @@ class RockPaperScissorsLizardSpock {
 			int r = (int) (Math.random() * 126);
 			if (playerWins == 1 || compWins == 1)
 				break;
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("rock") || RPSLS.equals("Rock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("rock") || RPSLS.equals("Rock")))
 				out.println("Computer picks Spock");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("paper") || RPSLS.equals("Paper")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("paper") || RPSLS.equals("Paper")))
 				out.println("Computer picks lizard");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
 				out.println("Computer picks Spock");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
 				out.println("Computer picks scissors");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("spock") || RPSLS.equals("Spock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("spock") || RPSLS.equals("Spock")))
 				out.println("Computer picks lizard");
 			else if (r > 0 && r < 26)
 				compPicks = "Computer picks rock";
@@ -201,20 +191,15 @@ class RockPaperScissorsLizardSpock {
 			int r = (int) (Math.random() * 626);
 			if (playerWins == 1 || compWins == 1)
 				break;
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("rock") || RPSLS.equals("Rock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("rock") || RPSLS.equals("Rock")))
 				out.println("Computer picks Spock");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("paper") || RPSLS.equals("Paper")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("paper") || RPSLS.equals("Paper")))
 				out.println("Computer picks lizard");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
 				out.println("Computer picks Spock");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
 				out.println("Computer picks scissors");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("spock") || RPSLS.equals("Spock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("spock") || RPSLS.equals("Spock")))
 				out.println("Computer picks lizard");
 			else if (r > 0 && r < 126)
 				compPicks = "Computer picks rock";
@@ -240,20 +225,15 @@ class RockPaperScissorsLizardSpock {
 			int r = (int) (Math.random() * 3126);
 			if (playerWins == 1 || compWins == 1)
 				break;
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("rock") || RPSLS.equals("Rock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("rock") || RPSLS.equals("Rock")))
 				out.println("Computer picks Spock");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("paper") || RPSLS.equals("Paper")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("paper") || RPSLS.equals("Paper")))
 				out.println("Computer picks lizard");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
 				out.println("Computer picks Spock");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
 				out.println("Computer picks scissors");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("spock") || RPSLS.equals("Spock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("spock") || RPSLS.equals("Spock")))
 				out.println("Computer picks lizard");
 			else if (r > 0 && r < 626)
 				compPicks = "Computer picks rock";
@@ -279,20 +259,15 @@ class RockPaperScissorsLizardSpock {
 			int r = (int) (Math.random() * 15626);
 			if (playerWins == 1 || compWins == 1)
 				break;
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("rock") || RPSLS.equals("Rock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("rock") || RPSLS.equals("Rock")))
 				out.println("Computer picks Spock");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("paper") || RPSLS.equals("Paper")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("paper") || RPSLS.equals("Paper")))
 				out.println("Computer picks lizard");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
 				out.println("Computer picks Spock");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
 				out.println("Computer picks scissors");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("spock") || RPSLS.equals("Spock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("spock") || RPSLS.equals("Spock")))
 				out.println("Computer picks lizard");
 			else if (r > 0 && r < 3126)
 				compPicks = "Computer picks rock";
@@ -318,20 +293,15 @@ class RockPaperScissorsLizardSpock {
 			int r = (int) (Math.random() * 78126);
 			if (playerWins == 1 || compWins == 1)
 				break;
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("rock") || RPSLS.equals("Rock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("rock") || RPSLS.equals("Rock")))
 				out.println("Computer picks Spock");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("paper") || RPSLS.equals("Paper")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("paper") || RPSLS.equals("Paper")))
 				out.println("Computer picks lizard");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
 				out.println("Computer picks Spock");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
 				out.println("Computer picks scissors");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("spock") || RPSLS.equals("Spock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("spock") || RPSLS.equals("Spock")))
 				out.println("Computer picks lizard");
 			else if (r > 0 && r < 15626)
 				compPicks = "Computer picks rock";
@@ -357,20 +327,15 @@ class RockPaperScissorsLizardSpock {
 			int r = (int) (Math.random() * 390626);
 			if (playerWins == 1 || compWins == 1)
 				break;
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("rock") || RPSLS.equals("Rock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("rock") || RPSLS.equals("Rock")))
 				out.println("Computer picks Spock");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("paper") || RPSLS.equals("Paper")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("paper") || RPSLS.equals("Paper")))
 				out.println("Computer picks lizard");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
 				out.println("Computer picks Spock");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
 				out.println("Computer picks scissors");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("spock") || RPSLS.equals("Spock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("spock") || RPSLS.equals("Spock")))
 				out.println("Computer picks lizard");
 			else if (r > 0 && r < 78126)
 				compPicks = "Computer picks rock";
@@ -396,20 +361,15 @@ class RockPaperScissorsLizardSpock {
 			int r = (int) (Math.random() * 1953126);
 			if (playerWins == 1 || compWins == 1)
 				break;
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("rock") || RPSLS.equals("Rock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("rock") || RPSLS.equals("Rock")))
 				out.println("Computer picks Spock");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("paper") || RPSLS.equals("Paper")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("paper") || RPSLS.equals("Paper")))
 				out.println("Computer picks lizard");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("scissors") || RPSLS.equals("Scissors")))
 				out.println("Computer picks Spock");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("lizard") || RPSLS.equals("Lizard")))
 				out.println("Computer picks scissors");
-			else if (playerWins == compWins && (playerWins > 0 || compWins > 0)
-					&& (RPSLS.equals("spock") || RPSLS.equals("Spock")))
+			else if (playerWins == compWins && playerWins > 0 && (RPSLS.equals("spock") || RPSLS.equals("Spock")))
 				out.println("Computer picks lizard");
 			else if (r > 0 && r < 390626)
 				compPicks = "Computer picks rock";

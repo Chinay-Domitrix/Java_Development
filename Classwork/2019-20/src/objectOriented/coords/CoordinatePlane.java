@@ -15,8 +15,8 @@ class CoordinatePlane {
 	private final int xMax;
 	private final int yMin;
 	private final int yMax;
-	private ArrayList<OrderedPair> points;
-	private String[][] displayGrid;
+	private final ArrayList<OrderedPair> points;
+	private final String[][] displayGrid;
 
 	/**
 	 * Creates a {@code CoordinatePlane} object of size {@code size}
@@ -45,7 +45,7 @@ class CoordinatePlane {
 		//cp.graph("x");
 //		Uncomment when ready
 		//cp.linearGraph(1/2.0,-4);
-		cp.linearGraph(-2.0, 4);
+		cp.linearGraph();
 //		Graph with 'x'
 		cp.graph("x");
 	}
@@ -102,7 +102,8 @@ class CoordinatePlane {
 	/**
 	 * Fills points in form of line with a given slope and y-intercept
 	 */
-	private void linearGraph(double slope, int yInt) {
+	private void linearGraph() {
+		//noinspection StatementWithEmptyBody
 		for (var x = xMin; x <= xMax; x++) {
 			/*  TASK 2 - Write the loop to get this working */
 
@@ -122,7 +123,7 @@ class CoordinatePlane {
 	 * Creates the x and y axis on a blank grid
 	 */
 	private void blankGrid() {
-		fillAll(" ");
+		fillAll();
 		for (var i = 0; i < numCols; i++) displayGrid[xAxisIndex][i] = "-";
 		for (var i = 0; i < numRows; i++) displayGrid[i][xAxisIndex] = "|";
 	}
@@ -139,10 +140,8 @@ class CoordinatePlane {
 
 	/**
 	 * Fills all contents of displayGrid
-	 *
-	 * @param s the {@code String} to be filled
 	 */
-	private void fillAll(String s) {
-		for (var i = 0; i < numRows; i++) for (var j = 0; j < numCols; j++) displayGrid[i][j] = s;
+	private void fillAll() {
+		for (var i = 0; i < numRows; i++) for (var j = 0; j < numCols; j++) displayGrid[i][j] = " ";
 	}
 }
