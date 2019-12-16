@@ -4,8 +4,8 @@ import org.jetbrains.annotations.NotNull;
 
 import static java.lang.Double.parseDouble;
 
-final class InterestRate {
-	private double interestRate;
+class InterestRate {
+	private final double interestRate;
 
 	InterestRate(String interestRate) {
 		this.interestRate = parseDouble(new StringBuilder(interestRate).deleteCharAt(interestRate.indexOf("%")).toString()) / 100;

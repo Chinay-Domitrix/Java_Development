@@ -5,7 +5,7 @@ import objectOriented.Name;
 import static java.lang.System.out;
 import static objectOriented.investments.InterestRate.doubleValue;
 
-final class CD extends Investment {
+class CD extends Investment {
 	private final InterestRate interestRate;
 
 	CD() {

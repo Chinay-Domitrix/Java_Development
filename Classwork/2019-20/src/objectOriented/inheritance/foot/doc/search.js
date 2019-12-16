@@ -221,6 +221,7 @@ function rankMatch(match, category) {
 }
 
 $(function () {
+	// noinspection DuplicatedCode,DuplicatedCode
 	$("#search").catcomplete({
 		minLength: 1,
 		delay: 300,

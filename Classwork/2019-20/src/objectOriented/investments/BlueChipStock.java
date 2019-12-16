@@ -8,8 +8,8 @@ import static java.lang.Math.random;
 import static java.lang.System.out;
 import static objectOriented.investments.InterestRate.doubleValue;
 
-final class BlueChipStock extends Investment {
-	private InterestRate interestRate;
+class BlueChipStock extends Investment {
+	private final InterestRate interestRate;
 
 	BlueChipStock() {
 		this(new Name("Blue Chip Stock"));

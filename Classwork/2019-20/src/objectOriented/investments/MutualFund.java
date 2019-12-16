@@ -6,8 +6,8 @@ import static java.lang.Math.random;
 import static java.lang.System.out;
 import static objectOriented.investments.InterestRate.doubleValue;
 
-final class MutualFund extends Investment {
-	private InterestRate interestRate;
+class MutualFund extends Investment {
+	private final InterestRate interestRate;
 
 	MutualFund() {
 		this(new Name("Mutual Fund"));

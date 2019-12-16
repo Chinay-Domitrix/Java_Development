@@ -87,7 +87,7 @@ class Grid {
 	 *
 	 * @param s the {@code char} to be printed
 	 */
-	void paintDiagonalToRight(char s) {
+	void paintDiagonalToRight(@SuppressWarnings("SameParameterValue") char s) {
 		paintDiagonalToRight(Character.toString(s));
 	}
 
@@ -110,7 +110,7 @@ class Grid {
 	 *
 	 * @param s the {@code char} to be printed
 	 */
-	void paintDiagonalToLeft(char s) {
+	void paintDiagonalToLeft(@SuppressWarnings("SameParameterValue") char s) {
 		paintDiagonalToLeft(Character.toString(s));
 	}
 

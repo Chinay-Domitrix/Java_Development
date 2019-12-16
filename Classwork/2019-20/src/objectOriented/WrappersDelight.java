@@ -24,11 +24,12 @@ final class WrappersDelight {
 	 * The primary logic of the program. Converts the provided string into an int, double, boolean, and a char.
 	 *
 	 * @param s the String to be converted
+	 * @return the {@code ArrayList} to be printed
 	 */
 	@NotNull
 	private static ArrayList<Object> wrapSampler(String s) {
 //		This is a utilization of ArrayList's default constructor. Since it is a constructor, it is an instance method.
-		ArrayList<Object> arrayList = new ArrayList<>();
+		var arrayList = new ArrayList<>();
 //		The method Double.parseDouble(String s) is a static method which extracts the double value of a number from a String.
 		var a = parseDouble(s);
 		var b = toIntExact(round(a));
