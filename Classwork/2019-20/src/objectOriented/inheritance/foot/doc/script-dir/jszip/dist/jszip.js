@@ -42,6 +42,7 @@ import * as Buffer from "./jszip";
 					if (!u && a) return a(o, !0);
 					if (i) return i(o, !0);
 					const f = new Error("Cannot find module '" + o + "'");
+					// noinspection CommaExpressionJS
 					throw f.code = "MODULE_NOT_FOUND", f
 				}
 				const l = n[o] = {exports: {}};

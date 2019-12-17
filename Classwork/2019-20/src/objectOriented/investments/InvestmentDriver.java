@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import static java.lang.System.out;
 import static objectOriented.investments.Investment.format;
 
-class InvestmentDriver {
+final class InvestmentDriver {
 	private static final int age = 16;
 	private static final int retirementAge = 65;
 	private static final ArrayList<Investment> portfolio = new ArrayList<>();
@@ -21,6 +21,12 @@ class InvestmentDriver {
 		portfolio.add(new BlueChipStock());
 		for (int j = age; j <= retirementAge; j++) total = portfolio.get(2).invest1Year(total);
 		out.printf("%s%n%n", portfolio.get(2));
+		portfolio.add(new PennyStock());
+		for (int j = age; j <= retirementAge; j++) total = portfolio.get(3).invest1Year(total);
+		out.printf("%s%n%n", portfolio.get(3));
+		portfolio.add(new Moonshot());
+		for (int j = age; j <= retirementAge; j++) total = portfolio.get(4).invest1Year(total);
+		out.printf("%s%n%n", portfolio.get(4));
 		out.printf("Total: %s%n", format(total));
 	}
 }

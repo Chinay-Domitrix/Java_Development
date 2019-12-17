@@ -5,7 +5,7 @@ import objectOriented.Name;
 import static java.lang.System.out;
 import static objectOriented.investments.InterestRate.doubleValue;
 
-class CD extends Investment {
+final class CD extends Investment {
 	private final InterestRate interestRate;
 
 	CD() {
@@ -18,11 +18,11 @@ class CD extends Investment {
 	}
 
 	@Override
-	final double invest1Year(double amount) {
-		var x = amount * interestRate.doubleValue();
-		addToYield(x);
+	double invest1Year(double amount) {
+		var yield = amount * interestRate.doubleValue();
+		addToYield(yield);
 		amount *= doubleValue(interestRate) + 1;
-		out.printf("%s returned a yield of %s for a total of %s.%n", getName(), format(x), format(amount));
+		out.printf("%s returned a yield of %s for a total of %s.%n", getName(), format(yield), format(amount));
 		return amount;
 	}
 }

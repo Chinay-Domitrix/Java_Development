@@ -73,7 +73,7 @@ class CoordinatePlane {
 		print();
 	}
 
-	private void graph(char pointChar) {
+	private void graph(@SuppressWarnings("SameParameterValue") char pointChar) {
 		graph(Character.toString(pointChar));
 	}
 
