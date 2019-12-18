@@ -23,9 +23,9 @@ final class Moonshot extends Investment {
 			amount = 0;
 			yield = amount;
 		} else if (chance == 81) {
-			yield = amount * 100001;
+			yield = amount * 100000;
 			addToYield(yield);
-			amount *= 100001;
+			amount *= 100000;
 		} else {
 			yield = 0;
 		}

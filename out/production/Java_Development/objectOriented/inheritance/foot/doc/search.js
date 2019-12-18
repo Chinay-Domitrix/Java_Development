@@ -142,7 +142,7 @@ $.widget("custom.catcomplete", $.ui.autocomplete, {
 		});
 	},
 	_renderItem: function (ul, item) {
-		let label = "";
+		let label;
 		const matcher = createMatcher(escapeHtml(searchPattern), "g");
 		if (item.category === catModules) {
 			label = getHighlightedText(item.l, matcher);
@@ -221,6 +221,7 @@ function rankMatch(match, category) {
 }
 
 $(function () {
+	// noinspection DuplicatedCode,DuplicatedCode,DuplicatedCode,DuplicatedCode
 	$("#search").catcomplete({
 		minLength: 1,
 		delay: 300,

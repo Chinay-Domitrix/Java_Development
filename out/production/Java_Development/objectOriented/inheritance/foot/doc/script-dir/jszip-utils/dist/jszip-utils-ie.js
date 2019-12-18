@@ -7,7 +7,8 @@ JSZipUtils - A collection of cross-browser utilities to go along with JSZip.
 Dual licenced under the MIT license or GPLv3. See https://raw.github.com/Stuk/jszip-utils/master/LICENSE.markdown.
 
 */
-;(function e(t, n, r) {
+;// noinspection DuplicatedCode
+(function e(t, n, r) {
 	const i = typeof require == "function" && require;
 
 	function s(o, u) {

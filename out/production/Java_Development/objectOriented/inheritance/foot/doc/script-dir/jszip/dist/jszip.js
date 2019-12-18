@@ -42,6 +42,7 @@ import * as Buffer from "./jszip";
 					if (!u && a) return a(o, !0);
 					if (i) return i(o, !0);
 					const f = new Error("Cannot find module '" + o + "'");
+					// noinspection CommaExpressionJS
 					throw f.code = "MODULE_NOT_FOUND", f
 				}
 				const l = n[o] = {exports: {}};
@@ -1388,13 +1389,13 @@ import * as Buffer from "./jszip";
 		}, {}],
 		15: [function (require, module) {
 			/**
-						 * Add a (sub) folder in the current folder.
-						 * @private
-						 * @param {string} name the folder's name
-						 * @param {boolean=} [createFolders] If true, automatically create sub
-						 *  folders. Defaults to false.
-						 * @return {Object} the new folder.
-						 */
+			 * Add a (sub) folder in the current folder.
+			 * @private
+			 * @param {string} name the folder's name
+			 * @param {boolean=} [createFolders] If true, automatically create sub
+			 *  folders. Defaults to false.
+			 * @return {Object} the new folder.
+			 */
 			const folderAdd = function (name, createFolders) {
 				createFolders = (typeof createFolders !== 'undefined') ? createFolders : defaults.createFolders;
 
@@ -1410,11 +1411,11 @@ import * as Buffer from "./jszip";
 				return this.files[name];
 			};
 			/**
-						 * Returns the path with a slash at the end.
-						 * @private
-						 * @param {String} path the path to check.
-						 * @return {String} the path with a trailing slash.
-						 */
+			 * Returns the path with a slash at the end.
+			 * @private
+			 * @param {String} path the path to check.
+			 * @return {String} the path with a trailing slash.
+			 */
 			const forceTrailingSlash = function (path) {
 				// Check the name ends with a /
 				if (path.slice(-1) !== "/") {
@@ -1423,11 +1424,11 @@ import * as Buffer from "./jszip";
 				return path;
 			};
 			/**
-						 * Find the parent folder of the path.
-						 * @private
-						 * @param {string} path the path to use
-						 * @return {string} the parent folder, or ""
-						 */
+			 * Find the parent folder of the path.
+			 * @private
+			 * @param {string} path the path to use
+			 * @return {string} the parent folder, or ""
+			 */
 			const parentFolder = function (path) {
 				if (path.slice(-1) === '/') {
 					path = path.substring(0, path.length - 1);

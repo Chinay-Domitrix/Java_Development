@@ -1052,6 +1052,7 @@
 			});
 		};
 
+		// noinspection DuplicatedCode,DuplicatedCode,DuplicatedCode,DuplicatedCode
 		$.ui.position = {
 			fit: {
 				left: function (position, data) {
