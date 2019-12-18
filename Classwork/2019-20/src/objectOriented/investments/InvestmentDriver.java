@@ -12,7 +12,7 @@ final class InvestmentDriver {
 	private static double total = 1000;
 
 	public static void main(String[] args) {
-		portfolio.add(new CD());
+		portfolio.add(new CertificateOfDeposit());
 		for (var i = age; i <= retirementAge; i++) total = portfolio.get(0).invest1Year(total);
 		out.printf("%s%n%n", portfolio.get(0));
 		portfolio.add(new MutualFund());

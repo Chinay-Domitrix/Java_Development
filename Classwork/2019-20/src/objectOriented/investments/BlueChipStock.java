@@ -4,6 +4,7 @@ import objectOriented.Name;
 
 import java.util.Random;
 
+import static java.lang.Double.MIN_VALUE;
 import static java.lang.Math.random;
 import static java.lang.System.out;
 import static objectOriented.investments.InterestRate.doubleValue;
@@ -19,10 +20,12 @@ final class BlueChipStock extends Investment {
 
 	BlueChipStock(Name name) {
 		super(name);
-
+		minimumInterest = -8;
+		maximumInterest = 15;
+		collapseChance = 1;
 	}
 
-	public BlueChipStock(String name, double minimumInterest, double maximumInterest, double collapseChance) {
+	BlueChipStock(String name, double minimumInterest, double maximumInterest, double collapseChance) {
 		super(new Name(name));
 		this.minimumInterest *= minimumInterest;
 		this.maximumInterest *= maximumInterest;
@@ -31,7 +34,7 @@ final class BlueChipStock extends Investment {
 
 	@Override
 	double invest1Year(double amount) {
-		var interestRate = new InterestRate(((random() * ((maximumInterest - minimumInterest) + 1)) + minimumInterest) + "%");
+		var interestRate = new InterestRate(((random() * ((maximumInterest - minimumInterest) + MIN_VALUE)) + minimumInterest) + "%");
 		var chance = new Random().nextInt(100) + 1;
 		double yield;
 		if (chance >= 1 && chance <= collapseChance) {

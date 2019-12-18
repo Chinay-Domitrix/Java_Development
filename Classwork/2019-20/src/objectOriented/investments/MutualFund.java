@@ -2,6 +2,7 @@ package objectOriented.investments;
 
 import objectOriented.Name;
 
+import static java.lang.Double.MIN_VALUE;
 import static java.lang.Math.random;
 import static java.lang.System.out;
 import static objectOriented.investments.InterestRate.doubleValue;
@@ -9,7 +10,7 @@ import static objectOriented.investments.InterestRate.doubleValue;
 final class MutualFund extends Investment {
 	private double minimumInterest = 100;
 	private double maximumInterest = 100;
-	private double fee;
+	private final double fee;
 
 	MutualFund() {
 		this(new Name("Mutual Fund"));
@@ -17,22 +18,22 @@ final class MutualFund extends Investment {
 
 	MutualFund(Name name) {
 		super(name);
-		this.minimumInterest *= -0.03;
-		this.maximumInterest *= 0.08;
-		this.fee = 20;
+		minimumInterest = -3;
+		maximumInterest = 8;
+		fee = 20;
 	}
 
-	public MutualFund(String name, double minimumInterest, double maximumInterest, double fee) {
+	MutualFund(String name, double minimumInterest, double maximumInterest, double fee) {
 		super(new Name(name));
-		this.minimumInterest = minimumInterest;
-		this.maximumInterest = maximumInterest;
+		this.minimumInterest *= minimumInterest;
+		this.maximumInterest *= maximumInterest;
 		this.fee = fee;
 	}
 
 
 	@Override
 	double invest1Year(double amount) {
-		var interestRate = new InterestRate(((random() * ((maximumInterest - minimumInterest) + 1)) + (minimumInterest)) + "%");
+		var interestRate = new InterestRate(((random() * ((maximumInterest - minimumInterest) + MIN_VALUE)) + (minimumInterest)) + "%");
 		var yield = (amount * interestRate.doubleValue()) - fee;
 		addToYield(yield);
 		amount *= (doubleValue(interestRate) + 1);

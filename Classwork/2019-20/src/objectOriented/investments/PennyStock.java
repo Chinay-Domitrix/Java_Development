@@ -4,12 +4,12 @@ import objectOriented.Name;
 
 import java.util.Random;
 
+import static java.lang.Double.MIN_VALUE;
 import static java.lang.Math.random;
 import static java.lang.System.out;
 import static objectOriented.investments.InterestRate.doubleValue;
 
-final public class PennyStock extends Investment {
-
+final class PennyStock extends Investment {
 	private double minimumInterest = 100;
 	private double maximumInterest = 100;
 	private double collapseChance = 100;
@@ -22,9 +22,14 @@ final public class PennyStock extends Investment {
 
 	PennyStock(Name name) {
 		super(name);
+		minimumInterest = -50;
+		maximumInterest = 80;
+		collapseChance = 5;
+		multiplierChance = 5;
+		multiplier = 50;
 	}
 
-	public PennyStock(String name, double minimumInterest, double maximumInterest, double collapseChance, double multiplierChance, int multiplier) {
+	PennyStock(String name, double minimumInterest, double maximumInterest, double collapseChance, double multiplierChance, int multiplier) {
 		super(new Name(name));
 		this.minimumInterest *= minimumInterest;
 		this.maximumInterest *= maximumInterest;
@@ -35,7 +40,7 @@ final public class PennyStock extends Investment {
 
 	@Override
 	double invest1Year(double amount) {
-		var interestRate = new InterestRate(((random() * ((maximumInterest - minimumInterest) + 1)) + minimumInterest) + "%");
+		var interestRate = new InterestRate(((random() * ((maximumInterest - minimumInterest) + MIN_VALUE)) + minimumInterest) + "%");
 		var chance = new Random().nextInt(100) + 1;
 		double yield;
 		if (chance >= 1 && chance <= collapseChance) {

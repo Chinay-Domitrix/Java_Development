@@ -17,12 +17,15 @@ final class Moonshot extends Investment {
 
 	Moonshot(Name name) {
 		super(name);
+		collapseChance = 80;
+		multiplierChance = 1;
+		multiplier = 100000;
 	}
 
-	public Moonshot(String name, double collapseChance, double multiplierChance, int multiplier) {
+	Moonshot(String name, double collapseChance, double multiplierChance, int multiplier) {
 		super(new Name(name));
-		this.collapseChance = collapseChance;
-		this.multiplierChance = multiplierChance;
+		this.collapseChance *= collapseChance;
+		this.multiplierChance *= multiplierChance;
 		this.multiplier = multiplier;
 	}
 

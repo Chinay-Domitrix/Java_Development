@@ -5,19 +5,19 @@ import objectOriented.Name;
 import static java.lang.System.out;
 import static objectOriented.investments.InterestRate.doubleValue;
 
-final class CD extends Investment {
+final class CertificateOfDeposit extends Investment {
 	private final InterestRate interestRate;
 
-	CD() {
+	CertificateOfDeposit() {
 		this(new Name("Certificate of Deposit"), new InterestRate("2.2%"));
 	}
 
-	CD(Name name, InterestRate interestRate) {
+	CertificateOfDeposit(Name name, InterestRate interestRate) {
 		super(name);
 		this.interestRate = interestRate;
 	}
 
-	public CD(String name, double interestRate) {
+	CertificateOfDeposit(String name, double interestRate) {
 		this(new Name(name), new InterestRate((interestRate * 100) + "%"));
 	}
 
