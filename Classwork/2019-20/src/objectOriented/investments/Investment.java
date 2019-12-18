@@ -27,9 +27,7 @@ abstract class Investment {
 	 * @return {@code amount} after rounding to monetary notation
 	 */
 	static double toDollarNotation(double amount) {
-		var bigDecimal = new BigDecimal(valueOf(amount));
-		bigDecimal = bigDecimal.setScale(2, HALF_UP);
-		return bigDecimal.doubleValue();
+		return new BigDecimal(valueOf(amount)).setScale(2, HALF_UP).doubleValue();
 	}
 
 	/**

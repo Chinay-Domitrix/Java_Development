@@ -10,6 +10,12 @@ import static objectOriented.investments.InterestRate.doubleValue;
 
 final public class PennyStock extends Investment {
 
+	private double minimumInterest = 100;
+	private double maximumInterest = 100;
+	private double collapseChance = 100;
+	private double multiplierChance = 100;
+	private int multiplier;
+
 	PennyStock() {
 		this(new Name("Penny Stock"));
 	}
@@ -18,18 +24,27 @@ final public class PennyStock extends Investment {
 		super(name);
 	}
 
+	public PennyStock(String name, double minimumInterest, double maximumInterest, double collapseChance, double multiplierChance, int multiplier) {
+		super(new Name(name));
+		this.minimumInterest *= minimumInterest;
+		this.maximumInterest *= maximumInterest;
+		this.collapseChance *= collapseChance;
+		this.multiplierChance *= multiplierChance;
+		this.multiplier = multiplier;
+	}
+
 	@Override
 	double invest1Year(double amount) {
-		var interestRate = new InterestRate(((random() * 130) - 50) + "%");
+		var interestRate = new InterestRate(((random() * ((maximumInterest - minimumInterest) + 1)) + minimumInterest) + "%");
 		var chance = new Random().nextInt(100) + 1;
 		double yield;
-		if (chance >= 1 && chance <= 5) {
+		if (chance >= 1 && chance <= collapseChance) {
 			amount = 0;
 			yield = amount;
-		} else if (chance >= 6 && chance <= 10) {
-			yield = amount * 50;
+		} else if (chance >= collapseChance + 1 && chance <= multiplierChance) {
+			yield = amount * multiplier;
 			addToYield(yield);
-			amount *= 51;
+			amount *= multiplier;
 		} else {
 			yield = amount * interestRate.doubleValue();
 			addToYield(yield);

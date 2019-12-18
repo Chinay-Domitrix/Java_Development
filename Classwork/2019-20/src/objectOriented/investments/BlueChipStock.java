@@ -9,6 +9,9 @@ import static java.lang.System.out;
 import static objectOriented.investments.InterestRate.doubleValue;
 
 final class BlueChipStock extends Investment {
+	private double minimumInterest = 100;
+	private double maximumInterest = 100;
+	private double collapseChance = 100;
 
 	BlueChipStock() {
 		this(new Name("Blue Chip Stock"));
@@ -19,12 +22,19 @@ final class BlueChipStock extends Investment {
 
 	}
 
+	public BlueChipStock(String name, double minimumInterest, double maximumInterest, double collapseChance) {
+		super(new Name(name));
+		this.minimumInterest *= minimumInterest;
+		this.maximumInterest *= maximumInterest;
+		this.collapseChance *= collapseChance;
+	}
+
 	@Override
 	double invest1Year(double amount) {
-		var interestRate = new InterestRate(((random() * 23) - 8) + "%");
+		var interestRate = new InterestRate(((random() * ((maximumInterest - minimumInterest) + 1)) + minimumInterest) + "%");
 		var chance = new Random().nextInt(100) + 1;
 		double yield;
-		if (chance == 1) {
+		if (chance >= 1 && chance <= collapseChance) {
 			amount = 0;
 			yield = amount;
 		} else {

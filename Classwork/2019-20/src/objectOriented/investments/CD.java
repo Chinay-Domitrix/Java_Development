@@ -17,6 +17,10 @@ final class CD extends Investment {
 		this.interestRate = interestRate;
 	}
 
+	public CD(String name, double interestRate) {
+		this(new Name(name), new InterestRate((interestRate * 100) + "%"));
+	}
+
 	@Override
 	double invest1Year(double amount) {
 		var yield = amount * interestRate.doubleValue();
