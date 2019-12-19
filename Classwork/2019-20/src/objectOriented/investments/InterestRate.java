@@ -22,8 +22,10 @@ final class InterestRate {
 		return interestRate;
 	}
 
+	@NotNull
+	@Contract(pure = true)
 	@Override
 	public String toString() {
-		return Double.toString(interestRate);
+		return (interestRate * 100) + "%";
 	}
 }

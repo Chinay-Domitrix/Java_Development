@@ -89,7 +89,8 @@ public class InvestmentSplitDriver {
 	/**
 	 * Used to split an investment
 	 *
-	 * @return the final {@code total} with the spilt investments
+	 * @return the final {@linkplain #total} with the spilt investments for one year using {@code invest1Year} from the {@code Investment} class.
+	 * @see Investment#invest1Year(double)
 	 */
 	private static double splitInvestmentByPercent() {
 //		The +0.0001 allows for a small rounding error

@@ -38,7 +38,7 @@ final class MutualFund extends Investment {
 		addToYield(yield);
 		amount *= (doubleValue(interestRate) + 1);
 		amount -= 20;
-		out.printf("%s returned a yield of %s for a total of %s with the fee included.%n", getName(), format(yield), format(amount));
+		out.printf("%s returned a %s yield of %s for a total of %s with the fee included.%n", getName(), interestRate, format(yield), format(amount));
 		return amount;
 	}
 }

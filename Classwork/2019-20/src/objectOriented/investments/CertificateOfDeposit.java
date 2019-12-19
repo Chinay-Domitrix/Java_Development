@@ -26,7 +26,7 @@ final class CertificateOfDeposit extends Investment {
 		var yield = amount * interestRate.doubleValue();
 		addToYield(yield);
 		amount *= doubleValue(interestRate) + 1;
-		out.printf("%s returned a yield of %s for a total of %s.%n", getName(), format(yield), format(amount));
+		out.printf("%s returned a %s yield of %s for a total of %s.%n", getName(), interestRate, format(yield), format(amount));
 		return amount;
 	}
 }
