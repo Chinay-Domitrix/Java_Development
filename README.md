@@ -5,7 +5,7 @@ This repository is for work which I have done for school, and will be updated ve
 ### Folder Labeling
 Any new folders created in this folder will be labeled with the span of the school year.
 ## HelloWorld
-This branch is dead, but a good eample of a beginner-level program.
+This branch is dead, but a good example of a beginner-level program.
 ## RandomWork
 This is for personal projects, and will not be updated as frequently.
 ## out
