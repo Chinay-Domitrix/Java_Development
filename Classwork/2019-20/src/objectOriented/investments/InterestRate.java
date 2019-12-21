@@ -3,7 +3,11 @@ package objectOriented.investments;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.math.BigDecimal;
+
 import static java.lang.Double.parseDouble;
+import static java.lang.String.format;
+import static java.math.RoundingMode.HALF_UP;
 
 final class InterestRate {
 	private double interestRate;
@@ -26,6 +30,6 @@ final class InterestRate {
 	@Contract(pure = true)
 	@Override
 	public String toString() {
-		return (interestRate * 100) + "%";
+		return format("%s%%", (Double.toString(interestRate).length() <= 3) ? interestRate : new BigDecimal(interestRate * 100).setScale(2, HALF_UP));
 	}
 }

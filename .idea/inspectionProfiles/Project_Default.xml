@@ -1,36 +1,41 @@
 <component name="InspectionProjectProfileManager">
-	<profile version="1.0">
-		<option name="myName" value="Project Default"/>
-		<inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
-			<option name="myValues">
-				<value>
-					<list size="2">
-						<item index="0" class="java.lang.String" itemvalue="disabled"/>
-						<item index="1" class="java.lang.String" itemvalue="msallowcapture"/>
-					</list>
-				</value>
-			</option>
-			<option name="myCustomValuesEnabled" value="true"/>
-		</inspection_tool>
-		<inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
-			<option name="myValues">
-				<value>
-					<list size="7">
-						<item index="0" class="java.lang.String" itemvalue="nobr"/>
-						<item index="1" class="java.lang.String" itemvalue="noembed"/>
-						<item index="2" class="java.lang.String" itemvalue="comment"/>
-						<item index="3" class="java.lang.String" itemvalue="noscript"/>
-						<item index="4" class="java.lang.String" itemvalue="embed"/>
-						<item index="5" class="java.lang.String" itemvalue="script"/>
-						<item index="6" class="java.lang.String" itemvalue="unnamed"/>
-					</list>
-				</value>
-			</option>
-			<option name="myCustomValuesEnabled" value="true"/>
-		</inspection_tool>
-		<inspection_tool class="IfStatementWithIdenticalBranches" enabled="true" level="WEAK WARNING"
-		                 enabled_by_default="true">
-			<option name="myHighlightWhenLastStatementIsCall" value="false"/>
-		</inspection_tool>
-	</profile>
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="2">
+            <item index="0" class="java.lang.String" itemvalue="disabled" />
+            <item index="1" class="java.lang.String" itemvalue="msallowcapture" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="7">
+            <item index="0" class="java.lang.String" itemvalue="nobr" />
+            <item index="1" class="java.lang.String" itemvalue="noembed" />
+            <item index="2" class="java.lang.String" itemvalue="comment" />
+            <item index="3" class="java.lang.String" itemvalue="noscript" />
+            <item index="4" class="java.lang.String" itemvalue="embed" />
+            <item index="5" class="java.lang.String" itemvalue="script" />
+            <item index="6" class="java.lang.String" itemvalue="unnamed" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="IfStatementWithIdenticalBranches" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="myHighlightWhenLastStatementIsCall" value="false" />
+    </inspection_tool>
+    <inspection_tool class="UnusedLibrary" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="WeakerAccess" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="SUGGEST_PACKAGE_LOCAL_FOR_MEMBERS" value="true" />
+      <option name="SUGGEST_PACKAGE_LOCAL_FOR_TOP_CLASSES" value="true" />
+      <option name="SUGGEST_PRIVATE_FOR_INNERS" value="false" />
+    </inspection_tool>
+  </profile>
 </component>

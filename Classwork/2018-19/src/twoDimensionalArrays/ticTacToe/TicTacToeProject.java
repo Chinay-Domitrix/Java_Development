@@ -21,7 +21,6 @@ class TicTacToeProject {
 
 			private TicTacToeBoard() {
 				f = new JFrame("Tic-Tac-Toe");
-				//noinspection SpellCheckingInspection
 				f.setIconImage(new ImageIcon("C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\2018-19\\resources\\twoDimensionalArrays\\ticTacToe\\Tic-tac-toe.png").getImage());
 				f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				f.setSize(620, 700);
@@ -55,7 +54,6 @@ class TicTacToeProject {
 			}
 
 			class DrawTicTacToeBoard extends JPanel {
-				long serialVersionUID = 1874491386632721516L;
 				final BufferedImage[] images = new BufferedImage[2];
 
 				private DrawTicTacToeBoard(String a, String b) {
@@ -211,10 +209,8 @@ class TicTacToeProject {
 
 	private static void placePiece(int a, char[][] b, int c, int[] d) {
 		if (a == 1 || a == 2 || a == 3 || a == 4 || a == 5 || a == 6 || a == 7 || a == 8 || a == 9) {
-			if (c % 2 == 0)
-				b[d[0]][d[1]] = 'o';
-			else
-				b[d[0]][d[1]] = 'x';
+			if (c % 2 == 0) b[d[0]][d[1]] = 'o';
+			else b[d[0]][d[1]] = 'x';
 		}
 	}
 }

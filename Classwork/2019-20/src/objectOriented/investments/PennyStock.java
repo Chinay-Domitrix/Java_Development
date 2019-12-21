@@ -20,7 +20,7 @@ final class PennyStock extends Investment {
 		this(new Name("Penny Stock"));
 	}
 
-	PennyStock(Name name) {
+	private PennyStock(Name name) {
 		super(name);
 		minimumInterest = -50;
 		maximumInterest = 80;
@@ -44,8 +44,9 @@ final class PennyStock extends Investment {
 		var chance = new Random().nextInt(100) + 1;
 		double yield;
 		if (chance >= 1 && chance <= collapseChance) {
+			yield = -amount;
+			addToYield(yield);
 			amount = 0;
-			yield = amount;
 		} else if (chance >= collapseChance + 1 && chance <= multiplierChance) {
 			yield = amount * multiplier;
 			addToYield(yield);

@@ -16,7 +16,7 @@ final class MutualFund extends Investment {
 		this(new Name("Mutual Fund"));
 	}
 
-	MutualFund(Name name) {
+	private MutualFund(Name name) {
 		super(name);
 		minimumInterest = -3;
 		maximumInterest = 8;

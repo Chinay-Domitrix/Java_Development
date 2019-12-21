@@ -3,7 +3,9 @@ import static java.lang.Thread.sleep;
 
 class HelloWorld {
 	public static void main(String[] args) throws InterruptedException {
-		String var1 = "Hello world!", var2 = "My name is Chirag.", var3 = "This just happens to be my first Java project.";
+		var var1 = "Hello world!";
+		var var2 = "My name is Chirag.";
+		var var3 = "This just happens to be my first Java project.";
 		out.println(var1);
 		sleep(1250);
 		out.println(var2);

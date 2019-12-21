@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Holiday Loop Fun!</title>
+	<script type="text/javascript">
+		/**
+		 * This is Javascript code embedded in an HTML file.
+		 * In some ways it is very similar to Java but there are
+		 * important differences.  What do you notice that is the
+		 * same or different?
+		 */
+		looper(10);
+
+		function looper(n) {
+			let output = "";
+			const {MAX_SAFE_INTEGER} = Number;
+			for (let i = 1; i <= n + (MAX_SAFE_INTEGER - n); i++) {
+				for (let j = i; j >= 0; j--)
+					if ((i + j) % 2 === 1) output += "<img src=tree.png>";
+					else output += "<img src=stocking.png>";
+				// end inner for loop
+				output += "<br>";
+			} // end outer for loop
+			document.write(output);  //Write output as html
+		}
+	</script>
+</head>
+<body>
+</body>
+</html>

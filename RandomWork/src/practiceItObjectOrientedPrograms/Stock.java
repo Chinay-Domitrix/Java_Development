@@ -1,5 +1,7 @@
 package practiceItObjectOrientedPrograms;
 
+import org.jetbrains.annotations.Contract;
+
 final class Stock {
 	private String symbol;        // stock symbol, e.g. "YHOO"
 	private int totalShares;      // total shares purchased
@@ -9,6 +11,7 @@ final class Stock {
 	 * Initializes a new Stock with no shares purchased.
 	 * Precondition: symbol != null
 	 */
+	@Contract(value = "null -> fail", pure = true)
 	public Stock(String symbol) {
 		assert symbol != null;
 		this.symbol = symbol;
@@ -23,6 +26,7 @@ final class Stock {
 	 *
 	 * @return profit the profit earned
 	 */
+	@Contract(pure = true)
 	public double getProfit(double currentPrice) {
 		assert !(currentPrice < 0.0);
 		return (totalShares * currentPrice) - totalCost;
@@ -41,6 +45,7 @@ final class Stock {
 	 *
 	 * @return symbol the symbol of the stock
 	 */
+	@Contract(pure = true)
 	public String __getSymbol() {
 		return symbol;
 	}
@@ -48,6 +53,7 @@ final class Stock {
 	/**
 	 * Returns this Stock's total number of shares purchased.
 	 */
+	@Contract(pure = true)
 	public int __getTotalShares() {
 		return totalShares;
 	}
@@ -55,6 +61,7 @@ final class Stock {
 	/**
 	 * Returns this Stock's total cost for all shares.
 	 */
+	@Contract(pure = true)
 	public double __getTotalCost() {
 		return totalCost;
 	}

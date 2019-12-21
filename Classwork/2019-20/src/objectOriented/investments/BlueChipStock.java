@@ -18,7 +18,7 @@ final class BlueChipStock extends Investment {
 		this(new Name("Blue Chip Stock"));
 	}
 
-	BlueChipStock(Name name) {
+	private BlueChipStock(Name name) {
 		super(name);
 		minimumInterest = -8;
 		maximumInterest = 15;
@@ -38,8 +38,9 @@ final class BlueChipStock extends Investment {
 		var chance = new Random().nextInt(100) + 1;
 		double yield;
 		if (chance >= 1 && chance <= collapseChance) {
+			yield = -amount;
+			addToYield(yield);
 			amount = 0;
-			yield = amount;
 		} else {
 			yield = amount * interestRate.doubleValue();
 			addToYield(yield);

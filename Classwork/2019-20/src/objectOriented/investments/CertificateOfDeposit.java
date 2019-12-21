@@ -12,7 +12,7 @@ final class CertificateOfDeposit extends Investment {
 		this(new Name("Certificate of Deposit"), new InterestRate("2.2%"));
 	}
 
-	CertificateOfDeposit(Name name, InterestRate interestRate) {
+	private CertificateOfDeposit(Name name, InterestRate interestRate) {
 		super(name);
 		this.interestRate = interestRate;
 	}

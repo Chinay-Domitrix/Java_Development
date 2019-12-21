@@ -15,7 +15,7 @@ final class Moonshot extends Investment {
 		this(new Name("Moonshot"));
 	}
 
-	Moonshot(Name name) {
+	private Moonshot(Name name) {
 		super(name);
 		collapseChance = 80;
 		multiplierChance = 1;
@@ -34,8 +34,9 @@ final class Moonshot extends Investment {
 		var chance = new Random().nextInt(100) + 1;
 		double yield;
 		if (chance >= 1 && chance <= 80) {
-			amount = 0;
-			yield = amount;
+			yield = -amount;
+			addToYield(yield);
+			amount += yield;
 		} else if (chance == collapseChance + multiplierChance) {
 			yield = amount * multiplier;
 			addToYield(yield);

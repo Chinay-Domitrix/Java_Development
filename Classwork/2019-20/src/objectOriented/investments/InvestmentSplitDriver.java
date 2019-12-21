@@ -8,7 +8,7 @@ public class InvestmentSplitDriver {
 	/**
 	 * The the first year of investments
 	 */
-	private static final int age = 15;
+	private static final int age = 16;
 
 	/**
 	 * The last year of investments
@@ -23,34 +23,34 @@ public class InvestmentSplitDriver {
 	private static ArrayList<Investment> portfolio = new ArrayList<>();
 
 	/**
-	 * The total amount of money
+	 * The initial amount of money
 	 */
 	private static double total = 1000;
 
 	/**
 	 * Percent invested in a {@link CertificateOfDeposit} investment
 	 */
-	private static double cdP = 0.3;
+	private static double cdP = 0.30125;
 
 	/**
 	 * Percent invested in a {@link MutualFund} investment
 	 */
-	private static double mfP = 0.2;
+	private static double mfP = 0.20125;
 
 	/**
 	 * Percent invested in a {@link BlueChipStock} investment
 	 */
-	private static double bcP = 0.2;
+	private static double bcP = 0.20125;
 
 	/**
 	 * Percent invested in a {@link PennyStock} investment
 	 */
-	private static double psP = 0.29;
+	private static double psP = 0.29125;
 
 	/**
 	 * Percent invested in a {@link Moonshot} investment
 	 */
-	private static double msP = 0.01;
+	private static double msP = 0.005;
 
 	public static void main(String[] args) {
 //		Note you should clear these each time if you run multiple simulations
@@ -64,7 +64,7 @@ public class InvestmentSplitDriver {
 //		Execute Investment strategy for each year
 		for (int i = age; i <= retirementAge; i++) {
 //			MAKE ADJUSTMENTS BASED ON AGE AND/OR TOTAL
-			if (age > 55) {
+			if (age > 55 || total >= 500000) {
 //				Percent invested in a Certificate of Deposit investment
 				cdP = 0.2;
 //				Percent invested in a Mutual Fund investment
@@ -78,8 +78,9 @@ public class InvestmentSplitDriver {
 			}
 //			This line makes the investment according to your current allocation
 			total = splitInvestmentByPercent();
+			out.println();
 		}
-		// Prints overall total at retirement on a separate line
+//		Prints overall total at retirement on a separate line
 		out.printf("%nOverall Total => %s%n", Investment.format(total));
 //		Print the yield of each Investment
 		for (var inv : portfolio)
@@ -89,18 +90,17 @@ public class InvestmentSplitDriver {
 	/**
 	 * Used to split an investment
 	 *
-	 * @return the final {@linkplain #total} with the spilt investments for one year using {@code invest1Year} from the {@code Investment} class.
 	 * @see Investment#invest1Year(double)
 	 */
 	private static double splitInvestmentByPercent() {
 //		The +0.0001 allows for a small rounding error
 		if ((cdP + mfP + bcP + psP + msP) > 1) {
-			out.println("You cannot invest more than 100%");
+			System.out.println("You cannot invest more than 100%");
 			return 0;
 		}
 		var a = new double[]{cdP, mfP, bcP, psP, msP};
-		var localTotal = 0.0;
-		for (var i = 0; i < a.length; i++) localTotal += portfolio.get(i).invest1Year(a[i] * total);
+		var localTotal = 0;
+		for (int i = 0; i < a.length; i++) localTotal += portfolio.get(i).invest1Year(a[i] * total);
 		return localTotal;
 	}
 }
