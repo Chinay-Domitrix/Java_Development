@@ -6,8 +6,7 @@ import static java.lang.Math.*;
 import static java.lang.String.format;
 import static java.lang.System.out;
 
-class SurvivorLogic {
-	/*These declarations are just so all the methods have the ability to */
+final class SurvivorLogic {
 	private final ArrayList<Integer> specialSauceCounter = new ArrayList<>();
 	private final int runs = toIntExact(round(random() * 50) + 1);
 

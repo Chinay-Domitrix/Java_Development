@@ -1,6 +1,6 @@
 package arrayLists.survivor;
 
-public class Survivor {
+class Survivor {
 	private Survivor() {
 		new SurvivorLogic();
 	}
