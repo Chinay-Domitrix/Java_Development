@@ -27,6 +27,7 @@ class ArraysExtraWork {
 	private String program4() {
 		int[] x = new int[100];
 		setAll(x, i -> (int) (random() * 100) + 1);
+		//noinspection DuplicatedCode
 		for (int i = 0; i < x.length - 1; i++) {
 			int mindex = i;
 			for (int j = i + 1; j < x.length; j++) if (x[j] < x[mindex]) mindex = j;
@@ -61,6 +62,7 @@ class ArraysExtraWork {
 				y[z] = i;
 				z++;
 			}
+		//noinspection DuplicatedCode
 		for (int i = 0; i < y.length - 1; i++) {
 			int mindex = i;
 			for (int j = i + 1; j < y.length; j++) if (y[j] < y[mindex]) mindex = j;

@@ -17,6 +17,7 @@ final class CertificateOfDeposit extends Investment {
 		this.interestRate = interestRate;
 	}
 
+	@SuppressWarnings("SameParameterValue")
 	CertificateOfDeposit(String name, double interestRate) {
 		this(new Name(name), new InterestRate((interestRate * 100) + "%"));
 	}

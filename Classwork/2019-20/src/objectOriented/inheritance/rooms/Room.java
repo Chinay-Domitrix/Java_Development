@@ -25,7 +25,7 @@ class Room {
 		return sqFeet;
 	}
 
-	public boolean setSqFeet(int sqFeet) {
+	boolean setSqFeet(int sqFeet) {
 		var result = false;
 		if (sqFeet > 0) {
 			this.sqFeet = sqFeet;

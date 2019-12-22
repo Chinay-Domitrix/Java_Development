@@ -10,7 +10,7 @@ import static java.lang.String.format;
 import static java.math.RoundingMode.HALF_UP;
 
 final class InterestRate {
-	private double interestRate;
+	private final double interestRate;
 
 	InterestRate(String interestRate) {
 		this.interestRate = parseDouble(new StringBuilder(interestRate).deleteCharAt(interestRate.indexOf("%")).toString()) / 100;

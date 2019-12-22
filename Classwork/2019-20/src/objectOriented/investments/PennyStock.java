@@ -14,7 +14,7 @@ final class PennyStock extends Investment {
 	private double maximumInterest = 100;
 	private double collapseChance = 100;
 	private double multiplierChance = 100;
-	private int multiplier;
+	private final int multiplier;
 
 	PennyStock() {
 		this(new Name("Penny Stock"));
@@ -29,6 +29,7 @@ final class PennyStock extends Investment {
 		multiplier = 50;
 	}
 
+	@SuppressWarnings("SameParameterValue")
 	PennyStock(String name, double minimumInterest, double maximumInterest, double collapseChance, double multiplierChance, int multiplier) {
 		super(new Name(name));
 		this.minimumInterest *= minimumInterest;

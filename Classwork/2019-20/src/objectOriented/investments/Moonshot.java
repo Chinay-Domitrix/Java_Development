@@ -9,7 +9,7 @@ import static java.lang.System.out;
 final class Moonshot extends Investment {
 	private double collapseChance = 100;
 	private double multiplierChance = 100;
-	private int multiplier;
+	private final int multiplier;
 
 	Moonshot() {
 		this(new Name("Moonshot"));
@@ -22,6 +22,7 @@ final class Moonshot extends Investment {
 		multiplier = 100000;
 	}
 
+	@SuppressWarnings("SameParameterValue")
 	Moonshot(String name, double collapseChance, double multiplierChance, int multiplier) {
 		super(new Name(name));
 		this.collapseChance *= collapseChance;

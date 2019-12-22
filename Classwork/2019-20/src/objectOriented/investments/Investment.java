@@ -26,7 +26,7 @@ abstract class Investment {
 	 * @param amount to be rounded to nearest cent/hundredth
 	 * @return {@code amount} after rounding to monetary notation
 	 */
-	static double toDollarNotation(double amount) {
+	private static double toDollarNotation(double amount) {
 		return new BigDecimal(valueOf(amount)).setScale(2, HALF_UP).doubleValue();
 	}
 

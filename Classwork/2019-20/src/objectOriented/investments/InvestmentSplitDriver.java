@@ -20,7 +20,7 @@ public class InvestmentSplitDriver {
 	 * <p>
 	 * Note: the {@linkplain ArrayList} mus be filled in the order of {@linkplain CertificateOfDeposit}, {@linkplain MutualFund}, {@linkplain BlueChipStock}, {@linkplain PennyStock}, and lastly {@linkplain Moonshot} in order for the method {@link #splitInvestmentByPercent()} to work.
 	 */
-	private static ArrayList<Investment> portfolio = new ArrayList<>();
+	private static final ArrayList<Investment> portfolio = new ArrayList<>();
 
 	/**
 	 * The initial amount of money

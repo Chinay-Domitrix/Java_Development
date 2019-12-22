@@ -10,9 +10,9 @@ import static java.lang.System.out;
 import static objectOriented.investments.InterestRate.doubleValue;
 
 final class BlueChipStock extends Investment {
-	private double minimumInterest = 100;
-	private double maximumInterest = 100;
-	private double collapseChance = 100;
+	private final double minimumInterest;
+	private final double maximumInterest;
+	private final double collapseChance;
 
 	BlueChipStock() {
 		this(new Name("Blue Chip Stock"));
@@ -25,11 +25,12 @@ final class BlueChipStock extends Investment {
 		collapseChance = 1;
 	}
 
+	@SuppressWarnings("SameParameterValue")
 	BlueChipStock(String name, double minimumInterest, double maximumInterest, double collapseChance) {
 		super(new Name(name));
-		this.minimumInterest *= minimumInterest;
-		this.maximumInterest *= maximumInterest;
-		this.collapseChance *= collapseChance;
+		this.minimumInterest = 100 * minimumInterest;
+		this.maximumInterest = 100 * maximumInterest;
+		this.collapseChance = 100 * collapseChance;
 	}
 
 	@Override

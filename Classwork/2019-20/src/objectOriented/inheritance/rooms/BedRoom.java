@@ -4,7 +4,7 @@ import static java.lang.String.format;
 import static java.lang.System.err;
 
 final class BedRoom extends Room {
-	public static final int MIN_SIZE = 70;
+	private static final int MIN_SIZE = 70;
 	private final String bedSize;
 
 	public BedRoom(String name, int sqFeet, String bedSize) {
@@ -24,7 +24,7 @@ final class BedRoom extends Room {
 		return false;
 	}
 
-	public String getBedSize() {
+	private String getBedSize() {
 		return bedSize;
 	}
 }

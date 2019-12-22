@@ -23,6 +23,7 @@ final class MutualFund extends Investment {
 		fee = 20;
 	}
 
+	@SuppressWarnings("SameParameterValue")
 	MutualFund(String name, double minimumInterest, double maximumInterest, double fee) {
 		super(new Name(name));
 		this.minimumInterest *= minimumInterest;

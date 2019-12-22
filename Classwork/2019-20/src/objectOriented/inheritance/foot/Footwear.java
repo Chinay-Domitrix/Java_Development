@@ -19,7 +19,7 @@ abstract class Footwear {
 	 *
 	 * @param name identifier for specific footwear
 	 */
-	public Footwear(String name) {
+	Footwear(String name) {
 		this(name, false, false);
 	}
 
@@ -30,7 +30,7 @@ abstract class Footwear {
 	 * @param leftOn  indicates left footwear item currently on foot
 	 * @param rightOn indicates right footwear item currently on foot
 	 */
-	public Footwear(String name, boolean leftOn, boolean rightOn) {
+	Footwear(String name, boolean leftOn, boolean rightOn) {
 		this.name = name;
 		this.leftOn = leftOn;
 		this.leftOn = rightOn;
@@ -127,7 +127,8 @@ abstract class Footwear {
 	 *
 	 * @param leftOn the new status of {@code leftOn}
 	 */
-	public void setLeftOn(boolean leftOn) {
+	@SuppressWarnings("SameParameterValue")
+	void setLeftOn(boolean leftOn) {
 		this.leftOn = leftOn;
 	}
 
@@ -145,7 +146,8 @@ abstract class Footwear {
 	 *
 	 * @param rightOn the new status of {@code rightOn}
 	 */
-	public void setRightOn(boolean rightOn) {
+	@SuppressWarnings("SameParameterValue")
+	void setRightOn(boolean rightOn) {
 		this.rightOn = rightOn;
 	}
 }

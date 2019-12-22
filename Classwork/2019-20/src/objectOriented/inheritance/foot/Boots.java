@@ -5,7 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import static java.lang.System.out;
 
 public class Boots extends Footwear {
-	public Boots(String name) {
+	@SuppressWarnings("SameParameterValue")
+	private Boots(String name) {
 		super(name);
 	}
 

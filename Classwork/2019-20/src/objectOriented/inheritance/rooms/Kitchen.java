@@ -4,7 +4,7 @@ import static java.lang.String.format;
 import static java.lang.System.err;
 
 final class Kitchen extends Room {
-	public static final int MIN_SIZE = 70;
+	private static final int MIN_SIZE = 70;
 	private final String stoveType;
 	private final boolean hasOven;
 
@@ -14,11 +14,11 @@ final class Kitchen extends Room {
 		this.hasOven = hasOven;
 	}
 
-	public boolean getHasOven() {
+	private boolean getHasOven() {
 		return hasOven;
 	}
 
-	public String getStoveType() {
+	private String getStoveType() {
 		return stoveType;
 	}
 

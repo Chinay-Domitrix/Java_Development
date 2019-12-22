@@ -7,14 +7,14 @@ import static java.lang.System.err;
 
 final class BathRoom extends Room {
 	private static final int MIN_SIZE = 40;
-	public final boolean hasShower;
+	private final boolean hasShower;
 
 	BathRoom(String name, int sqFeet, boolean hasShower) {
 		super(name, sqFeet);
 		this.hasShower = hasShower;
 	}
 
-	public boolean getHasShower() {
+	private boolean getHasShower() {
 		return hasShower;
 	}
 
