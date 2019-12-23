@@ -2,7 +2,7 @@ import static java.lang.System.out;
 import static java.lang.Thread.sleep;
 
 class HelloWorld {
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String... args) throws InterruptedException {
 		var var1 = "Hello world!";
 		var var2 = "My name is Chirag.";
 		var var3 = "This just happens to be my first Java project.";
