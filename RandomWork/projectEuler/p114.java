@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 114
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+114
 
-public final class p114 implements EulerSolution {
+public final class p114 extends EulerSolution {
 	private static final int LENGTH = 50;
 
 	/*
@@ -15,18 +9,18 @@ public final class p114 implements EulerSolution {
 	 *
 	 * Now assume n >= 3. Look at the leftmost item and sum up the possibilities.
 	 * - If the item is a black square, then the rest of the row is allowed
-	 *   to be anything of length n-1. Add ways[n-1].
+	 * to be anything of length n-1. Add ways[n-1].
 	 * - If the item is a red block with length k where k >= 3, then:
-	 *   - If k = n, then the whole row is filled by this red block. Add 1.
-	 *   - Otherwise k < n, this red block is followed by a black square, then followed
-	 *     by anything of length n-k-1. So add ways[n-4] + ways[n-5] + ... + ways[0].
+	 * - If k = n, then the whole row is filled by this red block. Add 1.
+	 * - Otherwise k < n, this red block is followed by a black square, then followed
+	 *  by anything of length n-k-1. So add ways[n-4] + ways[n-5] + ... + ways[0].
 	 */
 
 	public static void main(String[] args) {
 		System.out.println(new p114().run());
 	}
 
-	public String run() {
+	String run() {
 		// Dynamic programming
 		long[] ways = new long[LENGTH + 1];
 		ways[0] = 1;
@@ -40,5 +34,4 @@ public final class p114 implements EulerSolution {
 		}
 		return Long.toString(ways[LENGTH]);
 	}
-
 }

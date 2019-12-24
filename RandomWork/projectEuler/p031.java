@@ -1,25 +1,19 @@
-/*
- * Solution to Project Euler problem 31
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+31
 
-public final class p031 implements EulerSolution {
+public final class p031 extends EulerSolution {
 	private static final int TOTAL = 200;
 
 	/*
 	 * We use the standard dynamic programming algorithm to solve the subset sum problem over integers.
 	 * The order of the coin values does not matter, but the values need to be unique.
 	 */
-	private static int[] COINS = {1, 2, 5, 10, 20, 50, 100, 200};
+	private static final int[] COINS = {1, 2, 5, 10, 20, 50, 100, 200};
 
 	public static void main(String[] args) {
 		System.out.println(new p031().run());
 	}
 
-	public String run() {
+	String run() {
 		// ways[i][j] is the number of ways to use any copies of
 		// the first i coin values to form an unordered sum of j
 		int[][] ways = new int[COINS.length + 1][TOTAL + 1];
@@ -31,5 +25,4 @@ public final class p031 implements EulerSolution {
 		}
 		return Integer.toString(ways[COINS.length][TOTAL]);
 	}
-
 }

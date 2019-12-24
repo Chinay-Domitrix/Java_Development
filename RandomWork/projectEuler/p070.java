@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 70
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.Arrays;
 
+70
 
-public final class p070 implements EulerSolution {
+public final class p070 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 7);
 
 	public static void main(String[] args) {
@@ -24,8 +17,8 @@ public final class p070 implements EulerSolution {
 		return Arrays.equals(xdigits, ydigits);
 	}
 
-	public String run() {
-		int minNumer = 1;  // Initially infinity
+	String run() {
+		int minNumer = 1; // Initially infinity
 		int minDenom = 0;
 		int[] totients = Library.listTotients(LIMIT - 1);
 		for (int n = 2; n < totients.length; n++) {
@@ -39,5 +32,4 @@ public final class p070 implements EulerSolution {
 			throw new RuntimeException("Not found");
 		return Integer.toString(minNumer);
 	}
-
 }

@@ -1,19 +1,16 @@
-/*
- * Solution to Project Euler problem 215
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
+import static java.math.BigInteger.ONE;
+import static java.math.BigInteger.ZERO;
+import static java.util.Arrays.fill;
 
-public final class p215 implements EulerSolution {
+public final class p215 extends EulerSolution {
 	private static final int WIDTH = 32;
 	private static final int HEIGHT = 10;
 
@@ -22,8 +19,7 @@ public final class p215 implements EulerSolution {
 	}
 
 	private static void getCrackPositions(Stack<Integer> cracks, int position, List<int[]> result) {
-		if (position < 0)
-			throw new IllegalArgumentException();
+		if (position < 0) throw new IllegalArgumentException();
 		else if (position < WIDTH) {
 			for (int i = 2; i <= 3; i++) {
 				cracks.push(position + i);
@@ -35,48 +31,37 @@ public final class p215 implements EulerSolution {
 			for (int i = 0; i < temp.length; i++)
 				temp[i] = cracks.get(i);
 			result.add(temp);
-		} else  // position > WIDTH
-			return;
+		} // position > WIDTH
+
 	}
 
-	private static boolean areDisjointSorted(int[] a, int[] b) {
-		for (int i = 0, j = 0; i < a.length && j < b.length; ) {
-			if (a[i] == b[j])
-				return false;
-			else if (a[i] < b[j])
-				i++;
-			else if (a[i] > b[j])
-				j++;
-			else
-				throw new AssertionError();
-		}
+	@Contract(pure = true)
+	private static boolean areDisjointSorted(@NotNull int[] a, int[] b) {
+		for (int i = 0, j = 0; i < a.length && j < b.length; )
+			if (a[i] == b[j]) return false;
+			else if (a[i] < b[j]) i++;
+			else if (a[i] > b[j]) j++;
+			else throw new AssertionError();
 		return true;
 	}
 
-	public String run() {
-		List<int[]> crackPositions = new ArrayList<>();
-		getCrackPositions(new Stack<Integer>(), 0, crackPositions);
-
+	String run() {
+		ArrayList<int[]> crackPositions = new ArrayList<>();
+		getCrackPositions(new Stack<>(), 0, crackPositions);
 		BigInteger[] ways = new BigInteger[crackPositions.size()];
-		Arrays.fill(ways, BigInteger.ONE);
-
+		fill(ways, ONE);
 		for (int i = 1; i < HEIGHT; i++) {
 			BigInteger[] newWays = new BigInteger[ways.length];
 			for (int j = 0; j < newWays.length; j++) {
-				BigInteger sum = BigInteger.ZERO;
-				for (int k = 0; k < ways.length; k++) {
-					if (areDisjointSorted(crackPositions.get(j), crackPositions.get(k)))
-						sum = sum.add(ways[k]);
-				}
+				BigInteger sum = ZERO;
+				for (int k = 0; k < ways.length; k++)
+					if (areDisjointSorted(crackPositions.get(j), crackPositions.get(k))) sum = sum.add(ways[k]);
 				newWays[j] = sum;
 			}
 			ways = newWays;
 		}
-
-		BigInteger sum = BigInteger.ZERO;
-		for (BigInteger x : ways)
-			sum = sum.add(x);
+		BigInteger sum = ZERO;
+		for (BigInteger x : ways) sum = sum.add(x);
 		return sum.toString();
 	}
-
 }

@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 146
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.Arrays;
 
+146
 
-public final class p146 implements EulerSolution {
+public final class p146 extends EulerSolution {
 	private static final int LIMIT = 150000000;
 
 	/*
@@ -30,9 +23,9 @@ public final class p146 implements EulerSolution {
 	 *
 	 * The rest of the algorithm is implemented straightforwardly.
 	 */
-	private static long[] INCREMENTS = {1, 3, 7, 9, 13, 27};  // Must be in non-decreasing order
-	private static long maxNumber = (long) LIMIT * LIMIT + INCREMENTS[INCREMENTS.length - 1];
-	private static int[] primes = Library.listPrimes((int) Library.sqrt(maxNumber));
+	private static final long[] INCREMENTS = {1, 3, 7, 9, 13, 27}; // Must be in non-decreasing order
+	private static final long maxNumber = (long) LIMIT * LIMIT + INCREMENTS[INCREMENTS.length - 1];
+	private static final int[] primes = Library.listPrimes((int) Library.sqrt(maxNumber));
 
 	public static void main(String[] args) {
 		System.out.println(new p146().run());
@@ -74,7 +67,7 @@ public final class p146 implements EulerSolution {
 		return true;
 	}
 
-	public String run() {
+	String run() {
 		long sum = 0;
 		for (int n = 0; n < LIMIT; n += 10) {
 			if (hasConsecutivePrimes(n))
@@ -82,5 +75,4 @@ public final class p146 implements EulerSolution {
 		}
 		return Long.toString(sum);
 	}
-
 }

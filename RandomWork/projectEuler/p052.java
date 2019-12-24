@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 52
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.Arrays;
 
+52
 
-public final class p052 implements EulerSolution {
+public final class p052 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p052().run());
 	}
@@ -28,7 +21,7 @@ public final class p052 implements EulerSolution {
 		return result;
 	}
 
-	public String run() {
+	String run() {
 		for (int i = 1; ; i++) {
 			if (i > Integer.MAX_VALUE / 6)
 				throw new ArithmeticException("Overflow");
@@ -36,5 +29,4 @@ public final class p052 implements EulerSolution {
 				return Integer.toString(i);
 		}
 	}
-
 }

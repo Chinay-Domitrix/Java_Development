@@ -1,19 +1,13 @@
-/*
- * Solution to Project Euler problem 142
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+142
 
-public final class p142 implements EulerSolution {
+public final class p142 extends EulerSolution {
 	private boolean[] isSquare;
 
 	public static void main(String[] args) {
 		System.out.println(new p142().run());
 	}
 
-	public String run() {
+	String run() {
 		int sumLimit = 10;
 		// Raise the limit until a sum is found
 		while (true) {
@@ -23,7 +17,6 @@ public final class p142 implements EulerSolution {
 
 			int sum = findSum(sumLimit);
 			if (sum != -1) {
-				sum = sumLimit;
 				break;
 			}
 			sumLimit *= 10;
@@ -32,7 +25,7 @@ public final class p142 implements EulerSolution {
 		// Lower the limit until no sum is found
 		while (true) {
 			int sum = findSum(sumLimit);
-			if (sum == -1)  // No smaller sum found
+			if (sum == -1) // No smaller sum found
 				return Integer.toString(sumLimit);
 			sumLimit = sum;
 		}
@@ -50,15 +43,15 @@ public final class p142 implements EulerSolution {
 	private int findSum(int limit) {
 		for (int a = 1; a * a < limit; a++) {
 			for (int b = a - 1; b > 0; b--) {
-				if ((a + b) % 2 != 0)  // Need them to be both odd or both even so that we get integers for x and y
+				if ((a + b) % 2 != 0) // Need them to be both odd or both even so that we get integers for x and y
 					continue;
 				int x = (a * a + b * b) / 2;
 				int y = (a * a - b * b) / 2;
-				if (x + y + 1 >= limit)  // Because z >= 1
+				if (x + y + 1 >= limit) // Because z >= 1
 					continue;
 
 				int zlimit = Math.min(y, limit - x - y);
-				for (int c = Library.sqrt(y) + 1; c * c - y < zlimit; c++) {
+				for (@SuppressWarnings("SuspiciousNameCombination") int c = Library.sqrt(y) + 1; c * c - y < zlimit; c++) {
 					int z = c * c - y;
 					if (isSquare[x + z] && isSquare[x - z] && isSquare[y - z])
 						return x + y + z;
@@ -67,5 +60,4 @@ public final class p142 implements EulerSolution {
 		}
 		return -1;
 	}
-
 }

@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 44
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+44
 
-public final class p044 implements EulerSolution {
+public final class p044 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p044().run());
 	}
@@ -33,8 +27,8 @@ public final class p044 implements EulerSolution {
 		return sqrt * sqrt == temp && sqrt % 6 == 5;
 	}
 
-	public String run() {
-		long minD = -1;  // -1 means not found yet, positive number means found a candidate
+	String run() {
+		long minD = -1; // -1 means not found yet, positive number means found a candidate
 		// For each upper pentagonal number index, going upward
 		for (int i = 2; ; i++) {
 			long pentI = pentagonalNumber(i);
@@ -50,10 +44,9 @@ public final class p044 implements EulerSolution {
 				if (minD != -1 && diff >= minD)
 					break;
 				else if (isPentagonalNumber(pentI + pentJ) && isPentagonalNumber(diff))
-					minD = diff;  // Found a smaller difference
+					minD = diff; // Found a smaller difference
 			}
 		}
 		return Long.toString(minD);
 	}
-
 }

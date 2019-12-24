@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 134
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+134
 
-public final class p134 implements EulerSolution {
+public final class p134 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p134().run());
 	}
@@ -19,7 +13,7 @@ public final class p134 implements EulerSolution {
 	 * Firstly, n = mk + p = 0 mod q. By rearrangement, m = -p k^-1 mod q. (k^-1 exists because q is coprime with 10.)
 	 * Then of course the smallest m that satisfies the divisibility condition is the one such that 0 <= m < q.
 	 */
-	public String run() {
+	String run() {
 		long sum = 0;
 		int[] primes = Library.listPrimes(2000000);
 		for (int i = 2; primes[i] <= 1000000; i++) {
@@ -33,5 +27,4 @@ public final class p134 implements EulerSolution {
 		}
 		return Long.toString(sum);
 	}
-
 }

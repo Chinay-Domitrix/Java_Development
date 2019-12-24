@@ -1,13 +1,7 @@
-/*
- * Solution to Project Euler problem 96
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+96
 
-public final class p096 implements EulerSolution {
-	private static String[] PUZZLES = {
+public final class p096 extends EulerSolution {
+	private static final String[] PUZZLES = {
 			"003020600900305001001806400008102900700000008006708200002609500800203009005010300",
 			"200080300060070084030500209000105408000000000402706000301007040720040060004010003",
 			"000000907000420180000705026100904000050000040000507009920108000034059000507000000",
@@ -69,21 +63,21 @@ public final class p096 implements EulerSolution {
 			return true;
 		else if (board[index] != '0')
 			return solveSudoku(board, index + 1);
-		else {  // Empty cell
+		else { // Empty cell
 			outer:
-			for (char digit = '1'; digit <= '9'; digit++) {  // Try each possible value
+			for (char digit = '1'; digit <= '9'; digit++) { // Try each possible value
 				int x = index % 9;
 				int y = index / 9;
 				int b = y / 3 * 27 + x / 3 * 3;
 				for (int i = 0; i < 9; i++) {
-					if (board[y * 9 + i] == digit) continue outer;  // Check row
-					if (board[i * 9 + x] == digit) continue outer;  // Check column
-					if (board[b + i / 3 * 9 + i % 3] == digit) continue outer;  // Check box
+					if (board[y * 9 + i] == digit) continue outer; // Check row
+					if (board[i * 9 + x] == digit) continue outer; // Check column
+					if (board[b + i / 3 * 9 + i % 3] == digit) continue outer; // Check box
 				}
 				// No checks failed, recurse on next index
 				board[index] = digit;
 				if (solveSudoku(board, index + 1))
-					return true;  // Full solution found
+					return true; // Full solution found
 			}
 			// Backtrack
 			board[index] = '0';
@@ -91,7 +85,7 @@ public final class p096 implements EulerSolution {
 		}
 	}
 
-	public String run() {
+	String run() {
 		int sum = 0;
 		for (String puz : PUZZLES) {
 			if (puz.length() != 81)
@@ -103,5 +97,4 @@ public final class p096 implements EulerSolution {
 		}
 		return Integer.toString(sum);
 	}
-
 }

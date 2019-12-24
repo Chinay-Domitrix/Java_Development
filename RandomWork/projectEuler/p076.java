@@ -1,24 +1,17 @@
-/*
- * Solution to Project Euler problem 76
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 
+76
 
-public final class p076 implements EulerSolution {
+public final class p076 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p076().run());
 	}
 
-	private static BigInteger partitions(int n, int k) {
+	private static BigInteger partitions() {
 		// Dynamic programming
-		BigInteger[][] table = new BigInteger[n + 1][n + 1];
-		for (int i = 0; i <= n; i++) {
-			for (int j = n; j >= 0; j--) {
+		BigInteger[][] table = new BigInteger[100 + 1][100 + 1];
+		for (int i = 0; i <= 100; i++) {
+			for (int j = 100; j >= 0; j--) {
 				if (j == i)
 					table[i][j] = BigInteger.ONE;
 				else if (j > i)
@@ -29,11 +22,10 @@ public final class p076 implements EulerSolution {
 					table[i][j] = table[i][j + 1].add(table[i - j][j]);
 			}
 		}
-		return table[n][k];
+		return table[100][1];
 	}
 
-	public String run() {
-		return partitions(100, 1).subtract(BigInteger.ONE).toString();
+	String run() {
+		return partitions().subtract(BigInteger.ONE).toString();
 	}
-
 }

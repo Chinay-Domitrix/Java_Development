@@ -1,16 +1,8 @@
-/*
- * Solution to Project Euler problem 5
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;
 
-public final class p005 implements EulerSolution {
+public final class p005 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p005().run());
 	}
@@ -26,7 +18,7 @@ public final class p005 implements EulerSolution {
 	 * When LCM is applied to a collection of numbers, it is commutative, associative, and idempotent.
 	 * Hence LCM(k1, k2, ..., k_m) = LCM(...(LCM(LCM(k1, k2), k3)...), k_m).
 	 */
-	public String run() {
+	String run() {
 		BigInteger allLcm = BigInteger.ONE;
 		for (int i = 1; i <= 20; i++) allLcm = lcm(BigInteger.valueOf(i), allLcm);
 		return allLcm.toString();

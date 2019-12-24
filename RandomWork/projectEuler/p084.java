@@ -1,17 +1,10 @@
-/*
- * Solution to Project Euler problem 84
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.Arrays;
 import java.util.Random;
 
+84
 
-public final class p084 implements EulerSolution {
-	private Random random = new Random();
+public final class p084 extends EulerSolution {
+	private final Random random = new Random();
 
 	public static void main(String[] args) {
 		System.out.println(new p084().run());
@@ -22,7 +15,7 @@ public final class p084 implements EulerSolution {
 	 * An exact algorithm would involve calculating the eigenvector of the largest eigenvalue of the transition matrix (which is practical),
 	 * but averaging over all possible permutations of both the Chance and Community Chest decks (which is computationally infeasible).
 	 */
-	public String run() {
+	String run() {
 		final int[] visitCounts = new int[40];
 
 		CardDeck chance = new CardDeck(16);
@@ -48,7 +41,7 @@ public final class p084 implements EulerSolution {
 			switch (location) {
 				case 7:
 				case 22:
-				case 36:  // Chance
+				case 36: // Chance
 					switch (chance.nextCard()) {
 						case 0:
 							location = 0;
@@ -69,10 +62,10 @@ public final class p084 implements EulerSolution {
 							location = 5;
 							break;
 						case 6:
-						case 7:  // Next railway
+						case 7: // Next railway
 							location = (location + 5) / 10 % 4 * 10 + 5;
 							break;
-						case 8:  // Next utility
+						case 8: // Next utility
 							location = location > 12 && location < 28 ? 28 : 12;
 							break;
 						case 9:
@@ -82,7 +75,7 @@ public final class p084 implements EulerSolution {
 							break;
 					}
 					break;
-				case 30:  // Go to jail
+				case 30: // Go to jail
 					location = 10;
 					break;
 				default:
@@ -91,7 +84,7 @@ public final class p084 implements EulerSolution {
 			switch (location) {
 				case 2:
 				case 17:
-				case 33:  // Community chest
+				case 33: // Community chest
 					switch (communityChest.nextCard()) {
 						case 0:
 							location = 0;
@@ -114,25 +107,24 @@ public final class p084 implements EulerSolution {
 		for (int i = 0; i < visitCounts.length; i++)
 			visitCounts[i] = ~visitCounts[i] << 6 | i;
 		Arrays.sort(visitCounts);
-		String result = "";
+		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < 3; i++)
-			result += String.format("%02d", visitCounts[i] & 0x3F);
-		return result;
+			result.append(String.format("%02d", visitCounts[i] & 0x3F));
+		return result.toString();
 	}
 
 	private final class CardDeck {
-
-		private int[] cards;
+		private final int[] cards;
 		private int index;
 
-		public CardDeck(int size) {
+		CardDeck(int size) {
 			cards = new int[size];
 			for (int i = 0; i < cards.length; i++)
 				cards[i] = i;
 			index = size;
 		}
 
-		public int nextCard() {
+		int nextCard() {
 			if (index == cards.length) {
 				// Fisher-Yates shuffle
 				for (int i = cards.length - 1; i >= 0; i--) {
@@ -147,7 +139,5 @@ public final class p084 implements EulerSolution {
 			index++;
 			return result;
 		}
-
 	}
-
 }

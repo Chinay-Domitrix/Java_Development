@@ -1,19 +1,12 @@
-/*
- * Solution to Project Euler problem 66
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+66
 
-public final class p066 implements EulerSolution {
+public final class p066 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p066().run());
 	}
@@ -66,7 +59,7 @@ public final class p066 implements EulerSolution {
 	 * - (p, q) if m is even
 	 * - (p^2 + D q^2, 2pq) if m is odd
 	 */
-	public String run() {
+	String run() {
 		int minN = -1;
 		BigInteger maxX = BigInteger.ZERO;
 		for (int n = 2; n <= 1000; n++) {
@@ -84,9 +77,13 @@ public final class p066 implements EulerSolution {
 	// Represents (a + b * sqrt(d)) / c. d must not be a perfect square.
 	private static final class QuadraticSurd {
 
-		public final BigInteger a, b, c, d;
+		final BigInteger a;
+		final BigInteger b;
+		final BigInteger c;
+		final BigInteger d;
 
-		public QuadraticSurd(BigInteger a, BigInteger b, BigInteger c, BigInteger d) {
+		@SuppressWarnings("DuplicatedCode")
+		QuadraticSurd(BigInteger a, BigInteger b, BigInteger c, BigInteger d) {
 			if (c.signum() == 0)
 				throw new IllegalArgumentException();
 
@@ -109,17 +106,18 @@ public final class p066 implements EulerSolution {
 			this.d = d;
 		}
 
-		public QuadraticSurd subtract(QuadraticSurd other) {
+		QuadraticSurd subtract(QuadraticSurd other) {
 			if (!d.equals(other.d))
 				throw new IllegalArgumentException();
 			return new QuadraticSurd(a.multiply(other.c).subtract(other.a.multiply(c)), b.multiply(other.c).subtract(other.b.multiply(c)), c.multiply(other.c), d);
 		}
 
-		public QuadraticSurd reciprocal() {
+		QuadraticSurd reciprocal() {
 			return new QuadraticSurd(a.multiply(c).negate(), b.multiply(c), b.multiply(b).multiply(d).subtract(a.multiply(a)), d);
 		}
 
-		public BigInteger floor() {
+		@SuppressWarnings("DuplicatedCode")
+		BigInteger floor() {
 			BigInteger temp = Library.sqrt(b.multiply(b).multiply(d));
 			if (b.signum() == -1)
 				temp = temp.add(BigInteger.ONE).negate();
@@ -145,7 +143,5 @@ public final class p066 implements EulerSolution {
 		public String toString() {
 			return String.format("(%d + %d*sqrt(%d)) / %d", a, b, d, c);
 		}
-
 	}
-
 }

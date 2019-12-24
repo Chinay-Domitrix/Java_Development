@@ -1,17 +1,10 @@
-/*
- * Solution to Project Euler problem 346
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.NotNull;
 
-import java.math.BigInteger;
 import java.util.HashSet;
-import java.util.Set;
 
+import static java.math.BigInteger.valueOf;
 
-public final class p346 implements EulerSolution {
+public final class p346 extends EulerSolution {
 	private static final long LIMIT = 1_000_000_000_000L;
 
 	/*
@@ -42,31 +35,25 @@ public final class p346 implements EulerSolution {
 		System.out.println(new p346().run());
 	}
 
-	public String run() {
+	@NotNull String run() {
 		// Collect all generated numbers to eliminate duplicates
-		Set<Long> strongRepunits = new HashSet<>();
-		strongRepunits.add(1L);  // Special case
-
+		HashSet<Long> strongRepunits = new HashSet<>();
+		strongRepunits.add(1L); // Special case
 		// For each possible length of strong repunits (ignoring the trivial length of 2)
-		for (int length = 3; length <= BigInteger.valueOf(LIMIT).bitLength(); length++) {
-
+		for (int length = 3; length <= valueOf(LIMIT).bitLength(); length++) {
 			// For each base to evaluate the repunit in, until the value exceeds the limit
 			middle:
 			for (int base = 2; ; base++) {
-
 				// Evaluate value = base^(length-1) + base^(length-2) + ... + base^1 + base^0
 				long value = 0;
 				for (int i = 0; i < length; i++) {
 					// Carefully check for arithmetic overflow
-					if (Long.MAX_VALUE / base < value)
-						break middle;
+					if (Long.MAX_VALUE / base < value) break middle;
 					value *= base;
-					if (value + 1 < value)
-						break middle;
+					if (value + 1 < value) break middle;
 					value++;
 				}
-				if (value >= LIMIT)
-					break;
+				if (value >= LIMIT) break;
 				strongRepunits.add(value);
 			}
 		}
@@ -74,11 +61,9 @@ public final class p346 implements EulerSolution {
 		// Sum all the numbers generated
 		long sum = 0;
 		for (long x : strongRepunits) {
-			if (sum + x < sum)
-				throw new ArithmeticException("Overflow");
+			if (sum + x < sum) throw new ArithmeticException("Overflow");
 			sum += x;
 		}
 		return Long.toString(sum);
 	}
-
 }

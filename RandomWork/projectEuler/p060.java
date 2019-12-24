@@ -1,18 +1,11 @@
-/*
- * Solution to Project Euler problem 60
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.Arrays;
 import java.util.BitSet;
 
+60
 
-public final class p060 implements EulerSolution {
-	private static final int PRIME_LIMIT = 100000;  // Arbitrary initial cutoff
-	private int[] primes = Library.listPrimes(PRIME_LIMIT);
+public final class p060 extends EulerSolution {
+	private static final int PRIME_LIMIT = 100000; // Arbitrary initial cutoff
+	private final int[] primes = Library.listPrimes(PRIME_LIMIT);
 	// Memoization
 	private BitSet isConcatPrimeKnown;
 	private BitSet isConcatPrime;
@@ -21,14 +14,14 @@ public final class p060 implements EulerSolution {
 		System.out.println(new p060().run());
 	}
 
-	public String run() {
+	String run() {
 		isConcatPrimeKnown = new BitSet(primes.length * primes.length);
 		isConcatPrime = new BitSet(primes.length * primes.length);
 
 		int sumLimit = PRIME_LIMIT;
 		while (true) {
 			int sum = findSetSum(new int[]{}, 5, sumLimit - 1);
-			if (sum == -1)  // No smaller sum found
+			if (sum == -1) // No smaller sum found
 				return Integer.toString(sumLimit);
 			sumLimit = sum;
 		}
@@ -63,7 +56,7 @@ public final class p060 implements EulerSolution {
 			outer:
 			for (; i < primes.length && primes[i] <= sumLimit; i++) {
 				for (int j : prefix) {
-					if (!isConcatPrime(i, j) || !isConcatPrime(j, i))
+					if (isConcatPrime(i, j) || isConcatPrime(j, i))
 						continue outer;
 				}
 
@@ -81,7 +74,7 @@ public final class p060 implements EulerSolution {
 	private boolean isConcatPrime(int x, int y) {
 		int index = x * primes.length + y;
 		if (isConcatPrimeKnown.get(index))
-			return isConcatPrime.get(index);
+			return !isConcatPrime.get(index);
 
 		x = primes[x];
 		y = primes[y];
@@ -92,7 +85,7 @@ public final class p060 implements EulerSolution {
 		boolean result = isPrime((long) x * mult + y);
 		isConcatPrimeKnown.set(index);
 		isConcatPrime.set(index, result);
-		return result;
+		return !result;
 	}
 
 	private boolean isPrime(long x) {
@@ -115,5 +108,4 @@ public final class p060 implements EulerSolution {
 			return true;
 		}
 	}
-
 }

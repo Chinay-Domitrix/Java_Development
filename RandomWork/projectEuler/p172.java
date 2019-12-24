@@ -1,21 +1,14 @@
-/*
- * Solution to Project Euler problem 172
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
+172
 
-public final class p172 implements EulerSolution {
+public final class p172 extends EulerSolution {
 	// Highly customizable!
-	private static final int LENGTH = 18;    // >= 1
-	private static final int MAX_COUNT = 3;  // >= ceiling(LENGTH / BASE), else the result is 0
-	private static final int BASE = 10;      // >= 2
+	private static final int LENGTH = 18; // >= 1
+	private static final int MAX_COUNT = 3; // >= ceiling(LENGTH / BASE), else the result is 0
+	private static final int BASE = 10;  // >= 2
 
 	public static void main(String[] args) {
 		System.out.println(new p172().run());
@@ -60,11 +53,11 @@ public final class p172 implements EulerSolution {
 	 * '0' is used 1 time, '5' is used 1 time, '6' is used 0 times, and '7' is used 0 times.
 	 *
 	 * For each partition, we want to take the 10 decimal digit values and assign them to the terms of the partition. Here is one example assignment:
-	 *   Frequency:   3 3 3 3 | 2 2 | 1 1 | 0 0
-	 *   Digit value: 1 2 3 4 | 8 9 | 0 5 | 6 7
+	 * Frequency: 3 3 3 3 | 2 2 | 1 1 | 0 0
+	 * Digit value: 1 2 3 4 | 8 9 | 0 5 | 6 7
 	 * But note that order does not matter if the frequency is the same - for example, this means the same as above:
-	 *   Frequency:   3 3 3 3 | 2 2 | 1 1 | 0 0
-	 *   Digit value: 4 1 3 2 | 8 9 | 5 0 | 7 6
+	 * Frequency: 3 3 3 3 | 2 2 | 1 1 | 0 0
+	 * Digit value: 4 1 3 2 | 8 9 | 5 0 | 7 6
 	 *
 	 * For a given partition, how many ways are there to assign digit values to the frequencies?
 	 * Considering the frequencies and the digit values each as a length-10 sequence (like above),
@@ -85,8 +78,8 @@ public final class p172 implements EulerSolution {
 	 * Now, all of the arguments above have no made use of the specific digit values, so there is a certain symmetry in the set of desired sequences.
 	 * In particular, this means exactly 9/10th of all items have a leading zero, hence we multiply by 9/10 to get the final answer.
 	 */
-	public String run() {
-		BigInteger ways = partitionAndCount(LENGTH, MAX_COUNT, new ArrayList<Integer>());
+	String run() {
+		BigInteger ways = partitionAndCount(LENGTH, MAX_COUNT, new ArrayList<>());
 
 		// Multiply by (base - 1) / base to discount sequences with leading zeros
 		BigInteger BASE_BI = BigInteger.valueOf(BASE);
@@ -135,5 +128,4 @@ public final class p172 implements EulerSolution {
 
 		return ways;
 	}
-
 }

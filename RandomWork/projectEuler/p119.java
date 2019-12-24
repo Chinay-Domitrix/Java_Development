@@ -1,19 +1,12 @@
-/*
- * Solution to Project Euler problem 119
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+119
 
-public final class p119 implements EulerSolution {
-	private static final int INDEX = 30;  // 1-based
+public final class p119 extends EulerSolution {
+	private static final int INDEX = 30; // 1-based
 
 	/*
 	 * Candidates have the form n^k, where n >= 2, k >= 2, n^k >= 10, and isDigitSumPower(n^k) == true.
@@ -32,7 +25,7 @@ public final class p119 implements EulerSolution {
 	// Returns true iff there exists k >= 2 such that x = digitSum(x)^k.
 	private static boolean isDigitSumPower(BigInteger x) {
 		int digitSum = digitSum(x);
-		if (digitSum == 1)  // Powers of 10 are never a power of 1
+		if (digitSum == 1) // Powers of 10 are never a power of 1
 			return false;
 
 		BigInteger base = BigInteger.valueOf(digitSum);
@@ -51,7 +44,7 @@ public final class p119 implements EulerSolution {
 		return sum;
 	}
 
-	public String run() {
+	String run() {
 		for (BigInteger limit = BigInteger.ONE; ; limit = limit.shiftLeft(8)) {
 			SortedSet<BigInteger> candidates = new TreeSet<>();
 			for (int k = 2; BigInteger.valueOf(1).shiftLeft(k).compareTo(limit) < 0; k++) {
@@ -67,5 +60,4 @@ public final class p119 implements EulerSolution {
 				return new ArrayList<>(candidates).get(INDEX - 1).toString();
 		}
 	}
-
 }

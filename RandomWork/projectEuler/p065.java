@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 65
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 
+65
 
-public final class p065 implements EulerSolution {
+public final class p065 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p065().run());
 	}
@@ -23,7 +16,7 @@ public final class p065 implements EulerSolution {
 			return 1;
 	}
 
-	public String run() {
+	String run() {
 		BigInteger n = BigInteger.ONE;
 		BigInteger d = BigInteger.ZERO;
 		for (int i = 99; i >= 0; i--) {
@@ -40,5 +33,4 @@ public final class p065 implements EulerSolution {
 		}
 		return Integer.toString(sum);
 	}
-
 }

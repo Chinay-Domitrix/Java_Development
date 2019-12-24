@@ -1,22 +1,15 @@
-/*
- * Solution to Project Euler problem 169
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+169
 
-public final class p169 implements EulerSolution {
+public final class p169 extends EulerSolution {
 	private static final BigInteger NUMBER = BigInteger.TEN.pow(25);
 	// Memoization
-	private Map<List<BigInteger>, BigInteger> ways = new HashMap<>();
+	private final Map<List<BigInteger>, BigInteger> ways = new HashMap<>();
 
 	public static void main(String[] args) {
 		System.out.println(new p169().run());
@@ -30,7 +23,7 @@ public final class p169 implements EulerSolution {
 	 * - All lower powers of 2 are used no more than 2 times
 	 */
 
-	public String run() {
+	String run() {
 		return countWays(NUMBER, NUMBER.bitLength() - 1, 2).toString();
 	}
 
@@ -52,5 +45,4 @@ public final class p169 implements EulerSolution {
 		ways.put(key, result);
 		return result;
 	}
-
 }

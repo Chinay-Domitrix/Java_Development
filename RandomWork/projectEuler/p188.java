@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 188
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+188
 
-public final class p188 implements EulerSolution {
+public final class p188 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p188().run());
 	}
@@ -19,8 +13,7 @@ public final class p188 implements EulerSolution {
 			return Library.powMod(x, tetrationMod(x, y - 1, Library.totient(m)), m);
 	}
 
-	public String run() {
+	String run() {
 		return Integer.toString(tetrationMod(1777, 1855, Library.pow(10, 8)));
 	}
-
 }

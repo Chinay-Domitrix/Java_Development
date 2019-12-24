@@ -1,18 +1,11 @@
-/*
- * Solution to Project Euler problem 62
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+62
 
-public final class p062 implements EulerSolution {
+public final class p062 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p062().run());
 	}
@@ -27,7 +20,7 @@ public final class p062 implements EulerSolution {
 		return BigInteger.valueOf(x).pow(3);
 	}
 
-	public String run() {
+	String run() {
 		int numDigits = 0;
 		Map<String, Integer> lowest = new HashMap<>();
 		Map<String, Integer> counts = new HashMap<>();
@@ -56,5 +49,4 @@ public final class p062 implements EulerSolution {
 			counts.put(numClass, counts.get(numClass) + 1);
 		}
 	}
-
 }

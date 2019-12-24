@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 117
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+117
 
-public final class p117 implements EulerSolution {
+public final class p117 extends EulerSolution {
 	private static final int LENGTH = 50;
 
 	/*
@@ -20,16 +14,16 @@ public final class p117 implements EulerSolution {
 	 * Compute n = 0 manually as a base case.
 	 * Now assume n >= 1. Look at the leftmost item and sum up the possibilities.
 	 * - Black square (n>=1): Rest of the row can be anything of length n-1. Add ways[n-1].
-	 * - Red tile     (n>=2): Rest of the row can be anything of length n-2. Add ways[n-2].
-	 * - Green tile   (n>=3): Rest of the row can be anything of length n-3. Add ways[n-3].
-	 * - Blue tile    (n>=4): Rest of the row can be anything of length n-4. Add ways[n-4].
+	 * - Red tile  (n>=2): Rest of the row can be anything of length n-2. Add ways[n-2].
+	 * - Green tile (n>=3): Rest of the row can be anything of length n-3. Add ways[n-3].
+	 * - Blue tile (n>=4): Rest of the row can be anything of length n-4. Add ways[n-4].
 	 */
 
 	public static void main(String[] args) {
 		System.out.println(new p117().run());
 	}
 
-	public String run() {
+	String run() {
 		// Dynamic programming
 		long[] ways = new long[LENGTH + 1];
 		ways[0] = 1;
@@ -39,5 +33,4 @@ public final class p117 implements EulerSolution {
 		}
 		return Long.toString(ways[LENGTH]);
 	}
-
 }

@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 41
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+41
 
-public final class p041 implements EulerSolution {
+public final class p041 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p041().run());
 	}
@@ -18,7 +12,7 @@ public final class p041 implements EulerSolution {
 		return result;
 	}
 
-	public String run() {
+	String run() {
 		for (int n = 9; n >= 1; n--) {
 			int[] digits = new int[n];
 			for (int i = 0; i < digits.length; i++)
@@ -34,5 +28,4 @@ public final class p041 implements EulerSolution {
 		}
 		throw new RuntimeException("Not found");
 	}
-
 }

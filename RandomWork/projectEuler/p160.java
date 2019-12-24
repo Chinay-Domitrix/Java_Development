@@ -1,23 +1,17 @@
-/*
- * Solution to Project Euler problem 160
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+160
 
-public final class p160 implements EulerSolution {
+public final class p160 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p160().run());
 	}
 
 	// The last 5 digits of n!, excluding trailing zeros.
-	private static long factorialSuffix(long n) {
-		long twos = countFactors(n, 2) - countFactors(n, 5);  // Always non-negative for every n
+	private static long factorialSuffix() {
+		long twos = countFactors(1000000000000, 2) - countFactors(1000000000000, 5); // Always non-negative for every n
 		// We can reduce 'twos' because there is a cycle: 2^5 = 2^2505 = 32 mod 100000
 		if (twos >= 2505)
 			twos = (twos - 5) % 2500 + 5;
-		return factorialish(n) * Library.powMod(2, (int) twos, 100000) % 100000;
+		return factorialish(1000000000000) * Library.powMod(2, (int) twos, 100000) % 100000;
 	}
 
 	// Equal to n! but with all factors of 2 and 5 removed and then modulo 10^5.
@@ -66,8 +60,7 @@ public final class p160 implements EulerSolution {
 			return end / n + countFactors(end / n, n);
 	}
 
-	public String run() {
-		return Long.toString(factorialSuffix(1000000000000L));
+	String run() {
+		return Long.toString(factorialSuffix());
 	}
-
 }

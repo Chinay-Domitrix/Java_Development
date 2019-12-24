@@ -1,19 +1,13 @@
-/*
- * Solution to Project Euler problem 69
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+69
 
-public final class p069 implements EulerSolution {
+public final class p069 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 6);
 
 	public static void main(String[] args) {
 		System.out.println(new p069().run());
 	}
 
-	public String run() {
+	String run() {
 		int maxNumer = 0;
 		int maxDenom = 1;
 		int[] totients = Library.listTotients(LIMIT);
@@ -25,5 +19,4 @@ public final class p069 implements EulerSolution {
 		}
 		return Integer.toString(maxNumer);
 	}
-
 }

@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 129
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+129
 
-public final class p129 implements EulerSolution {
+public final class p129 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 6);
 
 	/*
@@ -47,8 +41,8 @@ public final class p129 implements EulerSolution {
 		if (n > Integer.MAX_VALUE / 10)
 			throw new IllegalArgumentException("Arithmetic overflow");
 
-		int sum = 1;  // Equal to R(k) mod n
-		int pow = 1;  // Equal to 10^k mod n
+		int sum = 1; // Equal to R(k) mod n
+		int pow = 1; // Equal to 10^k mod n
 		int k = 1;
 		while (sum % n != 0) {
 			k++;
@@ -58,11 +52,10 @@ public final class p129 implements EulerSolution {
 		return k;
 	}
 
-	public String run() {
+	String run() {
 		for (int n = LIMIT; ; n++) {
 			if (findLeastDivisibleRepunit(n) > LIMIT)
 				return Integer.toString(n);
 		}
 	}
-
 }

@@ -1,16 +1,9 @@
-/*
- * Solution to Project Euler problem 99
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 
+99
 
-public final class p099 implements EulerSolution {
-	private static int[][] DATA = {
+public final class p099 extends EulerSolution {
+	private static final int[][] DATA = {
 			{519432, 525806}, {632382, 518061}, {78864, 613712}, {466580, 530130}, {780495, 510032}, {525895, 525320}, {15991, 714883}, {960290, 502358}, {760018, 511029}, {166800, 575487},
 			{210884, 564478}, {555151, 523163}, {681146, 515199}, {563395, 522587}, {738250, 512126}, {923525, 503780}, {595148, 520429}, {177108, 572629}, {750923, 511482}, {440902, 532446},
 			{881418, 505504}, {422489, 534197}, {979858, 501616}, {685893, 514935}, {747477, 511661}, {167214, 575367}, {234140, 559696}, {940238, 503122}, {728969, 512609}, {232083, 560102},
@@ -137,7 +130,7 @@ public final class p099 implements EulerSolution {
 		return xPow.compareTo(yPow);
 	}
 
-	public String run() {
+	String run() {
 		int[] maxVal = DATA[0];
 		int maxIndex = 0;
 		for (int i = 1; i < DATA.length; i++) {
@@ -150,12 +143,11 @@ public final class p099 implements EulerSolution {
 	}
 
 	// Represents a strictly positive number equal to mantissa * 2^exponent
-	private static final class BigFloat implements Comparable<BigFloat> {
-
+	private static final class BigFloat extends Comparable<BigFloat> {
 		private final BigInteger mantissa;
 		private final int exponent;
 
-		public BigFloat(int n) {
+		BigFloat(int n) {
 			if (n <= 0)
 				throw new IllegalArgumentException();
 			mantissa = BigInteger.valueOf(n);
@@ -179,7 +171,7 @@ public final class p099 implements EulerSolution {
 		}
 
 		// The output's mantissa will have 'precision' or fewer bits
-		public BigFloat multiply(BigFloat other, int precision, boolean roundUp) {
+		BigFloat multiply(BigFloat other, int precision, boolean roundUp) {
 			BigInteger man = mantissa.multiply(other.mantissa);
 			int exp = exponent + other.exponent;
 			int excess = man.bitLength() - precision;
@@ -188,7 +180,7 @@ public final class p099 implements EulerSolution {
 					BigInteger mask = BigInteger.ONE.shiftLeft(excess).subtract(BigInteger.ONE);
 					if (!mask.and(man).equals(BigInteger.ZERO))
 						man = man.add(BigInteger.ONE.shiftLeft(excess));
-					excess = man.bitLength() - precision;  // In case 'man' is bumped up to the next power of 2
+					excess = man.bitLength() - precision; // In case 'man' is bumped up to the next power of 2
 				}
 				man = man.shiftRight(excess);
 				exp += excess;
@@ -197,7 +189,7 @@ public final class p099 implements EulerSolution {
 		}
 
 		// Exponentiation by squaring
-		public BigFloat power(int y, int precision, boolean roundUp) {
+		BigFloat power(int y, int precision, boolean roundUp) {
 			if (y < 0 || precision <= 0)
 				throw new IllegalArgumentException();
 
@@ -210,7 +202,5 @@ public final class p099 implements EulerSolution {
 			}
 			return z;
 		}
-
 	}
-
 }

@@ -1,19 +1,11 @@
-/*
- * Solution to Project Euler problem 13
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;
 
 import static java.math.BigInteger.valueOf;
 
-public final class p013 implements EulerSolution {
-	private static String[] NUMBERS = {
+public final class p013 extends EulerSolution {
+	private static final String[] NUMBERS = {
 			"37107287533902102798797998220837590246510135740250",
 			"46376937677490009712648124896970078050417018260538",
 			"74324986199524741059474233309513058123726617309629",
@@ -123,8 +115,7 @@ public final class p013 implements EulerSolution {
 	/*
 	 * We do a straightforward sum with help from Java's BigInteger type.
 	 */
-	@NotNull
-	public String run() {
+	@NotNull String run() {
 		BigInteger sum = valueOf(0);
 		for (String num : NUMBERS) sum = sum.add(new BigInteger(num));
 		return sum.toString().substring(0, 10);

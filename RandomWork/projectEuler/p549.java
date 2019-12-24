@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 549
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.NotNull;
 
-public final class p549 implements EulerSolution {
+public final class p549 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 8);
 
 	/*
@@ -14,7 +8,7 @@ public final class p549 implements EulerSolution {
 	 * Two important simple observations:
 	 * - n! is clearly divisible by n. So 2 <= s(n) <= n.
 	 * - If n divides m!, then n also divides (m+1)!, (m+2)!, etc. (i.e. all factorials after m).
-	 *   Thus a possible strategy is to find lower bounds for m, and refine our way up to the real answer.
+	 * Thus a possible strategy is to find lower bounds for m, and refine our way up to the real answer.
 	 * We begin by factorizing n as a product of powers of unique prime numbers: n = p_0^k_0 * p_1^k^1 * ... .
 	 *
 	 * Now for each index i in this product, look at the prime power p_i^k_i.
@@ -40,14 +34,14 @@ public final class p549 implements EulerSolution {
 	 * Let's look at p = 2, the smallest prime number. Every number that is a multiple of 2 (including 2 itself)
 	 * will be affected by how many copies of 2 are in the factorization of some factorial.
 	 * - First we look at j = p = 2. The factorization of j! = 2! has 1 copy of 2. So we know that every number
-	 *   whose factorization has at least 1 copy of 2 will have a smallest-divisible-factorial of at least j = 2.
-	 *   We update all numbers that are multiples of 2.
+	 * whose factorization has at least 1 copy of 2 will have a smallest-divisible-factorial of at least j = 2.
+	 * We update all numbers that are multiples of 2.
 	 * - Next we look at j = 2p = 4. The factorization of j! = 4! has 3 copies of 2. So we know that every number
-	 *   whose factorization has at least 2 copies of 2 will have a smallest-divisible-factorial of at least j = 4.
-	 *   We update all numbers that are multiples of 2^2 = 4.
+	 * whose factorization has at least 2 copies of 2 will have a smallest-divisible-factorial of at least j = 4.
+	 * We update all numbers that are multiples of 2^2 = 4.
 	 * - Next we look at j = 3p = 6. The factorization of j! = 6! has 4 copies of 2. So we know that every number
-	 *   whose factorization has at least 4 copies of 2 will have a smallest-divisible-factorial of at least j = 6.
-	 *   We update all numbers that are multiples of 2^4 = 16.
+	 * whose factorization has at least 4 copies of 2 will have a smallest-divisible-factorial of at least j = 6.
+	 * We update all numbers that are multiples of 2^4 = 16.
 	 * We keep increasing j until p^j exceeds the limit, in which case there are no more numbers to update.
 	 * Note that in this process, we update all numbers that are multiples of 2, but no numbers that are not multiples of 2.
 	 * Because of this, the next lowest number that has never been updated (i.e. 3) must be a prime number,
@@ -59,41 +53,33 @@ public final class p549 implements EulerSolution {
 		System.out.println(new p549().run());
 	}
 
-	public String run() {
+	@NotNull String run() {
 		// Modification of the sieve of Eratosthenes
 		int[] smallestDivisibleFactorials = new int[LIMIT + 1];
 		for (int i = 2; i < smallestDivisibleFactorials.length; i++) {
 			if (smallestDivisibleFactorials[i] == 0) {
 				// Now we know that i is prime
-
 				long power = 1;
 				middle:
 				for (int j = i; ; j += i) {
 					// We know j contains at least one factor of i
 					power *= i;
-					if (power > LIMIT)
-						break;
-
+					if (power > LIMIT) break;
 					// Update answer for all multiples of 'power'
 					for (int inc = (int) power, k = inc; k < smallestDivisibleFactorials.length; k += inc)
 						smallestDivisibleFactorials[k] = Math.max(j, smallestDivisibleFactorials[k]);
-
 					// Update power to include the remaining factors of i in j
 					for (int temp = j / i; temp % i == 0; temp /= i) {
 						power *= i;
-						if (power > LIMIT)
-							break middle;
+						if (power > LIMIT) break middle;
 					}
 					// Now at this point, power = number of factors of i in the factorization of j!
 				}
 			}
 		}
-
 		// Won't overflow because 0 <= sum <= LIMIT^2 ~= 2^53
 		long sum = 0;
-		for (int x : smallestDivisibleFactorials)
-			sum += x;
+		for (int x : smallestDivisibleFactorials) sum += x;
 		return Long.toString(sum);
 	}
-
 }

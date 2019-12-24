@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 71
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+71
 
-public final class p071 implements EulerSolution {
+public final class p071 extends EulerSolution {
 	private static final int LIMIT = 1000000;
 
 	/*
@@ -14,12 +8,12 @@ public final class p071 implements EulerSolution {
 	 * For a given d, what is the largest integer n such that n/d < 3/7?
 	 *
 	 * - If d is a multiple of 7, then the integer n' = (d / 7) * 3 satisfies n'/d = 3/7.
-	 *   Hence we choose n = n' - 1 = (d / 7) * 3 - 1, so that n/d < 3/7.
-	 *   Since (d / 7) * 3 is already an integer, it is equal to floor(d * 3 / 7),
-	 *   which will unifie with the next case. Thus n = floor(d * 3 / 7) - 1.
+	 * Hence we choose n = n' - 1 = (d / 7) * 3 - 1, so that n/d < 3/7.
+	 * Since (d / 7) * 3 is already an integer, it is equal to floor(d * 3 / 7),
+	 * which will unifie with the next case. Thus n = floor(d * 3 / 7) - 1.
 	 * - Otherwise d is not a multiple of 7, so choosing n = floor(d * 3 / 7)
-	 *   will automatically satisfy n/d < 3/7, and be the largest possible n
-	 *   due to the definition of the floor function.
+	 * will automatically satisfy n/d < 3/7, and be the largest possible n
+	 * due to the definition of the floor function.
 	 *
 	 * When we choose n in this manner, it might not be coprime with d. In other words,
 	 * the simplified form of the fraction n/d might have a denominator smaller than d.
@@ -41,19 +35,18 @@ public final class p071 implements EulerSolution {
 		System.out.println(new p071().run());
 	}
 
-	public String run() {
+	String run() {
 		int maxN = 0;
 		int maxD = 1;
 		for (int d = 1; d <= LIMIT; d++) {
 			int n = d * 3 / 7;
 			if (d % 7 == 0)
 				n--;
-			if ((long) n * maxD > (long) maxN * d) {  // n/d > maxN/maxD
+			if ((long) n * maxD > (long) maxN * d) { // n/d > maxN/maxD
 				maxN = n;
 				maxD = d;
 			}
 		}
 		return Integer.toString(maxN);
 	}
-
 }

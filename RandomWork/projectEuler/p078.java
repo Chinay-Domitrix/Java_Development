@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 78
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+78
 
-public final class p078 implements EulerSolution {
+public final class p078 extends EulerSolution {
 	private static final int MODULUS = Library.pow(10, 6);
 
 	public static void main(String[] args) {
@@ -33,12 +27,11 @@ public final class p078 implements EulerSolution {
 		return -1;
 	}
 
-	public String run() {
+	String run() {
 		for (int limit = 1; ; limit *= 2) {
 			int result = search(limit);
 			if (result != -1)
 				return Integer.toString(result);
 		}
 	}
-
 }

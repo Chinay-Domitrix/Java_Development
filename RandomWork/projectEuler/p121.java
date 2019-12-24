@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 121
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 
+121
 
-public final class p121 implements EulerSolution {
+public final class p121 extends EulerSolution {
 	private static final int TURNS = 15;
 
 	/*
@@ -21,9 +14,9 @@ public final class p121 implements EulerSolution {
 	 * - f(0, 0) = 1.
 	 * - f(0, b) = 0, for b > 0.
 	 * - f(k, 0) = k * f(k - 1, 0), for k > 0.
-	 *   (Add a red disc, where there are k ways)
+	 * (Add a red disc, where there are k ways)
 	 * - f(k, b) = f(k - 1, b - 1) + k * f(k - 1, b), for k > 0, b > 0.
-	 *   (Add a blue disc (1 way) or add a red disc (k ways))
+	 * (Add a blue disc (1 way) or add a red disc (k ways))
 	 *
 	 * Next, we calculate the sum f(n, j) + f(n, j+1) + ... + f(n, n),
 	 * where j is the smallest number of blue discs accumulated that exceeds
@@ -38,7 +31,7 @@ public final class p121 implements EulerSolution {
 		System.out.println(new p121().run());
 	}
 
-	public String run() {
+	String run() {
 		// Dynamic programming
 		BigInteger[][] ways = new BigInteger[TURNS + 1][];
 		ways[0] = new BigInteger[]{BigInteger.ONE};
@@ -60,5 +53,4 @@ public final class p121 implements EulerSolution {
 		BigInteger denom = Library.factorial(TURNS + 1);
 		return denom.divide(numer).toString();
 	}
-
 }

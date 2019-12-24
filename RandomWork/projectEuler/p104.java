@@ -1,16 +1,9 @@
-/*
- * Solution to Project Euler problem 104
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 import java.util.Arrays;
 
+104
 
-public final class p104 implements EulerSolution {
+public final class p104 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p104().run());
 	}
@@ -65,7 +58,7 @@ public final class p104 implements EulerSolution {
 		}
 	}
 
-	public String run() {
+	String run() {
 		int i = 0;
 		int a = 0;
 		int b = 1;
@@ -77,5 +70,4 @@ public final class p104 implements EulerSolution {
 		}
 		return Integer.toString(i);
 	}
-
 }

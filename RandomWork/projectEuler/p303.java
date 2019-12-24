@@ -1,17 +1,7 @@
-/*
- * Solution to Project Euler problem 303
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.List;
 
-
-public final class p303 implements EulerSolution {
+public final class p303 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p303().run());
 	}
@@ -61,32 +51,29 @@ public final class p303 implements EulerSolution {
 		// - 0: No i-digit number can form this remainder
 		// - 1: Only zero can form this remainder
 		// - 2: Some non-zero number can form this remainder
-
 		// Initialization and base case
-		List<byte[]> feasible = new ArrayList<>();
+		ArrayList<byte[]> feasible = new ArrayList<>();
 		feasible.add(new byte[n]);
 		feasible.get(0)[0] = 1;
-
 		// Add digits on the left side until a solution exists, using dynamic programming
-		for (int i = 0; feasible.get(i)[0] != 2; i++) {  // Unbounded loop
+		for (int i = 0; feasible.get(i)[0] != 2; i++) { // Unbounded loop
 			assert i == feasible.size() - 1;
 			byte[] prev = feasible.get(i);
 			byte[] cur = new byte[n];
 			int digitMod = Library.powMod(10, i, n);
-			for (int j = 0; j < n; j++) {  // Run time of O(n)
+			for (int j = 0; j < n; j++) { // Run time of O(n)
 				if (prev[j] > 0) {
-					cur[(j + digitMod * 0) % n] = prev[j];
-					cur[(j + digitMod * 1) % n] = 2;
+					cur[(j) % n] = prev[j];
+					cur[(j + digitMod) % n] = 2;
 					cur[(j + digitMod * 2) % n] = 2;
 				}
 			}
 			feasible.add(cur);
 		}
-
 		// Construct the smallest solution using the memoized table
 		// Run time of O(feasible.size()) bigint operations
 		BigInteger result = BigInteger.ZERO;
-		int remainder = 0;  // Modulo n
+		int remainder = 0; // Modulo n
 		outer:
 		// Pick digit values from left (most significant) to right
 		for (int i = feasible.size() - 2; i >= 0; i--) {
@@ -99,7 +86,7 @@ public final class p303 implements EulerSolution {
 				if (feasible.get(i)[newRem] > 0) {
 					result = result.multiply(BigInteger.valueOf(10)).add(BigInteger.valueOf(j));
 					remainder = newRem;
-					continue outer;  // Digit value found, skip the assertion error
+					continue outer; // Digit value found, skip the assertion error
 				}
 			}
 			throw new AssertionError();
@@ -107,11 +94,9 @@ public final class p303 implements EulerSolution {
 		return result;
 	}
 
-	public String run() {
+	String run() {
 		BigInteger sum = BigInteger.ZERO;
-		for (int n = 1; n <= 10000; n++)
-			sum = sum.add(findMinimumMultiple(n).divide(BigInteger.valueOf(n)));
+		for (int n = 1; n <= 10000; n++) sum = sum.add(findMinimumMultiple(n).divide(BigInteger.valueOf(n)));
 		return sum.toString();
 	}
-
 }

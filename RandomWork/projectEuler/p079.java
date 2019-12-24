@@ -1,13 +1,7 @@
-/*
- * Solution to Project Euler problem 79
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+79
 
-public final class p079 implements EulerSolution {
-	private static String[] SUBSEQS = {"319", "680", "180", "690", "129", "620", "762", "689", "762", "318", "368", "710", "720", "710", "629", "168", "160", "689", "716", "731", "736", "729", "316", "729", "729", "710", "769", "290", "719", "680", "318", "389", "162", "289", "162", "718", "729", "319", "790", "680", "890", "362", "319", "760", "316", "729", "380", "319", "728", "716"};
+public final class p079 extends EulerSolution {
+	private static final String[] SUBSEQS = {"319", "680", "180", "690", "129", "620", "762", "689", "762", "318", "368", "710", "720", "710", "629", "168", "160", "689", "716", "731", "736", "729", "316", "729", "729", "710", "769", "290", "719", "680", "318", "389", "162", "289", "162", "718", "729", "319", "790", "680", "890", "362", "319", "760", "316", "729", "380", "319", "728", "716"};
 	private char[] packedSubseqs;
 
 	public static void main(String[] args) {
@@ -23,12 +17,10 @@ public final class p079 implements EulerSolution {
 			result[i] = (char) ('0' + (n % 10));
 		if (n != 0)
 			throw new IllegalArgumentException();
-		for (; i < result.length; i++)
-			result[i] = '0';
 		return result;
 	}
 
-	public String run() {
+	String run() {
 		// Preprocessing
 		packedSubseqs = new char[SUBSEQS.length * 3];
 		for (int i = 0; i < packedSubseqs.length; i++)
@@ -49,15 +41,14 @@ public final class p079 implements EulerSolution {
 	private boolean isConsistent(char[] guess) {
 		// For each string 's' in SUBSEQS, test if 's' is a subsequence of 'guess'
 		for (int i = 0; i < packedSubseqs.length; i += 3) {
-			int j = 0;  // Index in 's'
-			for (int k = 0; k < guess.length && j < 3; k++) {  // Index in 'guess'
+			int j = 0; // Index in 's'
+			for (int k = 0; k < guess.length && j < 3; k++) { // Index in 'guess'
 				if (guess[k] == packedSubseqs[i + j])
 					j++;
 			}
-			if (j < 3)  // Not all characters consumed, fail
+			if (j < 3) // Not all characters consumed, fail
 				return false;
 		}
 		return true;
 	}
-
 }

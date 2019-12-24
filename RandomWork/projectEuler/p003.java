@@ -1,14 +1,6 @@
-/*
- * Solution to Project Euler problem 3
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import org.jetbrains.annotations.NotNull;
 
-public final class p003 implements EulerSolution {
+public final class p003 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p003().run());
 	}
@@ -17,7 +9,7 @@ public final class p003 implements EulerSolution {
 	private static long smallestFactor(long n) {
 		if (n <= 1) throw new IllegalArgumentException();
 		for (long i = 2, end = Library.sqrt(n); i <= end; i++) if (n % i == 0) return i;
-		return n;  // n itself is prime
+		return n; // n itself is prime
 	}
 
 	/*
@@ -26,8 +18,7 @@ public final class p003 implements EulerSolution {
 	 * Now if we take the number n and repeatedly divide out its smallest factor (which must also be prime), then the last
 	 * factor that we divide out must be the largest prime factor of n. For reference, 600851475143 = 71 * 839 * 1471 * 6857.
 	 */
-	@NotNull
-	public String run() {
+	@NotNull String run() {
 		long n = 600851475143L;
 		while (true) {
 			long p = smallestFactor(n);

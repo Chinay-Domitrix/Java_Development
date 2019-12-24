@@ -1,13 +1,7 @@
-/*
- * Solution to Project Euler problem 42
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+42
 
-public final class p042 implements EulerSolution {
-	private static String[] WORDS = {  // 10 strings per line, except final line
+public final class p042 extends EulerSolution {
+	private static final String[] WORDS = { // 10 strings per line, except final line
 			"A", "ABILITY", "ABLE", "ABOUT", "ABOVE", "ABSENCE", "ABSOLUTELY", "ACADEMIC", "ACCEPT", "ACCESS",
 			"ACCIDENT", "ACCOMPANY", "ACCORDING", "ACCOUNT", "ACHIEVE", "ACHIEVEMENT", "ACID", "ACQUIRE", "ACROSS", "ACT",
 			"ACTION", "ACTIVE", "ACTIVITY", "ACTUAL", "ACTUALLY", "ADD", "ADDITION", "ADDITIONAL", "ADDRESS", "ADMINISTRATION",
@@ -214,7 +208,7 @@ public final class p042 implements EulerSolution {
 		return sum;
 	}
 
-	public String run() {
+	String run() {
 		int count = 0;
 		for (String word : WORDS) {
 			if (isTriangularNumber(wordValue(word)))
@@ -222,5 +216,4 @@ public final class p042 implements EulerSolution {
 		}
 		return Integer.toString(count);
 	}
-
 }

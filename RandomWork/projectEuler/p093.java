@@ -1,18 +1,11 @@
-/*
- * Solution to Project Euler problem 93
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
 
+93
 
-public final class p093 implements EulerSolution {
+public final class p093 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p093().run());
 	}
@@ -22,20 +15,20 @@ public final class p093 implements EulerSolution {
 		Set<Integer> expressible = new HashSet<>();
 
 		// Try all possible orderings of operands and operators
-		int[] ops = {0, 0, 0, a, b, c, d};  // 0 = operator slot, 1 to 9 = literal operand
+		int[] ops = {0, 0, 0, a, b, c, d}; // 0 = operator slot, 1 to 9 = literal operand
 		outer:
 		do {
 			// Try all possibilities for the 3 operators
 			inner:
 			for (int i = 0; i < 64; i++) {
 				Stack<Fraction> stack = new Stack<>();
-				int j = 0;  // Operator index
+				int j = 0; // Operator index
 				for (int op : ops) {
-					if (1 <= op && op <= 9) {  // Operand
+					if (1 <= op && op <= 9) { // Operand
 						stack.push(new Fraction(BigInteger.valueOf(op)));
-					} else if (op == 0) {  // Operator
+					} else if (op == 0) { // Operator
 						if (stack.size() < 2)
-							continue outer;  // Stack underflow; skip this ordering
+							continue outer; // Stack underflow; skip this ordering
 						Fraction right = stack.pop();
 						Fraction left = stack.pop();
 						switch ((i >>> (j * 2)) & 3) {
@@ -50,13 +43,13 @@ public final class p093 implements EulerSolution {
 								break;
 							case 3:
 								if (right.numerator.signum() == 0)
-									continue inner;  // Division by zero; skip the result for this case
+									continue inner; // Division by zero; skip the result for this case
 								stack.push(left.divide(right));
 								break;
 							default:
 								throw new AssertionError();
 						}
-						j++;  // Consume an operator
+						j++; // Consume an operator
 					} else
 						throw new AssertionError();
 				}
@@ -75,7 +68,7 @@ public final class p093 implements EulerSolution {
 		}
 	}
 
-	public String run() {
+	String run() {
 		int longest = 0;
 		int abcd = -1;
 		for (int a = 1; a <= 9; a++) {
@@ -93,5 +86,4 @@ public final class p093 implements EulerSolution {
 		}
 		return Integer.toString(abcd);
 	}
-
 }

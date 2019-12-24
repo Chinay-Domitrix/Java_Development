@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 85
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+85
 
-public final class p085 implements EulerSolution {
+public final class p085 extends EulerSolution {
 	private static final int TARGET = 2000000;
 
 	public static void main(String[] args) {
@@ -14,10 +8,10 @@ public final class p085 implements EulerSolution {
 	}
 
 	private static int numberOfRectangles(int m, int n) {
-		return (m + 1) * m * (n + 1) * n / 4;  // A bit more than m^2 n^2 / 4
+		return (m + 1) * m * (n + 1) * n / 4; // A bit more than m^2 n^2 / 4
 	}
 
-	public String run() {
+	String run() {
 		int bestDiff = Integer.MAX_VALUE;
 		int bestArea = -1;
 		int sqrt = Library.sqrt(TARGET);
@@ -32,5 +26,4 @@ public final class p085 implements EulerSolution {
 		}
 		return Integer.toString(bestArea);
 	}
-
 }

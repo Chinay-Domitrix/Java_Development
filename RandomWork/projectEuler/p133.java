@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 133
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 
+133
 
-public final class p133 implements EulerSolution {
+public final class p133 extends EulerSolution {
 	private static final BigInteger EXPONENT = BigInteger.TEN.pow(16);
 
 	public static void main(String[] args) {
@@ -31,19 +24,19 @@ public final class p133 implements EulerSolution {
 	 *
 	 * Lemma: For each natural number m, R(m) = 0 mod n if and only if m is a multiple of k.
 	 * Proof:
-	 *   Backward direction:
-	 *     Assume m is a multiple of k. Then factorize m = jk, where j is an integer.
-	 *     Look at R(m) = R(jk) = 1...1 ... 1...1 (j groups of k 1's) = 10...010...010...01 * R(k) (informally)
-	 *                  = (sum of 10^(ik) for i = 0 to s-1) * R(k).
-	 *     We already have R(k) = 0 mod n, thus (sum of 10^(ik) for i = 0 to s-1) * R(k) = R(m) = 0 mod n.
-	 *   Forward direction (by converse):
-	 *     Assume m is not a multiple of k. Suppose for contradiction that R(m) = 0 mod n.
-	 *     Similar the previous argument, we can zeroize blocks of k 1's while preserving the value of R(m) mod n.
-	 *     Namely, we delete the top k 1's by subtracting R(k) * 10^(m-k), which is 0 mod n because R(k) = 0 mod n.
-	 *     After repeated deletion of the most significant 1's, we can get m' = m mod k, so that 0 < m' < k.
-	 *     (m' != 0 because we assumed m is not a multiple of k.) But with R(m') = R(m) = 0 mod n, and m' < k,
-	 *     this contradicts the definition of k = A(n), the smallest value such that R(k) = 0 mod n.
-	 *     Hence the supposition that R(m) = 0 mod n is false.
+	 * Backward direction:
+	 *  Assume m is a multiple of k. Then factorize m = jk, where j is an integer.
+	 *  Look at R(m) = R(jk) = 1...1 ... 1...1 (j groups of k 1's) = 10...010...010...01 * R(k) (informally)
+	 *     = (sum of 10^(ik) for i = 0 to s-1) * R(k).
+	 *  We already have R(k) = 0 mod n, thus (sum of 10^(ik) for i = 0 to s-1) * R(k) = R(m) = 0 mod n.
+	 * Forward direction (by converse):
+	 *  Assume m is not a multiple of k. Suppose for contradiction that R(m) = 0 mod n.
+	 *  Similar the previous argument, we can zeroize blocks of k 1's while preserving the value of R(m) mod n.
+	 *  Namely, we delete the top k 1's by subtracting R(k) * 10^(m-k), which is 0 mod n because R(k) = 0 mod n.
+	 *  After repeated deletion of the most significant 1's, we can get m' = m mod k, so that 0 < m' < k.
+	 *  (m' != 0 because we assumed m is not a multiple of k.) But with R(m') = R(m) = 0 mod n, and m' < k,
+	 *  this contradicts the definition of k = A(n), the smallest value such that R(k) = 0 mod n.
+	 *  Hence the supposition that R(m) = 0 mod n is false.
 	 *
 	 * Does there exist an x such that R(10^x) is a multiple of n? By the lemma, this is true if and only if
 	 * there exists an x such that 10^x is a multiple of k. This means k must be a product of 2's and 5's.
@@ -54,7 +47,7 @@ public final class p133 implements EulerSolution {
 	 * (for the number 2^16 = 65536). (In general, the largest exponent is floor(log2(limit)); in this case limit = 10^5.)
 	 * So we only need to test if 10^16 is a multiple of k, equivalent to testing if R(10^16) is a multiple of n.
 	 */
-	public String run() {
+	String run() {
 		long sum = 0;
 		for (int p : Library.listPrimes(100000)) {
 			if (p == 2 || p == 5 || !hasDivisibleRepunit(p))
@@ -62,5 +55,4 @@ public final class p133 implements EulerSolution {
 		}
 		return Long.toString(sum);
 	}
-
 }

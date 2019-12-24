@@ -1,17 +1,11 @@
-/*
- * Solution to Project Euler problem 68
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+68
 
-public final class p068 implements EulerSolution {
+public final class p068 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p068().run());
 	}
 
-	public String run() {
+	String run() {
 		int[] state = new int[10];
 		for (int i = 0; i < state.length; i++)
 			state[i] = i + 1;
@@ -34,16 +28,15 @@ public final class p068 implements EulerSolution {
 				}
 			}
 
-			String s = "";
+			StringBuilder s = new StringBuilder();
 			for (int i = 0; i < 5; i++)
-				s += "" + state[(minOuterIndex + i) % 5] + state[(minOuterIndex + i) % 5 + 5] + state[(minOuterIndex + i + 1) % 5 + 5];
-			if (s.length() == 16 && (max == null || s.compareTo(max) > 0))
-				max = s;
+				s.append(state[(minOuterIndex + i) % 5]).append(state[(minOuterIndex + i) % 5 + 5]).append(state[(minOuterIndex + i + 1) % 5 + 5]);
+			if (s.length() == 16)
+				max = s.toString();
 		} while (Library.nextPermutation(state));
 
 		if (max == null)
 			throw new AssertionError();
 		return max;
 	}
-
 }

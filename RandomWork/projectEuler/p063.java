@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 63
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 
+63
 
-public final class p063 implements EulerSolution {
+public final class p063 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p063().run());
 	}
@@ -30,7 +23,7 @@ public final class p063 implements EulerSolution {
 	 *
 	 * We handle the rest of the testing by brute force.
 	 */
-	public String run() {
+	String run() {
 		int count = 0;
 		for (int n = 1; n <= 9; n++) {
 			for (int k = 1; k <= 21; k++) {
@@ -40,5 +33,4 @@ public final class p063 implements EulerSolution {
 		}
 		return Integer.toString(count);
 	}
-
 }

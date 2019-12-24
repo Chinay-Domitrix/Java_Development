@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 187
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.Arrays;
 
+187
 
-public final class p187 implements EulerSolution {
+public final class p187 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 8) - 1;
 
 	public static void main(String[] args) {
@@ -25,7 +18,7 @@ public final class p187 implements EulerSolution {
 	 * So for that p, we have (end - i) different choices for q. Since q >= p, all these pairs are unique.
 	 * Furthermore, by the fundamental theorem of arithmetic, all the products pq are unique.
 	 */
-	public String run() {
+	String run() {
 		int count = 0;
 		int[] primes = Library.listPrimes(LIMIT / 2);
 		for (int i = 0, sqrt = Library.sqrt(LIMIT); i < primes.length && primes[i] <= sqrt; i++) {
@@ -38,5 +31,4 @@ public final class p187 implements EulerSolution {
 		}
 		return Integer.toString(count);
 	}
-
 }

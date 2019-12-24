@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 112
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+112
 
-public final class p112 implements EulerSolution {
+public final class p112 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p112().run());
 	}
@@ -32,7 +26,7 @@ public final class p112 implements EulerSolution {
 		}
 	}
 
-	public String run() {
+	String run() {
 		int bouncy = 0;
 		for (int i = 1; ; i++) {
 			if (isBouncy(i))
@@ -41,5 +35,4 @@ public final class p112 implements EulerSolution {
 				return Integer.toString(i);
 		}
 	}
-
 }

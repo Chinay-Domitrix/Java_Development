@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 59
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+59
 
-public final class p059 implements EulerSolution {
+public final class p059 extends EulerSolution {
 	private static final byte[] CIPHERTEXT = {
 			36, 22, 80, 0, 0, 4, 23, 25, 19, 17, 88, 4, 4, 19, 21, 11, 88, 22, 23, 23,
 			29, 69, 12, 24, 0, 88, 25, 11, 12, 2, 10, 28, 5, 6, 12, 25, 10, 22, 80, 10,
@@ -90,26 +84,26 @@ public final class p059 implements EulerSolution {
 	// Heuristical scoring function. The current implementation returns only integral values, but floating-point values are legal too.
 	private static double score(byte[] b) {
 		double sum = 0;
-		for (int i = 0; i < b.length; i++) {
-			char c = (char) b[i];
+		for (byte value : b) {
+			char c = (char) value;
 			if (c >= 'A' && c <= 'Z')
-				sum += 1;  // Uppercase letters are good
+				sum += 1; // Uppercase letters are good
 			else if (c >= 'a' && c <= 'z')
-				sum += 2;  // Lowercase letters are excellent
+				sum += 2; // Lowercase letters are excellent
 			else if (c < 0x20 || c == 0x7F)
-				sum -= 10;  // Control characters are very bad
+				sum -= 10; // Control characters are very bad
 		}
 		return sum;
 	}
 
-	private static byte[] decrypt(byte[] ciphertext, byte[] key) {
-		byte[] plaintext = new byte[ciphertext.length];
-		for (int i = 0; i < ciphertext.length; i++)
-			plaintext[i] = (byte) (ciphertext[i] ^ key[i % key.length]);
+	private static byte[] decrypt(byte[] key) {
+		byte[] plaintext = new byte[p059.CIPHERTEXT.length];
+		for (int i = 0; i < p059.CIPHERTEXT.length; i++)
+			plaintext[i] = (byte) (p059.CIPHERTEXT[i] ^ key[i % key.length]);
 		return plaintext;
 	}
 
-	public String run() {
+	String run() {
 		byte[] bestKey = null;
 		byte[] bestDecrypted = null;
 		double bestScore = Double.NaN;
@@ -117,7 +111,7 @@ public final class p059 implements EulerSolution {
 			for (byte y = 'a'; y <= 'z'; y++) {
 				for (byte z = 'a'; z <= 'z'; z++) {
 					byte[] key = {x, y, z};
-					byte[] decrypted = decrypt(CIPHERTEXT, key);
+					byte[] decrypted = decrypt(key);
 					double score = score(decrypted);
 					if (bestKey == null || score > bestScore) {
 						bestKey = key;
@@ -129,9 +123,7 @@ public final class p059 implements EulerSolution {
 		}
 
 		int sum = 0;
-		for (int i = 0; i < bestDecrypted.length; i++)
-			sum += bestDecrypted[i];
+		for (byte b : bestDecrypted) sum += b;
 		return Integer.toString(sum);
 	}
-
 }

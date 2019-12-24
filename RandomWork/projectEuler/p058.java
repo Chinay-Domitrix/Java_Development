@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 58
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+58
 
-public final class p058 implements EulerSolution {
+public final class p058 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p058().run());
 	}
@@ -22,7 +16,7 @@ public final class p058 implements EulerSolution {
 	 *
 	 * Furthermore, the number of elements on the diagonal is 2n - 1.
 	 */
-	public String run() {
+	String run() {
 		int numPrimes = 0;
 		for (int n = 1; ; n += 2) {
 			for (int i = 0; i < 4; i++) {
@@ -32,7 +26,5 @@ public final class p058 implements EulerSolution {
 			if (n > 1 && numPrimes * 10 < n * 2 - 1)
 				return Integer.toString(n);
 		}
-
 	}
-
 }

@@ -1,13 +1,7 @@
-/*
- * Solution to Project Euler problem 107
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+107
 
-public final class p107 implements EulerSolution {
-	private static int[][] WEIGHTS = {
+public final class p107 extends EulerSolution {
+	private static final int[][] WEIGHTS = {
 			{-1, -1, -1, 427, 668, 495, 377, 678, -1, 177, -1, -1, 870, -1, 869, 624, 300, 609, 131, -1, 251, -1, -1, -1, 856, 221, 514, -1, 591, 762, 182, 56, -1, 884, 412, 273, 636, -1, -1, 774},
 			{-1, -1, 262, -1, -1, 508, 472, 799, -1, 956, 578, 363, 940, 143, -1, 162, 122, 910, -1, 729, 802, 941, 922, 573, 531, 539, 667, 607, -1, 920, -1, -1, 315, 649, 937, -1, 185, 102, 636, 289},
 			{-1, 262, -1, -1, 926, -1, 958, 158, 647, 47, 621, 264, 81, -1, 402, 813, 649, 386, 252, 391, 264, 637, 349, -1, -1, -1, 108, -1, 727, 225, 578, 699, -1, 898, 294, -1, 575, 168, 432, 833},
@@ -54,10 +48,10 @@ public final class p107 implements EulerSolution {
 		System.out.println(new p107().run());
 	}
 
-	public String run() {
+	String run() {
 		int vertices = WEIGHTS.length;
-		for (int i = 0; i < vertices; i++) {
-			if (WEIGHTS[i].length != vertices)
+		for (int[] weight : WEIGHTS) {
+			if (weight.length != vertices)
 				throw new AssertionError("Matrix not square");
 		}
 
@@ -98,5 +92,4 @@ public final class p107 implements EulerSolution {
 
 		return Integer.toString(oldWeight - newWeight);
 	}
-
 }

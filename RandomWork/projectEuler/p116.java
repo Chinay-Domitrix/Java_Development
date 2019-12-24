@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 116
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+116
 
-public final class p116 implements EulerSolution {
+public final class p116 extends EulerSolution {
 	private static final int LENGTH = 50;
 
 	public static void main(String[] args) {
@@ -20,26 +14,25 @@ public final class p116 implements EulerSolution {
 	 *
 	 * Now assume n >= 1. Look at the leftmost item and sum up the possibilities.
 	 * - If the item is a black square, then the rest of the row
-	 *   is allowed to be anything of length n-1. Add ways[n-1].
+	 * is allowed to be anything of length n-1. Add ways[n-1].
 	 * - If the item is a colored tile of length m where m <= n, then the
-	 *   rest of the row can be anything of length n-m. Add ways[n-m].
+	 * rest of the row can be anything of length n-m. Add ways[n-m].
 	 *
 	 * At the end, return ways[length]-1 to exclude the case where the row is all black squares.
 	 */
-	private static long countWays(int length, int m) {  // m is the length of colored tiles
+	private static long countWays(int m) { // m is the length of colored tiles
 		// Dynamic programming
-		long[] ways = new long[length + 1];
+		long[] ways = new long[p116.LENGTH + 1];
 		ways[0] = 1;
-		for (int n = 1; n <= length; n++) {
+		for (int n = 1; n <= p116.LENGTH; n++) {
 			ways[n] += ways[n - 1];
 			if (n >= m)
 				ways[n] += ways[n - m];
 		}
-		return ways[length] - 1;
+		return ways[p116.LENGTH] - 1;
 	}
 
-	public String run() {
-		return Long.toString(countWays(LENGTH, 2) + countWays(LENGTH, 3) + countWays(LENGTH, 4));
+	String run() {
+		return Long.toString(countWays(2) + countWays(3) + countWays(4));
 	}
-
 }

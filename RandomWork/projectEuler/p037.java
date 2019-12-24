@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 37
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+37
 
-public final class p037 implements EulerSolution {
+public final class p037 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p037().run());
 	}
@@ -27,7 +21,7 @@ public final class p037 implements EulerSolution {
 		return true;
 	}
 
-	public String run() {
+	String run() {
 		long sum = 0;
 		for (int count = 0, n = 10; count < 11; n++) {
 			if (isTruncatablePrime(n)) {
@@ -37,5 +31,4 @@ public final class p037 implements EulerSolution {
 		}
 		return Long.toString(sum);
 	}
-
 }

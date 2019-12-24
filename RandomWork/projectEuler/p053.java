@@ -1,20 +1,13 @@
-/*
- * Solution to Project Euler problem 53
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 
+53
 
-public final class p053 implements EulerSolution {
+public final class p053 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p053().run());
 	}
 
-	public String run() {
+	String run() {
 		BigInteger MILLION = BigInteger.TEN.pow(6);
 		int count = 0;
 		for (int n = 1; n <= 100; n++) {
@@ -25,5 +18,4 @@ public final class p053 implements EulerSolution {
 		}
 		return Integer.toString(count);
 	}
-
 }

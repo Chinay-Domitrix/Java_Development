@@ -1,18 +1,11 @@
-/*
- * Solution to Project Euler problem 105
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+105
 
-public final class p105 implements EulerSolution {
-	private static int[][] SETS = {
+public final class p105 extends EulerSolution {
+	private static final int[][] SETS = {
 			{81, 88, 75, 42, 87, 84, 86, 65},
 			{157, 150, 164, 119, 79, 159, 161, 139, 158},
 			{673, 465, 569, 603, 629, 592, 584, 300, 601, 599, 600},
@@ -125,7 +118,7 @@ public final class p105 implements EulerSolution {
 		int[] maxSum = new int[set.length + 1];
 		Arrays.fill(minSum, Integer.MAX_VALUE);
 
-		for (int i = 0; i < (1 << set.length); i++) {  // Step through all subsets
+		for (int i = 0; i < (1 << set.length); i++) { // Step through all subsets
 			int size = Integer.bitCount(i);
 			int sum = 0;
 			for (int j = 0; j < set.length; j++)
@@ -143,7 +136,7 @@ public final class p105 implements EulerSolution {
 		return true;
 	}
 
-	public String run() {
+	String run() {
 		int sum = 0;
 		for (int[] set : SETS) {
 			if (isSpecialSumSet(set)) {
@@ -153,5 +146,4 @@ public final class p105 implements EulerSolution {
 		}
 		return Integer.toString(sum);
 	}
-
 }

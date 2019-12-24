@@ -1,16 +1,9 @@
-/*
- * Solution to Project Euler problem 98
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.*;
 
+98
 
-public final class p098 implements EulerSolution {
-	private static String[] WORDS = {  // 10 strings per line, except final line
+public final class p098 extends EulerSolution {
+	private static final String[] WORDS = { // 10 strings per line, except final line
 			"A", "ABILITY", "ABLE", "ABOUT", "ABOVE", "ABSENCE", "ABSOLUTELY", "ACADEMIC", "ACCEPT", "ACCESS",
 			"ACCIDENT", "ACCOMPANY", "ACCORDING", "ACCOUNT", "ACHIEVE", "ACHIEVEMENT", "ACID", "ACQUIRE", "ACROSS", "ACT",
 			"ACTION", "ACTIVE", "ACTIVITY", "ACTUAL", "ACTUALLY", "ADD", "ADDITION", "ADDITIONAL", "ADDRESS", "ADMINISTRATION",
@@ -196,7 +189,7 @@ public final class p098 implements EulerSolution {
 		System.out.println(new p098().run());
 	}
 
-	private static int maxSquarePair(String a, String b, int index, int[] assignments, boolean[] isDigitUsed) {  // a and b must be anagrams of each other
+	private static int maxSquarePair(String a, String b, int index, int[] assignments, boolean[] isDigitUsed) { // a and b must be anagrams of each other
 		if (index == a.length()) {
 			if (assignments[a.charAt(0)] == 0 || assignments[b.charAt(0)] == 0)
 				return 0;
@@ -236,12 +229,12 @@ public final class p098 implements EulerSolution {
 		return new String(c);
 	}
 
-	public String run() {
+	String run() {
 		Map<String, List<String>> anagrams = new HashMap<>();
 		for (String word : WORDS) {
 			String key = canonicalize(word);
 			if (!anagrams.containsKey(key))
-				anagrams.put(key, new ArrayList<String>());
+				anagrams.put(key, new ArrayList<>());
 			anagrams.get(key).add(word);
 		}
 
@@ -258,5 +251,4 @@ public final class p098 implements EulerSolution {
 		}
 		return Integer.toString(max);
 	}
-
 }

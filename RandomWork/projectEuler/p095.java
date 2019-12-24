@@ -1,23 +1,16 @@
-/*
- * Solution to Project Euler problem 95
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.HashSet;
 import java.util.Set;
 
+95
 
-public final class p095 implements EulerSolution {
+public final class p095 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 6);
 
 	public static void main(String[] args) {
 		System.out.println(new p095().run());
 	}
 
-	public String run() {
+	String run() {
 		// divisorSum[n] is the sum of all the proper divisors of n
 		int[] divisorSum = new int[LIMIT + 1];
 		for (int i = 1; i <= LIMIT; i++) {
@@ -51,5 +44,4 @@ public final class p095 implements EulerSolution {
 
 		return Integer.toString(minChainElem);
 	}
-
 }

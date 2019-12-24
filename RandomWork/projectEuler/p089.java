@@ -1,13 +1,7 @@
-/*
- * Solution to Project Euler problem 89
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+89
 
-public final class p089 implements EulerSolution {
-	private static Object[][] PREFIXES = {
+public final class p089 extends EulerSolution {
+	private static final Object[][] PREFIXES = {
 			{"M", 1000},
 			{"CM", 900},
 			{"D", 500},
@@ -23,8 +17,8 @@ public final class p089 implements EulerSolution {
 			{"I", 1},
 	};
 	// e.g. (empty), I, II, III, IV, V, VI, VII, VIII, IX
-	private static int[] DIGIT_LENGTHS = {0, 1, 2, 3, 2, 1, 2, 3, 4, 2};
-	private static String[] TO_SIMPLIFY = {
+	private static final int[] DIGIT_LENGTHS = {0, 1, 2, 3, 2, 1, 2, 3, 4, 2};
+	private static final String[] TO_SIMPLIFY = {
 			"MMMMDCLXXII",
 			"MMDCCCLXXXIII",
 			"MMMDLXVIIII",
@@ -1052,18 +1046,17 @@ public final class p089 implements EulerSolution {
 			throw new IllegalArgumentException();
 
 		int count = 0;
-		if (n >= 4000)   // 4000 is MMMM, which doesn't have a two-letter form
-			count += 2;  // Compensate for this fact
+		if (n >= 4000) // 4000 is MMMM, which doesn't have a two-letter form
+			count += 2; // Compensate for this fact
 		for (; n != 0; n /= 10)
 			count += DIGIT_LENGTHS[n % 10];
 		return count;
 	}
 
-	public String run() {
+	String run() {
 		int sum = 0;
 		for (String s : TO_SIMPLIFY)
 			sum += s.length() - romanNumeralLength(parseRomanNumeral(s));
 		return Integer.toString(sum);
 	}
-
 }

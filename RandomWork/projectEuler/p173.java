@@ -1,22 +1,16 @@
-/*
- * Solution to Project Euler problem 173
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+173
 
-public final class p173 implements EulerSolution {
+public final class p173 extends EulerSolution {
 	private static final int TILES = 1000000;
 
 	public static void main(String[] args) {
 		System.out.println(new p173().run());
 	}
 
-	public String run() {
+	String run() {
 		int count = 0;
-		for (int n = 3; n <= TILES / 4 + 1; n++) {  // Outer square length
-			for (int k = n - 2; k >= 1; k -= 2) {   // Inner square length
+		for (int n = 3; n <= TILES / 4 + 1; n++) { // Outer square length
+			for (int k = n - 2; k >= 1; k -= 2) { // Inner square length
 				if ((long) n * n - (long) k * k > TILES)
 					break;
 				count++;
@@ -24,5 +18,4 @@ public final class p173 implements EulerSolution {
 		}
 		return Integer.toString(count);
 	}
-
 }

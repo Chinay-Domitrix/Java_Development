@@ -1,17 +1,11 @@
-/*
- * Solution to Project Euler problem 45
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+45
 
-public final class p045 implements EulerSolution {
+public final class p045 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p045().run());
 	}
 
-	public String run() {
+	String run() {
 		int i = 286;
 		int j = 166;
 		int k = 144;
@@ -27,5 +21,4 @@ public final class p045 implements EulerSolution {
 			if (min == hexagon) k++;
 		}
 	}
-
 }

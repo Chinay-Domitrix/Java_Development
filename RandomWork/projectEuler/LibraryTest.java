@@ -1,13 +1,4 @@
-/*
- * Tests for Project Euler library code
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import org.jetbrains.annotations.Contract;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigInteger;
@@ -90,23 +81,26 @@ public final class LibraryTest {
 	public void testSqrtIntRandomly() {
 		final int trials = 1000000;
 		for (int i = 0; i < trials; i++) {
-			int x = rand.nextInt() >>> 1;  // uint31
+			int x = rand.nextInt() >>> 1; // uint31
 			int y = Library.sqrt(x);
 			assertTrue(0 <= y && y <= x);
 			assertTrue((long) y * y <= x && x < (y + 1L) * (y + 1L));
 		}
 	}
 
+	@Contract(pure = true)
 	@Test(expected = IllegalArgumentException.class)
 	public void testSqrtIntInvalid0() {
 		Library.sqrt(-1);
 	}
 
+	@Contract(pure = true)
 	@Test(expected = IllegalArgumentException.class)
 	public void testSqrtIntInvalid1() {
 		Library.sqrt(-300000);
 	}
 
+	@Contract(pure = true)
 	@Test(expected = IllegalArgumentException.class)
 	public void testSqrtIntInvalid2() {
 		Library.sqrt(MIN_VALUE);
@@ -137,23 +131,26 @@ public final class LibraryTest {
 	public void testSqrtLongRandomly() {
 		final int trials = 1000000;
 		for (int i = 0; i < trials; i++) {
-			long x = rand.nextLong() >>> 1;  // uint63
+			long x = rand.nextLong() >>> 1; // uint63
 			long y = Library.sqrt(x);
 			assertTrue(0 <= y && y <= x);
 			if (x > 0) assertTrue(y <= x / y && x / (y + 1) < y + 1);
 		}
 	}
 
+	@Contract(pure = true)
 	@Test(expected = IllegalArgumentException.class)
 	public void testSqrtLongInvalid0() {
 		Library.sqrt(-1);
 	}
 
+	@Contract(pure = true)
 	@Test(expected = IllegalArgumentException.class)
 	public void testSqrtLongInvalid1() {
 		Library.sqrt(-3000000000L);
 	}
 
+	@Contract(pure = true)
 	@Test(expected = IllegalArgumentException.class)
 	public void testSqrtLongInvalid2() {
 		Library.sqrt(Long.MIN_VALUE);
@@ -215,66 +212,22 @@ public final class LibraryTest {
 
 	@Test
 	public void testReciprocalMod() {
-		int[][] goodCases = {
-				{1, 2, 1},
-				{1, 3, 1},
-				{2, 3, 2},
-				{1, 4, 1},
-				{3, 4, 3},
-				{1, 5, 1},
-				{2, 5, 3},
-				{3, 5, 2},
-				{4, 5, 4},
-				{2, 7, 4},
-				{3, 7, 5},
-				{4, 7, 2},
-				{5, 7, 3},
-				{6, 7, 6},
-				{18585, 26128, 5705},
-				{4352341, 7559949, 3054661},
-				{290514683, 936234758, 903930729},
-				{735803087, 1384775511, 1321131185},
-				{1, 2147483647, 1},
-				{2, 2147483647, 1073741824},
-				{188080773, 2147483647, 1201032874},
-				{527995520, 2147483647, 1215591224},
-				{1154582780, 2147483647, 193267031},
-				{1321286464, 2147483647, 95844396},
-				{2147483645, 2147483647, 1073741823},
-				{2147483646, 2147483647, 2147483646},
-		};
+		int[][] goodCases = {{1, 2, 1}, {1, 3, 1}, {2, 3, 2}, {1, 4, 1}, {3, 4, 3}, {1, 5, 1}, {2, 5, 3}, {3, 5, 2}, {4, 5, 4}, {2, 7, 4}, {3, 7, 5}, {4, 7, 2}, {5, 7, 3}, {6, 7, 6}, {18585, 26128, 5705}, {4352341, 7559949, 3054661}, {290514683, 936234758, 903930729}, {735803087, 1384775511, 1321131185}, {1, 2147483647, 1}, {2, 2147483647, 1073741824}, {188080773, 2147483647, 1201032874}, {527995520, 2147483647, 1215591224}, {1154582780, 2147483647, 193267031}, {1321286464, 2147483647, 95844396}, {2147483645, 2147483647, 1073741823}, {2147483646, 2147483647, 2147483646}};
 		for (int[] cs : goodCases) assertEquals(cs[2], Library.reciprocalMod(cs[0], cs[1]));
-		int[][] badCases = {
-				// Values out of range
-				{MIN_VALUE, MIN_VALUE},
-				{-1, -1},
-				{0, -1},
-				{-1, 0},
-				{0, 0},
-				{1, 1},
-				{3, 2},
-				{MAX_VALUE, 1},
-				// Values not coprime
-				{2, 4},
-				{2, 6},
-				{3, 6},
-				{44100, 48000},
-				{77, 2147483646},
-				{30783, 2147483646},
-		};
+		int[][] badCases = {{MIN_VALUE, MIN_VALUE}, {-1, -1}, {0, -1}, {-1, 0}, {0, 0}, {1, 1}, {3, 2}, {MAX_VALUE, 1}, {2, 4}, {2, 6}, {3, 6}, {44100, 48000}, {77, 2147483646}, {30783, 2147483646}};
 		for (int[] cs : badCases)
 			try {
 				Library.reciprocalMod(cs[0], cs[1]);
-				Assert.fail();
+				fail();
 			} catch (IllegalArgumentException ignored) {
-			}  // Pass
+			} // Pass
 	}
 
 	@Test
 	public void testReciprocalModRandomly() {
 		final int trials = 100000;
 		for (int i = 0; i < trials; i++) {
-			int mod = rand.nextInt() >>> 1;  // uint31
+			int mod = rand.nextInt() >>> 1; // uint31
 			if (mod < 2) continue;
 			int x = rand.nextInt(mod);
 			if (Library.gcd(x, mod) == 1) {
@@ -285,9 +238,9 @@ public final class LibraryTest {
 			} else {
 				try {
 					Library.reciprocalMod(x, mod);
-					Assert.fail();
+					fail();
 				} catch (IllegalArgumentException ignored) {
-				}  // Pass
+				} // Pass
 			}
 		}
 	}
@@ -363,8 +316,8 @@ public final class LibraryTest {
 	public void testGcdRandomly() {
 		final int trials = 1000000;
 		for (int i = 0; i < trials; i++) {
-			int x = rand.nextInt() >>> 1;  // uint31
-			int y = rand.nextInt() >>> 1;  // uint31
+			int x = rand.nextInt() >>> 1; // uint31
+			int y = rand.nextInt() >>> 1; // uint31
 			int z = Library.gcd(x, y);
 			if (x == 0) assertEquals(y, z);
 			else if (y == 0) assertEquals(x, z);
@@ -492,6 +445,7 @@ public final class LibraryTest {
 		for (int i = 1; i < totients.length; i++) assertEquals(Library.totient(i), totients[i]);
 	}
 
+	@Contract(pure = true)
 	@Test(expected = IllegalArgumentException.class)
 	public void testListTotientsInvalid0() {
 		Library.listTotients(-1);

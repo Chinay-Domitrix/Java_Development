@@ -1,52 +1,47 @@
-/*
- * Solution to Project Euler problem 94
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+94
 
-public final class p094 implements EulerSolution {
+public final class p094 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 9);
 
 	/*
 	 * Consider an arbitrary almost equilateral triangle with side lengths (c, c, c +/- 1).
 	 * Split it down the middle to get a right triangle, and label the new sides.
-	 *     /\               /|
-	 *  c /  \ c         c / | b
-	 *   /    \    -->    /  |
-	 *  --------         -----
-	 *   c +/- 1           a
+	 *  /\    /|
+	 * c / \ c   c / | b
+	 * / \ --> / |
+	 * --------   -----
+	 * c +/- 1   a
 	 * Note that a = (c +/- 1) / 2, and a^2 + b^2 = c^2 (Pythagorean theorem).
 	 *
 	 * We know that c is an integer. The area of the original triangle is a*b,
 	 * which is an integer by definition from the problem statement.
 	 * - If a is an integer, then b is an integer (so that a*b is an integer),
-	 *   thus (a,b,c) is a Pythagorean triple.
+	 * thus (a,b,c) is a Pythagorean triple.
 	 * - Otherwise a is an integer plus a half, then b must be even,
-	 *   but a^2 + b^2 is not an integer, which contradicts c being an integer.
+	 * but a^2 + b^2 is not an integer, which contradicts c being an integer.
 	 *
 	 * Conversely, consider an arbitrary Pythagorean triple (a,b,c).
 	 * If 2a = c +/- 1, then we can form an almost equilateral triangle:
-	 *     /|\
-	 *  c / | \ c
-	 *   /  |  \
-	 *  ---------
-	 *      2a
+	 *  /|\
+	 * c / | \ c
+	 * / | \
+	 * ---------
+	 *  2a
 	 * For this to happen, the Pythagorean triple must be primitive. Because if not,
 	 * then a = 0 mod k and c = 0 mod k for some k > 1, which means 2a = 0 mod k which
 	 * cannot equal c +/- 1 = +/- 1 mod k. So we only need to generate primitive triples.
 	 *
 	 * Pythagorean triples theorem:
-	 *   Every primitive Pythagorean triple with a odd and b even can be expressed as
-	 *   a = st, b = (s^2-t^2)/2, c = (s^2+t^2)/2, where s > t > 0 are coprime odd integers.
+	 * Every primitive Pythagorean triple with a odd and b even can be expressed as
+	 * a = st, b = (s^2-t^2)/2, c = (s^2+t^2)/2, where s > t > 0 are coprime odd integers.
 	 */
 
 	public static void main(String[] args) {
 		System.out.println(new p094().run());
 	}
 
-	public String run() {
+	@SuppressWarnings("DuplicatedCode")
+	String run() {
 		long sum = 0;
 		/*
 		 * What search range do we need?
@@ -85,5 +80,4 @@ public final class p094 implements EulerSolution {
 		}
 		return Long.toString(sum);
 	}
-
 }

@@ -1,13 +1,7 @@
-/*
- * Solution to Project Euler problem 67
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+67
 
-public final class p067 implements EulerSolution {
-	private int[][] triangle = {  // Mutable
+public final class p067 extends EulerSolution {
+	private final int[][] triangle = { // Mutable
 			{59},
 			{73, 41},
 			{52, 40, 9},
@@ -128,12 +122,11 @@ public final class p067 implements EulerSolution {
 		System.out.println(new p067().run());
 	}
 
-	public String run() {
+	String run() {
 		for (int i = triangle.length - 2; i >= 0; i--) {
 			for (int j = 0; j < triangle[i].length; j++)
 				triangle[i][j] += Math.max(triangle[i + 1][j], triangle[i + 1][j + 1]);
 		}
 		return Integer.toString(triangle[0][0]);
 	}
-
 }

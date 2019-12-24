@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 55
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 
+55
 
-public final class p055 implements EulerSolution {
+public final class p055 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p055().run());
 	}
@@ -24,7 +17,7 @@ public final class p055 implements EulerSolution {
 		return true;
 	}
 
-	public String run() {
+	String run() {
 		int count = 0;
 		for (int i = 0; i < 10000; i++) {
 			if (isLychrel(i))
@@ -32,5 +25,4 @@ public final class p055 implements EulerSolution {
 		}
 		return Integer.toString(count);
 	}
-
 }

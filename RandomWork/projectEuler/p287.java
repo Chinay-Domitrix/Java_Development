@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 287
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 
+import static java.lang.Math.*;
 
-public final class p287 implements EulerSolution {
+public final class p287 extends EulerSolution {
 	private static final int N = 24;
 
 	/*
@@ -27,19 +20,19 @@ public final class p287 implements EulerSolution {
 	 * Within the region, what are the possible values of the left side of the formula, x^2 + y^2?
 	 * To minimize or maximize x^2 + y^2, we can min/maximize each of x^2 and y^2 independently.
 	 * - To minimize x^2, we minimize |x|. If 0 is in [xStart, xEnd),
-	 *   then the minimum |x| is 0, and thus the minimum x^2 is 0.
-	 *   Otherwise, either all possible x values are negative or all
-	 *   are positive, so the minimum |x| is min(|xStart|, |xEnd-1|).
+	 * then the minimum |x| is 0, and thus the minimum x^2 is 0.
+	 * Otherwise, either all possible x values are negative or all
+	 * are positive, so the minimum |x| is min(|xStart|, |xEnd-1|).
 	 * - To maximize x^2, we maximize |x|. This simply equals max(|xStart|, |xEnd-1|).
 	 * - The same arguments apply to minimizing/maximizing y^2.
 	 *
 	 * Now evaluate minR^2 = minX^2 + minY^2, and maxR^2 = maxX^2 + maxY^2.
 	 * - If maxR^2 <= R^2, then all points in the region satisfy
-	 *   x^2 + y^2 <= R^2, hence the entire region is black.
+	 * x^2 + y^2 <= R^2, hence the entire region is black.
 	 * - Similarly, if minR^2 > R^2, then all points in the region
-	 *   satisfy x^2 + y^2 > R^2, hence the entire region is white.
+	 * satisfy x^2 + y^2 > R^2, hence the entire region is white.
 	 * - Otherwise, the region must contain both black and white points,
-	 *   so we split into 4 subregions and recurse.
+	 * so we split into 4 sub-regions and recurse.
 	 */
 	private static final long RADIUS_SQUARED = 1L << (2 * N - 2);
 
@@ -47,7 +40,7 @@ public final class p287 implements EulerSolution {
 		System.out.println(new p287().run());
 	}
 
-	public String run() {
+	String run() {
 		int temp = 1 << (N - 1);
 		return compressedLength(N, -temp, temp, -temp, temp).toString();
 	}
@@ -58,25 +51,19 @@ public final class p287 implements EulerSolution {
 		assert n >= 0;
 		assert xStart < xEnd && xEnd - xStart == 1 << n;
 		assert yStart < yEnd && yEnd - yStart == 1 << n;
-
-		int minAbsX = xStart <= 0 && 0 < xEnd ? 0 : Math.min(Math.abs(xStart), Math.abs(xEnd - 1));
-		int minAbsY = yStart <= 0 && 0 < yEnd ? 0 : Math.min(Math.abs(yStart), Math.abs(yEnd - 1));
-		int maxAbsX = Math.max(Math.abs(xStart), Math.abs(xEnd - 1));
-		int maxAbsY = Math.max(Math.abs(yStart), Math.abs(yEnd - 1));
+		int minAbsX = xStart <= 0 && 0 < xEnd ? 0 : min(abs(xStart), abs(xEnd - 1));
+		int minAbsY = yStart <= 0 && 0 < yEnd ? 0 : min(abs(yStart), abs(yEnd - 1));
+		int maxAbsX = max(abs(xStart), abs(xEnd - 1));
+		int maxAbsY = max(abs(yStart), abs(yEnd - 1));
 		long minRadius = (long) minAbsX * minAbsX + (long) minAbsY * minAbsY;
 		long maxRadius = (long) maxAbsX * maxAbsX + (long) maxAbsY * maxAbsY;
-
-		if (maxRadius <= RADIUS_SQUARED || minRadius > RADIUS_SQUARED)  // All black or all white, respectively
-			return BigInteger.valueOf(2);
+		// All black or all white, respectively
+		if (maxRadius <= RADIUS_SQUARED || minRadius > RADIUS_SQUARED) return BigInteger.valueOf(2);
 		else {
 			int xMid = (xStart + xEnd) / 2;
 			int yMid = (yStart + yEnd) / 2;
-			return BigInteger.ONE
-					.add(compressedLength(n - 1, xStart, xMid, yMid, yEnd))   // Top left
-					.add(compressedLength(n - 1, xMid, xEnd, yMid, yEnd))   // Top right
-					.add(compressedLength(n - 1, xStart, xMid, yStart, yMid))   // Bottom left
-					.add(compressedLength(n - 1, xMid, xEnd, yStart, yMid));  // Bottom right
+			// The order goes top left, top right, bottom left, and finally bottom right
+			return BigInteger.ONE.add(compressedLength(n - 1, xStart, xMid, yMid, yEnd)).add(compressedLength(n - 1, xMid, xEnd, yMid, yEnd)).add(compressedLength(n - 1, xStart, xMid, yStart, yMid)).add(compressedLength(n - 1, xMid, xEnd, yStart, yMid));
 		}
 	}
-
 }

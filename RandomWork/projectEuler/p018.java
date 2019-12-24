@@ -1,13 +1,9 @@
-/*
- * Solution to Project Euler problem 18
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.NotNull;
 
-public final class p018 implements EulerSolution {
-	private int[][] triangle = {  // Mutable
+import static java.lang.Math.max;
+
+public final class p018 extends EulerSolution {
+	private final int[][] triangle = { // Mutable
 			{75},
 			{95, 64},
 			{17, 47, 82},
@@ -42,11 +38,10 @@ public final class p018 implements EulerSolution {
 	 * By computing the blank triangle's values from bottom up, the dependent values are always
 	 * computed before they are utilized. This technique is known as dynamic programming.
 	 */
-	public String run() {
+	@NotNull String run() {
 		for (int i = triangle.length - 2; i >= 0; i--)
 			for (int j = 0; j < triangle[i].length; j++)
-				triangle[i][j] += Math.max(triangle[i + 1][j], triangle[i + 1][j + 1]);
+				triangle[i][j] += max(triangle[i + 1][j], triangle[i + 1][j + 1]);
 		return Integer.toString(triangle[0][0]);
 	}
-
 }

@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 80
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 
+80
 
-public final class p080 implements EulerSolution {
+public final class p080 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p080().run());
 	}
@@ -35,20 +28,20 @@ public final class p080 implements EulerSolution {
 			if (j < 0)
 				throw new AssertionError();
 
-			x = x.subtract(delta);  // Adjust the remainder
-			y = y.add(BigInteger.valueOf(j).multiply(BigInteger.TEN.pow(i)));  // Add the new digit
+			x = x.subtract(delta); // Adjust the remainder
+			y = y.add(BigInteger.valueOf(j).multiply(BigInteger.TEN.pow(i))); // Add the new digit
 		}
 
 		return y;
 	}
 
-	public String run() {
+	String run() {
 		int sum = 0;
 		for (int i = 1; i <= 100; i++) {
 			BigInteger x = BigInteger.valueOf(i);
-			x = x.multiply(BigInteger.TEN.pow(100 * 2));  // Shift left so that we can obtain 100 digits after the decimal point
+			x = x.multiply(BigInteger.TEN.pow(100 * 2)); // Shift left so that we can obtain 100 digits after the decimal point
 			BigInteger y = sqrt(x);
-			if (!y.multiply(y).equals(x)) {  // Skip perfect squares
+			if (!y.multiply(y).equals(x)) { // Skip perfect squares
 				// Strip rightmost digits so that we have exactly 100 decimal digits (some are before the decimal point)
 				String s = y.toString().substring(0, 100);
 				for (int j = 0; j < s.length(); j++)
@@ -57,5 +50,4 @@ public final class p080 implements EulerSolution {
 		}
 		return Integer.toString(sum);
 	}
-
 }

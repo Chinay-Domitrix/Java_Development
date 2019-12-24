@@ -1,16 +1,9 @@
-/*
- * Solution to Project Euler problem 61
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.HashSet;
 import java.util.Set;
 
+61
 
-public final class p061 implements EulerSolution {
+public final class p061 extends EulerSolution {
 	// numbers[i][j] is the set of figurate numbers of i sides (3 <= i <= 8), having 4 digits, beginning with the 2 digits equal to j
 	private Set<Integer>[][] numbers;
 
@@ -23,7 +16,7 @@ public final class p061 implements EulerSolution {
 	}
 
 	@SuppressWarnings("unchecked")
-	public String run() {
+	String run() {
 		// Build table of numbers
 		numbers = new Set[9][100];
 		for (int i = 0; i < numbers.length; i++) {
@@ -70,5 +63,4 @@ public final class p061 implements EulerSolution {
 		}
 		return -1;
 	}
-
 }

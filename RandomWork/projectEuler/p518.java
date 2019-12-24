@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 518
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.NotNull;
 
-public final class p518 implements EulerSolution {
+public final class p518 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 8);
 
 	/*
@@ -35,38 +29,29 @@ public final class p518 implements EulerSolution {
 		System.out.println(new p518().run());
 	}
 
-	public String run() {
+	@NotNull String run() {
 		long sum = 0;
 		boolean[] isPrime = Library.listPrimality(LIMIT - 1);
-
 		// Search all possible x's. Note that a + 1 = x * y * y >= x. Furthermore, a < b, so a + 1 <= b.
 		// Thus if x >= LIMIT, then LIMIT <= a + 1 <= b. With b >= LIMIT, no candidates are possible.
 		for (int x = 1; x < isPrime.length; x++) {
-
 			// Search all possible y's. Notice that when y increases, 'a' strictly increases.
 			// So when some y generates an 'a' such that a >= LIMIT, no candidates are possible with higher values of y.
 			for (int y = 1; ; y++) {
 				long a = (long) x * y * y - 1;
-				if (a >= isPrime.length)
-					break;
-				if (!isPrime[(int) a])
-					continue;
-
+				if (a >= isPrime.length) break;
+				if (!isPrime[(int) a]) continue;
 				// Search all valid z's. We require z > y and gcd(y, z) = 1. Notice that when z increases, c strictly increases.
 				// So when some z generates a c such that c >= LIMIT, no candidates are possible with higher values of z.
 				for (int z = y + 1; ; z++) {
-					if (Library.gcd(y, z) != 1)
-						continue;
+					if (Library.gcd(y, z) != 1) continue;
 					long b = (long) x * y * z - 1;
 					long c = (long) x * z * z - 1;
-					if (c >= isPrime.length)
-						break;
-
+					if (c >= isPrime.length) break;
 					// Check whether (a, b, c) is a solution
 					if (isPrime[(int) b] && isPrime[(int) c]) {
 						long addend = a + b + c;
-						if (sum + addend < sum)
-							throw new ArithmeticException("Overflow");
+						if (sum + addend < sum) throw new ArithmeticException("Overflow");
 						sum += addend;
 					}
 				}
@@ -74,5 +59,4 @@ public final class p518 implements EulerSolution {
 		}
 		return Long.toString(sum);
 	}
-
 }

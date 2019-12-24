@@ -1,16 +1,7 @@
-/*
- * Solution to Project Euler problem 26
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.HashMap;
 import java.util.Map;
 
-
-public final class p026 implements EulerSolution {
+public final class p026 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p026().run());
 	}
@@ -28,7 +19,7 @@ public final class p026 implements EulerSolution {
 		}
 	}
 
-	public String run() {
+	String run() {
 		int bestNumber = 0;
 		int bestLength = 0;
 		for (int i = 1; i <= 1000; i++) {
@@ -40,5 +31,4 @@ public final class p026 implements EulerSolution {
 		}
 		return Integer.toString(bestNumber);
 	}
-
 }

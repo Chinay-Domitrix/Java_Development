@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 91
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+91
 
-public final class p091 implements EulerSolution {
+public final class p091 extends EulerSolution {
 	private static final int LIMIT = 50;
 
 	public static void main(String[] args) {
@@ -23,7 +17,7 @@ public final class p091 implements EulerSolution {
 				|| c + a == b;
 	}
 
-	public String run() {
+	String run() {
 		int count = 0;
 		for (int x1 = 0; x1 <= LIMIT; x1++) {
 			for (int y1 = 0; y1 <= LIMIT; y1++) {
@@ -38,5 +32,4 @@ public final class p091 implements EulerSolution {
 		}
 		return Integer.toString(count);
 	}
-
 }

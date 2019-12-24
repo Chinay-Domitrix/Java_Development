@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 164
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 
+164
 
-public final class p164 implements EulerSolution {
+public final class p164 extends EulerSolution {
 	private static final int BASE = 10;
 	private static final int DIGITS = 20;
 	private static final int CONSECUTIVE = 3;
@@ -48,7 +41,7 @@ public final class p164 implements EulerSolution {
 	 * the number of non-strict 22-digit numbers that start with 000, leaving only 22-digit numbers
 	 * that start with 001 to 009, which are exactly the 20-digit numbers that start with 1 to 9.
 	 */
-	public String run() {
+	String run() {
 		// Dynamic programming array
 		BigInteger[][] ways = new BigInteger[DIGITS + CONSECUTIVE + 1][Library.pow(BASE, CONSECUTIVE)];
 
@@ -71,5 +64,4 @@ public final class p164 implements EulerSolution {
 
 		return ways[DIGITS + CONSECUTIVE][0].subtract(ways[DIGITS + CONSECUTIVE - 1][0]).toString();
 	}
-
 }

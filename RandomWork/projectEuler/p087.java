@@ -1,23 +1,16 @@
-/*
- * Solution to Project Euler problem 87
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.HashSet;
 import java.util.Set;
 
+87
 
-public final class p087 implements EulerSolution {
+public final class p087 extends EulerSolution {
 	private static final int LIMIT = 50000000;
 
 	public static void main(String[] args) {
 		System.out.println(new p087().run());
 	}
 
-	public String run() {
+	String run() {
 		int[] primes = Library.listPrimes(Library.sqrt(LIMIT));
 
 		Set<Integer> sums = new HashSet<>();
@@ -43,5 +36,4 @@ public final class p087 implements EulerSolution {
 
 		return Integer.toString(sums.size());
 	}
-
 }

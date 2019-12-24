@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 191
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+191
 
-public final class p191 implements EulerSolution {
+public final class p191 extends EulerSolution {
 	private static final int NUM_DAYS = 30;
 	private static final int MAX_ABSENT = 2;
 	private static final int MAX_LATE = 1;
@@ -15,7 +9,7 @@ public final class p191 implements EulerSolution {
 		System.out.println(new p191().run());
 	}
 
-	public String run() {
+	String run() {
 		// numPrizeStrings[i][j][k] is the number of prize strings of length i with
 		// exactly j absences at the tail and exactly k lates in the whole string
 		long[][][] numPrizeStrings = new long[NUM_DAYS + 1][MAX_ABSENT + 1][MAX_LATE + 1];
@@ -28,13 +22,13 @@ public final class p191 implements EulerSolution {
 					if (j == 0) {
 						sum = 0;
 						for (int l = 0; l <= MAX_ABSENT; l++)
-							sum += numPrizeStrings[i - 1][l][k];  // On time
+							sum += numPrizeStrings[i - 1][l][k]; // On time
 						if (k > 0) {
 							for (int l = 0; l <= MAX_ABSENT; l++)
-								sum += numPrizeStrings[i - 1][l][k - 1];  // Late
+								sum += numPrizeStrings[i - 1][l][k - 1]; // Late
 						}
 					} else
-						sum = numPrizeStrings[i - 1][j - 1][k];  // Absent
+						sum = numPrizeStrings[i - 1][j - 1][k]; // Absent
 					numPrizeStrings[i][j][k] = sum;
 				}
 			}
@@ -47,5 +41,4 @@ public final class p191 implements EulerSolution {
 		}
 		return Long.toString(sum);
 	}
-
 }

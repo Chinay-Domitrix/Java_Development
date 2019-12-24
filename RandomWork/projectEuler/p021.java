@@ -1,12 +1,4 @@
-/*
- * Solution to Project Euler problem 21
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
-public final class p021 implements EulerSolution {
+public final class p021 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p021().run());
 	}
@@ -30,7 +22,7 @@ public final class p021 implements EulerSolution {
 		return sum;
 	}
 
-	public String run() {
+	String run() {
 		int sum = 0;
 		for (int i = 1; i < 10000; i++) {
 			if (isAmicable(i))
@@ -38,5 +30,4 @@ public final class p021 implements EulerSolution {
 		}
 		return Integer.toString(sum);
 	}
-
 }

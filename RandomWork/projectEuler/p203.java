@@ -1,24 +1,17 @@
-/*
- * Solution to Project Euler problem 203
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
 
+203
 
-public final class p203 implements EulerSolution {
+public final class p203 extends EulerSolution {
 	private long[] primesSquared;
 
 	public static void main(String[] args) {
 		System.out.println(new p203().run());
 	}
 
-	public String run() {
+	String run() {
 		// Collect unique numbers in Pascal's triangle
 		Set<Long> numbers = new HashSet<>();
 		long max = 0;
@@ -56,5 +49,4 @@ public final class p203 implements EulerSolution {
 		}
 		return true;
 	}
-
 }

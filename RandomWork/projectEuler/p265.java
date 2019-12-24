@@ -1,12 +1,7 @@
-/*
- * Solution to Project Euler problem 265
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
-public final class p265 implements EulerSolution {
+public final class p265 extends EulerSolution {
 	// Must be in the range [1, 5], otherwise the algorithm overflows
 	private static final int N = 5;
 
@@ -33,30 +28,26 @@ public final class p265 implements EulerSolution {
 	// Equal to n 1's in binary, i.e. 0b11111.
 	private static final int MASK = TWO_POW_N - 1;
 	// Equal to 2^n 1's in binary, i.e. 0b11111111111111111111111111111111.
-	private static final int FULL_SET = (int) (1L << TWO_POW_N) - 1;
+	private static final int FULL_SET = -1;
 
 	public static void main(String[] args) {
 		System.out.println(new p265().run());
 	}
 
 	// Tests whether all the n-bit cyclic windows of the given 2^n-bit number are unique values.
+	@Contract(pure = true)
 	private static boolean checkArrangement(int digits) {
 		int seen = 0;
-		long temp = (digits & 0xFFFFFFFFL) | ((digits & 0xFFFFFFFFL) << TWO_POW_N);  // Two copies
-		for (int i = 0; i < TWO_POW_N; i++)
-			seen |= 1 << ((int) (temp >>> i) & MASK);
+		long temp = (digits & 0xFFFFFFFFL) | ((digits & 0xFFFFFFFFL) << TWO_POW_N); // Two copies
+		for (int i = 0; i < TWO_POW_N; i++) seen |= 1 << ((int) (temp >>> i) & MASK);
 		return seen == FULL_SET;
 	}
 
-	public String run() {
+	@NotNull String run() {
 		long sum = 0;
 		int start = (1 << (TWO_POW_N - N - 1)) + 1;
 		int end = 1 << (TWO_POW_N - N);
-		for (int i = start; i < end; i += 2) {
-			if (checkArrangement(i))
-				sum += i;
-		}
+		for (int i = start; i < end; i += 2) if (checkArrangement(i)) sum += i;
 		return Long.toString(sum);
 	}
-
 }

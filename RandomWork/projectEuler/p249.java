@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 249
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.NotNull;
 
-public final class p249 implements EulerSolution {
+public final class p249 extends EulerSolution {
 	private static final int LIMIT = 5000;
 	private static final long MODULUS = 10000000000000000L;
 
@@ -14,33 +8,24 @@ public final class p249 implements EulerSolution {
 		System.out.println(new p249().run());
 	}
 
-	public String run() {
+	@NotNull String run() {
 		// Use dynamic programming
 		boolean[] isPrime = Library.listPrimality(LIMIT * LIMIT / 2);
-		long[] numSubsets = new long[LIMIT * LIMIT / 2];  // numSubsets[i] is the number of subsets with sum i, mod 10^16
+		long[] numSubsets = new long[LIMIT * LIMIT / 2]; // numSubsets[i] is the number of subsets with sum i, mod 10^16
 		numSubsets[0] = 1;
-		int maxSum = 0;  // Sum of all primes seen so far
-
+		int maxSum = 0; // Sum of all primes seen so far
 		for (int i = 0; i < LIMIT; i++) {
-			if (!isPrime[i])
-				continue;
+			if (!isPrime[i]) continue;
 			maxSum += i;
 			for (int j = maxSum; j >= i; j--) {
 				// Optimization of modulo because we know 0 <= numSubsets[j] + numSubsets[j - i] < 2 * MODULUS
 				long temp = numSubsets[j] + numSubsets[j - i];
-				if (temp < MODULUS)
-					numSubsets[j] = temp;
-				else
-					numSubsets[j] = temp - MODULUS;
+				if (temp < MODULUS) numSubsets[j] = temp;
+				else numSubsets[j] = temp - MODULUS;
 			}
 		}
-
 		long sum = 0;
-		for (int i = 0; i < numSubsets.length; i++) {
-			if (isPrime[i])
-				sum = (sum + numSubsets[i]) % MODULUS;
-		}
+		for (int i = 0; i < numSubsets.length; i++) if (isPrime[i]) sum = (sum + numSubsets[i]) % MODULUS;
 		return Long.toString(sum);
 	}
-
 }

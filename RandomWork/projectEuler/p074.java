@@ -1,19 +1,12 @@
-/*
- * Solution to Project Euler problem 74
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.HashSet;
 import java.util.Set;
 
+74
 
-public final class p074 implements EulerSolution {
+public final class p074 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 6);
 	// Hard-coded values for factorial(0), factorial(1), ..., factorial(9)
-	private static int[] FACTORIAL = {1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880};
+	private static final int[] FACTORIAL = {1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880};
 
 	public static void main(String[] args) {
 		System.out.println(new p074().run());
@@ -35,7 +28,7 @@ public final class p074 implements EulerSolution {
 		return sum;
 	}
 
-	public String run() {
+	String run() {
 		int count = 0;
 		for (int i = 0; i < LIMIT; i++) {
 			if (getChainLength(i) == 60)
@@ -43,5 +36,4 @@ public final class p074 implements EulerSolution {
 		}
 		return Integer.toString(count);
 	}
-
 }

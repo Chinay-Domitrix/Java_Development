@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 182
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+182
 
-public final class p182 implements EulerSolution {
+public final class p182 extends EulerSolution {
 	private static final int P = 1009;
 	private static final int Q = 3643;
 	private static final int TOTIENT = (P - 1) * (Q - 1);
@@ -35,7 +29,7 @@ public final class p182 implements EulerSolution {
 		return count;
 	}
 
-	public String run() {
+	String run() {
 		int[] numUnconcealedP = countAllUnconcealed(P);
 		int[] numUnconcealedQ = countAllUnconcealed(Q);
 
@@ -54,5 +48,4 @@ public final class p182 implements EulerSolution {
 		}
 		return Long.toString(sum);
 	}
-
 }

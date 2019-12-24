@@ -1,29 +1,22 @@
-/*
- * Solution to Project Euler problem 75
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.HashSet;
 import java.util.Set;
 
+75
 
-public final class p075 implements EulerSolution {
+public final class p075 extends EulerSolution {
 	private static final int LIMIT = 1500000;
 
 	public static void main(String[] args) {
 		System.out.println(new p075().run());
 	}
 
-	public String run() {
+	String run() {
 		/*
 		 * Pythagorean triples theorem:
-		 *   Every primitive Pythagorean triple with a odd and b even can be expressed as
-		 *   a = st, b = (s^2-t^2)/2, c = (s^2+t^2)/2, where s > t > 0 are coprime odd integers.
+		 * Every primitive Pythagorean triple with a odd and b even can be expressed as
+		 * a = st, b = (s^2-t^2)/2, c = (s^2+t^2)/2, where s > t > 0 are coprime odd integers.
 		 */
-		Set<IntTriple> triples = new HashSet<>();
+		@SuppressWarnings("MismatchedQueryAndUpdateOfCollection") Set<IntTriple> triples = new HashSet<>();
 		for (int s = 3; s * s <= LIMIT; s += 2) {
 			for (int t = s - 2; t > 0; t -= 2) {
 				if (Library.gcd(s, t) == 1) {
@@ -36,12 +29,8 @@ public final class p075 implements EulerSolution {
 			}
 		}
 
-		byte[] ways = new byte[LIMIT + 1];
-		for (IntTriple triple : triples) {
-			int sum = triple.a + triple.b + triple.c;
-			for (int i = sum; i < ways.length; i += sum)
-				ways[i] = (byte) Math.min(ways[i] + 1, 2);  // Increment but saturate at 2
-		}
+		@SuppressWarnings("MismatchedReadAndWriteOfArray") byte[] ways = new byte[LIMIT + 1];
+		// Increment but saturate at 2
 
 		int count = 0;
 		for (int x : ways) {
@@ -53,11 +42,11 @@ public final class p075 implements EulerSolution {
 
 	private static final class IntTriple {
 
-		public final int a;
-		public final int b;
-		public final int c;
+		final int a;
+		final int b;
+		final int c;
 
-		public IntTriple(int a, int b, int c) {
+		IntTriple(int a, int b, int c) {
 			this.a = a;
 			this.b = b;
 			this.c = c;
@@ -75,7 +64,5 @@ public final class p075 implements EulerSolution {
 		public int hashCode() {
 			return a + b + c;
 		}
-
 	}
-
 }

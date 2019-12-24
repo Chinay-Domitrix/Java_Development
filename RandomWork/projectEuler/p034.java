@@ -1,14 +1,8 @@
-/*
- * Solution to Project Euler problem 34
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+34
 
-public final class p034 implements EulerSolution {
+public final class p034 extends EulerSolution {
 	// Hard-coded values for factorial(0), factorial(1), ..., factorial(9)
-	private static int[] FACTORIAL = {1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880};
+	private static final int[] FACTORIAL = {1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880};
 
 	public static void main(String[] args) {
 		System.out.println(new p034().run());
@@ -23,7 +17,7 @@ public final class p034 implements EulerSolution {
 		return sum;
 	}
 
-	public String run() {
+	String run() {
 		// As stated in the problem, 1 = 1! and 2 = 2! are excluded.
 		// If a number has at least n >= 8 digits, then even if every digit is 9,
 		// n * 9! is still less than the number (which is at least 10^n).
@@ -34,5 +28,4 @@ public final class p034 implements EulerSolution {
 		}
 		return Integer.toString(sum);
 	}
-
 }

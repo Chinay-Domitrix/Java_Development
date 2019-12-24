@@ -1,16 +1,9 @@
-/*
- * Solution to Project Euler problem 22
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
+import static java.util.Arrays.sort;
 
-
-public final class p022 implements EulerSolution {
-	private String[] names = {  // 10 strings per line, except final line. Mutable array
+public final class p022 extends EulerSolution {
+	private final String[] names = { // 10 strings per line, except final line. Mutable array
 			"MARY", "PATRICIA", "LINDA", "BARBARA", "ELIZABETH", "JENNIFER", "MARIA", "SUSAN", "MARGARET", "DOROTHY",
 			"LISA", "NANCY", "KAREN", "BETTY", "HELEN", "SANDRA", "DONNA", "CAROL", "RUTH", "SHARON",
 			"MICHELLE", "LAURA", "SARAH", "KIMBERLY", "DEBORAH", "JESSICA", "SHIRLEY", "CYNTHIA", "ANGELA", "MELISSA",
@@ -533,21 +526,18 @@ public final class p022 implements EulerSolution {
 	/*
 	 * We apply straightforward algorithms to sort the names, sum the letter values, and multiply by the position.
 	 */
-
 	public static void main(String[] args) {
 		System.out.println(new p022().run());
 	}
 
-	public String run() {
-		Arrays.sort(names);
+	@NotNull String run() {
+		sort(names);
 		long sum = 0;
 		for (int i = 0; i < names.length; i++) {
 			int value = 0;
-			for (int j = 0; j < names[i].length(); j++)
-				value += names[i].charAt(j) - 'A' + 1;
+			for (int j = 0; j < names[i].length(); j++) value += names[i].charAt(j) - 'A' + 1;
 			sum += value * (i + 1);
 		}
 		return Long.toString(sum);
 	}
-
 }

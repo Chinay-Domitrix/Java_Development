@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 49
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.Arrays;
 
+49
 
-public final class p049 implements EulerSolution {
+public final class p049 extends EulerSolution {
 	private static final int LIMIT = 10000;
 
 	public static void main(String[] args) {
@@ -24,7 +17,7 @@ public final class p049 implements EulerSolution {
 		return Arrays.equals(xdigits, ydigits);
 	}
 
-	public String run() {
+	String run() {
 		boolean[] isPrime = Library.listPrimality(LIMIT - 1);
 		for (int base = 1000; base < LIMIT; base++) {
 			if (isPrime[base]) {
@@ -40,5 +33,4 @@ public final class p049 implements EulerSolution {
 		}
 		throw new RuntimeException("Not found");
 	}
-
 }

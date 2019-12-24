@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 122
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.Arrays;
 
+122
 
-public final class p122 implements EulerSolution {
+public final class p122 extends EulerSolution {
 	private static final int LIMIT = 200;
 
 	/*
@@ -19,7 +12,7 @@ public final class p122 implements EulerSolution {
 	 * Definition: An addition chain is a finite sequence of integers {a_i} such that:
 	 * - a_0 = 1 (i.e. the head element is 1).
 	 * - For each index i (with 0 < i < length), there exists indices j and k such that 0 <= j <= k < i
-	 *   and a_i = a_j + a_k (i.e. each subsequent element is the sum of some two elements that come before it).
+	 * and a_i = a_j + a_k (i.e. each subsequent element is the sum of some two elements that come before it).
 	 * - The number of operations in an addition chain is equal to the length of the chain minus one.
 	 *
 	 * Example: {1, 2, 3, 6, 9, 11} is an addition chain because
@@ -55,7 +48,7 @@ public final class p122 implements EulerSolution {
 		System.out.println(new p122().run());
 	}
 
-	public String run() {
+	String run() {
 		// Set up initial array of known/unknown minimum operation counts
 		minOperations = new int[LIMIT + 1];
 		Arrays.fill(minOperations, -1);
@@ -84,12 +77,12 @@ public final class p122 implements EulerSolution {
 			return;
 
 		// Try all unordered pairs of values in the current chain
-		int max = chain.values[chain.size - 1];  // Peek at top
+		int max = chain.values[chain.size - 1]; // Peek at top
 		for (int i = chain.size - 1; i >= 0; i--) {
 			for (int j = i; j >= 0; j--) {
 				int x = chain.values[i] + chain.values[j];
 				if (x <= max)
-					break;  // Early exit due to ascending order
+					break; // Early exit due to ascending order
 				if (x <= LIMIT) {
 					// Append x to the current chain and recurse
 					chain.push(x);
@@ -109,28 +102,25 @@ public final class p122 implements EulerSolution {
 	// This implementation exists because Stack<Integer> is unacceptably slow due to integer boxing and such.
 	private static final class IntStack {
 
-		public int[] values;
-		public int size;
+		final int[] values;
+		int size;
 
-		public IntStack(int capacity) {
+		IntStack(int capacity) {
 			values = new int[capacity];
 			size = 0;
 		}
 
-		public void push(int x) {
+		void push(int x) {
 			if (size >= values.length)
 				throw new IllegalStateException();
 			values[size] = x;
 			size++;
 		}
 
-		public int pop() {
+		void pop() {
 			if (size <= 0)
 				throw new IllegalStateException();
 			size--;
-			return values[size];
 		}
-
 	}
-
 }

@@ -1,15 +1,10 @@
-/*
- * Solution to Project Euler problem 417
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
+import static java.util.Arrays.copyOf;
+import static java.util.Arrays.sort;
 
-
-public final class p417 implements EulerSolution {
+public final class p417 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 8);
 
 	/*
@@ -51,32 +46,30 @@ public final class p417 implements EulerSolution {
 		System.out.println(new p417().run());
 	}
 
-	private static long[] calcPrimePowersAndTotients(int[] primes) {
+	@NotNull
+	private static long[] calcPrimePowersAndTotients(@NotNull int[] primes) {
 		LongList temp = new LongList(primes.length * 2);
 		for (int p : primes) {
-			if (p == 2 || p == 5)
-				continue;
-			for (long pow = p, tot = p - 1; pow <= LIMIT; pow *= p, tot *= p)
-				temp.append(pow << 32 | tot);
+			if (p == 2 || p == 5) continue;
+			for (long pow = p, tot = p - 1; pow <= LIMIT; pow *= p, tot *= p) temp.append(pow << 32 | tot);
 		}
 		long[] result = temp.toArray();
-		Arrays.sort(result);
+		sort(result);
 		return result;
 	}
 
-	private static int[] calcPrimePowerPeriods(long[] primePowersAndTotients, int[] smallestPrimeFactor) {
+	@NotNull
+	private static int[] calcPrimePowerPeriods(@NotNull long[] primePowersAndTotients, int[] smallestPrimeFactor) {
 		int[] result = new int[primePowersAndTotients.length];
 		for (int i = 0; i < primePowersAndTotients.length; i++) {
 			long ppt = primePowersAndTotients[i];
 			int primePow = (int) (ppt >>> 32);
-			int period = (int) ppt;  // Start with some multiple of the true period
-
+			int period = (int) ppt; // Start with some multiple of the true period
 			// Remove unnecessary factors from the period
 			int remainingFactors = period;
 			while (remainingFactors > 1) {
 				int q = smallestPrimeFactor[remainingFactors];
-				if (Library.powMod(10, period / q, primePow) == 1)
-					period /= q;
+				if (Library.powMod(10, period / q, primePow) == 1) period /= q;
 				remainingFactors /= q;
 			}
 			result[i] = period;
@@ -84,18 +77,18 @@ public final class p417 implements EulerSolution {
 		return result;
 	}
 
-	private static int[] calcPeriods(long[] primePowersAndTotients, int[] primePowerPeriods) {
+	@NotNull
+	@Contract(pure = true)
+	private static int[] calcPeriods(@NotNull long[] primePowersAndTotients, int[] primePowerPeriods) {
 		int[] result = new int[LIMIT + 1];
-		result[1] = 1;  // Starter value for accumulating LCM
+		result[1] = 1; // Starter value for accumulating LCM
 		for (int i = 0; i < primePowersAndTotients.length; i++) {
 			int ppow = (int) (primePowersAndTotients[i] >>> 32);
 			int period = primePowerPeriods[i];
-			for (int j = 0, end = LIMIT / ppow; j <= end; j++) {
-				if (result[j] != 0)
-					result[j * ppow] = lcm(result[j], period);
-			}
+			for (int j = 0, end = LIMIT / ppow; j <= end; j++)
+				if (result[j] != 0) result[j * ppow] = lcm(result[j], period);
 		}
-		result[1] = 0;  // The true value, because 1/1 has a terminating decimal expansion
+		result[1] = 0; // The true value, because 1/1 has a terminating decimal expansion
 		return result;
 	}
 
@@ -103,27 +96,24 @@ public final class p417 implements EulerSolution {
 		long sum = 0;
 		for (int i = 3; i <= LIMIT; i++) {
 			int n = i;
-			n >>>= Integer.numberOfTrailingZeros(n);  // Remove all factors of 2
-			while (n % 5 == 0)  // Remove all factors of 5
-				n /= 5;
-			if (n > 1 && periods[n] == 0)
-				throw new AssertionError();
+			n >>>= Integer.numberOfTrailingZeros(n); // Remove all factors of 2
+			while (n % 5 == 0) // Remove all factors of 5 n /= 5;
+				if (n > 1 && periods[n] == 0) throw new AssertionError();
 			sum += periods[n];
 		}
 		return sum;
 	}
 
+	@Contract(pure = true)
 	private static int lcm(int x, int y) {
 		return x / Library.gcd(x, y) * y;
 	}
 
-	public String run() {
+	@NotNull String run() {
 		// All the prime numbers we need to consider
 		int[] primes = Library.listPrimes(LIMIT);
-
 		// smallestPrimeFactor[i] is the smallest (prime) factor of i
-		int[] smallestPrimeFactor = Library.listSmallestPrimeFactors(LIMIT);  // Requires 400 MB
-
+		int[] smallestPrimeFactor = Library.listSmallestPrimeFactors(LIMIT); // Requires 400 MB
 		// A sorted array of almost all prime powers less than or equal to LIMIT.
 		// Also, each prime power is associated with its totient.
 		// For each i, primePowersAndTotients[i] = ((p^k) << 32) | (totient(p^k))
@@ -131,44 +121,38 @@ public final class p417 implements EulerSolution {
 		// The sequence of p^k values begins with 3, 7, 9, 11, 13, 17, 19, 23, 27, 29, 31, 37, 41, 43, 47, 49, 53, ... .
 		// (Before sorting, it would be 3^1, 3^2, ..., 3^16, 7^1, ..., 7^9, 11^1, ..., 11^7, ... .)
 		long[] primePowersAndTotients = calcPrimePowersAndTotients(primes);
-
 		// The decimal expansion periods for each 1/p^k where p^k is a prime power (p != 2, 5).
 		// ppp[i] is the smallest positive integer such that 10^ppp[i] = 1 mod primePowers[i].
 		int[] primePowerPeriods = calcPrimePowerPeriods(primePowersAndTotients, smallestPrimeFactor);
-		smallestPrimeFactor = null;  // Garbage collection voodoo
-
 		// Compute periods for each number that is coprime with 2 and 5,
 		// based on the prime power decomposition of the number
 		int[] periods = calcPeriods(primePowersAndTotients, primePowerPeriods);
-
 		// Compute the period for all numbers (esp. those with factors of 2 and 5) and add 'em up
 		return Long.toString(sumAllPeriods(periods));
 	}
 
 	// A packed, limited-functionality version of ArrayList<Long>.
 	private static final class LongList {
-
 		private long[] data;
 		private int length;
 
-		public LongList(int initCapacity) {
-			if (initCapacity < 1)
-				throw new IllegalArgumentException();
+		@Contract(pure = true)
+		LongList(int initCapacity) {
+			if (initCapacity < 1) throw new IllegalArgumentException();
 			data = new long[initCapacity];
 			length = 0;
 		}
 
-		public void append(long x) {
-			if (length == data.length)
-				data = Arrays.copyOf(data, length * 2);
+		void append(long x) {
+			if (length == data.length) data = copyOf(data, length * 2);
 			data[length] = x;
 			length++;
 		}
 
-		public long[] toArray() {
-			return Arrays.copyOf(data, length);  // Trim
+		@NotNull
+		@Contract(pure = true)
+		long[] toArray() {
+			return copyOf(data, length); // Trim
 		}
-
 	}
-
 }

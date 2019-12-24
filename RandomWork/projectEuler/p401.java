@@ -1,17 +1,12 @@
-/*
- * Solution to Project Euler problem 401
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;
 
+import static java.lang.Math.max;
 
-public final class p401 implements EulerSolution {
-	private static final long LIMIT = 1000000000000000L;  // Must be less than 2^56
-	private static final long MODULUS = Library.pow(10, 9);  // Should be less than 2^30
+public final class p401 extends EulerSolution {
+	private static final long LIMIT = 1000000000000000L; // Must be less than 2^56
+	private static final long MODULUS = Library.pow(10, 9); // Should be less than 2^30
 	private static final BigInteger MODULUS_BI = BigInteger.valueOf(MODULUS);
 	private static final BigInteger SIX_BI = BigInteger.valueOf(6);
 
@@ -33,13 +28,13 @@ public final class p401 implements EulerSolution {
 	/*
 	 * Consider the set of all integers from 1 to n, inclusive: {1, 2, ..., n}.
 	 * Now form the set of divisors for each number:
-	 *   1: {1}
-	 *   2: {1, 2}
-	 *   3: {1, 3}
-	 *   4: {1, 2, 4}
-	 *   5: {1, 5}
-	 *   6: {1, 2, 3, 6}
-	 *   et cetera until n.
+	 * 1: {1}
+	 * 2: {1, 2}
+	 * 3: {1, 3}
+	 * 4: {1, 2, 4}
+	 * 5: {1, 5}
+	 * 6: {1, 2, 3, 6}
+	 * et cetera until n.
 	 * Next consider the multiset union of all these sets of divisors.
 	 *
 	 * We know that for a given integer k > 0, it occurs as a divisor in this multiset
@@ -59,11 +54,11 @@ public final class p401 implements EulerSolution {
 	 *
 	 * Useful fact: (sum k^2 for k=1 to n) = n(n + 1)(2n + 1) / 6.
 	 */
-	public String run() {
+	@NotNull String run() {
 		// Can be any number from 1 to LIMIT, but somewhere near sqrt(LIMIT) is preferred
 		int splitCount = (int) Library.sqrt(LIMIT);
 		// Optimization: Put more weight on direct sums instead of slow BigInteger sums
-		splitCount = Math.max(splitCount / 3, 1);
+		splitCount = max(splitCount / 3, 1);
 		// Consider divisors individually up and including this number
 		int splitAt = (int) (LIMIT / (splitCount + 1));
 
@@ -79,13 +74,12 @@ public final class p401 implements EulerSolution {
 		// Sum divisors grouped by count
 		for (int i = splitCount; i >= 1; i--) {
 			// Find all divisors with the count of i
-			long start = LIMIT / (i + 1);  // Exclusive
-			long end = LIMIT / i;  // Inclusive
-			long sumSquares = sumSquaresMod(end) - sumSquaresMod(start);  // (start+1)^2 + (start+2)^2 + ... + end^2 mod MODULUS
+			long start = LIMIT / (i + 1); // Exclusive
+			long end = LIMIT / i; // Inclusive
+			long sumSquares = sumSquaresMod(end) - sumSquaresMod(start); // (start+1)^2 + (start+2)^2 + ... + end^2 mod MODULUS
 			sumSquares = (sumSquares + MODULUS) % MODULUS;
 			sum = (sum + i * sumSquares % MODULUS) % MODULUS;
 		}
 		return Long.toString(sum);
 	}
-
 }

@@ -1,13 +1,7 @@
-/*
- * Solution to Project Euler problem 102
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+102
 
-public final class p102 implements EulerSolution {
-	private static int[][] TRIANGLES = {
+public final class p102 extends EulerSolution {
+	private static final int[][] TRIANGLES = {
 			{-340, 495, -153, -910, 835, -947},
 			{-175, 41, -421, -714, 574, -645},
 			{-547, 712, -352, 579, 951, -786},
@@ -1014,20 +1008,19 @@ public final class p102 implements EulerSolution {
 		System.out.println(new p102().run());
 	}
 
-	private static boolean isInTriangle(int[] t, int x, int y) {
-		int a = Integer.signum((t[0] - t[2]) * (y - t[1]) - (t[1] - t[3]) * (x - t[0]));
-		int b = Integer.signum((t[2] - t[4]) * (y - t[3]) - (t[3] - t[5]) * (x - t[2]));
-		int c = Integer.signum((t[4] - t[0]) * (y - t[5]) - (t[5] - t[1]) * (x - t[4]));
+	private static boolean isInTriangle(int[] t) {
+		int a = Integer.signum((t[0] - t[2]) * (-t[1]) - (t[1] - t[3]) * (-t[0]));
+		int b = Integer.signum((t[2] - t[4]) * (-t[3]) - (t[3] - t[5]) * (-t[2]));
+		int c = Integer.signum((t[4] - t[0]) * (-t[5]) - (t[5] - t[1]) * (-t[4]));
 		return a == 0 || b == 0 || c == 0 || (a == b && b == c);
 	}
 
-	public String run() {
+	String run() {
 		int count = 0;
 		for (int[] t : TRIANGLES) {
-			if (isInTriangle(t, 0, 0))
+			if (isInTriangle(t))
 				count++;
 		}
 		return Integer.toString(count);
 	}
-
 }

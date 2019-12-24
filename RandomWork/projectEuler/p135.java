@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 135
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+135
 
-public final class p135 implements EulerSolution {
+public final class p135 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 6);
 
 	/*
@@ -27,7 +21,7 @@ public final class p135 implements EulerSolution {
 		System.out.println(new p135().run());
 	}
 
-	public String run() {
+	String run() {
 		int[] solutions = new int[LIMIT];
 		for (int m = 1; m < LIMIT * 2; m++) {
 			for (int k = m / 5 + 1; k * 2 < m; k++) {
@@ -45,5 +39,4 @@ public final class p135 implements EulerSolution {
 		}
 		return Integer.toString(count);
 	}
-
 }

@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 101
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 
+101
 
-public final class p101 implements EulerSolution {
+public final class p101 extends EulerSolution {
 	private static final int DEGREE = 10;
 
 	/*
@@ -62,7 +55,7 @@ public final class p101 implements EulerSolution {
 		return sum;
 	}
 
-	public String run() {
+	String run() {
 		Fraction sum = Fraction.ZERO;
 		for (int k = 1; k <= DEGREE; k++) {
 			for (int n = k + 1; ; n++) {
@@ -82,5 +75,4 @@ public final class p101 implements EulerSolution {
 		else
 			return sum.toString();
 	}
-
 }

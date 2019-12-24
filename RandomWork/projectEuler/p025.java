@@ -1,15 +1,6 @@
-/*
- * Solution to Project Euler problem 25
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 
-
-public final class p025 implements EulerSolution {
+public final class p025 extends EulerSolution {
 	private static final int DIGITS = 1000;
 
 	/*
@@ -23,7 +14,7 @@ public final class p025 implements EulerSolution {
 		System.out.println(new p025().run());
 	}
 
-	public String run() {
+	String run() {
 		BigInteger lowerThres = BigInteger.TEN.pow(DIGITS - 1);
 		BigInteger upperThres = BigInteger.TEN.pow(DIGITS);
 		BigInteger prev = BigInteger.ONE;
@@ -41,5 +32,4 @@ public final class p025 implements EulerSolution {
 			cur = temp;
 		}
 	}
-
 }

@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 113
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 
+113
 
-public final class p113 implements EulerSolution {
+public final class p113 extends EulerSolution {
 	private static final int DIGITS = 100;
 
 	/*
@@ -43,11 +36,10 @@ public final class p113 implements EulerSolution {
 		System.out.println(new p113().run());
 	}
 
-	public String run() {
+	String run() {
 		BigInteger increasing = Library.binomial(DIGITS + 9, 9).subtract(BigInteger.ONE);
 		BigInteger decreasing = Library.binomial(DIGITS + 10, 10).subtract(BigInteger.valueOf(DIGITS + 1));
 		BigInteger flat = BigInteger.valueOf(DIGITS * 9);
 		return increasing.add(decreasing).subtract(flat).toString();
 	}
-
 }

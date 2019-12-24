@@ -1,13 +1,7 @@
-/*
- * Solution to Project Euler problem 90
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+90
 
-public final class p090 implements EulerSolution {
-	private static int[][] SQUARES = {{0, 1}, {0, 4}, {0, 9}, {1, 6}, {2, 5}, {3, 6}, {4, 9}, {6, 4}, {8, 1}};
+public final class p090 extends EulerSolution {
+	private static final int[][] SQUARES = {{0, 1}, {0, 4}, {0, 9}, {1, 6}, {2, 5}, {3, 6}, {4, 9}, {6, 4}, {8, 1}};
 
 	public static void main(String[] args) {
 		System.out.println(new p090().run());
@@ -30,16 +24,15 @@ public final class p090 implements EulerSolution {
 		return ((x >>> i) & 1) != 0;
 	}
 
-	public String run() {
+	String run() {
 		// Each die has (10 choose 6) arrangements, so we have at most 44100 arrangements to check
 		int count = 0;
 		for (int i = 0; i < (1 << 10); i++) {
-			for (int j = i; j < (1 << 10); j++) {  // Ensure i <= j to force the dice to be orderless
+			for (int j = i; j < (1 << 10); j++) { // Ensure i <= j to force the dice to be orderless
 				if (Integer.bitCount(i) == 6 && Integer.bitCount(j) == 6 && isArrangementValid(i, j))
 					count++;
 			}
 		}
 		return Integer.toString(count);
 	}
-
 }

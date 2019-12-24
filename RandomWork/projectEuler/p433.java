@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 433
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.NotNull;
 
-public final class p433 implements EulerSolution {
+public final class p433 extends EulerSolution {
 	private static final int LIMIT = 5000000;
 	private long sum = 0;
 
@@ -41,15 +35,15 @@ public final class p433 implements EulerSolution {
 	 * Now to account for the other "pairs" (x, y) where it is not the case that x > y >= 0 (i.e. x <= y or y < 0):
 	 * - If y < 0: y is clearly outside the range of the problem statement.
 	 * - Assume x > 0, to stay in the range of the problem statement.
-	 *   - If x = y: E(x, x) = 1, since (x, x) -> (x, 0).
-	 *   - If x < y: E(x, y) = E(y, x) + 1, since (x, y) -> (y, x), where y > x > 0.
+	 * - If x = y: E(x, x) = 1, since (x, x) -> (x, 0).
+	 * - If x < y: E(x, y) = E(y, x) + 1, since (x, y) -> (y, x), where y > x > 0.
 	 *
 	 * If we have computed s = sum of E(x, y) for all 1 <= y < x <= LIMIT by using reverse stepping search, then:
 	 * - The sum of E(x, x) for all 1 <= x <= LIMIT is LIMIT.
 	 * - The sum of E(x, y) for all 1 <= x < y <= LIMIT is equal to
-	 *   the sum of E(y, x) + 1 for all 1 <= x < y <= LIMIT
-	 *   = the sum of E(x, y) + 1 for all 1 <= y < x <= LIMIT
-	 *   = s + 1 * (number of summands) = (1 + 2 + ... + (LIMIT-1)) = s + LIMIT*(LIMIT-1)/2.
+	 * the sum of E(y, x) + 1 for all 1 <= x < y <= LIMIT
+	 * = the sum of E(x, y) + 1 for all 1 <= y < x <= LIMIT
+	 * = s + 1 * (number of summands) = (1 + 2 + ... + (LIMIT-1)) = s + LIMIT*(LIMIT-1)/2.
 	 *
 	 * Therefore the final sum we want is s + (s + LIMIT*(LIMIT-1)/2) + LIMIT = 2s + LIMIT*(LIMIT+1)/2.
 	 *
@@ -68,19 +62,15 @@ public final class p433 implements EulerSolution {
 		System.out.println(new p433().run());
 	}
 
-	public String run() {
-		for (int i = 1; i <= LIMIT; i++)
-			exploreGcds(i, 0, 0);
+	@NotNull String run() {
+		for (int i = 1; i <= LIMIT; i++) exploreGcds(i, 0, 0);
 		return Long.toString(sum * 2 + (long) LIMIT * (LIMIT + 1) / 2);
 	}
 
 	// Requires 0 <= y < x <= LIMIT
 	private void exploreGcds(int x, int y, int steps) {
-		if (!(0 <= y && y < x && x <= LIMIT))
-			throw new IllegalArgumentException();
+		if (!(0 <= y && y < x && x <= LIMIT)) throw new IllegalArgumentException();
 		sum += steps;
-		for (int z = y + (y > 0 ? 1 : 2) * x; z <= LIMIT; z += x)
-			exploreGcds(z, x, steps + 1);
+		for (int z = y + (y > 0 ? 1 : 2) * x; z <= LIMIT; z += x) exploreGcds(z, x, steps + 1);
 	}
-
 }

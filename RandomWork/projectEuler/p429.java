@@ -1,12 +1,7 @@
-/*
- * Solution to Project Euler problem 429
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
-public final class p429 implements EulerSolution {
+public final class p429 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 8);
 	private static final int MODULUS = 1000000009;
 
@@ -15,11 +10,10 @@ public final class p429 implements EulerSolution {
 	}
 
 	// Returns the number of factors of p (prime) in factorial(n)
+	@Contract(pure = true)
 	private static int countFactors(int n, int p) {
-		if (n == 0)
-			return 0;
-		else
-			return n / p + countFactors(n / p, p);
+		if (n == 0) return 0;
+		else return n / p + countFactors(n / p, p);
 	}
 
 	/*
@@ -38,9 +32,9 @@ public final class p429 implements EulerSolution {
 	 * and suppose this set is {a, b, c}. Then when we include {p_i}^{k_i} into consideration, we double the size of the set
 	 * because now {a * {p_i}^{k_i}, b * {p_i}^{k_i}, c * {p_i}^{k_i}} are also unitary divisors.
 	 */
-	public String run() {
+	@NotNull String run() {
 		int[] primes = Library.listPrimes(LIMIT);
-		long sum = 1;  // In this computation, it's actually a product
+		long sum = 1; // In this computation, it's actually a product
 		for (int p : primes) {
 			int power = countFactors(LIMIT, p);
 			sum *= 1 + Library.powMod(p, power * 2, MODULUS);
@@ -48,5 +42,4 @@ public final class p429 implements EulerSolution {
 		}
 		return Long.toString(sum);
 	}
-
 }

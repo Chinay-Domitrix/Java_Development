@@ -1,13 +1,7 @@
-/*
- * Solution to Project Euler problem 54
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+54
 
-public final class p054 implements EulerSolution {
-	private static String[] HANDS = {
+public final class p054 extends EulerSolution {
+	private static final String[] HANDS = {
 			"8C TS KC 9H 4S 7D 2S 5D 3S AC",
 			"5C AD 5D AC 9C 7C 5H 8D TD KS",
 			"3H 7H 6S KC JS QH TD JC 2D 8S",
@@ -1022,8 +1016,8 @@ public final class p054 implements EulerSolution {
 		if (hand.length != 5)
 			throw new IllegalArgumentException();
 
-		int[] rankCounts = new int[13];  // rankCounts[i] is the number of cards with the rank of i
-		int flushSuit = hand[0].suit;    // flushSuit is in the range [0,3] if all cards have that suit; otherwise -1
+		int[] rankCounts = new int[13]; // rankCounts[i] is the number of cards with the rank of i
+		int flushSuit = hand[0].suit; // flushSuit is in the range [0,3] if all cards have that suit; otherwise -1
 		for (Card card : hand) {
 			rankCounts[card.rank]++;
 			if (card.suit != flushSuit)
@@ -1040,15 +1034,15 @@ public final class p054 implements EulerSolution {
 		int straightHighRank = getStraightHighRank(rankCounts);
 
 		// Main idea: Encode the hand type in the top bits, then encode up to 5 cards in big-endian (4 bits each).
-		if (straightHighRank != -1 && flushSuit != -1) return 8 << 20 | straightHighRank;  // Straight flush
-		else if (rankCountHist[4] == 1) return 7 << 20 | bestCards;         // Four of a kind
-		else if (rankCountHist[3] == 1 && rankCountHist[2] == 1) return 6 << 20 | bestCards;         // Full house
-		else if (flushSuit != -1) return 5 << 20 | bestCards;         // Flush
-		else if (straightHighRank != -1) return 4 << 20 | straightHighRank;  // Straight
-		else if (rankCountHist[3] == 1) return 3 << 20 | bestCards;         // Three of a kind
-		else if (rankCountHist[2] == 2) return 2 << 20 | bestCards;         // Two pairs
-		else if (rankCountHist[2] == 1) return 1 << 20 | bestCards;         // One pair
-		else return 0 << 20 | bestCards;         // High card
+		if (straightHighRank != -1 && flushSuit != -1) return 8 << 20 | straightHighRank; // Straight flush
+		else if (rankCountHist[4] == 1) return 7 << 20 | bestCards;   // Four of a kind
+		else if (rankCountHist[3] == 1 && rankCountHist[2] == 1) return 6 << 20 | bestCards;   // Full house
+		else if (flushSuit != -1) return 5 << 20 | bestCards;   // Flush
+		else if (straightHighRank != -1) return 4 << 20 | straightHighRank; // Straight
+		else if (rankCountHist[3] == 1) return 3 << 20 | bestCards;   // Three of a kind
+		else if (rankCountHist[2] == 2) return 2 << 20 | bestCards;   // Two pairs
+		else if (rankCountHist[2] == 1) return 1 << 20 | bestCards;   // One pair
+		else return bestCards;   // High card
 	}
 
 	// Encodes 5 card ranks into 20 bits in big-endian, starting with the most frequent cards,
@@ -1079,14 +1073,14 @@ public final class p054 implements EulerSolution {
 		for (int i = ranks.length - 1; i >= 3; i--) {
 			for (int j = 0; j < 5; j++) {
 				if (ranks[(i - j + 13) % 13] == 0)
-					continue outer;  // Current offset is not a straight
+					continue outer; // Current offset is not a straight
 			}
-			return i;  // Straight found
+			return i; // Straight found
 		}
 		return -1;
 	}
 
-	public String run() {
+	String run() {
 		int count = 0;
 		for (String hand : HANDS) {
 			// Parse cards and divide among players
@@ -1096,7 +1090,7 @@ public final class p054 implements EulerSolution {
 			Card[] player1 = new Card[5];
 			Card[] player2 = new Card[5];
 			for (int i = 0; i < 5; i++) {
-				player1[i] = new Card(cards[i + 0]);
+				player1[i] = new Card(cards[i]);
 				player2[i] = new Card(cards[i + 5]);
 			}
 
@@ -1109,17 +1103,17 @@ public final class p054 implements EulerSolution {
 
 	private static final class Card {
 
-		public final int rank;
-		public final int suit;
+		final int rank;
+		final int suit;
 
-		public Card(int rank, int suit) {
+		Card(int rank, int suit) {
 			if (rank < 0 || rank >= 13 || suit < 0 || suit >= 4)
 				throw new IllegalArgumentException();
 			this.rank = rank;
 			this.suit = suit;
 		}
 
-		public Card(String str) {
+		Card(String str) {
 			this("23456789TJQKA".indexOf(str.charAt(0)), "SHCD".indexOf(str.charAt(1)));
 		}
 
@@ -1133,7 +1127,5 @@ public final class p054 implements EulerSolution {
 		public int hashCode() {
 			return rank * 4 + suit;
 		}
-
 	}
-
 }

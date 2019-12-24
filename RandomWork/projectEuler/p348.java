@@ -1,12 +1,7 @@
-/*
- * Solution to Project Euler problem 348
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
-public final class p348 implements EulerSolution {
+public final class p348 extends EulerSolution {
 	private static final int TARGET_WAYS = 4;
 
 	/*
@@ -17,12 +12,12 @@ public final class p348 implements EulerSolution {
 	 * Next, write a two-level loop to explore all the cubes i^3
 	 * and squares j^2 such that their sum is less than n:
 	 *
-	 *   ways = new int[n];  // Initially all zero
-	 *   for (i = 2; i^3 < n; i++) {
-	 *     for (j = 2; i^3 + j^2 < n; j++) {
-	 *       ways[i^3 + j^2]++;
-	 *     }
-	 *   }
+	 * ways = new int[n]; // Initially all zero
+	 * for (i = 2; i^3 < n; i++) {
+	 *  for (j = 2; i^3 + j^2 < n; j++) {
+	 *  ways[i^3 + j^2]++;
+	 *  }
+	 * }
 	 *
 	 * The array creation takes O(n) time. The outer loop runs O(n^(1/3)) iterations,
 	 * the inner loop runs O(n^(1/2)) iterations per outer loop, hence the inner loop body
@@ -36,11 +31,6 @@ public final class p348 implements EulerSolution {
 	 * that the total work we do is O(n) with respect to the magnitude of the final answer.
 	 */
 	private static final int TARGET_COUNT = 5;
-
-	static {
-		assert 0 <= TARGET_COUNT;
-		assert 0 <= TARGET_WAYS && TARGET_WAYS <= Byte.MAX_VALUE - 1;
-	}
 
 	public static void main(String[] args) {
 		System.out.println(new p348().run());
@@ -57,7 +47,6 @@ public final class p348 implements EulerSolution {
 		// square greater than 1 and a cube greater than 1. However, the counting of ways
 		// saturates at TARGET_COUNT+1 to prevent potentially unboundedly large values.
 		byte[] ways = new byte[limit];
-
 		// Count both loops downward, so that the end
 		// value is a constant instead of a variable
 		for (int i = cbrt(limit - 1); i > 1; i--) {
@@ -67,42 +56,35 @@ public final class p348 implements EulerSolution {
 				ways[index] = (byte) Math.min(ways[index] + 1, TARGET_WAYS + 1);
 			}
 		}
-
 		// Examine which numbers are palindromes and have the target number of ways
 		long result = 0;
 		int count = 0;
-		for (int i = 0; i < ways.length; i++) {
+		for (int i = 0; i < ways.length; i++)
 			if (ways[i] == TARGET_WAYS && Library.isPalindrome(i)) {
 				result += i;
 				count++;
-				if (count == TARGET_COUNT)
-					return result;
+				if (count == TARGET_COUNT) return result;
 			}
-		}
-		return -1;  // Not found
+		return -1; // Not found
 	}
 
 	// Returns floor(cbrt(x)) for x >= 0.
+	@Contract(pure = true)
 	private static int cbrt(int x) {
-		if (x < 0)
-			throw new IllegalArgumentException("Not implemented");
+		if (x < 0) throw new IllegalArgumentException("Not implemented");
 		int y = 0;
 		for (int i = 1 << 10; i != 0; i >>>= 1) {
 			y |= i;
-			if (y > 1290 || y * y * y > x)
-				y ^= i;
+			if (y > 1290 || y * y * y > x) y ^= i;
 		}
 		return y;
 	}
 
-	public String run() {
+	@NotNull String run() {
 		for (long limit = 1; ; limit *= 10) {
-			if (limit > Integer.MAX_VALUE)
-				throw new AssertionError("Overflow");
+			if (limit > Integer.MAX_VALUE) throw new AssertionError("Overflow");
 			long answer = trySearch((int) limit);
-			if (answer != -1)
-				return Long.toString(answer);
+			if (answer != -1) return Long.toString(answer);
 		}
 	}
-
 }

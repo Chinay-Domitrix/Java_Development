@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 46
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+46
 
-public final class p046 implements EulerSolution {
+public final class p046 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p046().run());
 	}
@@ -23,11 +17,10 @@ public final class p046 implements EulerSolution {
 		return false;
 	}
 
-	public String run() {
+	String run() {
 		for (int i = 9; ; i += 2) {
 			if (!satisfiesConjecture(i))
 				return Integer.toString(i);
 		}
 	}
-
 }

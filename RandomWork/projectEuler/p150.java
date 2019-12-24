@@ -1,19 +1,13 @@
-/*
- * Solution to Project Euler problem 150
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+150
 
-public final class p150 implements EulerSolution {
+public final class p150 extends EulerSolution {
 	private static final int ROWS = 1000;
 
 	public static void main(String[] args) {
 		System.out.println(new p150().run());
 	}
 
-	public String run() {
+	String run() {
 		// Generate the triangle
 		LcgRandom rand = new LcgRandom();
 		int[][] triangle = new int[ROWS][];
@@ -38,7 +32,7 @@ public final class p150 implements EulerSolution {
 			for (int j = 0; j < triangle[i].length; j++) {
 				// Apex element selected at triangle[i][j]
 				long curSum = 0;
-				for (int k = i; k < triangle.length; k++) {  // Ending row (inclusive)
+				for (int k = i; k < triangle.length; k++) { // Ending row (inclusive)
 					curSum += rowSums[k][k - i + 1 + j] - rowSums[k][j];
 					minSum = Math.min(curSum, minSum);
 				}
@@ -48,18 +42,15 @@ public final class p150 implements EulerSolution {
 	}
 
 	private static final class LcgRandom {
-
 		private int state;
 
-		public LcgRandom() {
+		LcgRandom() {
 			state = 0;
 		}
 
-		public int next() {
+		int next() {
 			state = (615949 * state + 797807) & ((1 << 20) - 1);
 			return state - (1 << 19);
 		}
-
 	}
-
 }

@@ -1,23 +1,17 @@
-/*
- * Solution to Project Euler problem 139
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+139
 
-public final class p139 implements EulerSolution {
+public final class p139 extends EulerSolution {
 	private static final int LIMIT = 100000000;
 
 	public static void main(String[] args) {
 		System.out.println(new p139().run());
 	}
 
-	public String run() {
+	String run() {
 		/*
 		 * Pythagorean triples theorem:
-		 *   Every primitive Pythagorean triple with a odd and b even can be expressed as
-		 *   a = st, b = (s^2-t^2)/2, c = (s^2+t^2)/2, where s > t > 0 are coprime odd integers.
+		 * Every primitive Pythagorean triple with a odd and b even can be expressed as
+		 * a = st, b = (s^2-t^2)/2, c = (s^2+t^2)/2, where s > t > 0 are coprime odd integers.
 		 */
 		int count = 0;
 		for (int s = 3; s * s / 2 < LIMIT; s += 2) {
@@ -34,5 +28,4 @@ public final class p139 implements EulerSolution {
 		}
 		return Integer.toString(count);
 	}
-
 }

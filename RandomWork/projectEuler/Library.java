@@ -1,11 +1,3 @@
-/*
- * Shared code for solutions to Project Euler problems
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -217,7 +209,7 @@ final class Library {
 		int p = 1;
 		// Trial division
 		for (int i = 2, end = Library.sqrt(n); i <= end; i++)
-			if (n % i == 0) {  // Found a factor
+			if (n % i == 0) { // Found a factor
 				p *= i - 1;
 				n /= i;
 				while (n % i == 0) {
@@ -254,10 +246,12 @@ final class Library {
 	// - nextPermutation({1,0,0}) leaves the argument array unchanged and returns false.
 	static boolean nextPermutation(@NotNull int[] arr) {
 		int i = arr.length - 1;
+		//noinspection StatementWithEmptyBody
 		for (; i > 0 && arr[i - 1] >= arr[i]; i--) ;
 		if (i <= 0) return false;
 		{
 			int j = arr.length - 1;
+			//noinspection StatementWithEmptyBody
 			for (; arr[j] <= arr[i - 1]; j--) ;
 			int temp = arr[i - 1];
 			arr[i - 1] = arr[j];
@@ -273,10 +267,10 @@ final class Library {
 }
 
 // Immutable unlimited precision fraction
-final class Fraction implements Comparable<Fraction> {
+final class Fraction extends Comparable<Fraction> {
 	public static final Fraction ZERO = new Fraction(BigInteger.ZERO);
-	public final BigInteger numerator;    // Always coprime with denominator
-	public final BigInteger denominator;  // Always positive
+	public final BigInteger numerator; // Always coprime with denominator
+	public final BigInteger denominator; // Always positive
 
 	@Contract(pure = true)
 	Fraction(BigInteger numerator) {
@@ -286,7 +280,6 @@ final class Fraction implements Comparable<Fraction> {
 
 	Fraction(BigInteger numer, @NotNull BigInteger denom) {
 		if (denom.signum() == 0) throw new ArithmeticException("Division by zero");
-		// Reduce to canonical form
 		if (denom.signum() == -1) {
 			numer = numer.negate();
 			denom = denom.negate();

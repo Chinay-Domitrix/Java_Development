@@ -1,18 +1,10 @@
-/*
- * Solution to Project Euler problem 14
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;
 
 import static java.math.BigInteger.ONE;
 
-public final class p014 implements EulerSolution {
+public final class p014 extends EulerSolution {
 	/*
 	 * We compute the Collatz chain length for every integer in the range according to the iteration rule.
 	 * Also, we cache the Collatz value for small integer arguments to speed up the computation.
@@ -21,14 +13,13 @@ public final class p014 implements EulerSolution {
 	// Can be set to any non-negative number, but there are diminishing returns as you go larger
 	private static final BigInteger CACHE_SIZE = BigInteger.valueOf(LIMIT);
 	// Memoization
-	private int[] collatzChainLength = new int[CACHE_SIZE.intValue()];
+	private final int[] collatzChainLength = new int[CACHE_SIZE.intValue()];
 
 	public static void main(String[] args) {
 		System.out.println(new p014().run());
 	}
 
-	@NotNull
-	public String run() {
+	@NotNull String run() {
 		int maxArg = -1;
 		int maxChain = 0;
 		for (int i = 1; i < LIMIT; i++) {
@@ -45,7 +36,7 @@ public final class p014 implements EulerSolution {
 	private int collatzChainLength(@NotNull BigInteger n) {
 		if (n.signum() < 0) throw new IllegalArgumentException();
 		if (n.compareTo(CACHE_SIZE) >= 0) return collatzChainLengthDirect(n); // Caching not available
-		int index = n.intValue();  // Index in the cache
+		int index = n.intValue(); // Index in the cache
 		if (collatzChainLength[index] == 0) collatzChainLength[index] = collatzChainLengthDirect(n);
 		return collatzChainLength[index];
 	}

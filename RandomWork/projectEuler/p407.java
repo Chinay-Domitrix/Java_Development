@@ -1,16 +1,9 @@
-/*
- * Solution to Project Euler problem 407
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public final class p407 implements EulerSolution {
+public final class p407 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 7);
 
 	public static void main(String[] args) {
@@ -23,14 +16,14 @@ public final class p407 implements EulerSolution {
 	 *
 	 * Claim: The only solutions of a^2 = a mod p^k are a = 0, 1 mod p^k.
 	 * Proof:
-	 *   First note that a = 0 mod p^k is always a solution. Now consider the case of 0 < a < p^k.
-	 *   Let a = b * p^j, where 0 < b < p^j and b is coprime with p (thus j is as large as possible).
-	 *   Then (b p^j)^2 = b p^j mod p^k, expanding to b^2 p^2j = b p^j mod p^k.
-	 *   Divide all of the equation (including the modulus) by p^j, giving b^2 p^j = b mod p^(k-j).
-	 *   b is coprime with p (and therefore p^(k-j)), so b^-1 exists.
-	 *   Multiply both sides by b^-2 to get b^-1 = p^j mod p^(k-j).
-	 *   b is coprime with p, so b is not a power of p unless j = 0, i.e. p^j = 1 = b.
-	 *   So when a != 0, a = 1 is the only solution.
+	 * First note that a = 0 mod p^k is always a solution. Now consider the case of 0 < a < p^k.
+	 * Let a = b * p^j, where 0 < b < p^j and b is coprime with p (thus j is as large as possible).
+	 * Then (b p^j)^2 = b p^j mod p^k, expanding to b^2 p^2j = b p^j mod p^k.
+	 * Divide all of the equation (including the modulus) by p^j, giving b^2 p^j = b mod p^(k-j).
+	 * b is coprime with p (and therefore p^(k-j)), so b^-1 exists.
+	 * Multiply both sides by b^-2 to get b^-1 = p^j mod p^(k-j).
+	 * b is coprime with p, so b is not a power of p unless j = 0, i.e. p^j = 1 = b.
+	 * So when a != 0, a = 1 is the only solution.
 	 *
 	 * If we factor n as a product of prime powers, i.e. n = p0^k0 * p1^k1 * ... where
 	 * all the p's are distinct (and thus all the k's are as large as possible), then we have
@@ -39,22 +32,18 @@ public final class p407 implements EulerSolution {
 	 * 2^N distinct solutions (where N is the number of distinct prime factors of n).
 	 * The largest solution among these is what we want for the M() function.
 	 */
-	public String run() {
+	@NotNull String run() {
 		int[] smallestPrimeFactor = Library.listSmallestPrimeFactors(LIMIT);
-
 		// Maximum size of set of prime factors where the product of the set <= LIMIT.
 		// This is important because the number of solutions for n is 2^N,
 		// where N is the number of distinct prime factors of n.
 		int maxNumPrimeFactors = 0;
-		for (int i = 2, prod = 1; i < smallestPrimeFactor.length; i++) {
-			if (smallestPrimeFactor[i] == i) {  // i is prime
-				if (LIMIT / prod < i)
-					break;
+		for (int i = 2, prod = 1; i < smallestPrimeFactor.length; i++)
+			if (smallestPrimeFactor[i] == i) { // i is prime
+				if (LIMIT / prod < i) break;
 				prod *= i;
 				maxNumPrimeFactors++;
 			}
-		}
-
 		long sum = 0;
 		// Temporary arrays
 		int[] solns = new int[1 << maxNumPrimeFactors];
@@ -71,7 +60,6 @@ public final class p407 implements EulerSolution {
 				} while (j % p == 0);
 				factorization.add(q);
 			}
-
 			solns[0] = 0;
 			int solnslen = 1;
 			int modulus = 1;
@@ -79,28 +67,22 @@ public final class p407 implements EulerSolution {
 				// Use Chinese remainder theorem; cache parts of it
 				int recip = Library.reciprocalMod(q % modulus, modulus);
 				int newmod = q * modulus;
-
 				int newsolnslen = 0;
 				for (int j = 0; j < solnslen; j++) {
-					newsolns[newsolnslen++] = ((0 + (int) ((long) (solns[j] - 0 + modulus) * recip % modulus) * q) % newmod);
+					newsolns[newsolnslen++] = (((int) ((long) (solns[j] + modulus) * recip % modulus) * q) % newmod);
 					newsolns[newsolnslen++] = ((1 + (int) ((long) (solns[j] - 1 + modulus) * recip % modulus) * q) % newmod);
 				}
-
 				solnslen = newsolnslen;
 				modulus = newmod;
-
 				// Flip buffers
 				int[] temp = solns;
 				solns = newsolns;
 				newsolns = temp;
 			}
-
 			int max = 0;
-			for (int j = 0; j < solnslen; j++)
-				max = Math.max(solns[j], max);
+			for (int j = 0; j < solnslen; j++) max = Math.max(solns[j], max);
 			sum += max;
 		}
 		return Long.toString(sum);
 	}
-
 }

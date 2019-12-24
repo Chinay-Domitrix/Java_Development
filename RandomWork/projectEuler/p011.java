@@ -1,20 +1,12 @@
-/*
- * Solution to Project Euler problem 11
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import org.jetbrains.annotations.Contract;
 
-public final class p011 implements EulerSolution {
+public final class p011 extends EulerSolution {
 	/*
 	 * We visit each grid cell and compute the product in the 4 directions starting from that cell.
 	 * Note that the maximum product is 99^4 = 96059601, which fits in a Java int type.
 	 */
 	private static final int CONSECUTIVE = 4;
-	private static int[][] SQUARE = {
+	private static final int[][] SQUARE = {
 			{8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8},
 			{49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0},
 			{81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 3, 49, 13, 36, 65},
@@ -42,11 +34,11 @@ public final class p011 implements EulerSolution {
 	}
 
 	@Contract(pure = true)
-	private static int product(int x, int y, int dx, int dy, int n) {
+	private static int product(int x, int y, int dx, int dy) {
 		// First endpoint is assumed to be in bounds. Check if second endpoint is in bounds.
-		if (!isInBounds(x + (n - 1) * dx, y + (n - 1) * dy)) return -1;
+		if (!isInBounds(x + (p011.CONSECUTIVE - 1) * dx, y + (p011.CONSECUTIVE - 1) * dy)) return -1;
 		int prod = 1;
-		for (int i = 0; i < n; i++, x += dx, y += dy) prod *= SQUARE[y][x];
+		for (int i = 0; i < p011.CONSECUTIVE; i++, x += dx, y += dy) prod *= SQUARE[y][x];
 		return prod;
 	}
 
@@ -55,14 +47,14 @@ public final class p011 implements EulerSolution {
 		return 0 <= y && y < SQUARE.length && 0 <= x && x < SQUARE[y].length;
 	}
 
-	public String run() {
+	String run() {
 		int max = -1;
 		for (int y = 0; y < SQUARE.length; y++)
 			for (int x = 0; x < SQUARE[y].length; x++) {
-				max = Math.max(product(x, y, 1, 0, CONSECUTIVE), max);
-				max = Math.max(product(x, y, 0, 1, CONSECUTIVE), max);
-				max = Math.max(product(x, y, 1, 1, CONSECUTIVE), max);
-				max = Math.max(product(x, y, 1, -1, CONSECUTIVE), max);
+				max = Math.max(product(x, y, 1, 0), max);
+				max = Math.max(product(x, y, 0, 1), max);
+				max = Math.max(product(x, y, 1, 1), max);
+				max = Math.max(product(x, y, 1, -1), max);
 			}
 		return Integer.toString(max);
 	}

@@ -1,14 +1,6 @@
-/*
- * Solution to Project Euler problem 10
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import org.jetbrains.annotations.NotNull;
 
-public final class p010 implements EulerSolution {
+public final class p010 extends EulerSolution {
 	/*
 	 * Call the sieve of Eratosthenes and sum the primes found.
 	 * A conservative upper bound for the sum is 2000000^2, which fits in a Java long type.
@@ -19,8 +11,7 @@ public final class p010 implements EulerSolution {
 		System.out.println(new p010().run());
 	}
 
-	@NotNull
-	public String run() {
+	@NotNull String run() {
 		long sum = 0;
 		for (int p : Library.listPrimes(LIMIT - 1)) sum += p;
 		return Long.toString(sum);

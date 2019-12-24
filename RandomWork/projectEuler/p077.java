@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 77
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+77
 
-public final class p077 implements EulerSolution {
+public final class p077 extends EulerSolution {
 	private static final int TARGET = 5000;
 
 	public static void main(String[] args) {
@@ -24,15 +18,15 @@ public final class p077 implements EulerSolution {
 	 * - P(0, n) = 0 for all n > 0.
 	 * - If i is 1 or composite then P(i, n) = P(i - 1, n).
 	 * - Otherwise i is prime:
-	 *   - If i <= n then P(i, n) = P(i - 1, n) + P(i, n - i).
-	 *   - Else P(i, n) = P(i - 1, n).
+	 * - If i <= n then P(i, n) = P(i - 1, n) + P(i, n - i).
+	 * - Else P(i, n) = P(i - 1, n).
 	 *
 	 * Notice that when computing P(i, k), we only need values from the
 	 * current row i for k' in [1, k) and values from the previous row i -1
 	 * for k' in [k, n). Thus we only need to buffer one row of data for
 	 * dynamic programming and can overwrite it in place.
 	 */
-	private static int search(int limit, int target) {
+	private static int search(int limit) {
 		int[] partitions = new int[limit];
 		partitions[0] = 1;
 		for (int i = 0; i < partitions.length; i++) {
@@ -42,18 +36,17 @@ public final class p077 implements EulerSolution {
 				partitions[j] += partitions[j - i];
 		}
 		for (int i = 0; i < limit; i++) {
-			if (partitions[i] > target)
+			if (partitions[i] > p077.TARGET)
 				return i;
 		}
 		return -1;
 	}
 
-	public String run() {
+	String run() {
 		for (int limit = 1; ; limit *= 2) {
-			int result = search(limit, TARGET);
+			int result = search(limit);
 			if (result != -1)
 				return Integer.toString(result);
 		}
 	}
-
 }

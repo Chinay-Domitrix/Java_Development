@@ -1,19 +1,11 @@
-/*
- * Solution to Project Euler problem 271
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-
-public final class p271 implements EulerSolution {
+public final class p271 extends EulerSolution {
 	private static final int[] FACTORS = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43};
 
 	/*
@@ -30,8 +22,8 @@ public final class p271 implements EulerSolution {
 	 * because the sub-congruences have tiny moduli they are easy to solve by brute force. That is to say,
 	 * for x^3 = 1 mod n, we can find all the solutions for x in the range [1, k) just by testing all possibilities.
 	 * For example:
-	 * - x^3 = 1 mod  2 has the solutions (for 1 <= x <  2) of {1}.
-	 * - x^3 = 1 mod  7 has the solutions (for 1 <= x <  7) of {1, 2, 4}.
+	 * - x^3 = 1 mod 2 has the solutions (for 1 <= x < 2) of {1}.
+	 * - x^3 = 1 mod 7 has the solutions (for 1 <= x < 7) of {1, 2, 4}.
 	 * - x^3 = 1 mod 11 has the solutions (for 1 <= x < 11) of {1}.
 	 * - x^3 = 1 mod 43 has the solutions (for 1 <= x < 43) of {1, 6, 36}.
 	 *
@@ -41,7 +33,7 @@ public final class p271 implements EulerSolution {
 	 * compute all the solutions of x^3 = 1 mod (n*k). Using this fact, we build up the full set of solutions
 	 * from the smallest factor to the largest factor.
 	 */
-	private List<Set<Integer>> factorSolutions = new ArrayList<>();
+	private final ArrayList<Set<Integer>> factorSolutions = new ArrayList<>();
 
 	public static void main(String[] args) {
 		System.out.println(new p271().run());
@@ -49,18 +41,15 @@ public final class p271 implements EulerSolution {
 
 	// Assuming that p and q are coprime, 0 <= a < p, and 0 <= b < q, this returns the unique
 	// integer x in the range [0, p*q) such that x satisfies (x = a mod p) and (x = b mod q).
-	private static BigInteger chineseRemainderTheorem(BigInteger a, BigInteger p, BigInteger b, BigInteger q) {
+	private static BigInteger chineseRemainderTheorem(@NotNull BigInteger a, @NotNull BigInteger p, @NotNull BigInteger b, BigInteger q) {
 		// (a + (b - a) * reciprocalMod(p, q) * p) mod (p * q)
 		return a.add(b.subtract(a).multiply(p.modInverse(q)).multiply(p)).mod(p.multiply(q));
 	}
 
-	public String run() {
+	String run() {
 		for (int fact : FACTORS) {
-			Set<Integer> sols = new HashSet<>();
-			for (int j = 1; j < fact; j++) {
-				if (Library.powMod(j, 3, fact) == 1)
-					sols.add(j);
-			}
+			HashSet<Integer> sols = new HashSet<>();
+			for (int j = 1; j < fact; j++) if (Library.powMod(j, 3, fact) == 1) sols.add(j);
 			factorSolutions.add(sols);
 		}
 
@@ -70,8 +59,7 @@ public final class p271 implements EulerSolution {
 	}
 
 	private BigInteger buildAndSumSolutions(int factorIndex, BigInteger x, BigInteger m) {
-		if (factorIndex == FACTORS.length)
-			return x;
+		if (factorIndex == FACTORS.length) return x;
 		else {
 			BigInteger result = BigInteger.ZERO;
 			BigInteger fact = BigInteger.valueOf(FACTORS[factorIndex]);
@@ -83,5 +71,4 @@ public final class p271 implements EulerSolution {
 			return result;
 		}
 	}
-
 }

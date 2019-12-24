@@ -1,13 +1,10 @@
-/*
- * Solution to Project Euler problem 222
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.NotNull;
 
-public final class p222 implements EulerSolution {
-	private double[] sphereRadii;  // In micrometres
+import static java.lang.Integer.bitCount;
+import static java.lang.Math.*;
+
+public final class p222 extends EulerSolution {
+	private double[] sphereRadii; // In micrometres
 	/*
 	 * minLength[i][j] is the minimum achievable length for fitting a set of spheres in a cylindrical tube
 	 * of radius 50000 micrometres, where the sphere of radius sphereRadii[i] is at the left end,
@@ -26,42 +23,35 @@ public final class p222 implements EulerSolution {
 		System.out.println(new p222().run());
 	}
 
-	public String run() {
-		sphereRadii = new double[21];  // {30000, 31000, 32000, ..., 49000, 50000}
-		for (int i = 0; i < sphereRadii.length; i++)
-			sphereRadii[i] = (i + 30) * 1000;
+	@NotNull String run() {
+		sphereRadii = new double[21]; // {30000, 31000, 32000, ..., 49000, 50000}
+		for (int i = 0; i < sphereRadii.length; i++) sphereRadii[i] = (i + 30) * 1000;
 		minLength = new double[sphereRadii.length][1 << sphereRadii.length];
-
 		double min = Double.POSITIVE_INFINITY;
 		for (int i = 0; i < sphereRadii.length; i++)
-			min = Math.min(findMinimumLength(i, (1 << sphereRadii.length) - 1) + sphereRadii[i], min);
-		return Long.toString(Math.round(min));
+			min = min(findMinimumLength(i, (1 << sphereRadii.length) - 1) + sphereRadii[i], min);
+		return Long.toString(round(min));
 	}
 
 	private double findMinimumLength(int currentSphereIndex, int setOfSpheres) {
-		if ((setOfSpheres & (1 << currentSphereIndex)) == 0)
-			throw new IllegalArgumentException();
-
+		if ((setOfSpheres & (1 << currentSphereIndex)) == 0) throw new IllegalArgumentException();
 		// Memoization
 		if (minLength[currentSphereIndex][setOfSpheres] == 0) {
 			double result;
-			if (Integer.bitCount(setOfSpheres) == 1)
-				result = sphereRadii[currentSphereIndex];  // This sphere is rightmost
+			if (bitCount(setOfSpheres) == 1) result = sphereRadii[currentSphereIndex]; // This sphere is rightmost
 			else {
 				result = Double.POSITIVE_INFINITY;
 				int newSetOfSpheres = setOfSpheres ^ (1 << currentSphereIndex);
-				for (int i = 0; i < sphereRadii.length; i++) {  // i is the index of the next sphere
-					if ((newSetOfSpheres & (1 << i)) == 0)
-						continue;
+				for (int i = 0; i < sphereRadii.length; i++) { // i is the index of the next sphere
+					if ((newSetOfSpheres & (1 << i)) == 0) continue;
 					// The sqrt() here is what makes the entire computation not guaranteed to be accurate
-					double temp = Math.sqrt((sphereRadii[i] + sphereRadii[currentSphereIndex] - 50000) * 200000);
+					double temp = sqrt((sphereRadii[i] + sphereRadii[currentSphereIndex] - 50000) * 200000);
 					temp += findMinimumLength(i, newSetOfSpheres);
-					result = Math.min(temp, result);
+					result = min(temp, result);
 				}
 			}
 			minLength[currentSphereIndex][setOfSpheres] = result;
 		}
 		return minLength[currentSphereIndex][setOfSpheres];
 	}
-
 }

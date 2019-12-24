@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 92
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+92
 
-public final class p092 implements EulerSolution {
+public final class p092 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 7);
 
 	public static void main(String[] args) {
@@ -35,7 +29,7 @@ public final class p092 implements EulerSolution {
 		return sum;
 	}
 
-	public String run() {
+	String run() {
 		int count = 0;
 		for (int i = 1; i < LIMIT; i++) {
 			if (isClass89(i))
@@ -43,5 +37,4 @@ public final class p092 implements EulerSolution {
 		}
 		return Integer.toString(count);
 	}
-
 }

@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 38
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.Arrays;
 
+38
 
-public final class p038 implements EulerSolution {
+public final class p038 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p038().run());
 	}
@@ -22,18 +15,17 @@ public final class p038 implements EulerSolution {
 		return new String(temp).equals("123456789");
 	}
 
-	public String run() {
+	String run() {
 		int max = -1;
 		for (int n = 2; n <= 9; n++) {
 			for (int i = 1; i < Library.pow(10, 9 / n); i++) {
-				String concat = "";
+				StringBuilder concat = new StringBuilder();
 				for (int j = 1; j <= n; j++)
-					concat += i * j;
-				if (isPandigital(concat))
-					max = Math.max(Integer.parseInt(concat), max);
+					concat.append(i * j);
+				if (isPandigital(concat.toString()))
+					max = Math.max(Integer.parseInt(concat.toString()), max);
 			}
 		}
 		return Integer.toString(max);
 	}
-
 }

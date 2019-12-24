@@ -1,88 +1,81 @@
-/*
- * Solution to Project Euler problem 103
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.Arrays;
 
+103
 
-public final class p103 implements EulerSolution {
+public final class p103 extends EulerSolution {
 	private static final int TARGET_SIZE = 7;
 
 	/*
 	 * We start with three pedantic lemmas to constrain the nature of possible solutions.
 	 *
 	 * No-zero lemma:
-	 *   A special sum set (SSS) should not contain the value 0. The problem statement
-	 *   doesn't say this explicitly, but it is implied in the numerical examples.
+	 * A special sum set (SSS) should not contain the value 0. The problem statement
+	 * doesn't say this explicitly, but it is implied in the numerical examples.
 	 * Proof:
-	 *   - For size n = 0, {} technically qualifies as an SSS, and is trivially optimum.
-	 *     But the problem statement does not mention the n = 0 case at all.
-	 *   - For size n = 1, {0} has sum 0, which is better than the SSS {1} given in the
-	 *     problem statement, yet this violates no properties. Even though the subsets
-	 *     {} and {0} have the same sum of 0, the properties only apply to non-empty subsets.
-	 *   - For size n = 2, {0,1} has sum 1, which is better than the SSS {1,2} given in
-	 *     the problem statement, yet this still violates no properties. There is exactly
-	 *     one possible pair of non-empty disjoint subsets, namely {0} vs. {1}, and
-	 *     this pair satisfies both properties.
-	 *   - For sizes n >= 3, having 0 in the set would violate property (ii) for the pair of
+	 * - For size n = 0, {} technically qualifies as an SSS, and is trivially optimum.
+	 *  But the problem statement does not mention the n = 0 case at all.
+	 * - For size n = 1, {0} has sum 0, which is better than the SSS {1} given in the
+	 *  problem statement, yet this violates no properties. Even though the subsets
+	 *  {} and {0} have the same sum of 0, the properties only apply to non-empty subsets.
+	 * - For size n = 2, {0,1} has sum 1, which is better than the SSS {1,2} given in
+	 *  the problem statement, yet this still violates no properties. There is exactly
+	 *  one possible pair of non-empty disjoint subsets, namely {0} vs. {1}, and
+	 *  this pair satisfies both properties.
+	 * - For sizes n >= 3, having 0 in the set would violate property (ii) for the pair of
 	 * 	subsets {0,a} and {b}, where 0 and a and b are distinct elements of the set and a < b.
-	 *   Hence for 0 <= n <= 2, allowing 0 would produce a more optimum solution than the
-	 *   examples given in the problem statement, and for n >= 3 an SSS can never contain 0.
+	 * Hence for 0 <= n <= 2, allowing 0 would produce a more optimum solution than the
+	 * examples given in the problem statement, and for n >= 3 an SSS can never contain 0.
 	 *
 	 * As for negative numbers, the intent of the problem statement readily suggests that elements
 	 * are never negative. Furthermore, having negative numbers in a set would either affect the
 	 * sum by only a small amount or violate property (ii), making the problem uninteresting.
 	 *
 	 * Upper bound lemma:
-	 *   For each natural number n >= 0, there exists a special sum set
-	 *   whose size is n and whose sum is (n + 1) * 2^n - 1.
+	 * For each natural number n >= 0, there exists a special sum set
+	 * whose size is n and whose sum is (n + 1) * 2^n - 1.
 	 * Proof:
-	 *   - For each index i (counting from 0), let element i equal 2^n + 2^i.
-	 *   - The sum of all the elements is (2^n + 2^0) + (2^n + 2^1) + ... + (2^n + 2^(n-1))
-	 *     = n * 2^n + (2^0 + 2^1 + ... + 2^(n-1)) = n * 2^n + 2^n - 1 = (n + 1) * 2^n - 1.
-	 *   - For example with n = 4, the elements expressed in binary are {10001,
-	 *     10010, 10100, 11000}. Their sum is 1001111 (binary) = 79 (decimal).
-	 *   - Notice that when summing a subset of (distinct) elements, the bottom n bits
-	 *     never produce a carry. This means the bottom n bits behave like a set union,
-	 *     and the activity in the bottom n bits never affect the 2^n term or above.
-	 *   - Property (i) is satisfied because for any subset B, the bottommost n bits of S(B)
-	 *     encode which elements are present. Thus any two unequal subsets will have unequal sums.
-	 *   - Property (ii) is satisfied because for any subset B, the value floor(S(B) / 2^n)
-	 *     (i.e. dropping the bottommost n bits) encodes the size of B.
+	 * - For each index i (counting from 0), let element i equal 2^n + 2^i.
+	 * - The sum of all the elements is (2^n + 2^0) + (2^n + 2^1) + ... + (2^n + 2^(n-1))
+	 *  = n * 2^n + (2^0 + 2^1 + ... + 2^(n-1)) = n * 2^n + 2^n - 1 = (n + 1) * 2^n - 1.
+	 * - For example with n = 4, the elements expressed in binary are {10001,
+	 *  10010, 10100, 11000}. Their sum is 1001111 (binary) = 79 (decimal).
+	 * - Notice that when summing a subset of (distinct) elements, the bottom n bits
+	 *  never produce a carry. This means the bottom n bits behave like a set union,
+	 *  and the activity in the bottom n bits never affect the 2^n term or above.
+	 * - Property (i) is satisfied because for any subset B, the bottommost n bits of S(B)
+	 *  encode which elements are present. Thus any two unequal subsets will have unequal sums.
+	 * - Property (ii) is satisfied because for any subset B, the value floor(S(B) / 2^n)
+	 *  (i.e. dropping the bottommost n bits) encodes the size of B.
 	 * Corollaries:
-	 *   - For any given upper bound, there are a finite number of {{sets of positive integers}
-	 *     whose sum doesn't exceed the upper bound}. Thus once we find an SSS with a certain sum,
-	 *     we can argue by finite search that there must exist an optimum SSS whose sum is
-	 *     less than or equal to the aforementioned sum.
-	 *   - For size 7, we know there exists an SSS of sum exactly (7 + 1) * 2^7 - 1 = 1023.
-	 *     Hence we don't need to search any larger sums or use wide integer types.
+	 * - For any given upper bound, there are a finite number of {{sets of positive integers}
+	 *  whose sum doesn't exceed the upper bound}. Thus once we find an SSS with a certain sum,
+	 *  we can argue by finite search that there must exist an optimum SSS whose sum is
+	 *  less than or equal to the aforementioned sum.
+	 * - For size 7, we know there exists an SSS of sum exactly (7 + 1) * 2^7 - 1 = 1023.
+	 *  Hence we don't need to search any larger sums or use wide integer types.
 	 *
 	 * Lower bound lemma:
-	 *   For each n >= 3, each special sum set of size n must have sum at least 2^n.
+	 * For each n >= 3, each special sum set of size n must have sum at least 2^n.
 	 * Proof:
-	 *   - A set of size n has exactly 2^n - 1 non-empty subsets
-	 *     (the kind relevant to the problem statement).
-	 *   - Because all elements are positive integers, the lowest possible
-	 *     subset sum is 1, and the highest sum is the sum of all elements.
-	 *   - To satisfy property (i) and give each non-empty subset a unique sum, the
-	 *     set of sums with the smallest maximum value is {1, 2, 3, ..., 2^n - 1}.
-	 *   - To achieve the aforementioned set of subset sums using positive elements,
-	 *     the one and only solution is the set {1, 2, 4, 8, ..., 2^(n-1)}.
-	 *   - But for n >= 3, the pair of subsets {1,2} and {4} violates property (ii).
-	 *   - Hence the set cannot have sum 2^n - 1. It must have a sum of at least 2^n.
+	 * - A set of size n has exactly 2^n - 1 non-empty subsets
+	 *  (the kind relevant to the problem statement).
+	 * - Because all elements are positive integers, the lowest possible
+	 *  subset sum is 1, and the highest sum is the sum of all elements.
+	 * - To satisfy property (i) and give each non-empty subset a unique sum, the
+	 *  set of sums with the smallest maximum value is {1, 2, 3, ..., 2^n - 1}.
+	 * - To achieve the aforementioned set of subset sums using positive elements,
+	 *  the one and only solution is the set {1, 2, 4, 8, ..., 2^(n-1)}.
+	 * - But for n >= 3, the pair of subsets {1,2} and {4} violates property (ii).
+	 * - Hence the set cannot have sum 2^n - 1. It must have a sum of at least 2^n.
 	 * Corollary:
-	 *   We can begin searching for an optimum SSS with the initial maximum sum set to 2^n.
+	 * We can begin searching for an optimum SSS with the initial maximum sum set to 2^n.
 	 */
 
 	public static void main(String[] args) {
 		System.out.println(new p103().run());
 	}
 
-	public String run() {
+	String run() {
 		// At the top level, we try to find a special sum set with sum at most s,
 		// incrementing the bound s until we succeed. When we find a solution
 		// with sum at most s, but find none with sum at most s - 1, it implies
@@ -93,11 +86,11 @@ public final class p103 implements EulerSolution {
 		// searching from a maximum sum of 0.
 		for (int maxSum = 0; ; maxSum++) {
 			SpecialSumSet set = SpecialSumSet.makeSet(TARGET_SIZE, maxSum);
-			if (set != null) {  // Solution found; concatenate numbers into a string
-				String ans = "";
+			if (set != null) { // Solution found; concatenate numbers into a string
+				StringBuilder ans = new StringBuilder();
 				for (int x : set.values)
-					ans += x;
-				return ans;
+					ans.append(x);
+				return ans.toString();
 			}
 		}
 	}
@@ -110,19 +103,19 @@ public final class p103 implements EulerSolution {
 	private static final class SpecialSumSet {
 
 		// Positive numbers in strict ascending order. Length 0 or more.
-		public int[] values;
+		final int[] values;
 		// For indexes i from 0 to sum(values) inclusive, sumPossible[i]
 		// is true iff there exists a subset of 'values' whose sum is i.
-		private boolean[] sumPossible;
+		private final boolean[] sumPossible;
 
 		// Note: All fields are conceptually immutable
 		// For i from 0 to values.length (inclusive), minimumSum[i] is the minimum sum
 		// among all possible subsets of 'values' of size i, and likewise for maximumSum[i].
-		private int[] minimumSum;
-		private int[] maximumSum;
+		private final int[] minimumSum;
+		private final int[] maximumSum;
 
 		// Creates an empty set, which is a valid state.
-		public SpecialSumSet() {
+		SpecialSumSet() {
 			this(new int[]{}, new boolean[]{true}, new int[]{0}, new int[]{0});
 		}
 
@@ -136,7 +129,7 @@ public final class p103 implements EulerSolution {
 
 		// Returns the lexicographically lowest special sum set with the given size
 		// and with a sum of at most maximumSum, or null if no such set exists.
-		public static SpecialSumSet makeSet(int targetSize, int maximumSum) {
+		static SpecialSumSet makeSet(int targetSize, int maximumSum) {
 			return makeSet(new SpecialSumSet(), targetSize, maximumSum, 1);
 		}
 
@@ -147,7 +140,7 @@ public final class p103 implements EulerSolution {
 			// In summary, this procedure takes a partial answer (prefix) and some parameters,
 			// and tries to extend the answer by performing depth-first search through recursion.
 
-			if (sizeRemain == 0)  // Base case - success
+			if (sizeRemain == 0) // Base case - success
 				return set;
 
 			// Optimization: If we still need to add at least 2 elements, then the next element
@@ -178,12 +171,12 @@ public final class p103 implements EulerSolution {
 				if (temp != null)
 					return temp;
 			}
-			return null;  // No solution for the given current state
+			return null; // No solution for the given current state
 		}
 
 		// Attempts to add the given value to this set, returning a new set
 		// if successful. Otherwise returns null if any property is violated.
-		public SpecialSumSet add(int val) {
+		SpecialSumSet add(int val) {
 			// Simple checks on the value
 			if (val <= 0)
 				throw new IllegalArgumentException("Value must be positive");
@@ -245,34 +238,33 @@ public final class p103 implements EulerSolution {
 		 * - S({3, 5, 6}) = 14.
 		 *
 		 * Therefore, the data arrays have the following values:
-		 * - sumPossible = [T, F, F, T, F, T, T, F, T, T,  F,  T,  F,  F,  T].
-		 *   (Sum legend:   0  1  2  3  4  5  6  7  8  9  10  11  12  13  14)
-		 * - minimumSums = [0, 3,  8, 14].
+		 * - sumPossible = [T, F, F, T, F, T, T, F, T, T, F, T, F, F, T].
+		 * (Sum legend: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14)
+		 * - minimumSums = [0, 3, 8, 14].
 		 * - maximumSums = [0, 6, 11, 14].
-		 * - (Size legend:  0  1   2   3)
+		 * - (Size legend: 0 1 2 3)
 		 *
 		 * Now suppose we want to add the value 7 to the set. Here is what happens:
 		 * - First we check that in sumPossible, no pair of 'true' elements are
-		 *   separated by a distance of 7. This ensures that if we take any particular
-		 *   subset and add 7 to it, its sum won't equal another existing subset sum.
+		 * separated by a distance of 7. This ensures that if we take any particular
+		 * subset and add 7 to it, its sum won't equal another existing subset sum.
 		 * - Let the new set S' = S union {7} = {3, 5, 6, 7}. What are
-		 *   the minimum and maximum subset sums for each subset size k?
-		 *   - If k = 0, the min and max are both clearly 0.
-		 *   - If k = |S| = 4, then min and max are the sum of all elements, thus 21.
-		 *   - Otherwise with k > 0, consider an arbitrary subset A of S' where |A| = k.
-		 *     - If A does not contain 7, then A is a subset of S, so A's
-		 *       minimum sum is minimumSums[k] and A's maximum sum is maximumSums[k].
-		 *     - Otherwise split A = {7} union B, where B does not contain 7.
-		 *       B is a subset of S, and |B| = k - 1. So A's minimum sum is
-		 *       7 + minimumSums[k - 1], and A's maximum sum is 7 + maximumSums[k - 1].
-		 *     Hence newMinimumSums[k] = min(minimumSums[k], 7 + minimumSums[k - 1]),
-		 *     and newMaximumSums[k] = max(maximumSums[k], 7 + maximumSums[k - 1]).
-		 *   For each size k that is not out of bounds, if maximumSums[k] >= minimumSums[k + 1],
-		 *   then there exists some set of size k with some set of size k + 1 fails property (ii).
-		 *   Otherwise property (ii) is upheld in all subset pairs (including empty subsets).
+		 * the minimum and maximum subset sums for each subset size k?
+		 * - If k = 0, the min and max are both clearly 0.
+		 * - If k = |S| = 4, then min and max are the sum of all elements, thus 21.
+		 * - Otherwise with k > 0, consider an arbitrary subset A of S' where |A| = k.
+		 *  - If A does not contain 7, then A is a subset of S, so A's
+		 *  minimum sum is minimumSums[k] and A's maximum sum is maximumSums[k].
+		 *  - Otherwise split A = {7} union B, where B does not contain 7.
+		 *  B is a subset of S, and |B| = k - 1. So A's minimum sum is
+		 *  7 + minimumSums[k - 1], and A's maximum sum is 7 + maximumSums[k - 1].
+		 *  Hence newMinimumSums[k] = min(minimumSums[k], 7 + minimumSums[k - 1]),
+		 *  and newMaximumSums[k] = max(maximumSums[k], 7 + maximumSums[k - 1]).
+		 * For each size k that is not out of bounds, if maximumSums[k] >= minimumSums[k + 1],
+		 * then there exists some set of size k with some set of size k + 1 fails property (ii).
+		 * Otherwise property (ii) is upheld in all subset pairs (including empty subsets).
 		 * - Finally, we compute the new sumPossible table (which is guaranteed to
-		 *   have no conflicts), and finish creating the new set with the added element.
+		 * have no conflicts), and finish creating the new set with the added element.
 		 */
 	}
-
 }

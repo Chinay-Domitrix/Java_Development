@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 123
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+123
 
-public final class p123 implements EulerSolution {
+public final class p123 extends EulerSolution {
 	private static final int PRIME_LIMIT = 1000000;
 	private static final long THRESHOLD = 10000000000L;
 
@@ -14,7 +8,7 @@ public final class p123 implements EulerSolution {
 		System.out.println(new p123().run());
 	}
 
-	public String run() {
+	String run() {
 		int[] primes = Library.listPrimes(PRIME_LIMIT);
 		for (int n = 5; n <= primes.length; n += 2) {
 			/*
@@ -30,5 +24,4 @@ public final class p123 implements EulerSolution {
 		}
 		throw new AssertionError("Not found");
 	}
-
 }

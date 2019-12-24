@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 32
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.Arrays;
 
+32
 
-public final class p032 implements EulerSolution {
+public final class p032 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p032().run());
 	}
@@ -40,7 +33,7 @@ public final class p032 implements EulerSolution {
 	 * Therefore we need the product z < 10000 to be able to find
 	 * possible x and y values.
 	 */
-	public String run() {
+	String run() {
 		int sum = 0;
 		for (int i = 1; i < 10000; i++) {
 			if (hasPandigitalProduct(i))
@@ -48,5 +41,4 @@ public final class p032 implements EulerSolution {
 		}
 		return Integer.toString(sum);
 	}
-
 }

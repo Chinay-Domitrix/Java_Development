@@ -1,22 +1,15 @@
-/*
- * Solution to Project Euler problem 57
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 
+57
 
-public final class p057 implements EulerSolution {
+public final class p057 extends EulerSolution {
 	private static final int LIMIT = 1000;
 
 	public static void main(String[] args) {
 		System.out.println(new p057().run());
 	}
 
-	public String run() {
+	String run() {
 		BigInteger n = BigInteger.ZERO;
 		BigInteger d = BigInteger.ONE;
 		int count = 0;
@@ -30,5 +23,4 @@ public final class p057 implements EulerSolution {
 		}
 		return Integer.toString(count);
 	}
-
 }

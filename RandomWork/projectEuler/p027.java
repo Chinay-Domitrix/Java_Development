@@ -1,12 +1,4 @@
-/*
- * Solution to Project Euler problem 27
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
-public final class p027 implements EulerSolution {
+public final class p027 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p027().run());
 	}
@@ -19,7 +11,7 @@ public final class p027 implements EulerSolution {
 		}
 	}
 
-	public String run() {
+	String run() {
 		int bestNum = 0;
 		int bestA = 0;
 		int bestB = 0;
@@ -35,5 +27,4 @@ public final class p027 implements EulerSolution {
 		}
 		return Integer.toString(bestA * bestB);
 	}
-
 }

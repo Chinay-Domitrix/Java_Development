@@ -1,12 +1,7 @@
-/*
- * Solution to Project Euler problem 231
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
-public final class p231 implements EulerSolution {
+public final class p231 extends EulerSolution {
 	private static final int N = 20000000;
 	private static final int K = 15000000;
 	private int[] smallestPrimeFactor;
@@ -15,13 +10,12 @@ public final class p231 implements EulerSolution {
 		System.out.println(new p231().run());
 	}
 
-	public String run() {
+	@NotNull String run() {
 		smallestPrimeFactor = Library.listSmallestPrimeFactors(N);
-		return Long.toString(factorialPrimeFactorSum(N)
-				- factorialPrimeFactorSum(K)
-				- factorialPrimeFactorSum(N - K));
+		return Long.toString(factorialPrimeFactorSum(N) - factorialPrimeFactorSum(K) - factorialPrimeFactorSum(N - K));
 	}
 
+	@Contract(pure = true)
 	private long factorialPrimeFactorSum(int n) {
 		long sum = 0;
 		for (int i = 1; i <= n; i++) {
@@ -34,5 +28,4 @@ public final class p231 implements EulerSolution {
 		}
 		return sum;
 	}
-
 }

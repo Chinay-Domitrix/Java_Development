@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 47
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+47
 
-public final class p047 implements EulerSolution {
+public final class p047 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p047().run());
 	}
@@ -30,14 +24,13 @@ public final class p047 implements EulerSolution {
 		return count;
 	}
 
-	public String run() {
+	String run() {
 		for (int i = 2; ; i++) {
-			if (has4PrimeFactors(i + 0)
+			if (has4PrimeFactors(i)
 					&& has4PrimeFactors(i + 1)
 					&& has4PrimeFactors(i + 2)
 					&& has4PrimeFactors(i + 3))
 				return Integer.toString(i);
 		}
 	}
-
 }

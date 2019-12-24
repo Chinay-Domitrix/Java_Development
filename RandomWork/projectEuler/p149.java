@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 149
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+149
 
-public final class p149 implements EulerSolution {
+public final class p149 extends EulerSolution {
 	private static final int SIZE = 2000;
 	private int[][] grid;
 
@@ -14,7 +8,7 @@ public final class p149 implements EulerSolution {
 		System.out.println(new p149().run());
 	}
 
-	public String run() {
+	String run() {
 		// Fill the grid
 		grid = new int[SIZE][SIZE];
 		LfgRandom rand = new LfgRandom();
@@ -26,12 +20,12 @@ public final class p149 implements EulerSolution {
 		// Scan along all line directions and positions
 		int max = 0;
 		for (int i = 0; i < SIZE; i++) {
-			max = Math.max(getMaxSubstringSum(0, i, +1, 0), max);  // Horizontal from left edge
-			max = Math.max(getMaxSubstringSum(i, 0, 0, +1), max);  // Vertical from top edge
-			max = Math.max(getMaxSubstringSum(0, i, +1, +1), max);  // Diagonal from left edge
-			max = Math.max(getMaxSubstringSum(i, 0, +1, +1), max);  // Diagonal from top edge
-			max = Math.max(getMaxSubstringSum(i, 0, -1, +1), max);  // Anti-diagonal from top edge
-			max = Math.max(getMaxSubstringSum(SIZE - 1, i, -1, +1), max);  // Anti-diagonal from right edge
+			max = Math.max(getMaxSubstringSum(0, i, +1, 0), max); // Horizontal from left edge
+			max = Math.max(getMaxSubstringSum(i, 0, 0, +1), max); // Vertical from top edge
+			max = Math.max(getMaxSubstringSum(0, i, +1, +1), max); // Diagonal from left edge
+			max = Math.max(getMaxSubstringSum(i, 0, +1, +1), max); // Diagonal from top edge
+			max = Math.max(getMaxSubstringSum(i, 0, -1, +1), max); // Anti-diagonal from top edge
+			max = Math.max(getMaxSubstringSum(SIZE - 1, i, -1, +1), max); // Anti-diagonal from right edge
 		}
 		return Integer.toString(max);
 	}
@@ -41,8 +35,8 @@ public final class p149 implements EulerSolution {
 	private int getMaxSubstringSum(int x, int y, int dx, int dy) {
 		int max = 0;
 		for (int cur = 0; 0 <= x && x < SIZE && 0 <= y && y < SIZE; x += dx, y += dy) {
-			cur = Math.max(cur + grid[y][x], 0);  // Reset the running sum if it goes negative
-			max = Math.max(cur, max);  // Keep track of the best seen running sum
+			cur = Math.max(cur + grid[y][x], 0); // Reset the running sum if it goes negative
+			max = Math.max(cur, max); // Keep track of the best seen running sum
 		}
 		return max;
 	}
@@ -51,18 +45,18 @@ public final class p149 implements EulerSolution {
 	private static final class LfgRandom {
 
 		// Circular buffer
-		private int[] history;
+		private final int[] history;
 		private int index;
 
-		private int k;  // The 1-based index of the next sequence item, but saturates at 56
+		private int k; // The 1-based index of the next sequence item, but saturates at 56
 
-		public LfgRandom() {
+		LfgRandom() {
 			k = 1;
 			history = new int[55];
 			index = 0;
 		}
 
-		public int next() {
+		int next() {
 			int result;
 			if (k <= 55) {
 				result = (int) ((100003L - 200003L * k + 300007L * k * k * k) % 1000000) - 500000;
@@ -82,7 +76,5 @@ public final class p149 implements EulerSolution {
 				throw new IllegalArgumentException();
 			return history[(index - n + history.length) % history.length];
 		}
-
 	}
-
 }

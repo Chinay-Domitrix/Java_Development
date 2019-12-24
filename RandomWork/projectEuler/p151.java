@@ -1,23 +1,16 @@
-/*
- * Solution to Project Euler problem 151
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.*;
 
+151
 
-public final class p151 implements EulerSolution {
-	private Map<List<Integer>, Double> expectedSingles = new HashMap<>();
+public final class p151 extends EulerSolution {
+	private final Map<List<Integer>, Double> expectedSingles = new HashMap<>();
 
 	public static void main(String[] args) {
 		System.out.println(new p151().run());
 	}
 
-	public String run() {
-		List<Integer> startState = Arrays.asList(1);
+	String run() {
+		List<Integer> startState = Collections.singletonList(1);
 		return String.format("%.6f", getExpectedSingles(startState) - 2);
 	}
 
@@ -30,6 +23,7 @@ public final class p151 implements EulerSolution {
 			for (int i = 0; i < state.size(); i++) {
 				List<Integer> newState = new ArrayList<>(state);
 				int sheet = state.get(i);
+				//noinspection SuspiciousListRemoveInLoop
 				newState.remove(i);
 				for (int j = sheet + 1; j <= 5; j++)
 					newState.add(j);
@@ -43,5 +37,4 @@ public final class p151 implements EulerSolution {
 		expectedSingles.put(state, result);
 		return result;
 	}
-
 }

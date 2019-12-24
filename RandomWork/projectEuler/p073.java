@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 73
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+73
 
-public final class p073 implements EulerSolution {
+public final class p073 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p073().run());
 	}
@@ -31,8 +25,7 @@ public final class p073 implements EulerSolution {
 	 *
 	 * This algorithm uses a lot of stack space (about 12000 frames). You probably need to use a JVM option like "-Xss4M".
 	 */
-	public String run() {
+	String run() {
 		return Integer.toString(sternBrocotCount(1, 3, 1, 2));
 	}
-
 }

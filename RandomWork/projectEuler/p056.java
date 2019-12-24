@@ -1,15 +1,8 @@
-/*
- * Solution to Project Euler problem 56
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.math.BigInteger;
 
+56
 
-public final class p056 implements EulerSolution {
+public final class p056 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p056().run());
 	}
@@ -22,7 +15,7 @@ public final class p056 implements EulerSolution {
 		return sum;
 	}
 
-	public String run() {
+	String run() {
 		int max = 0;
 		for (int a = 1; a < 100; a++) {
 			for (int b = 1; b < 100; b++) {
@@ -32,5 +25,4 @@ public final class p056 implements EulerSolution {
 		}
 		return Integer.toString(max);
 	}
-
 }

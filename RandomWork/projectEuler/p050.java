@@ -1,27 +1,21 @@
-/*
- * Solution to Project Euler problem 50
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+50
 
-public final class p050 implements EulerSolution {
+public final class p050 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 6);
 
 	public static void main(String[] args) {
 		System.out.println(new p050().run());
 	}
 
-	public String run() {
+	String run() {
 		boolean[] isPrime = Library.listPrimality(LIMIT);
 		int[] primes = Library.listPrimes(LIMIT);
 
 		long maxSum = 0;
 		int maxRun = -1;
-		for (int i = 0; i < primes.length; i++) {  // For each index of a starting prime number
+		for (int i = 0; i < primes.length; i++) { // For each index of a starting prime number
 			int sum = 0;
-			for (int j = i; j < primes.length; j++) {  // For each end index (inclusive)
+			for (int j = i; j < primes.length; j++) { // For each end index (inclusive)
 				sum += primes[j];
 				if (sum > LIMIT)
 					break;
@@ -33,5 +27,4 @@ public final class p050 implements EulerSolution {
 		}
 		return Long.toString(maxSum);
 	}
-
 }

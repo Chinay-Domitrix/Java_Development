@@ -1,17 +1,10 @@
-/*
- * Solution to Project Euler problem 88
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+88
 
-public final class p088 implements EulerSolution {
+public final class p088 extends EulerSolution {
 	private static final int LIMIT = 12000;
 	/*
 	 * minSumProduct[k] is the smallest positive integers that can be written as both a sum and a product of the same collection of k positive integers.
@@ -19,11 +12,11 @@ public final class p088 implements EulerSolution {
 	 *
 	 * For all k >= 2:
 	 * - minSumProduct[k] > k because 1 + ... + 1 (with k terms) = k, which is the minimum sum of k positive integers,
-	 *   but the product is 1 which is unequal to k, so k is not a valid solution.
+	 * but the product is 1 which is unequal to k, so k is not a valid solution.
 	 * - minSumProduct[k] <= 2k because 1 + ... + 1 + 2 + k (with k terms in total) = (k - 2) + 2 + k = 2k. The product is 2k, which equals the sum.
-	 *   Since this is one achievable solution, the minimum solution must be no larger than this.
+	 * Since this is one achievable solution, the minimum solution must be no larger than this.
 	 * - Aside: minSumProduct[k] is not a prime number. Suppose minSumProduct[k] = p, where p is prime. Then p can only be factorized as p, p * 1, p * 1 * 1, etc.
-	 *   So whenever the factorization has more than one term, the sum exceeds p, which makes it unequal to the product.
+	 * So whenever the factorization has more than one term, the sum exceeds p, which makes it unequal to the product.
 	 *
 	 * Therefore we need to consider all numbers from 2 to LIMIT*2 and factorize them in all possible ways to find all the relevant solutions.
 	 */
@@ -33,7 +26,7 @@ public final class p088 implements EulerSolution {
 		System.out.println(new p088().run());
 	}
 
-	public String run() {
+	String run() {
 		minSumProduct = new int[LIMIT + 1];
 		Arrays.fill(minSumProduct, Integer.MAX_VALUE);
 		for (int i = 2; i <= LIMIT * 2; i++)
@@ -59,7 +52,7 @@ public final class p088 implements EulerSolution {
 	 */
 	private void factorize(int n, int remain, int maxFactor, int sum, int terms) {
 		if (remain == 1) {
-			if (sum > n)  // Without using factors of 1, the sum never exceeds the product
+			if (sum > n) // Without using factors of 1, the sum never exceeds the product
 				throw new AssertionError();
 
 			terms += n - sum;
@@ -70,11 +63,9 @@ public final class p088 implements EulerSolution {
 			// Note: maxFactor <= remain
 			for (int i = 2; i <= maxFactor; i++) {
 				if (remain % i == 0) {
-					int factor = i;
-					factorize(n, remain / factor, Math.min(factor, maxFactor), sum + factor, terms + 1);
+					factorize(n, remain / i, Math.min(i, maxFactor), sum + i, terms + 1);
 				}
 			}
 		}
 	}
-
 }

@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 381
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.NotNull;
 
-public final class p381 implements EulerSolution {
+public final class p381 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p381().run());
 	}
@@ -23,7 +17,7 @@ public final class p381 implements EulerSolution {
 	 * = (p-1)! / 24 * 9
 	 * = (p-1)! * (3 * 3) / (3 * 8)
 	 * = (p-1)! * 3 / 8
-	 * = -1 * 3 / 8  (by Wilson's theorem)
+	 * = -1 * 3 / 8 (by Wilson's theorem)
 	 * = -3/8 mod p.
 	 * Every part of the equation is modulo a prime p > 4.
 	 */
@@ -31,14 +25,10 @@ public final class p381 implements EulerSolution {
 		return (int) ((long) (p - 3) * Library.reciprocalMod(8 % p, p) % p);
 	}
 
-	public String run() {
+	@NotNull String run() {
 		boolean[] isPrime = Library.listPrimality(Library.pow(10, 8));
 		long sum = 0;
-		for (int i = 5; i < isPrime.length; i++) {
-			if (isPrime[i])
-				sum += s(i);
-		}
+		for (int i = 5; i < isPrime.length; i++) if (isPrime[i]) sum += s(i);
 		return Long.toString(sum);
 	}
-
 }

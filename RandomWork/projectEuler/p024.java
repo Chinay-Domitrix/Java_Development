@@ -1,12 +1,6 @@
-/*
- * Solution to Project Euler problem 24
- * Copyright (c) Project Nayuki. All rights reserved.
- *
- * https://www.nayuki.io/page/project-euler-solutions
- * https://github.com/nayuki/Project-Euler-solutions
- */
+import org.jetbrains.annotations.NotNull;
 
-public final class p024 implements EulerSolution {
+public final class p024 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p024().run());
 	}
@@ -20,23 +14,12 @@ public final class p024 implements EulerSolution {
 	 * See: https://www.nayuki.io/page/next-lexicographical-permutation-algorithm
 	 */
 
-	public String run() {
-		// Initialize
+	@NotNull String run() {
 		int[] array = new int[10];
-		for (int i = 0; i < array.length; i++)
-			array[i] = i;
-
-		// Permute
-		for (int i = 0; i < 999999; i++) {
-			if (!Library.nextPermutation(array))
-				throw new AssertionError();
-		}
-
-		// Format output
-		String ans = "";
-		for (int i = 0; i < array.length; i++)
-			ans += array[i];
-		return ans;
+		for (int i = 0; i < array.length; i++) array[i] = i;
+		for (int i = 0; i < 999999; i++) if (!Library.nextPermutation(array)) throw new AssertionError();
+		StringBuilder ans = new StringBuilder();
+		for (int value : array) ans.append(value);
+		return ans.toString();
 	}
-
 }
