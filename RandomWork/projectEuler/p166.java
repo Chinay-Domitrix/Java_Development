@@ -1,4 +1,4 @@
-166
+import org.jetbrains.annotations.NotNull;
 
 public final class p166 extends EulerSolution {
 	public static void main(String[] args) {
@@ -7,13 +7,12 @@ public final class p166 extends EulerSolution {
 
 	// Increments the given base-10 counter in little endian, e.g. {9, 9, 5, 1} -> {0, 0, 6, 1}.
 	// Returns true if incremented, otherwise returns false if all elements are already 9.
-	private static boolean increment(int[] num) {
+	private static boolean increment(@NotNull int[] num) {
 		int i = 0;
 		while (num[i] == 9) {
 			num[i] = 0;
 			i++;
-			if (i == num.length)
-				return false;
+			if (i == num.length) return false;
 		}
 		num[i]++;
 		return true;
@@ -59,28 +58,27 @@ public final class p166 extends EulerSolution {
 	 * n = a + c + d - f - j. (based on 2nd column)
 	 * p = a + b + c - h - l. (based on 4th column)
 	 */
-	String run() {
+	@NotNull String run() {
 		int count = 0;
 		int[] num = new int[8]; // A counter in base 10, little-endian
 		do {
-			int a = num[0], b = num[1], c = num[2], d = num[3];
-			int e = num[4], g = num[5], i = num[6], k = num[7];
-			int m = b + c + d - e - i;
-			if (m < 0 || m > 9) continue;
-			int o = a + b + d - g - k;
-			if (o < 0 || o > 9) continue;
-			int j = a + b + c - g - m;
-			if (j < 0 || j > 9) continue;
-			int l = a + b + c + d - i - j - k;
-			if (l < 0 || l > 9) continue;
-			int f = b + c + d * 2 - e - i - k;
-			if (f < 0 || f > 9) continue;
-			int h = a + b + c + d - e - f - g;
-			if (h < 0 || h > 9) continue;
-			int n = a + c + d - f - j;
-			if (n < 0 || n > 9) continue;
-			int p = a + b + c - h - l;
-			if (p < 0 || p > 9) continue;
+			int a = num[0], b = num[1], c = num[2], d = num[3], e = num[4], g = num[5], i = num[6], k = num[7];
+			int m = (b + c + d) - e - i;
+			if ((m < 0) || (m > 9)) continue;
+			int o = (a + b + d) - g - k;
+			if ((o < 0) || (o > 9)) continue;
+			int j = (a + b + c) - g - m;
+			if ((j < 0) || (j > 9)) continue;
+			int l = (a + b + c + d) - i - j - k;
+			if ((l < 0) || (l > 9)) continue;
+			int f = (b + c + (d * 2)) - e - i - k;
+			if ((f < 0) || (f > 9)) continue;
+			int h = (a + b + c + d) - e - f - g;
+			if ((h < 0) || (h > 9)) continue;
+			int n = (a + c + d) - f - j;
+			if ((n < 0) || (n > 9)) continue;
+			int p = (a + b + c) - h - l;
+			if ((p < 0) || (p > 9)) continue;
 			count++; // All tests passed
 		} while (increment(num));
 		return Integer.toString(count);

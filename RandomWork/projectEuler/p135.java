@@ -1,4 +1,4 @@
-135
+import org.jetbrains.annotations.NotNull;
 
 public final class p135 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 6);
@@ -21,22 +21,16 @@ public final class p135 extends EulerSolution {
 		System.out.println(new p135().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		int[] solutions = new int[LIMIT];
-		for (int m = 1; m < LIMIT * 2; m++) {
+		for (int m = 1; m < LIMIT * 2; m++)
 			for (int k = m / 5 + 1; k * 2 < m; k++) {
 				long temp = (long) (m - k) * (k * 5 - m);
-				if (temp >= solutions.length)
-					break;
+				if (temp >= solutions.length) break;
 				solutions[(int) temp]++;
 			}
-		}
-
 		int count = 0;
-		for (int x : solutions) {
-			if (x == 10)
-				count++;
-		}
+		for (int x : solutions) if (x == 10) count++;
 		return Integer.toString(count);
 	}
 }

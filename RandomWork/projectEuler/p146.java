@@ -1,6 +1,7 @@
-import java.util.Arrays;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
-146
+import static java.util.Arrays.binarySearch;
 
 public final class p146 extends EulerSolution {
 	private static final int LIMIT = 150000000;
@@ -35,44 +36,32 @@ public final class p146 extends EulerSolution {
 		// Generate the set of numbers to test for primality
 		long n2 = (long) n * n;
 		long[] temp = new long[INCREMENTS.length];
-		for (int i = 0; i < INCREMENTS.length; i++)
-			temp[i] = n2 + INCREMENTS[i];
+		for (int i = 0; i < INCREMENTS.length; i++) temp[i] = n2 + INCREMENTS[i];
 
 		// Test that each number is prime.
 		// Note: The nesting of the loops can be reversed, but this way is much faster.
-		for (int p : primes) {
-			for (long x : temp) {
-				if (x != p && x % p == 0)
-					return false;
-			}
-		}
+		for (int p : primes) for (long x : temp) if (x != p && x % p == 0) return false;
 
 		// Test that each number that is not an increment is composite.
 		// This checks that the prime numbers we found are in fact consecutive.
-		for (int i = 1; i < INCREMENTS[INCREMENTS.length - 1]; i++) {
-			if (Arrays.binarySearch(INCREMENTS, i) < 0 && isPrime(n2 + i))
-				return false;
-		}
+		for (int i = 1; i < INCREMENTS[INCREMENTS.length - 1]; i++)
+			if ((binarySearch(INCREMENTS, i) < 0) && isPrime(n2 + i)) return false;
 		return true;
 	}
 
+	@Contract(pure = true)
 	private static boolean isPrime(long n) {
 		int end = (int) Library.sqrt(n);
 		for (int p : primes) {
-			if (p > end)
-				break;
-			if (n != p && n % p == 0)
-				return false;
+			if (p > end) break;
+			if (n != p && n % p == 0) return false;
 		}
 		return true;
 	}
 
-	String run() {
+	@NotNull String run() {
 		long sum = 0;
-		for (int n = 0; n < LIMIT; n += 10) {
-			if (hasConsecutivePrimes(n))
-				sum += n;
-		}
+		for (int n = 0; n < LIMIT; n += 10) if (hasConsecutivePrimes(n)) sum += n;
 		return Long.toString(sum);
 	}
 }

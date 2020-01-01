@@ -1,4 +1,4 @@
-134
+import org.jetbrains.annotations.NotNull;
 
 public final class p134 extends EulerSolution {
 	public static void main(String[] args) {
@@ -13,15 +13,14 @@ public final class p134 extends EulerSolution {
 	 * Firstly, n = mk + p = 0 mod q. By rearrangement, m = -p k^-1 mod q. (k^-1 exists because q is coprime with 10.)
 	 * Then of course the smallest m that satisfies the divisibility condition is the one such that 0 <= m < q.
 	 */
-	String run() {
+	@NotNull String run() {
 		long sum = 0;
 		int[] primes = Library.listPrimes(2000000);
 		for (int i = 2; primes[i] <= 1000000; i++) {
 			int p = primes[i];
 			int q = primes[i + 1];
 			int k = 1;
-			while (k < p)
-				k *= 10;
+			while (k < p) k *= 10;
 			long m = (long) (q - p) * Library.reciprocalMod(k % q, q) % q;
 			sum += m * k + p;
 		}

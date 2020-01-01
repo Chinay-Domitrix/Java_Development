@@ -1,4 +1,5 @@
-129
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 public final class p129 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 6);
@@ -35,12 +36,11 @@ public final class p129 extends EulerSolution {
 	}
 
 	// Returns the smallest k such that R(k) is divisible by n.
+	@SuppressWarnings("DuplicatedCode")
+	@Contract(pure = true)
 	private static int findLeastDivisibleRepunit(int n) {
-		if (n % 2 == 0 || n % 5 == 0)
-			return 0;
-		if (n > Integer.MAX_VALUE / 10)
-			throw new IllegalArgumentException("Arithmetic overflow");
-
+		if (((n % 2) == 0) || ((n % 5) == 0)) return 0;
+		assert n <= Integer.MAX_VALUE / 10 : "Arithmetic overflow";
 		int sum = 1; // Equal to R(k) mod n
 		int pow = 1; // Equal to 10^k mod n
 		int k = 1;
@@ -52,10 +52,7 @@ public final class p129 extends EulerSolution {
 		return k;
 	}
 
-	String run() {
-		for (int n = LIMIT; ; n++) {
-			if (findLeastDivisibleRepunit(n) > LIMIT)
-				return Integer.toString(n);
-		}
+	@NotNull String run() {
+		for (int n = LIMIT; ; n++) if (findLeastDivisibleRepunit(n) > LIMIT) return Integer.toString(n);
 	}
 }

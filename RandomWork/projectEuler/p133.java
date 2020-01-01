@@ -1,9 +1,12 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.math.BigInteger;
 
-133
+import static java.math.BigInteger.TEN;
+import static java.math.BigInteger.valueOf;
 
 public final class p133 extends EulerSolution {
-	private static final BigInteger EXPONENT = BigInteger.TEN.pow(16);
+	private static final BigInteger EXPONENT = TEN.pow(16);
 
 	public static void main(String[] args) {
 		System.out.println(new p133().run());
@@ -11,7 +14,7 @@ public final class p133 extends EulerSolution {
 
 	// Tests whether there exists a k such that R(10^k) is a multiple of p
 	private static boolean hasDivisibleRepunit(int p) {
-		return (BigInteger.TEN.modPow(EXPONENT, BigInteger.valueOf(p * 9)).intValue() - 1) / 9 % p == 0;
+		return (TEN.modPow(EXPONENT, valueOf(p * 9)).intValue() - 1) / 9 % p == 0;
 	}
 
 	/*
@@ -47,12 +50,9 @@ public final class p133 extends EulerSolution {
 	 * (for the number 2^16 = 65536). (In general, the largest exponent is floor(log2(limit)); in this case limit = 10^5.)
 	 * So we only need to test if 10^16 is a multiple of k, equivalent to testing if R(10^16) is a multiple of n.
 	 */
-	String run() {
+	@NotNull String run() {
 		long sum = 0;
-		for (int p : Library.listPrimes(100000)) {
-			if (p == 2 || p == 5 || !hasDivisibleRepunit(p))
-				sum += p;
-		}
+		for (int p : Library.listPrimes(100000)) if (p == 2 || p == 5 || !hasDivisibleRepunit(p)) sum += p;
 		return Long.toString(sum);
 	}
 }

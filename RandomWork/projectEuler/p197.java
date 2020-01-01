@@ -1,4 +1,6 @@
-197
+import static java.lang.Math.floor;
+import static java.lang.Math.pow;
+import static java.lang.String.format;
 
 public final class p197 extends EulerSolution {
 	public static void main(String[] args) {
@@ -6,7 +8,7 @@ public final class p197 extends EulerSolution {
 	}
 
 	private static double f(double x) {
-		return Math.floor(Math.pow(2, 30.403243784 - x * x)) / 1e9;
+		return floor(pow(2, 30.403243784 - pow(x, 2))) / 1000000000;
 	}
 
 	String run() {
@@ -17,21 +19,17 @@ public final class p197 extends EulerSolution {
 		long ITERATIONS = 1000000000000L;
 		for (; i < ITERATIONS; i++) {
 			// Here at the top of the loop, x = f^i(-1) and y = f^{2i}(-1)
-
-			if (i > 0 && x == y) // This means index i is part of the cycle, and (2i - i) = i is some multiple of the true cycle length
-				break;
-
+			// This means index i is part of the cycle, and (2i - i) = i is some multiple of the true cycle length
+			if (i > 0 && x == y) break;
 			// Advance the states at different speeds
 			x = f(x);
 			y = f(f(y));
 		}
-
 		// Advance by many multiples of the cycle length, then deal with the remaining iterations
 		long remain = (ITERATIONS - i) % i;
-		for (; remain > 0; remain--)
-			x = f(x);
+		for (; remain > 0; remain--) x = f(x);
 		double answer = x + f(x);
-		answer = Math.floor(answer * 1e9) / 1e9; // Truncate to 9 digits after the decimal point
-		return String.format("%.9f", answer);
+		answer = floor(answer * 1e9) / 1e9; // Truncate to 9 digits after the decimal point
+		return format("%.9f", answer);
 	}
 }

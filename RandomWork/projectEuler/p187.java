@@ -1,6 +1,6 @@
-import java.util.Arrays;
+import org.jetbrains.annotations.NotNull;
 
-187
+import static java.util.Arrays.binarySearch;
 
 public final class p187 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 8) - 1;
@@ -18,15 +18,13 @@ public final class p187 extends EulerSolution {
 	 * So for that p, we have (end - i) different choices for q. Since q >= p, all these pairs are unique.
 	 * Furthermore, by the fundamental theorem of arithmetic, all the products pq are unique.
 	 */
-	String run() {
+	@NotNull String run() {
 		int count = 0;
 		int[] primes = Library.listPrimes(LIMIT / 2);
 		for (int i = 0, sqrt = Library.sqrt(LIMIT); i < primes.length && primes[i] <= sqrt; i++) {
-			int end = Arrays.binarySearch(primes, LIMIT / primes[i]);
-			if (end >= 0)
-				end++;
-			else
-				end = -end - 1;
+			int end = binarySearch(primes, LIMIT / primes[i]);
+			if (end >= 0) end++;
+			else end = -end - 1;
 			count += end - i;
 		}
 		return Integer.toString(count);

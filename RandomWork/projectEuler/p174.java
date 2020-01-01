@@ -1,4 +1,6 @@
-174
+import org.jetbrains.annotations.NotNull;
+
+import static java.lang.Math.*;
 
 public final class p174 extends EulerSolution {
 	private static final int SIZE_LIMIT = 1000000;
@@ -8,24 +10,20 @@ public final class p174 extends EulerSolution {
 		System.out.println(new p174().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		// Generate all possible laminae with at most SIZE_LIMIT tiles
 		int[] type = new int[SIZE_LIMIT + 1];
-		for (int n = 3; (n - 1) * 4 <= SIZE_LIMIT; n++) { // Outer square size
+		// Outer square size
+		for (int n = 3; (n - 1) * 4 <= SIZE_LIMIT; n++)
 			for (int m = n - 2; m >= 1; m -= 2) { // Inner square hole size
-				int tiles = n * n - m * m; // Intermediate computation may overflow, but result is correct
-				if (tiles > SIZE_LIMIT)
-					break;
+				int tiles = toIntExact(round(pow(n, 2) - pow(m, 2))); // Intermediate computation may overflow, but result is correct
+				if (tiles > SIZE_LIMIT) break;
 				type[tiles]++;
 			}
-		}
 
 		// Examine the type of each total tiling
 		int count = 0;
-		for (int t : type) {
-			if (1 <= t && t <= TYPE_LIMIT)
-				count++;
-		}
+		for (int t : type) if (1 <= t && t <= TYPE_LIMIT) count++;
 		return Integer.toString(count);
 	}
 }

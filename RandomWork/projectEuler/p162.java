@@ -1,6 +1,9 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.math.BigInteger;
 
-162
+import static java.math.BigInteger.ZERO;
+import static java.math.BigInteger.valueOf;
 
 public final class p162 extends EulerSolution {
 	public static void main(String[] args) {
@@ -9,7 +12,7 @@ public final class p162 extends EulerSolution {
 
 	// For syntactical convenience
 	private static BigInteger bi(int n) {
-		return BigInteger.valueOf(n);
+		return valueOf(n);
 	}
 
 	/*
@@ -47,15 +50,10 @@ public final class p162 extends EulerSolution {
 	 *  = (15*16^(n-1) - 13^n) - (15*16^(n-1) - 15^n) - (15*16^(n-1) - 14*15^(n-1)) - (15*16^(n-1) - 14*15^(n-1)) + (15*16^(n-1) - 29*15^(n-1) + 14^n) + (15*16^(n-1) - 29*15^(n-1) + 14^n) + (15*16^(n-1) - 28*15^(n-1) + 13*14^(n-1))
 	 *  = 15*16^(n-1) - 43*15^(n-1) + 41*14^(n-1) - 13^n.
 	 */
-	String run() {
-		BigInteger sum = BigInteger.ZERO;
-		for (int n = 1; n <= 16; n++) {
-			sum = sum
-					.add(bi(15).multiply(bi(16).pow(n - 1)))
-					.subtract(bi(43).multiply(bi(15).pow(n - 1)))
-					.add(bi(41).multiply(bi(14).pow(n - 1)))
-					.subtract(bi(13).pow(n));
-		}
+	@NotNull String run() {
+		BigInteger sum = ZERO;
+		for (int n = 1; n <= 16; n++)
+			sum = sum.add(bi(15).multiply(bi(16).pow(n - 1))).subtract(bi(43).multiply(bi(15).pow(n - 1))).add(bi(41).multiply(bi(14).pow(n - 1))).subtract(bi(13).pow(n));
 		return sum.toString(16).toUpperCase();
 	}
 }

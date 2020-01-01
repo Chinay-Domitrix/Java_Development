@@ -9,8 +9,7 @@ public final class p019 extends EulerSolution {
 	// Return value: 0 = Sunday, 1 = Monday, ..., 6 = Saturday.
 	@Contract(pure = true)
 	private static int dayOfWeek(int year, int month) {
-		if ((year < 0) || (year > 10000) || (month < 1) || (month > 12))
-			throw new IllegalArgumentException();
+		assert (year >= 0) && (year <= 10000) && (month >= 1) && (month <= 12);
 		// Zeller's congruence algorithm
 		int m = (month - 3 + 4800) % 4800;
 		int y = (year + m / 12) % 400;

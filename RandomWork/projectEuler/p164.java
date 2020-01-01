@@ -1,6 +1,9 @@
+import org.jetbrains.annotations.Contract;
+
 import java.math.BigInteger;
 
-164
+import static java.math.BigInteger.ONE;
+import static java.math.BigInteger.ZERO;
 
 public final class p164 extends EulerSolution {
 	private static final int BASE = 10;
@@ -12,10 +15,10 @@ public final class p164 extends EulerSolution {
 		System.out.println(new p164().run());
 	}
 
+	@Contract(pure = true)
 	private static int digitSum(int n) {
 		int sum = 0;
-		for (; n != 0; n /= 10)
-			sum += n % 10;
+		for (; n != 0; n /= 10) sum += n % 10;
 		return sum;
 	}
 
@@ -44,24 +47,17 @@ public final class p164 extends EulerSolution {
 	String run() {
 		// Dynamic programming array
 		BigInteger[][] ways = new BigInteger[DIGITS + CONSECUTIVE + 1][Library.pow(BASE, CONSECUTIVE)];
-
 		// Initialize base case - ways for 0-digit numbers
-		ways[0][0] = BigInteger.ONE;
-		for (int prefix = 1; prefix < ways[0].length; prefix++)
-			ways[0][prefix] = BigInteger.ZERO;
-
+		ways[0][0] = ONE;
+		for (int prefix = 1; prefix < ways[0].length; prefix++) ways[0][prefix] = ZERO;
 		// Compute DP table
-		for (int digits = 1; digits < ways.length; digits++) {
+		for (int digits = 1; digits < ways.length; digits++)
 			for (int prefix = 0; prefix < ways[digits].length; prefix++) {
-				BigInteger sum = BigInteger.ZERO;
-				if (digitSum(prefix) <= MAX_SUM) {
-					for (int nextDigit = 0; nextDigit < BASE; nextDigit++)
-						sum = sum.add(ways[digits - 1][prefix % Library.pow(BASE, CONSECUTIVE - 1) * BASE + nextDigit]);
-				}
+				BigInteger sum = ZERO;
+				if (digitSum(prefix) <= MAX_SUM) for (int nextDigit = 0; nextDigit < BASE; nextDigit++)
+					sum = sum.add(ways[digits - 1][prefix % Library.pow(BASE, CONSECUTIVE - 1) * BASE + nextDigit]);
 				ways[digits][prefix] = sum;
 			}
-		}
-
 		return ways[DIGITS + CONSECUTIVE][0].subtract(ways[DIGITS + CONSECUTIVE - 1][0]).toString();
 	}
 }

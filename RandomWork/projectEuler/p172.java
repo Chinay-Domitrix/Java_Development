@@ -1,8 +1,10 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-172
+import static java.math.BigInteger.*;
 
 public final class p172 extends EulerSolution {
 	// Highly customizable!
@@ -14,10 +16,9 @@ public final class p172 extends EulerSolution {
 		System.out.println(new p172().run());
 	}
 
-	private static BigInteger divideExactly(BigInteger x, BigInteger y) {
+	private static BigInteger divideExactly(@NotNull BigInteger x, BigInteger y) {
 		BigInteger[] temp = x.divideAndRemainder(y);
-		if (temp[1].signum() != 0)
-			throw new IllegalArgumentException("Not divisible");
+		if (temp[1].signum() != 0) throw new IllegalArgumentException("Not divisible");
 		return temp[0];
 	}
 
@@ -80,27 +81,20 @@ public final class p172 extends EulerSolution {
 	 */
 	String run() {
 		BigInteger ways = partitionAndCount(LENGTH, MAX_COUNT, new ArrayList<>());
-
 		// Multiply by (base - 1) / base to discount sequences with leading zeros
-		BigInteger BASE_BI = BigInteger.valueOf(BASE);
-		ways = ways.multiply(BASE_BI.subtract(BigInteger.ONE));
+		BigInteger BASE_BI = valueOf(BASE);
+		ways = ways.multiply(BASE_BI.subtract(ONE));
 		ways = divideExactly(ways, BASE_BI);
-
 		return ways.toString();
 	}
 
 	// Expresses 'LENGTH' as a sum of 'BASE' non-increasing terms, where terms to be added are in the range [0, max].
 	// e.g. partitionAndCount(7, 2, [3, 3, 2, 2, 1]) asks us to express 18 as a sum of 5 more terms,
 	// where the new terms have a sum of 7 and each is no greater than 2 and all terms are non-increasing.
-	private BigInteger partitionAndCount(int sum, int max, List<Integer> terms) {
-		if (terms.size() == BASE) {
-			if (sum == 0)
-				return countWays(terms);
-			else
-				return BigInteger.ZERO;
-
-		} else {
-			BigInteger result = BigInteger.ZERO;
+	private BigInteger partitionAndCount(int sum, int max, @NotNull List<Integer> terms) {
+		if (terms.size() == BASE) return (sum == 0) ? countWays(terms) : ZERO;
+		else {
+			BigInteger result = ZERO;
 			for (int i = Math.min(max, sum); i >= 0; i--) {
 				terms.add(i);
 				result = result.add(partitionAndCount(sum - i, i, terms));
@@ -110,16 +104,13 @@ public final class p172 extends EulerSolution {
 		}
 	}
 
-	private BigInteger countWays(List<Integer> freqs) {
+	private BigInteger countWays(@NotNull List<Integer> freqs) {
 		// The number of times each frequency value occurs
 		int[] histogram = new int[MAX_COUNT + 1];
-		for (int x : freqs)
-			histogram[x]++;
-
+		for (int x : freqs) histogram[x]++;
 		// Multinomial coefficient: BASE! / (histogram[0]! * histogram[1]! * ...)
 		BigInteger ways = Library.factorial(BASE);
-		for (int x : histogram)
-			ways = ways.divide(Library.factorial(x));
+		for (int x : histogram) ways = ways.divide(Library.factorial(x));
 
 		// Multinomial coefficient: LENGTH! / (freqs[0]! * freqs[1]! * ...)
 		ways = ways.multiply(Library.factorial(LENGTH));

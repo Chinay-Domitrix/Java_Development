@@ -1,5 +1,3 @@
-171
-
 public final class p171 extends EulerSolution {
 	private static final int LENGTH = 20;
 	private static final int BASE = 10;
@@ -28,25 +26,19 @@ public final class p171 extends EulerSolution {
 	String run() {
 		// Maximum possible squared digit sum (for 99...99)
 		int MAX_SQR_DIGIT_SUM = (BASE - 1) * (BASE - 1) * LENGTH;
-
 		// sum[n][s] is the sum of all length-n numbers with a square digit sum of s, modulo MODULUS
 		long[][] sum = new long[LENGTH + 1][MAX_SQR_DIGIT_SUM + 1];
 		// count[n][s] is the count of all length-n numbers with a square digit sum of s, modulo MODULUS
 		long[][] count = new long[LENGTH + 1][MAX_SQR_DIGIT_SUM + 1];
 		count[0][0] = 1;
-
-		for (int i = 1; i <= LENGTH; i++) {
-			for (int j = 0; j < BASE; j++) {
+		for (int i = 1; i <= LENGTH; i++)
+			for (int j = 0; j < BASE; j++)
 				for (int k = 0; k + j * j <= MAX_SQR_DIGIT_SUM; k++) {
 					sum[i][k + j * j] = (sum[i][k + j * j] + sum[i - 1][k] + Library.powMod(BASE, i - 1, MODULUS) * j % MODULUS * count[i - 1][k]) % MODULUS;
 					count[i][k + j * j] = (count[i][k + j * j] + count[i - 1][k]) % MODULUS;
 				}
-			}
-		}
-
 		long s = 0;
-		for (int i = 1; i * i <= MAX_SQR_DIGIT_SUM; i++)
-			s = (s + sum[LENGTH][i * i]) % MODULUS;
+		for (int i = 1; i * i <= MAX_SQR_DIGIT_SUM; i++) s = (s + sum[LENGTH][i * i]) % MODULUS;
 		return String.format("%09d", s);
 	}
 }

@@ -1,4 +1,5 @@
-150
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 public final class p150 extends EulerSolution {
 	private static final int ROWS = 1000;
@@ -7,14 +8,13 @@ public final class p150 extends EulerSolution {
 		System.out.println(new p150().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		// Generate the triangle
 		LcgRandom rand = new LcgRandom();
 		int[][] triangle = new int[ROWS][];
 		for (int i = 0; i < triangle.length; i++) {
 			triangle[i] = new int[i + 1];
-			for (int j = 0; j <= i; j++)
-				triangle[i][j] = rand.next();
+			for (int j = 0; j <= i; j++) triangle[i][j] = rand.next();
 		}
 
 		// Calculate cumulative sums for each row
@@ -22,13 +22,12 @@ public final class p150 extends EulerSolution {
 		for (int i = 0; i < rowSums.length; i++) {
 			rowSums[i] = new int[triangle[i].length + 1];
 			rowSums[i][0] = 0;
-			for (int j = 0; j <= i; j++)
-				rowSums[i][j + 1] = rowSums[i][j] + triangle[i][j];
+			for (int j = 0; j <= i; j++) rowSums[i][j + 1] = rowSums[i][j] + triangle[i][j];
 		}
 
 		// Calculate minimum subtriangle sum for each apex position
 		long minSum = 0;
-		for (int i = 0; i < triangle.length; i++) {
+		for (int i = 0; i < triangle.length; i++)
 			for (int j = 0; j < triangle[i].length; j++) {
 				// Apex element selected at triangle[i][j]
 				long curSum = 0;
@@ -37,13 +36,13 @@ public final class p150 extends EulerSolution {
 					minSum = Math.min(curSum, minSum);
 				}
 			}
-		}
 		return Long.toString(minSum);
 	}
 
 	private static final class LcgRandom {
 		private int state;
 
+		@Contract(pure = true)
 		LcgRandom() {
 			state = 0;
 		}

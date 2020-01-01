@@ -1,11 +1,14 @@
-186
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
+import static java.lang.Math.pow;
 
 public final class p186 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p186().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		DisjointSet ds = new DisjointSet(1000000);
 		LfgRandom rand = new LfgRandom();
 		int i = 0;
@@ -29,9 +32,8 @@ public final class p186 extends EulerSolution {
 				nodes[i] = new Node();
 		}
 
-		private static Node find(Node node) {
-			if (node.parent != node)
-				node.parent = find(node.parent); // Path compression
+		private static Node find(@NotNull Node node) {
+			if (node.parent != node) node.parent = find(node.parent); // Path compression
 			return node.parent;
 		}
 
@@ -65,6 +67,7 @@ public final class p186 extends EulerSolution {
 			int rank;
 			int size;
 
+			@Contract(pure = true)
 			Node() {
 				parent = this;
 				rank = 0;
@@ -78,6 +81,7 @@ public final class p186 extends EulerSolution {
 		private int k;
 		private int index;
 
+		@Contract(pure = true)
 		LfgRandom() {
 			k = 1;
 			history = new int[55];
@@ -87,22 +91,20 @@ public final class p186 extends EulerSolution {
 		int next() {
 			int result;
 			if (k <= 55) {
-				result = (int) ((100003L - 200003L * k + 300007L * k * k * k) % 1000000);
+				result = (int) ((100003L - 200003L * k + 300007L * pow(k, 3)) % 1000000);
 				k++;
-			} else
-				result = (getHistory(24) + getHistory(55)) % 1000000;
+			} else result = (getHistory(24) + getHistory(55)) % 1000000;
 
 			history[index] = result;
 			index++;
-			if (index == history.length)
-				index = 0;
+			if (index == history.length) index = 0;
 			return result;
 		}
 
+		@Contract(pure = true)
 		private int getHistory(int n) {
 			int i = index - n;
-			if (i < 0)
-				i += history.length;
+			if (i < 0) i += history.length;
 			return history[i];
 		}
 	}

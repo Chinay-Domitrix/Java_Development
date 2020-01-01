@@ -1,4 +1,4 @@
-142
+import org.jetbrains.annotations.NotNull;
 
 public final class p142 extends EulerSolution {
 	private boolean[] isSquare;
@@ -7,26 +7,22 @@ public final class p142 extends EulerSolution {
 		System.out.println(new p142().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		int sumLimit = 10;
 		// Raise the limit until a sum is found
 		while (true) {
 			isSquare = new boolean[sumLimit];
-			for (int i = 0; i * i < sumLimit; i++)
-				isSquare[i * i] = true;
-
+			for (int i = 0; i * i < sumLimit; i++) isSquare[i * i] = true;
 			int sum = findSum(sumLimit);
-			if (sum != -1) {
-				break;
-			}
+			if (sum != -1) break;
 			sumLimit *= 10;
 		}
 
 		// Lower the limit until no sum is found
 		while (true) {
 			int sum = findSum(sumLimit);
-			if (sum == -1) // No smaller sum found
-				return Integer.toString(sumLimit);
+			// No smaller sum found
+			if (sum == -1) return Integer.toString(sumLimit);
 			sumLimit = sum;
 		}
 	}
@@ -41,15 +37,14 @@ public final class p142 extends EulerSolution {
 	 * if x+z, x-z, and y-z are square.
 	 */
 	private int findSum(int limit) {
-		for (int a = 1; a * a < limit; a++) {
+		for (int a = 1; a * a < limit; a++)
 			for (int b = a - 1; b > 0; b--) {
-				if ((a + b) % 2 != 0) // Need them to be both odd or both even so that we get integers for x and y
-					continue;
+				// Need them to be both odd or both even so that we get integers for x and y
+				if ((a + b) % 2 != 0) continue;
 				int x = (a * a + b * b) / 2;
 				int y = (a * a - b * b) / 2;
-				if (x + y + 1 >= limit) // Because z >= 1
-					continue;
-
+				// Because z >= 1
+				if (x + y + 1 >= limit) continue;
 				int zlimit = Math.min(y, limit - x - y);
 				for (@SuppressWarnings("SuspiciousNameCombination") int c = Library.sqrt(y) + 1; c * c - y < zlimit; c++) {
 					int z = c * c - y;
@@ -57,7 +52,6 @@ public final class p142 extends EulerSolution {
 						return x + y + z;
 				}
 			}
-		}
 		return -1;
 	}
 }

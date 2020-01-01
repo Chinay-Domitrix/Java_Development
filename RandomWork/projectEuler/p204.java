@@ -1,4 +1,5 @@
-204
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 public final class p204 extends EulerSolution {
 	private static final long LIMIT = Library.pow(10, 9);
@@ -8,13 +9,13 @@ public final class p204 extends EulerSolution {
 		System.out.println(new p204().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		return Integer.toString(count(0, 1));
 	}
 
+	@Contract(pure = true)
 	private int count(int primeIndex, long product) {
-		if (primeIndex == primes.length)
-			return product <= LIMIT ? 1 : 0;
+		if (primeIndex == primes.length) return product <= LIMIT ? 1 : 0;
 		else {
 			int count = 0;
 			while (product <= LIMIT) {

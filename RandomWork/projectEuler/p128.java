@@ -1,4 +1,6 @@
-128
+import org.jetbrains.annotations.NotNull;
+
+import static java.lang.Integer.MAX_VALUE;
 
 public final class p128 extends EulerSolution {
 	private static final int TARGET = 2000; // Must be at least 3
@@ -168,20 +170,17 @@ public final class p128 extends EulerSolution {
 		System.out.println(new p128().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		int count = 2; // Because n = 1 and 2 satisfy PD(n) = 3
 		for (int ring = 2; ; ring++) {
-			if ((long) ring * 12 + 5 > Integer.MAX_VALUE)
-				throw new ArithmeticException();
+			assert (long) ring * 12 + 5 <= MAX_VALUE;
 			if (Library.isPrime(ring * 6 - 1) && Library.isPrime(ring * 6 + 1) && Library.isPrime(ring * 12 + 5)) { // Corner test
 				count++;
-				if (count == TARGET)
-					return Long.toString((long) ring * (ring - 1) * 3 + 2);
+				if (count == TARGET) return Long.toString((long) ring * (ring - 1) * 3 + 2);
 			}
 			if (Library.isPrime(ring * 6 - 1) && Library.isPrime(ring * 6 + 5) && Library.isPrime(ring * 12 - 7)) { // Edge test
 				count++;
-				if (count == TARGET)
-					return Long.toString((long) ring * (ring + 1) * 3 + 1);
+				if (count == TARGET) return Long.toString((long) ring * (ring + 1) * 3 + 1);
 			}
 		}
 	}

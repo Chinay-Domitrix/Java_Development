@@ -3,6 +3,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;
 
+import static java.lang.Integer.MAX_VALUE;
+import static java.math.BigInteger.*;
+
 final class Library {
 	// Returns the reverse of the given string.
 	@NotNull
@@ -23,7 +26,7 @@ final class Library {
 	// Returns floor(sqrt(x)), for x >= 0.
 	@Contract(pure = true)
 	public static int sqrt(int x) {
-		if (x < 0) throw new IllegalArgumentException("Square root of negative number");
+		assert x >= 0 : "Square root of negative number";
 		int y = 0;
 		for (int i = 1 << 15; i != 0; i >>>= 1) {
 			y |= i;
@@ -35,7 +38,7 @@ final class Library {
 	// Returns floor(sqrt(x)), for x >= 0.
 	@Contract(pure = true)
 	public static long sqrt(long x) {
-		if (x < 0) throw new IllegalArgumentException("Square root of negative number");
+		assert x >= 0 : "Square root of negative number";
 		long y = 0;
 		for (long i = 1L << 31; i != 0; i >>>= 1) {
 			y |= i;
@@ -46,8 +49,8 @@ final class Library {
 
 	// Returns floor(sqrt(x)), for x >= 0.
 	public static BigInteger sqrt(@NotNull BigInteger x) {
-		if (x.signum() == -1) throw new IllegalArgumentException("Square root of negative number");
-		BigInteger y = BigInteger.ZERO;
+		assert x.signum() != -1 : "Square root of negative number";
+		BigInteger y = ZERO;
 		for (int i = (x.bitLength() - 1) / 2; i >= 0; i--) {
 			y = y.setBit(i);
 			if (y.multiply(y).compareTo(x) > 0) y = y.clearBit(i);
@@ -60,31 +63,33 @@ final class Library {
 	static boolean isSquare(int x) {
 		if (x < 0) return false;
 		int y = Library.sqrt(x);
-		return y * y == x;
+		return Math.pow(y, 2) == x;
 	}
 
 	// Returns x to the power of y, throwing an exception if the result overflows an int.
+	@Contract(pure = true)
 	public static int pow(int x, int y) {
-		if (x < 0) throw new IllegalArgumentException("Negative base not supported");
-		if (y < 0) throw new IllegalArgumentException("Negative exponent");
+		assert x >= 0 : "Negative base not supported";
+		assert y >= 0 : "Negative exponent";
 		int z = 1;
 		for (int i = 0; i < y; i++) {
-			if (Integer.MAX_VALUE / z < x) throw new ArithmeticException("Overflow");
+			if ((MAX_VALUE / z) < x) throw new ArithmeticException("Overflow");
 			z *= x;
 		}
 		return z;
 	}
 
 	// Returns x^y mod m.
+	@Contract(pure = true)
 	public static int powMod(int x, int y, int m) {
-		if (x < 0) throw new IllegalArgumentException("Negative base not supported");
-		if (y < 0) throw new IllegalArgumentException("Modular reciprocal not supported");
-		if (m <= 0) throw new IllegalArgumentException("Modulus must be positive");
+		assert x >= 0 : "Negative base not supported";
+		assert y >= 0 : "Modular reciprocal not supported";
+		assert m > 0 : "Modulus must be positive";
 		if (m == 1) return 0;
 		// Exponentiation by squaring
 		int z = 1;
 		for (; y != 0; y >>>= 1) {
-			if ((y & 1) != 0) z = (int) ((long) z * x % m);
+			if ((y & 1) != 0) z = (int) (((long) z * x) % m);
 			x = (int) ((long) x * x % m);
 		}
 		return z;
@@ -92,8 +97,9 @@ final class Library {
 
 	// Returns x^-1 mod m, where the result is in the range [0, m).
 	// Note that (x * x^-1) mod m = (x^-1 * x) mod m = 1.
+	@Contract(pure = true)
 	static int reciprocalMod(int x, int m) {
-		if (!(0 <= x && x < m)) throw new IllegalArgumentException();
+		assert (0 <= x) && (x < m);
 		// Based on a simplification of the extended Euclidean algorithm
 		int y = x;
 		x = m;
@@ -113,24 +119,24 @@ final class Library {
 
 	// Returns n!.
 	public static BigInteger factorial(int n) {
-		if (n < 0) throw new IllegalArgumentException("Factorial of negative number");
-		BigInteger prod = BigInteger.ONE;
-		for (int i = 2; i <= n; i++) prod = prod.multiply(BigInteger.valueOf(i));
+		assert n >= 0 : "Factorial of negative number";
+		BigInteger prod = ONE;
+		for (int i = 2; i <= n; i++) prod = prod.multiply(valueOf(i));
 		return prod;
 	}
 
 	// Returns n choose k.
 	public static BigInteger binomial(int n, int k) {
-		if (k < 0 || k > n) throw new IllegalArgumentException();
-		BigInteger product = BigInteger.ONE;
-		for (int i = 0; i < k; i++) product = product.multiply(BigInteger.valueOf(n - i));
+		assert (k >= 0) && (k <= n);
+		BigInteger product = ONE;
+		for (int i = 0; i < k; i++) product = product.multiply(valueOf(n - i));
 		return product.divide(factorial(k));
 	}
 
 	// Returns the largest non-negative integer that divides both x and y.
 	@Contract(pure = true)
 	public static int gcd(int x, int y) {
-		if (x < 0 || y < 0) throw new IllegalArgumentException("Negative number");
+		assert (x >= 0) && (y >= 0) : "Negative number";
 		while (y != 0) {
 			int z = x % y;
 			x = y;
@@ -140,9 +146,10 @@ final class Library {
 	}
 
 	// Tests whether the given non-negative integer is prime.
+	@Contract(pure = true)
 	public static boolean isPrime(int x) {
-		if (x < 0) throw new IllegalArgumentException("Negative number");
-		if (x == 0 || x == 1) return false;
+		assert x >= 0 : "Negative number";
+		if ((x == 0) || (x == 1)) return false;
 		else if (x == 2) return true;
 		else {
 			if (x % 2 == 0) return false;
@@ -155,23 +162,23 @@ final class Library {
 	// For a large batch of queries, this is faster than calling isPrime() for each integer.
 	// For example: listPrimality(100) = {false, false, true, true, false, true, false, true,
 	// false, false, false, true, false, true, false, false, false, true, ...} (array length 101).
+	@Contract(pure = true)
 	@NotNull
 	public static boolean[] listPrimality(int n) {
-		if (n < 0) throw new IllegalArgumentException("Negative array size");
+		assert n >= 0 : "Negative array size";
 		boolean[] result = new boolean[n + 1];
 		if (n >= 2) result[2] = true;
 		for (int i = 3; i <= n; i += 2) result[i] = true;
 		// Sieve of Eratosthenes
+		// Note: i * i does not overflow
 		for (int i = 3, end = sqrt(n); i <= end; i += 2)
-			if (result[i]) {
-				// Note: i * i does not overflow
-				for (int j = i * i, inc = i * 2; j <= n; j += inc) result[j] = false;
-			}
+			if (result[i]) for (int j = i * i, inc = i * 2; j <= n; j += inc) result[j] = false;
 		return result;
 	}
 
 	// Returns all the prime numbers less than or equal to n, in ascending order.
 	// For example: listPrimes(97) = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, ..., 83, 89, 97}.
+	@Contract(pure = true)
 	@NotNull
 	public static int[] listPrimes(int n) {
 		boolean[] isPrime = listPrimality(n);
@@ -190,7 +197,7 @@ final class Library {
 	// For example: listSmallestPrimeFactors(10) = {0, 0, 2, 3, 2, 5, 2, 7, 2, 3, 2}.
 	@NotNull
 	@Contract(pure = true)
-	public static int[] listSmallestPrimeFactors(int n) {
+	static int[] listSmallestPrimeFactors(int n) {
 		int[] result = new int[n + 1];
 		int limit = sqrt(n);
 		for (int i = 2; i < result.length; i++)
@@ -205,7 +212,7 @@ final class Library {
 	// Returns the number of integers in the range [1, n] that are coprime with n.
 	// For example, totient(12) = 4 because these integers are coprime with 12: 1, 5, 7, 11.
 	static int totient(int n) {
-		if (n <= 0) throw new IllegalArgumentException("Totient of non-positive integer");
+		assert n > 0 : "Totient of non-positive integer";
 		int p = 1;
 		// Trial division
 		for (int i = 2, end = Library.sqrt(n); i <= end; i++)
@@ -228,12 +235,10 @@ final class Library {
 	@NotNull
 	@Contract(pure = true)
 	static int[] listTotients(int n) {
-		if (n < 0) throw new IllegalArgumentException("Negative array size");
+		assert n >= 0 : "Negative array size";
 		int[] result = new int[n + 1];
 		for (int i = 0; i <= n; i++) result[i] = i;
-		for (int i = 2; i <= n; i++) {
-			if (result[i] == i) for (int j = i; j <= n; j += i) result[j] -= result[j] / i;
-		}
+		for (int i = 2; i <= n; i++) if (result[i] == i) for (int j = i; j <= n; j += i) result[j] -= result[j] / i;
 		return result;
 	}
 
@@ -267,7 +272,7 @@ final class Library {
 }
 
 // Immutable unlimited precision fraction
-final class Fraction extends Comparable<Fraction> {
+final class Fraction implements Comparable<Fraction> {
 	public static final Fraction ZERO = new Fraction(BigInteger.ZERO);
 	public final BigInteger numerator; // Always coprime with denominator
 	public final BigInteger denominator; // Always positive
@@ -275,17 +280,17 @@ final class Fraction extends Comparable<Fraction> {
 	@Contract(pure = true)
 	Fraction(BigInteger numerator) {
 		this.numerator = numerator;
-		denominator = BigInteger.ONE;
+		denominator = ONE;
 	}
 
 	Fraction(BigInteger numer, @NotNull BigInteger denom) {
-		if (denom.signum() == 0) throw new ArithmeticException("Division by zero");
+		assert denom.signum() != 0 : "Division by zero";
 		if (denom.signum() == -1) {
 			numer = numer.negate();
 			denom = denom.negate();
 		}
 		BigInteger gcd = numer.gcd(denom);
-		if (!gcd.equals(BigInteger.ONE)) {
+		if (!gcd.equals(ONE)) {
 			numer = numer.divide(gcd);
 			denom = denom.divide(gcd);
 		}

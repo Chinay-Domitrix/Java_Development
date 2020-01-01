@@ -1,4 +1,4 @@
-145
+import org.jetbrains.annotations.NotNull;
 
 public final class p145 extends EulerSolution {
 	public static void main(String[] args) {
@@ -116,15 +116,12 @@ public final class p145 extends EulerSolution {
 	 * All in all, there are 5 * 20^((n + 1)/4) * 25^((n - 3)/4) = 100 * 500^((n - 3)/4)
 	 * reversible n-digit numbers when n = 3 mod 4.
 	 */
-	String run() {
+	@NotNull String run() {
 		int sum = 0;
-		for (int digits = 1; digits <= 9; digits++) {
-			if (digits % 2 == 0)
-				sum += 20 * Library.pow(30, digits / 2 - 1);
-			else if (digits % 4 == 3)
-				sum += 100 * Library.pow(500, (digits - 3) / 4);
+		for (int digits = 1; digits <= 9; digits++)
+			if (digits % 2 == 0) sum += 20 * Library.pow(30, digits / 2 - 1);
+			else if (digits % 4 == 3) sum += 100 * Library.pow(500, (digits - 3) / 4);
 			else sum += 0;
-		}
 		return Integer.toString(sum);
 	}
 }
