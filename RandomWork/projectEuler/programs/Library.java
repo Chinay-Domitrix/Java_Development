@@ -64,7 +64,7 @@ final class Library {
 	@Contract(pure = true)
 	static boolean isSquare(int x) {
 		if (x < 0) return false;
-		int y = Library.sqrt(x);
+		int y = sqrt(x);
 		return Math.pow(y, 2) == x;
 	}
 
@@ -75,7 +75,7 @@ final class Library {
 		assert y >= 0 : "Negative exponent";
 		int z = 1;
 		for (int i = 0; i < y; i++) {
-			if ((MAX_VALUE / z) < x) throw new ArithmeticException("Overflow");
+			assert (MAX_VALUE / z) >= x : "Overflow";
 			z *= x;
 		}
 		return z;
@@ -217,7 +217,7 @@ final class Library {
 		assert n > 0 : "Totient of non-positive integer";
 		int p = 1;
 		// Trial division
-		for (int i = 2, end = Library.sqrt(n); i <= end; i++)
+		for (int i = 2, end = sqrt(n); i <= end; i++)
 			if (n % i == 0) { // Found a factor
 				p *= i - 1;
 				n /= i;
@@ -225,7 +225,7 @@ final class Library {
 					p *= i;
 					n /= i;
 				}
-				end = Library.sqrt(n);
+				end = sqrt(n);
 			}
 		if (n != 1) p *= n - 1;
 		return p;
