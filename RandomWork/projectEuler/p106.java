@@ -1,6 +1,7 @@
 import java.math.BigInteger;
 
-106
+import static java.math.BigInteger.ZERO;
+import static java.math.BigInteger.valueOf;
 
 public final class p106 extends EulerSolution {
 	private static final int SET_SIZE = 12;
@@ -135,11 +136,11 @@ public final class p106 extends EulerSolution {
 	}
 
 	String run() {
-		BigInteger ans = BigInteger.ZERO;
+		BigInteger ans = ZERO;
 		for (int i = 2; i * 2 <= SET_SIZE; i++) {
 			BigInteger x = Library.binomial(SET_SIZE, i * 2);
 			BigInteger y = Library.binomial(i * 2, i).shiftRight(1);
-			BigInteger z = Library.binomial(i * 2, i).divide(BigInteger.valueOf(i + 1)); // Catalan number
+			BigInteger z = Library.binomial(i * 2, i).divide(valueOf(i + 1)); // Catalan number
 			ans = ans.add(x.multiply(y.subtract(z)));
 		}
 		return ans.toString();

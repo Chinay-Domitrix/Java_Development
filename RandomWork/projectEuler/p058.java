@@ -1,4 +1,4 @@
-58
+import org.jetbrains.annotations.NotNull;
 
 public final class p058 extends EulerSolution {
 	public static void main(String[] args) {
@@ -16,15 +16,11 @@ public final class p058 extends EulerSolution {
 	 *
 	 * Furthermore, the number of elements on the diagonal is 2n - 1.
 	 */
-	String run() {
+	@NotNull String run() {
 		int numPrimes = 0;
 		for (int n = 1; ; n += 2) {
-			for (int i = 0; i < 4; i++) {
-				if (Library.isPrime(n * n - i * (n - 1)))
-					numPrimes++;
-			}
-			if (n > 1 && numPrimes * 10 < n * 2 - 1)
-				return Integer.toString(n);
+			for (int i = 0; i < 4; i++) if (Library.isPrime(n * n - i * (n - 1))) numPrimes++;
+			if (n > 1 && numPrimes * 10 < n * 2 - 1) return Integer.toString(n);
 		}
 	}
 }

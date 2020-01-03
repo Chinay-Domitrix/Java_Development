@@ -1,9 +1,10 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.SortedSet;
 import java.util.TreeSet;
 
-119
+import static java.math.BigInteger.*;
 
 public final class p119 extends EulerSolution {
 	private static final int INDEX = 30; // 1-based
@@ -25,39 +26,30 @@ public final class p119 extends EulerSolution {
 	// Returns true iff there exists k >= 2 such that x = digitSum(x)^k.
 	private static boolean isDigitSumPower(BigInteger x) {
 		int digitSum = digitSum(x);
-		if (digitSum == 1) // Powers of 10 are never a power of 1
-			return false;
-
-		BigInteger base = BigInteger.valueOf(digitSum);
-		BigInteger pow = base;
-		while (pow.compareTo(x) < 0)
-			pow = pow.multiply(base);
+		// Powers of 10 are never a power of 1
+		if (digitSum == 1) return false;
+		BigInteger base = valueOf(digitSum), pow = base;
+		while (pow.compareTo(x) < 0) pow = pow.multiply(base);
 		return pow.equals(x);
 	}
 
-	private static int digitSum(BigInteger x) {
-		if (x.signum() < 1)
-			throw new IllegalArgumentException("Only for positive integers");
+	private static int digitSum(@NotNull BigInteger x) {
+		assert x.signum() >= 1 : "Only for positive integers";
 		int sum = 0;
-		for (char c : x.toString().toCharArray())
-			sum += c - '0';
+		for (char c : x.toString().toCharArray()) sum += c - '0';
 		return sum;
 	}
 
 	String run() {
-		for (BigInteger limit = BigInteger.ONE; ; limit = limit.shiftLeft(8)) {
-			SortedSet<BigInteger> candidates = new TreeSet<>();
-			for (int k = 2; BigInteger.valueOf(1).shiftLeft(k).compareTo(limit) < 0; k++) {
+		for (BigInteger limit = ONE; ; limit = limit.shiftLeft(8)) {
+			TreeSet<BigInteger> candidates = new TreeSet<>();
+			for (int k = 2; valueOf(1).shiftLeft(k).compareTo(limit) < 0; k++)
 				for (int n = 2; ; n++) {
-					BigInteger pow = BigInteger.valueOf(n).pow(k);
-					if (pow.compareTo(limit) >= 0 && pow.toString().length() * 9 < n)
-						break;
-					if (pow.compareTo(BigInteger.TEN) >= 0 && isDigitSumPower(pow))
-						candidates.add(pow);
+					BigInteger pow = valueOf(n).pow(k);
+					if (pow.compareTo(limit) >= 0 && pow.toString().length() * 9 < n) break;
+					if (pow.compareTo(TEN) >= 0 && isDigitSumPower(pow)) candidates.add(pow);
 				}
-			}
-			if (candidates.size() >= INDEX)
-				return new ArrayList<>(candidates).get(INDEX - 1).toString();
+			if (candidates.size() >= INDEX) return new ArrayList<>(candidates).get(INDEX - 1).toString();
 		}
 	}
 }

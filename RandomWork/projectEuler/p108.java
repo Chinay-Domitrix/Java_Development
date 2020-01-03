@@ -1,4 +1,4 @@
-108
+import org.jetbrains.annotations.NotNull;
 
 public final class p108 extends EulerSolution {
 	public static void main(String[] args) {
@@ -8,7 +8,7 @@ public final class p108 extends EulerSolution {
 	// Returns the number of divisors of n^2
 	private static int countDivisorsSquared(int n) {
 		int count = 1;
-		for (int i = 2, end = Library.sqrt(n); i <= end; i++) {
+		for (int i = 2, end = Library.sqrt(n); i <= end; i++)
 			if (n % i == 0) {
 				int j = 0;
 				do {
@@ -18,9 +18,8 @@ public final class p108 extends EulerSolution {
 				count *= j * 2 + 1;
 				end = Library.sqrt(n);
 			}
-		}
-		if (n != 1) // Remaining largest prime factor
-			count *= 3;
+		// Remaining largest prime factor
+		if (n != 1) count *= 3;
 		return count;
 	}
 
@@ -39,10 +38,7 @@ public final class p108 extends EulerSolution {
 	 * n^2 always has an odd number of divisors. One of them is n. As for the remainder of them, half of them are below n
 	 * and half of them are above n. So if n^2 has m divisors, then we want (m+1)/2 of them as solutions for i.
 	 */
-	String run() {
-		for (int n = 1; ; n++) {
-			if ((countDivisorsSquared(n) + 1) / 2 > 1000)
-				return Integer.toString(n);
-		}
+	@NotNull String run() {
+		for (int n = 1; ; n++) if ((countDivisorsSquared(n) + 1) / 2 > 1000) return Integer.toString(n);
 	}
 }

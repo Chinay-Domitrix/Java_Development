@@ -1,6 +1,7 @@
-import java.util.Arrays;
+import org.jetbrains.annotations.NotNull;
 
-32
+import static java.util.Arrays.sort;
+
 
 public final class p032 extends EulerSolution {
 	public static void main(String[] args) {
@@ -9,18 +10,14 @@ public final class p032 extends EulerSolution {
 
 	private static boolean hasPandigitalProduct(int n) {
 		// Find and examine all factors of n
-		for (int i = 1; i <= n; i++) {
-			if (n % i == 0 && isPandigital("" + n + i + n / i))
-				return true;
-		}
+		for (int i = 1; i <= n; i++) if (n % i == 0 && isPandigital("" + n + i + n / i)) return true;
 		return false;
 	}
 
-	private static boolean isPandigital(String s) {
-		if (s.length() != 9)
-			return false;
+	private static boolean isPandigital(@NotNull String s) {
+		if (s.length() != 9) return false;
 		char[] temp = s.toCharArray();
-		Arrays.sort(temp);
+		sort(temp);
 		return new String(temp).equals("123456789");
 	}
 
@@ -33,12 +30,9 @@ public final class p032 extends EulerSolution {
 	 * Therefore we need the product z < 10000 to be able to find
 	 * possible x and y values.
 	 */
-	String run() {
+	@NotNull String run() {
 		int sum = 0;
-		for (int i = 1; i < 10000; i++) {
-			if (hasPandigitalProduct(i))
-				sum += i;
-		}
+		for (int i = 1; i < 10000; i++) if (hasPandigitalProduct(i)) sum += i;
 		return Integer.toString(sum);
 	}
 }

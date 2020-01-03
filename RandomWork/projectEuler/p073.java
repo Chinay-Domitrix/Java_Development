@@ -1,4 +1,4 @@
-73
+import org.jetbrains.annotations.NotNull;
 
 public final class p073 extends EulerSolution {
 	public static void main(String[] args) {
@@ -10,10 +10,8 @@ public final class p073 extends EulerSolution {
 	private static int sternBrocotCount(int leftN, int leftD, int rightN, int rightD) {
 		int n = leftN + rightN;
 		int d = leftD + rightD;
-		if (d > 12000)
-			return 0;
-		else
-			return 1 + sternBrocotCount(leftN, leftD, n, d) + sternBrocotCount(n, d, rightN, rightD);
+		if (d > 12000) return 0;
+		else return 1 + sternBrocotCount(leftN, leftD, n, d) + sternBrocotCount(n, d, rightN, rightD);
 	}
 
 	/*
@@ -25,7 +23,7 @@ public final class p073 extends EulerSolution {
 	 *
 	 * This algorithm uses a lot of stack space (about 12000 frames). You probably need to use a JVM option like "-Xss4M".
 	 */
-	String run() {
+	@NotNull String run() {
 		return Integer.toString(sternBrocotCount(1, 3, 1, 2));
 	}
 }

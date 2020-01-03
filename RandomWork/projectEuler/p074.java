@@ -1,7 +1,7 @@
-import java.util.HashSet;
-import java.util.Set;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
-74
+import java.util.HashSet;
 
 public final class p074 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 6);
@@ -13,27 +13,23 @@ public final class p074 extends EulerSolution {
 	}
 
 	private static int getChainLength(int n) {
-		Set<Integer> seen = new HashSet<>();
+		HashSet<Integer> seen = new HashSet<>();
 		while (true) {
-			if (!seen.add(n))
-				return seen.size();
+			if (!seen.add(n)) return seen.size();
 			n = factorialize(n);
 		}
 	}
 
+	@Contract(pure = true)
 	private static int factorialize(int n) {
 		int sum = 0;
-		for (; n != 0; n /= 10)
-			sum += FACTORIAL[n % 10];
+		for (; n != 0; n /= 10) sum += FACTORIAL[n % 10];
 		return sum;
 	}
 
-	String run() {
+	@NotNull String run() {
 		int count = 0;
-		for (int i = 0; i < LIMIT; i++) {
-			if (getChainLength(i) == 60)
-				count++;
-		}
+		for (int i = 0; i < LIMIT; i++) if (getChainLength(i) == 60) count++;
 		return Integer.toString(count);
 	}
 }

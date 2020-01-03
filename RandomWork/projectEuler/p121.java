@@ -1,6 +1,6 @@
 import java.math.BigInteger;
 
-121
+import static java.math.BigInteger.*;
 
 public final class p121 extends EulerSolution {
 	private static final int TURNS = 15;
@@ -34,22 +34,18 @@ public final class p121 extends EulerSolution {
 	String run() {
 		// Dynamic programming
 		BigInteger[][] ways = new BigInteger[TURNS + 1][];
-		ways[0] = new BigInteger[]{BigInteger.ONE};
+		ways[0] = new BigInteger[]{ONE};
 		for (int i = 1; i <= TURNS; i++) {
 			ways[i] = new BigInteger[i + 1];
 			for (int j = 0; j <= i; j++) {
-				BigInteger temp = BigInteger.ZERO;
-				if (j < i)
-					temp = ways[i - 1][j].multiply(BigInteger.valueOf(i));
-				if (j > 0)
-					temp = temp.add(ways[i - 1][j - 1]);
+				BigInteger temp = ZERO;
+				if (j < i) temp = ways[i - 1][j].multiply(valueOf(i));
+				if (j > 0) temp = temp.add(ways[i - 1][j - 1]);
 				ways[i][j] = temp;
 			}
 		}
-
-		BigInteger numer = BigInteger.ZERO;
-		for (int i = TURNS / 2 + 1; i <= TURNS; i++)
-			numer = numer.add(ways[TURNS][i]);
+		BigInteger numer = ZERO;
+		for (int i = TURNS / 2 + 1; i <= TURNS; i++) numer = numer.add(ways[TURNS][i]);
 		BigInteger denom = Library.factorial(TURNS + 1);
 		return denom.divide(numer).toString();
 	}

@@ -1,6 +1,6 @@
 import java.math.BigInteger;
 
-100
+import static java.math.BigInteger.*;
 
 public final class p100 extends EulerSolution {
 	public static void main(String[] args) {
@@ -42,23 +42,20 @@ public final class p100 extends EulerSolution {
 	 */
 	String run() {
 		// Fundamental solution
-		BigInteger x0 = BigInteger.valueOf(3);
-		BigInteger y0 = BigInteger.valueOf(1);
-
+		BigInteger x0 = valueOf(3);
+		BigInteger y0 = valueOf(1);
 		// Current solution
 		BigInteger x = x0;
 		BigInteger y = y0; // An alias for the number of red discs
 		while (true) {
 			// Check if this solution is acceptable
-			BigInteger sqrt = Library.sqrt(y.multiply(y).multiply(BigInteger.valueOf(8)).add(BigInteger.ONE));
+			BigInteger sqrt = Library.sqrt(y.multiply(y).multiply(valueOf(8)).add(ONE));
 			if (sqrt.testBit(0)) { // Is odd
-				BigInteger blue = sqrt.add(BigInteger.ONE).divide(BigInteger.valueOf(2)).add(y);
-				if (blue.add(y).compareTo(BigInteger.TEN.pow(12)) > 0)
-					return blue.toString();
+				BigInteger blue = sqrt.add(ONE).divide(valueOf(2)).add(y);
+				if (blue.add(y).compareTo(TEN.pow(12)) > 0) return blue.toString();
 			}
-
 			// Create the next bigger solution
-			BigInteger nextx = x.multiply(x0).add(y.multiply(y0).multiply(BigInteger.valueOf(8)));
+			BigInteger nextx = x.multiply(x0).add(y.multiply(y0).multiply(valueOf(8)));
 			BigInteger nexty = x.multiply(y0).add(y.multiply(x0));
 			x = nextx;
 			y = nexty;

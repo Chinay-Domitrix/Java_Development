@@ -1,4 +1,5 @@
-92
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 public final class p092 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 7);
@@ -7,6 +8,7 @@ public final class p092 extends EulerSolution {
 		System.out.println(new p092().run());
 	}
 
+	@Contract(pure = true)
 	private static boolean isClass89(int x) {
 		while (true) {
 			switch (x) {
@@ -20,6 +22,7 @@ public final class p092 extends EulerSolution {
 		}
 	}
 
+	@Contract(pure = true)
 	private static int nextNumber(int x) {
 		int sum = 0;
 		while (x != 0) {
@@ -29,12 +32,9 @@ public final class p092 extends EulerSolution {
 		return sum;
 	}
 
-	String run() {
+	@NotNull String run() {
 		int count = 0;
-		for (int i = 1; i < LIMIT; i++) {
-			if (isClass89(i))
-				count++;
-		}
+		for (int i = 1; i < LIMIT; i++) if (isClass89(i)) count++;
 		return Integer.toString(count);
 	}
 }

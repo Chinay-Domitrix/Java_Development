@@ -1,4 +1,4 @@
-120
+import org.jetbrains.annotations.NotNull;
 
 public final class p120 extends EulerSolution {
 	public static void main(String[] args) {
@@ -27,10 +27,9 @@ public final class p120 extends EulerSolution {
 	 * In conclusion, if a is even, the maximum remainder is a(a-2);
 	 * otherwise a is odd, the maximum remainder is a(a-1).
 	 */
-	String run() {
+	@NotNull String run() {
 		int sum = 0;
-		for (int a = 3; a <= 1000; a++)
-			sum += a * (a - (a % 2 == 0 ? 2 : 1));
+		for (int a = 3; a <= 1000; a++) sum += a * (a - (((a % 2) == 0) ? 2 : 1));
 		return Integer.toString(sum);
 	}
 }

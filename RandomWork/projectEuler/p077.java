@@ -1,4 +1,5 @@
-77
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 public final class p077 extends EulerSolution {
 	private static final int TARGET = 5000;
@@ -26,27 +27,22 @@ public final class p077 extends EulerSolution {
 	 * for k' in [k, n). Thus we only need to buffer one row of data for
 	 * dynamic programming and can overwrite it in place.
 	 */
+	@Contract(pure = true)
 	private static int search(int limit) {
 		int[] partitions = new int[limit];
 		partitions[0] = 1;
 		for (int i = 0; i < partitions.length; i++) {
-			if (!Library.isPrime(i))
-				continue;
-			for (int j = i; j < partitions.length; j++)
-				partitions[j] += partitions[j - i];
+			if (!Library.isPrime(i)) continue;
+			for (int j = i; j < partitions.length; j++) partitions[j] += partitions[j - i];
 		}
-		for (int i = 0; i < limit; i++) {
-			if (partitions[i] > p077.TARGET)
-				return i;
-		}
+		for (int i = 0; i < limit; i++) if (partitions[i] > p077.TARGET) return i;
 		return -1;
 	}
 
-	String run() {
+	@NotNull String run() {
 		for (int limit = 1; ; limit *= 2) {
 			int result = search(limit);
-			if (result != -1)
-				return Integer.toString(result);
+			if (result != -1) return Integer.toString(result);
 		}
 	}
 }

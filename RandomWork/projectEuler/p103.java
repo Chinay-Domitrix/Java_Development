@@ -1,6 +1,10 @@
-import java.util.Arrays;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-103
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+import static java.util.Arrays.copyOf;
 
 public final class p103 extends EulerSolution {
 	private static final int TARGET_SIZE = 7;
@@ -75,7 +79,7 @@ public final class p103 extends EulerSolution {
 		System.out.println(new p103().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		// At the top level, we try to find a special sum set with sum at most s,
 		// incrementing the bound s until we succeed. When we find a solution
 		// with sum at most s, but find none with sum at most s - 1, it implies
@@ -88,8 +92,7 @@ public final class p103 extends EulerSolution {
 			SpecialSumSet set = SpecialSumSet.makeSet(TARGET_SIZE, maxSum);
 			if (set != null) { // Solution found; concatenate numbers into a string
 				StringBuilder ans = new StringBuilder();
-				for (int x : set.values)
-					ans.append(x);
+				for (int x : set.values) ans.append(x);
 				return ans.toString();
 			}
 		}
@@ -115,11 +118,13 @@ public final class p103 extends EulerSolution {
 		private final int[] maximumSum;
 
 		// Creates an empty set, which is a valid state.
+		@Contract(pure = true)
 		SpecialSumSet() {
 			this(new int[]{}, new boolean[]{true}, new int[]{0}, new int[]{0});
 		}
 
 		// Internal constructor. The contents of the given array objects must not change.
+		@Contract(pure = true)
 		private SpecialSumSet(int[] vals, boolean[] sumPosb, int[] minSum, int[] maxSum) {
 			values = vals;
 			sumPossible = sumPosb;
@@ -136,60 +141,45 @@ public final class p103 extends EulerSolution {
 		// Returns the lexicographically lowest special sum set by adding exactly sizeRemain elements
 		// to the given set, such that the sum of the additional elements is at most sumRemain,
 		// and the next element to be added is at least startVal. Returns null if no such set exists.
+		@Nullable
 		private static SpecialSumSet makeSet(SpecialSumSet set, int sizeRemain, int sumRemain, int startVal) {
 			// In summary, this procedure takes a partial answer (prefix) and some parameters,
 			// and tries to extend the answer by performing depth-first search through recursion.
-
-			if (sizeRemain == 0) // Base case - success
-				return set;
-
+			// Base case - success
+			if (sizeRemain == 0) return set;
 			// Optimization: If we still need to add at least 2 elements, then the next element
 			// will be at least startVal, the one after will be at least startVal + 1,
 			// thereafter is at least startVal + 2, et cetera. The sum of the elements
 			// to be added is strictly greater than startVal * sizeRemain, which we can
 			// check against sumRemain and bail out early if a solution is impossible.
-			if (sizeRemain >= 2 && startVal * sizeRemain >= sumRemain)
-				return null;
-
+			if (sizeRemain >= 2 && startVal * sizeRemain >= sumRemain) return null;
 			int endVal = sumRemain;
 			// Optimization: If the partial set has at least two elements a and b, then by the
 			// property (ii), S({a, b}) = a + b must be greater than any single element of the set.
 			// We use the foremost two elements, which have the smallest values - this makes
 			// endVal as small and restrictive as possible compared to other choices of elements.
-			if (set.values.length >= 2)
-				endVal = Math.min(set.values[0] + set.values[1] - 1, endVal);
-
+			if (set.values.length >= 2) endVal = min(set.values[0] + set.values[1] - 1, endVal);
 			// Consider each possible value for the next element
 			for (int val = startVal; val <= endVal; val++) {
 				// Try adding the value and see if any property is violated
 				SpecialSumSet temp = set.add(val);
-				if (temp == null)
-					continue;
-
+				if (temp == null) continue;
 				// Recurse and see if a solution is found down the call tree
 				temp = makeSet(temp, sizeRemain - 1, sumRemain - val, val + 1);
-				if (temp != null)
-					return temp;
+				if (temp != null) return temp;
 			}
 			return null; // No solution for the given current state
 		}
 
 		// Attempts to add the given value to this set, returning a new set
 		// if successful. Otherwise returns null if any property is violated.
-		SpecialSumSet add(int val) {
+		@Nullable SpecialSumSet add(int val) {
 			// Simple checks on the value
-			if (val <= 0)
-				throw new IllegalArgumentException("Value must be positive");
+			assert val > 0 : "Value must be positive";
 			int size = values.length;
-			if (size >= 1 && val <= values[size - 1])
-				throw new IllegalArgumentException("Must add values in ascending order");
-
+			assert size < 1 || val > values[size - 1] : "Must add values in ascending order";
 			// Check if adding val to any subset of this set would create a duplicate sum
-			for (int i = val; i < sumPossible.length; i++) {
-				if (sumPossible[i] & sumPossible[i - val])
-					return null;
-			}
-
+			for (int i = val; i < sumPossible.length; i++) if (sumPossible[i] & sumPossible[i - val]) return null;
 			// Compute minimum and maximum sums for each subset size, with help from old data.
 			// The idea is that by introducing the new value val, each subset of the new set
 			// either contains val or doesn't. All old subsets are still possible, so we copy
@@ -200,26 +190,19 @@ public final class p103 extends EulerSolution {
 			int[] newMin = new int[newSize + 1];
 			int[] newMax = new int[newSize + 1];
 			for (int i = 1; i < newSize; i++) {
-				newMin[i] = Math.min(minimumSum[i], minimumSum[i - 1] + val);
-				newMax[i] = Math.max(maximumSum[i], maximumSum[i - 1] + val);
+				newMin[i] = min(minimumSum[i], minimumSum[i - 1] + val);
+				newMax[i] = max(maximumSum[i], maximumSum[i - 1] + val);
 			}
 			newMin[newSize] = minimumSum[newSize - 1] + val;
 			newMax[newSize] = maximumSum[newSize - 1] + val;
-
 			// Check iff property (ii) '|B| > |C| implies S(B) > S(C)' is violated
-			for (int i = 0; i < newSize; i++) {
-				if (newMax[i] >= newMin[i + 1])
-					return null;
-			}
-
+			for (int i = 0; i < newSize; i++) if (newMax[i] >= newMin[i + 1]) return null;
 			// Compute all possible new subset sums, with help from old data. This is the
 			// classic table-based algorithm for solving the subset sum or knapsack problem.
-			boolean[] newPosb = Arrays.copyOf(sumPossible, sumPossible.length + val);
-			for (int i = newPosb.length - 1; i >= val; i--)
-				newPosb[i] |= newPosb[i - val];
-
+			boolean[] newPosb = copyOf(sumPossible, sumPossible.length + val);
+			for (int i = newPosb.length - 1; i >= val; i--) newPosb[i] |= newPosb[i - val];
 			// Append given value to the new set
-			int[] newVals = Arrays.copyOf(values, newSize);
+			int[] newVals = copyOf(values, newSize);
 			newVals[size] = val;
 			return new SpecialSumSet(newVals, newPosb, newMin, newMax);
 		}

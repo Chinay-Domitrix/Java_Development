@@ -1,6 +1,7 @@
 import java.math.BigInteger;
 
-113
+import static java.math.BigInteger.ONE;
+import static java.math.BigInteger.valueOf;
 
 public final class p113 extends EulerSolution {
 	private static final int DIGITS = 100;
@@ -29,7 +30,7 @@ public final class p113 extends EulerSolution {
 	 *
 	 * In conclusion, the number of non-bouncy numbers is (binomial(n+9,9) - 1) + (binomial(n+10,10) - (n+1)) - 9n.
 	 *
-	 * (Technically, in the problem statement and this solution, "increasing" actually means "nondecreasing" and "decreasing" means "nonincreasing".)
+	 * (Technically, in the problem statement and this solution, "increasing" actually means "non-decreasing" and "decreasing" means "non-increasing".)
 	 */
 
 	public static void main(String[] args) {
@@ -37,9 +38,9 @@ public final class p113 extends EulerSolution {
 	}
 
 	String run() {
-		BigInteger increasing = Library.binomial(DIGITS + 9, 9).subtract(BigInteger.ONE);
-		BigInteger decreasing = Library.binomial(DIGITS + 10, 10).subtract(BigInteger.valueOf(DIGITS + 1));
-		BigInteger flat = BigInteger.valueOf(DIGITS * 9);
+		BigInteger increasing = Library.binomial(DIGITS + 9, 9).subtract(ONE);
+		BigInteger decreasing = Library.binomial(DIGITS + 10, 10).subtract(valueOf(DIGITS + 1));
+		BigInteger flat = valueOf(DIGITS * 9);
 		return increasing.add(decreasing).subtract(flat).toString();
 	}
 }

@@ -1,8 +1,7 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Set;
-
-88
 
 public final class p088 extends EulerSolution {
 	private static final int LIMIT = 12000;
@@ -26,19 +25,15 @@ public final class p088 extends EulerSolution {
 		System.out.println(new p088().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		minSumProduct = new int[LIMIT + 1];
 		Arrays.fill(minSumProduct, Integer.MAX_VALUE);
-		for (int i = 2; i <= LIMIT * 2; i++)
-			factorize(i, i, i, 0, 0);
-
+		for (int i = 2; i <= LIMIT * 2; i++) factorize(i, i, i, 0, 0);
 		// Eliminate duplicates and compute sum
-		Set<Integer> items = new HashSet<>();
-		for (int i = 2; i < minSumProduct.length; i++)
-			items.add(minSumProduct[i]);
+		HashSet<Integer> items = new HashSet<>();
+		for (int i = 2; i < minSumProduct.length; i++) items.add(minSumProduct[i]);
 		int sum = 0;
-		for (int n : items)
-			sum += n;
+		for (int n : items) sum += n;
 		return Integer.toString(sum);
 	}
 
@@ -51,21 +46,13 @@ public final class p088 extends EulerSolution {
 	 * - 12 = 3 * 2 * 2 * 1 * 1 * 1 * 1 * 1 = 3 + 2 + 2 + 1 + 1 + 1 + 1 + 1. (8 terms)
 	 */
 	private void factorize(int n, int remain, int maxFactor, int sum, int terms) {
+		// Note: maxFactor <= remain
 		if (remain == 1) {
-			if (sum > n) // Without using factors of 1, the sum never exceeds the product
-				throw new AssertionError();
-
+			// Without using factors of 1, the sum never exceeds the product
+			assert sum <= n;
 			terms += n - sum;
-			if (terms <= LIMIT && n < minSumProduct[terms])
-				minSumProduct[terms] = n;
-
-		} else {
-			// Note: maxFactor <= remain
-			for (int i = 2; i <= maxFactor; i++) {
-				if (remain % i == 0) {
-					factorize(n, remain / i, Math.min(i, maxFactor), sum + i, terms + 1);
-				}
-			}
-		}
+			if (terms <= LIMIT && n < minSumProduct[terms]) minSumProduct[terms] = n;
+		} else for (int i = 2; i <= maxFactor; i++)
+			if (remain % i == 0) factorize(n, remain / i, Math.min(i, maxFactor), sum + i, terms + 1);
 	}
 }

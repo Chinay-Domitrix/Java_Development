@@ -1,6 +1,8 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
 
-70
+import static java.util.Arrays.sort;
 
 public final class p070 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 7);
@@ -12,12 +14,12 @@ public final class p070 extends EulerSolution {
 	private static boolean hasSameDigits(int x, int y) {
 		char[] xdigits = Integer.toString(x).toCharArray();
 		char[] ydigits = Integer.toString(y).toCharArray();
-		Arrays.sort(xdigits);
-		Arrays.sort(ydigits);
+		sort(xdigits);
+		sort(ydigits);
 		return Arrays.equals(xdigits, ydigits);
 	}
 
-	String run() {
+	@NotNull String run() {
 		int minNumer = 1; // Initially infinity
 		int minDenom = 0;
 		int[] totients = Library.listTotients(LIMIT - 1);
@@ -28,8 +30,7 @@ public final class p070 extends EulerSolution {
 				minDenom = tot;
 			}
 		}
-		if (minDenom == 0)
-			throw new RuntimeException("Not found");
+		assert minDenom != 0 : "Not found";
 		return Integer.toString(minNumer);
 	}
 }

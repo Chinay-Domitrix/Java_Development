@@ -1,6 +1,6 @@
 import java.math.BigInteger;
 
-48
+import static java.math.BigInteger.*;
 
 public final class p048 extends EulerSolution {
 	public static void main(String[] args) {
@@ -8,10 +8,9 @@ public final class p048 extends EulerSolution {
 	}
 
 	String run() {
-		BigInteger modulus = BigInteger.TEN.pow(10);
-		BigInteger sum = BigInteger.ZERO;
-		for (int i = 1; i <= 1000; i++)
-			sum = sum.add(BigInteger.valueOf(i).modPow(BigInteger.valueOf(i), modulus));
+		BigInteger modulus = TEN.pow(10);
+		BigInteger sum = ZERO;
+		for (int i = 1; i <= 1000; i++) sum = sum.add(valueOf(i).modPow(valueOf(i), modulus));
 		return sum.mod(modulus).toString();
 	}
 }

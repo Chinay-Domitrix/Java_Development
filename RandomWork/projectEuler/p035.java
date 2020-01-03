@@ -1,4 +1,4 @@
-35
+import org.jetbrains.annotations.NotNull;
 
 public final class p035 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 6);
@@ -8,21 +8,16 @@ public final class p035 extends EulerSolution {
 		System.out.println(new p035().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		int count = 0;
-		for (int i = 0; i < isPrime.length; i++) {
-			if (isCircularPrime(i))
-				count++;
-		}
+		for (int i = 0; i < isPrime.length; i++) if (isCircularPrime(i)) count++;
 		return Integer.toString(count);
 	}
 
 	private boolean isCircularPrime(int n) {
 		String s = Integer.toString(n);
-		for (int i = 0; i < s.length(); i++) {
-			if (!isPrime[Integer.parseInt(s.substring(i) + s.substring(0, i))])
-				return false;
-		}
+		for (int i = 0; i < s.length(); i++)
+			if (!isPrime[Integer.parseInt(s.substring(i) + s.substring(0, i))]) return false;
 		return true;
 	}
 }

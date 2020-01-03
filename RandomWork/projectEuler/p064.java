@@ -1,8 +1,10 @@
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.math.BigInteger;
 import java.util.HashMap;
-import java.util.Map;
 
-64
+import static java.math.BigInteger.*;
 
 public final class p064 extends EulerSolution {
 	public static void main(String[] args) {
@@ -11,37 +13,31 @@ public final class p064 extends EulerSolution {
 
 	// Returns the period of the continued fraction of sqrt(n)
 	private static int getSqrtContinuedFractionPeriod(int n) {
-		Map<QuadraticSurd, Integer> seen = new HashMap<>();
-		QuadraticSurd val = new QuadraticSurd(BigInteger.ZERO, BigInteger.ONE, BigInteger.ONE, BigInteger.valueOf(n));
+		HashMap<QuadraticSurd, Integer> seen = new HashMap<>();
+		QuadraticSurd val = new QuadraticSurd(ZERO, ONE, ONE, valueOf(n));
 		do {
 			seen.put(val, seen.size());
-			val = val.subtract(new QuadraticSurd(val.floor(), BigInteger.ZERO, BigInteger.ONE, val.d)).reciprocal();
+			val = val.subtract(new QuadraticSurd(val.floor(), ZERO, ONE, val.d)).reciprocal();
 		} while (!seen.containsKey(val));
 		return seen.size() - seen.get(val);
 	}
 
-	String run() {
+	@NotNull String run() {
 		int count = 0;
-		for (int i = 1; i <= 10000; i++) {
-			if (!Library.isSquare(i) && getSqrtContinuedFractionPeriod(i) % 2 == 1)
-				count++;
-		}
+		for (int i = 1; i <= 10000; i++)
+			if (!Library.isSquare(i) && getSqrtContinuedFractionPeriod(i) % 2 == 1) count++;
 		return Integer.toString(count);
 	}
 
 	// Represents (a + b * sqrt(d)) / c. d must not be a perfect square.
 	private static final class QuadraticSurd {
-
 		final BigInteger a;
 		final BigInteger b;
 		final BigInteger c;
 		final BigInteger d;
 
-		@SuppressWarnings("DuplicatedCode")
-		QuadraticSurd(BigInteger a, BigInteger b, BigInteger c, BigInteger d) {
-			if (c.signum() == 0)
-				throw new IllegalArgumentException();
-
+		QuadraticSurd(BigInteger a, BigInteger b, @NotNull BigInteger c, BigInteger d) {
+			assert c.signum() != 0;
 			// Simplify
 			if (c.signum() == -1) {
 				a = a.negate();
@@ -49,42 +45,42 @@ public final class p064 extends EulerSolution {
 				c = c.negate();
 			}
 			BigInteger gcd = a.gcd(b).gcd(c);
-			if (!gcd.equals(BigInteger.ONE)) {
+			if (!gcd.equals(ONE)) {
 				a = a.divide(gcd);
 				b = b.divide(gcd);
 				c = c.divide(gcd);
 			}
-
 			this.a = a;
 			this.b = b;
 			this.c = c;
 			this.d = d;
 		}
 
-		QuadraticSurd subtract(QuadraticSurd other) {
+		@NotNull
+		@Contract("_ -> new")
+		QuadraticSurd subtract(@NotNull QuadraticSurd other) {
 			if (!d.equals(other.d))
 				throw new IllegalArgumentException();
 			return new QuadraticSurd(a.multiply(other.c).subtract(other.a.multiply(c)), b.multiply(other.c).subtract(other.b.multiply(c)), c.multiply(other.c), d);
 		}
 
+		@NotNull
+		@Contract(" -> new")
 		QuadraticSurd reciprocal() {
 			return new QuadraticSurd(a.multiply(c).negate(), b.multiply(c), b.multiply(b).multiply(d).subtract(a.multiply(a)), d);
 		}
 
-		@SuppressWarnings("DuplicatedCode")
 		BigInteger floor() {
 			BigInteger temp = Library.sqrt(b.multiply(b).multiply(d));
-			if (b.signum() == -1)
-				temp = temp.add(BigInteger.ONE).negate();
+			if (b.signum() == -1) temp = temp.add(ONE).negate();
 			temp = temp.add(a);
-			if (temp.signum() == -1)
-				temp = temp.subtract(c.subtract(BigInteger.ONE));
+			if (temp.signum() == -1) temp = temp.subtract(c.subtract(ONE));
 			return temp.divide(c);
 		}
 
+		@Contract(value = "null -> false", pure = true)
 		public boolean equals(Object obj) {
-			if (!(obj instanceof QuadraticSurd))
-				return false;
+			if (!(obj instanceof QuadraticSurd)) return false;
 			else {
 				QuadraticSurd other = (QuadraticSurd) obj;
 				return a.equals(other.a) && b.equals(other.b) && c.equals(other.c) && d.equals(other.d);

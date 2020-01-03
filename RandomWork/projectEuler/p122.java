@@ -1,6 +1,7 @@
-import java.util.Arrays;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
-122
+import java.util.Arrays;
 
 public final class p122 extends EulerSolution {
 	private static final int LIMIT = 200;
@@ -48,41 +49,35 @@ public final class p122 extends EulerSolution {
 		System.out.println(new p122().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		// Set up initial array of known/unknown minimum operation counts
 		minOperations = new int[LIMIT + 1];
 		Arrays.fill(minOperations, -1);
 		minOperations[0] = 0;
 		minOperations[1] = 0;
 		numUnknown = LIMIT - 1;
-
 		// Perform bounded depth-first search with incrementing depth
 		for (int ops = 1; numUnknown > 0; ops++) {
 			IntStack chain = new IntStack(ops + 1);
 			chain.push(1);
 			exploreChains(chain, ops);
 		}
-
 		// Add up the results
 		int sum = 0;
-		for (int x : minOperations)
-			sum += x;
+		for (int x : minOperations) sum += x;
 		return Integer.toString(sum);
 	}
 
 	// Recursively builds up chains and compares them to chain lengths already found.
-	private void exploreChains(IntStack chain, int maxOps) {
+	private void exploreChains(@NotNull IntStack chain, int maxOps) {
 		// Depth-based termination or early exit
-		if (chain.size > maxOps || numUnknown == 0)
-			return;
-
+		if ((chain.size > maxOps) || (numUnknown == 0)) return;
 		// Try all unordered pairs of values in the current chain
 		int max = chain.values[chain.size - 1]; // Peek at top
-		for (int i = chain.size - 1; i >= 0; i--) {
+		for (int i = chain.size - 1; i >= 0; i--)
 			for (int j = i; j >= 0; j--) {
 				int x = chain.values[i] + chain.values[j];
-				if (x <= max)
-					break; // Early exit due to ascending order
+				if (x <= max) break; // Early exit due to ascending order
 				if (x <= LIMIT) {
 					// Append x to the current chain and recurse
 					chain.push(x);
@@ -96,7 +91,6 @@ public final class p122 extends EulerSolution {
 					chain.pop();
 				}
 			}
-		}
 	}
 
 	// This implementation exists because Stack<Integer> is unacceptably slow due to integer boxing and such.
@@ -105,21 +99,20 @@ public final class p122 extends EulerSolution {
 		final int[] values;
 		int size;
 
+		@Contract(pure = true)
 		IntStack(int capacity) {
 			values = new int[capacity];
 			size = 0;
 		}
 
 		void push(int x) {
-			if (size >= values.length)
-				throw new IllegalStateException();
+			assert size < values.length;
 			values[size] = x;
 			size++;
 		}
 
 		void pop() {
-			if (size <= 0)
-				throw new IllegalStateException();
+			assert size > 0;
 			size--;
 		}
 	}

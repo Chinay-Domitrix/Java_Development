@@ -1,6 +1,8 @@
-import java.util.Arrays;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
-111
+import static java.util.Arrays.fill;
+import static java.util.Arrays.sort;
 
 public final class p111 extends EulerSolution {
 	private static final int DIGITS = 10;
@@ -10,13 +12,15 @@ public final class p111 extends EulerSolution {
 		System.out.println(new p111().run());
 	}
 
-	private static long toInteger(int[] digits) {
+	@Contract(pure = true)
+	private static long toInteger(@NotNull int[] digits) {
 		long result = 0;
 		for (int x : digits)
 			result = result * 10 + x;
 		return result;
 	}
 
+	@Contract(pure = true)
 	private static long pow(int x, int y) {
 		long z = 1;
 		for (int i = 0; i < y; i++)
@@ -24,9 +28,8 @@ public final class p111 extends EulerSolution {
 		return z;
 	}
 
-	String run() {
+	@NotNull String run() {
 		primes = Library.listPrimes((int) Library.sqrt(pow(10, DIGITS)));
-
 		long total = 0;
 		for (int digit = 0; digit < 10; digit++) { // For each repeating digit
 			for (int rep = DIGITS; rep >= 0; rep--) { // Search by the number of repetitions in decreasing order
@@ -36,28 +39,26 @@ public final class p111 extends EulerSolution {
 				level2:
 				for (long i = 0; i < count; i++) { // Try all possibilities for filling the non-repeating digits
 					// Build initial array. For example, if DIGITS=7, digit=5, rep=4, i=123, then the array will be filled with 5,5,5,5,1,4,7.
-					Arrays.fill(digits, 0, rep, digit);
+					fill(digits, 0, rep, digit);
 					long temp = i;
 					for (int j = 0; j < DIGITS - rep; j++) {
 						int d = (int) (temp % 9);
-						if (d >= digit) // Skip the repeating digit
-							d++;
-						if (j > 0 && d > digits[DIGITS - j]) // If this is true, then after sorting, the array will be in an already-tried configuration
-							continue level2;
+						// Skip the repeating digit
+						if (d >= digit) d++;
+						// If this is true, then after sorting, the array will be in an already-tried configuration
+						if (j > 0 && d > digits[DIGITS - j]) continue level2;
 						digits[DIGITS - 1 - j] = d;
 						temp /= 9;
 					}
-					Arrays.sort(digits); // Start at lowest permutation
+					sort(digits); // Start at lowest permutation
 
 					do { // Go through all permutations
 						if (digits[0] > 0) { // Skip if the number has a leading zero, which means it has less than DIGIT digits
 							long num = toInteger(digits);
-							if (isPrime(num))
-								sum += num;
+							if (isPrime(num)) sum += num;
 						}
 					} while (Library.nextPermutation(digits));
 				}
-
 				if (sum > 0) { // Primes found; skip all lesser repetitions
 					total += sum;
 					break;
@@ -68,11 +69,9 @@ public final class p111 extends EulerSolution {
 	}
 
 	// Only valid if 1 < n <= 10^DIGITS
+	@Contract(pure = true)
 	private boolean isPrime(long n) {
-		for (int p : primes) {
-			if (n % p == 0)
-				return false;
-		}
+		for (int p : primes) if (n % p == 0) return false;
 		return true;
 	}
 }

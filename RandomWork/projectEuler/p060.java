@@ -1,7 +1,7 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
 import java.util.BitSet;
-
-60
 
 public final class p060 extends EulerSolution {
 	private static final int PRIME_LIMIT = 100000; // Arbitrary initial cutoff
@@ -14,15 +14,14 @@ public final class p060 extends EulerSolution {
 		System.out.println(new p060().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		isConcatPrimeKnown = new BitSet(primes.length * primes.length);
 		isConcatPrime = new BitSet(primes.length * primes.length);
-
 		int sumLimit = PRIME_LIMIT;
 		while (true) {
 			int sum = findSetSum(new int[]{}, 5, sumLimit - 1);
-			if (sum == -1) // No smaller sum found
-				return Integer.toString(sumLimit);
+			// No smaller sum found
+			if (sum == -1) return Integer.toString(sumLimit);
 			sumLimit = sum;
 		}
 	}
@@ -39,32 +38,20 @@ public final class p060 extends EulerSolution {
 	 * where the set has size 5, consists of primes with the lowest elements being {3, 7, 109},
 	 * has sum 10000 or less, and has each pair concatenating to form a prime".
 	 */
-	private int findSetSum(int[] prefix, int targetSize, int sumLimit) {
+	private int findSetSum(@NotNull int[] prefix, int targetSize, int sumLimit) {
 		if (prefix.length == targetSize) {
 			int sum = 0;
-			for (int i : prefix)
-				sum += primes[i];
+			for (int i : prefix) sum += primes[i];
 			return sum;
-
 		} else {
-			int i;
-			if (prefix.length == 0)
-				i = 0;
-			else
-				i = prefix[prefix.length - 1] + 1;
-
+			int i = prefix.length == 0 ? 0 : prefix[prefix.length - 1] + 1;
 			outer:
 			for (; i < primes.length && primes[i] <= sumLimit; i++) {
-				for (int j : prefix) {
-					if (isConcatPrime(i, j) || isConcatPrime(j, i))
-						continue outer;
-				}
-
+				for (int j : prefix) if (isConcatPrime(i, j) || isConcatPrime(j, i)) continue outer;
 				int[] appended = Arrays.copyOf(prefix, prefix.length + 1);
 				appended[appended.length - 1] = i;
 				int sum = findSetSum(appended, targetSize, sumLimit - primes[i]);
-				if (sum != -1)
-					return sum;
+				if (sum != -1) return sum;
 			}
 			return -1;
 		}
@@ -73,15 +60,11 @@ public final class p060 extends EulerSolution {
 	// Tests whether parseInt(toString(x) + toString(y)) is prime.
 	private boolean isConcatPrime(int x, int y) {
 		int index = x * primes.length + y;
-		if (isConcatPrimeKnown.get(index))
-			return !isConcatPrime.get(index);
-
+		if (isConcatPrimeKnown.get(index)) return !isConcatPrime.get(index);
 		x = primes[x];
 		y = primes[y];
 		int mult = 1;
-		for (int temp = y; temp != 0; temp /= 10)
-			mult *= 10;
-
+		for (int temp = y; temp != 0; temp /= 10) mult *= 10;
 		boolean result = isPrime((long) x * mult + y);
 		isConcatPrimeKnown.set(index);
 		isConcatPrime.set(index, result);
@@ -89,22 +72,15 @@ public final class p060 extends EulerSolution {
 	}
 
 	private boolean isPrime(long x) {
-		if (x < 0)
-			throw new IllegalArgumentException();
-		else if (x == 0 || x == 1)
-			return false;
+		if (x < 0) throw new IllegalArgumentException();
+		else if (x == 0 || x == 1) return false;
 		else {
 			long end = Library.sqrt(x);
 			for (int p : primes) {
-				if (p > end)
-					break;
-				if (x % p == 0)
-					return false;
+				if (p > end) break;
+				if (x % p == 0) return false;
 			}
-			for (long i = primes[primes.length - 1] + 2; i <= end; i += 2) {
-				if (x % i == 0)
-					return false;
-			}
+			for (long i = primes[primes.length - 1] + 2; i <= end; i += 2) if (x % i == 0) return false;
 			return true;
 		}
 	}

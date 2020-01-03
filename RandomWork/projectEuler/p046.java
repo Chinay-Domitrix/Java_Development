@@ -1,4 +1,4 @@
-46
+import org.jetbrains.annotations.NotNull;
 
 public final class p046 extends EulerSolution {
 	public static void main(String[] args) {
@@ -6,21 +6,13 @@ public final class p046 extends EulerSolution {
 	}
 
 	private static boolean satisfiesConjecture(int n) {
-		if (n % 2 == 0 || Library.isPrime(n))
-			return true;
-
+		if (n % 2 == 0 || Library.isPrime(n)) return true;
 		// Now n is an odd composite number
-		for (int i = 1; i * i * 2 <= n; i++) {
-			if (Library.isPrime(n - i * i * 2))
-				return true;
-		}
+		for (int i = 1; i * i * 2 <= n; i++) if (Library.isPrime(n - i * i * 2)) return true;
 		return false;
 	}
 
-	String run() {
-		for (int i = 9; ; i += 2) {
-			if (!satisfiesConjecture(i))
-				return Integer.toString(i);
-		}
+	@NotNull String run() {
+		for (int i = 9; ; i += 2) if (!satisfiesConjecture(i)) return Integer.toString(i);
 	}
 }

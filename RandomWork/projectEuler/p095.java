@@ -1,7 +1,6 @@
-import java.util.HashSet;
-import java.util.Set;
+import org.jetbrains.annotations.NotNull;
 
-95
+import java.util.HashSet;
 
 public final class p095 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 6);
@@ -10,19 +9,16 @@ public final class p095 extends EulerSolution {
 		System.out.println(new p095().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		// divisorSum[n] is the sum of all the proper divisors of n
 		int[] divisorSum = new int[LIMIT + 1];
-		for (int i = 1; i <= LIMIT; i++) {
-			for (int j = i * 2; j <= LIMIT; j += i)
-				divisorSum[j] += i;
-		}
+		for (int i = 1; i <= LIMIT; i++) for (int j = i * 2; j <= LIMIT; j += i) divisorSum[j] += i;
 
 		// Analyze the amicable chain length for each number in ascending order
 		int maxChainLen = 0;
 		int minChainElem = -1;
 		for (int i = 0; i <= LIMIT; i++) {
-			Set<Integer> visited = new HashSet<>();
+			HashSet<Integer> visited = new HashSet<>();
 			for (int count = 1, cur = i; ; count++) {
 				// 'count' is the length of the this amicable chain
 				visited.add(cur);
@@ -35,13 +31,10 @@ public final class p095 extends EulerSolution {
 					break;
 				}
 				// Exceeds limit or not a chain (a rho shape instead)
-				else if (next > LIMIT || visited.contains(next))
-					break;
-				else
-					cur = next;
+				else if (next > LIMIT || visited.contains(next)) break;
+				else cur = next;
 			}
 		}
-
 		return Integer.toString(minChainElem);
 	}
 }

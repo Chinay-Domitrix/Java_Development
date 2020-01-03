@@ -1,4 +1,4 @@
-94
+import org.jetbrains.annotations.NotNull;
 
 public final class p094 extends EulerSolution {
 	private static final int LIMIT = Library.pow(10, 9);
@@ -40,6 +40,7 @@ public final class p094 extends EulerSolution {
 		System.out.println(new p094().run());
 	}
 
+	@NotNull
 	@SuppressWarnings("DuplicatedCode")
 	String run() {
 		long sum = 0;
@@ -51,8 +52,8 @@ public final class p094 extends EulerSolution {
 		 * With t < s, we have that s^2+t^2 < 2s^2, so 3/2 (s^2+t^2) - 1 < 3s^2 - 1.
 		 * Therefore it is sufficient to ensure that 3s^2 - 1 <= LIMIT, i.e. s^2 <= (LIMIT+1)/3.
 		 */
-		for (int s = 1; s * s <= (LIMIT + 1) / 3; s += 2) {
-			for (int t = s - 2; t > 0; t -= 2) {
+		for (int s = 1; s * s <= (LIMIT + 1) / 3; s += 2)
+			for (int t = s - 2; t > 0; t -= 2)
 				if (Library.gcd(s, t) == 1) {
 					int a = s * t;
 					int b = (s * s - t * t) / 2;
@@ -76,8 +77,6 @@ public final class p094 extends EulerSolution {
 						if (p <= LIMIT) sum += p;
 					}
 				}
-			}
-		}
 		return Long.toString(sum);
 	}
 }

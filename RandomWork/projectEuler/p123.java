@@ -1,4 +1,4 @@
-123
+import org.jetbrains.annotations.NotNull;
 
 public final class p123 extends EulerSolution {
 	private static final int PRIME_LIMIT = 1000000;
@@ -8,7 +8,7 @@ public final class p123 extends EulerSolution {
 		System.out.println(new p123().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		int[] primes = Library.listPrimes(PRIME_LIMIT);
 		for (int n = 5; n <= primes.length; n += 2) {
 			/*
@@ -19,8 +19,7 @@ public final class p123 extends EulerSolution {
 			 * we have a > 2n, so we can take 2an directly without moduloing it by a^2.
 			 */
 			long rem = (long) n * primes[n - 1] * 2;
-			if (rem > THRESHOLD)
-				return Integer.toString(n);
+			if (rem > THRESHOLD) return Integer.toString(n);
 		}
 		throw new AssertionError("Not found");
 	}

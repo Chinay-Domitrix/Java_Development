@@ -1,4 +1,5 @@
-78
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 public final class p078 extends EulerSolution {
 	private static final int MODULUS = Library.pow(10, 6);
@@ -7,6 +8,7 @@ public final class p078 extends EulerSolution {
 		System.out.println(new p078().run());
 	}
 
+	@Contract(pure = true)
 	private static int search(int limit) {
 		/*
 		 * partitions[i] is {the number of ways i can be written
@@ -16,22 +18,16 @@ public final class p078 extends EulerSolution {
 		 */
 		int[] partitions = new int[limit];
 		partitions[0] = 1;
-		for (int i = 1; i < limit; i++) {
-			for (int j = i; j < limit; j++)
-				partitions[j] = (partitions[j] + partitions[j - i]) % MODULUS;
-		}
-		for (int i = 0; i < limit; i++) {
-			if (partitions[i] == 0)
-				return i;
-		}
+		for (int i = 1; i < limit; i++)
+			for (int j = i; j < limit; j++) partitions[j] = (partitions[j] + partitions[j - i]) % MODULUS;
+		for (int i = 0; i < limit; i++) if (partitions[i] == 0) return i;
 		return -1;
 	}
 
-	String run() {
+	@NotNull String run() {
 		for (int limit = 1; ; limit *= 2) {
 			int result = search(limit);
-			if (result != -1)
-				return Integer.toString(result);
+			if (result != -1) return Integer.toString(result);
 		}
 	}
 }

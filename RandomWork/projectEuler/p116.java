@@ -1,4 +1,5 @@
-116
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 public final class p116 extends EulerSolution {
 	private static final int LENGTH = 50;
@@ -20,19 +21,19 @@ public final class p116 extends EulerSolution {
 	 *
 	 * At the end, return ways[length]-1 to exclude the case where the row is all black squares.
 	 */
+	@Contract(pure = true)
 	private static long countWays(int m) { // m is the length of colored tiles
 		// Dynamic programming
 		long[] ways = new long[p116.LENGTH + 1];
 		ways[0] = 1;
 		for (int n = 1; n <= p116.LENGTH; n++) {
 			ways[n] += ways[n - 1];
-			if (n >= m)
-				ways[n] += ways[n - m];
+			if (n >= m) ways[n] += ways[n - m];
 		}
 		return ways[p116.LENGTH] - 1;
 	}
 
-	String run() {
+	@NotNull String run() {
 		return Long.toString(countWays(2) + countWays(3) + countWays(4));
 	}
 }

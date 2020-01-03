@@ -1,6 +1,6 @@
 import java.math.BigInteger;
 
-101
+import static java.math.BigInteger.*;
 
 public final class p101 extends EulerSolution {
 	private static final int DEGREE = 10;
@@ -38,18 +38,16 @@ public final class p101 extends EulerSolution {
 		Fraction sum = Fraction.ZERO;
 		for (int i = 1; i <= k; i++) {
 			Fraction product = new Fraction(generatingFunction(i));
-			for (int j = 1; j <= k; j++) {
-				if (j != i)
-					product = product.multiply(new Fraction(BigInteger.valueOf(n - j), BigInteger.valueOf(i - j)));
-			}
+			for (int j = 1; j <= k; j++)
+				if (j != i) product = product.multiply(new Fraction(valueOf(n - j), valueOf(i - j)));
 			sum = sum.add(product);
 		}
 		return sum;
 	}
 
 	private static BigInteger generatingFunction(int n) {
-		BigInteger sum = BigInteger.ZERO;
-		BigInteger biN = BigInteger.valueOf(-n);
+		BigInteger sum = ZERO;
+		BigInteger biN = valueOf(-n);
 		for (int i = 0; i <= DEGREE; i++)
 			sum = sum.add(biN.pow(i));
 		return sum;
@@ -57,11 +55,9 @@ public final class p101 extends EulerSolution {
 
 	String run() {
 		Fraction sum = Fraction.ZERO;
-		for (int k = 1; k <= DEGREE; k++) {
+		for (int k = 1; k <= DEGREE; k++)
 			for (int n = k + 1; ; n++) {
-				if (n == DEGREE + 2)
-					throw new AssertionError();
-
+				assert n != DEGREE + 2;
 				Fraction reference = new Fraction(generatingFunction(n));
 				Fraction term = optimumPolynomial(k, n);
 				if (!term.equals(reference)) {
@@ -69,10 +65,7 @@ public final class p101 extends EulerSolution {
 					break;
 				}
 			}
-		}
-		if (sum.denominator.equals(BigInteger.ONE))
-			return sum.numerator.toString();
-		else
-			return sum.toString();
+		if (sum.denominator.equals(ONE)) return sum.numerator.toString();
+		else return sum.toString();
 	}
 }

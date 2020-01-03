@@ -1,7 +1,9 @@
-import java.util.Arrays;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Random;
 
-84
+import static java.lang.String.format;
+import static java.util.Arrays.sort;
 
 public final class p084 extends EulerSolution {
 	private final Random random = new Random();
@@ -15,9 +17,8 @@ public final class p084 extends EulerSolution {
 	 * An exact algorithm would involve calculating the eigenvector of the largest eigenvalue of the transition matrix (which is practical),
 	 * but averaging over all possible permutations of both the Chance and Community Chest decks (which is computationally infeasible).
 	 */
-	String run() {
+	@NotNull String run() {
 		final int[] visitCounts = new int[40];
-
 		CardDeck chance = new CardDeck(16);
 		CardDeck communityChest = new CardDeck(16);
 		int consecutiveDoubles = 0;
@@ -26,17 +27,13 @@ public final class p084 extends EulerSolution {
 			// Roll tetrahedral dice
 			int die0 = random.nextInt(4) + 1;
 			int die1 = random.nextInt(4) + 1;
-			if (die0 == die1)
-				consecutiveDoubles++;
-			else
-				consecutiveDoubles = 0;
-			if (consecutiveDoubles < 3)
-				location = (location + die0 + die1) % 40;
+			if (die0 == die1) consecutiveDoubles++;
+			else consecutiveDoubles = 0;
+			if (consecutiveDoubles < 3) location = (location + die0 + die1) % 40;
 			else {
 				location = 30;
 				consecutiveDoubles = 0;
 			}
-
 			// Process actions for some locations
 			switch (location) {
 				case 7:
@@ -99,17 +96,14 @@ public final class p084 extends EulerSolution {
 				default:
 					break;
 			}
-
 			visitCounts[location]++;
 		}
 
 		// Embed index into count, invert so that maximum becomes minimum
-		for (int i = 0; i < visitCounts.length; i++)
-			visitCounts[i] = ~visitCounts[i] << 6 | i;
-		Arrays.sort(visitCounts);
+		for (int i = 0; i < visitCounts.length; i++) visitCounts[i] = ~visitCounts[i] << 6 | i;
+		sort(visitCounts);
 		StringBuilder result = new StringBuilder();
-		for (int i = 0; i < 3; i++)
-			result.append(String.format("%02d", visitCounts[i] & 0x3F));
+		for (int i = 0; i < 3; i++) result.append(format("%02d", visitCounts[i] & 0x3F));
 		return result.toString();
 	}
 
@@ -119,8 +113,7 @@ public final class p084 extends EulerSolution {
 
 		CardDeck(int size) {
 			cards = new int[size];
-			for (int i = 0; i < cards.length; i++)
-				cards[i] = i;
+			for (int i = 0; i < cards.length; i++) cards[i] = i;
 			index = size;
 		}
 

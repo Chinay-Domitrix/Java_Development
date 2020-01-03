@@ -1,18 +1,22 @@
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
-62
+import java.math.BigInteger;
+import java.util.HashMap;
+
+import static java.lang.Integer.MAX_VALUE;
+import static java.util.Arrays.sort;
 
 public final class p062 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p062().run());
 	}
 
+	@NotNull
+	@Contract("_ -> new")
 	private static String getCubeNumberClass(int x) {
 		char[] digits = cube(x).toString().toCharArray();
-		Arrays.sort(digits);
+		sort(digits);
 		return new String(digits);
 	}
 
@@ -22,26 +26,18 @@ public final class p062 extends EulerSolution {
 
 	String run() {
 		int numDigits = 0;
-		Map<String, Integer> lowest = new HashMap<>();
-		Map<String, Integer> counts = new HashMap<>();
+		HashMap<String, Integer> lowest = new HashMap<>(), counts = new HashMap<>();
 		for (int i = 0; ; i++) {
 			String numClass = getCubeNumberClass(i);
-
 			if (numClass.length() > numDigits) {
 				// Process and flush data for smaller number of digits
-				int min = Integer.MAX_VALUE;
-				for (String nc : counts.keySet()) {
-					if (counts.get(nc) == 5)
-						min = Math.min(lowest.get(nc), min);
-				}
-				if (min != Integer.MAX_VALUE)
-					return cube(min).toString();
-
+				int min = MAX_VALUE;
+				for (String nc : counts.keySet()) if (counts.get(nc) == 5) min = Math.min(lowest.get(nc), min);
+				if (min != MAX_VALUE) return cube(min).toString();
 				lowest.clear();
 				counts.clear();
 				numDigits = numClass.length();
 			}
-
 			if (!lowest.containsKey(numClass)) {
 				lowest.put(numClass, i);
 				counts.put(numClass, 0);

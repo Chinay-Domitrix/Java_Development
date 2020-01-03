@@ -1,4 +1,4 @@
-33
+import org.jetbrains.annotations.NotNull;
 
 public final class p033 extends EulerSolution {
 	public static void main(String[] args) {
@@ -25,10 +25,10 @@ public final class p033 extends EulerSolution {
 	 * In the first case, check that n1/d0 = n/d;
 	 * in the second case, check that n0/d1 = n/d.
 	 */
-	String run() {
+	@NotNull String run() {
 		int numer = 1;
 		int denom = 1;
-		for (int d = 10; d < 100; d++) {
+		for (int d = 10; d < 100; d++)
 			for (int n = 10; n < d; n++) {
 				int n0 = n % 10, n1 = n / 10;
 				int d0 = d % 10, d1 = d / 10;
@@ -37,7 +37,6 @@ public final class p033 extends EulerSolution {
 					denom *= d;
 				}
 			}
-		}
 		return Integer.toString(denom / Library.gcd(numer, denom));
 	}
 }

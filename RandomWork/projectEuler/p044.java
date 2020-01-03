@@ -1,20 +1,20 @@
-44
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 public final class p044 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p044().run());
 	}
 
+	@Contract(pure = true)
 	private static long pentagonalNumber(int x) {
-		if (x <= 0)
-			throw new IllegalArgumentException();
+		assert x > 0;
 		return (long) x * (x * 3 - 1) >>> 1;
 	}
 
+	@Contract(pure = true)
 	private static boolean isPentagonalNumber(long y) {
-		if (y <= 0)
-			return false;
-
+		if (y <= 0) return false;
 		/*
 		 * If y = pentagonalNumber(x) = x(3x-1) / 2,
 		 * then by the quadratic formula, the positive solution is x = (sqrt(24y + 1) + 1) / 6.
@@ -27,22 +27,19 @@ public final class p044 extends EulerSolution {
 		return sqrt * sqrt == temp && sqrt % 6 == 5;
 	}
 
-	String run() {
+	@NotNull String run() {
 		long minD = -1; // -1 means not found yet, positive number means found a candidate
 		// For each upper pentagonal number index, going upward
 		for (int i = 2; ; i++) {
 			long pentI = pentagonalNumber(i);
 			// If the next number down is at least as big as a found difference, then conclude searching
-			if (minD != -1 && pentI - pentagonalNumber(i - 1) >= minD)
-				break;
-
+			if (minD != -1 && pentI - pentagonalNumber(i - 1) >= minD) break;
 			// For each lower pentagonal number index, going downward
 			for (int j = i - 1; j >= 1; j--) {
 				long pentJ = pentagonalNumber(j);
 				long diff = pentI - pentJ;
 				// If the difference is at least as big as a found difference, then stop testing lower pentagonal numbers
-				if (minD != -1 && diff >= minD)
-					break;
+				if (minD != -1 && diff >= minD) break;
 				else if (isPentagonalNumber(pentI + pentJ) && isPentagonalNumber(diff))
 					minD = diff; // Found a smaller difference
 			}

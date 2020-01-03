@@ -1,6 +1,6 @@
-import java.math.BigInteger;
+import org.jetbrains.annotations.NotNull;
 
-63
+import java.math.BigInteger;
 
 public final class p063 extends EulerSolution {
 	public static void main(String[] args) {
@@ -23,14 +23,10 @@ public final class p063 extends EulerSolution {
 	 *
 	 * We handle the rest of the testing by brute force.
 	 */
-	String run() {
+	@NotNull String run() {
 		int count = 0;
-		for (int n = 1; n <= 9; n++) {
-			for (int k = 1; k <= 21; k++) {
-				if (BigInteger.valueOf(n).pow(k).toString().length() == k)
-					count++;
-			}
-		}
+		for (int n = 1; n <= 9; n++)
+			for (int k = 1; k <= 21; k++) if (BigInteger.valueOf(n).pow(k).toString().length() == k) count++;
 		return Integer.toString(count);
 	}
 }

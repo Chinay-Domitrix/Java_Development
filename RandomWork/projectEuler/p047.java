@@ -1,4 +1,4 @@
-47
+import org.jetbrains.annotations.NotNull;
 
 public final class p047 extends EulerSolution {
 	public static void main(String[] args) {
@@ -11,26 +11,20 @@ public final class p047 extends EulerSolution {
 
 	private static int countDistinctPrimeFactors(int n) {
 		int count = 0;
-		for (int i = 2, end = Library.sqrt(n); i <= end; i++) {
+		for (int i = 2, end = Library.sqrt(n); i <= end; i++)
 			if (n % i == 0) {
 				do n /= i;
 				while (n % i == 0);
 				count++;
 				end = Library.sqrt(n);
 			}
-		}
-		if (n > 1)
-			count++;
+		if (n > 1) count++;
 		return count;
 	}
 
-	String run() {
-		for (int i = 2; ; i++) {
-			if (has4PrimeFactors(i)
-					&& has4PrimeFactors(i + 1)
-					&& has4PrimeFactors(i + 2)
-					&& has4PrimeFactors(i + 3))
+	@NotNull String run() {
+		for (int i = 2; ; i++)
+			if (has4PrimeFactors(i) && has4PrimeFactors(i + 1) && has4PrimeFactors(i + 2) && has4PrimeFactors(i + 3))
 				return Integer.toString(i);
-		}
 	}
 }

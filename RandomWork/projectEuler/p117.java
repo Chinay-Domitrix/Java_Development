@@ -1,4 +1,4 @@
-117
+import org.jetbrains.annotations.NotNull;
 
 public final class p117 extends EulerSolution {
 	private static final int LENGTH = 50;
@@ -23,14 +23,11 @@ public final class p117 extends EulerSolution {
 		System.out.println(new p117().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		// Dynamic programming
 		long[] ways = new long[LENGTH + 1];
 		ways[0] = 1;
-		for (int n = 1; n <= LENGTH; n++) {
-			for (int k = 1; k <= 4 && k <= n; k++)
-				ways[n] += ways[n - k];
-		}
+		for (int n = 1; n <= LENGTH; n++) for (int k = 1; k <= 4 && k <= n; k++) ways[n] += ways[n - k];
 		return Long.toString(ways[LENGTH]);
 	}
 }

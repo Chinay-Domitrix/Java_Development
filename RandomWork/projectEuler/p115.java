@@ -1,7 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
-115
+import java.util.ArrayList;
 
 public final class p115 extends EulerSolution {
 	private static final int M = 50;
@@ -24,19 +23,16 @@ public final class p115 extends EulerSolution {
 		System.out.println(new p115().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		// Dynamic programming
-		List<Long> ways = new ArrayList<>();
+		ArrayList<Long> ways = new ArrayList<>();
 		ways.add(1L);
 		for (int n = 1; ; n++) {
 			long sum = ways.get(n - 1);
-			for (int k = M; k < n; k++)
-				sum += ways.get(n - k - 1);
-			if (n >= M)
-				sum++;
+			for (int k = M; k < n; k++) sum += ways.get(n - k - 1);
+			if (n >= M) sum++;
 			ways.add(sum);
-			if (sum > 1000000)
-				return Long.toString(n);
+			if (sum > 1000000) return Long.toString(n);
 		}
 	}
 }

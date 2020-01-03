@@ -1,6 +1,6 @@
-import java.util.Arrays;
+import org.jetbrains.annotations.NotNull;
 
-127
+import static java.util.Arrays.fill;
 
 public final class p127 extends EulerSolution {
 	private static final int LIMIT = 120000;
@@ -28,26 +28,18 @@ public final class p127 extends EulerSolution {
 		System.out.println(new p127().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		// Modification of the sieve of Eratosthenes
 		int[] rads = new int[LIMIT];
-		Arrays.fill(rads, 1, rads.length, 1);
-		for (int i = 2; i < rads.length; i++) {
-			if (rads[i] == 1) {
-				for (int j = i; j < rads.length; j += i)
-					rads[j] *= i;
-			}
-		}
-
+		fill(rads, 1, rads.length, 1);
+		for (int i = 2; i < rads.length; i++) if (rads[i] == 1) for (int j = i; j < rads.length; j += i) rads[j] *= i;
 		long sum = 0;
 		for (int c = 2; c < LIMIT; c++) {
-			if (rads[c] == c)
-				continue;
+			if (rads[c] == c) continue;
 			for (int a = 1, end = (c - 1) / 2; a <= end; a++) {
 				int b = c - a;
 				assert a < b;
-				if ((long) rads[a] * rads[b] * rads[c] < c && Library.gcd(a, b) == 1)
-					sum += c;
+				if ((long) rads[a] * rads[b] * rads[c] < c && Library.gcd(a, b) == 1) sum += c;
 			}
 		}
 		return Long.toString(sum);

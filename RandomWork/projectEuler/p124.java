@@ -1,6 +1,9 @@
-import java.util.Arrays;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
-124
+import static java.lang.Integer.compare;
+import static java.util.Arrays.fill;
+import static java.util.Arrays.sort;
 
 public final class p124 extends EulerSolution {
 	private static final int LIMIT = 100000;
@@ -9,39 +12,29 @@ public final class p124 extends EulerSolution {
 		System.out.println(new p124().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		// Modification of the sieve of Eratosthenes
 		int[] rads = new int[LIMIT + 1];
-		Arrays.fill(rads, 1, rads.length, 1);
-		for (int i = 2; i < rads.length; i++) {
-			if (rads[i] == 1) {
-				for (int j = i; j < rads.length; j += i)
-					rads[j] *= i;
-			}
-		}
-
+		fill(rads, 1, rads.length, 1);
+		for (int i = 2; i < rads.length; i++) if (rads[i] == 1) for (int j = i; j < rads.length; j += i) rads[j] *= i;
 		IntPair[] data = new IntPair[LIMIT];
-		for (int i = 0; i < data.length; i++)
-			data[i] = new IntPair(rads[i + 1], i + 1);
-		Arrays.sort(data);
+		for (int i = 0; i < data.length; i++) data[i] = new IntPair(rads[i + 1], i + 1);
+		sort(data);
 		return Integer.toString(data[10000 - 1].b);
 	}
 
-	private static final class IntPair extends Comparable<IntPair> {
-
+	private static final class IntPair implements Comparable<IntPair> {
 		final int a;
 		final int b;
 
+		@Contract(pure = true)
 		IntPair(int a, int b) {
 			this.a = a;
 			this.b = b;
 		}
 
-		public int compareTo(IntPair other) {
-			if (a != other.a)
-				return Integer.compare(a, other.a);
-			else
-				return Integer.compare(b, other.b);
+		public int compareTo(@NotNull IntPair other) {
+			return a != other.a ? compare(a, other.a) : compare(b, other.b);
 		}
 	}
 }

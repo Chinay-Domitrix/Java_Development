@@ -1,11 +1,11 @@
-45
+import org.jetbrains.annotations.NotNull;
 
 public final class p045 extends EulerSolution {
 	public static void main(String[] args) {
 		System.out.println(new p045().run());
 	}
 
-	String run() {
+	@NotNull String run() {
 		int i = 286;
 		int j = 166;
 		int k = 144;
@@ -14,8 +14,7 @@ public final class p045 extends EulerSolution {
 			long pentagon = (long) j * (j * 3 - 1) / 2;
 			long hexagon = (long) k * (k * 2 - 1);
 			long min = Math.min(Math.min(triangle, pentagon), hexagon);
-			if (min == triangle && min == pentagon && min == hexagon)
-				return Long.toString(min);
+			if (min == triangle && min == pentagon && min == hexagon) return Long.toString(min);
 			if (min == triangle) i++;
 			if (min == pentagon) j++;
 			if (min == hexagon) k++;
