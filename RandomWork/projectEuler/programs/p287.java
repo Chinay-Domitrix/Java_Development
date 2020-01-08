@@ -36,14 +36,14 @@ public final class p287 extends EulerSolution {
 	 * - Otherwise, the region must contain both black and white points,
 	 * so we split into 4 sub-regions and recurse.
 	 */
-	private static final long RADIUS_SQUARED = 1L << (2 * N - 2);
+	private static final long RADIUS_SQUARED = 70368744177664L;
 
 	public static void main(String[] args) {
 		System.out.println(new p287().run());
 	}
 
 	String run() {
-		int temp = 1 << (N - 1);
+		int temp = 8388608;
 		return compressedLength(N, -temp, temp, -temp, temp).toString();
 	}
 

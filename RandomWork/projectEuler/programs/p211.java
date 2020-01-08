@@ -66,7 +66,7 @@ public final class p211 extends EulerSolution {
 			if (!isResidue[(int) (x % isResidue.length)]) return false;
 			// A complete algorithm for detecting squares
 			long y = 0;
-			for (long i = 1L << 31; i != 0; i >>>= 1) {
+			for (long i = -2147483648; i != 0; i >>>= 1) {
 				y |= i;
 				if (y > 3037000499L || y * y > x) y ^= i;
 			}

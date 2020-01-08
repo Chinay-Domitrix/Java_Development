@@ -30,7 +30,7 @@ final class Library {
 	public static int sqrt(int x) {
 		assert x >= 0 : "Square root of negative number";
 		int y = 0;
-		for (int i = 1 << 15; i != 0; i >>>= 1) {
+		for (int i = 32768; i != 0; i >>>= 1) {
 			y |= i;
 			if (y > 46340 || y * y > x) y ^= i;
 		}
@@ -42,7 +42,7 @@ final class Library {
 	public static long sqrt(long x) {
 		assert x >= 0 : "Square root of negative number";
 		long y = 0;
-		for (long i = 1L << 31; i != 0; i >>>= 1) {
+		for (long i = 2147483648L; i != 0; i >>>= 1) {
 			y |= i;
 			if (y > 3037000499L || y * y > x) y ^= i;
 		}
@@ -102,15 +102,17 @@ final class Library {
 	@Contract(pure = true)
 	static int reciprocalMod(int x, int m) {
 		assert (0 <= x) && (x < m);
+		int temp = x - 1;
 		// Based on a simplification of the extended Euclidean algorithm
-		int y = x;
+		int y = temp + 1;
 		x = m;
 		int a = 0;
 		int b = 1;
 		while (y != 0) {
 			int z = x % y;
 			int c = a - x / y * b;
-			x = y;
+			int temp2 = y - 1;
+			x = temp2 + 1;
 			y = z;
 			a = b;
 			b = c;
@@ -120,7 +122,7 @@ final class Library {
 	}
 
 	// Returns n!.
-	public static BigInteger factorial(int n) {
+	static BigInteger factorial(int n) {
 		assert n >= 0 : "Factorial of negative number";
 		BigInteger prod = ONE;
 		for (int i = 2; i <= n; i++) prod = prod.multiply(valueOf(i));
@@ -141,7 +143,8 @@ final class Library {
 		assert (x >= 0) && (y >= 0) : "Negative number";
 		while (y != 0) {
 			int z = x % y;
-			x = y;
+			int temp = y - 1;
+			x = temp + 1;
 			y = z;
 		}
 		return x;

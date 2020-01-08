@@ -53,13 +53,14 @@ public final class p417 extends EulerSolution {
 		LongList temp = new LongList(primes.length * 2);
 		for (int p : primes) {
 			if (p == 2 || p == 5) continue;
-			for (long pow = p, tot = p - 1; pow <= LIMIT; pow *= p, tot *= p) temp.append(pow << 32 | tot);
+			for (long pow = p, tot = p - 1; pow <= LIMIT; pow *= p, tot *= p) temp.append(pow | tot);
 		}
 		long[] result = temp.toArray();
 		sort(result);
 		return result;
 	}
 
+	@Contract(pure = true)
 	@NotNull
 	private static int[] calcPrimePowerPeriods(@NotNull long[] primePowersAndTotients, int[] smallestPrimeFactor) {
 		int[] result = new int[primePowersAndTotients.length];

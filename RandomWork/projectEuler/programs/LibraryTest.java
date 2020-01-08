@@ -9,6 +9,7 @@ import java.util.Random;
 
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;
+import static java.lang.System.out;
 import static org.junit.Assert.*;
 import static programs.Library.*;
 
@@ -87,7 +88,7 @@ public final class LibraryTest {
 			int x = rand.nextInt() >>> 1; // uint31
 			int y = sqrt(x);
 			assertTrue(0 <= y && y <= x);
-			assertTrue((long) y * y <= x && x < (y + 1L) * (y + 1L));
+			assertTrue((((long) y * y) <= x) && (x < ((y + 1L) * (y + 1L))));
 		}
 	}
 
@@ -144,7 +145,7 @@ public final class LibraryTest {
 	@Contract(pure = true)
 	@Test(expected = IllegalArgumentException.class)
 	public void testSqrtLongInvalid0() {
-		sqrt(-1);
+		sqrt(-1L);
 	}
 
 	@Contract(pure = true)
@@ -322,7 +323,7 @@ public final class LibraryTest {
 			int z = gcd(x, y);
 			if (x == 0) assertEquals(y, z);
 			else if (y == 0) assertEquals(x, z);
-			else assertTrue(0 < z && z <= x && z <= y && x % z == 0 && y % z == 0); // x, y > 0
+			else assertTrue((0 < z) && (z <= x) && (z <= y) && ((x % z) == 0) && ((y % z) == 0)); // x, y > 0
 		}
 	}
 
@@ -351,14 +352,16 @@ public final class LibraryTest {
 		assertFalse(isPrime(20));
 	}
 
+	@Contract(pure = true)
 	@Test(expected = IllegalArgumentException.class)
 	public void testIsPrimeInvalid0() {
-		isPrime(-1);
+		out.println(isPrime(-1));
 	}
 
+	@Contract(pure = true)
 	@Test(expected = IllegalArgumentException.class)
 	public void testIsPrimeInvalid1() {
-		isPrime(-3000);
+		out.println(isPrime(-3000));
 	}
 
 	@Test
@@ -367,14 +370,16 @@ public final class LibraryTest {
 		for (int i = 0; i < isPrime.length; i++) assertEquals(isPrime(i), isPrime[i]);
 	}
 
+	@Contract(pure = true)
 	@Test(expected = IllegalArgumentException.class)
 	public void testListPrimalityInvalid0() {
-		listPrimality(-1);
+		out.println(Arrays.toString(listPrimality(-1)));
 	}
 
+	@Contract(pure = true)
 	@Test(expected = IllegalArgumentException.class)
 	public void testListPrimalityInvalid1() {
-		listPrimality(-3000);
+		out.println(Arrays.toString(listPrimality(-3000)));
 	}
 
 	@Test
@@ -385,14 +390,16 @@ public final class LibraryTest {
 		for (int i = 0; i <= limit; i++) assertEquals(isPrime(i), Arrays.binarySearch(primes, i) >= 0);
 	}
 
+	@Contract(pure = true)
 	@Test(expected = IllegalArgumentException.class)
 	public void testListPrimesInvalid0() {
-		listPrimes(-1);
+		out.println(Arrays.toString(listPrimes(-1)));
 	}
 
+	@Contract(pure = true)
 	@Test(expected = IllegalArgumentException.class)
 	public void testListPrimesInvalid1() {
-		listPrimes(-3000);
+		out.println(Arrays.toString(listPrimes(-3000)));
 	}
 
 	@Test
@@ -432,12 +439,12 @@ public final class LibraryTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testTotientInvalid0() {
-		totient(-1);
+		out.println(totient(-1));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testTotientInvalid1() {
-		totient(-3000);
+		out.println(totient(-3000));
 	}
 
 	@Test
@@ -449,13 +456,13 @@ public final class LibraryTest {
 	@Contract(pure = true)
 	@Test(expected = IllegalArgumentException.class)
 	public void testListTotientsInvalid0() {
-		listTotients(-1);
+		out.println(Arrays.toString(listTotients(-1)));
 	}
 
 	@Contract(pure = true)
 	@Test(expected = IllegalArgumentException.class)
 	public void testListTotientsInvalid1() {
-		listTotients(-3000);
+		out.println(Arrays.toString(listTotients(-3000)));
 	}
 
 	@Test

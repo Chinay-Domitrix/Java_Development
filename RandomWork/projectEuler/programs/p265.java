@@ -26,7 +26,7 @@ public final class p265 extends EulerSolution {
 	 * The middle 25 bits still need to be determined, and we simply search by brute force.
 	 */
 	// Equal to 2^n. Here it is equal to 32.
-	private static final int TWO_POW_N = 1 << N;
+	private static final int TWO_POW_N = 32;
 	// Equal to n 1's in binary, i.e. 0b11111.
 	private static final int MASK = TWO_POW_N - 1;
 	// Equal to 2^n 1's in binary, i.e. 0b11111111111111111111111111111111.
