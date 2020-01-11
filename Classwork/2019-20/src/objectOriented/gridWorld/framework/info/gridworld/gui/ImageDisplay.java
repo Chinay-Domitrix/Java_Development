@@ -38,15 +38,15 @@ import java.util.Map;
 
 public class ImageDisplay extends AbstractDisplay {
 	private static final String imageExtension = ".gif";
-	private final Class cl;
-	private final String imageFilename;
-	private final Map<String, Image> tintedVersions = new HashMap<>();
+	private Class cl;
+	private String imageFilename;
+	private Map<String, Image> tintedVersions = new HashMap<>();
 
 	/**
 	 * Constructs an object that knows how to display an image. Looks for the
 	 * named file first in the jar file, then in the current directory.
-	 *
-	 * @param imageFilename name of file containing image
+	 * <p>
+	 * {@code imageFilename} name of file containing image
 	 */
 	public ImageDisplay(Class cl) throws IOException {
 		this.cl = cl;
@@ -122,16 +122,14 @@ public class ImageDisplay extends AbstractDisplay {
 	 * constructor (the color of an object).
 	 */
 	private static class TintFilter extends RGBImageFilter {
-		private final int tintR;
-        private final int tintG;
-        private final int tintB;
+		private int tintR, tintG, tintB;
 
 		/**
 		 * Constructs an image filter for tinting colors in an image.
 		 *
 		 * @param color the tint color
 		 */
-        TintFilter(Color color) {
+		public TintFilter(Color color) {
 			canFilterIndexColorModel = true;
 			int rgb = color.getRGB();
 			tintR = (rgb >> 16) & 0xff;

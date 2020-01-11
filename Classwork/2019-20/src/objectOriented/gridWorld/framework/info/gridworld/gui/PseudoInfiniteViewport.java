@@ -30,9 +30,10 @@ import java.awt.*;
  * students.
  */
 
-class PseudoInfiniteViewport extends JViewport {
-	private final JScrollPane scrollParent;
+public class PseudoInfiniteViewport extends JViewport {
+	private JScrollPane scrollParent;
 	private Point panPoint = new Point(0, 0);
+
 	/**
 	 * Construct a new PseudoInfiniteViewport object for the given scrollpane.
 	 *

@@ -85,8 +85,8 @@ public class DefaultDisplay implements Display {
 	 *                   shrunk in increments of sqrt(2)/2 if the text is too large.)
 	 * @param color      the color in which to draw the text
 	 */
-    private void paintCenteredText(Graphics2D g2, String s, Rectangle rect,
-                                   double fontHeight, Color color) {
+	protected void paintCenteredText(Graphics2D g2, String s, Rectangle rect,
+	                                 double fontHeight, Color color) {
 		g2 = (Graphics2D) g2.create();
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);

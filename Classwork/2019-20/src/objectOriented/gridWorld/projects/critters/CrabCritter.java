@@ -92,9 +92,9 @@ class CrabCritter extends Critter {
 	 * @return a set of valid locations that are neighbors of the current
 	 * location in the given directions
 	 */
-    private ArrayList<Location> getLocationsInDirections(int[] directions) {
+	private ArrayList<Location> getLocationsInDirections(int[] directions) {
 		ArrayList<Location> locs = new ArrayList<>();
-		Grid gr = getGrid();
+		Grid<?> gr = getGrid();
 		Location loc = getLocation();
 
 		for (int d : directions) {

@@ -24,7 +24,7 @@ import java.awt.*;
  * implementation details that are not intended to be understood by AP CS
  * students.
  */
-class FormLayout implements LayoutManager {
+public class FormLayout implements LayoutManager {
 	private static final int GAP = 6;
 	private int left;
 	private int right;

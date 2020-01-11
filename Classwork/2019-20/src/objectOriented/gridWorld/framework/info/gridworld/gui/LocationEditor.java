@@ -16,7 +16,7 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import info.gridworld.grid.Location;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,12 +29,12 @@ import java.text.NumberFormat;
  * implementation details that are not intended to be understood by AP CS
  * students.
  */
-class LocationEditor extends PropertyEditorSupport {
-	private final JFormattedTextField rowField = new JFormattedTextField(NumberFormat
+public class LocationEditor extends PropertyEditorSupport {
+	private JFormattedTextField rowField = new JFormattedTextField(NumberFormat
 			.getIntegerInstance());
-	private final JFormattedTextField colField = new JFormattedTextField(NumberFormat
+	private JFormattedTextField colField = new JFormattedTextField(NumberFormat
 			.getIntegerInstance());
-	private final JPanel panel = new JPanel();
+	private JPanel panel = new JPanel();
 
 	public LocationEditor() {
 		rowField.setColumns(5);

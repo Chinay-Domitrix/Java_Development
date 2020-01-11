@@ -18,23 +18,18 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
-import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
-import objectOriented.gridWorld.framework.info.gridworld.world.World;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.Location;
+import info.gridworld.world.World;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Comparator;
+import java.lang.reflect.Modifier;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.TreeSet;
-
-import static java.lang.reflect.Modifier.ABSTRACT;
-import static javax.swing.BorderFactory.createEtchedBorder;
-import static javax.swing.Box.createRigidArea;
-import static javax.swing.BoxLayout.X_AXIS;
 
 /**
  * The GUIController controls the behavior in a WorldFrame. <br />
@@ -43,23 +38,23 @@ import static javax.swing.BoxLayout.X_AXIS;
  * students.
  */
 
-class GUIController<T> {
+public class GUIController<T> {
 	public static final int INDEFINITE = 0, FIXED_STEPS = 1, PROMPT_STEPS = 2;
 
 	private static final int MIN_DELAY_MSECS = 10, MAX_DELAY_MSECS = 1000;
 	private static final int INITIAL_DELAY = MIN_DELAY_MSECS
 			+ (MAX_DELAY_MSECS - MIN_DELAY_MSECS) / 2;
 
-	private final Timer timer;
+	private Timer timer;
 	private JButton stepButton, runButton, stopButton;
 	private JComponent controlPanel;
-	private final GridPanel display;
-	private final WorldFrame<T> parentFrame;
+	private GridPanel display;
+	private WorldFrame<T> parentFrame;
 	private int numStepsToRun, numStepsSoFar;
-	private final ResourceBundle resources;
-	private final DisplayMap displayMap;
+	private ResourceBundle resources;
+	private DisplayMap displayMap;
 	private boolean running;
-	private final Set<Class> occupantClasses;
+	private Set<Class> occupantClasses;
 
 	/**
 	 * Creates a new controller tied to the specified display and gui
@@ -78,7 +73,7 @@ class GUIController<T> {
 		this.displayMap = displayMap;
 		makeControls();
 
-		occupantClasses = new TreeSet<>(Comparator.comparing(Class::getName));
+		occupantClasses = new TreeSet<>((a, b) -> a.getName().compareTo(b.getName()));
 
 		World<T> world = parentFrame.getWorld();
 		Grid<T> gr = world.getGrid();
@@ -109,7 +104,7 @@ class GUIController<T> {
 	/**
 	 * Advances the world one step.
 	 */
-	private void step() {
+	public void step() {
 		parentFrame.getWorld().step();
 		parentFrame.repaint();
 		if (++numStepsSoFar == numStepsToRun)
@@ -123,7 +118,8 @@ class GUIController<T> {
 	private void addOccupant(T occupant) {
 		Class cl = occupant.getClass();
 		do {
-			if ((cl.getModifiers() & ABSTRACT) == 0) occupantClasses.add(cl);
+			if ((cl.getModifiers() & Modifier.ABSTRACT) == 0)
+				occupantClasses.add(cl);
 			cl = cl.getSuperclass();
 		}
 		while (cl != Object.class);
@@ -135,7 +131,7 @@ class GUIController<T> {
 	 * either carry out steps for some fixed number or indefinitely
 	 * until stopped.
 	 */
-	private void run() {
+	public void run() {
 		display.setToolTipsEnabled(false); // hide tool tips while running
 		parentFrame.setRunMenuItemsEnabled(false);
 		stopButton.setEnabled(true);
@@ -149,7 +145,7 @@ class GUIController<T> {
 	/**
 	 * Stops any existing timer currently carrying out steps.
 	 */
-	private void stop() {
+	public void stop() {
 		display.setToolTipsEnabled(true);
 		parentFrame.setRunMenuItemsEnabled(true);
 		timer.stop();
@@ -159,7 +155,7 @@ class GUIController<T> {
 		running = false;
 	}
 
-	private boolean isRunning() {
+	public boolean isRunning() {
 		return running;
 	}
 
@@ -173,26 +169,29 @@ class GUIController<T> {
 		runButton = new JButton(resources.getString("button.gui.run"));
 		stopButton = new JButton(resources.getString("button.gui.stop"));
 
-		controlPanel.setLayout(new BoxLayout(controlPanel, X_AXIS));
-		controlPanel.setBorder(createEtchedBorder());
+		controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.X_AXIS));
+		controlPanel.setBorder(BorderFactory.createEtchedBorder());
 
 		Dimension spacer = new Dimension(5, stepButton.getPreferredSize().height + 10);
 
-		controlPanel.add(createRigidArea(spacer));
+		controlPanel.add(Box.createRigidArea(spacer));
 
 		controlPanel.add(stepButton);
-		controlPanel.add(createRigidArea(spacer));
+		controlPanel.add(Box.createRigidArea(spacer));
 		controlPanel.add(runButton);
-		controlPanel.add(createRigidArea(spacer));
+		controlPanel.add(Box.createRigidArea(spacer));
 		controlPanel.add(stopButton);
 		runButton.setEnabled(false);
 		stepButton.setEnabled(false);
 		stopButton.setEnabled(false);
-		controlPanel.add(createRigidArea(spacer));
+
+		controlPanel.add(Box.createRigidArea(spacer));
 		controlPanel.add(new JLabel(resources.getString("slider.gui.slow")));
-		JSlider speedSlider = new JSlider(MIN_DELAY_MSECS, MAX_DELAY_MSECS, INITIAL_DELAY);
+		JSlider speedSlider = new JSlider(MIN_DELAY_MSECS, MAX_DELAY_MSECS,
+				INITIAL_DELAY);
 		speedSlider.setInverted(true);
-		speedSlider.setPreferredSize(new Dimension(100, speedSlider.getPreferredSize().height));
+		speedSlider.setPreferredSize(new Dimension(100, speedSlider
+				.getPreferredSize().height));
 		speedSlider.setMaximumSize(speedSlider.getPreferredSize());
 
 		// remove control PAGE_UP, PAGE_DOWN from slider--they should be used
@@ -206,7 +205,7 @@ class GUIController<T> {
 
 		controlPanel.add(speedSlider);
 		controlPanel.add(new JLabel(resources.getString("slider.gui.fast")));
-		controlPanel.add(createRigidArea(new Dimension(5, 0)));
+		controlPanel.add(Box.createRigidArea(new Dimension(5, 0)));
 
 		stepButton.addActionListener(e -> step());
 		runButton.addActionListener(e -> run());
@@ -245,12 +244,15 @@ class GUIController<T> {
 		if (loc != null) {
 			T occupant = world.getGrid().get(loc);
 			if (occupant == null) {
-				MenuMaker<T> maker = new MenuMaker<>(parentFrame, resources, displayMap);
-				JPopupMenu popup = maker.makeConstructorMenu(occupantClasses, loc);
+				MenuMaker<T> maker = new MenuMaker<>(parentFrame, resources,
+						displayMap);
+				JPopupMenu popup = maker.makeConstructorMenu(occupantClasses,
+						loc);
 				Point p = display.pointForLocation(loc);
 				popup.show(display, p.x, p.y);
 			} else {
-				MenuMaker<T> maker = new MenuMaker<>(parentFrame, resources, displayMap);
+				MenuMaker<T> maker = new MenuMaker<>(parentFrame, resources,
+						displayMap);
 				JPopupMenu popup = maker.makeMethodMenu(occupant, loc);
 				Point p = display.pointForLocation(loc);
 				popup.show(display, p.x, p.y);

@@ -17,6 +17,7 @@ package objectOriented.gridWorld.projects.firstProject;/*
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.actor.Bug;
 import info.gridworld.actor.Rock;
+import info.gridworld.grid.UnboundedGrid;
 
 /**
  * This class runs a world that contains a bug and a rock, added at random
@@ -28,7 +29,7 @@ import info.gridworld.actor.Rock;
  */
 public class BugRunner {
 	public static void main(String[] args) {
-		ActorWorld world = new ActorWorld();
+		ActorWorld world = new ActorWorld(new UnboundedGrid<>());
 		world.add(new Bug());
 		world.add(new Rock());
 		world.show();

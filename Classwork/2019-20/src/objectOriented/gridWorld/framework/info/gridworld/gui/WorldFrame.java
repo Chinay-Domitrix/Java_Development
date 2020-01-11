@@ -19,9 +19,9 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
-import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
-import objectOriented.gridWorld.framework.info.gridworld.world.World;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.Location;
+import info.gridworld.world.World;
 
 import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
@@ -36,8 +36,6 @@ import java.net.URL;
 import java.text.MessageFormat;
 import java.util.*;
 
-import static javax.swing.JOptionPane.*;
-
 /**
  * The WorldFrame displays a World and allows manipulation of its occupants.
  * <br />
@@ -47,14 +45,14 @@ import static javax.swing.JOptionPane.*;
  */
 public class WorldFrame<T> extends JFrame {
 	private static int count = 0;
-	private final GUIController<T> control;
-	private final GridPanel display;
-	private final JTextArea messageArea;
+	private GUIController<T> control;
+	private GridPanel display;
+	private JTextArea messageArea;
 	private ArrayList<JMenuItem> menuItemsDisabledDuringRun;
-	private final World<T> world;
-	private final ResourceBundle resources;
-	private final DisplayMap displayMap;
-	private final Set<Class> gridClasses;
+	private World<T> world;
+	private ResourceBundle resources;
+	private DisplayMap displayMap;
+	private Set<Class> gridClasses;
 	private JMenu newGridMenu;
 
 	/**
@@ -122,7 +120,7 @@ public class WorldFrame<T> extends JFrame {
 		scrollPane.setViewportView(display);
 		content.add(scrollPane, BorderLayout.CENTER);
 
-		gridClasses = new TreeSet<>(Comparator.comparing(Class::getName));
+		gridClasses = new TreeSet<>((a, b) -> a.getName().compareTo(b.getName()));
 		for (String name : world.getGridClasses())
 			try {
 				gridClasses.add(Class.forName(name));
@@ -177,10 +175,14 @@ public class WorldFrame<T> extends JFrame {
 	public void setGrid(Grid<T> newGrid) {
 		Grid<T> oldGrid = world.getGrid();
 		Map<Location, T> occupants = new HashMap<>();
-		for (Location loc : oldGrid.getOccupiedLocations()) occupants.put(loc, world.remove(loc));
+		for (Location loc : oldGrid.getOccupiedLocations())
+			occupants.put(loc, world.remove(loc));
 
 		world.setGrid(newGrid);
-		for (Location loc : occupants.keySet()) if (newGrid.isValid(loc)) world.add(loc, occupants.get(loc));
+		for (Location loc : occupants.keySet()) {
+			if (newGrid.isValid(loc))
+				world.add(loc, occupants.get(loc));
+		}
 
 		display.setGrid(newGrid);
 		repaint();
@@ -212,8 +214,8 @@ public class WorldFrame<T> extends JFrame {
 		String message = text + "\n"
 				+ MessageFormat.format(reason, t);
 
-		showMessageDialog(this, message, title,
-				ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(this, message, title,
+				JOptionPane.ERROR_MESSAGE);
 	}
 
 	// Creates the drop-down menus on the frame.
@@ -238,7 +240,7 @@ public class WorldFrame<T> extends JFrame {
 			String accel = resources.getString(resource + ".accel");
 			String metaPrefix = "@";
 			if (accel.startsWith(metaPrefix)) {
-				int menuMask = getToolkit().getMenuShortcutKeyMaskEx();
+				int menuMask = getToolkit().getMenuShortcutKeyMask();
 				KeyStroke key = KeyStroke.getKeyStroke(KeyStroke.getKeyStroke(
 						accel.substring(metaPrefix.length())).getKeyCode(),
 						menuMask);
@@ -330,23 +332,23 @@ public class WorldFrame<T> extends JFrame {
 	 * Brings up a simple dialog with some general information.
 	 */
 	private void showAboutPanel() {
-		StringBuilder html = new StringBuilder(MessageFormat.format(resources
-				.getString("dialog.about.text"), resources.getString("version.id")));
+		String html = MessageFormat.format(resources
+				.getString("dialog.about.text"), resources.getString("version.id"));
 		String[] props = {"java.version", "java.vendor", "java.home", "os.name", "os.arch", "os.version", "user.name", "user.home", "user.dir"};
-		html.append("<table border='1'>");
+		html += "<table border='1'>";
 		for (String prop : props) {
 			try {
 				String value = System.getProperty(prop);
-				html.append("<tr><td>").append(prop).append("</td><td>").append(value).append("</td></tr>");
+				html += "<tr><td>" + prop + "</td><td>" + value + "</td></tr>";
 			} catch (SecurityException ex) {
 				// oh well...
 			}
 		}
-		html.append("</table>");
-		html = new StringBuilder("<html>" + html + "</html>");
-		showMessageDialog(this, new JLabel(html.toString()), resources
+		html += "</table>";
+		html = "<html>" + html + "</html>";
+		JOptionPane.showMessageDialog(this, new JLabel(html), resources
 						.getString("dialog.about.title"),
-				INFORMATION_MESSAGE);
+				JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	/**
@@ -419,7 +421,7 @@ public class WorldFrame<T> extends JFrame {
 			area.setCaretPosition(0);
 			String copyOption = resources.getString("dialog.error.copy");
 			JOptionPane pane = new JOptionPane(new JScrollPane(area),
-					ERROR_MESSAGE, YES_NO_OPTION, null,
+					JOptionPane.ERROR_MESSAGE, JOptionPane.YES_NO_OPTION, null,
 					new String[]
 							{copyOption, resources.getString("cancel")});
 			pane.createDialog(WorldFrame.this, e.toString()).setVisible(true);

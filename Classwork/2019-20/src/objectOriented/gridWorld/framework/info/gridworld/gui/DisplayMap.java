@@ -23,6 +23,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * <code>DisplayMap</code> is a collection that maps grid occupant
@@ -31,14 +32,14 @@ import java.util.HashMap;
  * implementation details that are not intended to be understood by AP CS
  * students.
  */
-class DisplayMap {
-	private final HashMap<Class, Display> map = new HashMap<>();
-	private final Display defaultDisplay = new DefaultDisplay();
+public class DisplayMap {
+	private HashMap<Class, Display> map = new HashMap<>();
+	private Display defaultDisplay = new DefaultDisplay();
 
 	/**
 	 * Associates a display object with a grid occupant class.
 	 *
-	 * @param the occupant class
+	 * @param cl the occupant class
 	 * @return the ImageDisplay or (classname)Display object to display it,
 	 * or null if none was found
 	 */
@@ -76,7 +77,7 @@ class DisplayMap {
 		// Go up through the class hierarchy for obj and see
 		// if there is a display for its class or superclasses.
 
-		if (cl == Object.class)
+		if (Objects.equals(cl, Object.class))
 			return defaultDisplay;
 		Display display = map.get(cl);
 		if (display != null)
@@ -104,11 +105,10 @@ class DisplayMap {
 	}
 
 	private class DisplayIcon implements Icon {
-		private final Display displayObj;
-		private final int width;
-        private final int height;
+		private Display displayObj;
+		private int width, height;
 
-		DisplayIcon(Class cl, int w, int h) {
+		public DisplayIcon(Class cl, int w, int h) {
 			displayObj = findDisplayFor(cl);
 			width = w;
 			height = h;

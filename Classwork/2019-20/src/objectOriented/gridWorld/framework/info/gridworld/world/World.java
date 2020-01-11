@@ -16,10 +16,10 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.world;
 
-import objectOriented.gridWorld.framework.info.gridworld.grid.BoundedGrid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
-import objectOriented.gridWorld.framework.info.gridworld.gui.WorldFrame;
+import info.gridworld.grid.BoundedGrid;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.Location;
+import info.gridworld.gui.WorldFrame;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -32,17 +32,17 @@ import java.util.TreeSet;
  * <br />
  * This class is not tested on the AP CS A and AB exams.
  */
-public class World<T> {
+public class World<T> extends info.gridworld.world.World<T> {
 	private static final int DEFAULT_ROWS = 10;
 	private static final int DEFAULT_COLS = 10;
-	private static final Random generator = new Random();
-	private Grid<T> gr;
-	private final Set<String> occupantClassNames;
-	private final Set<String> gridClassNames;
+	private static Random generator = new Random();
+	private Grid gr;
+	private Set<String> occupantClassNames;
+	private Set<String> gridClassNames;
 	private String message;
 	private JFrame frame;
 
-	protected World() {
+	public World() {
 		this(new BoundedGrid<>(DEFAULT_ROWS, DEFAULT_COLS));
 		message = null;
 	}
@@ -62,7 +62,8 @@ public class World<T> {
 		if (frame == null) {
 			frame = new WorldFrame<>(this);
 			frame.setVisible(true);
-		} else frame.repaint();
+		} else
+			frame.repaint();
 	}
 
 	/**
@@ -79,7 +80,7 @@ public class World<T> {
 	 *
 	 * @param newGrid the new grid
 	 */
-	public void setGrid(Grid<T> newGrid) {
+	public void setGrid(Grid newGrid) {
 		gr = newGrid;
 		repaint();
 	}
@@ -148,24 +149,38 @@ public class World<T> {
 		int rows = gr.getNumRows();
 		int cols = gr.getNumCols();
 
-		if (rows > 0 && cols > 0) {// bounded grid
+		if (rows > 0 && cols > 0) // bounded grid
+		{
 			// get all valid empty locations and pick one at random
 			ArrayList<Location> emptyLocs = new ArrayList<>();
 			for (int i = 0; i < rows; i++)
 				for (int j = 0; j < cols; j++) {
 					Location loc = new Location(i, j);
-					if (gr.isValid(loc) && (gr.get(loc) == null)) emptyLocs.add(loc);
+					if (gr.isValid(loc) && gr.get(loc) == null)
+						emptyLocs.add(loc);
 				}
-			if (emptyLocs.size() == 0) return null;
+			if (emptyLocs.size() == 0)
+				return null;
 			int r = generator.nextInt(emptyLocs.size());
 			return emptyLocs.get(r);
-		} else {// unbounded grid
+		} else
+		// unbounded grid
+		{
 			while (true) {
 				// keep generating a random location until an empty one is found
-				int r = (rows < 0) ? (int) (DEFAULT_ROWS * generator.nextGaussian()) : generator.nextInt(rows);
-				int c = (cols < 0) ? (int) (DEFAULT_COLS * generator.nextGaussian()) : generator.nextInt(cols);
+				int r;
+				if (rows < 0)
+					r = (int) (DEFAULT_ROWS * generator.nextGaussian());
+				else
+					r = generator.nextInt(rows);
+				int c;
+				if (cols < 0)
+					c = (int) (DEFAULT_COLS * generator.nextGaussian());
+				else
+					c = generator.nextInt(cols);
 				Location loc = new Location(r, c);
-				if (gr.isValid(loc) && gr.get(loc) == null) return loc;
+				if (gr.isValid(loc) && gr.get(loc) == null)
+					return loc;
 			}
 		}
 	}
@@ -176,8 +191,8 @@ public class World<T> {
 	 * @param loc      the location
 	 * @param occupant the occupant to add
 	 */
-	public void add(Location loc, T occupant) {
-		getGrid().put(loc, occupant);
+	public void add(Location loc, Object occupant) {
+		getGrid().put(loc, (T) occupant);
 		repaint();
 	}
 
@@ -198,7 +213,7 @@ public class World<T> {
 	 *
 	 * @param className the name of the grid class
 	 */
-	private void addGridClass(String className) {
+	public void addGridClass(String className) {
 		gridClassNames.add(className);
 	}
 
@@ -232,7 +247,8 @@ public class World<T> {
 	}
 
 	private void repaint() {
-		if (frame != null) frame.repaint();
+		if (frame != null)
+			frame.repaint();
 	}
 
 	/**
@@ -241,28 +257,36 @@ public class World<T> {
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		Grid<?> gr = getGrid();
+
 		int rmin = 0;
 		int rmax = gr.getNumRows() - 1;
 		int cmin = 0;
 		int cmax = gr.getNumCols() - 1;
-		if (rmax < 0 || cmax < 0) {// unbounded grid
+		if (rmax < 0 || cmax < 0) // unbounded grid
+		{
 			for (Location loc : gr.getOccupiedLocations()) {
 				int r = loc.getRow();
 				int c = loc.getCol();
-				if (r < rmin) rmin = r;
-				if (r > rmax) rmax = r;
-				if (c < cmin) cmin = c;
-				if (c > cmax) cmax = c;
+				if (r < rmin)
+					rmin = r;
+				if (r > rmax)
+					rmax = r;
+				if (c < cmin)
+					cmin = c;
+				if (c > cmax)
+					cmax = c;
 			}
 		}
 
 		for (int i = rmin; i <= rmax; i++) {
 			for (int j = cmin; j < cmax; j++) {
 				Object obj = gr.get(new Location(i, j));
-				if (obj == null) s.append(" ");
-				else s.append(obj.toString(), 0, 1);
+				if (obj == null)
+					s.append(" ");
+				else
+					s.append(obj.toString(), 0, 1);
 			}
-			s.append('\n');
+			s.append("\n");
 		}
 		return s.toString();
 	}

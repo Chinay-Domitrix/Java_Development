@@ -16,7 +16,7 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.actor;
 
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import info.gridworld.grid.Location;
 
 import java.util.ArrayList;
 
@@ -52,7 +52,7 @@ public class Critter extends Actor {
 	 *
 	 * @return a list of actors that this critter wishes to process.
 	 */
-    private ArrayList<Actor> getActors() {
+	public ArrayList<Actor> getActors() {
 		return getGrid().getNeighbors(getLocation());
 	}
 
@@ -67,8 +67,11 @@ public class Critter extends Actor {
 	 *
 	 * @param actors the actors to be processed
 	 */
-    private void processActors(ArrayList<Actor> actors) {
-	    actors.stream().filter(a -> !(a instanceof Rock) && !(a instanceof Critter)).forEachOrdered(Actor::removeSelfFromGrid);
+	public void processActors(ArrayList<Actor> actors) {
+		for (Actor a : actors) {
+			if (!(a instanceof Rock) && !(a instanceof Critter))
+				a.removeSelfFromGrid();
+		}
 	}
 
 	/**
@@ -80,7 +83,7 @@ public class Critter extends Actor {
 	 *
 	 * @return a list of possible locations for the next move
 	 */
-    private ArrayList<Location> getMoveLocations() {
+	public ArrayList<Location> getMoveLocations() {
 		return getGrid().getEmptyAdjacentLocations(getLocation());
 	}
 
@@ -96,9 +99,10 @@ public class Critter extends Actor {
 	 * @param locs the possible locations for the next move
 	 * @return the location that was selected for the next move.
 	 */
-    private Location selectMoveLocation(ArrayList<Location> locs) {
+	public Location selectMoveLocation(ArrayList<Location> locs) {
 		int n = locs.size();
-		if (n == 0) return getLocation();
+		if (n == 0)
+			return getLocation();
 		int r = (int) (Math.random() * n);
 		return locs.get(r);
 	}
@@ -116,8 +120,10 @@ public class Critter extends Actor {
 	 *
 	 * @param loc the location to move to
 	 */
-    private void makeMove(Location loc) {
-		if (loc == null) removeSelfFromGrid();
-		else moveTo(loc);
+	public void makeMove(Location loc) {
+		if (loc == null)
+			removeSelfFromGrid();
+		else
+			moveTo(loc);
 	}
 }

@@ -37,8 +37,10 @@ public class BoundedGrid<E> extends AbstractGrid<E> {
 	 * @param cols number of columns in BoundedGrid
 	 */
 	public BoundedGrid(int rows, int cols) {
-		assert rows > 0 : "rows <= 0";
-		assert cols > 0 : "cols <= 0";
+		if (rows <= 0)
+			throw new IllegalArgumentException("rows <= 0");
+		if (cols <= 0)
+			throw new IllegalArgumentException("cols <= 0");
 		occupantArray = new Object[rows][cols];
 	}
 
@@ -53,40 +55,50 @@ public class BoundedGrid<E> extends AbstractGrid<E> {
 	}
 
 	public boolean isValid(Location loc) {
-		return (0 <= loc.getRow()) && (loc.getRow() < getNumRows()) && (0 <= loc.getCol()) && (loc.getCol() < getNumCols());
+		return 0 <= loc.getRow() && loc.getRow() < getNumRows()
+				&& 0 <= loc.getCol() && loc.getCol() < getNumCols();
 	}
 
 	public ArrayList<Location> getOccupiedLocations() {
 		ArrayList<Location> theLocations = new ArrayList<>();
 
 		// Look at all grid locations.
-		for (int r = 0; r < getNumRows(); r++)
+		for (int r = 0; r < getNumRows(); r++) {
 			for (int c = 0; c < getNumCols(); c++) {
 				// If there's an object at this location, put it in the array.
 				Location loc = new Location(r, c);
-				if (get(loc) != null) theLocations.add(loc);
+				if (get(loc) != null)
+					theLocations.add(loc);
 			}
+		}
 
 		return theLocations;
 	}
 
 	public E get(Location loc) {
-		assert isValid(loc) : "Location " + loc + " is not valid";
+		if (!isValid(loc))
+			throw new IllegalArgumentException("Location " + loc
+					+ " is not valid");
 		return (E) occupantArray[loc.getRow()][loc.getCol()]; // unavoidable warning
 	}
 
-	public void put(Location loc, E obj) {
-		assert isValid(loc) : "Location " + loc + " is not valid";
+	public E put(Location loc, E obj) {
+		if (!isValid(loc))
+			throw new IllegalArgumentException("Location " + loc
+					+ " is not valid");
 		if (obj == null)
 			throw new NullPointerException("obj == null");
 
 		// Add the object to the grid.
 		E oldOccupant = get(loc);
 		occupantArray[loc.getRow()][loc.getCol()] = obj;
+		return oldOccupant;
 	}
 
 	public E remove(Location loc) {
-		assert isValid(loc) : "Location " + loc + " is not valid";
+		if (!isValid(loc))
+			throw new IllegalArgumentException("Location " + loc
+					+ " is not valid");
 
 		// Remove the object from the grid.
 		E r = get(loc);

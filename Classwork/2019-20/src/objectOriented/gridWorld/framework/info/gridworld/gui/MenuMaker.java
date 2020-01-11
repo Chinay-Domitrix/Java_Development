@@ -16,8 +16,8 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
-import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.Location;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -41,13 +41,13 @@ import java.util.*;
  * implementation details that are not intended to be understood by AP CS
  * students.
  */
-class MenuMaker<T> {
+public class MenuMaker<T> {
 	private T occupant;
 	private Grid currentGrid;
 	private Location currentLocation;
-	private final WorldFrame<T> parent;
-	private final DisplayMap displayMap;
-	private final ResourceBundle resources;
+	private WorldFrame<T> parent;
+	private DisplayMap displayMap;
+	private ResourceBundle resources;
 
 	/**
 	 * Constructs a menu maker for a given world.
@@ -75,7 +75,7 @@ class MenuMaker<T> {
 		this.currentLocation = loc;
 		JPopupMenu menu = new JPopupMenu();
 		Method[] methods = getMethods();
-		Class<?> oldDcl = null;
+		Class oldDcl = null;
 		for (int i = 0; i < methods.length; i++) {
 			Class dcl = methods[i].getDeclaringClass();
 			if (dcl != Object.class) {
@@ -106,8 +106,9 @@ class MenuMaker<T> {
 				first = false;
 			else
 				menu.addSeparator();
-            Constructor[] cons = aClass.getConstructors();
-			for (Constructor<?> con : cons) {
+			Class cl = aClass;
+			Constructor[] cons = cl.getConstructors();
+			for (Constructor con : cons) {
 				menu.add(new OccupantConstructorItem(con));
 			}
 		}
@@ -128,8 +129,9 @@ class MenuMaker<T> {
 				first = false;
 			else
 				menu.addSeparator();
-            Constructor[] cons = aClass.getConstructors();
-			for (Constructor<?> con : cons) {
+			Class cl = aClass;
+			Constructor[] cons = cl.getConstructors();
+			for (Constructor con : cons) {
 				menu.add(new GridConstructorItem(con));
 			}
 		}
@@ -167,8 +169,8 @@ class MenuMaker<T> {
 	 * A menu item that shows a method or constructor.
 	 */
 	private class MCItem extends JMenuItem {
-		String getDisplayString(Class retType, String name,
-                                Class[] paramTypes) {
+		public String getDisplayString(Class retType, String name,
+		                               Class[] paramTypes) {
 			StringBuffer b = new StringBuffer();
 			b.append("<html>");
 			if (retType != null)
@@ -185,7 +187,7 @@ class MenuMaker<T> {
 			return b.toString();
 		}
 
-		void appendTypeName(StringBuffer b, String name) {
+		public void appendTypeName(StringBuffer b, String name) {
 			int i = name.lastIndexOf('.');
 			if (i >= 0) {
 				String prefix = name.substring(0, i + 1);
@@ -199,7 +201,7 @@ class MenuMaker<T> {
 				b.append(name);
 		}
 
-		Object makeDefaultValue(Class<?> type) {
+		public Object makeDefaultValue(Class type) {
 			if (type == int.class)
 				return 0;
 			else if (type == boolean.class)
@@ -225,16 +227,16 @@ class MenuMaker<T> {
 	}
 
 	private abstract class ConstructorItem extends MCItem {
-		private final Constructor<?> c;
+		private Constructor c;
 
-		ConstructorItem(Constructor<?> c) {
+		public ConstructorItem(Constructor c) {
 			setText(getDisplayString(null, c.getDeclaringClass().getName(), c
 					.getParameterTypes()));
 			this.c = c;
 		}
 
-		Object invokeConstructor() {
-			Class<?>[] types = c.getParameterTypes();
+		public Object invokeConstructor() {
+			Class[] types = c.getParameterTypes();
 			Object[] values = new Object[types.length];
 
 			for (int i = 0; i < types.length; i++) {
@@ -248,6 +250,7 @@ class MenuMaker<T> {
 						JOptionPane.QUESTION_MESSAGE);
 				values = sheet.getValues();
 			}
+
 			try {
 				return c.newInstance(values);
 			} catch (InvocationTargetException ex) {
@@ -262,7 +265,7 @@ class MenuMaker<T> {
 
 	private class OccupantConstructorItem extends ConstructorItem implements
 			ActionListener {
-		OccupantConstructorItem(Constructor<?> c) {
+		public OccupantConstructorItem(Constructor c) {
 			super(c);
 			addActionListener(this);
 			setIcon(displayMap.getIcon(c.getDeclaringClass(), 16, 16));
@@ -278,12 +281,13 @@ class MenuMaker<T> {
 
 	private class GridConstructorItem extends ConstructorItem implements
 			ActionListener {
-		GridConstructorItem(Constructor<?> c) {
+		public GridConstructorItem(Constructor c) {
 			super(c);
 			addActionListener(this);
 			setIcon(displayMap.getIcon(c.getDeclaringClass(), 16, 16));
 		}
 
+		@SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent event) {
 			Grid<T> newGrid = (Grid<T>) invokeConstructor();
 			parent.setGrid(newGrid);
@@ -291,10 +295,11 @@ class MenuMaker<T> {
 	}
 
 	private class MethodItem extends MCItem implements ActionListener {
-		private final Method m;
+		private Method m;
 
-		MethodItem(Method m) {
-			setText(getDisplayString(m.getReturnType(), m.getName(), m.getParameterTypes()));
+		public MethodItem(Method m) {
+			setText(getDisplayString(m.getReturnType(), m.getName(), m
+					.getParameterTypes()));
 			this.m = m;
 			addActionListener(this);
 			setIcon(displayMap.getIcon(m.getDeclaringClass(), 16, 16));
@@ -321,7 +326,7 @@ class MenuMaker<T> {
 				parent.repaint();
 				if (m.getReturnType() != void.class) {
 					String resultString = result.toString();
-					java.io.Serializable resultObject;
+					Object resultObject;
 					final int MAX_LENGTH = 50;
 					final int MAX_HEIGHT = 10;
 					if (resultString.length() < MAX_LENGTH)
@@ -348,7 +353,7 @@ class MenuMaker<T> {
 }
 
 class PropertySheet extends JPanel {
-	private static final Map<Class, PropertyEditor> defaultEditors;
+	private static Map<Class, PropertyEditor> defaultEditors;
 
 	static {
 		defaultEditors = new HashMap<>();
@@ -364,7 +369,7 @@ class PropertySheet extends JPanel {
 	 * Constructs a property sheet that shows the editable properties of a given
 	 * object.
 	 *
-	 * @param object the object whose properties are being edited
+	 * @param values the object whose properties are being edited
 	 */
 	public PropertySheet(Class[] types, Object[] values) {
 		this.values = values;
@@ -396,7 +401,7 @@ class PropertySheet extends JPanel {
 	 * @return a property editor that edits the property with the given
 	 * descriptor and updates the given object
 	 */
-    private PropertyEditor getEditor(Class type) {
+	public PropertyEditor getEditor(Class type) {
 		PropertyEditor editor;
 		editor = defaultEditors.get(type);
 		if (editor != null)
@@ -412,14 +417,14 @@ class PropertySheet extends JPanel {
 	 * @return a button (if there is a custom editor), combo box (if the editor
 	 * has tags), or text field (otherwise)
 	 */
-    private Component getEditorComponent(final PropertyEditor editor) {
+	public Component getEditorComponent(final PropertyEditor editor) {
 		String[] tags = editor.getTags();
 		String text = editor.getAsText();
 		if (editor.supportsCustomEditor()) {
 			return editor.getCustomEditor();
 		} else if (tags != null) {
 			// make a combo box that shows all tags
-			final JComboBox<? extends String> comboBox = new JComboBox<>(tags);
+			final JComboBox comboBox = new JComboBox(tags);
 			comboBox.setSelectedItem(text);
 			comboBox.addItemListener(event -> {
 				if (event.getStateChange() == ItemEvent.SELECTED)
@@ -432,14 +437,14 @@ class PropertySheet extends JPanel {
 				public void insertUpdate(DocumentEvent e) {
 					try {
 						editor.setAsText(textField.getText());
-					} catch (IllegalArgumentException ignored) {
+					} catch (IllegalArgumentException exception) {
 					}
 				}
 
 				public void removeUpdate(DocumentEvent e) {
 					try {
 						editor.setAsText(textField.getText());
-					} catch (IllegalArgumentException ignored) {
+					} catch (IllegalArgumentException exception) {
 					}
 				}
 
@@ -458,7 +463,7 @@ class PropertySheet extends JPanel {
 	}
 
 	// workaround for Web Start bug
-	static class StringEditor extends PropertyEditorSupport {
+	public static class StringEditor extends PropertyEditorSupport {
 		public String getAsText() {
 			return (String) getValue();
 		}

@@ -16,13 +16,11 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.actor;
 
-import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
-import objectOriented.gridWorld.framework.info.gridworld.world.World;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.Location;
+import info.gridworld.world.World;
 
 import java.util.ArrayList;
-
-import static java.util.stream.Collectors.toCollection;
 
 /**
  * An <code>ActorWorld</code> is occupied by actors. <br />
@@ -48,15 +46,22 @@ public class ActorWorld extends World<Actor> {
 	}
 
 	public void show() {
-		if (getMessage() == null) setMessage(DEFAULT_MESSAGE);
+		if (getMessage() == null)
+			setMessage(DEFAULT_MESSAGE);
 		super.show();
 	}
 
 	public void step() {
 		Grid<Actor> gr = getGrid();
-		ArrayList<Actor> actors = gr.getOccupiedLocations().stream().map(gr::get).collect(toCollection(ArrayList::new));
-		// only act if another actor hasn't removed a
-		actors.stream().filter(a -> a.getGrid() == gr).forEachOrdered(Actor::act);
+		ArrayList<Actor> actors = new ArrayList<>();
+		for (Location loc : gr.getOccupiedLocations())
+			actors.add(gr.get(loc));
+
+		for (Actor a : actors) {
+			// only act if another actor hasn't removed a
+			if (a.getGrid() == gr)
+				a.act();
+		}
 	}
 
 	/**
@@ -76,7 +81,8 @@ public class ActorWorld extends World<Actor> {
 	 */
 	public void add(Actor occupant) {
 		Location loc = getRandomEmptyLocation();
-		if (loc != null) add(loc, occupant);
+		if (loc != null)
+			add(loc, occupant);
 	}
 
 	/**

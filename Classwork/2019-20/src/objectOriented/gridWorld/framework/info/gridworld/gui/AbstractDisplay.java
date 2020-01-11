@@ -70,7 +70,7 @@ public abstract class AbstractDisplay implements Display {
 	 * @param comp the component on which to draw
 	 * @param g2   the graphics context
 	 */
-	protected abstract void draw(Object obj, Component comp, Graphics2D g2);
+	abstract public void draw(Object obj, Component comp, Graphics2D g2);
 
 	/**
 	 * Draw the given object. Scales and rotates the coordinate appropriately

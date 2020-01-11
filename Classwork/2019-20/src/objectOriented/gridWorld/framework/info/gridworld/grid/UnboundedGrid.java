@@ -21,6 +21,7 @@ package objectOriented.gridWorld.framework.info.gridworld.grid;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * An <code>UnboundedGrid</code> is a rectangular grid with an unbounded number of rows and
@@ -28,7 +29,7 @@ import java.util.HashMap;
  * The implementation of this class is testable on the AP CS AB exam.
  */
 public class UnboundedGrid<E> extends AbstractGrid<E> {
-	private final HashMap<Location, E> occupantMap;
+	private Map<Location, E> occupantMap;
 
 	/**
 	 * Constructs an empty unbounded grid.
@@ -50,7 +51,10 @@ public class UnboundedGrid<E> extends AbstractGrid<E> {
 	}
 
 	public ArrayList<Location> getOccupiedLocations() {
-		return new ArrayList<>(occupantMap.keySet());
+		ArrayList<Location> a = new ArrayList<>();
+		for (Location loc : occupantMap.keySet())
+			a.add(loc);
+		return a;
 	}
 
 	public E get(Location loc) {
@@ -59,13 +63,13 @@ public class UnboundedGrid<E> extends AbstractGrid<E> {
 		return occupantMap.get(loc);
 	}
 
-	public void put(Location loc, E obj) {
+	public E put(Location loc, E obj) {
 		if (loc == null)
 			throw new NullPointerException("loc == null");
 		if (obj == null)
 			throw new NullPointerException("obj == null");
-        occupantMap.put(loc, obj);
-    }
+		return occupantMap.put(loc, obj);
+	}
 
 	public E remove(Location loc) {
 		if (loc == null)

@@ -16,24 +16,24 @@ package objectOriented.gridWorld.projects.boxBug;/*
  * @author Barbara Cloud Wells
  */
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import info.gridworld.actor.Bug;
 
 /**
  * A <code>BoxBug</code> traces out a square "box" of a given size. <br />
  * The implementation of this class is testable on the AP CS A and AB exams.
  */
 class BoxBug extends Bug {
-	private int steps;
 	private final int sideLength;
+	private int steps;
 
 	/**
 	 * Constructs a box bug that traces a square of a given side length
 	 *
 	 * @param length the side length
 	 */
-	public BoxBug(int sideLength) {
+	public BoxBug(int length) {
 		steps = 0;
-		this.sideLength = sideLength;
+		sideLength = length;
 	}
 
 	/**

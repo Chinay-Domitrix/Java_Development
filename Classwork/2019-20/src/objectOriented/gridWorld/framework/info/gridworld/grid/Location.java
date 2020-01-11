@@ -35,7 +35,7 @@ public class Location implements Comparable {
 	/**
 	 * The turn angle for turning 90 degrees to the right.
 	 */
-	private static final int RIGHT = 90;
+	public static final int RIGHT = 90;
 	/**
 	 * The turn angle for turning 45 degrees to the left.
 	 */
@@ -63,33 +63,33 @@ public class Location implements Comparable {
 	/**
 	 * The compass direction for northeast.
 	 */
-	private static final int NORTHEAST = 45;
+	public static final int NORTHEAST = 45;
 	/**
 	 * The compass direction for east.
 	 */
-	private static final int EAST = 90;
+	public static final int EAST = 90;
 	/**
 	 * The compass direction for southeast.
 	 */
-	private static final int SOUTHEAST = 135;
+	public static final int SOUTHEAST = 135;
 	/**
 	 * The compass direction for south.
 	 */
-	private static final int SOUTH = 180;
+	public static final int SOUTH = 180;
 	/**
 	 * The compass direction for southwest.
 	 */
-	private static final int SOUTHWEST = 225;
+	public static final int SOUTHWEST = 225;
 	/**
 	 * The compass direction for west.
 	 */
-	private static final int WEST = 270;
+	public static final int WEST = 270;
 	/**
 	 * The compass direction for northwest.
 	 */
-	private static final int NORTHWEST = 315;
-	private final int row; // row location in grid
-	private final int col; // column location in grid
+	public static final int NORTHWEST = 315;
+	private int row; // row location in grid
+	private int col; // column location in grid
 
 	/**
 	 * Constructs a location with given row and column coordinates.
@@ -130,23 +130,29 @@ public class Location implements Comparable {
 	public Location getAdjacentLocation(int direction) {
 		// reduce mod 360 and round to closest multiple of 45
 		int adjustedDirection = (direction + HALF_RIGHT / 2) % FULL_CIRCLE;
-		if (adjustedDirection < 0) adjustedDirection += FULL_CIRCLE;
+		if (adjustedDirection < 0)
+			adjustedDirection += FULL_CIRCLE;
+
 		adjustedDirection = (adjustedDirection / HALF_RIGHT) * HALF_RIGHT;
 		int dc = 0;
 		int dr = 0;
-		if (adjustedDirection == EAST) dc = 1;
+		if (adjustedDirection == EAST)
+			dc = 1;
 		else if (adjustedDirection == SOUTHEAST) {
 			dc = 1;
 			dr = 1;
-		} else if (adjustedDirection == SOUTH) dr = 1;
+		} else if (adjustedDirection == SOUTH)
+			dr = 1;
 		else if (adjustedDirection == SOUTHWEST) {
 			dc = -1;
 			dr = 1;
-		} else if (adjustedDirection == WEST) dc = -1;
+		} else if (adjustedDirection == WEST)
+			dc = -1;
 		else if (adjustedDirection == NORTHWEST) {
 			dc = -1;
 			dr = -1;
-		} else if (adjustedDirection == NORTH) dr = -1;
+		} else if (adjustedDirection == NORTH)
+			dr = -1;
 		else if (adjustedDirection == NORTHEAST) {
 			dc = 1;
 			dr = -1;
@@ -167,13 +173,15 @@ public class Location implements Comparable {
 		int dy = target.getRow() - getRow();
 		// y axis points opposite to mathematical orientation
 		int angle = (int) Math.toDegrees(Math.atan2(-dy, dx));
+
 		// mathematical angle is counterclockwise from x-axis,
 		// compass angle is clockwise from y-axis
 		int compassAngle = RIGHT - angle;
 		// prepare for truncating division by 45 degrees
 		compassAngle += HALF_RIGHT / 2;
 		// wrap negative angles
-		if (compassAngle < 0) compassAngle += FULL_CIRCLE;
+		if (compassAngle < 0)
+			compassAngle += FULL_CIRCLE;
 		// round to nearest multiple of 45
 		return (compassAngle / HALF_RIGHT) * HALF_RIGHT;
 	}
@@ -188,7 +196,9 @@ public class Location implements Comparable {
 	 * <code>false</code> otherwise
 	 */
 	public boolean equals(Object other) {
-		if (!(other instanceof Location)) return false;
+		if (!(other instanceof Location))
+			return false;
+
 		Location otherLoc = (Location) other;
 		return getRow() == otherLoc.getRow() && getCol() == otherLoc.getCol();
 	}
@@ -216,8 +226,10 @@ public class Location implements Comparable {
 	 */
 	public int compareTo(@NotNull Object other) {
 		Location otherLoc = (Location) other;
-		if (getRow() < otherLoc.getRow()) return -1;
-		if (getRow() > otherLoc.getRow()) return 1;
+		if (getRow() < otherLoc.getRow())
+			return -1;
+		if (getRow() > otherLoc.getRow())
+			return 1;
 		return Integer.compare(getCol(), otherLoc.getCol());
 	}
 

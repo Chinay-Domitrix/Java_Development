@@ -18,8 +18,8 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
-import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.Location;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,9 +50,9 @@ public class GridPanel extends JPanel implements Scrollable,
 	private int numRows, numCols, originRow, originCol;
 	private int cellSize; // the size of each cell, EXCLUDING the gridlines
 	private boolean toolTipsEnabled;
-	private final Color backgroundColor = Color.WHITE;
-	private final ResourceBundle resources;
-	private final DisplayMap displayMap;
+	private Color backgroundColor = Color.WHITE;
+	private ResourceBundle resources;
+	private DisplayMap displayMap;
 	private Location currentLocation;
 	private Timer tipTimer;
 	private JToolTip tip;
@@ -165,10 +165,11 @@ public class GridPanel extends JPanel implements Scrollable,
 	private void drawOccupants(Graphics2D g2) {
 		ArrayList<Location> occupantLocs = grid.getOccupiedLocations();
 		for (Location occupantLoc : occupantLocs) {
+			Location loc = occupantLoc;
 
-            int xleft = colToXCoord(occupantLoc.getCol());
-			int ytop = rowToYCoord(occupantLoc.getRow());
-			drawOccupant(g2, xleft, ytop, grid.get((Location) occupantLoc));
+			int xleft = colToXCoord(loc.getCol());
+			int ytop = rowToYCoord(loc.getRow());
+			drawOccupant(g2, xleft, ytop, grid.get(loc));
 		}
 	}
 
@@ -387,7 +388,7 @@ public class GridPanel extends JPanel implements Scrollable,
 	 *
 	 * @return the currently selected location (marked with a bold square)
 	 */
-	public objectOriented.gridWorld.framework.info.gridworld.grid.Location getCurrentLocation() {
+	public Location getCurrentLocation() {
 		return currentLocation;
 	}
 
@@ -463,7 +464,7 @@ public class GridPanel extends JPanel implements Scrollable,
 	 * @param tipText the tool tip text
 	 * @param pt      the pixel position over which to show the tip
 	 */
-    private void showTip(String tipText, Point pt) {
+	public void showTip(String tipText, Point pt) {
 		if (getRootPane() == null)
 			return;
 		// draw in glass pane to appear on top of other components

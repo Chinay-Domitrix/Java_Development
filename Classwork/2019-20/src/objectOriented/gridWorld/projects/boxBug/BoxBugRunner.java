@@ -1,5 +1,4 @@
-package objectOriented.gridWorld.projects.boxBug;
-/*
+package objectOriented.gridWorld.projects.boxBug;/*
  * AP(r) Computer Science GridWorld Case Study:
  * Copyright(c) 2005-2006 Cay S. Horstmann (http://horstmann.com)
  *
@@ -17,10 +16,10 @@ package objectOriented.gridWorld.projects.boxBug;
  * @author Barbara Cloud Wells
  */
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import info.gridworld.actor.ActorWorld;
+import info.gridworld.grid.Location;
 
-import static java.awt.Color.ORANGE;
+import java.awt.*;
 
 /**
  * This class runs a world that contains box bugs. <br />
@@ -30,7 +29,7 @@ public class BoxBugRunner {
 	public static void main(String[] args) {
 		ActorWorld world = new ActorWorld();
 		BoxBug alice = new BoxBug(6);
-		alice.setColor(ORANGE);
+		alice.setColor(Color.ORANGE);
 		BoxBug bob = new BoxBug(3);
 		world.add(new Location(7, 8), alice);
 		world.add(new Location(5, 5), bob);

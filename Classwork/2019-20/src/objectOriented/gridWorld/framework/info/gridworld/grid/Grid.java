@@ -58,8 +58,10 @@ public interface Grid<E> {
 	 *
 	 * @param loc the location at which to put the object
 	 * @param obj the new object to be added
+	 * @return the object previously at <code>loc</code> (or <code>null</code>
+	 * if the location was previously unoccupied)
 	 */
-	void put(Location loc, E obj);
+	E put(Location loc, E obj);
 
 	/**
 	 * Removes the object at a given location from this grid. <br />

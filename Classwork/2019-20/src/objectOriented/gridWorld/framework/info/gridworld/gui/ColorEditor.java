@@ -27,11 +27,11 @@ import java.beans.PropertyEditorSupport;
  * students.
  */
 public class ColorEditor extends PropertyEditorSupport {
-	private static final Color[] colorValues =
+	private static Color[] colorValues =
 			{Color.BLACK, Color.BLUE, Color.CYAN, Color.DARK_GRAY, Color.GRAY,
 					Color.GREEN, Color.LIGHT_GRAY, Color.MAGENTA, Color.ORANGE,
 					Color.PINK, Color.RED, Color.WHITE, Color.YELLOW};
-	private static final ColorIcon[] colorIcons;
+	private static ColorIcon[] colorIcons;
 
 	static {
 		colorIcons = new ColorIcon[colorValues.length + 1];
@@ -69,9 +69,9 @@ public class ColorEditor extends PropertyEditorSupport {
 	}
 
 	private static class SolidColorIcon implements ColorIcon {
-		private final Color color;
+		private Color color;
 
-		SolidColorIcon(Color c) {
+		public SolidColorIcon(Color c) {
 			color = c;
 		}
 

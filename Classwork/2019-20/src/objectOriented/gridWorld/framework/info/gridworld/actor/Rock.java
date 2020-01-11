@@ -18,8 +18,6 @@ package objectOriented.gridWorld.framework.info.gridworld.actor;
 
 import java.awt.*;
 
-import static java.awt.Color.*;
-
 /**
  * A <code>Rock</code> is an actor that does nothing. It is commonly used to
  * block other actors from moving. <br />
@@ -29,7 +27,7 @@ import static java.awt.Color.*;
 public class Rock extends Actor {
 
 
-	private static final Color DEFAULT_COLOR = darkGray;
+	private static final Color DEFAULT_COLOR = Color.BLACK;
 
 	/**
 	 * Constructs a black rock.
