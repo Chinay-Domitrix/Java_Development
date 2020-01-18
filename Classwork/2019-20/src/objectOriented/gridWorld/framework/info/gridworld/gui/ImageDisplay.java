@@ -54,9 +54,7 @@ public class ImageDisplay extends AbstractDisplay {
 		URL url = cl.getClassLoader().getResource(
 				imageFilename + imageExtension);
 
-		if (url == null)
-			throw new FileNotFoundException(imageFilename + imageExtension
-					+ " not found.");
+		assert url != null : imageFilename + imageExtension + " not found.";
 		tintedVersions.put("", ImageIO.read(url));
 	}
 

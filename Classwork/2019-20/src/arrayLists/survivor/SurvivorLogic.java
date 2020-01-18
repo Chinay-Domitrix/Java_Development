@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import static java.lang.Math.*;
 import static java.lang.String.format;
 import static java.lang.System.out;
+import static java.util.stream.IntStream.range;
 
 final class SurvivorLogic {
 	private final ArrayList<Integer> specialSauceCounter = new ArrayList<>();
@@ -16,10 +17,10 @@ final class SurvivorLogic {
 	}
 
 	private void looper() {
-		for (var i = 0; i < runs; i++) {
+		range(0, runs).forEachOrdered(i -> {
 			survivorLogic();
 			out.println('\n');
-		}
+		});
 	}
 
 	private void survivorLogic() {
@@ -30,15 +31,13 @@ final class SurvivorLogic {
 		out.printf("The starting numbers are:\n%s%n", survivorLogic);
 		do {
 			var random = toIntExact(round((random() * 99) + 2));
-			for (var i = 0; i < survivorLogic.size(); i++) {
-				var a = survivorLogic.get(i);
-				if (((a % random) == 0) && (a != 0)) {
-					out.printf("Round #%d removed %d because (%d %% %d==0)%n", counter, a, a, random);
+			for (var i = 0; i < survivorLogic.size(); i++)
+				if (((survivorLogic.get(i) % random) == 0) && (survivorLogic.get(i) != 0)) {
+					out.printf("Round #%d removed %d because (%d %% %d==0)%n", counter, survivorLogic.get(i), survivorLogic.get(i), random);
 					survivorLogic.remove(i);
 					i--;
 					bounds--;
 				}
-			}
 			counter++;
 			out.println(survivorLogic);
 			if (bounds == 1) out.printf("The winner after %d rounds is %d.%n", counter, survivorLogic.get(0));

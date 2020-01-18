@@ -99,7 +99,7 @@ class VerticalSineWave {
 			out.println("\t\t\t\t\t" + asterisks(i));
 			toLeft(i - 1);
 		} catch (StackOverflowError e) {
-			new StackOverflowError().addSuppressed(e);
+			new Throwable().addSuppressed(e);
 		}
 	}
 
@@ -119,7 +119,7 @@ class VerticalSineWave {
 	@NotNull
 	@Contract(pure = true)
 	private String asterisks(int i) {
-		return (i == 0) ? "*" : (" " + asterisks(i - 1));
+		return (i == 0) ? "*" : (' ' + asterisks(i - 1));
 	}
 
 	@Contract(value = "_, null -> false", pure = true)

@@ -51,29 +51,22 @@ public class UnboundedGrid<E> extends AbstractGrid<E> {
 	}
 
 	public ArrayList<Location> getOccupiedLocations() {
-		ArrayList<Location> a = new ArrayList<>();
-		for (Location loc : occupantMap.keySet())
-			a.add(loc);
-		return a;
+		return new ArrayList<>(occupantMap.keySet());
 	}
 
 	public E get(Location loc) {
-		if (loc == null)
-			throw new NullPointerException("loc == null");
+		assert loc != null : "loc == null";
 		return occupantMap.get(loc);
 	}
 
 	public E put(Location loc, E obj) {
-		if (loc == null)
-			throw new NullPointerException("loc == null");
-		if (obj == null)
-			throw new NullPointerException("obj == null");
+		assert loc != null : "loc == null";
+		assert obj != null : "obj == null";
 		return occupantMap.put(loc, obj);
 	}
 
 	public E remove(Location loc) {
-		if (loc == null)
-			throw new NullPointerException("loc == null");
+		assert loc != null : "loc == null";
 		return occupantMap.remove(loc);
 	}
 }

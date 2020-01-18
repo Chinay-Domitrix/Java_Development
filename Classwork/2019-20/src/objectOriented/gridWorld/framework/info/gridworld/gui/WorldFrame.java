@@ -120,7 +120,7 @@ public class WorldFrame<T> extends JFrame {
 		scrollPane.setViewportView(display);
 		content.add(scrollPane, BorderLayout.CENTER);
 
-		gridClasses = new TreeSet<>((a, b) -> a.getName().compareTo(b.getName()));
+		gridClasses = new TreeSet<>(Comparator.comparing(Class::getName));
 		for (String name : world.getGridClasses())
 			try {
 				gridClasses.add(Class.forName(name));
@@ -240,7 +240,7 @@ public class WorldFrame<T> extends JFrame {
 			String accel = resources.getString(resource + ".accel");
 			String metaPrefix = "@";
 			if (accel.startsWith(metaPrefix)) {
-				int menuMask = getToolkit().getMenuShortcutKeyMask();
+				int menuMask = getToolkit().getMenuShortcutKeyMaskEx();
 				KeyStroke key = KeyStroke.getKeyStroke(KeyStroke.getKeyStroke(
 						accel.substring(metaPrefix.length())).getKeyCode(),
 						menuMask);
@@ -332,21 +332,21 @@ public class WorldFrame<T> extends JFrame {
 	 * Brings up a simple dialog with some general information.
 	 */
 	private void showAboutPanel() {
-		String html = MessageFormat.format(resources
-				.getString("dialog.about.text"), resources.getString("version.id"));
+		StringBuilder html = new StringBuilder(MessageFormat.format(resources
+				.getString("dialog.about.text"), resources.getString("version.id")));
 		String[] props = {"java.version", "java.vendor", "java.home", "os.name", "os.arch", "os.version", "user.name", "user.home", "user.dir"};
-		html += "<table border='1'>";
+		html.append("<table border='1'>");
 		for (String prop : props) {
 			try {
 				String value = System.getProperty(prop);
-				html += "<tr><td>" + prop + "</td><td>" + value + "</td></tr>";
+				html.append("<tr><td>").append(prop).append("</td><td>").append(value).append("</td></tr>");
 			} catch (SecurityException ex) {
 				// oh well...
 			}
 		}
-		html += "</table>";
-		html = "<html>" + html + "</html>";
-		JOptionPane.showMessageDialog(this, new JLabel(html), resources
+		html.append("</table>");
+		html = new StringBuilder("<html>" + html + "</html>");
+		JOptionPane.showMessageDialog(this, new JLabel(html.toString()), resources
 						.getString("dialog.about.title"),
 				JOptionPane.INFORMATION_MESSAGE);
 	}
@@ -371,7 +371,7 @@ public class WorldFrame<T> extends JFrame {
 			if (ev.getEventType() == HyperlinkEvent.EventType.ACTIVATED)
 				try {
 					helpText.setPage(ev.getURL());
-				} catch (Exception ex) {
+				} catch (Exception ignored) {
 				}
 		});
 		JScrollPane sp = new JScrollPane(helpText);

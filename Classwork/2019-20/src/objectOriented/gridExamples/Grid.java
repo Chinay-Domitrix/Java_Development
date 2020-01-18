@@ -1,5 +1,7 @@
 package objectOriented.gridExamples;
 
+import org.jetbrains.annotations.Contract;
+
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -181,6 +183,7 @@ class Grid {
 	 * @see #hashCode()
 	 * @see HashMap
 	 */
+	@Contract(value = "null -> false", pure = true)
 	@Override
 	public boolean equals(Object obj) {
 		return super.equals(obj);

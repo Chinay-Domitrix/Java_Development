@@ -17,13 +17,13 @@ class GridDriver extends Thread {
 	 */
 	private static final Scanner input = new Scanner(in);
 	/**
-	 * {@link Grid}s to be used by the two iteration sets
+	 * {@link Grid}s to be used by the iteration sets
 	 */
 	private static final Grid[] x = new Grid[3];
 	/**
 	 * grid dimension values
 	 */
-	static int numRows, numCols;
+	protected static int numRows, numCols;
 
 	/**
 	 * main data-flow processor for GridDriver

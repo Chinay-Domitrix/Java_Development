@@ -39,7 +39,7 @@ class CoordinatePlane {
 	}
 
 	public static void main(String[] args) {
-		var cp = new CoordinatePlane(CoordinatePlane.GRID_SIZES[2]);
+		var cp = new CoordinatePlane(GRID_SIZES[2]);
 		//cp.randomPoints(10, -10, 10);
 //		Graph with 'x'
 		//cp.graph("x");

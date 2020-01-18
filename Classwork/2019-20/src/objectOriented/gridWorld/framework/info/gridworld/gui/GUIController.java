@@ -27,6 +27,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.lang.reflect.Modifier;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.TreeSet;
@@ -73,7 +74,7 @@ public class GUIController<T> {
 		this.displayMap = displayMap;
 		makeControls();
 
-		occupantClasses = new TreeSet<>((a, b) -> a.getName().compareTo(b.getName()));
+		occupantClasses = new TreeSet<>(Comparator.comparing(Class::getName));
 
 		World<T> world = parentFrame.getWorld();
 		Grid<T> gr = world.getGrid();

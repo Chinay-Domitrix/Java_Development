@@ -112,9 +112,7 @@ public class Actor {
 	 * @param loc the location into which the actor should be placed
 	 */
 	public void putSelfInGrid(Grid<Actor> gr, Location loc) {
-		if (grid != null)
-			throw new IllegalStateException(
-					"This actor is already contained in a grid.");
+		assert grid == null : "This actor is already contained in a grid.";
 
 		Actor actor = gr.get(loc);
 		if (actor != null)

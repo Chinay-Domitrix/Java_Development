@@ -37,10 +37,8 @@ public class BoundedGrid<E> extends AbstractGrid<E> {
 	 * @param cols number of columns in BoundedGrid
 	 */
 	public BoundedGrid(int rows, int cols) {
-		if (rows <= 0)
-			throw new IllegalArgumentException("rows <= 0");
-		if (cols <= 0)
-			throw new IllegalArgumentException("cols <= 0");
+		assert rows > 0 : "rows <= 0";
+		assert cols > 0 : "cols <= 0";
 		occupantArray = new Object[rows][cols];
 	}
 
@@ -76,18 +74,13 @@ public class BoundedGrid<E> extends AbstractGrid<E> {
 	}
 
 	public E get(Location loc) {
-		if (!isValid(loc))
-			throw new IllegalArgumentException("Location " + loc
-					+ " is not valid");
+		assert isValid(loc) : "Location " + loc + " is not valid";
 		return (E) occupantArray[loc.getRow()][loc.getCol()]; // unavoidable warning
 	}
 
 	public E put(Location loc, E obj) {
-		if (!isValid(loc))
-			throw new IllegalArgumentException("Location " + loc
-					+ " is not valid");
-		if (obj == null)
-			throw new NullPointerException("obj == null");
+		assert isValid(loc) : "Location " + loc + " is not valid";
+		assert obj != null : "obj == null";
 
 		// Add the object to the grid.
 		E oldOccupant = get(loc);
@@ -96,9 +89,7 @@ public class BoundedGrid<E> extends AbstractGrid<E> {
 	}
 
 	public E remove(Location loc) {
-		if (!isValid(loc))
-			throw new IllegalArgumentException("Location " + loc
-					+ " is not valid");
+		assert isValid(loc) : "Location " + loc + " is not valid";
 
 		// Remove the object from the grid.
 		E r = get(loc);

@@ -1,5 +1,7 @@
 package objectOriented.inheritance.rooms;
 
+import org.jetbrains.annotations.Contract;
+
 import java.util.HashMap;
 
 import static java.lang.String.format;
@@ -8,7 +10,8 @@ class Room {
 	private String name;
 	private int sqFeet;
 
-	public Room(String name, int sqFeet) {
+	@Contract(pure = true)
+	Room(String name, int sqFeet) {
 		this.sqFeet = sqFeet;
 		this.name = name;
 	}
@@ -21,7 +24,7 @@ class Room {
 		this.name = name;
 	}
 
-	public int getSqFeet() {
+	int getSqFeet() {
 		return sqFeet;
 	}
 
@@ -80,6 +83,7 @@ class Room {
 	 * @see #hashCode()
 	 * @see HashMap
 	 */
+	@Contract(value = "null -> false", pure = true)
 	@Override
 	public boolean equals(Object obj) {
 		return super.equals(obj);

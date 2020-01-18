@@ -1,5 +1,7 @@
 package objectOriented.inheritance.rooms;
 
+import org.jetbrains.annotations.Contract;
+
 import static java.lang.String.format;
 import static java.lang.System.err;
 
@@ -24,6 +26,7 @@ final class BedRoom extends Room {
 		return false;
 	}
 
+	@Contract(pure = true)
 	private String getBedSize() {
 		return bedSize;
 	}

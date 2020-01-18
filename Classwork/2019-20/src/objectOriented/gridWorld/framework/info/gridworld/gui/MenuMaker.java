@@ -437,14 +437,14 @@ class PropertySheet extends JPanel {
 				public void insertUpdate(DocumentEvent e) {
 					try {
 						editor.setAsText(textField.getText());
-					} catch (IllegalArgumentException exception) {
+					} catch (IllegalArgumentException ignored) {
 					}
 				}
 
 				public void removeUpdate(DocumentEvent e) {
 					try {
 						editor.setAsText(textField.getText());
-					} catch (IllegalArgumentException exception) {
+					} catch (IllegalArgumentException ignored) {
 					}
 				}
 

@@ -1,5 +1,7 @@
 package objectOriented.inheritance.rooms;
 
+import org.jetbrains.annotations.Contract;
+
 import java.util.HashMap;
 
 import static java.lang.String.format;
@@ -14,6 +16,7 @@ final class BathRoom extends Room {
 		this.hasShower = hasShower;
 	}
 
+	@Contract(pure = true)
 	private boolean getHasShower() {
 		return hasShower;
 	}
@@ -64,6 +67,7 @@ final class BathRoom extends Room {
 	 * @see #hashCode()
 	 * @see HashMap
 	 */
+	@Contract(value = "null -> false", pure = true)
 	@Override
 	public boolean equals(Object obj) {
 		return super.equals(obj);

@@ -20,7 +20,10 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.grid;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+
+import static java.lang.Integer.compare;
 
 /**
  * A <code>Location</code> object represents the row and column of a location
@@ -97,6 +100,7 @@ public class Location implements Comparable {
 	 * @param r the row
 	 * @param c the column
 	 */
+	@Contract(pure = true)
 	public Location(int r, int c) {
 		row = r;
 		col = c;
@@ -225,12 +229,9 @@ public class Location implements Comparable {
 	 * integer if this location is greater than <code>other</code>
 	 */
 	public int compareTo(@NotNull Object other) {
-		Location otherLoc = (Location) other;
-		if (getRow() < otherLoc.getRow())
-			return -1;
-		if (getRow() > otherLoc.getRow())
-			return 1;
-		return Integer.compare(getCol(), otherLoc.getCol());
+		if (getRow() < ((Location) other).getRow()) return -1;
+		if (getRow() > ((Location) other).getRow()) return 1;
+		return compare(getCol(), ((Location) other).getCol());
 	}
 
 	/**

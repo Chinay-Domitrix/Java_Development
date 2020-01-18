@@ -7,16 +7,16 @@ import java.util.Objects;
 
 import static java.lang.Thread.sleep;
 
-class PlusBug extends Bug {
+public class PlusBug extends Bug {
 	private final int stemSize;
 	private final Location origin;
 	private int steps;
 
-	PlusBug() {
+	public PlusBug() {
 		this(1, new Location(1, 1));
 	}
 
-	PlusBug(int stemSize, Location origin) {
+	protected PlusBug(int stemSize, Location origin) {
 		steps = 0;
 		this.stemSize = stemSize;
 		this.origin = origin;

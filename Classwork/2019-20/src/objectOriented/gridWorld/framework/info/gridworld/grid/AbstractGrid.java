@@ -70,11 +70,11 @@ public abstract class AbstractGrid<E> implements Grid<E> {
 	 * ...}
 	 */
 	public String toString() {
-		String s = "{";
+		StringBuilder s = new StringBuilder("{");
 		for (Location loc : getOccupiedLocations()) {
 			if (s.length() > 1)
-				s += ", ";
-			s += loc + "=" + get(loc);
+				s.append(", ");
+			s.append(loc).append("=").append(get(loc));
 		}
 		return s + "}";
 	}

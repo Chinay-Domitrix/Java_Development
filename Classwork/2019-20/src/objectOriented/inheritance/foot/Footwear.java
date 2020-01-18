@@ -1,5 +1,7 @@
 package objectOriented.inheritance.foot;
 
+import org.jetbrains.annotations.Contract;
+
 import java.util.HashMap;
 
 /**
@@ -19,6 +21,7 @@ abstract class Footwear {
 	 *
 	 * @param name identifier for specific footwear
 	 */
+	@Contract(pure = true)
 	Footwear(String name) {
 		this(name, false, false);
 	}
@@ -30,6 +33,7 @@ abstract class Footwear {
 	 * @param leftOn  indicates left footwear item currently on foot
 	 * @param rightOn indicates right footwear item currently on foot
 	 */
+	@Contract(pure = true)
 	Footwear(String name, boolean leftOn, boolean rightOn) {
 		this.name = name;
 		this.leftOn = leftOn;
@@ -90,6 +94,7 @@ abstract class Footwear {
 	 * @see #hashCode()
 	 * @see HashMap
 	 */
+	@Contract(value = "null -> false", pure = true)
 	@Override
 	public boolean equals(Object obj) {
 		return super.equals(obj);

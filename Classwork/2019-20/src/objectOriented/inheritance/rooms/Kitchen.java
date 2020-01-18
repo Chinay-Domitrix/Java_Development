@@ -1,5 +1,7 @@
 package objectOriented.inheritance.rooms;
 
+import org.jetbrains.annotations.Contract;
+
 import static java.lang.String.format;
 import static java.lang.System.err;
 
@@ -8,16 +10,18 @@ final class Kitchen extends Room {
 	private final String stoveType;
 	private final boolean hasOven;
 
-	public Kitchen(String name, int sqFeet, String stoveType, boolean hasOven) {
+	Kitchen(String name, int sqFeet, String stoveType, boolean hasOven) {
 		super(name, sqFeet);
 		this.stoveType = stoveType;
 		this.hasOven = hasOven;
 	}
 
+	@Contract(pure = true)
 	private boolean getHasOven() {
 		return hasOven;
 	}
 
+	@Contract(pure = true)
 	private String getStoveType() {
 		return stoveType;
 	}
