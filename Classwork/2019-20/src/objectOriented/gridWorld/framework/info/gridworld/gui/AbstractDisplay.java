@@ -18,11 +18,19 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.awt.*;
 import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
+
+import static java.lang.Math.min;
+import static java.lang.Math.toRadians;
+import static java.lang.System.out;
+import static java.util.Objects.requireNonNullElse;
 
 /**
  * This class provides common implementation code for drawing objects. It will
@@ -36,25 +44,23 @@ import java.lang.reflect.Method;
  */
 
 public abstract class AbstractDisplay implements Display {
+	@Contract("null, _ -> null")
 	public static Object getProperty(Object obj, String propertyName) {
-		if (obj == null)
-			return null;
+		if (obj == null) return null;
 		try {
 			BeanInfo info = Introspector.getBeanInfo(obj.getClass());
 			PropertyDescriptor[] descriptors = info.getPropertyDescriptors();
-			for (PropertyDescriptor descriptor : descriptors) {
+			for (PropertyDescriptor descriptor : descriptors)
 				if (descriptor.getName().equals(propertyName)) {
 					Method getter = descriptor.getReadMethod();
-					if (getter == null)
-						return null;
+					if (getter == null) return null;
 					try {
 						return getter.invoke(obj);
 					} catch (Exception ex) {
-						System.out.println(descriptor.getName());
+						out.println(descriptor.getName());
 						return null;
 					}
 				}
-			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -82,19 +88,16 @@ public abstract class AbstractDisplay implements Display {
 	 * @param g2   the graphics context
 	 * @param rect rectangle in which to draw
 	 */
-	public void draw(Object obj, Component comp, Graphics2D g2, Rectangle rect) {
-		float scaleFactor = Math.min(rect.width, rect.height);
+	public void draw(Object obj, Component comp, Graphics2D g2, @NotNull Rectangle rect) {
+		float scaleFactor = min(rect.width, rect.height);
 		g2 = (Graphics2D) g2.create();
-
 		// Translate to center of the object
-		g2.translate(rect.x + rect.width / 2.0, rect.y + rect.height / 2.0);
-
+		g2.translate(rect.x + (rect.width / 2.0), rect.y + (rect.height / 2.0));
 		// Rotate drawing surface before drawing to capture object's
 		// orientation (direction).
 		if (obj != null) {
-			Integer direction = (Integer) getProperty(obj, "direction");
-			int rotationInDegrees = direction == null ? 0 : direction;
-			g2.rotate(Math.toRadians(rotationInDegrees));
+			int rotationInDegrees = requireNonNullElse((Integer) getProperty(obj, "direction"), 0);
+			g2.rotate(toRadians(rotationInDegrees));
 		}
 		// Scale to size of rectangle, adjust stroke back to 1-pixel wide
 		g2.scale(scaleFactor, scaleFactor);

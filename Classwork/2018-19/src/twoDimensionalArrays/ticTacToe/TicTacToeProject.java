@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static java.awt.Color.BLUE;
 import static java.awt.Color.RED;
 import static java.lang.Math.*;
 import static java.lang.System.*;
@@ -21,11 +22,7 @@ class TicTacToeProject {
 		var grid = new int[][]{{0, 200, 600, 200}, {0, 400, 600, 400}, {200, 0, 200, 600}, {400, 0, 400, 600}};
 		board.defineBoard(grid);
 //		This line changes from device to device.
-		var ifp = "C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\2018-19\\resources\\twoDimensionalArrays\\ticTacToe\\";
-		var ifn = "TicTacToe";
-		var fi = ifp + ifn;
-		var ft = ".png";
-		var fPs = new String[]{fi + 'X' + ft, fi + 'O' + ft};
+		var fPs = new String[]{"C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\2018-19\\resources\\twoDimensionalArrays\\ticTacToe\\TicTacToeX.png", "C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\2018-19\\resources\\twoDimensionalArrays\\ticTacToe\\TicTacToeO.png"};
 		board.setFiles(fPs[0], fPs[1]);
 		var play = new char[3][3];
 		for (var i = 0; i < 3; i++) for (var j = 0; j < 3; j++) play[i][j] = ' ';
@@ -35,10 +32,10 @@ class TicTacToeProject {
 		int counter = 0;
 		int[] pieces = new int[2];
 		int placementIn;
-		switch (new Scanner(System.in).nextInt()) {
+		switch (new Scanner(in).nextInt()) {
 			case 0:
 				do {
-					for (var i = 0; i < 2; i++) {
+					for (var i = 0; i < 2; i++)
 						do {
 							counter++;
 							placementIn = toIntExact(round((random() * 10) + 1));
@@ -49,7 +46,6 @@ class TicTacToeProject {
 							board.delay();
 							if (play[pieces[0]][pieces[1]] != ' ') break;
 						} while (play[pieces[0]][pieces[1]] == ' ');
-					}
 				} while (play[pieces[0]][pieces[1]] == ' ');
 				break;
 			case 1:
@@ -57,7 +53,7 @@ class TicTacToeProject {
 					do {
 						counter++;
 						out.print("Player's turn: ");
-						placementIn = new Scanner(System.in).nextInt();
+						placementIn = new Scanner(in).nextInt();
 						placementDetector(placementIn, pieces);
 						placePiece(placementIn, play, counter, pieces);
 						board.repaint();
@@ -82,7 +78,7 @@ class TicTacToeProject {
 					do {
 						counter++;
 						out.print("Player 1's turn: ");
-						placementIn = new Scanner(System.in).nextInt();
+						placementIn = new Scanner(in).nextInt();
 						placementDetector(placementIn, pieces);
 						placePiece(placementIn, play, counter, pieces);
 						board.repaint();
@@ -92,7 +88,7 @@ class TicTacToeProject {
 					do {
 						counter++;
 						out.print("Player 2's turn: ");
-						placementIn = new Scanner(System.in).nextInt();
+						placementIn = new Scanner(in).nextInt();
 						placementDetector(placementIn, pieces);
 						placePiece(placementIn, play, counter, pieces);
 						board.repaint();
@@ -212,17 +208,10 @@ class TicTacToeProject {
 				super.paintComponent(a);
 				for (int i = 0; i < 3; i++)
 					for (int j = 0; j < 3; j++)
-						switch (p[i][j]) {
-							case 'x':
-								a.drawImage(images[0], j * 200 + 25, i * 200 + 25, null, null);
-								break;
-							case 'o':
-								a.drawImage(images[1], j * 200 + 25, i * 200 + 25, null, null);
-								break;
-							default:
-								throw new IllegalStateException("Unexpected value: " + p[i][j]);
-						}
-				a.setColor(Color.BLUE);
+						if (p[i][j] == 'x') a.drawImage(images[0], j * 200 + 25, i * 200 + 25, null, null);
+						else if (p[i][j] == 'o') a.drawImage(images[1], j * 200 + 25, i * 200 + 25, null, null);
+						else throw new IllegalStateException("Unexpected value: " + p[i][j]);
+				a.setColor(BLUE);
 				for (int i = 0; i < 6; i++) {
 					a.drawLine(b[0][0], b[0][1] + i, b[0][2], b[0][3] + i);
 					a.drawLine(b[1][0], b[1][1] + i, b[1][2], b[1][3] + i);

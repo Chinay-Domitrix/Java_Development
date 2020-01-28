@@ -24,6 +24,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import static java.lang.Integer.compare;
+import static java.lang.Math.*;
 
 /**
  * A <code>Location</code> object represents the row and column of a location
@@ -42,11 +43,11 @@ public class Location implements Comparable {
 	/**
 	 * The turn angle for turning 45 degrees to the left.
 	 */
-	public static final int HALF_LEFT = -45;
+	public static final int HALF_LEFT = LEFT / 2;
 	/**
 	 * The turn angle for turning 45 degrees to the right.
 	 */
-	public static final int HALF_RIGHT = 45;
+	public static final int HALF_RIGHT = RIGHT / 2;
 	/**
 	 * The turn angle for turning a full circle.
 	 */
@@ -54,7 +55,7 @@ public class Location implements Comparable {
 	/**
 	 * The turn angle for turning a half circle.
 	 */
-	public static final int HALF_CIRCLE = 180;
+	public static final int HALF_CIRCLE = FULL_CIRCLE / 2;
 	/**
 	 * The turn angle for making no turn.
 	 */
@@ -91,8 +92,14 @@ public class Location implements Comparable {
 	 * The compass direction for northwest.
 	 */
 	public static final int NORTHWEST = 315;
-	private int row; // row location in grid
-	private int col; // column location in grid
+	/**
+	 * The row location in the grid.
+	 */
+	private int row;
+	/**
+	 * The column location in the grid.
+	 */
+	private int col;
 
 	/**
 	 * Constructs a location with given row and column coordinates.
@@ -133,30 +140,23 @@ public class Location implements Comparable {
 	 */
 	public Location getAdjacentLocation(int direction) {
 		// reduce mod 360 and round to closest multiple of 45
-		int adjustedDirection = (direction + HALF_RIGHT / 2) % FULL_CIRCLE;
-		if (adjustedDirection < 0)
-			adjustedDirection += FULL_CIRCLE;
-
+		int adjustedDirection = (direction + (HALF_RIGHT >> 1)) % FULL_CIRCLE;
+		if (adjustedDirection < 0) adjustedDirection += FULL_CIRCLE;
 		adjustedDirection = (adjustedDirection / HALF_RIGHT) * HALF_RIGHT;
-		int dc = 0;
-		int dr = 0;
-		if (adjustedDirection == EAST)
-			dc = 1;
+		int dc = 0, dr = 0;
+		if (adjustedDirection == EAST) dc = 1;
 		else if (adjustedDirection == SOUTHEAST) {
 			dc = 1;
 			dr = 1;
-		} else if (adjustedDirection == SOUTH)
-			dr = 1;
+		} else if (adjustedDirection == SOUTH) dr = 1;
 		else if (adjustedDirection == SOUTHWEST) {
 			dc = -1;
 			dr = 1;
-		} else if (adjustedDirection == WEST)
-			dc = -1;
+		} else if (adjustedDirection == WEST) dc = -1;
 		else if (adjustedDirection == NORTHWEST) {
 			dc = -1;
 			dr = -1;
-		} else if (adjustedDirection == NORTH)
-			dr = -1;
+		} else if (adjustedDirection == NORTH) dr = -1;
 		else if (adjustedDirection == NORTHEAST) {
 			dc = 1;
 			dr = -1;
@@ -172,22 +172,20 @@ public class Location implements Comparable {
 	 * @return the closest compass direction from this location toward
 	 * <code>target</code>
 	 */
-	public int getDirectionToward(Location target) {
+	public int getDirectionToward(@NotNull Location target) {
 		int dx = target.getCol() - getCol();
 		int dy = target.getRow() - getRow();
 		// y axis points opposite to mathematical orientation
-		int angle = (int) Math.toDegrees(Math.atan2(-dy, dx));
-
+		int angle = toIntExact(round(toDegrees(atan2(-dy, dx))));
 		// mathematical angle is counterclockwise from x-axis,
 		// compass angle is clockwise from y-axis
 		int compassAngle = RIGHT - angle;
 		// prepare for truncating division by 45 degrees
-		compassAngle += HALF_RIGHT / 2;
+		compassAngle += HALF_RIGHT >> 1;
 		// wrap negative angles
-		if (compassAngle < 0)
-			compassAngle += FULL_CIRCLE;
+		if (compassAngle < 0) compassAngle += FULL_CIRCLE;
 		// round to nearest multiple of 45
-		return (compassAngle / HALF_RIGHT) * HALF_RIGHT;
+		return (compassAngle * HALF_RIGHT) / toIntExact(round(pow(HALF_RIGHT, 2)));
 	}
 
 	/**
@@ -199,12 +197,11 @@ public class Location implements Comparable {
 	 * <code>Location</code> with the same row and column as this location;
 	 * <code>false</code> otherwise
 	 */
+	@Contract(value = "null -> false", pure = true)
 	public boolean equals(Object other) {
-		if (!(other instanceof Location))
-			return false;
-
-		Location otherLoc = (Location) other;
-		return getRow() == otherLoc.getRow() && getCol() == otherLoc.getCol();
+		if (!(other instanceof Location)) return false;
+		var otherLoc = (Location) other;
+		return new Location(getRow(), getCol()).equals(otherLoc);
 	}
 
 	/**
@@ -213,7 +210,7 @@ public class Location implements Comparable {
 	 * @return a hash code for this location
 	 */
 	public int hashCode() {
-		return getRow() * 3737 + getCol();
+		return (getRow() * 3737) + getCol();
 	}
 
 	/**
@@ -221,7 +218,7 @@ public class Location implements Comparable {
 	 * negative integer, zero, or a positive integer as this location is less
 	 * than, equal to, or greater than <code>other</code>. Locations are
 	 * ordered in row-major order. <br />
-	 * (Precondition: <code>other</code> is a <code>Location</code> object.)
+	 * (Precondition: other is a <code>Location</code> object.)
 	 *
 	 * @param other the other location to test
 	 * @return a negative integer if this location is less than
@@ -235,12 +232,11 @@ public class Location implements Comparable {
 	}
 
 	/**
-	 * Creates a string that describes this location.
+	 * Creates a String object which describes this location.
 	 *
-	 * @return a string with the row and column of this location, in the format
-	 * (row, col)
+	 * @return a string with the row and column of this location, in the format of (row, column)
 	 */
 	public String toString() {
-		return "(" + getRow() + ", " + getCol() + ")";
+		return '(' + getRow() + ", " + getCol() + ')';
 	}
 }

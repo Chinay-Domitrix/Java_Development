@@ -13,7 +13,7 @@ public class EBug extends Bug {
 
 	public void act() {
 		for (int a = 0; a < 2; a++) {
-			while (getDirection() != 270) turn();
+			setDirection(270);
 			for (int j = 0; j < 2; j++) {
 				for (int i = 0; i < sideLength; i++) move();
 				for (int i = 0; i < 2; i++) turn();

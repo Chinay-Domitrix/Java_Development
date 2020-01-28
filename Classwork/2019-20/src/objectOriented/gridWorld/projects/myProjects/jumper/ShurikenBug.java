@@ -37,12 +37,12 @@ public class ShurikenBug extends Bug {
 				move();
 				steps++;
 			} else if ((segment % 2 == 1) && (!firstTime)) {
-				while (getDirection() != dir) turn();
+				setDirection(dir);
 				steps = 0;
 				segment++;
 			} else if (segment % 2 == 0) {
 				dir += 45;
-				while (getDirection() != dir) turn();
+				setDirection(dir);
 				steps = sideLength / 2;
 				segment++;
 			}

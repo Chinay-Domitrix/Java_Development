@@ -1,4 +1,6 @@
-package objectOriented.gridWorld.projects.critters;/*
+package objectOriented.gridWorld.projects.critters;
+
+/*
  * AP(r) Computer Science GridWorld Case Study:
  * Copyright(c) 2005-2006 Cay S. Horstmann (http://horstmann.com)
  *
@@ -19,8 +21,11 @@ package objectOriented.gridWorld.projects.critters;/*
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Critter;
 import info.gridworld.grid.Location;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+
+import static java.lang.Math.*;
 
 /**
  * A <code>ChameleonCritter</code> takes on the color of neighboring actors as
@@ -32,14 +37,10 @@ class ChameleonCritter extends Critter {
 	 * Randomly selects a neighbor and changes this critter's color to be the
 	 * same as that neighbor's. If there are no neighbors, no action is taken.
 	 */
-	public void processActors(ArrayList<Actor> actors) {
+	public void processActors(@NotNull ArrayList<Actor> actors) {
 		int n = actors.size();
-		if (n == 0)
-			return;
-		int r = (int) (Math.random() * n);
-
-		Actor other = actors.get(r);
-		setColor(other.getColor());
+		if (n == 0) return;
+		setColor(actors.get(toIntExact(round(random() * n))).getColor());
 	}
 
 	/**

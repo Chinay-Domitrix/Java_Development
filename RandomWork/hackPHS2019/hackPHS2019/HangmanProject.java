@@ -8,6 +8,8 @@ import static java.lang.System.err;
 import static java.lang.System.out;
 import static java.lang.Thread.sleep;
 import static java.util.Arrays.fill;
+import static java.util.Arrays.stream;
+import static java.util.stream.IntStream.iterate;
 
 final class HangmanProject {
 	/**
@@ -253,7 +255,7 @@ final class HangmanProject {
 				 * This for loop is what adds the letter to the array which is printed as the
 				 * letters and underscores.
 				 */
-				for (var i = main.indexOf(guess); i >= 0; i = main.indexOf(guess, i + 1)) hangman[i] = guess;
+				iterate(main.indexOf(guess), i -> i >= 0, i -> main.indexOf(guess, i + 1)).forEachOrdered(i -> hangman[i] = guess);
 			} else {
 				out.printf("No %s!%n", guess);
 				counter--;
@@ -271,7 +273,7 @@ final class HangmanProject {
 			 */
 			for (var i = 1; i < guessList.length; i++) {
 				var j = i;
-				while (j > 0 && guessList[j] < guessList[j - 1]) {
+				while ((j > 0) && (guessList[j] < guessList[j - 1])) {
 					var ph = guessList[j];
 					guessList[j] = guessList[j - 1];
 					guessList[j - 1] = ph;
@@ -302,7 +304,7 @@ final class HangmanProject {
 		 */
 		if (counter == 0) {
 			out.printf("You were hung! The word was %s.%n", main);
-			for (var x : loser) out.println(x);
+			stream(loser).forEachOrdered(out::println);
 			losses++;
 		}
 	}

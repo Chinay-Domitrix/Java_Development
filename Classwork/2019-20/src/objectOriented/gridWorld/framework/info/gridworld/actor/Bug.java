@@ -21,6 +21,9 @@ import info.gridworld.grid.Location;
 
 import java.awt.*;
 
+import static info.gridworld.grid.Location.HALF_RIGHT;
+import static java.awt.Color.RED;
+
 /**
  * A <code>Bug</code> is an actor that can move and turn. It drops flowers as
  * it moves. <br />
@@ -31,7 +34,7 @@ public class Bug extends Actor {
 	 * Constructs a red bug.
 	 */
 	public Bug() {
-		setColor(Color.RED);
+		setColor(RED);
 	}
 
 	/**
@@ -47,17 +50,15 @@ public class Bug extends Actor {
 	 * Moves if it can move, turns otherwise.
 	 */
 	public void act() {
-		if (canMove())
-			move();
-		else
-			turn();
+		if (canMove()) move();
+		else turn();
 	}
 
 	/**
 	 * Turns the bug 45 degrees to the right without changing its location.
 	 */
 	public void turn() {
-		setDirection(getDirection() + Location.HALF_RIGHT);
+		setDirection(getDirection() + HALF_RIGHT);
 	}
 
 	/**
@@ -66,14 +67,10 @@ public class Bug extends Actor {
 	 */
 	public void move() {
 		Grid<Actor> gr = getGrid();
-		if (gr == null)
-			return;
-		Location loc = getLocation();
-		Location next = loc.getAdjacentLocation(getDirection());
-		if (gr.isValid(next))
-			moveTo(next);
-		else
-			removeSelfFromGrid();
+		if (gr == null) return;
+		Location loc = getLocation(), next = loc.getAdjacentLocation(getDirection());
+		if (gr.isValid(next)) moveTo(next);
+		else removeSelfFromGrid();
 		Flower flower = new Flower(getColor());
 		flower.putSelfInGrid(gr, loc);
 	}
@@ -86,12 +83,9 @@ public class Bug extends Actor {
 	 */
 	public boolean canMove() {
 		Grid<Actor> gr = getGrid();
-		if (gr == null)
-			return false;
-		Location loc = getLocation();
-		Location next = loc.getAdjacentLocation(getDirection());
-		if (!gr.isValid(next))
-			return false;
+		if (gr == null) return false;
+		Location loc = getLocation(), next = loc.getAdjacentLocation(getDirection());
+		if (!gr.isValid(next)) return false;
 		Actor neighbor = gr.get(next);
 		return (neighbor == null) || (neighbor instanceof Flower);
 		// ok to move into empty location or onto flower

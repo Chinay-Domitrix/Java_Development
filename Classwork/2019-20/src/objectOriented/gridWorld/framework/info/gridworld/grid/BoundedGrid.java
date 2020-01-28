@@ -19,6 +19,8 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.grid;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 /**
@@ -52,24 +54,17 @@ public class BoundedGrid<E> extends AbstractGrid<E> {
 		return occupantArray[0].length;
 	}
 
-	public boolean isValid(Location loc) {
-		return 0 <= loc.getRow() && loc.getRow() < getNumRows()
-				&& 0 <= loc.getCol() && loc.getCol() < getNumCols();
+	public boolean isValid(@NotNull Location loc) {
+		return (0 <= loc.getRow()) && (loc.getRow() < getNumRows()) && (0 <= loc.getCol()) && (loc.getCol() < getNumCols());
 	}
 
 	public ArrayList<Location> getOccupiedLocations() {
 		ArrayList<Location> theLocations = new ArrayList<>();
-
 		// Look at all grid locations.
-		for (int r = 0; r < getNumRows(); r++) {
-			for (int c = 0; c < getNumCols(); c++) {
-				// If there's an object at this location, put it in the array.
-				Location loc = new Location(r, c);
-				if (get(loc) != null)
-					theLocations.add(loc);
-			}
-		}
-
+		// If there's an object at this location, put it in the array.
+		for (int r = 0; r < getNumRows(); r++)
+			for (int c = 0; c < getNumCols(); c++)
+				if (get(new Location(r, c)) != null) theLocations.add(new Location(r, c));
 		return theLocations;
 	}
 

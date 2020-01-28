@@ -16,7 +16,12 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.awt.*;
+
+import static java.lang.Math.max;
+import static java.util.stream.IntStream.iterate;
 
 /**
  * A layout manager that lays out components along a central axis <br />
@@ -30,21 +35,20 @@ public class FormLayout implements LayoutManager {
 	private int right;
 	private int height;
 
-	public Dimension preferredLayoutSize(Container parent) {
+	public Dimension preferredLayoutSize(@NotNull Container parent) {
 		Component[] components = parent.getComponents();
 		left = 0;
 		right = 0;
 		height = 0;
-		for (int i = 0; i < components.length; i += 2) {
+		iterate(0, i -> i < components.length, i -> i + 2).forEachOrdered(i -> {
 			Component cleft = components[i];
 			Component cright = components[i + 1];
-
 			Dimension dleft = cleft.getPreferredSize();
 			Dimension dright = cright.getPreferredSize();
-			left = Math.max(left, dleft.width);
-			right = Math.max(right, dright.width);
-			height = height + Math.max(dleft.height, dright.height);
-		}
+			left = max(left, dleft.width);
+			right = max(right, dright.width);
+			height = height + max(dleft.height, dright.height);
+		});
 		return new Dimension(left + GAP + right, height);
 	}
 
@@ -54,27 +58,18 @@ public class FormLayout implements LayoutManager {
 
 	public void layoutContainer(Container parent) {
 		preferredLayoutSize(parent); // sets left, right
-
 		Component[] components = parent.getComponents();
-
 		Insets insets = parent.getInsets();
 		int xcenter = insets.left + left;
 		int y = insets.top;
-
 		for (int i = 0; i < components.length; i += 2) {
 			Component cleft = components[i];
 			Component cright = components[i + 1];
-
 			Dimension dleft = cleft.getPreferredSize();
 			Dimension dright = cright.getPreferredSize();
-
-			int height = Math.max(dleft.height, dright.height);
-
-			cleft.setBounds(xcenter - dleft.width, y + (height - dleft.height)
-					/ 2, dleft.width, dleft.height);
-
-			cright.setBounds(xcenter + GAP, y + (height - dright.height) / 2,
-					dright.width, dright.height);
+			int height = max(dleft.height, dright.height);
+			cleft.setBounds(xcenter - dleft.width, y + (height - dleft.height) / 2, dleft.width, dleft.height);
+			cright.setBounds(xcenter + GAP, y + (height - dright.height) / 2, dright.width, dright.height);
 			y += height;
 		}
 	}

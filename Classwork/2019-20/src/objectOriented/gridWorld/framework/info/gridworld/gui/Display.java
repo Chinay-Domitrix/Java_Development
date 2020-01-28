@@ -32,7 +32,7 @@ public interface Display {
 	 * Method invoked to draw an object.
 	 *
 	 * @param obj  object we want to draw
-	 * @param comp component on which to draw
+	 * @param c    component on which to draw
 	 * @param g2   drawing surface
 	 * @param rect rectangle in which to draw
 	 */

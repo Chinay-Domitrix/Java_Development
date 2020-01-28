@@ -13,7 +13,7 @@ public class CBug extends Bug {
 		steps = 0;
 		sideLength = length;
 		count = 2;
-		while (getDirection() != dir) turn();
+		setDirection(dir);
 	}
 
 	public void act() {
@@ -22,19 +22,19 @@ public class CBug extends Bug {
 			else {
 				count++;
 				dir += (d2 * 90);
-				while (getDirection() != dir) turn();
+				setDirection(dir);
 				steps = 0;
 			}
 			else if (steps < sideLength * 2) move();
 			else {
 				count++;
 				dir += d2 * 90;
-				while (getDirection() != dir) turn();
+				setDirection(dir);
 				steps = -1;
 			}
 		else {
 			dir += 90 * d2;
-			while (getDirection() != dir) turn();
+			setDirection(dir);
 			d2 *= -1;
 			count = 2;
 			steps = -1;

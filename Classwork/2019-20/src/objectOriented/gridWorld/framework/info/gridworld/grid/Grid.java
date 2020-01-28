@@ -46,8 +46,7 @@ public interface Grid<E> {
 	 * Precondition: <code>loc</code> is not <code>null</code>
 	 *
 	 * @param loc the location to check
-	 * @return <code>true</code> if <code>loc</code> is valid in this grid,
-	 * <code>false</code> otherwise
+	 * @return <code>true</code> if <code>loc</code> is valid in this grid, <code>false</code> otherwise
 	 */
 	boolean isValid(Location loc);
 
@@ -58,8 +57,7 @@ public interface Grid<E> {
 	 *
 	 * @param loc the location at which to put the object
 	 * @param obj the new object to be added
-	 * @return the object previously at <code>loc</code> (or <code>null</code>
-	 * if the location was previously unoccupied)
+	 * @return the object previously at <code>loc</code> (or <code>null</code> if the location was previously unoccupied)
 	 */
 	E put(Location loc, E obj);
 
@@ -68,8 +66,7 @@ public interface Grid<E> {
 	 * Precondition: <code>loc</code> is valid in this grid
 	 *
 	 * @param loc the location of the object that is to be removed
-	 * @return the object that was removed (or <code>null<code> if the location
-	 * is unoccupied)
+	 * @return the object that was removed (or <code>null<code> if the location is unoccupied)
 	 */
 	E remove(Location loc);
 
@@ -78,8 +75,7 @@ public interface Grid<E> {
 	 * Precondition: <code>loc</code> is valid in this grid
 	 *
 	 * @param loc a location in this grid
-	 * @return the object at location <code>loc</code> (or <code>null<code>
-	 * if the location is unoccupied)
+	 * @return the object at location <code>loc</code> (or <code>null<code> if the location is unoccupied)
 	 */
 	E get(Location loc);
 
@@ -97,8 +93,7 @@ public interface Grid<E> {
 	 * Precondition: <code>loc</code> is valid in this grid
 	 *
 	 * @param loc a location in this grid
-	 * @return an array list of the valid locations adjacent to <code>loc</code>
-	 * in this grid
+	 * @return an array list of the valid locations adjacent to <code>loc</code> in this grid
 	 */
 	ArrayList<Location> getValidAdjacentLocations(Location loc);
 
@@ -109,8 +104,7 @@ public interface Grid<E> {
 	 * Precondition: <code>loc</code> is valid in this grid
 	 *
 	 * @param loc a location in this grid
-	 * @return an array list of the valid empty locations adjacent to
-	 * <code>loc</code> in this grid
+	 * @return an array list of the valid empty locations adjacent to <code>loc</code> in this grid
 	 */
 	ArrayList<Location> getEmptyAdjacentLocations(Location loc);
 
@@ -121,8 +115,7 @@ public interface Grid<E> {
 	 * Precondition: <code>loc</code> is valid in this grid
 	 *
 	 * @param loc a location in this grid
-	 * @return an array list of the valid occupied locations adjacent to
-	 * <code>loc</code> in this grid
+	 * @return an array list of the valid occupied locations adjacent to <code>loc</code> in this grid
 	 */
 	ArrayList<Location> getOccupiedAdjacentLocations(Location loc);
 
@@ -133,8 +126,7 @@ public interface Grid<E> {
 	 * Precondition: <code>loc</code> is valid in this grid
 	 *
 	 * @param loc a location in this grid
-	 * @return returns an array list of the objects in the occupied locations
-	 * adjacent to <code>loc</code> in this grid
+	 * @return returns an array list of the objects in the occupied locations adjacent to <code>loc</code> in this grid
 	 */
 	ArrayList<E> getNeighbors(Location loc);
 }

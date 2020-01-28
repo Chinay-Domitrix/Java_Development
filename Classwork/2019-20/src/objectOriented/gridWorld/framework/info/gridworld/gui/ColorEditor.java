@@ -16,9 +16,14 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
+import org.jetbrains.annotations.Contract;
+
 import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyEditorSupport;
+
+import static java.awt.Color.*;
+import static java.util.stream.IntStream.range;
 
 /**
  * A property editor for the Color type. <br />
@@ -27,23 +32,19 @@ import java.beans.PropertyEditorSupport;
  * students.
  */
 public class ColorEditor extends PropertyEditorSupport {
-	private static Color[] colorValues =
-			{Color.BLACK, Color.BLUE, Color.CYAN, Color.DARK_GRAY, Color.GRAY,
-					Color.GREEN, Color.LIGHT_GRAY, Color.MAGENTA, Color.ORANGE,
-					Color.PINK, Color.RED, Color.WHITE, Color.YELLOW};
+	private static Color[] colorValues = new Color[]{BLACK, BLUE, CYAN, DARK_GRAY, GRAY, GREEN, LIGHT_GRAY, MAGENTA, ORANGE, PINK, RED, WHITE, YELLOW};
 	private static ColorIcon[] colorIcons;
 
 	static {
 		colorIcons = new ColorIcon[colorValues.length + 1];
 		colorIcons[0] = new RandomColorIcon();
-		for (int i = 0; i < colorValues.length; i++)
-			colorIcons[i + 1] = new SolidColorIcon(colorValues[i]);
+		range(0, colorValues.length).forEachOrdered(i -> colorIcons[i + 1] = new SolidColorIcon(colorValues[i]));
 	}
 
-	private JComboBox combo;
+	private JComboBox<? extends ColorIcon> combo;
 
 	public ColorEditor() {
-		combo = new JComboBox(colorIcons);
+		combo = new JComboBox<>(colorIcons);
 	}
 
 	public Object getValue() {
@@ -64,14 +65,14 @@ public class ColorEditor extends PropertyEditorSupport {
 	private interface ColorIcon extends Icon {
 		int WIDTH = 120;
 		int HEIGHT = 20;
-
 		Color getColor();
 	}
 
 	private static class SolidColorIcon implements ColorIcon {
 		private Color color;
 
-		public SolidColorIcon(Color c) {
+		@Contract(pure = true)
+		SolidColorIcon(Color c) {
 			color = c;
 		}
 
@@ -93,7 +94,7 @@ public class ColorEditor extends PropertyEditorSupport {
 			Color oldColor = g2.getColor();
 			g2.setColor(color);
 			g2.fill(r);
-			g2.setColor(Color.BLACK);
+			g2.setColor(BLACK);
 			g2.draw(r);
 			g2.setColor(oldColor);
 		}
@@ -117,12 +118,12 @@ public class ColorEditor extends PropertyEditorSupport {
 			Graphics2D g2 = (Graphics2D) g;
 			Color oldColor = g2.getColor();
 			Rectangle r1 = new Rectangle(x, y, WIDTH / 4, HEIGHT - 1);
-			for (int i = 0; i < 4; i++) {
+			range(0, 4).forEachOrdered(i -> {
 				g2.setColor(getColor());
 				g2.fill(r1);
 				r1.translate(WIDTH / 4, 0);
-			}
-			g2.setColor(Color.BLACK);
+			});
+			g2.setColor(BLACK);
 			g2.draw(r);
 			g2.setColor(oldColor);
 		}

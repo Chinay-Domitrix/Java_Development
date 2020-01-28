@@ -18,6 +18,10 @@ package objectOriented.gridWorld.framework.info.gridworld.grid;
 
 import java.util.ArrayList;
 
+import static info.gridworld.grid.Location.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toCollection;
+
 /**
  * <code>AbstractGrid</code> contains the methods that are common to grid
  * implementations. <br />
@@ -25,41 +29,26 @@ import java.util.ArrayList;
  */
 public abstract class AbstractGrid<E> implements Grid<E> {
 	public ArrayList<E> getNeighbors(Location loc) {
-		ArrayList<E> neighbors = new ArrayList<>();
-		for (Location neighborLoc : getOccupiedAdjacentLocations(loc))
-			neighbors.add(get(neighborLoc));
-		return neighbors;
+		return getOccupiedAdjacentLocations(loc).stream().map(this::get).collect(toCollection(ArrayList::new));
 	}
 
 	public ArrayList<Location> getValidAdjacentLocations(Location loc) {
 		ArrayList<Location> locs = new ArrayList<>();
 
-		int d = Location.NORTH;
-		for (int i = 0; i < Location.FULL_CIRCLE / Location.HALF_RIGHT; i++) {
-			Location neighborLoc = loc.getAdjacentLocation(d);
-			if (isValid(neighborLoc))
-				locs.add(neighborLoc);
-			d = d + Location.HALF_RIGHT;
+		int d = NORTH;
+		for (int i = 0; i < (FULL_CIRCLE / HALF_RIGHT); i++) {
+			if (isValid(loc.getAdjacentLocation(d))) locs.add(loc.getAdjacentLocation(d));
+			d += HALF_RIGHT;
 		}
 		return locs;
 	}
 
 	public ArrayList<Location> getEmptyAdjacentLocations(Location loc) {
-		ArrayList<Location> locs = new ArrayList<>();
-		for (Location neighborLoc : getValidAdjacentLocations(loc)) {
-			if (get(neighborLoc) == null)
-				locs.add(neighborLoc);
-		}
-		return locs;
+		return getValidAdjacentLocations(loc).stream().filter(neighborLoc -> get(neighborLoc) == null).collect(toCollection(ArrayList::new));
 	}
 
 	public ArrayList<Location> getOccupiedAdjacentLocations(Location loc) {
-		ArrayList<Location> locs = new ArrayList<>();
-		for (Location neighborLoc : getValidAdjacentLocations(loc)) {
-			if (get(neighborLoc) != null)
-				locs.add(neighborLoc);
-		}
-		return locs;
+		return getValidAdjacentLocations(loc).stream().filter(neighborLoc -> get(neighborLoc) != null).collect(toCollection(ArrayList::new));
 	}
 
 	/**
@@ -70,12 +59,6 @@ public abstract class AbstractGrid<E> implements Grid<E> {
 	 * ...}
 	 */
 	public String toString() {
-		StringBuilder s = new StringBuilder("{");
-		for (Location loc : getOccupiedLocations()) {
-			if (s.length() > 1)
-				s.append(", ");
-			s.append(loc).append("=").append(get(loc));
-		}
-		return s + "}";
+		return getOccupiedLocations().stream().map(loc -> loc + "=" + get(loc)).collect(joining(", ", "{", "}"));
 	}
 }

@@ -19,8 +19,11 @@ package objectOriented.gridWorld.framework.info.gridworld.actor;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 import info.gridworld.world.World;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+
+import static java.util.stream.Collectors.toCollection;
 
 /**
  * An <code>ActorWorld</code> is occupied by actors. <br />
@@ -46,22 +49,14 @@ public class ActorWorld extends World<Actor> {
 	}
 
 	public void show() {
-		if (getMessage() == null)
-			setMessage(DEFAULT_MESSAGE);
+		if (getMessage() == null) setMessage(DEFAULT_MESSAGE);
 		super.show();
 	}
 
 	public void step() {
-		Grid<Actor> gr = getGrid();
-		ArrayList<Actor> actors = new ArrayList<>();
-		for (Location loc : gr.getOccupiedLocations())
-			actors.add(gr.get(loc));
-
-		for (Actor a : actors) {
-			// only act if another actor hasn't removed a
-			if (a.getGrid() == gr)
-				a.act();
-		}
+		ArrayList<Actor> actors = getGrid().getOccupiedLocations().stream().map(getGrid()::get).collect(toCollection(ArrayList::new));
+		// only act if another actor hasn't removed a
+		actors.stream().filter(a -> a.getGrid() == getGrid()).forEachOrdered(Actor::act);
 	}
 
 	/**
@@ -70,7 +65,7 @@ public class ActorWorld extends World<Actor> {
 	 * @param loc      the location at which to add the actor
 	 * @param occupant the actor to add
 	 */
-	public void add(Location loc, Actor occupant) {
+	public void add(Location loc, @NotNull Actor occupant) {
 		occupant.putSelfInGrid(getGrid(), loc);
 	}
 
@@ -81,8 +76,7 @@ public class ActorWorld extends World<Actor> {
 	 */
 	public void add(Actor occupant) {
 		Location loc = getRandomEmptyLocation();
-		if (loc != null)
-			add(loc, occupant);
+		if (loc != null) add(loc, occupant);
 	}
 
 	/**
@@ -94,8 +88,7 @@ public class ActorWorld extends World<Actor> {
 	 */
 	public Actor remove(Location loc) {
 		Actor occupant = getGrid().get(loc);
-		if (occupant == null)
-			return null;
+		if (occupant == null) return null;
 		occupant.removeSelfFromGrid();
 		return occupant;
 	}

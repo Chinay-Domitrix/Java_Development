@@ -18,15 +18,18 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
-import javax.imageio.ImageIO;
+import org.jetbrains.annotations.NotNull;
+
 import java.awt.*;
 import java.awt.image.FilteredImageSource;
 import java.awt.image.RGBImageFilter;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+
+import static java.lang.Math.max;
+import static javax.imageio.ImageIO.read;
 
 /**
  * An ImageDisplay displays an object as a tinted image from an image file whose
@@ -51,11 +54,9 @@ public class ImageDisplay extends AbstractDisplay {
 	public ImageDisplay(Class cl) throws IOException {
 		this.cl = cl;
 		imageFilename = cl.getName().replace('.', '/');
-		URL url = cl.getClassLoader().getResource(
-				imageFilename + imageExtension);
-
+		URL url = cl.getClassLoader().getResource(imageFilename + imageExtension);
 		assert url != null : imageFilename + imageExtension + " not found.";
-		tintedVersions.put("", ImageIO.read(url));
+		tintedVersions.put("", read(url));
 	}
 
 	/**
@@ -68,37 +69,27 @@ public class ImageDisplay extends AbstractDisplay {
 	 */
 	public void draw(Object obj, Component comp, Graphics2D g2) {
 		Color color;
-		if (obj == null)
-			color = null;
-		else
-			color = (Color) getProperty(obj, "color");
+		if (obj == null) color = null;
+		else color = (Color) getProperty(obj, "color");
 		String imageSuffix = (String) getProperty(obj, "imageSuffix");
-		if (imageSuffix == null)
-			imageSuffix = "";
+		if (imageSuffix == null) imageSuffix = "";
 		// Compose image with color using an image filter.
 		Image tinted = tintedVersions.get(color + imageSuffix);
-		if (tinted == null) // not cached, need new filter for color
-		{
+		if (tinted == null) {// not cached, need new filter for color
 			Image untinted = tintedVersions.get(imageSuffix);
-			if (untinted == null) // not cached, need to fetch
-			{
+			if (untinted == null) {// not cached, need to fetch
 				try {
-					URL url = cl.getClassLoader().getResource(
-							imageFilename + imageSuffix + imageExtension);
-					if (url == null)
-						throw new FileNotFoundException(imageFilename
-								+ imageSuffix + imageExtension + " not found.");
-					untinted = ImageIO.read(url);
+					URL url = cl.getClassLoader().getResource(imageFilename + imageSuffix + imageExtension);
+					assert url != null : imageFilename + imageSuffix + imageExtension + " not found.";
+					untinted = read(url);
 					tintedVersions.put(imageSuffix, untinted);
 				} catch (IOException ex) {
 					untinted = tintedVersions.get("");
 				}
 			}
-			if (color == null)
-				tinted = untinted;
+			if (color == null) tinted = untinted;
 			else {
-				FilteredImageSource src = new FilteredImageSource(untinted
-						.getSource(), new TintFilter(color));
+				FilteredImageSource src = new FilteredImageSource(untinted.getSource(), new TintFilter(color));
 				tinted = comp.createImage(src);
 				// Cache tinted image in map by color, we're likely to need it
 				// again.
@@ -107,8 +98,7 @@ public class ImageDisplay extends AbstractDisplay {
 		}
 		int width = tinted.getWidth(null);
 		int height = tinted.getHeight(null);
-		int size = Math.max(width, height);
-
+		int size = max(width, height);
 		// Scale to shrink or enlarge the image to fit the size 1x1 cell.
 		g2.scale(1.0 / size, 1.0 / size);
 		g2.clip(new Rectangle(-width / 2, -height / 2, width, height));
@@ -127,7 +117,7 @@ public class ImageDisplay extends AbstractDisplay {
 		 *
 		 * @param color the tint color
 		 */
-		public TintFilter(Color color) {
+		public TintFilter(@NotNull Color color) {
 			canFilterIndexColorModel = true;
 			int rgb = color.getRGB();
 			tintR = (rgb >> 16) & 0xff;
@@ -142,25 +132,21 @@ public class ImageDisplay extends AbstractDisplay {
 			int green = (argb >> 8) & 0xff;
 			int blue = argb & 0xff;
 			// Use NTSC/PAL algorithm to convert RGB to gray level
-			double lum = (0.2989 * red + 0.5866 * green + 0.1144 * blue) / 255;
-
+			double lum = ((0.2989 * red) / 255) + ((0.5866 * green) / 255) + ((0.1144 * blue) / 255);
 			// interpolate between tint and pixel color. Pixels with
 			// gray level 0.5 are colored with the tint color,
 			// white and black pixels stay unchanged.
 			// We use a quadratic interpolation function
 			// f(x) = 1 - 4 * (x - 0.5)^2 that has
 			// the property f(0) = f(1) = 0, f(0.5) = 1
-
 			// Note: Julie's algorithm used a linear interpolation
 			// function f(x) = min(2 - 2 * x, 2 * x);
 			// and it interpolated between tint and
 			// (lum < 0.5 ? black : white)
-
 			double scale = 1 - (4 * ((lum - 0.5) * (lum - 0.5)));
-
-			red = (int) (tintR * scale + red * (1 - scale));
-			green = (int) (tintG * scale + green * (1 - scale));
-			blue = (int) (tintB * scale + blue * (1 - scale));
+			red = (int) ((tintR * scale) + (red * (1 - scale)));
+			green = (int) ((tintG * scale) + (green * (1 - scale)));
+			blue = (int) ((tintB * scale) + (blue * (1 - scale)));
 			return (alpha << 24) | (red << 16) | (green << 8) | blue;
 		}
 	}

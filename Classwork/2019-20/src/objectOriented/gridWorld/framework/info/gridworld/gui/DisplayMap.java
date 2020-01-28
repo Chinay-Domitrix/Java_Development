@@ -19,6 +19,8 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
+import org.jetbrains.annotations.Nullable;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -44,6 +46,7 @@ public class DisplayMap {
 	 * or null if none was found
 	 */
 
+	@Nullable
 	private Display createDisplay(Class cl) {
 		try {
 			String className = cl.getName();
@@ -76,7 +79,6 @@ public class DisplayMap {
 	public Display findDisplayFor(Class cl) {
 		// Go up through the class hierarchy for obj and see
 		// if there is a display for its class or superclasses.
-
 		if (Objects.equals(cl, Object.class))
 			return defaultDisplay;
 		Display display = map.get(cl);
@@ -125,8 +127,7 @@ public class DisplayMap {
 		public void paintIcon(Component comp, Graphics g, int x, int y) {
 			Graphics2D g2 = (Graphics2D) g;
 			AffineTransform savedTransform = g2.getTransform(); // save current
-			displayObj.draw(null, comp, g2, new Rectangle(x, y, getIconWidth(),
-					getIconHeight()));
+			displayObj.draw(null, comp, g2, new Rectangle(x, y, getIconWidth(), getIconHeight()));
 			g2.setTransform(savedTransform); // restore coordinate system
 		}
 	}

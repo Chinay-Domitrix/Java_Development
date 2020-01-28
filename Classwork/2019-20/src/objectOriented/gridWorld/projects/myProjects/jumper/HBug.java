@@ -1,13 +1,12 @@
 package objectOriented.gridWorld.projects.myProjects.jumper;
 
 import info.gridworld.actor.Bug;
-import info.gridworld.grid.Location;
 
 import static info.gridworld.grid.Location.SOUTH;
 import static java.lang.Thread.sleep;
+import static java.util.stream.IntStream.of;
 
 public class HBug extends Bug {
-	private final Location origin;
 	private final int length;
 	private int steps;
 	private int count = 0;
@@ -16,7 +15,6 @@ public class HBug extends Bug {
 		assert (length % 2) != 0;
 		this.length = length - 1;
 		this.setDirection(SOUTH);
-		origin = this.getLocation();
 	}
 
 	@Override
@@ -25,7 +23,7 @@ public class HBug extends Bug {
 			move();
 			steps++;
 		} else {
-			if ((count == 0) || (count == 2 || count == 5)) {
+			if (of(0, 2, 5).anyMatch(v -> count == v)) {
 				for (int i = 0; i < 4; i++) {
 					turn();
 					try {
@@ -35,9 +33,9 @@ public class HBug extends Bug {
 					}
 				}
 				count++;
-			} else if (count == 1 || count == 6) {
+			} else if ((count == 1) || (count == 6)) {
 				count++;
-			} else if (count == 3 || count == 4) {
+			} else if ((count == 3) || (count == 4)) {
 				for (int i = 0; i < 2; i++) {
 					turn();
 					try {

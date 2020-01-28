@@ -17,8 +17,11 @@
 package objectOriented.gridWorld.framework.info.gridworld.actor;
 
 import info.gridworld.grid.Location;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+
+import static java.lang.Math.random;
 
 /**
  * A <code>Critter</code> is an actor that moves through its world, processing
@@ -35,8 +38,7 @@ public class Critter extends Actor {
 	 * selected location.
 	 */
 	public void act() {
-		if (getGrid() == null)
-			return;
+		if (getGrid() == null) return;
 		ArrayList<Actor> actors = getActors();
 		processActors(actors);
 		ArrayList<Location> moveLocs = getMoveLocations();
@@ -67,11 +69,8 @@ public class Critter extends Actor {
 	 *
 	 * @param actors the actors to be processed
 	 */
-	public void processActors(ArrayList<Actor> actors) {
-		for (Actor a : actors) {
-			if (!(a instanceof Rock) && !(a instanceof Critter))
-				a.removeSelfFromGrid();
-		}
+	public void processActors(@NotNull ArrayList<Actor> actors) {
+		actors.stream().filter(a -> !(a instanceof Rock) && !(a instanceof Critter)).forEachOrdered(Actor::removeSelfFromGrid);
 	}
 
 	/**
@@ -99,11 +98,10 @@ public class Critter extends Actor {
 	 * @param locs the possible locations for the next move
 	 * @return the location that was selected for the next move.
 	 */
-	public Location selectMoveLocation(ArrayList<Location> locs) {
+	public Location selectMoveLocation(@NotNull ArrayList<Location> locs) {
 		int n = locs.size();
-		if (n == 0)
-			return getLocation();
-		int r = (int) (Math.random() * n);
+		if (n == 0) return getLocation();
+		int r = (int) (random() * n);
 		return locs.get(r);
 	}
 
@@ -121,9 +119,7 @@ public class Critter extends Actor {
 	 * @param loc the location to move to
 	 */
 	public void makeMove(Location loc) {
-		if (loc == null)
-			removeSelfFromGrid();
-		else
-			moveTo(loc);
+		if (loc == null) removeSelfFromGrid();
+		else moveTo(loc);
 	}
 }

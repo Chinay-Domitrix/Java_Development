@@ -26,11 +26,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.lang.reflect.Modifier;
 import java.util.Comparator;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.TreeSet;
+
+import static java.lang.Class.forName;
+import static java.lang.reflect.Modifier.ABSTRACT;
+import static javax.swing.BorderFactory.createEtchedBorder;
+import static javax.swing.Box.createRigidArea;
+import static javax.swing.KeyStroke.getKeyStroke;
 
 /**
  * The GUIController controls the behavior in a WorldFrame. <br />
@@ -41,11 +46,8 @@ import java.util.TreeSet;
 
 public class GUIController<T> {
 	public static final int INDEFINITE = 0, FIXED_STEPS = 1, PROMPT_STEPS = 2;
-
 	private static final int MIN_DELAY_MSECS = 10, MAX_DELAY_MSECS = 1000;
-	private static final int INITIAL_DELAY = MIN_DELAY_MSECS
-			+ (MAX_DELAY_MSECS - MIN_DELAY_MSECS) / 2;
-
+	private static final int INITIAL_DELAY = 505;
 	private Timer timer;
 	private JButton stepButton, runButton, stopButton;
 	private JComponent controlPanel;
@@ -66,29 +68,24 @@ public class GUIController<T> {
 	 * @param displayMap the map for occupant displays
 	 * @param res        the resource bundle for message display
 	 */
-	public GUIController(WorldFrame<T> parent, GridPanel disp,
-	                     DisplayMap displayMap, ResourceBundle res) {
+	public GUIController(WorldFrame<T> parent, GridPanel disp, DisplayMap displayMap, ResourceBundle res) {
 		resources = res;
 		display = disp;
 		parentFrame = parent;
 		this.displayMap = displayMap;
 		makeControls();
-
 		occupantClasses = new TreeSet<>(Comparator.comparing(Class::getName));
-
 		World<T> world = parentFrame.getWorld();
 		Grid<T> gr = world.getGrid();
-		for (Location loc : gr.getOccupiedLocations())
-			addOccupant(gr.get(loc));
-		for (String name : world.getOccupantClasses())
+		for (Location loc : gr.getOccupiedLocations()) addOccupant(gr.get(loc));
+		world.getOccupantClasses().forEach(name -> {
 			try {
-				occupantClasses.add(Class.forName(name));
+				occupantClasses.add(forName(name));
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
-
+		});
 		timer = new Timer(INITIAL_DELAY, evt -> step());
-
 		display.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent evt) {
 				Grid<T> gr = parentFrame.getWorld().getGrid();
@@ -108,19 +105,15 @@ public class GUIController<T> {
 	public void step() {
 		parentFrame.getWorld().step();
 		parentFrame.repaint();
-		if (++numStepsSoFar == numStepsToRun)
-			stop();
+		if (++numStepsSoFar == numStepsToRun) stop();
 		Grid<T> gr = parentFrame.getWorld().getGrid();
-
-		for (Location loc : gr.getOccupiedLocations())
-			addOccupant(gr.get(loc));
+		gr.getOccupiedLocations().stream().map(gr::get).forEach(this::addOccupant);
 	}
 
 	private void addOccupant(T occupant) {
 		Class cl = occupant.getClass();
 		do {
-			if ((cl.getModifiers() & Modifier.ABSTRACT) == 0)
-				occupantClasses.add(cl);
+			if ((cl.getModifiers() & ABSTRACT) == 0) occupantClasses.add(cl);
 			cl = cl.getSuperclass();
 		}
 		while (cl != Object.class);
@@ -169,45 +162,35 @@ public class GUIController<T> {
 		stepButton = new JButton(resources.getString("button.gui.step"));
 		runButton = new JButton(resources.getString("button.gui.run"));
 		stopButton = new JButton(resources.getString("button.gui.stop"));
-
 		controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.X_AXIS));
-		controlPanel.setBorder(BorderFactory.createEtchedBorder());
-
+		controlPanel.setBorder(createEtchedBorder());
 		Dimension spacer = new Dimension(5, stepButton.getPreferredSize().height + 10);
-
-		controlPanel.add(Box.createRigidArea(spacer));
-
+		controlPanel.add(createRigidArea(spacer));
 		controlPanel.add(stepButton);
-		controlPanel.add(Box.createRigidArea(spacer));
+		controlPanel.add(createRigidArea(spacer));
 		controlPanel.add(runButton);
-		controlPanel.add(Box.createRigidArea(spacer));
+		controlPanel.add(createRigidArea(spacer));
 		controlPanel.add(stopButton);
 		runButton.setEnabled(false);
 		stepButton.setEnabled(false);
 		stopButton.setEnabled(false);
-
-		controlPanel.add(Box.createRigidArea(spacer));
+		controlPanel.add(createRigidArea(spacer));
 		controlPanel.add(new JLabel(resources.getString("slider.gui.slow")));
-		JSlider speedSlider = new JSlider(MIN_DELAY_MSECS, MAX_DELAY_MSECS,
-				INITIAL_DELAY);
+		JSlider speedSlider = new JSlider(MIN_DELAY_MSECS, MAX_DELAY_MSECS, INITIAL_DELAY);
 		speedSlider.setInverted(true);
-		speedSlider.setPreferredSize(new Dimension(100, speedSlider
-				.getPreferredSize().height));
+		speedSlider.setPreferredSize(new Dimension(100, speedSlider.getPreferredSize().height));
 		speedSlider.setMaximumSize(speedSlider.getPreferredSize());
-
 		// remove control PAGE_UP, PAGE_DOWN from slider--they should be used
 		// for zoom
 		InputMap map = speedSlider.getInputMap();
 		while (map != null) {
-			map.remove(KeyStroke.getKeyStroke("control PAGE_UP"));
-			map.remove(KeyStroke.getKeyStroke("control PAGE_DOWN"));
+			map.remove(getKeyStroke("control PAGE_UP"));
+			map.remove(getKeyStroke("control PAGE_DOWN"));
 			map = map.getParent();
 		}
-
 		controlPanel.add(speedSlider);
 		controlPanel.add(new JLabel(resources.getString("slider.gui.fast")));
-		controlPanel.add(Box.createRigidArea(new Dimension(5, 0)));
-
+		controlPanel.add(createRigidArea(new Dimension(5, 0)));
 		stepButton.addActionListener(e -> step());
 		runButton.addActionListener(e -> run());
 		stopButton.addActionListener(e -> stop());
@@ -229,8 +212,7 @@ public class GUIController<T> {
 	private void locationClicked() {
 		World<T> world = parentFrame.getWorld();
 		Location loc = display.getCurrentLocation();
-		if (loc != null && !world.locationClicked(loc))
-			editLocation();
+		if ((loc != null) && !world.locationClicked(loc)) editLocation();
 		parentFrame.repaint();
 	}
 
@@ -240,24 +222,17 @@ public class GUIController<T> {
 	 */
 	public void editLocation() {
 		World<T> world = parentFrame.getWorld();
-
 		Location loc = display.getCurrentLocation();
-		if (loc != null) {
-			T occupant = world.getGrid().get(loc);
-			if (occupant == null) {
-				MenuMaker<T> maker = new MenuMaker<>(parentFrame, resources,
-						displayMap);
-				JPopupMenu popup = maker.makeConstructorMenu(occupantClasses,
-						loc);
-				Point p = display.pointForLocation(loc);
-				popup.show(display, p.x, p.y);
-			} else {
-				MenuMaker<T> maker = new MenuMaker<>(parentFrame, resources,
-						displayMap);
-				JPopupMenu popup = maker.makeMethodMenu(occupant, loc);
-				Point p = display.pointForLocation(loc);
-				popup.show(display, p.x, p.y);
-			}
+		if (loc != null) if (world.getGrid().get(loc) == null) {
+			MenuMaker<T> maker = new MenuMaker<>(parentFrame, resources, displayMap);
+			JPopupMenu popup = maker.makeConstructorMenu(occupantClasses, loc);
+			Point p = display.pointForLocation(loc);
+			popup.show(display, p.x, p.y);
+		} else {
+			MenuMaker<T> maker = new MenuMaker<>(parentFrame, resources, displayMap);
+			JPopupMenu popup = maker.makeMethodMenu(world.getGrid().get(loc), loc);
+			Point p = display.pointForLocation(loc);
+			popup.show(display, p.x, p.y);
 		}
 		parentFrame.repaint();
 	}

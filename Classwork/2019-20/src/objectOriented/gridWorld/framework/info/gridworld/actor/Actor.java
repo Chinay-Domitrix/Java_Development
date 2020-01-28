@@ -18,8 +18,13 @@ package objectOriented.gridWorld.framework.info.gridworld.actor;
 
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
+import org.jetbrains.annotations.Contract;
 
 import java.awt.*;
+
+import static info.gridworld.grid.Location.*;
+import static java.awt.Color.BLUE;
+import static java.lang.String.format;
 
 /**
  * An <code>Actor</code> is an entity with a color and direction that can act.
@@ -35,9 +40,10 @@ public class Actor {
 	/**
 	 * Constructs a blue actor that is facing north.
 	 */
+	@Contract(pure = true)
 	public Actor() {
-		color = Color.BLUE;
-		direction = Location.NORTH;
+		color = BLUE;
+		direction = NORTH;
 		grid = null;
 		location = null;
 	}
@@ -72,14 +78,11 @@ public class Actor {
 	/**
 	 * Sets the current direction of this actor.
 	 *
-	 * @param newDirection the new direction. The direction of this actor is set
-	 *                     to the angle between 0 and 359 degrees that is equivalent to
-	 *                     <code>newDirection</code>.
+	 * @param newDirection the new direction. The direction of this actor is set to the angle between 0 and 359 degrees that is equivalent to <code>newDirection</code>.
 	 */
 	public void setDirection(int newDirection) {
-		direction = newDirection % Location.FULL_CIRCLE;
-		if (direction < 0)
-			direction += Location.FULL_CIRCLE;
+		direction = newDirection % FULL_CIRCLE;
+		if (direction < 0) direction += FULL_CIRCLE;
 	}
 
 	/**
@@ -113,10 +116,8 @@ public class Actor {
 	 */
 	public void putSelfInGrid(Grid<Actor> gr, Location loc) {
 		assert grid == null : "This actor is already contained in a grid.";
-
 		Actor actor = gr.get(loc);
-		if (actor != null)
-			actor.removeSelfFromGrid();
+		if (actor != null) actor.removeSelfFromGrid();
 		gr.put(loc, this);
 		grid = gr;
 		location = loc;
@@ -127,14 +128,8 @@ public class Actor {
 	 * Precondition: This actor is contained in a grid
 	 */
 	public void removeSelfFromGrid() {
-		if (grid == null)
-			throw new IllegalStateException(
-					"This actor is not contained in a grid.");
-		if (grid.get(location) != this)
-			throw new IllegalStateException(
-					"The grid contains a different actor at location "
-							+ location + ".");
-
+		assert grid != null : "This actor is not contained in a grid.";
+		assert grid.get(location) == this : "The grid contains a different actor at location " + location + ".";
 		grid.remove(location);
 		grid = null;
 		location = null;
@@ -149,22 +144,12 @@ public class Actor {
 	 * @param newLocation the new location
 	 */
 	public void moveTo(Location newLocation) {
-		if (grid == null)
-			throw new IllegalStateException("This actor is not in a grid.");
-		if (grid.get(location) != this)
-			throw new IllegalStateException(
-					"The grid contains a different actor at location "
-							+ location + ".");
-		if (!grid.isValid(newLocation))
-			throw new IllegalArgumentException("Location " + newLocation
-					+ " is not valid.");
-
-		if (newLocation.equals(location))
-			return;
+		assert grid != null : "This actor is not in a grid.";
+		assert grid.get(location) == this : "The grid contains a different actor at location " + location + ".";
+		assert grid.isValid(newLocation) : "Location " + newLocation + " is not valid.";
+		if (newLocation.equals(location)) return;
 		grid.remove(location);
-		Actor other = grid.get(newLocation);
-		if (other != null)
-			other.removeSelfFromGrid();
+		if (grid.get(newLocation) != null) grid.get(newLocation).removeSelfFromGrid();
 		location = newLocation;
 		grid.put(location, this);
 	}
@@ -174,7 +159,7 @@ public class Actor {
 	 * of <code>Actor</code> to define types of actors with different behavior
 	 */
 	public void act() {
-		setDirection(getDirection() + Location.HALF_CIRCLE);
+		setDirection(getDirection() + HALF_CIRCLE);
 	}
 
 	/**
@@ -183,7 +168,6 @@ public class Actor {
 	 * @return a string with the location, direction, and color of this actor
 	 */
 	public String toString() {
-		return getClass().getName() + "[location=" + location + ",direction="
-				+ direction + ",color=" + color + "]";
+		return format("%s[location=%s,direction=%d,color=%s]", getClass().getName(), location, direction, color);
 	}
 }

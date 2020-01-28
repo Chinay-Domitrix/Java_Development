@@ -62,8 +62,7 @@ public class World<T> extends info.gridworld.world.World<T> {
 		if (frame == null) {
 			frame = new WorldFrame<>(this);
 			frame.setVisible(true);
-		} else
-			frame.repaint();
+		} else frame.repaint();
 	}
 
 	/**
@@ -129,11 +128,9 @@ public class World<T> extends info.gridworld.world.World<T> {
 	 * to consume some keys (e.g. "1"-"9" for Sudoku). Don't consume plain arrow keys,
 	 * or the user loses the ability to move the selection square with the keyboard.
 	 *
-	 * @param description the string describing the key, in
-	 *                    <a href="http://java.sun.com/javase/6/docs/api/javax/swing/KeyStroke.html#getKeyStroke(java.lang.String)">this format</a>.
+	 * @param description the string describing the key, in <a href="http://java.sun.com/javase/6/docs/api/javax/swing/KeyStroke.html#getKeyStroke(java.lang.String)">this format</a>.
 	 * @param loc         the selected location in the grid at the time the key was pressed
-	 * @return true if the world consumes the key press, false if the GUI should
-	 * consume it.
+	 * @return true if the world consumes the key press, false if the GUI should consume it.
 	 */
 	public boolean keyPressed(String description, Location loc) {
 		return false;
@@ -148,39 +145,26 @@ public class World<T> extends info.gridworld.world.World<T> {
 		Grid<T> gr = getGrid();
 		int rows = gr.getNumRows();
 		int cols = gr.getNumCols();
-
-		if (rows > 0 && cols > 0) // bounded grid
-		{
+		if (rows > 0 && cols > 0) {// bounded grid
 			// get all valid empty locations and pick one at random
 			ArrayList<Location> emptyLocs = new ArrayList<>();
 			for (int i = 0; i < rows; i++)
-				for (int j = 0; j < cols; j++) {
-					Location loc = new Location(i, j);
-					if (gr.isValid(loc) && gr.get(loc) == null)
-						emptyLocs.add(loc);
-				}
-			if (emptyLocs.size() == 0)
-				return null;
+				for (int j = 0; j < cols; j++)
+					if (gr.isValid(new Location(i, j)) && (gr.get(new Location(i, j)) == null))
+						emptyLocs.add(new Location(i, j));
+			if (emptyLocs.size() == 0) return null;
 			int r = generator.nextInt(emptyLocs.size());
 			return emptyLocs.get(r);
-		} else
-		// unbounded grid
-		{
+		} else {// unbounded grid
 			while (true) {
 				// keep generating a random location until an empty one is found
 				int r;
-				if (rows < 0)
-					r = (int) (DEFAULT_ROWS * generator.nextGaussian());
-				else
-					r = generator.nextInt(rows);
+				if (rows < 0) r = (int) (DEFAULT_ROWS * generator.nextGaussian());
+				else r = generator.nextInt(rows);
 				int c;
-				if (cols < 0)
-					c = (int) (DEFAULT_COLS * generator.nextGaussian());
-				else
-					c = generator.nextInt(cols);
-				Location loc = new Location(r, c);
-				if (gr.isValid(loc) && gr.get(loc) == null)
-					return loc;
+				if (cols < 0) c = (int) (DEFAULT_COLS * generator.nextGaussian());
+				else c = generator.nextInt(cols);
+				if (gr.isValid(new Location(r, c)) && (gr.get(new Location(r, c)) == null)) return new Location(r, c);
 			}
 		}
 	}
@@ -247,8 +231,7 @@ public class World<T> extends info.gridworld.world.World<T> {
 	}
 
 	private void repaint() {
-		if (frame != null)
-			frame.repaint();
+		if (frame != null) frame.repaint();
 	}
 
 	/**
@@ -257,36 +240,27 @@ public class World<T> extends info.gridworld.world.World<T> {
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		Grid<?> gr = getGrid();
-
 		int rmin = 0;
 		int rmax = gr.getNumRows() - 1;
 		int cmin = 0;
 		int cmax = gr.getNumCols() - 1;
-		if (rmax < 0 || cmax < 0) // unbounded grid
-		{
-			for (Location loc : gr.getOccupiedLocations()) {
-				int r = loc.getRow();
-				int c = loc.getCol();
-				if (r < rmin)
-					rmin = r;
-				if (r > rmax)
-					rmax = r;
-				if (c < cmin)
-					cmin = c;
-				if (c > cmax)
-					cmax = c;
-			}
+		// unbounded grid
+		if ((rmax < 0) || (cmax < 0)) for (Location loc : gr.getOccupiedLocations()) {
+			int r = loc.getRow();
+			int c = loc.getCol();
+			if (r < rmin) rmin = r;
+			if (r > rmax) rmax = r;
+			if (c < cmin) cmin = c;
+			if (c > cmax) cmax = c;
 		}
 
 		for (int i = rmin; i <= rmax; i++) {
 			for (int j = cmin; j < cmax; j++) {
 				Object obj = gr.get(new Location(i, j));
-				if (obj == null)
-					s.append(" ");
-				else
-					s.append(obj.toString(), 0, 1);
+				if (obj == null) s.append(' ');
+				else s.append(obj.toString(), 0, 1);
 			}
-			s.append("\n");
+			s.append('\n');
 		}
 		return s.toString();
 	}

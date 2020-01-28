@@ -30,16 +30,13 @@ import java.text.NumberFormat;
  * students.
  */
 public class LocationEditor extends PropertyEditorSupport {
-	private JFormattedTextField rowField = new JFormattedTextField(NumberFormat
-			.getIntegerInstance());
-	private JFormattedTextField colField = new JFormattedTextField(NumberFormat
-			.getIntegerInstance());
+	private JFormattedTextField rowField = new JFormattedTextField(NumberFormat.getIntegerInstance());
+	private JFormattedTextField colField = new JFormattedTextField(NumberFormat.getIntegerInstance());
 	private JPanel panel = new JPanel();
 
 	public LocationEditor() {
 		rowField.setColumns(5);
 		colField.setColumns(5);
-
 		panel.add(rowField);
 		panel.add(colField);
 	}

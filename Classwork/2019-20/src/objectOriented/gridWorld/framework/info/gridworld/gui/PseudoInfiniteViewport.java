@@ -18,8 +18,12 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
+
+import static java.awt.Color.lightGray;
 
 /**
  * A <code>PseudoInfiniteViewport</code> is a <code>JViewport</code>
@@ -41,7 +45,7 @@ public class PseudoInfiniteViewport extends JViewport {
 	 */
 	public PseudoInfiniteViewport(JScrollPane parent) {
 		scrollParent = parent;
-		setBackground(Color.lightGray);
+		setBackground(lightGray);
 	}
 
 	/**
@@ -49,8 +53,7 @@ public class PseudoInfiniteViewport extends JViewport {
 	 * use pan center point for unbounded view.
 	 */
 	public Point getViewPosition() {
-		return (viewIsUnbounded() ? getPanCenterPoint() : super
-				.getViewPosition());
+		return viewIsUnbounded() ? getPanCenterPoint() : super.getViewPosition();
 	}
 
 	/**
@@ -60,33 +63,24 @@ public class PseudoInfiniteViewport extends JViewport {
 	 * @param pt the Point to become the upper left
 	 */
 	public void setViewPosition(Point pt) {
-		boolean isAdjusting = scrollParent.getVerticalScrollBar()
-				.getValueIsAdjusting()
-				|| scrollParent.getHorizontalScrollBar().getValueIsAdjusting();
+		boolean isAdjusting = scrollParent.getVerticalScrollBar().getValueIsAdjusting() || scrollParent.getHorizontalScrollBar().getValueIsAdjusting();
 		boolean changed = true;
-
 		if (viewIsUnbounded()) {
 			int hDelta = pt.x - panPoint.x;
 			int vDelta = pt.y - panPoint.y;
-			if (hDelta != 0 && vDelta == 0)
-				getPannableView().panBy(hDelta, vDelta);
-			else if (vDelta != 0 && hDelta == 0)
-				getPannableView().panBy(hDelta, vDelta);
-			else
-				changed = false; // no pan action was taken
+			if (hDelta != 0 && vDelta == 0) getPannableView().panBy(hDelta, vDelta);
+			else if (vDelta != 0 && hDelta == 0) getPannableView().panBy(hDelta, vDelta);
+			else changed = false; // no pan action was taken
 			panPoint = pt;
 			if (!panPoint.equals(getPanCenterPoint()) && !isAdjusting) { // needs recentering
 				panPoint = getPanCenterPoint();
 				fireStateChanged(); // update scrollbars to match
 			}
-		} else
-		// ordinary scroll behavior
-		{
+		} else {// ordinary scroll behavior
 			changed = !getViewPosition().equals(pt);
 			super.setViewPosition(pt);
 		}
-		if (changed || isAdjusting)
-			getPannableView().showPanTip(); // briefly show tip
+		if (changed || isAdjusting) getPannableView().showPanTip(); // briefly show tip
 	}
 
 	/**
@@ -94,8 +88,7 @@ public class PseudoInfiniteViewport extends JViewport {
 	 * virtual size for unbounded view.
 	 */
 	public Dimension getViewSize() {
-		return (viewIsUnbounded() ? getView().getPreferredSize() : super
-				.getViewSize());
+		return viewIsUnbounded() ? getView().getPreferredSize() : super.getViewSize();
 	}
 
 	private Pannable getPannableView() {
@@ -106,9 +99,10 @@ public class PseudoInfiniteViewport extends JViewport {
 
 	private boolean viewIsUnbounded() {
 		Pannable p = getPannableView();
-		return (p != null && p.isPannableUnbounded());
+		return ((p != null) && p.isPannableUnbounded());
 	}
 
+	@NotNull
 	private Point getPanCenterPoint() {
 		Dimension size = getViewSize();
 		return new Point(size.width / 2, size.height / 2);
