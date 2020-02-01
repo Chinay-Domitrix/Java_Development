@@ -53,7 +53,7 @@ import static javax.swing.JOptionPane.*;
  */
 public class MenuMaker<T> {
 	private T occupant;
-	private Grid currentGrid;
+	private Grid<?> currentGrid;
 	private Location currentLocation;
 	private WorldFrame<T> parent;
 	private DisplayMap displayMap;
@@ -85,9 +85,9 @@ public class MenuMaker<T> {
 		this.currentLocation = loc;
 		JPopupMenu menu = new JPopupMenu();
 		Method[] methods = getMethods();
-		Class oldDcl = null;
+		var oldDcl = (Class<?>) null;
 		for (int i = 0; i < methods.length; i++) {
-			Class dcl = methods[i].getDeclaringClass();
+			var dcl = methods[i].getDeclaringClass();
 			if (dcl != Object.class) {
 				if (i > 0 && dcl != oldDcl) menu.addSeparator();
 				menu.add(new MethodItem(methods[i]));
@@ -105,7 +105,7 @@ public class MenuMaker<T> {
 	 * @param loc     the location of the occupant to be constructed
 	 * @return the menu to pop up
 	 */
-	public JPopupMenu makeConstructorMenu(Set<Class> classes, Location loc) {
+	public JPopupMenu makeConstructorMenu(Set<Class<?>> classes, Location loc) {
 		this.currentLocation = loc;
 		JPopupMenu menu = new JPopupMenu();
 		boolean first = true;
@@ -125,7 +125,7 @@ public class MenuMaker<T> {
 	 * @param menu    the menu to which the items should be added
 	 * @param classes the collection of classes
 	 */
-	public void addConstructors(JMenu menu, @NotNull Collection<Class> classes) {
+	public void addConstructors(JMenu menu, @NotNull Collection<Class<?>> classes) {
 		boolean first = true;
 		for (var aClass : classes) {
 			if (first) first = false;
@@ -136,9 +136,8 @@ public class MenuMaker<T> {
 	}
 
 	private Method[] getMethods() {
-		Class<?> cl = occupant.getClass();
+		var cl = occupant.getClass();
 		Method[] methods = cl.getMethods();
-
 		sort(methods, new Comparator<>() {
 			public int compare(Method m1, Method m2) {
 				int d1 = depth(m1.getDeclaringClass());
@@ -151,7 +150,7 @@ public class MenuMaker<T> {
 				return d1 - d2;
 			}
 
-			private int depth(Class cl) {
+			private int depth(Class<?> cl) {
 				if (cl == null) return 0;
 				else return 1 + depth(cl.getSuperclass());
 			}
@@ -163,7 +162,7 @@ public class MenuMaker<T> {
 	 * A menu item that shows a method or constructor.
 	 */
 	private class MCItem extends JMenuItem {
-		public String getDisplayString(Class retType, String name, Class[] paramTypes) {
+		public String getDisplayString(Class<?> retType, String name, Class<?>[] paramTypes) {
 			StringBuffer b = new StringBuffer();
 			b.append("<html>");
 			if (retType != null) appendTypeName(b, retType.getName());
@@ -189,7 +188,7 @@ public class MenuMaker<T> {
 			} else b.append(name);
 		}
 
-		public Object makeDefaultValue(Class type) {
+		public Object makeDefaultValue(Class<?> type) {
 			if (type == int.class) return 0;
 			else if (type == boolean.class) return FALSE;
 			else if (type == double.class) return (double) 0;
@@ -208,15 +207,15 @@ public class MenuMaker<T> {
 	}
 
 	private abstract class ConstructorItem extends MCItem {
-		private Constructor c;
+		private Constructor<?> c;
 
-		public ConstructorItem(@NotNull Constructor c) {
+		public ConstructorItem(@NotNull Constructor<?> c) {
 			setText(getDisplayString(null, c.getDeclaringClass().getName(), c.getParameterTypes()));
 			this.c = c;
 		}
 
 		public Object invokeConstructor() {
-			Class[] types = c.getParameterTypes();
+			var types = c.getParameterTypes();
 			Object[] values = new Object[types.length];
 			for (int i = 0; i < types.length; i++) values[i] = makeDefaultValue(types[i]);
 			if (types.length > 0) {
@@ -237,7 +236,7 @@ public class MenuMaker<T> {
 	}
 
 	private class OccupantConstructorItem extends ConstructorItem implements ActionListener {
-		public OccupantConstructorItem(Constructor c) {
+		public OccupantConstructorItem(Constructor<?> c) {
 			super(c);
 			addActionListener(this);
 			setIcon(displayMap.getIcon(c.getDeclaringClass(), 16, 16));
@@ -252,7 +251,7 @@ public class MenuMaker<T> {
 	}
 
 	private class GridConstructorItem extends ConstructorItem implements ActionListener {
-		public GridConstructorItem(Constructor c) {
+		public GridConstructorItem(Constructor<?> c) {
 			super(c);
 			addActionListener(this);
 			setIcon(displayMap.getIcon(c.getDeclaringClass(), 16, 16));
@@ -276,7 +275,7 @@ public class MenuMaker<T> {
 		}
 
 		public void actionPerformed(ActionEvent event) {
-			Class[] types = m.getParameterTypes();
+			var types = m.getParameterTypes();
 			Object[] values = new Object[types.length];
 			for (int i = 0; i < types.length; i++) values[i] = makeDefaultValue(types[i]);
 			if (types.length > 0) {
@@ -330,7 +329,7 @@ class PropertySheet extends JPanel {
 	 *
 	 * @param values the object whose properties are being edited
 	 */
-	public PropertySheet(Class[] types, Object[] values) {
+	public PropertySheet(Class<?>[] types, Object[] values) {
 		this.values = values;
 		editors = new PropertyEditor[types.length];
 		setLayout(new FormLayout());

@@ -3,7 +3,7 @@ A collection of all the work I have done and will do with Java (primarily).
 ## `Classwork`
 This repository is for work which I have done for school, and will be updated very frequently.
 ### Folder Labeling
-Any new immediate subfolders created in this folder will be labeled with the span of the school year.
+Any new immediate sub-folders created in this folder will be labeled with the span of the school year.
 ## `HelloWorld`
 This branch is dead, but a good example of a beginner-level program.
 ## `RandomWork`

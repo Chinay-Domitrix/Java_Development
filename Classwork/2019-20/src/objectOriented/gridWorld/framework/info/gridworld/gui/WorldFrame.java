@@ -64,7 +64,7 @@ public class WorldFrame<T> extends JFrame {
 	private World<T> world;
 	private ResourceBundle resources;
 	private DisplayMap displayMap;
-	private Set<Class> gridClasses;
+	private Set<Class<?>> gridClasses;
 	private JMenu newGridMenu;
 
 	/**
@@ -236,7 +236,7 @@ public class WorldFrame<T> extends JFrame {
 	private void configureAbstractButton(AbstractButton button, String resource) {
 		String title = resources.getString(resource);
 		int i = title.indexOf('&');
-		int mnemonic = 0;
+		int mnemonic;
 		if (i >= 0) {
 			mnemonic = title.charAt(i + 1);
 			title = title.substring(0, i) + title.substring(i + 1);

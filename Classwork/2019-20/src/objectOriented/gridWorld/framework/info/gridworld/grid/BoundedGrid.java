@@ -23,6 +23,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
+import static java.lang.String.format;
+
 /**
  * A <code>BoundedGrid</code> is a rectangular grid with a finite number of
  * rows and columns. <br />
@@ -74,9 +76,8 @@ public class BoundedGrid<E> extends AbstractGrid<E> {
 	}
 
 	public E put(Location loc, E obj) {
-		assert isValid(loc) : "Location " + loc + " is not valid";
+		assert isValid(loc) : format("Location %s is not valid", loc);
 		assert obj != null : "obj == null";
-
 		// Add the object to the grid.
 		E oldOccupant = get(loc);
 		occupantArray[loc.getRow()][loc.getCol()] = obj;
@@ -84,8 +85,7 @@ public class BoundedGrid<E> extends AbstractGrid<E> {
 	}
 
 	public E remove(Location loc) {
-		assert isValid(loc) : "Location " + loc + " is not valid";
-
+		assert isValid(loc) : format("Location %s is not valid", loc);
 		// Remove the object from the grid.
 		E r = get(loc);
 		occupantArray[loc.getRow()][loc.getCol()] = null;

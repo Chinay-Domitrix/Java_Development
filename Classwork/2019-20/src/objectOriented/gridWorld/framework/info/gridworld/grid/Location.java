@@ -25,6 +25,7 @@ import org.jetbrains.annotations.NotNull;
 
 import static java.lang.Integer.compare;
 import static java.lang.Math.*;
+import static java.lang.String.format;
 
 /**
  * A <code>Location</code> object represents the row and column of a location
@@ -237,6 +238,6 @@ public class Location implements Comparable {
 	 * @return a string with the row and column of this location, in the format of (row, column)
 	 */
 	public String toString() {
-		return '(' + getRow() + ", " + getCol() + ')';
+		return format("%d, %d)", '(' + getRow(), getCol());
 	}
 }

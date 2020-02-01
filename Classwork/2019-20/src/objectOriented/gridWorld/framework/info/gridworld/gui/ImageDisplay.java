@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static java.lang.Math.max;
+import static java.lang.String.format;
 import static javax.imageio.ImageIO.read;
 
 /**
@@ -41,7 +42,7 @@ import static javax.imageio.ImageIO.read;
 
 public class ImageDisplay extends AbstractDisplay {
 	private static final String imageExtension = ".gif";
-	private Class cl;
+	private Class<?> cl;
 	private String imageFilename;
 	private Map<String, Image> tintedVersions = new HashMap<>();
 
@@ -51,11 +52,11 @@ public class ImageDisplay extends AbstractDisplay {
 	 * <p>
 	 * {@code imageFilename} name of file containing image
 	 */
-	public ImageDisplay(Class cl) throws IOException {
+	public ImageDisplay(Class<?> cl) throws IOException {
 		this.cl = cl;
 		imageFilename = cl.getName().replace('.', '/');
 		URL url = cl.getClassLoader().getResource(imageFilename + imageExtension);
-		assert url != null : imageFilename + imageExtension + " not found.";
+		assert url != null : format("%s%s not found.", imageFilename, imageExtension);
 		tintedVersions.put("", read(url));
 	}
 

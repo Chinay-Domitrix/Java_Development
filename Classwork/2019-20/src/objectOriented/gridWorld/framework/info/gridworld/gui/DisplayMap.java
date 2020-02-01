@@ -35,7 +35,7 @@ import java.util.Objects;
  * students.
  */
 public class DisplayMap {
-	private HashMap<Class, Display> map = new HashMap<>();
+	private HashMap<Class<?>, Display> map = new HashMap<>();
 	private Display defaultDisplay = new DefaultDisplay();
 
 	/**
@@ -47,10 +47,10 @@ public class DisplayMap {
 	 */
 
 	@Nullable
-	private Display createDisplay(Class cl) {
+	private Display createDisplay(Class<?> cl) {
 		try {
 			String className = cl.getName();
-			Class dcl = Class.forName(className + "Display");
+			var dcl = Class.forName(className + "Display");
 			if (Display.class.isAssignableFrom(dcl)) {
 				Display display = (Display) dcl.newInstance();
 				map.put(cl, display);
@@ -59,7 +59,6 @@ public class DisplayMap {
 		} catch (Exception e) {
 			// oh well...
 		}
-
 		try {
 			ImageDisplay display = new ImageDisplay(cl);
 			map.put(cl, display);
@@ -67,7 +66,6 @@ public class DisplayMap {
 		} catch (Exception e) {
 			// oh well...
 		}
-
 		return null;
 	}
 
@@ -76,7 +74,7 @@ public class DisplayMap {
 	 *
 	 * @param obj the object to display
 	 */
-	public Display findDisplayFor(Class cl) {
+	public Display findDisplayFor(Class<?> cl) {
 		// Go up through the class hierarchy for obj and see
 		// if there is a display for its class or superclasses.
 		if (Objects.equals(cl, Object.class))
@@ -102,7 +100,7 @@ public class DisplayMap {
 	 * @param h  the icon height
 	 * @return the icon
 	 */
-	public Icon getIcon(Class cl, int w, int h) {
+	public Icon getIcon(Class<?> cl, int w, int h) {
 		return new DisplayIcon(cl, w, h);
 	}
 
@@ -110,7 +108,7 @@ public class DisplayMap {
 		private Display displayObj;
 		private int width, height;
 
-		public DisplayIcon(Class cl, int w, int h) {
+		public DisplayIcon(Class<?> cl, int w, int h) {
 			displayObj = findDisplayFor(cl);
 			width = w;
 			height = h;

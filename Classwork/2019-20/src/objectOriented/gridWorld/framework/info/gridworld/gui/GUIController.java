@@ -57,7 +57,7 @@ public class GUIController<T> {
 	private ResourceBundle resources;
 	private DisplayMap displayMap;
 	private boolean running;
-	private Set<Class> occupantClasses;
+	private Set<Class<?>> occupantClasses;
 
 	/**
 	 * Creates a new controller tied to the specified display and gui
@@ -111,7 +111,7 @@ public class GUIController<T> {
 	}
 
 	private void addOccupant(T occupant) {
-		Class cl = occupant.getClass();
+		var cl = occupant.getClass();
 		do {
 			if ((cl.getModifiers() & ABSTRACT) == 0) occupantClasses.add(cl);
 			cl = cl.getSuperclass();

@@ -36,7 +36,7 @@ public class World<T> extends info.gridworld.world.World<T> {
 	private static final int DEFAULT_ROWS = 10;
 	private static final int DEFAULT_COLS = 10;
 	private static Random generator = new Random();
-	private Grid gr;
+	private Grid<?> gr;
 	private Set<String> occupantClassNames;
 	private Set<String> gridClassNames;
 	private String message;
@@ -71,7 +71,7 @@ public class World<T> extends info.gridworld.world.World<T> {
 	 * @return the grid
 	 */
 	public Grid<T> getGrid() {
-		return gr;
+		return (Grid<T>) gr;
 	}
 
 	/**
@@ -176,7 +176,8 @@ public class World<T> extends info.gridworld.world.World<T> {
 	 * @param occupant the occupant to add
 	 */
 	public void add(Location loc, Object occupant) {
-		getGrid().put(loc, (T) occupant);
+		var x = (T) occupant;
+		getGrid().put(loc, x);
 		repaint();
 	}
 

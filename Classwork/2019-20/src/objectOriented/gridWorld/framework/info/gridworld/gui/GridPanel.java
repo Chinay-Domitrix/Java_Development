@@ -191,8 +191,8 @@ public class GridPanel extends JPanel implements Scrollable, Pannable {
 		g2.setFont(new Font("SansSerif", BOLD, WATERMARK_FONT_SIZE));
 		FontRenderContext frc = g2.getFontRenderContext();
 		Rectangle2D bounds = g2.getFont().getStringBounds(s, frc);
-		float centerX = rect.x + rect.width / 2;
-		float centerY = rect.y + rect.height / 2;
+		float centerX = rect.x + rect.width / 2f;
+		float centerY = rect.y + rect.height / 2f;
 		float leftX = centerX - (float) bounds.getWidth() / 2;
 		LineMetrics lm = g2.getFont().getLineMetrics(s, frc);
 		float baselineY = centerY - lm.getHeight() / 2 + lm.getAscent();

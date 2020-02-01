@@ -65,6 +65,7 @@ public class ColorEditor extends PropertyEditorSupport {
 	private interface ColorIcon extends Icon {
 		int WIDTH = 120;
 		int HEIGHT = 20;
+
 		Color getColor();
 	}
 

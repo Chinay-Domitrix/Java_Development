@@ -20,7 +20,6 @@
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
 import java.awt.*;
-import java.awt.font.FontRenderContext;
 import java.awt.font.LineMetrics;
 import java.awt.geom.Rectangle2D;
 
@@ -67,7 +66,7 @@ public class DefaultDisplay implements Display {
 				textColor = new Color(255 - textColor.getRed(), 255 - textColor.getGreen(), 255 - textColor.getBlue());
 		}
 		String text = (String) AbstractDisplay.getProperty(obj, "text");
-		if (text == null && !(obj instanceof Color)) text = "" + obj;
+		if (text == null && !(obj instanceof Color)) text = format("%s", obj);
 		if (text == null) return;
 		if (text.length() > MAX_TEXT_LENGTH) text = format("%s...", text.substring(0, MAX_TEXT_LENGTH));
 		paintCenteredText(g2, text, rect, 0.8, textColor);
@@ -93,17 +92,16 @@ public class DefaultDisplay implements Display {
 		// shrink font in increments of sqrt(2)/2 until string fits
 		while (!done) {
 			g2.setFont(new Font("SansSerif", BOLD, (int) (fontHeight * rect.height)));
-			FontRenderContext frc = g2.getFontRenderContext();
+			var frc = g2.getFontRenderContext();
 			bounds = g2.getFont().getStringBounds(s, frc);
-			if (bounds.getWidth() > rect.getWidth())
-				fontHeight = (fontHeight * sqrt(2)) / 2;
+			if (bounds.getWidth() > rect.getWidth()) fontHeight = (fontHeight * sqrt(2)) / 2;
 			else {
 				done = true;
 				lm = g2.getFont().getLineMetrics(s, frc);
 			}
 		}
-		float centerX = rect.x + rect.width / 2;
-		float centerY = rect.y + rect.height / 2;
+		float centerX = rect.x + rect.width / 2f;
+		float centerY = rect.y + rect.height / 2f;
 		float leftX = centerX - (float) bounds.getWidth() / 2;
 		float baselineY = centerY - lm.getHeight() / 2 + lm.getAscent();
 		g2.drawString(s, leftX, baselineY);

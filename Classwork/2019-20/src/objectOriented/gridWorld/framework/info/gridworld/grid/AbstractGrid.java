@@ -34,7 +34,6 @@ public abstract class AbstractGrid<E> implements Grid<E> {
 
 	public ArrayList<Location> getValidAdjacentLocations(Location loc) {
 		ArrayList<Location> locs = new ArrayList<>();
-
 		int d = NORTH;
 		for (int i = 0; i < (FULL_CIRCLE / HALF_RIGHT); i++) {
 			if (isValid(loc.getAdjacentLocation(d))) locs.add(loc.getAdjacentLocation(d));

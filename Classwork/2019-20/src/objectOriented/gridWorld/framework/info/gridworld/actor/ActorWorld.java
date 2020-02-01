@@ -54,7 +54,7 @@ public class ActorWorld extends World<Actor> {
 	}
 
 	public void step() {
-		ArrayList<Actor> actors = getGrid().getOccupiedLocations().stream().map(getGrid()::get).collect(toCollection(ArrayList::new));
+		var actors = getGrid().getOccupiedLocations().stream().map(getGrid()::get).collect(toCollection(ArrayList::new));
 		// only act if another actor hasn't removed a
 		actors.stream().filter(a -> a.getGrid() == getGrid()).forEachOrdered(Actor::act);
 	}

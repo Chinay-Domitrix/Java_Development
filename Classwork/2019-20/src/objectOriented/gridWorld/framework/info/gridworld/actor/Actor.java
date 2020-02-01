@@ -145,8 +145,8 @@ public class Actor {
 	 */
 	public void moveTo(Location newLocation) {
 		assert grid != null : "This actor is not in a grid.";
-		assert grid.get(location) == this : "The grid contains a different actor at location " + location + ".";
-		assert grid.isValid(newLocation) : "Location " + newLocation + " is not valid.";
+		assert grid.get(location) == this : format("The grid contains a different actor at location %s.", location);
+		assert grid.isValid(newLocation) : format("Location %s is not valid.", newLocation);
 		if (newLocation.equals(location)) return;
 		grid.remove(location);
 		if (grid.get(newLocation) != null) grid.get(newLocation).removeSelfFromGrid();
