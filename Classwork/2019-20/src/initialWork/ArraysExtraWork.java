@@ -7,6 +7,7 @@ import java.util.Scanner;
 import static java.lang.Math.random;
 import static java.lang.System.out;
 import static java.util.Arrays.setAll;
+import static java.util.Arrays.stream;
 
 class ArraysExtraWork {
 	private final Scanner in = new Scanner(System.in);
@@ -76,9 +77,9 @@ class ArraysExtraWork {
 				x[i][j] = y[z];
 				z++;
 			}
-		for (int[] ints : x) {
-			for (int anInt : ints) out.print(anInt + "\t");
+		stream(x).forEachOrdered(ints -> {
+			stream(ints).mapToObj(anInt -> anInt + "\t").forEachOrdered(out::print);
 			out.println();
-		}
+		});
 	}
 }

@@ -1,4 +1,4 @@
-package objectOriented;
+package objectOriented.investments;
 
 import org.jetbrains.annotations.Contract;
 

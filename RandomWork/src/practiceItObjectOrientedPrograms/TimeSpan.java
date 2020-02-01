@@ -1,5 +1,9 @@
 package practiceItObjectOrientedPrograms;
 
+import org.jetbrains.annotations.Contract;
+
+import static java.lang.String.format;
+
 public class TimeSpan {
 	private int hours;
 	private int minutes;
@@ -28,15 +32,15 @@ public class TimeSpan {
 	}
 
 	// Returns the number of minutes stored in this practiceItObjectOrientedPrograms.TimeSpan object.
-	public int getMinutes() {
+	@Contract(pure = true)
+	private int getMinutes() {
 		return minutes;
 	}
 
 	// Returns a String for this time span such as "6h15m".
 	public String toString() {
-		return hours + "h" + minutes + "m";
+		return format("%dh%dm", hours, minutes);
 	}
 
 	// YOUR CODE GOES HERE
-
 }

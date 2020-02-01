@@ -34,20 +34,15 @@ public class ZBug extends Bug {
 				steps++;
 			}
 		} else {
-			switch (segment) {
-				case 1:
-					setDirection(SOUTHWEST);
-					steps = 0;
-					segment++;
-					break;
-				case 2:
-					setDirection(EAST);
-					steps = 0;
-					segment++;
-					break;
-				default:
-					throw new IllegalStateException("Unexpected value: " + segment);
-			}
+			if (segment == 1) {
+				setDirection(SOUTHWEST);
+				steps = 0;
+				segment++;
+			} else if (segment == 2) {
+				setDirection(EAST);
+				steps = 0;
+				segment++;
+			} else throw new IllegalStateException("Unexpected value: " + segment);
 		}
 	}
 } 

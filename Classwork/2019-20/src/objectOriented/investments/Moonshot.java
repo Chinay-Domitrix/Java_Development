@@ -1,7 +1,5 @@
 package objectOriented.investments;
 
-import objectOriented.Name;
-
 import java.util.Random;
 
 import static java.lang.System.out;

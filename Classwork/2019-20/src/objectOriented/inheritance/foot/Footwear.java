@@ -4,6 +4,8 @@ import org.jetbrains.annotations.Contract;
 
 import java.util.HashMap;
 
+import static java.lang.String.format;
+
 /**
  * Footwear is a lightweight abstract class intended to illustrate
  * Javadoc and abstract classes for educational purposes
@@ -106,7 +108,7 @@ abstract class Footwear {
 	 * @return String representation of Footwear
 	 */
 	public String toString() {
-		return name + ", " + (rightOn ? "right is on" : "right is off") + ", " + (leftOn ? "left is on" : "left is off");
+		return format("%s, %s, %s", name, rightOn ? "right is on" : "right is off", leftOn ? "left is on" : "left is off");
 	}
 
 	/**

@@ -6,6 +6,7 @@ import info.gridworld.grid.Location;
 import java.util.Objects;
 
 import static java.lang.Thread.sleep;
+import static java.util.stream.IntStream.range;
 
 public class PlusBug extends Bug {
 	private final int stemSize;
@@ -27,22 +28,22 @@ public class PlusBug extends Bug {
 			move();
 			steps++;
 		} else {
-			if (Objects.equals(origin, getLocation())) for (int i = 0; i < 2; i++) {
+			if (Objects.equals(origin, getLocation())) range(0, 2).forEachOrdered(i -> {
 				turn();
 				try {
 					sleep(250);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-			}
-			else for (int i = 0; i < 4; i++) {
+			});
+			else range(0, 4).forEachOrdered(i -> {
 				turn();
 				try {
 					sleep(250);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-			}
+			});
 			steps = 0;
 		}
 	}

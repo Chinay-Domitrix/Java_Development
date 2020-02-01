@@ -1,7 +1,5 @@
 package objectOriented.investments;
 
-import objectOriented.Name;
-
 import static java.lang.Double.MIN_VALUE;
 import static java.lang.Math.random;
 import static java.lang.System.out;

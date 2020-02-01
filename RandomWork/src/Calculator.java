@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
+import static java.lang.System.in;
 import static java.lang.System.out;
+import static java.lang.Thread.sleep;
 
 class Calculator {
 	private static void addition(final double num1, final double num2) {
@@ -15,7 +17,7 @@ class Calculator {
 
 	public static void main(final String[] args) throws InterruptedException {
 		int counter = 1;
-		try (Scanner calc = new Scanner(System.in)) {
+		try (Scanner calc = new Scanner(in)) {
 			out.println("Welcome to Calculator!");
 			out.println("Please enter your " + counter + "st number");
 			final double one = calc.nextDouble();
@@ -23,24 +25,23 @@ class Calculator {
 			out.println("Please enter your " + counter + "nd number");
 			final double two = calc.nextDouble();
 			calc.nextLine();
-			out.println(
-					"What is your operation? (Please type A for Addition, S for Subtraction, M for Multiplication and D for Division)");
+			out.println("What is your operation? (Please type A for Addition, S for Subtraction, M for Multiplication and D for Division)");
 			final String operation = calc.nextLine();
 			switch (operation) {
 				case "A":
-					Thread.sleep(1050);
+					sleep(1050);
 					addition(one, two);
 					break;
 				case "S":
-					Thread.sleep(1050);
+					sleep(1050);
 					subtraction(one, two);
 					break;
 				case "M":
-					Thread.sleep(1050);
+					sleep(1050);
 					multiplication(one, two);
 					break;
 				case "D":
-					Thread.sleep(1050);
+					sleep(1050);
 					division(one, two);
 					break;
 				default:

@@ -3,7 +3,8 @@ package methods;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import static java.lang.Math.pow;
+import static java.lang.Math.*;
+import static java.lang.String.format;
 import static java.lang.System.out;
 import static java.lang.Thread.sleep;
 import static java.util.Arrays.sort;
@@ -13,10 +14,10 @@ class Spinner {
 		int a = spin(2);
 		boolean even = isEven(a);
 		int s1 = spin(), s2 = spin(), s3, s4;
-		out.print("Spin 1: " + a + "\tSpin 2: " + s2 + "\t");
+		out.printf("Spin 1: %d\tSpin 2: %d\t", a, s2);
 		if (even) {
 			s3 = spin(4);
-			out.println("Spin 3: " + s2 + "\tSpin 4: " + s3);
+			out.printf("Spin 3: %d\tSpin 4: %d%n", s2, s3);
 			boolean b = false;
 			int c = lowest(s1, s2);
 			if (c == s1) b = isFirstGreaterOrEqual(product(c, s3), (int) pow(s2, 2));
@@ -30,7 +31,7 @@ class Spinner {
 		} else {
 			s3 = spin();
 			s4 = spin(10);
-			out.println("Spin 3: " + s2 + "\tSpin 4: " + s3 + "\tSpin 5: " + s4);
+			out.printf("Spin 3: %d\tSpin 4: %d\tSpin 5: %d%n", s2, s3, s4);
 			int[] b = lowest(s1, s2, s3);
 			boolean[] c = new boolean[3];
 			c[0] = (b[0] == s1) || (b[1] == s1);
@@ -54,11 +55,11 @@ class Spinner {
 	}
 
 	private int spin() {
-		return (int) (Math.random() * 5) + 1;
+		return (int) (random() * 5) + 1;
 	}
 
 	private int spin(int a) {
-		return (int) (Math.random() * a) + 1;
+		return (int) (random() * a) + 1;
 	}
 
 	@Contract(pure = true)
@@ -73,7 +74,7 @@ class Spinner {
 
 	@Contract(pure = true)
 	private int lowest(int a, int b) {
-		return Math.min(a, b);
+		return min(a, b);
 	}
 
 	@NotNull
@@ -92,7 +93,6 @@ class Spinner {
 	@NotNull
 	@Contract(pure = true)
 	private String result(boolean a) {
-		if (a) return "You win!";
-		else return "You lose!";
+		return format("You %s!", a ? "win" : "lose");
 	}
 }

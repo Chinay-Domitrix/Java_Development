@@ -3,12 +3,13 @@ import static java.lang.System.out;
 
 class SecondsConverted {
 	public static void main(final String[] args) {
-		final int randomSeconds = (int) (random() * 1000001) + 500, days = randomSeconds / 86400, hours, minutes, seconds;
-		int remainingSeconds = randomSeconds % 86400;
-		hours = remainingSeconds / 3600;
+		final var randomSeconds = (int) (random() * 1000001) + 500;
+		final var days = randomSeconds / 86400;
+		var remainingSeconds = randomSeconds % 86400;
+		var hours = remainingSeconds / 3600;
 		remainingSeconds %= 3600;
-		minutes = remainingSeconds / 60;
-		seconds = remainingSeconds % 60;
-		out.println("Total Seconds: " + randomSeconds + "\n" + days + " days : " + hours + " hours : " + minutes + " minutes : " + seconds + " seconds");
+		var minutes = remainingSeconds / 60;
+		var seconds = remainingSeconds % 60;
+		out.printf("Total Seconds:\t%d, which is, when simplified,\n\t\t\t\t%d days, %d hours, %d minutes, and %d seconds%n", randomSeconds, days, hours, minutes, seconds);
 	}
 }

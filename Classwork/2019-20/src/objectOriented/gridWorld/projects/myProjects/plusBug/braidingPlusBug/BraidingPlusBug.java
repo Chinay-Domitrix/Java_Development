@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import static java.lang.System.in;
 import static java.lang.System.out;
+import static java.util.stream.IntStream.range;
 
 /**
  * This program is intended by a scalable iteration of PlusBug, hence why it extends PlusBug. It allows the user to
@@ -35,10 +36,10 @@ public class BraidingPlusBug extends PlusBug {
 			previousLocation = newLocation;
 		}
 		var plusBugs = new ArrayList<BraidingPlusBug>();
-		for (int i = 0; i < locations.size(); i++) {
+		range(0, locations.size()).forEachOrdered(i -> {
 			plusBugs.add(new BraidingPlusBug(i + 1, locations.get(i)));
 			world.add(locations.get(i), plusBugs.get(i));
-		}
+		});
 		world.show();
 	}
 

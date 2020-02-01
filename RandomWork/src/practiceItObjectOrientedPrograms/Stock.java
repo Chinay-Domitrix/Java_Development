@@ -46,7 +46,7 @@ final class Stock {
 	 * @return symbol the symbol of the stock
 	 */
 	@Contract(pure = true)
-	public String __getSymbol() {
+	public String getSymbol() {
 		return symbol;
 	}
 
@@ -54,7 +54,7 @@ final class Stock {
 	 * Returns this Stock's total number of shares purchased.
 	 */
 	@Contract(pure = true)
-	public int __getTotalShares() {
+	public int getTotalShares() {
 		return totalShares;
 	}
 
@@ -62,7 +62,7 @@ final class Stock {
 	 * Returns this Stock's total cost for all shares.
 	 */
 	@Contract(pure = true)
-	public double __getTotalCost() {
+	public double getTotalCost() {
 		return totalCost;
 	}
 

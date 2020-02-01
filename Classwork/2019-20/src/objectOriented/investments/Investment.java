@@ -1,6 +1,5 @@
 package objectOriented.investments;
 
-import objectOriented.Name;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;

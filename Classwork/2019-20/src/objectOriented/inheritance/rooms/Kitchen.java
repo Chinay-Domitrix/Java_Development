@@ -35,6 +35,6 @@ final class Kitchen extends Room {
 
 	@Override
 	public String toString() {
-		return getHasOven() ? format("%s and has a(n) " + getStoveType() + " stove with an oven.", super.toString().replace(".", "")) : format("%s and has a(n) " + getStoveType() + " stove without an oven.", super.toString().replace(".", ""));
+		return format("%s and has a(n) " + getStoveType() + (getHasOven() ? " stove with an oven." : " stove without an oven."), super.toString().replace(".", ""));
 	}
 }

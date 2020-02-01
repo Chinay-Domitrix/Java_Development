@@ -3,6 +3,9 @@ package objectOriented.investments;
 import java.util.ArrayList;
 
 import static java.lang.System.out;
+import static java.util.stream.IntStream.range;
+import static java.util.stream.IntStream.rangeClosed;
+import static objectOriented.investments.Investment.format;
 
 public class InvestmentSplitDriver {
 	/**
@@ -62,9 +65,9 @@ public class InvestmentSplitDriver {
 		portfolio.add(new Moonshot("Moonshot (80% / 1%)", 0.8, 0.01, 100000)); // Investment 4
 
 //		Execute Investment strategy for each year
-		for (int i = age; i <= retirementAge; i++) {
+		rangeClosed(age, retirementAge).forEachOrdered(i -> {
 //			MAKE ADJUSTMENTS BASED ON AGE AND/OR TOTAL
-			if (age > 55 || total >= 500000) {
+			if ((age > 55) || (total >= 500000)) {
 //				Percent invested in a Certificate of Deposit investment
 				cdP = 0.2;
 //				Percent invested in a Mutual Fund investment
@@ -79,12 +82,11 @@ public class InvestmentSplitDriver {
 //			This line makes the investment according to your current allocation
 			total = splitInvestmentByPercent();
 			out.println();
-		}
+		});
 //		Prints overall total at retirement on a separate line
-		out.printf("%nOverall Total => %s%n", Investment.format(total));
+		out.printf("%nOverall Total => %s%n", format(total));
 //		Print the yield of each Investment
-		for (var inv : portfolio)
-			out.printf("Yield of %s from %s%n", Investment.format(inv.getTotalYield()), inv.getName());
+		portfolio.forEach(inv -> out.printf("Yield of %s from %s%n", format(inv.getTotalYield()), inv.getName()));
 	}
 
 	/**
@@ -95,12 +97,10 @@ public class InvestmentSplitDriver {
 	private static double splitInvestmentByPercent() {
 //		The +0.0001 allows for a small rounding error
 		if ((cdP + mfP + bcP + psP + msP) > 1) {
-			System.out.println("You cannot invest more than 100%");
+			out.println("You cannot invest more than 100%");
 			return 0;
 		}
 		var a = new double[]{cdP, mfP, bcP, psP, msP};
-		var localTotal = 0;
-		for (int i = 0; i < a.length; i++) localTotal += portfolio.get(i).invest1Year(a[i] * total);
-		return localTotal;
+		return range(0, a.length).map(i -> (int) portfolio.get(i).invest1Year(a[i] * total)).sum();
 	}
 }

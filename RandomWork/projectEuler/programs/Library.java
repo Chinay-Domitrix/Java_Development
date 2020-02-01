@@ -52,7 +52,7 @@ final class Library {
 	// Returns floor(sqrt(x)), for x >= 0.
 	public static BigInteger sqrt(@NotNull BigInteger x) {
 		assert x.signum() != -1 : "Square root of negative number";
-		BigInteger y = ZERO;
+		var y = ZERO;
 		for (int i = (x.bitLength() - 1) / 2; i >= 0; i--) {
 			y = y.setBit(i);
 			if (y.multiply(y).compareTo(x) > 0) y = y.clearBit(i);
@@ -83,7 +83,7 @@ final class Library {
 
 	// Returns x^y mod m.
 	@Contract(pure = true)
-	public static int powMod(int x, int y, int m) {
+	static int powMod(int x, int y, int m) {
 		assert x >= 0 : "Negative base not supported";
 		assert y >= 0 : "Modular reciprocal not supported";
 		assert m > 0 : "Modulus must be positive";
@@ -124,15 +124,15 @@ final class Library {
 	// Returns n!.
 	static BigInteger factorial(int n) {
 		assert n >= 0 : "Factorial of negative number";
-		BigInteger prod = ONE;
+		var prod = ONE;
 		for (int i = 2; i <= n; i++) prod = prod.multiply(valueOf(i));
 		return prod;
 	}
 
 	// Returns n choose k.
-	public static BigInteger binomial(int n, int k) {
+	static BigInteger binomial(int n, int k) {
 		assert (k >= 0) && (k <= n);
-		BigInteger product = ONE;
+		var product = ONE;
 		for (int i = 0; i < k; i++) product = product.multiply(valueOf(n - i));
 		return product.divide(factorial(k));
 	}
@@ -294,7 +294,7 @@ final class Fraction implements Comparable<Fraction> {
 			numer = numer.negate();
 			denom = denom.negate();
 		}
-		BigInteger gcd = numer.gcd(denom);
+		var gcd = numer.gcd(denom);
 		if (!gcd.equals(ONE)) {
 			numer = numer.divide(gcd);
 			denom = denom.divide(gcd);

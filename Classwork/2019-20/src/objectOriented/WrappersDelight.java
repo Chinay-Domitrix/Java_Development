@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Math.*;
+import static java.lang.System.out;
 
 final class WrappersDelight {
 	/**
@@ -13,7 +14,7 @@ final class WrappersDelight {
 	 */
 	private WrappersDelight() {
 //		The variable type Object is used to permit the usage of all data types, and the toString is used in order to be able to generate a random number.
-		for (var i : wrapSampler(Double.toString((random() * 201) - 100))) System.out.println(i);
+		wrapSampler(Double.toString((random() * 201) - 100)).forEach(out::println);
 	}
 
 	public static void main(String[] args) {

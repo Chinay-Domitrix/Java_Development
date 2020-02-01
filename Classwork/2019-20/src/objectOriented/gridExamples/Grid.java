@@ -8,6 +8,9 @@ import java.util.HashMap;
 import static java.lang.Math.max;
 import static java.lang.Math.random;
 import static java.lang.System.out;
+import static java.util.Arrays.stream;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.IntStream.range;
 
 class Grid {
 	/**
@@ -68,10 +71,10 @@ class Grid {
 	 * prints the whole array
 	 */
 	void print() {
-		for (var i : grid) {
-			for (var j : i) out.print(j);
+		stream(grid).forEachOrdered(i -> {
+			stream(i).forEachOrdered(out::print);
 			out.println();
-		}
+		});
 	}
 
 	/**
@@ -81,7 +84,7 @@ class Grid {
 	 */
 	void paintDiagonalToRight(String s) {
 		if (numRows != numCols) return;
-		for (var i = 0; i < numRows; i++) grid[i][i] = s;
+		range(0, numRows).forEachOrdered(i -> grid[i][i] = s);
 	}
 
 	/**
@@ -124,8 +127,8 @@ class Grid {
 	private void paintBorders(String s) {
 		Arrays.fill(grid[0], s);
 		Arrays.fill(grid[grid.length - 1], s);
-		for (var i = 0; i < grid.length; i++) grid[i][0] = s;
-		for (var i = 0; i < grid.length; i++) grid[i][grid[i].length - 1] = s;
+		range(0, grid.length).forEachOrdered(i -> grid[i][0] = s);
+		range(0, grid.length).forEachOrdered(i -> grid[i][grid[i].length - 1] = s);
 	}
 
 	/**
@@ -196,17 +199,16 @@ class Grid {
 		do {
 			grid[(int) (random() * numRows)][(int) (random() * numCols)] = " ";
 			var x = new StringBuilder();
-			for (var i : grid) {
-				for (var j : i) x.append(j);
+			stream(grid).forEachOrdered(i -> {
+				stream(i).forEachOrdered(x::append);
 				x.append('\n');
-			}
-			var y = new StringBuilder();
-			for (var i : grid) for (var j : i) y.append(j);
+			});
+			String y = stream(grid).flatMap(Arrays::stream).collect(joining());
 			x.deleteCharAt(x.length() - 1);
 			var printed = x.toString().split("\n");
-			if (!y.toString().equals(breaker))
+			if (!y.equals(breaker))
 				out.println(Arrays.toString(printed).replace("[", "").replace("]", "").replace(", ", "\n"));
-			if (y.toString().equals(breaker)) break;
+			if (y.equals(breaker)) break;
 			counter++;
 		} while (true);
 		out.println("It took " + counter + " tries to clear the grid.");

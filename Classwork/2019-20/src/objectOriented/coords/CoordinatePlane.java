@@ -3,7 +3,11 @@ package objectOriented.coords;
 import java.util.ArrayList;
 
 import static java.lang.Math.*;
+import static java.lang.String.format;
 import static java.lang.System.out;
+import static java.util.Arrays.stream;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.IntStream.range;
 
 class CoordinatePlane {
 	private static final int[] GRID_SIZES = {61, 41, 21};
@@ -47,7 +51,7 @@ class CoordinatePlane {
 		//cp.linearGraph(1/2.0,-4);
 		cp.linearGraph();
 //		Graph with 'x'
-		cp.graph("x");
+		cp.graph('x');
 	}
 
 	/**
@@ -58,16 +62,16 @@ class CoordinatePlane {
 	private void graph(String pointChar) {
 		blankGrid();
 		out.print("Graphing => ");
-		for (var p : points) {
+		points.forEach(p -> {
 //			round to nearest int to graph
 			var x = p.getXInt();
 //			round to nearest int to graph
 			var y = p.getYInt();
 			out.printf("(%d,%d) ", x, y);
-//			Only graph points in range of grid
+//          Only graph points in range of grid
 			if ((x >= xMin) && (x <= xMax) && (y >= yMin) && (y <= yMax))
 				displayGrid[yAxisIndex - y][xAxisIndex + x] = pointChar;
-		}
+		});
 		out.println();
 //		prints new display grid
 		print();
@@ -92,11 +96,10 @@ class CoordinatePlane {
 	 * @param max the maximum value for the x and y coordinates
 	 */
 	public void randomPoints(int num, int min, int max) {
-		for (int i = 0; i < num; i++) {
-			var randX = toIntExact(round((random() * (max - min + 1)) + min));
+		range(0, num).map(i -> toIntExact(round((random() * (max - min + 1)) + min))).forEachOrdered(randX -> {
 			var randY = toIntExact(round((random() * (max - min + 1)) + min));
 			points.add(new OrderedPair(randX, randY));
-		}
+		});
 	}
 
 	/**
@@ -114,9 +117,8 @@ class CoordinatePlane {
 	 * Prints out all ordered pair points
 	 */
 	public String toString() {
-		var s = new StringBuilder("[");
-		for (var p : points) s.append(p.toString()).append(',');
-		return s + "\b]";
+		String s = points.stream().map(p -> p.toString() + ',').collect(joining("", "[", ""));
+		return format("%s\b]", s);
 	}
 
 	/**
@@ -124,18 +126,18 @@ class CoordinatePlane {
 	 */
 	private void blankGrid() {
 		fillAll();
-		for (var i = 0; i < numCols; i++) displayGrid[xAxisIndex][i] = "-";
-		for (var i = 0; i < numRows; i++) displayGrid[i][xAxisIndex] = "|";
+		range(0, numCols).forEachOrdered(i -> displayGrid[xAxisIndex][i] = "-");
+		range(0, numRows).forEachOrdered(i -> displayGrid[i][xAxisIndex] = "|");
 	}
 
 	/**
 	 * Prints all contents of displayGrid
 	 */
 	private void print() {
-		for (String[] i : displayGrid) {
-			for (String j : i) out.printf("%s ", j);
+		stream(displayGrid).forEachOrdered(i -> {
+			stream(i).forEachOrdered(j -> out.printf("%s ", j));
 			out.println();
-		}
+		});
 	}
 
 	/**

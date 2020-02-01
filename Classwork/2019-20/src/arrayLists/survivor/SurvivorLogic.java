@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import static java.lang.Math.*;
 import static java.lang.String.format;
 import static java.lang.System.out;
+import static java.util.stream.Collectors.toCollection;
 import static java.util.stream.IntStream.range;
 
 final class SurvivorLogic {
@@ -24,10 +25,10 @@ final class SurvivorLogic {
 	}
 
 	private void survivorLogic() {
-		var survivorLogic = new ArrayList<Integer>();
+		ArrayList<Integer> survivorLogic;
 		var counter = 2;
 		var bounds = 10;
-		for (var i = 0; i < bounds; i++) survivorLogic.add(toIntExact(round((random() * 99) + 2)));
+		survivorLogic = range(0, bounds).mapToObj(i -> toIntExact(round((random() * 99) + 2))).collect(toCollection(ArrayList::new));
 		out.printf("The starting numbers are:\n%s%n", survivorLogic);
 		do {
 			var random = toIntExact(round((random() * 99) + 2));
@@ -47,8 +48,7 @@ final class SurvivorLogic {
 	}
 
 	private String specialSauce() {
-		var x = 0;
-		for (var integer : specialSauceCounter) x += integer;
-		return format("The average number of tries it took to finish the %d%s was %s tries.", runs, runs > 1 ? "rounds" : "round", x / (double) runs);
+		var x = specialSauceCounter.stream().mapToInt(integer -> integer).sum();
+		return format("The average number of tries it took to finish the %d%s was %s tries.", runs, (runs == 1) ? "round" : "rounds", x / (double) runs);
 	}
 }

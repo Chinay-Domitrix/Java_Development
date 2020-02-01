@@ -1,5 +1,6 @@
 package objectOriented.gridWorld.projects.myProjects.shyBug;
 
+import info.gridworld.actor.Actor;
 import info.gridworld.actor.Bug;
 import info.gridworld.actor.Flower;
 import info.gridworld.grid.Location;
@@ -30,18 +31,18 @@ public class ShyBug extends Bug {
 	 */
 	public boolean canMove() {
 		if (getGrid() == null) return false;
-		var next = getLocation().getAdjacentLocation(getDirection());
 //		The basis of the expanded Location checks. It allows for checking beyond the one-square checks in super.canMove().
-		var objectChecker = next.getAdjacentLocation(getDirection());
+		Location objectChecker2 = getLocation().getAdjacentLocation(getDirection()).getAdjacentLocation(getDirection());
+		Location objectChecker3 = objectChecker2.getAdjacentLocation(getDirection());
 //		This is what allows for checking for objects as necessary.
-		var objectCheckedObject = getGrid().get(objectChecker);
+		Actor objectCheckedObject = getGrid().get(objectChecker2);
 		/*
 		 * This is almost the same as the conditional statement in super.canMove(), but the first condition has been
 		 * modified to check three squares ahead, and a second condition has been added to allow for the checking of
 		 * other Actors (including its subclasses).
 		 */
-		if (!getGrid().isValid(objectChecker.getAdjacentLocation(getDirection())) || (!(objectCheckedObject instanceof Flower) && (objectCheckedObject != null)))
+		if (!getGrid().isValid(objectChecker3) || !(objectCheckedObject instanceof Flower) && (objectCheckedObject != null))
 			return false;
-		return (getGrid().get(next) == null) || (getGrid().get(next) instanceof Flower);
+		return (getGrid().get(getLocation().getAdjacentLocation(getDirection())) == null) || (getGrid().get(getLocation().getAdjacentLocation(getDirection())) instanceof Flower);
 	}
 }

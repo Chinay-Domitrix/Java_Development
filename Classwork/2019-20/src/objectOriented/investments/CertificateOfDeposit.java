@@ -1,7 +1,5 @@
 package objectOriented.investments;
 
-import objectOriented.Name;
-
 import static java.lang.System.out;
 import static objectOriented.investments.InterestRate.doubleValue;
 

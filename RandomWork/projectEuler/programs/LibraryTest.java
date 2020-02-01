@@ -10,11 +10,13 @@ import java.util.Random;
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;
 import static java.lang.System.out;
+import static java.util.Arrays.asList;
+import static java.util.Arrays.binarySearch;
 import static org.junit.Assert.*;
 import static programs.Library.*;
 
 public final class LibraryTest {
-	private static Random rand = new Random();
+	private static final Random rand = new Random();
 
 	@Test
 	public void testReverse() {
@@ -216,14 +218,14 @@ public final class LibraryTest {
 
 	@Test
 	public void testReciprocalMod() {
-		for (int[] cs : new int[][]{{1, 2, 1}, {1, 3, 1}, {2, 3, 2}, {1, 4, 1}, {3, 4, 3}, {1, 5, 1}, {2, 5, 3}, {3, 5, 2}, {4, 5, 4}, {2, 7, 4}, {3, 7, 5}, {4, 7, 2}, {5, 7, 3}, {6, 7, 6}, {18585, 26128, 5705}, {4352341, 7559949, 3054661}, {290514683, 936234758, 903930729}, {735803087, 1384775511, 1321131185}, {1, 2147483647, 1}, {2, 2147483647, 1073741824}, {188080773, 2147483647, 1201032874}, {527995520, 2147483647, 1215591224}, {1154582780, 2147483647, 193267031}, {1321286464, 2147483647, 95844396}, {2147483645, 2147483647, 1073741823}, {2147483646, 2147483647, 2147483646}})
-			assertEquals(cs[2], reciprocalMod(cs[0], cs[1]));
-		for (int[] cs : new int[][]{{MIN_VALUE, MIN_VALUE}, {-1, -1}, {0, -1}, {-1, 0}, {0, 0}, {1, 1}, {3, 2}, {MAX_VALUE, 1}, {2, 4}, {2, 6}, {3, 6}, {44100, 48000}, {77, 2147483646}, {30783, 2147483646}})
+		asList(new int[]{1, 2, 1}, new int[]{1, 3, 1}, new int[]{2, 3, 2}, new int[]{1, 4, 1}, new int[]{3, 4, 3}, new int[]{1, 5, 1}, new int[]{2, 5, 3}, new int[]{3, 5, 2}, new int[]{4, 5, 4}, new int[]{2, 7, 4}, new int[]{3, 7, 5}, new int[]{4, 7, 2}, new int[]{5, 7, 3}, new int[]{6, 7, 6}, new int[]{18585, 26128, 5705}, new int[]{4352341, 7559949, 3054661}, new int[]{290514683, 936234758, 903930729}, new int[]{735803087, 1384775511, 1321131185}, new int[]{1, 2147483647, 1}, new int[]{2, 2147483647, 1073741824}, new int[]{188080773, 2147483647, 1201032874}, new int[]{527995520, 2147483647, 1215591224}, new int[]{1154582780, 2147483647, 193267031}, new int[]{1321286464, 2147483647, 95844396}, new int[]{2147483645, 2147483647, 1073741823}, new int[]{2147483646, 2147483647, 2147483646}).forEach(ints -> assertEquals(ints[2], reciprocalMod(ints[0], ints[1])));
+		asList(new int[]{MIN_VALUE, MIN_VALUE}, new int[]{-1, -1}, new int[]{0, -1}, new int[]{-1, 0}, new int[]{0, 0}, new int[]{1, 1}, new int[]{3, 2}, new int[]{MAX_VALUE, 1}, new int[]{2, 4}, new int[]{2, 6}, new int[]{3, 6}, new int[]{44100, 48000}, new int[]{77, 2147483646}, new int[]{30783, 2147483646}).forEach(cs -> {
 			try {
-				reciprocalMod(cs[0], cs[1]);
+				var x = reciprocalMod(cs[0], cs[1]);
 				fail();
 			} catch (IllegalArgumentException ignored) {
 			} // Pass
+		});
 	}
 
 	@Test
@@ -387,7 +389,7 @@ public final class LibraryTest {
 		int limit = 1000;
 		int[] primes = listPrimes(limit);
 		for (int i = 0; i < primes.length - 1; i++) assertTrue(primes[i] < primes[i + 1]);
-		for (int i = 0; i <= limit; i++) assertEquals(isPrime(i), Arrays.binarySearch(primes, i) >= 0);
+		for (int i = 0; i <= limit; i++) assertEquals(isPrime(i), binarySearch(primes, i) >= 0);
 	}
 
 	@Contract(pure = true)
