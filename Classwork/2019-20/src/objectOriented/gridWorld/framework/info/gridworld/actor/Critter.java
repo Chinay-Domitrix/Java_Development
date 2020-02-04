@@ -22,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 import static java.lang.Math.random;
+import static java.util.Objects.requireNonNull;
 
 /**
  * A <code>Critter</code> is an actor that moves through its world, processing
@@ -39,11 +40,8 @@ public class Critter extends Actor {
 	 */
 	public void act() {
 		if (getGrid() == null) return;
-		ArrayList<Actor> actors = getActors();
-		processActors(actors);
-		ArrayList<Location> moveLocs = getMoveLocations();
-		Location loc = selectMoveLocation(moveLocs);
-		makeMove(loc);
+		processActors(getActors());
+		makeMove(selectMoveLocation(getMoveLocations()));
 	}
 
 	/**
@@ -69,8 +67,8 @@ public class Critter extends Actor {
 	 *
 	 * @param actors the actors to be processed
 	 */
-	public void processActors(@NotNull ArrayList<Actor> actors) {
-		actors.stream().filter(a -> !(a instanceof Rock) && !(a instanceof Critter)).forEachOrdered(Actor::removeSelfFromGrid);
+	public void processActors(ArrayList<Actor> actors) {
+		requireNonNull(actors).stream().filter(a -> !(a instanceof Rock) && !(a instanceof Critter)).forEachOrdered(Actor::removeSelfFromGrid);
 	}
 
 	/**

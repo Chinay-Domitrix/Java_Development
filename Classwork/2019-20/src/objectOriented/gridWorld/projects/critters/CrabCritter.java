@@ -20,7 +20,6 @@ package objectOriented.gridWorld.projects.critters;
 
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Critter;
-import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 import org.jetbrains.annotations.NotNull;
 
@@ -29,6 +28,8 @@ import java.util.ArrayList;
 import static info.gridworld.grid.Location.*;
 import static java.awt.Color.RED;
 import static java.lang.Math.random;
+import static java.util.Arrays.stream;
+import static java.util.stream.Collectors.toCollection;
 
 /**
  * A <code>CrabCritter</code> looks at a limited set of neighbors when it eats and moves.
@@ -47,20 +48,16 @@ class CrabCritter extends Critter {
 	 * @return a list of actors occupying these locations
 	 */
 	public ArrayList<Actor> getActors() {
-		var actors = new ArrayList<Actor>();
 		int[] dirs = {AHEAD, HALF_LEFT, HALF_RIGHT};
-		for (var loc : getLocationsInDirections(dirs)) if (getGrid().get(loc) != null) actors.add(getGrid().get(loc));
-		return actors;
+		return getLocationsInDirections(dirs).stream().filter(loc -> getGrid().get(loc) != null).map(loc -> getGrid().get(loc)).collect(toCollection(ArrayList::new));
 	}
 
 	/**
 	 * @return list of empty locations immediately to the right and to the left
 	 */
 	public ArrayList<Location> getMoveLocations() {
-		var locs = new ArrayList<Location>();
 		int[] dirs = {LEFT, RIGHT};
-		for (Location loc : getLocationsInDirections(dirs)) if (getGrid().get(loc) == null) locs.add(loc);
-		return locs;
+		return getLocationsInDirections(dirs).stream().filter(loc -> getGrid().get(loc) == null).collect(toCollection(ArrayList::new));
 	}
 
 	/**
@@ -69,12 +66,9 @@ class CrabCritter extends Critter {
 	public void makeMove(@NotNull Location loc) {
 		if (loc.equals(getLocation())) {
 			double r = random();
-			int angle;
-			if (r < 0.5) angle = LEFT;
-			else angle = RIGHT;
+			int angle = (r < 0.5) ? LEFT : RIGHT;
 			setDirection(getDirection() + angle);
-		} else
-			super.makeMove(loc);
+		} else super.makeMove(loc);
 	}
 
 	/**
@@ -88,12 +82,7 @@ class CrabCritter extends Critter {
 	 */
 	@NotNull
 	private ArrayList<Location> getLocationsInDirections(@NotNull int[] directions) {
-		var locs = new ArrayList<Location>();
-		Grid<?> gr = getGrid();
 		var loc = getLocation();
-		for (int d : directions)
-			if (gr.isValid(loc.getAdjacentLocation(getDirection() + d)))
-				locs.add(loc.getAdjacentLocation(getDirection() + d));
-		return locs;
+		return stream(directions).filter(d -> getGrid().isValid(loc.getAdjacentLocation(getDirection() + d))).mapToObj(d -> loc.getAdjacentLocation(getDirection() + d)).collect(toCollection(ArrayList::new));
 	}
 }
