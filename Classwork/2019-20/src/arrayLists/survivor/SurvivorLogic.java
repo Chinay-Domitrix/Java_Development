@@ -1,6 +1,9 @@
 package arrayLists.survivor;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
+import java.util.Random;
 
 import static java.lang.Math.*;
 import static java.lang.String.format;
@@ -17,18 +20,19 @@ final class SurvivorLogic {
 		out.println(specialSauce());
 	}
 
+	@NotNull
+	private static Integer apply(int i) {
+		return new Random().nextInt(99) + 2;
+	}
+
 	private void looper() {
-		range(0, runs).forEachOrdered(i -> {
-			survivorLogic();
-			out.println('\n');
-		});
+		range(0, runs).forEachOrdered(this::accept);
 	}
 
 	private void survivorLogic() {
-		ArrayList<Integer> survivorLogic;
 		var counter = 2;
 		var bounds = 10;
-		survivorLogic = range(0, bounds).mapToObj(i -> toIntExact(round((random() * 99) + 2))).collect(toCollection(ArrayList::new));
+		var survivorLogic = range(0, bounds).mapToObj(SurvivorLogic::apply).collect(toCollection(ArrayList::new));
 		out.printf("The starting numbers are:\n%s%n", survivorLogic);
 		do {
 			var random = toIntExact(round((random() * 99) + 2));
@@ -50,5 +54,10 @@ final class SurvivorLogic {
 	private String specialSauce() {
 		var x = specialSauceCounter.stream().mapToInt(integer -> integer).sum();
 		return format("The average number of tries it took to finish the %d%s was %s tries.", runs, (runs == 1) ? "round" : "rounds", x / (double) runs);
+	}
+
+	private void accept(int i) {
+		survivorLogic();
+		out.println('\n');
 	}
 }

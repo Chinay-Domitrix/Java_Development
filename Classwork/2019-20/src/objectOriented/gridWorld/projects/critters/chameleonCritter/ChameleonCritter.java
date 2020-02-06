@@ -1,4 +1,4 @@
-package objectOriented.gridWorld.projects.critters.chameleonCritters.chameleonCritter;
+package objectOriented.gridWorld.projects.critters.chameleonCritter;
 
 /*
  * AP(r) Computer Science GridWorld Case Study:
@@ -24,8 +24,9 @@ import info.gridworld.grid.Location;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Random;
 
-import static java.lang.Math.random;
+import static java.util.Objects.requireNonNull;
 
 /**
  * A <code>ChameleonCritter</code> takes on the color of neighboring actors as
@@ -38,8 +39,8 @@ public class ChameleonCritter extends Critter {
 	 * same as that neighbor's. If there are no neighbors, no action is taken.
 	 */
 	public void processActors(@NotNull ArrayList<Actor> actors) {
-		assert actors.size() != 0;
-		setColor(actors.get((int) (random() * actors.size())).getColor());
+		assert requireNonNull(actors).size() != 0;
+		setColor(actors.get(new Random().nextInt(actors.size())).getColor());
 	}
 
 	/**
