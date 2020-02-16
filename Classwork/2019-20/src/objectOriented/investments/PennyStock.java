@@ -8,11 +8,11 @@ import static java.lang.System.out;
 import static objectOriented.investments.InterestRate.doubleValue;
 
 final class PennyStock extends Investment {
+	private final int multiplier;
 	private double minimumInterest = 100;
 	private double maximumInterest = 100;
 	private double collapseChance = 100;
 	private double multiplierChance = 100;
-	private final int multiplier;
 
 	PennyStock() {
 		this(new Name("Penny Stock"));

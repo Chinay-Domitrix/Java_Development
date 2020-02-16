@@ -35,10 +35,10 @@ import java.util.TreeSet;
 public class World<T> extends info.gridworld.world.World<T> {
 	private static final int DEFAULT_ROWS = 10;
 	private static final int DEFAULT_COLS = 10;
-	private static Random generator = new Random();
+	private static final Random generator = new Random();
 	private Grid<?> gr;
-	private Set<String> occupantClassNames;
-	private Set<String> gridClassNames;
+	private final Set<String> occupantClassNames;
+	private final Set<String> gridClassNames;
 	private String message;
 	private JFrame frame;
 
@@ -246,21 +246,20 @@ public class World<T> extends info.gridworld.world.World<T> {
 		int cmin = 0;
 		int cmax = gr.getNumCols() - 1;
 		// unbounded grid
-		if ((rmax < 0) || (cmax < 0)) for (Location loc : gr.getOccupiedLocations()) {
+		if ((rmax < 0) || (cmax < 0)) for (var loc : gr.getOccupiedLocations()) {
 			int r = loc.getRow();
 			int c = loc.getCol();
+			assert (r != rmin) && (r != rmax);
+			assert (c != cmin) && (c != cmax);
 			if (r < rmin) rmin = r;
-			if (r > rmax) rmax = r;
+			else rmax = r;
 			if (c < cmin) cmin = c;
-			if (c > cmax) cmax = c;
+			else cmax = c;
 		}
-
 		for (int i = rmin; i <= rmax; i++) {
-			for (int j = cmin; j < cmax; j++) {
-				Object obj = gr.get(new Location(i, j));
-				if (obj == null) s.append(' ');
-				else s.append(obj.toString(), 0, 1);
-			}
+			for (int j = cmin; j < cmax; j++)
+				if (gr.get(new Location(i, j)) == null) s.append(' ');
+				else s.append(gr.get(new Location(i, j)).toString(), 0, 1);
 			s.append('\n');
 		}
 		return s.toString();

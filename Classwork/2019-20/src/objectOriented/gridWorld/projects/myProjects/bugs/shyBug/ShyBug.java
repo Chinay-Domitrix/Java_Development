@@ -1,6 +1,5 @@
 package objectOriented.gridWorld.projects.myProjects.bugs.shyBug;
 
-import info.gridworld.actor.Actor;
 import info.gridworld.actor.Bug;
 import info.gridworld.actor.Flower;
 import info.gridworld.grid.Location;
@@ -32,10 +31,10 @@ class ShyBug extends Bug {
 	public boolean canMove() {
 		if (getGrid() == null) return false;
 //		The basis of the expanded Location checks. It allows for checking beyond the one-square checks in super.canMove().
-		Location objectChecker2 = getLocation().getAdjacentLocation(getDirection()).getAdjacentLocation(getDirection());
-		Location objectChecker3 = objectChecker2.getAdjacentLocation(getDirection());
+		var objectChecker2 = getLocation().getAdjacentLocation(getDirection()).getAdjacentLocation(getDirection());
+		var objectChecker3 = objectChecker2.getAdjacentLocation(getDirection());
 //		This is what allows for checking for objects as necessary.
-		Actor objectCheckedObject = getGrid().get(objectChecker2);
+		var objectCheckedObject = getGrid().get(objectChecker2);
 		/*
 		 * This is almost the same as the conditional statement in super.canMove(), but the first condition has been
 		 * modified to check three squares ahead, and a second condition has been added to allow for the checking of

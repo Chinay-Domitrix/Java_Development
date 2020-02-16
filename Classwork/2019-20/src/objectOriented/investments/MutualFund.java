@@ -6,9 +6,9 @@ import static java.lang.System.out;
 import static objectOriented.investments.InterestRate.doubleValue;
 
 final class MutualFund extends Investment {
+	private final double fee;
 	private double minimumInterest = 100;
 	private double maximumInterest = 100;
-	private final double fee;
 
 	MutualFund() {
 		this(new Name("Mutual Fund"));

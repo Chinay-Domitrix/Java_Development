@@ -29,7 +29,12 @@ import static java.util.stream.Collectors.toCollection;
  */
 public abstract class AbstractGrid<E> implements Grid<E> {
 	public ArrayList<E> getNeighbors(Location loc) {
-		return getOccupiedAdjacentLocations(loc).stream().map(this::get).collect(toCollection(ArrayList::new));
+		ArrayList<E> es = new ArrayList<>();
+		for (Location location : getOccupiedAdjacentLocations(loc)) {
+			E e = get(location);
+			es.add(e);
+		}
+		return es;
 	}
 
 	public ArrayList<Location> getValidAdjacentLocations(Location loc) {
@@ -47,7 +52,10 @@ public abstract class AbstractGrid<E> implements Grid<E> {
 	}
 
 	public ArrayList<Location> getOccupiedAdjacentLocations(Location loc) {
-		return getValidAdjacentLocations(loc).stream().filter(neighborLoc -> get(neighborLoc) != null).collect(toCollection(ArrayList::new));
+		ArrayList<Location> locations = new ArrayList<>();
+		for (Location neighborLoc : getValidAdjacentLocations(loc))
+			if (get(neighborLoc) != null) locations.add(neighborLoc);
+		return locations;
 	}
 
 	/**

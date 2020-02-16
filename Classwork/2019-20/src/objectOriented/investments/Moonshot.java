@@ -5,9 +5,9 @@ import java.util.Random;
 import static java.lang.System.out;
 
 final class Moonshot extends Investment {
+	private final int multiplier;
 	private double collapseChance = 100;
 	private double multiplierChance = 100;
-	private final int multiplier;
 
 	Moonshot() {
 		this(new Name("Moonshot"));

@@ -3,8 +3,8 @@ package objectOriented.gridWorld.projects.myProjects.bugs.jumper;
 import info.gridworld.actor.Bug;
 
 class CBug extends Bug {
-	private int steps;
 	private final int sideLength;
+	private int steps;
 	private int count;
 	private int dir = 270;
 	private int d2 = 1;

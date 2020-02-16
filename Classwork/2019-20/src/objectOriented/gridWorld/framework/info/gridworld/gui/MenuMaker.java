@@ -55,9 +55,9 @@ public class MenuMaker<T> {
 	private T occupant;
 	private Grid<?> currentGrid;
 	private Location currentLocation;
-	private WorldFrame<T> parent;
-	private DisplayMap displayMap;
-	private ResourceBundle resources;
+	private final WorldFrame<T> parent;
+	private final DisplayMap displayMap;
+	private final ResourceBundle resources;
 
 	/**
 	 * Constructs a menu maker for a given world.
@@ -207,7 +207,7 @@ public class MenuMaker<T> {
 	}
 
 	private abstract class ConstructorItem extends MCItem {
-		private Constructor<?> c;
+		private final Constructor<?> c;
 
 		public ConstructorItem(@NotNull Constructor<?> c) {
 			setText(getDisplayString(null, c.getDeclaringClass().getName(), c.getParameterTypes()));
@@ -265,7 +265,7 @@ public class MenuMaker<T> {
 	}
 
 	private class MethodItem extends MCItem implements ActionListener {
-		private Method m;
+		private final Method m;
 
 		public MethodItem(Method m) {
 			setText(getDisplayString(m.getReturnType(), m.getName(), m.getParameterTypes()));
@@ -311,7 +311,7 @@ public class MenuMaker<T> {
 }
 
 class PropertySheet extends JPanel {
-	private static Map<Class<?>, PropertyEditor> defaultEditors;
+	private static final Map<Class<?>, PropertyEditor> defaultEditors;
 
 	static {
 		defaultEditors = new HashMap<>();

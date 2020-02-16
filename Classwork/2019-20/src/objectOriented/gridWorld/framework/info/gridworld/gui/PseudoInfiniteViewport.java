@@ -35,7 +35,7 @@ import static java.awt.Color.lightGray;
  */
 
 public class PseudoInfiniteViewport extends JViewport {
-	private JScrollPane scrollParent;
+	private final JScrollPane scrollParent;
 	private Point panPoint = new Point(0, 0);
 
 	/**

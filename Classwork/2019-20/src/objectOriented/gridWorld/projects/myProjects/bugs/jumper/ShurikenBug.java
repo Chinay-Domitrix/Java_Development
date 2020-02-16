@@ -14,11 +14,11 @@ import static info.gridworld.grid.Location.SOUTHEAST;
  * It takes in a length parameters between 5 and 10 to make a shuriken looking object
  */
 class ShurikenBug extends Bug {
-	private int steps;
-	private int segment;
 	private final int sideLength;
 	private final int times;
 	private final int turnsAtEnd = 6;
+	private int steps;
+	private int segment;
 	private int dir = 135;
 	private boolean firstTime = true;
 	private int count = 0;

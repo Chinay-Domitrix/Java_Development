@@ -32,8 +32,8 @@ import static java.util.stream.IntStream.range;
  * students.
  */
 public class ColorEditor extends PropertyEditorSupport {
-	private static Color[] colorValues = new Color[]{BLACK, BLUE, CYAN, DARK_GRAY, GRAY, GREEN, LIGHT_GRAY, MAGENTA, ORANGE, PINK, RED, WHITE, YELLOW};
-	private static ColorIcon[] colorIcons;
+	private static final Color[] colorValues = new Color[]{BLACK, BLUE, CYAN, DARK_GRAY, GRAY, GREEN, LIGHT_GRAY, MAGENTA, ORANGE, PINK, RED, WHITE, YELLOW};
+	private static final ColorIcon[] colorIcons;
 
 	static {
 		colorIcons = new ColorIcon[colorValues.length + 1];
@@ -70,7 +70,7 @@ public class ColorEditor extends PropertyEditorSupport {
 	}
 
 	private static class SolidColorIcon implements ColorIcon {
-		private Color color;
+		private final Color color;
 
 		@Contract(pure = true)
 		SolidColorIcon(Color c) {

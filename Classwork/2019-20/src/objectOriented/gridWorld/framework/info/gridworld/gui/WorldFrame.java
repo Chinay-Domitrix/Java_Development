@@ -57,14 +57,14 @@ import static javax.swing.event.HyperlinkEvent.EventType.ACTIVATED;
  */
 public class WorldFrame<T> extends JFrame {
 	private static int count = 0;
-	private GUIController<T> control;
-	private GridPanel display;
-	private JTextArea messageArea;
+	private final GUIController<T> control;
+	private final GridPanel display;
+	private final JTextArea messageArea;
 	private ArrayList<JMenuItem> menuItemsDisabledDuringRun;
-	private World<T> world;
-	private ResourceBundle resources;
-	private DisplayMap displayMap;
-	private Set<Class<?>> gridClasses;
+	private final World<T> world;
+	private final ResourceBundle resources;
+	private final DisplayMap displayMap;
+	private final Set<Class<?>> gridClasses;
 	private JMenu newGridMenu;
 
 	/**

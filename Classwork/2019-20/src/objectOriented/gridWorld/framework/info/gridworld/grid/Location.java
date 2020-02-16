@@ -26,12 +26,14 @@ import org.jetbrains.annotations.NotNull;
 import static java.lang.Integer.compare;
 import static java.lang.Math.*;
 import static java.lang.String.format;
+import static java.util.Objects.requireNonNull;
 
 /**
  * A <code>Location</code> object represents the row and column of a location
  * in a two-dimensional grid. <br />
  * The API of this class is testable on the AP CS A and AB exams.
  */
+@SuppressWarnings("rawtypes")
 public class Location implements Comparable {
 	/**
 	 * The turn angle for turning 90 degrees to the left.
@@ -96,11 +98,11 @@ public class Location implements Comparable {
 	/**
 	 * The row location in the grid.
 	 */
-	private int row;
+	private final int row;
 	/**
 	 * The column location in the grid.
 	 */
-	private int col;
+	private final int col;
 
 	/**
 	 * Constructs a location with given row and column coordinates.
@@ -174,8 +176,8 @@ public class Location implements Comparable {
 	 * <code>target</code>
 	 */
 	public int getDirectionToward(@NotNull Location target) {
-		int dx = target.getCol() - getCol();
-		int dy = target.getRow() - getRow();
+		int dx = requireNonNull(target).getCol() - getCol();
+		int dy = requireNonNull(target).getRow() - getRow();
 		// y axis points opposite to mathematical orientation
 		int angle = toIntExact(round(toDegrees(atan2(-dy, dx))));
 		// mathematical angle is counterclockwise from x-axis,
@@ -227,9 +229,9 @@ public class Location implements Comparable {
 	 * integer if this location is greater than <code>other</code>
 	 */
 	public int compareTo(@NotNull Object other) {
-		if (getRow() < ((Location) other).getRow()) return -1;
-		if (getRow() > ((Location) other).getRow()) return 1;
-		return compare(getCol(), ((Location) other).getCol());
+		if (getRow() < ((Location) requireNonNull(other)).getRow()) return -1;
+		if (getRow() > ((Location) requireNonNull(other)).getRow()) return 1;
+		return compare(getCol(), ((Location) requireNonNull(other)).getCol());
 	}
 
 	/**
@@ -238,6 +240,6 @@ public class Location implements Comparable {
 	 * @return a string with the row and column of this location, in the format of (row, column)
 	 */
 	public String toString() {
-		return format("%d, %d)", '(' + getRow(), getCol());
+		return format("(%d, %d)", getRow(), getCol());
 	}
 }

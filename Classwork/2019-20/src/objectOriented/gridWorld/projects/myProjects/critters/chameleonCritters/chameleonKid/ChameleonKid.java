@@ -14,10 +14,10 @@ class ChameleonKid extends FadingChameleonCritter {
 		try {
 			ahead = getActor(getDirection());
 			behind = getActor(getDirection() + HALF_CIRCLE);
-		} catch (Exception ignored) {
+		} catch (IllegalArgumentException ignored) {
 		}
-		if (ahead != null && getValid(getDirection())) x.add(ahead);
-		if (behind != null && getValid(getDirection() + HALF_CIRCLE)) x.add(behind);
+		if (getValid(getDirection()) && (ahead != null)) x.add(ahead);
+		if (getValid(getDirection() + HALF_CIRCLE) && (behind != null)) x.add(behind);
 		return x;
 	}
 

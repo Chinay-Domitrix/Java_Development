@@ -35,8 +35,8 @@ import java.util.Objects;
  * students.
  */
 public class DisplayMap {
-	private HashMap<Class<?>, Display> map = new HashMap<>();
-	private Display defaultDisplay = new DefaultDisplay();
+	private final HashMap<Class<?>, Display> map = new HashMap<>();
+	private final Display defaultDisplay = new DefaultDisplay();
 
 	/**
 	 * Associates a display object with a grid occupant class.
@@ -52,7 +52,7 @@ public class DisplayMap {
 			String className = cl.getName();
 			var dcl = Class.forName(className + "Display");
 			if (Display.class.isAssignableFrom(dcl)) {
-				Display display = (Display) dcl.newInstance();
+				@SuppressWarnings("deprecation") Display display = (Display) dcl.newInstance();
 				map.put(cl, display);
 				return display;
 			}
@@ -105,8 +105,9 @@ public class DisplayMap {
 	}
 
 	private class DisplayIcon implements Icon {
-		private Display displayObj;
-		private int width, height;
+		private final Display displayObj;
+		private final int width;
+		private final int height;
 
 		public DisplayIcon(Class<?> cl, int w, int h) {
 			displayObj = findDisplayFor(cl);

@@ -42,9 +42,9 @@ import static javax.imageio.ImageIO.read;
 
 public class ImageDisplay extends AbstractDisplay {
 	private static final String imageExtension = ".gif";
-	private Class<?> cl;
-	private String imageFilename;
-	private Map<String, Image> tintedVersions = new HashMap<>();
+	private final Class<?> cl;
+	private final String imageFilename;
+	private final Map<String, Image> tintedVersions = new HashMap<>();
 
 	/**
 	 * Constructs an object that knows how to display an image. Looks for the
@@ -111,7 +111,9 @@ public class ImageDisplay extends AbstractDisplay {
 	 * constructor (the color of an object).
 	 */
 	private static class TintFilter extends RGBImageFilter {
-		private int tintR, tintG, tintB;
+		private final int tintR;
+		private final int tintG;
+		private final int tintB;
 
 		/**
 		 * Constructs an image filter for tinting colors in an image.

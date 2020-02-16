@@ -30,9 +30,9 @@ import java.text.NumberFormat;
  * students.
  */
 public class LocationEditor extends PropertyEditorSupport {
-	private JFormattedTextField rowField = new JFormattedTextField(NumberFormat.getIntegerInstance());
-	private JFormattedTextField colField = new JFormattedTextField(NumberFormat.getIntegerInstance());
-	private JPanel panel = new JPanel();
+	private final JFormattedTextField rowField = new JFormattedTextField(NumberFormat.getIntegerInstance());
+	private final JFormattedTextField colField = new JFormattedTextField(NumberFormat.getIntegerInstance());
+	private final JPanel panel = new JPanel();
 
 	public LocationEditor() {
 		rowField.setColumns(5);

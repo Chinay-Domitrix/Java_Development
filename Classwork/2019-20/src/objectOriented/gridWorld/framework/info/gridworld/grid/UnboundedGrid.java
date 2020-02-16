@@ -29,7 +29,7 @@ import java.util.Map;
  * The implementation of this class is testable on the AP CS AB exam.
  */
 public class UnboundedGrid<E> extends AbstractGrid<E> {
-	private Map<Location, E> occupantMap;
+	private final Map<Location, E> occupantMap;
 
 	/**
 	 * Constructs an empty unbounded grid.
