@@ -3,44 +3,62 @@ package objectOriented.gridWorld.projects.myProjects.critters.medusaCritter;
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Critter;
 import info.gridworld.actor.Rock;
-import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
+import org.jetbrains.annotations.NotNull;
 
+import java.awt.*;
 import java.util.ArrayList;
 
-import static info.gridworld.grid.Location.NORTH;
+import static java.util.stream.Collectors.toCollection;
+import static java.util.stream.IntStream.rangeClosed;
 
 public class MedusaCritter extends Critter {
+	MedusaCritter(Color color) {
+		super();
+		this.setColor(color);
+	}
+
 	@Override
-	public void processActors(ArrayList<Actor> actors) {
-//		System.out.println(actors.size());
-//		if (actors.size() != 0 && actors.get(0) != null) {
-		Actor actor = actors.get(0);
-		Location x = actor.getLocation();
-		Rock y = new Rock(actor.getColor());
-		getGrid().put(x, y);
-//		}
+	public void processActors(@NotNull ArrayList<Actor> actors) {
+//		Only runs if there is an Actor in the ArrayList, and only if that Actor is not a Rock (otherwise the put method throws a bizarre NullPointerException)
+		if ((actors.size() != 0) && !(actors.get(0) instanceof Rock)) {
+//			Requires the Location of the actor to not be null, for obvious reasons
+			assert actors.get(0).getLocation() != null;
+//			Puts a Rock to replace the Actor at that Location
+			getGrid().put(actors.get(0).getLocation(), new Rock(actors.get(0).getColor()));
+		}
 	}
 
 	@Override
 	public ArrayList<Actor> getActors() {
-		ArrayList<Actor> x = new ArrayList<>();
-		Grid<Actor> grid = getGrid();
-		Actor current = null;
-		if (grid.isValid(getLocation().getAdjacentLocation(NORTH)))
-			current = grid.get(getLocation().getAdjacentLocation(NORTH));
-		for (int i = getLocation().getCol() - 1; i > 0; i--) {
-			assert current != null;
-			x.add(current);
-			if (x.size() == 1) break;
-//			try {
-			if (grid.isValid(current.getLocation().getAdjacentLocation(NORTH)))
-				current = grid.get(current.getLocation().getAdjacentLocation(NORTH));
-			else break;
-//			} catch (NullPointerException e) {
-//				new NullPointerException().addSuppressed(e);
-//			}
-		}
-		return x;
+//		The ArrayList to be returned
+		ArrayList<Actor> actors;
+//		The upper bound for the loop below; requires the loop to only run for the number of rows left above the MedusaCritter
+		var bound = getGrid().getNumRows() - getLocation().getRow();
+//		Checks if the Location is valid and if that Location contains an Actor. If there is an Actor at that Location, it is added to the actors ArrayList.
+		actors = rangeClosed(1, bound).filter(i -> checkLocationValidity(new Location(getLocation().getRow() - i, getLocation().getCol())) && getActor(new Location(getLocation().getRow() - i, getLocation().getCol())) != null).mapToObj(i -> getGrid().get(new Location(getLocation().getRow() - i, getLocation().getCol()))).collect(toCollection(ArrayList::new));
+		return actors;
+	}
+
+	/**
+	 * This method is a convenience method which checks the validity of a {@link Location}
+	 *
+	 * @return the validity of the {@linkplain Location}
+	 * @see info.gridworld.grid.Grid#isValid(Location)
+	 * @see info.gridworld.grid.AbstractGrid#isValid(Location)
+	 */
+	private boolean checkLocationValidity(Location location) {
+		return getGrid().isValid(location);
+	}
+
+	/**
+	 * This method is a convenience method which gets the {@linkplain Actor} at a certain {@link Location}
+	 *
+	 * @return the {@linkplain Actor} at a {@linkplain Location}
+	 * @see info.gridworld.grid.Grid#get(Location)
+	 * @see info.gridworld.grid.BoundedGrid#get(Location)
+	 */
+	private Actor getActor(Location location) {
+		return getGrid().get(location);
 	}
 }

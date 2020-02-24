@@ -4,22 +4,27 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Scanner;
 
+import static java.awt.Color.BLUE;
+import static java.awt.Color.RED;
 import static java.lang.System.*;
+import static java.lang.Thread.sleep;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class BallProject {
 	public static void main(final String[] args) {
-		final Scanner in = new Scanner(System.in);
-		final BallCanvas ballCanvas = new BallCanvas();
-		int xpos = 0, ypos = 0;
+		final var input = new Scanner(in);
+		final var ballCanvas = new BallCanvas();
+		var xpos = 0;
+		var ypos = 0;
 		out.print("Which task do you want to run? ");
-		final int task = in.nextInt();
+		final int task = input.nextInt();
 		switch (task) {
 			default:
 				out.println("Error");
 				exit(0);
 				break;
 			case 1:
-//	    Task 1
+//	            Task 1
 				for (ypos = 0; ypos <= 550; ypos += 5) {
 					ballCanvas.moveBall(xpos, ypos);
 					ballCanvas.repaint();
@@ -28,14 +33,14 @@ public class BallProject {
 				break;
 			case 2:
 				out.print("Which sub-program do you want to run, one or two? ");
-				final int t2c = in.nextInt();
+				final int t2c = input.nextInt();
 				switch (t2c) {
 					default:
 						out.println("Error");
 						exit(0);
 					case 1:
-//		Task 2, Sub-program 1
-//		I set a fixed delay time, rather than the increasing one in Task 1.
+//		                Task 2, Sub-program 1
+//		                I set a fixed delay time, rather than the increasing one input Task 1.
 						for (ypos = 0; ypos <= 550; ypos += 5) {
 							ballCanvas.moveBall(xpos, ypos);
 							ballCanvas.repaint();
@@ -43,8 +48,8 @@ public class BallProject {
 						}
 						break;
 					case 2:
-//		Task 2, Sub-program 2
-//		I increased the interval of change in the y-position and halved the delay, relative to Task 2, Sub-program 1
+//		                Task 2, Sub-program 2
+//		                I increased the interval of change input the y-position and halved the delay, relative to Task 2, Sub-program 1
 						xpos = 0;
 						for (ypos = 0; ypos <= 550; ypos += 10) {
 							ballCanvas.moveBall(xpos, ypos);
@@ -86,23 +91,19 @@ public class BallProject {
 				break;
 			case 5:
 				int change = 10;
-				// noinspection InfiniteLoopStatement
-				while (true) {
-					for (int i = 0; i <= 550; i += change) {
-						ypos += change;
-						ballCanvas.moveBall(xpos, ypos);
-						ballCanvas.repaint();
-						ballCanvas.delay(15.625);
-						if (i == 550) {
-							change *= -1;
-						}
-					}
+//				noinspection InfiniteLoopStatement
+				while (true) for (int i = 0; i <= 550; i += change) {
+					ypos += change;
+					ballCanvas.moveBall(xpos, ypos);
+					ballCanvas.repaint();
+					ballCanvas.delay(15.625);
+					if (i == 550) change *= -1;
 				}
 			case 6:
 				int xchange = 10;
 				int ychange = 10;
 				final long starttime = currentTimeMillis();
-				while (currentTimeMillis() - starttime <= 30000) {
+				while (currentTimeMillis() - starttime <= 30000)
 					for (int i = 0; i <= 550 && xpos >= 0 && ypos >= 0; i += 10) {
 						xpos += xchange;
 						ypos += ychange;
@@ -122,7 +123,6 @@ public class BallProject {
 							ychange *= -1;
 						}
 					}
-				}
 				break;
 			case 7:
 				int y;
@@ -143,7 +143,7 @@ public class BallProject {
 					}
 				}
 		}
-		in.close();
+		input.close();
 	}
 
 	static class BallCanvas {
@@ -152,7 +152,7 @@ public class BallProject {
 
 		BallCanvas() {
 			frame = new JFrame();
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 			frame.setSize(600, 600);
 			ball1 = new Ball();
 			frame.add(ball1);
@@ -161,7 +161,7 @@ public class BallProject {
 
 		void delay(final double x) {
 			try {
-				Thread.sleep((long) x);
+				sleep((long) x);
 			} catch (final Exception ignored) {
 			}
 		}
@@ -172,7 +172,6 @@ public class BallProject {
 
 		void repaint() {
 			frame.repaint();
-
 		}
 
 		static class Ball extends JPanel {
@@ -183,7 +182,7 @@ public class BallProject {
 			Ball() {
 				xPos = 0;
 				yPos = 0;
-				c = Color.RED;
+				c = RED;
 			}
 
 			void changePosition(final int x, final int y) {
@@ -196,7 +195,7 @@ public class BallProject {
 				super.paintComponent(g);
 				g.setColor(c);
 				g.fillOval(xPos, yPos, 50, 50);
-				g.setColor(Color.BLUE);
+				g.setColor(BLUE);
 				g.drawLine(300, 1, 300, 600);
 			}
 		}

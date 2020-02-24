@@ -8,9 +8,6 @@
 			<sourceFolder url="file://$MODULE_DIR$/Classwork/2018-19/resources" type="java-resource"/>
 			<sourceFolder url="file://$MODULE_DIR$/HelloWorld/src" isTestSource="false"/>
 			<sourceFolder url="file://$MODULE_DIR$/RandomWork/src" isTestSource="false"/>
-			<sourceFolder url="file://$MODULE_DIR$/Classwork" isTestSource="false"/>
-			<sourceFolder url="file://$MODULE_DIR$/HelloWorld" isTestSource="false"/>
-			<sourceFolder url="file://$MODULE_DIR$/RandomWork" isTestSource="false"/>
 			<sourceFolder url="file://$MODULE_DIR$/RandomWork/projectEuler" isTestSource="false"/>
 			<sourceFolder url="file://$MODULE_DIR$/RandomWork/hackPHS2019" isTestSource="false"/>
 			<excludeFolder url="file://$MODULE_DIR$/.idea"/>
