@@ -14,7 +14,7 @@ class Calculator {
 		out.printf("The answer is: %s%n", num1 / num2);
 	}
 
-	public static void main(final String[] args) throws InterruptedException {
+	public static void main(final String[] args) throws InterruptedException, IllegalStateException {
 		int counter = 1;
 		try (var calc = new Scanner(in)) {
 			out.println("Welcome to Calculator!");

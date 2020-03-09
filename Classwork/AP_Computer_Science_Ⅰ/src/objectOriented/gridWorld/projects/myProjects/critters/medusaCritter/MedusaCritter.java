@@ -3,6 +3,9 @@ package objectOriented.gridWorld.projects.myProjects.critters.medusaCritter;
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Critter;
 import info.gridworld.actor.Rock;
+import info.gridworld.grid.AbstractGrid;
+import info.gridworld.grid.BoundedGrid;
+import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 import org.jetbrains.annotations.NotNull;
 
@@ -31,21 +34,18 @@ public class MedusaCritter extends Critter {
 
 	@Override
 	public ArrayList<Actor> getActors() {
-//		The ArrayList to be returned
-		ArrayList<Actor> actors;
 //		The upper bound for the loop below; requires the loop to only run for the number of rows left above the MedusaCritter
 		var bound = getGrid().getNumRows() - getLocation().getRow();
 //		Checks if the Location is valid and if that Location contains an Actor. If there is an Actor at that Location, it is added to the actors ArrayList.
-		actors = rangeClosed(1, bound).filter(i -> checkLocationValidity(new Location(getLocation().getRow() - i, getLocation().getCol())) && getActor(new Location(getLocation().getRow() - i, getLocation().getCol())) != null).mapToObj(i -> getGrid().get(new Location(getLocation().getRow() - i, getLocation().getCol()))).collect(toCollection(ArrayList::new));
-		return actors;
+		return rangeClosed(1, bound).filter(i -> checkLocationValidity(new Location(getLocation().getRow() - i, getLocation().getCol())) && getActor(new Location(getLocation().getRow() - i, getLocation().getCol())) != null).mapToObj(i -> getGrid().get(new Location(getLocation().getRow() - i, getLocation().getCol()))).collect(toCollection(ArrayList::new));
 	}
 
 	/**
 	 * This method is a convenience method which checks the validity of a {@link Location}
 	 *
 	 * @return the validity of the {@linkplain Location}
-	 * @see info.gridworld.grid.Grid#isValid(Location)
-	 * @see info.gridworld.grid.AbstractGrid#isValid(Location)
+	 * @see Grid#isValid(Location)
+	 * @see AbstractGrid#isValid(Location)
 	 */
 	private boolean checkLocationValidity(Location location) {
 		return getGrid().isValid(location);
@@ -55,8 +55,8 @@ public class MedusaCritter extends Critter {
 	 * This method is a convenience method which gets the {@linkplain Actor} at a certain {@link Location}
 	 *
 	 * @return the {@linkplain Actor} at a {@linkplain Location}
-	 * @see info.gridworld.grid.Grid#get(Location)
-	 * @see info.gridworld.grid.BoundedGrid#get(Location)
+	 * @see Grid#get(Location)
+	 * @see BoundedGrid#get(Location)
 	 */
 	private Actor getActor(Location location) {
 		return getGrid().get(location);

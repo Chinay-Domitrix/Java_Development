@@ -16,6 +16,8 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.actor;
 
+import info.gridworld.actor.Actor;
+import info.gridworld.actor.Flower;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
