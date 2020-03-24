@@ -1,28 +1,19 @@
+package comparable;
+
+import org.jetbrains.annotations.NotNull;
+
 import static java.lang.Integer.compare;
 import static java.lang.String.format;
-import static java.lang.System.out;
 
 public class Student implements Comparable<Student> {
 	private String[] name;
 	private int idNumber;
 
-	private Student(String name, int idNumber) {
-		assert (name != null) && (name.split("").length == 2);
+	private Student(@NotNull String name, int idNumber) {
+		assert name.split("").length == 2;
 		assert (idNumber > 0);
 		this.name = name.split(" ");
 		this.idNumber = idNumber;
-	}
-
-	public static void main(String[] args) {
-		Student x = new Student("Chirag Baviskar", 30000054);
-		out.println(x.compareTo(new Student("Amit Ramasubramanian", 30000259)));
-		out.println(new Student("Amit Ramasubramanian", 30000259).compareTo(x));
-		out.println(x.compareTo(new Student("Tanay Baviskar", 30000049)));
-		out.println(new Student("Tanay Baviskar", 30000049).compareTo(x));
-		out.println(x.compareTo(new Student("Chirag Baviskar", 30000049)));
-		out.println(new Student("Chirag Baviskar", 30000049).compareTo(x));
-		out.println(x.compareTo(new Student("Chirag Baviskar", 30000054)));
-		out.println(new Student("Chirag Baviskar", 30000054).compareTo(x));
 	}
 
 	/**
@@ -35,7 +26,7 @@ public class Student implements Comparable<Student> {
 	 * depending on how similar the {@code Student} objects are
 	 */
 	@Override
-	public int compareTo(Student other) {
+	public int compareTo(@NotNull Student other) {
 		return (name[1].compareTo(other.name[1]) == 0) ? ((name[0].compareTo(other.name[0]) == 0) ? compare(idNumber, other.idNumber) : name[0].compareTo(other.name[0])) : name[1].compareTo(other.name[1]);
 	}
 
