@@ -2,6 +2,8 @@ package remoteLearning.march18.quiz;
 
 import java.util.Random;
 
+import static java.util.stream.IntStream.range;
+
 public class Shifter {
 	private String word;
 	private int shiftAmount;
@@ -17,9 +19,9 @@ public class Shifter {
 
 	private String shift() {
 		shiftAmount = new Random().nextInt(word.length() + 1) + 1;
-		var s = "";
-		for (int i = shiftAmount; i < word.length(); i++) s += word.substring(i, i + 1);
-		for (int i = 0; i < shiftAmount; i++) s += word.substring(i, i + 1);
-		return s;
+		StringBuilder s = new StringBuilder();
+		range(shiftAmount, word.length()).forEachOrdered(i -> s.append(word, i, i + 1));
+		range(0, shiftAmount).forEachOrdered(i -> s.append(word, i, i + 1));
+		return s.toString();
 	}
 }

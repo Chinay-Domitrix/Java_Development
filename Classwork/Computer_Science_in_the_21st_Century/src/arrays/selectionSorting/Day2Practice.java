@@ -37,9 +37,7 @@ class Day2Practice {
 				c[e] = f;
 			}
 		}
-		for (final char value : c) {
-			print(value + " ");
-		}
+		for (final char value : c) print(value + " ");
 	}
 
 	private static void intSort(final Scanner a, final int b, final int[] c, final String d) {
@@ -49,53 +47,35 @@ class Day2Practice {
 		}
 		int f;
 		int e;
-		if (d.equalsIgnoreCase("ascending")) {
-			for (int i = 0; i < c.length - 1; i++) {
-				e = i;
-				for (int j = i + 1; j < c.length; j++)
-					if (c[j] < c[e])
-						e = j;
-				f = c[i];
-				c[i] = c[e];
-				c[e] = f;
-			}
-		} else if (d.equalsIgnoreCase("descending")) {
-			for (int i = c.length - 1; i >= 0; i--) {
-				e = i;
-				//noinspection OverflowingLoopIndex
-				for (int j = c.length - 1; j < i + 1; j--)
-					if (c[j] > c[e])
-						e = j;
-				f = c[i];
-				c[i] = c[e];
-				c[e] = f;
-			}
+		if (d.equalsIgnoreCase("ascending")) for (int i = 0; i < c.length - 1; i++) {
+			e = i;
+			for (int j = i + 1; j < c.length; j++) if (c[j] < c[e]) e = j;
+			f = c[i];
+			c[i] = c[e];
+			c[e] = f;
 		}
-		for (final int value : c) {
-			print(value + " ");
+		else if (d.equalsIgnoreCase("descending")) for (var i = c.length - 1; i >= 0; i--) {
+			e = i;
+			//noinspection OverflowingLoopIndex
+			for (var j = c.length - 1; j < i + 1; j--) if (c[j] > c[e]) e = j;
+			f = c[i];
+			c[i] = c[e];
+			c[e] = f;
 		}
+		for (final var value : c) print(value + " ");
 	}
 
 	public static void main(final String[] args) {
-		final Scanner in = new Scanner(System.in);
-		int bounds;
-		int[] arrI;
-		char[] arrC;
-		String order, datatype;
+		final var in = new Scanner(System.in);
 		print("What datatype do you want to sort, int or char? ");
-		datatype = in.nextLine();
+		String datatype = in.nextLine();
 		print("How many values are you going to input? ");
-		bounds = in.nextInt();
+		int bounds = in.nextInt();
 		in.nextLine();
 		print("Will the order be ascending or descending? ");
-		order = in.nextLine();
-		if (datatype.equalsIgnoreCase("int")) {
-			arrI = new int[bounds];
-			intSort(in, bounds, arrI, order);
-		} else if (datatype.equalsIgnoreCase("char")) {
-			arrC = new char[bounds];
-			charSort(in, bounds, arrC, order);
-		}
+		String order = in.nextLine();
+		if (datatype.equalsIgnoreCase("int")) intSort(in, bounds, new int[bounds], order);
+		else if (datatype.equalsIgnoreCase("char")) charSort(in, bounds, new char[bounds], order);
 	}
 
 	private static void print(final Object a) {
