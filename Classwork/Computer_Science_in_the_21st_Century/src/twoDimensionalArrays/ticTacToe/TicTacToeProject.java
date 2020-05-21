@@ -12,6 +12,7 @@ import static java.awt.Color.RED;
 import static java.lang.Math.*;
 import static java.lang.System.*;
 import static java.lang.Thread.sleep;
+import static java.util.Objects.requireNonNull;
 import static javax.imageio.ImageIO.read;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
@@ -19,8 +20,7 @@ class TicTacToeProject {
 	public static void main(String[] args) {
 		var board = new TicTacToeBoard();
 		board.displayGame(false);
-		var grid = new int[][]{{0, 200, 600, 200}, {0, 400, 600, 400}, {200, 0, 200, 600}, {400, 0, 400, 600}};
-		board.defineBoard(grid);
+		board.defineBoard(new int[][]{{0, 200, 600, 200}, {0, 400, 600, 400}, {200, 0, 200, 600}, {400, 0, 400, 600}});
 //		This line changes from device to device.
 		var fPs = new String[]{"C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\2018-19\\resources\\twoDimensionalArrays\\ticTacToe\\TicTacToeX.png", "C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\2018-19\\resources\\twoDimensionalArrays\\ticTacToe\\TicTacToeO.png"};
 		board.setFiles(fPs[0], fPs[1]);
@@ -143,13 +143,15 @@ class TicTacToeProject {
 				pieces[1] = 2;
 				break;
 			default:
-				throw new IllegalStateException("Unexpected value: " + placementIn);
+				throw new IllegalArgumentException("The placement location value must be between one and nine, inclusive.");
 		}
 	}
 
 	private static void placePiece(int a, char[][] b, int c, int[] d) {
-		if ((a == 1) || (a == 2) || (a == 3) || (a == 4) || (a == 5) || (a == 6) || (a == 7) || (a == 8) || (a == 9))
-			b[d[0]][d[1]] = ((c % 2) == 0) ? 'o' : 'x';
+		assert (a >= 1) && (a <= 9) : "Location value must be between one and nine, inclusive.";
+		requireNonNull(b);
+		requireNonNull(d);
+		b[d[0]][d[1]] = ((c % 2) == 0) ? 'o' : 'x';
 	}
 
 	static class TicTacToeBoard {
