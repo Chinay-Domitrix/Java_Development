@@ -2,23 +2,25 @@ package arrays.binarySearching;
 
 import java.util.Scanner;
 
+import static java.lang.Math.random;
+import static java.lang.System.in;
 import static java.lang.System.out;
 import static java.util.Arrays.setAll;
 
 public class Review {
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
+		Scanner input = new Scanner(in);
 		int count = 0;
 		String redo;
 		main:
 		//noinspection ConstantConditions
 		do {
 			out.print("How many values do you want in the array? Be warned, the smaller your pool of numbers, the lower the chance you have of winning. ");
-			int[] arr = new int[in.nextInt()];
-			setAll(arr, i -> (int) (Math.random() * 10000) + 1);
+			int[] arr = new int[input.nextInt()];
+			setAll(arr, i -> (int) (random() * 10000) + 1);
 			out.print("What value do you want to search for? ");
-			int target = in.nextInt();
-			in.nextLine();
+			int target = input.nextInt();
+			input.nextLine();
 			int low = 0, high = arr.length - 1;
 			for (int i = 1; i < arr.length; i++) {
 				int j = i;
@@ -36,17 +38,15 @@ public class Review {
 				if (arr[middle] == target) {
 					found = true;
 					break;
-				} else if (arr[middle] < target)
-					low = middle + 1;
-				else if (arr[middle] > target)
-					high = middle - 1;
+				} else if (arr[middle] < target) low = middle + 1;
+				else if (arr[middle] > target) high = middle - 1;
 			}
 			if (found) {
 				out.println(target + " is in the array. You win! It took " + count + " attempts.");
 				out.print("Do you want to play again? ");
 				boolean error;
 				do {
-					redo = in.nextLine();
+					redo = input.nextLine();
 					if (redo.equalsIgnoreCase("yes") || redo.equalsIgnoreCase("y")) {
 						redo = "y";
 						error = false;

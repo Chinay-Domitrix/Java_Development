@@ -1,5 +1,9 @@
 package arrays.binarySearching;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.stream.IntStream;
+
 import static java.lang.Math.random;
 import static java.lang.System.out;
 import static java.util.Arrays.fill;
@@ -17,19 +21,13 @@ public class Day1Practice3 {
 			if (array[middle] == target) {
 				found = true;
 				break;
-			} else if (array[middle] < target) {
-				low = middle + 1;
-			} else if (array[middle] > target) {
-				high = middle - 1;
-			}
+			} else if (array[middle] < target) low = middle + 1;
+			else if (array[middle] > target) high = middle - 1;
 		}
 	}
 
-	private static int linearSearch(final int[] arr, final int x) {
-		for (int i = 0; i < arr.length; i++)
-			if (arr[i] == x)
-				return i;
-		return -1;
+	private static int linearSearch(final int @NotNull [] arr, final int x) {
+		return IntStream.range(0, arr.length).filter(i -> arr[i] == x).findFirst().orElse(-1);
 	}
 
 	public static void main(final String[] args) {
@@ -37,11 +35,10 @@ public class Day1Practice3 {
 		fill(counter, 0);
 		for (int a = 0; a < 100; a++) {
 			final int[] arr = new int[1000];
-			setAll(arr, i -> (int) (random() * 10000 + 1));
-			final int target = (int) (random() * 10000 + 1), targetIndex = linearSearch(arr, target);
+			setAll(arr, i -> (int) ((random() * 10000) + 1));
+			final int target = (int) ((random() * 10000) + 1), targetIndex = linearSearch(arr, target);
 			if (targetIndex != -1) {
-				out.println("The number " + target + " was found at index " + targetIndex + " after " + targetIndex
-						+ " tries.");
+				out.printf("The number %d was found at index %d after %d tries.%n", target, targetIndex, targetIndex);
 				counter[0] += targetIndex;
 			} else {
 				out.println(target + " was not in the array. The search took 1000 tries.");
@@ -58,13 +55,9 @@ public class Day1Practice3 {
 				}
 			}
 			binarySearch(arr, target);
-			if (found)
-				out.println(target + " is in the array. It took " + count + " tries.");
-			else
-				out.println(target + " is not in the array. It took " + count + " tries.");
+			out.println(found ? target + " is in the array. It took " + count + " tries." : target + " is not in the array. It took " + count + " tries.");
 			counter[1] += count;
 		}
-		out.println("Linear Search Run Average: " + counter[0] / 100.0 + " tries\nBinary Search Run Average: "
-				+ counter[1] / 100.0 + " tries");
+		out.printf("Linear Search Run Average: %s tries\nBinary Search Run Average: %s tries%n", counter[0] / 100.0, counter[1] / 100.0);
 	}
 }

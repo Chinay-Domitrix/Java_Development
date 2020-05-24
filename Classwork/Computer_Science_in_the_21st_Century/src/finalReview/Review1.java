@@ -3,17 +3,19 @@ package finalReview;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import static java.lang.Math.random;
 import static java.lang.System.*;
 import static java.util.Arrays.setAll;
+import static java.util.Arrays.stream;
 
 class Review1 {
-	private static final Scanner in = new Scanner(System.in);
+	private static final Scanner input = new Scanner(in);
 
 	public static void main(final String[] args) {
-		final int[] x = new int[(int) (Math.random() * 100 + 1)];
-		setAll(x, i -> (int) (Math.random() * 10 + 1));
+		final int[] x = new int[(int) (random() * 100 + 1)];
+		setAll(x, i -> (int) ((random() * 10) + 1));
 		out.print("Which task do you want to run? ");
-		switch (in.nextInt()) {
+		switch (input.nextInt()) {
 			default:
 				err.println("Error.");
 				break;
@@ -42,22 +44,16 @@ class Review1 {
 
 	private static void t1() {
 		out.print("Which loop type do you want to run? ");
-		final String lT = in.nextLine();
+		final var lT = input.nextLine();
 		int x = 0;
-		if (lT.equalsIgnoreCase("for"))
-			x = 1;
-		else if (lT.equalsIgnoreCase("while"))
-			x = 2;
+		if (lT.equalsIgnoreCase("for")) x = 1;
+		else if (lT.equalsIgnoreCase("while")) x = 2;
 		else if (lT.equalsIgnoreCase("do/while") || lT.equalsIgnoreCase("do-while") || lT.equalsIgnoreCase("do while"))
 			x = 3;
 		int i = 2;
 		switch (x) {
-			default:
-				err.println("Error.");
-				break;
 			case 1:
-				for (; i < 50; i += 2)
-					out.print(i + ' ');
+				for (; i < 50; i += 2) out.print(i + ' ');
 				break;
 			case 2:
 				while (i < 50) {
@@ -71,42 +67,41 @@ class Review1 {
 					i += 2;
 				} while (i < 50);
 				break;
+			default:
+				throw new IllegalStateException("Unexpected value: " + x);
 		}
 	}
 
 	private static void t2() {
 		out.print("Which loop type do you want to run? ");
-		final String lT = in.nextLine();
+		final String lT = input.nextLine();
 		int x = 0;
-		if (lT.equalsIgnoreCase("for"))
-			x = 1;
-		else if (lT.equalsIgnoreCase("while"))
-			x = 2;
-		else if (lT.equalsIgnoreCase("do/while") || lT.equalsIgnoreCase("do-while") || lT.equalsIgnoreCase("do while"))
+		if (lT.equalsIgnoreCase("for")) x = 1;
+		else if (lT.equalsIgnoreCase("while")) x = 2;
+		else if (lT.equalsIgnoreCase("do/while") | lT.equalsIgnoreCase("do-while") | lT.equalsIgnoreCase("do while"))
 			x = 3;
 		int i = 0;
 		int sum = 0;
 		out.println("Please enter five ints.");
 		switch (x) {
-			default:
-				out.println("Error.");
-				break;
 			case 1:
 				for (; i < 5; i++)
-					sum += in.nextInt();
+					sum += input.nextInt();
 				break;
 			case 2:
 				while (i < 5) {
-					sum += in.nextInt();
+					sum += input.nextInt();
 					i++;
 				}
 				break;
 			case 3:
 				do {
-					sum += in.nextInt();
+					sum += input.nextInt();
 					i++;
 				} while (i < 5);
 				break;
+			default:
+				throw new IllegalStateException("Unexpected value: " + x);
 		}
 		out.println("The sum was " + sum);
 	}
@@ -124,22 +119,19 @@ class Review1 {
 		}
 		out.println();
 		for (int i2 = 0; i2 < 4; i2++) {
-			for (int j2 = 0; j2 < 4; j2++)
-				out.print(i2);
+			for (int j2 = 0; j2 < 4; j2++) out.print(i2);
 			out.println();
 		}
 		out.println();
 		int t3P3Counter = 4;
 		for (int i3 = 1; i3 < 4; i3++) {
-			for (int j3 = 0; j3 <= i3; j3++)
-				out.print(t3P3Counter);
+			for (int j3 = 0; j3 <= i3; j3++) out.print(t3P3Counter);
 			t3P3Counter++;
 			out.println();
 		}
 		final int[] x = {9, 8, 7, 6};
 		for (int i4 = x.length - 1; i4 >= 0; i4--) {
-			for (int j4 = 0; j4 <= i4; j4++)
-				out.print(x[j4]);
+			for (int j4 = 0; j4 <= i4; j4++) out.print(x[j4]);
 			out.println();
 		}
 		out.println();
@@ -164,20 +156,15 @@ class Review1 {
 		out.println("a b c");
 		out.println("d e f");
 		out.print("g");
-		for (int i = 0; i < 2; i++)
-			out.print("\t");
+		for (int i = 0; i < 2; i++) out.print("\t");
 		out.println("h");
 		out.print("i");
 		out.println("j");
 	}
 
 	private static int t6(final int[] x) {
-		int sum = 0;
-		for (final int y : x)
-			if (y % 2 == 0)
-				sum += y;
-		if (x.length > 10)
-			sum *= 2;
+		int sum = stream(x).filter(y -> y % 2 == 0).sum();
+		if (x.length > 10) sum *= 2;
 		return sum;
 	}
 

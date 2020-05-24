@@ -21,8 +21,9 @@ class TicTacToeProject {
 		var board = new TicTacToeBoard();
 		board.displayGame(false);
 		board.defineBoard(new int[][]{{0, 200, 600, 200}, {0, 400, 600, 400}, {200, 0, 200, 600}, {400, 0, 400, 600}});
-//		This line changes from device to device.
-		var fPs = new String[]{"C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\2018-19\\resources\\twoDimensionalArrays\\ticTacToe\\TicTacToeX.png", "C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\2018-19\\resources\\twoDimensionalArrays\\ticTacToe\\TicTacToeO.png"};
+//		The following line changes from device to device.
+		var fPs = new String[]{"C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\Computer_Science_in_the_21st_Century\\resources\\twoDimensionalArrays\\ticTacToe\\TicTacToeX.png",
+				"C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\Computer_Science_in_the_21st_Century\\resources\\twoDimensionalArrays\\ticTacToe\\TicTacToeO.png"};
 		board.setFiles(fPs[0], fPs[1]);
 		var play = new char[3][3];
 		for (var i = 0; i < 3; i++) for (var j = 0; j < 3; j++) play[i][j] = ' ';
@@ -105,46 +106,35 @@ class TicTacToeProject {
 	}
 
 	private static void placementDetector(int placementIn, int[] pieces) {
-		switch (placementIn) {
-			case 1:
-				pieces[0] = 0;
-				pieces[1] = 0;
-				break;
-			case 2:
-				pieces[0] = 0;
-				pieces[1] = 1;
-				break;
-			case 3:
-				pieces[0] = 0;
-				pieces[1] = 2;
-				break;
-			case 4:
-				pieces[0] = 1;
-				pieces[1] = 0;
-				break;
-			case 5:
-				pieces[0] = 1;
-				pieces[1] = 1;
-				break;
-			case 6:
-				pieces[0] = 1;
-				pieces[1] = 2;
-				break;
-			case 7:
-				pieces[0] = 2;
-				pieces[1] = 0;
-				break;
-			case 8:
-				pieces[0] = 2;
-				pieces[1] = 1;
-				break;
-			case 9:
-				pieces[0] = 2;
-				pieces[1] = 2;
-				break;
-			default:
-				throw new IllegalArgumentException("The placement location value must be between one and nine, inclusive.");
-		}
+		if (placementIn == 1) {
+			pieces[0] = 0;
+			pieces[1] = 0;
+		} else if (placementIn == 2) {
+			pieces[0] = 0;
+			pieces[1] = 1;
+		} else if (placementIn == 3) {
+			pieces[0] = 0;
+			pieces[1] = 2;
+		} else if (placementIn == 4) {
+			pieces[0] = 1;
+			pieces[1] = 0;
+		} else if (placementIn == 5) {
+			pieces[0] = 1;
+			pieces[1] = 1;
+		} else if (placementIn == 6) {
+			pieces[0] = 1;
+			pieces[1] = 2;
+		} else if (placementIn == 7) {
+			pieces[0] = 2;
+			pieces[1] = 0;
+		} else if (placementIn == 8) {
+			pieces[0] = 2;
+			pieces[1] = 1;
+		} else if (placementIn == 9) {
+			pieces[0] = 2;
+			pieces[1] = 2;
+		} else
+			throw new IllegalArgumentException("The placement location value must be between one and nine, inclusive.");
 	}
 
 	private static void placePiece(int a, char[][] b, int c, int[] d) {
@@ -155,13 +145,13 @@ class TicTacToeProject {
 	}
 
 	static class TicTacToeBoard {
-		private final JFrame f;
+		private final JFrame f = new JFrame("Tic-Tac-Toe");
 		private int[][] b;
 		private char[][] p;
 
 		private TicTacToeBoard() {
-			f = new JFrame("Tic-Tac-Toe");
-			f.setIconImage(new ImageIcon("C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\2018-19\\resources\\twoDimensionalArrays\\ticTacToe\\Tic-tac-toe.png").getImage());
+//			The following line changes from device to device.
+			f.setIconImage(new javax.swing.ImageIcon("C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\Computer_Science_in_the_21st_Century\\resources\\twoDimensionalArrays\\ticTacToe\\Tic-tac-toe.png").getImage());
 			f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			f.setSize(620, 700);
 		}
@@ -197,10 +187,9 @@ class TicTacToeProject {
 			final BufferedImage[] images = new BufferedImage[2];
 
 			private DrawTicTacToeBoard(String a, String b) {
-				String[] y = {a, b};
 				setBackground(RED);
 				try {
-					for (int i = 0; i < 2; i++) images[i] = read(new File(y[i]));
+					for (var i = 0; i < 2; i++) images[i] = read(new File(new String[]{a, b}[i]));
 				} catch (IOException ignored) {
 				}
 			}
@@ -212,7 +201,7 @@ class TicTacToeProject {
 					for (int j = 0; j < 3; j++)
 						if (p[i][j] == 'x') a.drawImage(images[0], j * 200 + 25, i * 200 + 25, null, null);
 						else if (p[i][j] == 'o') a.drawImage(images[1], j * 200 + 25, i * 200 + 25, null, null);
-						else throw new IllegalStateException("Unexpected value: " + p[i][j]);
+//						else throw new IllegalStateException("Unexpected value: " + p[i][j]);
 				a.setColor(BLUE);
 				for (int i = 0; i < 6; i++) {
 					a.drawLine(b[0][0], b[0][1] + i, b[0][2], b[0][3] + i);
