@@ -4,7 +4,7 @@ import java.awt.*;
 
 class Ball extends Sprite {
 	Ball() {
-		super(0, 0, 2, 2, 30, 30);
+		super(0, 0, 1, 1, 30, 30);
 	}
 
 	void updatePosition() {

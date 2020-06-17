@@ -16,8 +16,8 @@ class Paddle extends Sprite {
 	}
 
 	void pressed(KeyEvent e) {
-		if (e.getKeyCode() == VK_LEFT) setXA(-4);
-		else if (e.getKeyCode() == VK_RIGHT) setXA(4);
+		if (e.getKeyCode() == VK_LEFT) setXA(-2);
+		else if (e.getKeyCode() == VK_RIGHT) setXA(2);
 		else if (e.getKeyCode() == VK_W && e.getModifiersEx() == CTRL_DOWN_MASK) exit(0);
 	}
 
