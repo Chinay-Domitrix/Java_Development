@@ -1,0 +1,1 @@
+I have most of my code down; however, I have this bug where the ball gets stuck on my paddle, and then the score increases rapidly until the ball becomes unstuck. I also gave up on a CPU player, as it was too complicated, and I am working on adding extra functionality such as restarting the game through the GUI.

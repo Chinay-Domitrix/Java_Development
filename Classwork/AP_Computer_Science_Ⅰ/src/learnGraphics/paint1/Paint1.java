@@ -1,4 +1,4 @@
-package learnGraphics;
+package learnGraphics.paint1;
 
 import javax.swing.*;
 import java.awt.*;

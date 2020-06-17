@@ -1,3 +1,4 @@
+/*
 package twoDimensionalArrays.ticTacToe;
 
 import javax.swing.*;
@@ -9,10 +10,9 @@ import java.util.Scanner;
 
 import static java.awt.Color.BLUE;
 import static java.awt.Color.RED;
-import static java.lang.Math.*;
+import static java.lang.Math.random;
 import static java.lang.System.*;
 import static java.lang.Thread.sleep;
-import static java.util.Objects.requireNonNull;
 import static javax.imageio.ImageIO.read;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
@@ -39,7 +39,7 @@ class TicTacToeProject {
 					for (var i = 0; i < 2; i++)
 						do {
 							counter++;
-							placementIn = toIntExact(round((random() * 10) + 1));
+							placementIn = (int) (random() * 9) + 1;
 							out.println(placementIn);
 							placementDetector(placementIn, pieces);
 							placePiece(placementIn, play, counter, pieces);
@@ -64,7 +64,7 @@ class TicTacToeProject {
 					do {
 						counter++;
 						out.print("Computer's turn: ");
-						placementIn = toIntExact(round((random() * 10) + 1));
+						placementIn = (int) (random() * 9) + 1;
 						out.println(placementIn);
 						placementDetector(placementIn, pieces);
 						placePiece(placementIn, play, counter, pieces);
@@ -106,42 +106,57 @@ class TicTacToeProject {
 	}
 
 	private static void placementDetector(int placementIn, int[] pieces) {
-		if (placementIn == 1) {
-			pieces[0] = 0;
-			pieces[1] = 0;
-		} else if (placementIn == 2) {
-			pieces[0] = 0;
-			pieces[1] = 1;
-		} else if (placementIn == 3) {
-			pieces[0] = 0;
-			pieces[1] = 2;
-		} else if (placementIn == 4) {
-			pieces[0] = 1;
-			pieces[1] = 0;
-		} else if (placementIn == 5) {
-			pieces[0] = 1;
-			pieces[1] = 1;
-		} else if (placementIn == 6) {
-			pieces[0] = 1;
-			pieces[1] = 2;
-		} else if (placementIn == 7) {
-			pieces[0] = 2;
-			pieces[1] = 0;
-		} else if (placementIn == 8) {
-			pieces[0] = 2;
-			pieces[1] = 1;
-		} else if (placementIn == 9) {
-			pieces[0] = 2;
-			pieces[1] = 2;
-		} else
-			throw new IllegalArgumentException("The placement location value must be between one and nine, inclusive.");
+		switch (placementIn) {
+			case 1:
+				pieces[0] = 0;
+				pieces[1] = 0;
+				break;
+			case 2:
+				pieces[0] = 0;
+				pieces[1] = 1;
+				break;
+			case 3:
+				pieces[0] = 0;
+				pieces[1] = 2;
+				break;
+			case 4:
+				pieces[0] = 1;
+				pieces[1] = 0;
+				break;
+			case 5:
+				pieces[0] = 1;
+				pieces[1] = 1;
+				break;
+			case 6:
+				pieces[0] = 1;
+				pieces[1] = 2;
+				break;
+			case 7:
+				pieces[0] = 2;
+				pieces[1] = 0;
+				break;
+			case 8:
+				pieces[0] = 2;
+				pieces[1] = 1;
+				break;
+			case 9:
+				pieces[0] = 2;
+				pieces[1] = 2;
+				break;
+			default:
+				throw new IllegalArgumentException("The placement location value must be between one and nine, inclusive.");
+		}
 	}
 
 	private static void placePiece(int a, char[][] b, int c, int[] d) {
-		assert (a >= 1) && (a <= 9) : "Location value must be between one and nine, inclusive.";
+		*/
+/*assert (a >= 1) && (a <= 9) : "Location value must be between one and nine, inclusive.";
 		requireNonNull(b);
 		requireNonNull(d);
-		b[d[0]][d[1]] = ((c % 2) == 0) ? 'o' : 'x';
+		b[d[0]][d[1]] = ((c % 2) == 0) ? 'o' : 'x';*//*
+
+		if ((a == 1) || (a == 2) || (a == 3) || (a == 4) || (a == 5) || (a == 6) || (a == 7) || (a == 8) || (a == 9))
+			b[d[0]][d[1]] = ((c % 2) == 0) ? 'o' : 'x';
 	}
 
 	static class TicTacToeBoard {
@@ -151,7 +166,7 @@ class TicTacToeProject {
 
 		private TicTacToeBoard() {
 //			The following line changes from device to device.
-			f.setIconImage(new javax.swing.ImageIcon("C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\Computer_Science_in_the_21st_Century\\resources\\twoDimensionalArrays\\ticTacToe\\Tic-tac-toe.png").getImage());
+			f.setIconImage(new ImageIcon("C:/Users/china.DESKTOP-ISAVF5I/Programming/Java_Development/Classwork/Computer_Science_in_the_21st_Century/resources/twoDimensionalArrays/ticTacToe/Tic-tac-toe.png").getImage());
 			f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			f.setSize(620, 700);
 		}
@@ -209,6 +224,280 @@ class TicTacToeProject {
 					a.drawLine(b[2][0] + i, b[2][1], b[2][2] + i, b[2][3]);
 					a.drawLine(b[3][0] + i, b[3][1], b[3][2] + i, b[3][3]);
 				}
+			}
+		}
+	}
+}*/
+package twoDimensionalArrays.ticTacToe;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
+import static java.awt.Color.BLUE;
+import static java.awt.Color.RED;
+import static java.lang.Math.random;
+import static java.lang.System.*;
+import static java.lang.Thread.sleep;
+import static java.util.Arrays.deepToString;
+import static java.util.Objects.requireNonNull;
+import static javax.imageio.ImageIO.read;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+
+class TicTacToeProject {
+	public static void main(String[] args) {
+		var board = new TicTacToeBoard(620, 700);
+		board.displayGame(false);
+		var scanner = new Scanner(in);
+		board.defineBoard(new int[][]{{0, 200, 600, 200}, {0, 400, 600, 400}, {200, 0, 200, 600}, {400, 0, 400, 600}});
+//		This line changes from device to device.
+		var fPs = new String[]{"C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\Computer_Science_in_the_21st_Century\\images\\twoDimensionalArrays\\ticTacToe\\TicTacToeX.png",
+				"C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\Computer_Science_in_the_21st_Century\\images\\twoDimensionalArrays\\ticTacToe\\TicTacToeO.png"};
+		board.setFiles(fPs[0], fPs[1]);
+		var play = new char[3][3];
+		for (int i = 0; i < 3; i++) for (int j = 0; j < 3; j++) play[i][j] = ' ';
+		board.setBoard(play);
+		out.print("How many players? ");
+		board.displayGame(true);
+		int counter = 0;
+		var pieces = new int[2];
+		int placementIn;
+		switch (scanner.nextInt()) {
+			case 0:
+				do {
+					both:
+					for (int i = 0; i < 2; i++)
+						do {
+							if (!deepToString(play).contains(" ")) break both;
+							do {
+								placementIn = (int) (random() * 9) + 1;
+							} while (!isValid(play, placementIn));
+							out.println(placementIn);
+							placementDetector(placementIn, pieces);
+							placePiece(placementIn, play, counter, pieces);
+							board.repaint();
+							board.delay();
+							if (play[pieces[0]][pieces[1]] != ' ') {
+								counter++;
+								break;
+							}
+						} while ((play[pieces[0]][pieces[1]] == ' ') & (counter < 9) & !isVictory(play));
+				} while (deepToString(play).contains(" "));
+				break;
+			case 1:
+				do {
+					do {
+						if (!deepToString(play).contains(" ")) break;
+						out.print("Player's turn: ");
+						do {
+							placementIn = scanner.nextInt();
+							if (!isValid(play, placementIn))
+								out.println("Please enter a valid position.");
+						} while (!isValid(play, placementIn));
+						placementDetector(placementIn, pieces);
+						placePiece(placementIn, play, counter, pieces);
+						board.repaint();
+						board.delay();
+						if (play[pieces[0]][pieces[1]] != ' ') {
+							counter++;
+							break;
+						}
+					} while ((play[pieces[0]][pieces[1]] == ' ') & (counter < 9) & !isVictory(play));
+					do {
+						if (!deepToString(play).contains(" ")) break;
+						counter++;
+						out.print("Computer's turn: ");
+						do {
+							placementIn = (int) (random() * 9) + 1;
+						} while (!isValid(play, placementIn));
+						out.println(placementIn);
+						placementDetector(placementIn, pieces);
+						placePiece(placementIn, play, counter, pieces);
+						board.repaint();
+						board.delay();
+						if (play[pieces[0]][pieces[1]] != ' ') {
+							counter++;
+							break;
+						}
+					} while ((play[pieces[0]][pieces[1]] == ' ') & (counter < 9) & !isVictory(play));
+				} while (deepToString(play).contains(" "));
+				scanner.close();
+				break;
+			case 2:
+				do {
+					do {
+						if (!deepToString(play).contains(" ")) break;
+						out.print("Player 1's turn: ");
+						do {
+							placementIn = scanner.nextInt();
+							if (!isValid(play, placementIn))
+								out.println("Please enter a valid position.");
+						} while (!isValid(play, placementIn));
+						placementDetector(placementIn, pieces);
+						placePiece(placementIn, play, counter, pieces);
+						board.repaint();
+						board.delay();
+						if (play[pieces[0]][pieces[1]] != ' ') {
+							counter++;
+							break;
+						}
+					} while ((play[pieces[0]][pieces[1]] == ' ') && (counter < 9) && !isVictory(play));
+					do {
+						if (!deepToString(play).contains(" ")) break;
+						out.print("Player 2's turn: ");
+						do {
+							placementIn = scanner.nextInt();
+							if (!isValid(play, placementIn))
+								out.println("Please enter a valid position.");
+						} while (!isValid(play, placementIn));
+						placementDetector(placementIn, pieces);
+						placePiece(placementIn, play, counter, pieces);
+						board.repaint();
+						board.delay();
+						if (play[pieces[0]][pieces[1]] != ' ') {
+							counter++;
+							break;
+						}
+					} while ((play[pieces[0]][pieces[1]] == ' ') && (counter < 9) && !isVictory(play));
+				} while (deepToString(play).contains(" "));
+				scanner.close();
+				break;
+			default:
+				scanner.close();
+				err.println("Error.");
+				exit(0);
+				break;
+		}
+		victory(play);
+	}
+
+	private static void placementDetector(int placementIn, int[] pieces) {
+		if (placementIn == 1) {
+			pieces[0] = 0;
+			pieces[1] = 0;
+		} else if (placementIn == 2) {
+			pieces[0] = 0;
+			pieces[1] = 1;
+		} else if (placementIn == 3) {
+			pieces[0] = 0;
+			pieces[1] = 2;
+		} else if (placementIn == 4) {
+			pieces[0] = 1;
+			pieces[1] = 0;
+		} else if (placementIn == 5) {
+			pieces[0] = 1;
+			pieces[1] = 1;
+		} else if (placementIn == 6) {
+			pieces[0] = 1;
+			pieces[1] = 2;
+		} else if (placementIn == 7) {
+			pieces[0] = 2;
+			pieces[1] = 0;
+		} else if (placementIn == 8) {
+			pieces[0] = 2;
+			pieces[1] = 1;
+		} else if (placementIn == 9) {
+			pieces[0] = 2;
+			pieces[1] = 2;
+		}
+	}
+
+	private static void placePiece(int a, char[][] b, int c, int[] d) {
+		if ((a == 1) || (a == 2) || (a == 3) || (a == 4) || (a == 5) || (a == 6) || (a == 7) || (a == 8) || (a == 9))
+			b[d[0]][d[1]] = ((c % 2) == 0) ? 'o' : 'x';
+	}
+
+	@SuppressWarnings("BooleanMethodIsAlwaysInverted")
+	private static boolean isVictory(char[][] board) {
+		requireNonNull(board);
+		return (((board[0][0] == 'x') && (board[0][1] == 'x') && (board[0][2] == 'x')) || ((board[1][0] == 'x') && (board[1][1] == 'x') && (board[1][2] == 'x')) || ((board[2][0] == 'x') && (board[2][1] == 'x') && (board[2][2] == 'x'))) || (((board[0][0] == 'x') && (board[1][0] == 'x') && (board[2][0] == 'x')) || ((board[0][1] == 'x') && (board[1][1] == 'x') && (board[2][1] == 'x')) || ((board[0][2] == 'x') && (board[1][2] == 'x') && (board[2][2] == 'x'))) || (((board[0][0] == 'x') && (board[1][1] == 'x') && (board[2][2] == 'x')) || ((board[2][0] == 'x') && (board[1][1] == 'x') && (board[0][2] == 'x'))) || (((board[0][0] == 'o') && (board[0][1] == 'o') && (board[0][2] == 'o')) || ((board[1][0] == 'o') && (board[1][1] == 'o') && (board[1][2] == 'o')) || ((board[2][0] == 'o') && (board[2][1] == 'o') && (board[2][2] == 'o'))) || (((board[0][0] == 'o') && (board[1][0] == 'o') && (board[2][0] == 'o')) || ((board[0][1] == 'o') && (board[1][1] == 'o') && (board[2][1] == 'o')) || ((board[0][2] == 'o') && (board[1][2] == 'o') && (board[2][2] == 'o'))) || (((board[0][0] == 'o') && (board[1][1] == 'o') && (board[2][2] == 'o')) || ((board[2][0] == 'o') && (board[1][1] == 'o') && (board[0][2] == 'o')));
+	}
+
+	private static void victory(char[][] board) {
+		requireNonNull(board);
+		out.println(((((board[0][0] == 'x') && (board[0][1] == 'x') && (board[0][2] == 'x')) || ((board[1][0] == 'x') && (board[1][1] == 'x') && (board[1][2] == 'x')) || ((board[2][0] == 'x') && (board[2][1] == 'x') && (board[2][2] == 'x'))) || (((board[0][0] == 'x') && (board[1][0] == 'x') && (board[2][0] == 'x')) || ((board[0][1] == 'x') && (board[1][1] == 'x') && (board[2][1] == 'x')) || ((board[0][2] == 'x') && (board[1][2] == 'x') && (board[2][2] == 'x'))) || (((board[0][0] == 'x') && (board[1][1] == 'x') && (board[2][2] == 'x')) || ((board[2][0] == 'x') && (board[1][1] == 'x') && (board[0][2] == 'x')))) ? "The winner is Player One" : (((((board[0][0] == 'o') && (board[0][1] == 'o') && (board[0][2] == 'o')) || ((board[1][0] == 'o') && (board[1][1] == 'o') && (board[1][2] == 'o')) || ((board[2][0] == 'o') && (board[2][1] == 'o') && (board[2][2] == 'o'))) || (((board[0][0] == 'o') && (board[1][0] == 'o') && (board[2][0] == 'o')) || ((board[0][1] == 'o') && (board[1][1] == 'o') && (board[2][1] == 'o')) || ((board[0][2] == 'o') && (board[1][2] == 'o') && (board[2][2] == 'o'))) || (((board[0][0] == 'o') && (board[1][1] == 'o') && (board[2][2] == 'o')) || ((board[2][0] == 'o') && (board[1][1] == 'o') && (board[0][2] == 'o')))) ? "The winner is Player Two" : "There is no winner"));
+	}
+
+	private static boolean isValid(char[][] board, int placement) {
+		if (placement == 1) return board[0][0] == ' ';
+		else if (placement == 2) return board[0][1] == ' ';
+		else if (placement == 3) return board[0][2] == ' ';
+		else if (placement == 4) return board[1][0] == ' ';
+		else if (placement == 5) return board[1][1] == ' ';
+		else if (placement == 6) return board[1][2] == ' ';
+		else if (placement == 7) return board[2][0] == ' ';
+		else if (placement == 8) return board[2][1] == ' ';
+		else return (placement == 9) && (board[2][2] == ' ');
+	}
+}
+
+class TicTacToeBoard {
+	private final JFrame f;
+	private int[][] b;
+	private char[][] p;
+
+	@SuppressWarnings("SameParameterValue")
+	TicTacToeBoard(int width, int height) {
+		f = new JFrame("Tic-Tac-Toe");
+		f.setIconImage(new ImageIcon("C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\Computer_Science_in_the_21st_Century\\images\\twoDimensionalArrays\\ticTacToe\\Tic-tac-toe.png").getImage());
+		f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		f.setSize(width, height);
+	}
+
+	void defineBoard(int[][] a) {
+		b = a;
+	}
+
+	void delay() {
+		try {
+			sleep(1000);
+		} catch (InterruptedException ignored) {
+		}
+	}
+
+	void displayGame(boolean a) {
+		f.setVisible(a);
+	}
+
+	void repaint() {
+		f.repaint();
+	}
+
+	void setBoard(char[][] a) {
+		p = a;
+	}
+
+	void setFiles(String a, String b) {
+		f.add(new DrawTicTacToeBoard(a, b));
+	}
+
+	class DrawTicTacToeBoard extends JPanel {
+		final BufferedImage[] images = new BufferedImage[2];
+
+		private DrawTicTacToeBoard(String a, String b) {
+			setBackground(RED);
+			try {
+				for (int i = 0; i < 2; i++) images[i] = read(new File(new String[]{a, b}[i]));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		public void paintComponent(Graphics a) {
+			super.paintComponent(a);
+			for (int i = 0; i < 3; i++)
+				for (int j = 0; j < 3; j++)
+					if (p[i][j] == 'x') a.drawImage(images[0], j * 200 + 25, i * 200 + 25, null, null);
+					else if (p[i][j] == 'o') a.drawImage(images[1], j * 200 + 25, i * 200 + 25, null, null);
+			a.setColor(BLUE);
+			for (int i = 0; i < 6; i++) {
+				a.drawLine(b[0][0], b[0][1] + i, b[0][2], b[0][3] + i);
+				a.drawLine(b[1][0], b[1][1] + i, b[1][2], b[1][3] + i);
+				a.drawLine(b[2][0] + i, b[2][1], b[2][2] + i, b[2][3]);
+				a.drawLine(b[3][0] + i, b[3][1], b[3][2] + i, b[3][3]);
 			}
 		}
 	}
