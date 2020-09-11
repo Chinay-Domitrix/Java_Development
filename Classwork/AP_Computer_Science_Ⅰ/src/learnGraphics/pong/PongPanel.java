@@ -42,12 +42,7 @@ class PongPanel extends JPanel implements KeyListener, ActionListener {
 		else if (ball.getY() < 0)
 			ball.setYA(-ball.getYA());
 		else if (ball.getY() > (getHeight() - ball.getHeight())) {
-			/*int x = */
-			showMessageDialog(this, "Game Over. You scored " + score + "."/*\n\nDo you want to play again?*/, "Pong", INFORMATION_MESSAGE);
-			/*if (x == 0) {
-				Thread.currentThread().interrupt();
-				Pong.main(new String[0]);
-			} else if (x == 1)*/
+			showMessageDialog(this, "Game Over. You scored " + score + '.', "Pong", INFORMATION_MESSAGE);
 			System.exit(0);
 		}
 	}
