@@ -1,4 +1,4 @@
-package twoDimensionalArrays;
+package arrays.twoDimensionalArrays;
 
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;

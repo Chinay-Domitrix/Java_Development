@@ -1,4 +1,4 @@
-package twoDimensionalArrays;
+package arrays.twoDimensionalArrays;
 
 import static java.lang.Math.pow;
 import static java.lang.System.out;
