@@ -1,4 +1,4 @@
-package mobileApp;
+package anonymousClassesDemos;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,9 +32,7 @@ public class Demo4 extends JPanel {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				while (true) {
-					System.out.println("Mouse Coordinates: (" + e.getX() + ", " + e.getY() + ')');
-				}
+				while (true) System.out.println("Mouse Coordinates: (" + e.getX() + ", " + e.getY() + ')');
 			}
 
 			@Override
