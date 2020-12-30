@@ -9,7 +9,7 @@ import static java.lang.System.out;
 import static java.util.Arrays.stream;
 
 public class Defensive {
-	private static ArrayList<String> stringsAL = new ArrayList<>();
+	private static final ArrayList<String> stringsAL = new ArrayList<>();
 
 	public static void main(String... args) {
 		var s = new String[4];

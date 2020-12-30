@@ -16,9 +16,6 @@ class CalculatorController {
 	 * just interprets the given action
 	 */
 	String[] update(String action) {
-		if (action.equals("Graph")) {
-			return calcModel.evaluateGraph();
-		}
-		return calcModel.performAction(action);
+		return action.equals("Graph") ? calcModel.evaluateGraph() : calcModel.performAction(action);
 	}
 }

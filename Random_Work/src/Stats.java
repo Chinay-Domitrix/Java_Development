@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Stats {
-	private ArrayList<ScoreInfo> scoreList = new ArrayList<>();
+	private final ArrayList<ScoreInfo> scoreList = new ArrayList<>();
 
-	public boolean record(int score) {
+	private void record(int score) {
 		boolean found = false;
 		int i;
 		for (i = 0; i < scoreList.size(); i++)
@@ -21,10 +21,9 @@ public class Stats {
 				scoreList.set(i, scoreList.get(minIndex));
 				scoreList.set(minIndex, pH);
 			}
-			return true;
+			return;
 		}
 		scoreList.get(i).increment();
-		return false;
 	}
 
 	public void recordScores(int[] stuScores) {
@@ -33,10 +32,10 @@ public class Stats {
 }
 
 class ScoreInfo {
-	private int score;
+	private final int score;
 	private int numStudents;
 
-	public ScoreInfo(int aScore) {
+	ScoreInfo(int aScore) {
 		score = aScore;
 		numStudents = 1;
 	}

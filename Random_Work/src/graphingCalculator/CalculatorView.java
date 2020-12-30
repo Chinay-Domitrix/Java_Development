@@ -11,7 +11,9 @@ import static java.awt.BorderLayout.WEST;
 import static java.awt.Color.gray;
 import static java.awt.Color.red;
 import static java.awt.Font.PLAIN;
-import static java.lang.Double.*;
+import static java.lang.Double.valueOf;
+import static java.util.stream.IntStream.range;
+import static java.util.stream.IntStream.rangeClosed;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import static javax.swing.JTabbedPane.TOP;
 import static javax.swing.JTabbedPane.WRAP_TAB_LAYOUT;
@@ -177,65 +179,65 @@ class CalculatorView implements ActionListener {
 		buttonList.add(power);
 		JButton squared = new JButton("x^2");
 		buttonList.add(squared);
-		JButton sqrt = new JButton("sqrt");
+		var sqrt = new JButton("sqrt");
 		buttonList.add(sqrt);
 //		Row three of buttons on the keyboard
-		JButton four = new JButton(Integer.toString(4));
+		var four = new JButton(Integer.toString(4));
 		buttonList.add(four);
-		JButton five = new JButton(Integer.toString(5));
+		var five = new JButton(Integer.toString(5));
 		buttonList.add(five);
-		JButton six = new JButton(Integer.toString(6));
+		var six = new JButton(Integer.toString(6));
 		buttonList.add(six);
-		JButton sine = new JButton("sin()");
+		var sine = new JButton("sin()");
 		buttonList.add(sine);
-		JButton cosine = new JButton("cos()");
+		var cosine = new JButton("cos()");
 		buttonList.add(cosine);
-		JButton tan = new JButton("tan()");
+		var tan = new JButton("tan()");
 		buttonList.add(tan);
 //		Row four of buttons on the keyboard
-		JButton one = new JButton(Integer.toString(1));
+		var one = new JButton(Integer.toString(1));
 		buttonList.add(one);
-		JButton two = new JButton(Integer.toString(2));
+		var two = new JButton(Integer.toString(2));
 		buttonList.add(two);
-		JButton three = new JButton(Integer.toString(3));
+		var three = new JButton(Integer.toString(3));
 		buttonList.add(three);
-		JButton pi = new JButton("pi");
+		var pi = new JButton("pi");
 		buttonList.add(pi);
-		JButton ln = new JButton("ln()");
+		var ln = new JButton("ln()");
 		buttonList.add(ln);
-		JButton e = new JButton("e");
+		var e = new JButton("e");
 		buttonList.add(e);
 //		Row five of buttons on the keyboard
-		JButton period = new JButton(".");
+		var period = new JButton(".");
 		buttonList.add(period);
-		JButton zero = new JButton(Integer.toString(0));
+		var zero = new JButton(Integer.toString(0));
 		buttonList.add(zero);
-		JButton negative = new JButton("(-)");
+		var negative = new JButton("(-)");
 		buttonList.add(negative);
-		JButton x = new JButton("x");
+		var x = new JButton("x");
 		buttonList.add(x);
-		JButton enter = new JButton("Enter");
+		var enter = new JButton("Enter");
 		buttonList.add(enter);
-		JButton graph = new JButton("Graph");
+		var graph = new JButton("Graph");
 		buttonList.add(graph);
 //		Row six of buttons on the keyboard
-		JButton delete = new JButton("Delete");
+		var delete = new JButton("Delete");
 		buttonList.add(delete);
-		JButton clear = new JButton("Clear");
+		var clear = new JButton("Clear");
 		buttonList.add(clear);
-		JButton clearAll = new JButton("<html>" + "Clear" + "<br>" + "All" + "<html>");
+		var clearAll = new JButton("<html>" + "Clear" + "<br>" + "All" + "<html>");
 		buttonList.add(clearAll);
-		JButton clearGraph = new JButton("<html>" + "Clear" + "<br>" + "Graph" + "<html>");
+		var clearGraph = new JButton("<html>" + "Clear" + "<br>" + "Graph" + "<html>");
 		buttonList.add(clearGraph);
 //		Creates a new font so the buttons have larger text than everything else
 		Font f = new Font("Dialogue", PLAIN, 22);
 //		Loops through the button list, sets the font, adds listeners, then adds them to the panel
-		for (JButton temp : buttonList) {
+		buttonList.forEach(temp -> {
 			temp.setFont(f);
 			temp.setActionCommand(temp.getText());
 			temp.addActionListener(this);
 			buttonPanel.add(temp);
-		}
+		});
 	}
 
 	/**
@@ -294,10 +296,7 @@ class CalculatorView implements ActionListener {
 				break;
 //			If the user pushes the "Graph" button graph the equation if they are on the graphPanel
 			case "Graph":
-				if (graphDisplayPanel.isShowing()) {
-					String[] coordinates = calcControl.update("Graph");
-					drawPoints(coordinates);
-				}
+				if (graphDisplayPanel.isShowing()) drawPoints(calcControl.update("Graph"));
 				break;
 //			If the user pushes "Clear All" reset all text areas to their original state
 			case "<html>Clear<br>All<html>":
@@ -330,12 +329,12 @@ class CalculatorView implements ActionListener {
 		g.setColor(gray);
 		int boxSize = 30;
 //		Loops and draws horizontal and vertical lines for every 30 units
-		for (int i = 0; i <= 20; i++) {
+		rangeClosed(0, 20).forEachOrdered(i -> {
 			if ((i % 10) == 0) g.setStroke(new BasicStroke(3));
 			g.drawLine(boxSize * i, 0, boxSize * i, 600);
 			g.drawLine(0, boxSize * i, 600, boxSize * i);
 			g.setStroke(new BasicStroke(1));
-		}
+		});
 	}
 
 	/**
@@ -345,10 +344,10 @@ class CalculatorView implements ActionListener {
 	 */
 	private void drawPoints(String[] coordinates) {
 		drawGrid();
-		for (int j = 0; j < coordinates.length - 1; j++) {
+		range(0, coordinates.length - 1).forEachOrdered(j -> {
 			g.setColor(red);
 			g.drawLine(j, 300 - valueOf(coordinates[j]).intValue(), j + 1, 300 - valueOf(coordinates[j + 1]).intValue());
-		}
+		});
 	}
 
 	/**

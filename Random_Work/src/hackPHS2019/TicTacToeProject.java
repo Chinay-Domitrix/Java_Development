@@ -37,6 +37,32 @@ final class TicTacToeProject {
 			var counter = 0;
 			var pieces = new int[2];
 			switch (scanner.nextInt()) {
+				case 0:
+					do {
+						do {
+							counter++;
+							out.print("Computer's turn: ");
+							var placementIn = (int) (random() * 9) + 1;
+							out.println(placementIn);
+							placementDetector(placementIn, pieces);
+							placePiece(placementIn, play, counter, pieces);
+							board.repaint();
+							board.delay();
+							if (play[pieces[0]][pieces[1]] != ' ') break;
+						} while (play[pieces[0]][pieces[1]] == ' ');
+						do {
+							counter++;
+							out.print("Computer's turn: ");
+							var placementIn = (int) (random() * 9) + 1;
+							out.println(placementIn);
+							placementDetector(placementIn, pieces);
+							placePiece(placementIn, play, counter, pieces);
+							board.repaint();
+							board.delay();
+							if (play[pieces[0]][pieces[1]] != ' ') break;
+						} while (play[pieces[0]][pieces[1]] == ' ');
+					} while (play[pieces[0]][pieces[1]] == ' ');
+					break;
 				case 1:
 					do {
 						do {

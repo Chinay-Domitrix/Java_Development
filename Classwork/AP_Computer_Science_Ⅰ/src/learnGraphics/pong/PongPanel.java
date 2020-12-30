@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import static java.awt.Font.PLAIN;
+import static java.lang.System.exit;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -43,7 +44,7 @@ class PongPanel extends JPanel implements KeyListener, ActionListener {
 			ball.setYA(-ball.getYA());
 		else if (ball.getY() > (getHeight() - ball.getHeight())) {
 			showMessageDialog(this, "Game Over. You scored " + score + '.', "Pong", INFORMATION_MESSAGE);
-			System.exit(0);
+			exit(0);
 		}
 	}
 

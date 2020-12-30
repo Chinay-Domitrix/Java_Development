@@ -33,7 +33,7 @@ final class Library {
 		int y = 0;
 		for (int i = 32768; i != 0; i >>>= 1) {
 			y |= i;
-			if (y > 46340 || y * y > x) y ^= i;
+			if ((y > 46340) || ((y * y) > x)) y ^= i;
 		}
 		return y;
 	}
@@ -45,7 +45,7 @@ final class Library {
 		long y = 0;
 		for (long i = 2147483648L; i != 0; i >>>= 1) {
 			y |= i;
-			if (y > 3037000499L || y * y > x) y ^= i;
+			if ((y > 3037000499L) || ((y * y) > x)) y ^= i;
 		}
 		return y;
 	}
@@ -169,7 +169,6 @@ final class Library {
 	// For example: listPrimality(100) = {false, false, true, true, false, true, false, true,
 	// false, false, false, true, false, true, false, false, false, true, ...} (array length 101).
 	@Contract(pure = true)
-	@NotNull
 	public static boolean[] listPrimality(int n) {
 		assert n >= 0 : "Negative array size";
 		boolean[] result = new boolean[n + 1];
@@ -185,7 +184,6 @@ final class Library {
 	// Returns all the prime numbers less than or equal to n, in ascending order.
 	// For example: listPrimes(97) = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, ..., 83, 89, 97}.
 	@Contract(pure = true)
-	@NotNull
 	public static int[] listPrimes(int n) {
 		boolean[] isPrime = listPrimality(n);
 		int count = 0;
@@ -201,7 +199,6 @@ final class Library {
 
 	// Returns an array spf where spf[k] is the smallest prime factor of k, valid for 2 <= k <= n.
 	// For example: listSmallestPrimeFactors(10) = {0, 0, 2, 3, 2, 5, 2, 7, 2, 3, 2}.
-	@NotNull
 	@Contract(pure = true)
 	static int[] listSmallestPrimeFactors(int n) {
 		int[] result = new int[n + 1];
@@ -238,7 +235,6 @@ final class Library {
 
 	// Returns an array 'totients' where totients[i] == totient(i), for 0 <= i <= n.
 	// For a large batch of queries, this is faster than calling totient() for each integer.
-	@NotNull
 	@Contract(pure = true)
 	static int[] listTotients(int n) {
 		assert n >= 0 : "Negative array size";
@@ -251,11 +247,10 @@ final class Library {
 	// Attempts to advance the given sequence to the next permutation in lexicographical order.
 	// Returns true if the sequence was successfully permuted, or returns false if the sequence
 	// was already at the last possible permutation (a non-ascending sequence).
-	// Explanation: https://www.nayuki.io/page/next-lexicographical-permutation-algorithm
 	// For example:
 	// - nextPermutation({0,0,1}) changes the argument array to {0,1,0} and returns true.
 	// - nextPermutation({1,0,0}) leaves the argument array unchanged and returns false.
-	static boolean nextPermutation(@NotNull int[] arr) {
+	static boolean nextPermutation(int[] arr) {
 		int i = arr.length - 1;
 		//noinspection StatementWithEmptyBody
 		for (; i > 0 && arr[i - 1] >= arr[i]; i--) ;

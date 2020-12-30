@@ -2,8 +2,8 @@ package practiceItObjectOrientedPrograms;
 
 import org.jetbrains.annotations.Contract;
 
-final class Stock {
-	private String symbol;        // stock symbol, e.g. "YHOO"
+class Stock {
+	private final String symbol;        // stock symbol, e.g. "YHOO"
 	private int totalShares;      // total shares purchased
 	private double totalCost;     // total cost for all shares
 

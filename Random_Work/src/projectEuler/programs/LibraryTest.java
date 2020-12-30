@@ -219,9 +219,23 @@ public final class LibraryTest {
 	@Test
 	public void testReciprocalMod() {
 		asList(new int[]{1, 2, 1}, new int[]{1, 3, 1}, new int[]{2, 3, 2}, new int[]{1, 4, 1}, new int[]{3, 4, 3}, new int[]{1, 5, 1}, new int[]{2, 5, 3}, new int[]{3, 5, 2}, new int[]{4, 5, 4}, new int[]{2, 7, 4}, new int[]{3, 7, 5}, new int[]{4, 7, 2}, new int[]{5, 7, 3}, new int[]{6, 7, 6}, new int[]{18585, 26128, 5705}, new int[]{4352341, 7559949, 3054661}, new int[]{290514683, 936234758, 903930729}, new int[]{735803087, 1384775511, 1321131185}, new int[]{1, 2147483647, 1}, new int[]{2, 2147483647, 1073741824}, new int[]{188080773, 2147483647, 1201032874}, new int[]{527995520, 2147483647, 1215591224}, new int[]{1154582780, 2147483647, 193267031}, new int[]{1321286464, 2147483647, 95844396}, new int[]{2147483645, 2147483647, 1073741823}, new int[]{2147483646, 2147483647, 2147483646}).forEach(ints -> assertEquals(ints[2], reciprocalMod(ints[0], ints[1])));
-		asList(new int[]{MIN_VALUE, MIN_VALUE}, new int[]{-1, -1}, new int[]{0, -1}, new int[]{-1, 0}, new int[]{0, 0}, new int[]{1, 1}, new int[]{3, 2}, new int[]{MAX_VALUE, 1}, new int[]{2, 4}, new int[]{2, 6}, new int[]{3, 6}, new int[]{44100, 48000}, new int[]{77, 2147483646}, new int[]{30783, 2147483646}).forEach(cs -> {
+		asList(new int[]{MIN_VALUE, MIN_VALUE},
+				new int[]{-1, -1},
+				new int[]{0, -1},
+				new int[]{-1, 0},
+				new int[]{0, 0},
+				new int[]{1, 1},
+				new int[]{3, 2},
+				new int[]{MAX_VALUE, 1},
+				new int[]{2, 4},
+				new int[]{2, 6},
+				new int[]{3, 6},
+				new int[]{44100, 48000},
+				new int[]{77, 2147483646},
+				new int[]{30783, 2147483646}).forEach(
+						i -> {
 			try {
-				var x = reciprocalMod(cs[0], cs[1]);
+				var x = reciprocalMod(i[0], i[1]);
 				fail();
 			} catch (IllegalArgumentException ignored) {
 			} // Pass

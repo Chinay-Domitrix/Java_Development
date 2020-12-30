@@ -150,8 +150,8 @@ public class BallProject {
 }
 
 final class BallCanvas {
-	private Ball ball;
-	private JFrame frame;
+	private final Ball ball;
+	private final JFrame frame;
 
 	BallCanvas() {
 		frame = new JFrame("BallCanvas");
