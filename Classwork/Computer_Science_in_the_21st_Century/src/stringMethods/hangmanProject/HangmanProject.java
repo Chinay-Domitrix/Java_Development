@@ -1,4 +1,4 @@
-package stringMethods.hangmanProject;
+package Classwork.Computer_Science_in_the_21st_Century.src.stringMethods.hangmanProject;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -240,14 +240,16 @@ class HangmanProject {
 			 * This loop prints out the letters guessed so far. As seen in the method
 			 * "game," the blanks are represented as underscores.
 			 */
-			for (char x : hangman) out.print(x + " ");
+			for (char x : hangman)
+				out.print(x + " ");
 			out.println();
 			/*
 			 * The following four lines make it possible to print out the letters which have
 			 * been guessed as a StringBuilder, which is a companion class to String.
 			 */
 			StringBuilder guessed = new StringBuilder();
-			for (char x : guessList) guessed.append(x).append(" ");
+			for (char x : guessList)
+				guessed.append(x).append(" ");
 			guessed = new StringBuilder(guessed.toString().trim());
 			/*
 			 * This is where I print out the remaining number of misses, the letters guessed
