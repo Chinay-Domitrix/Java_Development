@@ -1,4 +1,4 @@
-package strings;
+package Classwork.AP_Computer_Science_Ⅰ.src.strings;
 
 /*
  * Use the Java documentation of Strings to complete the description for all of the methods below (those tested on the AP exam)

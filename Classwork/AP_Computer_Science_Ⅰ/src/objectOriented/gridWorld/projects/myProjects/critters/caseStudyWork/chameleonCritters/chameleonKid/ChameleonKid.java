@@ -1,11 +1,11 @@
-package objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.chameleonCritters.chameleonKid;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.chameleonCritters.chameleonKid;
 
-import info.gridworld.actor.Actor;
-import objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.chameleonCritters.fadingChameleonCritter.FadingChameleonCritter;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.chameleonCritters.fadingChameleonCritter.FadingChameleonCritter;
 
 import java.util.ArrayList;
 
-import static info.gridworld.grid.Location.HALF_CIRCLE;
+import static Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location.HALF_CIRCLE;
 
 class ChameleonKid extends FadingChameleonCritter {
 	public ArrayList<Actor> getActors() {

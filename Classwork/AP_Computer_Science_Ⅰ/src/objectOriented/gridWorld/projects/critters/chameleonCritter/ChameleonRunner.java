@@ -1,4 +1,4 @@
-package objectOriented.gridWorld.projects.critters.chameleonCritter;/*
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.critters.chameleonCritter;/*
  * AP(r) Computer Science GridWorld Case Study:
  * Copyright(c) 2005-2006 Cay S. Horstmann (http://horstmann.com)
  *
@@ -16,9 +16,9 @@ package objectOriented.gridWorld.projects.critters.chameleonCritter;/*
  * @author Cay Horstmann
  */
 
-import info.gridworld.actor.ActorWorld;
-import info.gridworld.actor.Rock;
-import info.gridworld.grid.Location;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 
 import static java.awt.Color.*;
 

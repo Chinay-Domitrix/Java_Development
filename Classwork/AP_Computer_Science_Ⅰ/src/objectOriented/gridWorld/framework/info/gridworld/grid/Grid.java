@@ -17,7 +17,7 @@
  * @author Cay Horstmann
  */
 
-package objectOriented.gridWorld.framework.info.gridworld.grid;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid;
 
 import java.util.ArrayList;
 

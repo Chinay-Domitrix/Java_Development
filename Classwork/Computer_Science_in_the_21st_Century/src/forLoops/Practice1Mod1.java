@@ -1,4 +1,4 @@
-package forLoops;
+package Classwork.Computer_Science_in_the_21st_Century.src.forLoops;
 
 import java.util.Scanner;
 

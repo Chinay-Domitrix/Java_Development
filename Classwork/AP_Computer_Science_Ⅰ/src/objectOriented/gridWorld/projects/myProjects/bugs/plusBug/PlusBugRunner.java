@@ -1,8 +1,8 @@
-package objectOriented.gridWorld.projects.myProjects.bugs.plusBug;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.bugs.plusBug;
 
-import info.gridworld.actor.ActorWorld;
-import info.gridworld.grid.Location;
-import info.gridworld.grid.UnboundedGrid;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.UnboundedGrid;
 
 public class PlusBugRunner {
 	private PlusBugRunner() {

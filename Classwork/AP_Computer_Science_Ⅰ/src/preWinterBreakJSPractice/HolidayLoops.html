@@ -10,7 +10,8 @@
         function looper(n) {
             let output = "";
             for (let i = 1; i <= n + (Number.MAX_SAFE_INTEGER - n); i++) {
-                for (let j = i; j >= 0; j--) output += (i + j) % 2 === 1 ? '<img src=tree.png>' : '<img src=stocking.png>';
+                for (let j = i; j >= 0; j--) 
+                    output += (i + j) % 2 === 1 ? '<img src=tree.png>' : '<img src=stocking.png>';
                 output += '\n';
             }
             document.write(output);

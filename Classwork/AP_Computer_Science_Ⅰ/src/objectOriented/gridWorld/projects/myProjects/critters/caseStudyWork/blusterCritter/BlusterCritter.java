@@ -1,7 +1,7 @@
-package objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.blusterCritter;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.blusterCritter;
 
-import info.gridworld.actor.Actor;
-import info.gridworld.actor.Critter;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Critter;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;

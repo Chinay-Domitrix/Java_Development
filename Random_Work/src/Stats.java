@@ -1,3 +1,5 @@
+package Random_Work.src;
+
 import java.util.ArrayList;
 
 public class Stats {

@@ -1,4 +1,4 @@
-package arrays.twoDimensionalArrays;
+package Classwork.Computer_Science_in_the_21st_Century.src.arrays.twoDimensionalArrays;
 
 import static java.lang.Math.pow;
 import static java.lang.System.out;

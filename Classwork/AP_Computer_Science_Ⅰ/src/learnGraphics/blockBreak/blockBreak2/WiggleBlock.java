@@ -1,4 +1,4 @@
-package learnGraphics.blockBreak.blockBreak2;
+package Classwork.AP_Computer_Science_Ⅰ.src.learnGraphics.blockBreak.blockBreak2;
 
 /*  This is an extenstion of Block which adds functionality for the block to
     'wiggleSize' or move back and forth in a set pattern ehwn you call the move method

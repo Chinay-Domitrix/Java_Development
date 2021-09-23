@@ -1,4 +1,4 @@
-package objectOriented.gridWorld.projects.firstProject;/*
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.firstProject;/*
  * AP(r) Computer Science GridWorld Case Study:
  * Copyright(c) 2005-2006 Cay S. Horstmann (http://horstmann.com)
  *
@@ -14,10 +14,10 @@ package objectOriented.gridWorld.projects.firstProject;/*
  * @author Cay Horstmann
  */
 
-import info.gridworld.actor.ActorWorld;
-import info.gridworld.actor.Bug;
-import info.gridworld.actor.Rock;
-import info.gridworld.grid.UnboundedGrid;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.UnboundedGrid;
 
 /**
  * This class runs a world that contains a bug and a rock, added at random

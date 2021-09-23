@@ -1,8 +1,8 @@
-package objectOriented.gridWorld.projects.myProjects.critters.crossCritter;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.critters.crossCritter;
 
-import info.gridworld.actor.Actor;
-import info.gridworld.actor.Critter;
-import info.gridworld.grid.Location;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Critter;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -28,9 +28,12 @@ public class CrossCritter extends Critter {
 		for (int i = 0; i < getGrid().getNumCols(); i++)
 			removable.add(getGrid().get(new Location(getLocation().getRow(), i)));
 //		Removes the CrossCritter from the ArrayList of Actors to be removed
-		while (removable.contains(getGrid().get(getLocation()))) removable.remove(getGrid().get(getLocation()));
+		while (removable.contains(getGrid().get(getLocation())))
+			removable.remove(getGrid().get(getLocation()));
 //		Every Actor in the same row and column as the CrossCritter gets removed
-		for (Actor actorInstance : removable) if (actorInstance != null) actorInstance.removeSelfFromGrid();
+		for (Actor actorInstance : removable)
+			if (actorInstance != null)
+				actorInstance.removeSelfFromGrid();
 //		Returns super.getActors() in order for processActors() to work properly
 		return super.getActors();
 	}

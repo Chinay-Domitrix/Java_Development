@@ -1,7 +1,7 @@
-package objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.crabCritters.quickCrab;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.crabCritters.quickCrab;
 
-import info.gridworld.grid.Location;
-import objectOriented.gridWorld.projects.critters.CrabCritter;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.critters.CrabCritter;
 
 import java.util.ArrayList;
 

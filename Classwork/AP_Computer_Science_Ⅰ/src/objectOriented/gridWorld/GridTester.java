@@ -1,9 +1,9 @@
-package objectOriented.gridWorld;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld;
 
-import info.gridworld.actor.Bug;
-import info.gridworld.grid.BoundedGrid;
-import info.gridworld.grid.Location;
-import info.gridworld.grid.UnboundedGrid;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.BoundedGrid;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.UnboundedGrid;
 
 import static java.lang.System.out;
 

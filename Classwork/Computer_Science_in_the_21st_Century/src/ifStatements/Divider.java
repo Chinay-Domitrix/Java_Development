@@ -1,4 +1,4 @@
-package ifStatements;
+package Classwork.Computer_Science_in_the_21st_Century.src.ifStatements;
 
 import java.util.Scanner;
 
@@ -19,9 +19,8 @@ class Divider {
 	}
 
 	private static void all(int a) {
-		if ((a % 2 == 0) && (a % 3 == 0) && (a % 5 == 0) && (a % 7 == 0) && (a % 11 == 0)) {
+		if ((a % 2 == 0) && (a % 3 == 0) && (a % 5 == 0) && (a % 7 == 0) && (a % 11 == 0))
 			out.println("Your number is divisible evenly by all those numbers.");
-		}
 	}
 
 	private static void except(int a) {

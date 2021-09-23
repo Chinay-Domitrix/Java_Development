@@ -1,4 +1,4 @@
-package anonymousClassesDemos;
+package Classwork.mobileApp.src.anonymousClassesDemos;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -33,6 +33,6 @@ public class Demo3 extends JPanel {
 	}
 
 	public static void main(String... args) {
-		var x = new Demo3();
+		new Demo3();
 	}
 }

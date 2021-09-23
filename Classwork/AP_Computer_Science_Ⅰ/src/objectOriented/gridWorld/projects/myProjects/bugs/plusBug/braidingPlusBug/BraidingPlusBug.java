@@ -1,9 +1,9 @@
-package objectOriented.gridWorld.projects.myProjects.bugs.plusBug.braidingPlusBug;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.bugs.plusBug.braidingPlusBug;
 
-import info.gridworld.actor.ActorWorld;
-import info.gridworld.grid.Location;
-import info.gridworld.grid.UnboundedGrid;
-import objectOriented.gridWorld.projects.myProjects.bugs.plusBug.PlusBug;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.UnboundedGrid;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.bugs.plusBug.PlusBug;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -29,8 +29,7 @@ class BraidingPlusBug extends PlusBug {
 		var locations = new ArrayList<Location>();
 		var previousLocation = new Location(0, 0);
 		out.print("How many PlusBugs do you want? ");
-		var bounds = new Scanner(in).nextInt();
-		for (int i = 1; i <= bounds; i++) {
+		for (int i = 1; i <= new Scanner(in).nextInt(); i++) {
 			var newLocation = new Location(previousLocation.getRow() + i, previousLocation.getCol() + i);
 			locations.add(newLocation);
 			previousLocation = newLocation;

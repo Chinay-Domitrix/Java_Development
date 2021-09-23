@@ -1,4 +1,4 @@
-package hackPHS2019;
+package Random_Work.src.hackPHS2019;
 
 import java.util.Arrays;
 import java.util.Scanner;

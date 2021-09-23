@@ -1,4 +1,4 @@
-package objectOriented.gridWorld.projects.boxBug;/*
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.boxBug;/*
  * AP(r) Computer Science GridWorld Case Study:
  * Copyright(c) 2005-2006 Cay S. Horstmann (http://horstmann.com)
  *
@@ -16,8 +16,8 @@ package objectOriented.gridWorld.projects.boxBug;/*
  * @author Barbara Cloud Wells
  */
 
-import info.gridworld.actor.ActorWorld;
-import info.gridworld.grid.Location;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 
 import static java.awt.Color.ORANGE;
 

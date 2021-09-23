@@ -1,7 +1,7 @@
-package objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.chameleonCritters.fadingChameleonCritter;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.chameleonCritters.fadingChameleonCritter;
 
-import info.gridworld.actor.Actor;
-import objectOriented.gridWorld.projects.critters.chameleonCritter.ChameleonCritter;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.critters.chameleonCritter.ChameleonCritter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

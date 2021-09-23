@@ -1,7 +1,7 @@
-package objectOriented.investments;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.investments;
 
 import static java.lang.System.out;
-import static objectOriented.investments.InterestRate.doubleValue;
+import static Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.investments.InterestRate.doubleValue;
 
 final class CertificateOfDeposit extends Investment {
 	private final InterestRate interestRate;

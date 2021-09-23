@@ -1,4 +1,4 @@
-package finalReview;
+package Classwork.Computer_Science_in_the_21st_Century.src.finalReview;
 
 import java.util.Arrays;
 import java.util.Scanner;

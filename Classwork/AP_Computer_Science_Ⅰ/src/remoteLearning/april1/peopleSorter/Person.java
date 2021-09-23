@@ -1,4 +1,4 @@
-package remoteLearning.april1.peopleSorter;
+package Classwork.AP_Computer_Science_Ⅰ.src.remoteLearning.april1.peopleSorter;
 
 import org.jetbrains.annotations.NotNull;
 

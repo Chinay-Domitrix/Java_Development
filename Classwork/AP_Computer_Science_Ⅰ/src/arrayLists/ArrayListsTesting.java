@@ -1,4 +1,4 @@
-package arrayLists;
+package Classwork.AP_Computer_Science_Ⅰ.src.arrayLists;
 
 public class ArrayListsTesting {
 	private ArrayListsTesting() {

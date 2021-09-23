@@ -1,4 +1,4 @@
-package forLoops;
+package Classwork.Computer_Science_in_the_21st_Century.src.forLoops;
 
 import javax.swing.*;
 import java.awt.*;
@@ -49,6 +49,7 @@ public class BallProject {
 						}
 						break;
 					default:
+						input.close();
 						throw new IllegalStateException("Unexpected value: " + t2c);
 				}
 				break;
@@ -143,6 +144,7 @@ public class BallProject {
 				}
 				break;
 			default:
+				input.close();
 				throw new IllegalStateException("Unexpected value: " + task);
 		}
 		input.close();

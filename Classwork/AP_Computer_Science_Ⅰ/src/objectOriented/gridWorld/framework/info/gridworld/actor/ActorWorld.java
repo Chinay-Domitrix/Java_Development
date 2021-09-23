@@ -14,11 +14,11 @@
  * @author Cay Horstmann
  */
 
-package objectOriented.gridWorld.framework.info.gridworld.actor;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor;
 
-import info.gridworld.grid.Grid;
-import info.gridworld.grid.Location;
-import info.gridworld.world.World;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.world.World;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -49,12 +49,14 @@ public class ActorWorld extends World<Actor> {
 	}
 
 	public void show() {
-		if (getMessage() == null) setMessage(DEFAULT_MESSAGE);
+		if (getMessage() == null)
+			setMessage(DEFAULT_MESSAGE);
 		super.show();
 	}
 
 	public void step() {
-		var actors = getGrid().getOccupiedLocations().stream().map(getGrid()::get).collect(toCollection(ArrayList::new));
+		var actors = getGrid().getOccupiedLocations().stream().map(getGrid()::get)
+				.collect(toCollection(ArrayList::new));
 		// only act if another actor hasn't removed a
 		actors.stream().filter(a -> a.getGrid() == getGrid()).forEachOrdered(Actor::act);
 	}
@@ -76,7 +78,8 @@ public class ActorWorld extends World<Actor> {
 	 */
 	public void add(Actor occupant) {
 		Location loc = getRandomEmptyLocation();
-		if (loc != null) add(loc, occupant);
+		if (loc != null)
+			add(loc, occupant);
 	}
 
 	/**
@@ -84,11 +87,12 @@ public class ActorWorld extends World<Actor> {
 	 *
 	 * @param loc the location from which to remove an actor
 	 * @return the removed actor, or null if there was no actor at the given
-	 * location.
+	 *         location.
 	 */
 	public Actor remove(Location loc) {
 		Actor occupant = getGrid().get(loc);
-		if (occupant == null) return null;
+		if (occupant == null)
+			return null;
 		occupant.removeSelfFromGrid();
 		return occupant;
 	}

@@ -1,4 +1,4 @@
-package forLoops;
+package Classwork.Computer_Science_in_the_21st_Century.src.forLoops;
 
 class ForLoopsLetsTry1 {
 	public static void main(String[] args) throws InterruptedException {

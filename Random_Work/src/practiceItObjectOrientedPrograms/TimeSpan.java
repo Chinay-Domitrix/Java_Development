@@ -1,4 +1,4 @@
-package practiceItObjectOrientedPrograms;
+package Random_Work.src.practiceItObjectOrientedPrograms;
 
 import org.jetbrains.annotations.Contract;
 

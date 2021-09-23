@@ -1,4 +1,4 @@
-package arrayLists.survivor;
+package Classwork.AP_Computer_Science_Ⅰ.src.arrayLists.survivor;
 
 import org.jetbrains.annotations.NotNull;
 

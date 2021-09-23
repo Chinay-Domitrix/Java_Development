@@ -1,4 +1,4 @@
-package learnGraphics.paint1;
+package Classwork.AP_Computer_Science_Ⅰ.src.learnGraphics.paint1;
 
 import javax.swing.*;
 import java.awt.*;

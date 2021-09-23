@@ -1,4 +1,4 @@
-package midYearSGOReview;
+package Classwork.Computer_Science_in_the_21st_Century.src.midYearSGOReview;
 
 import static java.util.stream.IntStream.rangeClosed;
 

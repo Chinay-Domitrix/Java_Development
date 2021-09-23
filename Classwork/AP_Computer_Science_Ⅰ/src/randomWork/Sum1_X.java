@@ -1,4 +1,4 @@
-package randomWork;
+package Classwork.AP_Computer_Science_Ⅰ.src.randomWork;
 
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.System.out;

@@ -1,4 +1,4 @@
-package objectOriented.inheritance.foot;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.inheritance.foot;
 
 import org.jetbrains.annotations.NotNull;
 

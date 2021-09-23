@@ -1,9 +1,9 @@
-package objectOriented.gridWorld.projects.myProjects.critters.floristCritter;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.critters.floristCritter;
 
-import info.gridworld.actor.Actor;
-import info.gridworld.actor.Critter;
-import info.gridworld.actor.Flower;
-import info.gridworld.actor.Rock;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Critter;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Flower;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
 
 import java.util.ArrayList;
 
@@ -14,8 +14,10 @@ public class FloristCritter extends Critter {
 	@Override
 	public void processActors(ArrayList<Actor> actors) {
 		for (var a : requireNonNull(actors)) {
-			if (a instanceof Flower) getGrid().get(a.getLocation()).setColor(RED);
-			else if (!(a instanceof Rock) && (a != null)) a.removeSelfFromGrid();
+			if (a instanceof Flower)
+				getGrid().get(a.getLocation()).setColor(RED);
+			else if (!(a instanceof Rock) && (a != null))
+				a.removeSelfFromGrid();
 		}
 	}
 }

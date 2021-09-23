@@ -1,4 +1,4 @@
-package remoteLearning.march12;
+package Classwork.AP_Computer_Science_Ⅰ.src.remoteLearning.march12;
 
 /**
  * The following Comparable class represents an ordered triple for x, y, z coordinates on

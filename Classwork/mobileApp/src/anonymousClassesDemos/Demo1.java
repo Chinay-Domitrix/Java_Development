@@ -1,4 +1,4 @@
-package anonymousClassesDemos;
+package Classwork.mobileApp.src.anonymousClassesDemos;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -18,7 +18,7 @@ public class Demo1 extends JPanel implements KeyListener {
 	}
 
 	public static void main(String[] args) {
-		var x =new Demo1();
+		new Demo1();
 	}
 
 	@Override

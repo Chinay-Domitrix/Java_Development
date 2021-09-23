@@ -1,4 +1,4 @@
-package graphingCalculator;
+package Random_Work.src.graphingCalculator;
 
 import javax.swing.*;
 import java.awt.*;

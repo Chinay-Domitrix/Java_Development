@@ -1,10 +1,10 @@
-package MobileAppStaticVars;
+package Random_Work.src.MobileAppStaticVars;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-import static MobileAppStaticVars.StaticArrayLists.arrayList;
+import static Random_Work.src.MobileAppStaticVars.StaticArrayLists.arrayList;
 import static java.lang.Integer.MAX_VALUE;
 
 public class Runner {

@@ -1,4 +1,4 @@
-package strings;
+package Classwork.AP_Computer_Science_Ⅰ.src.strings;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;

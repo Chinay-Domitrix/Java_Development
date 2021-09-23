@@ -14,11 +14,11 @@
  * @author Cay Horstmann
  */
 
-package objectOriented.gridWorld.framework.info.gridworld.grid;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid;
 
 import java.util.ArrayList;
 
-import static info.gridworld.grid.Location.*;
+import static Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toCollection;
 

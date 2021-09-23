@@ -1,4 +1,4 @@
-package arrays.twoDimensionalArrays;
+package Classwork.Computer_Science_in_the_21st_Century.src.arrays.twoDimensionalArrays;
 
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;

@@ -1,4 +1,4 @@
-package switchStatements;
+package Classwork.Computer_Science_in_the_21st_Century.src.switchStatements;
 
 import java.util.Scanner;
 

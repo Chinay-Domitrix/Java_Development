@@ -1,11 +1,11 @@
-package objectOriented.investments;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.investments;
 
 import java.util.Random;
 
 import static java.lang.Double.MIN_VALUE;
 import static java.lang.Math.random;
 import static java.lang.System.out;
-import static objectOriented.investments.InterestRate.doubleValue;
+import static Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.investments.InterestRate.doubleValue;
 
 final class BlueChipStock extends Investment {
 	private final double minimumInterest;

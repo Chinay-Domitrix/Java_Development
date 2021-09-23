@@ -1,7 +1,7 @@
-package objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.crabCritters.kingCrab;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.crabCritters.kingCrab;
 
-import info.gridworld.grid.Location;
-import objectOriented.gridWorld.projects.critters.CrabCritter;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.critters.CrabCritter;
 import org.jetbrains.annotations.NotNull;
 
 public class KingCrab extends CrabCritter {

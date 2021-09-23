@@ -1,4 +1,4 @@
-package arrays.binarySearching;
+package Classwork.Computer_Science_in_the_21st_Century.src.arrays.binarySearching;
 
 import org.jetbrains.annotations.NotNull;
 

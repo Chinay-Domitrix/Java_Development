@@ -1,4 +1,4 @@
-package comparable;
+package Classwork.AP_Computer_Science_Ⅰ.src.comparable;
 
 import static java.lang.System.out;
 

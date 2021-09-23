@@ -1,4 +1,4 @@
-package objectOriented.gridWorld.projects.critters.chameleonCritter;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.critters.chameleonCritter;
 
 /*
  * AP(r) Computer Science GridWorld Case Study:
@@ -18,9 +18,9 @@ package objectOriented.gridWorld.projects.critters.chameleonCritter;
  * @author Cay Horstmann
  */
 
-import info.gridworld.actor.Actor;
-import info.gridworld.actor.Critter;
-import info.gridworld.grid.Location;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Critter;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

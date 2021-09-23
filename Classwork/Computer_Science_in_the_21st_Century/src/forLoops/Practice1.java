@@ -1,4 +1,4 @@
-package forLoops;
+package Classwork.Computer_Science_in_the_21st_Century.src.forLoops;
 
 import java.util.Scanner;
 
@@ -16,13 +16,13 @@ class Practice1 {
 			System.out.print("Please enter score #" + counter + ": ");
 			final double score = in.nextDouble();
 			System.out.println();
-			if (score >= 90 && score <= 100) {
+			if (score >= 90 && score <= 100)
 				o++;
-			} else if (score >= 70 && score <= 89) {
+			else if (score >= 70 && score <= 89)
 				s++;
-			} else if (score >= 0 && score <= 69) {
+			else if (score >= 0 && score <= 69)
 				u++;
-			} else {
+			else {
 				System.out.println("Error.");
 				break;
 			}

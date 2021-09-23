@@ -228,7 +228,7 @@ class TicTacToeProject {
 		}
 	}
 }*/
-package arrays.twoDimensionalArrays.ticTacToe;
+package Classwork.Computer_Science_in_the_21st_Century.src.arrays.twoDimensionalArrays.ticTacToe;
 
 import org.jetbrains.annotations.Contract;
 
@@ -255,12 +255,14 @@ class TicTacToeProject {
 		board.displayGame(false);
 		var scanner = new Scanner(in);
 		board.defineBoard(new int[][]{{0, 200, 600, 200}, {0, 400, 600, 400}, {200, 0, 200, 600}, {400, 0, 400, 600}});
-//		This line changes from device to device.
-		var fPs = new String[]{"C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\Computer_Science_in_the_21st_Century\\images\\arrays.twoDimensionalArrays\\ticTacToe\\TicTacToeX.png",
-				"C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\Computer_Science_in_the_21st_Century\\images\\arrays.twoDimensionalArrays\\ticTacToe\\TicTacToeO.png"};
+		var fPs = new String[] {
+				"Classwork/Computer_Science_in_the_21st_Century/images/arrays/twoDimensionalArrays/ticTacToe/TicTacToeX.png",
+				"Classwork/Computer_Science_in_the_21st_Century/images/arrays/twoDimensionalArrays/ticTacToe/TicTacToeO.png" };
 		board.setFiles(fPs[0], fPs[1]);
 		var play = new char[3][3];
-		for (int i = 0; i < 3; i++) for (int j = 0; j < 3; j++) play[i][j] = ' ';
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 3; j++)
+				play[i][j] = ' ';
 		board.setBoard(play);
 		out.print("How many players? ");
 		board.displayGame(true);

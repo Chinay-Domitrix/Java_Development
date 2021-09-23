@@ -1,7 +1,7 @@
-package objectOriented.gridWorld.projects.myProjects.bugs.plusBug;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.bugs.plusBug;
 
-import info.gridworld.actor.Bug;
-import info.gridworld.grid.Location;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 
 import java.util.Objects;
 
@@ -17,10 +17,10 @@ public class PlusBug extends Bug {
 		this(1, new Location(1, 1));
 	}
 
-	protected PlusBug(int stemSize, Location origin) {
+	protected PlusBug(int stemSize, Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location origin2) {
 		steps = 0;
 		this.stemSize = stemSize;
-		this.origin = origin;
+		this.origin = origin2;
 	}
 
 	public void act() {

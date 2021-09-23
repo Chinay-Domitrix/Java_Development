@@ -1,4 +1,4 @@
-package objectOriented.inheritance.rooms;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.inheritance.rooms;
 
 import org.jetbrains.annotations.Contract;
 

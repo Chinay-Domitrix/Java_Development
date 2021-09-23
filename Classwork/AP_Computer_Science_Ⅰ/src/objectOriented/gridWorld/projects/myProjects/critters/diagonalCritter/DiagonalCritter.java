@@ -1,7 +1,7 @@
-package objectOriented.gridWorld.projects.myProjects.critters.diagonalCritter;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.critters.diagonalCritter;
 
-import info.gridworld.actor.Critter;
-import info.gridworld.grid.Location;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Critter;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 
 import java.util.ArrayList;
 

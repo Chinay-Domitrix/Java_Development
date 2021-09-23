@@ -12,6 +12,9 @@ public class Matrix {
 		try (Scanner fileReader = new Scanner(new File("Classwork/dataStructures/matrix/MatrixInput.txt"))) {
 			while (fileReader.hasNextLine()) {
 				var matrixStrings = fileReader.nextLine().split("\t");
+				var array1 = parseArray(matrixStrings[0]);
+				var array2 = parseArray(matrixStrings[1]);
+				if ((array1.length != array2.length) || (array1[0].length != array2[0].length)) System.err.println("The sum and difference are not possible");
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -20,13 +23,13 @@ public class Matrix {
 
 	static int[][] parseArray(String input) {
 		var rows = new StringBuilder(input).deleteCharAt(input.length() - 1).deleteCharAt(0).toString()
-				.replaceAll("},", "}\\").split("\\");
-		var intArray = new int[rows.length][];
+				.replaceAll("},", "}/").split("/");
+		var intArrayList = new ArrayList<int[]>();
 		for (var i = 0; i < rows.length; i++)
-			intArray[i] = stream(
-					new StringBuilder(rows[i]).deleteCharAt(0).deleteCharAt(rows[i].length() - 1).toString().split(","))
-							.mapToInt(Integer::parseInt).toArray();
-		return intArray;
+			intArrayList.add(stream(
+					new StringBuilder(rows[i]).deleteCharAt(rows[i].length() - 1).deleteCharAt(0).toString().split(","))
+							.mapToInt(Integer::parseInt).toArray());
+		return intArrayList.toArray(new int[0][0]);
 	}
 	
 	static int[][] add(int A[][], int B[][], int size) {

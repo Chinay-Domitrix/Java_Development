@@ -1,4 +1,4 @@
-package objectOriented.coords;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.coords;
 
 import org.jetbrains.annotations.Contract;
 

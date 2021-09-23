@@ -17,11 +17,11 @@
  * @author Cay Horstmann
  */
 
-package objectOriented.gridWorld.framework.info.gridworld.gui;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.gui;
 
-import info.gridworld.grid.Grid;
-import info.gridworld.grid.Location;
-import info.gridworld.world.World;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.world.World;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -84,12 +84,14 @@ public class WorldFrame<T> extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent event) {
 				count--;
-				if (count == 0) exit(0);
+				if (count == 0)
+					exit(0);
 			}
 		});
 		displayMap = new DisplayMap();
 		String title = getProperty("info.gridworld.gui.frametitle");
-		if (title == null) title = resources.getString("frame.title");
+		if (title == null)
+			title = resources.getString("frame.title");
 		setTitle(title);
 		setLocation(25, 15);
 		URL appIconUrl = getClass().getResource("GridWorld.gif");
@@ -102,16 +104,20 @@ public class WorldFrame<T> extends JFrame {
 		setContentPane(content);
 		display = new GridPanel(displayMap, resources);
 		getCurrentKeyboardFocusManager().addKeyEventDispatcher(event -> {
-			if (getFocusOwner() == null) return false;
+			if (getFocusOwner() == null)
+				return false;
 			String text = getKeyStrokeForEvent(event).toString();
 			final String PRESSED = "pressed ";
 			int n = text.indexOf(PRESSED);
-			if (n < 0) return false;
+			if (n < 0)
+				return false;
 			// filter out modifier keys; they are neither characters or actions
-			if ((event.getKeyChar() == CHAR_UNDEFINED) && !event.isActionKey()) return false;
+			if ((event.getKeyChar() == CHAR_UNDEFINED) && !event.isActionKey())
+				return false;
 			text = text.substring(0, n) + text.substring(n + PRESSED.length());
 			boolean consumed = getWorld().keyPressed(text, display.getCurrentLocation());
-			if (consumed) repaint();
+			if (consumed)
+				repaint();
 			return consumed;
 		});
 		JScrollPane scrollPane = new JScrollPane();
@@ -143,7 +149,8 @@ public class WorldFrame<T> extends JFrame {
 
 	public void repaint() {
 		String message = getWorld().getMessage();
-		if (message == null) message = resources.getString("message.default");
+		if (message == null)
+			message = resources.getString("message.default");
 		messageArea.setText(message);
 		messageArea.repaint();
 		display.repaint(); // for applet
@@ -160,14 +167,15 @@ public class WorldFrame<T> extends JFrame {
 	}
 
 	/**
-	 * Sets a new grid for this world. Occupants are transferred from
-	 * the old world to the new.
+	 * Sets a new grid for this world. Occupants are transferred from the old world
+	 * to the new.
 	 *
 	 * @param newGrid the new grid
 	 */
 	public void setGrid(Grid<T> newGrid) {
 		Grid<T> oldGrid = world.getGrid();
-		Map<Location, T> occupants = oldGrid.getOccupiedLocations().stream().collect(toMap(loc -> loc, loc -> world.remove(loc), (a, b) -> b));
+		Map<Location, T> occupants = oldGrid.getOccupiedLocations().stream()
+				.collect(toMap(loc -> loc, loc -> world.remove(loc), (a, b) -> b));
 		world.setGrid(newGrid);
 		occupants.keySet().stream().filter(newGrid::isValid).forEachOrdered(loc -> world.add(loc, occupants.get(loc)));
 		display.setGrid(newGrid);
@@ -178,8 +186,8 @@ public class WorldFrame<T> extends JFrame {
 	 * Displays an error message
 	 *
 	 * @param t        the throwable that describes the error
-	 * @param resource the resource whose .text/.title strings
-	 *                 should be used in the dialog
+	 * @param resource the resource whose .text/.title strings should be used in the
+	 *                 dialog
 	 */
 	public void showError(Throwable t, String resource) {
 		String text;
@@ -243,7 +251,8 @@ public class WorldFrame<T> extends JFrame {
 			button.setText(title);
 			button.setMnemonic(toUpperCase(mnemonic));
 			button.setDisplayedMnemonicIndex(i);
-		} else button.setText(title);
+		} else
+			button.setText(title);
 	}
 
 	private void makeMenus() {
@@ -283,8 +292,7 @@ public class WorldFrame<T> extends JFrame {
 	}
 
 	/**
-	 * Sets the enabled status of those menu items that are disabled when
-	 * running.
+	 * Sets the enabled status of those menu items that are disabled when running.
 	 *
 	 * @param enable true to enable the menus
 	 */
@@ -296,8 +304,10 @@ public class WorldFrame<T> extends JFrame {
 	 * Brings up a simple dialog with some general information.
 	 */
 	private void showAboutPanel() {
-		StringBuilder html = new StringBuilder(format(resources.getString("dialog.about.text"), resources.getString("version.id")));
-		String[] props = {"java.version", "java.vendor", "java.home", "os.name", "os.arch", "os.version", "user.name", "user.home", "user.dir"};
+		StringBuilder html = new StringBuilder(
+				format(resources.getString("dialog.about.text"), resources.getString("version.id")));
+		String[] props = { "java.version", "java.vendor", "java.home", "os.name", "os.arch", "os.version", "user.name",
+				"user.home", "user.dir" };
 		html.append("<table border='1'>");
 		for (String prop : props)
 			try {
@@ -308,7 +318,8 @@ public class WorldFrame<T> extends JFrame {
 			}
 		html.append("</table>");
 		html = new StringBuilder("<html>" + html + "</html>");
-		showMessageDialog(this, new JLabel(html.toString()), resources.getString("dialog.about.title"), INFORMATION_MESSAGE);
+		showMessageDialog(this, new JLabel(html.toString()), resources.getString("dialog.about.title"),
+				INFORMATION_MESSAGE);
 	}
 
 	/**
@@ -362,9 +373,9 @@ public class WorldFrame<T> extends JFrame {
 	}
 
 	/**
-	 * Nested class that is registered as the handler for exceptions on the
-	 * Swing event thread. The handler will put up an alert panel and dump the
-	 * stack trace to the console.
+	 * Nested class that is registered as the handler for exceptions on the Swing
+	 * event thread. The handler will put up an alert panel and dump the stack trace
+	 * to the console.
 	 */
 	public class GUIExceptionHandler {
 		public void handle(@NotNull Throwable e) {
@@ -375,7 +386,8 @@ public class WorldFrame<T> extends JFrame {
 			area.setText(writer.toString());
 			area.setCaretPosition(0);
 			String copyOption = resources.getString("dialog.error.copy");
-			JOptionPane pane = new JOptionPane(new JScrollPane(area), ERROR_MESSAGE, YES_NO_OPTION, null, new String[]{copyOption, resources.getString("cancel")});
+			JOptionPane pane = new JOptionPane(new JScrollPane(area), ERROR_MESSAGE, YES_NO_OPTION, null,
+					new String[] { copyOption, resources.getString("cancel") });
 			pane.createDialog(WorldFrame.this, e.toString()).setVisible(true);
 			if (copyOption.equals(pane.getValue())) {
 				area.setSelectionStart(0);

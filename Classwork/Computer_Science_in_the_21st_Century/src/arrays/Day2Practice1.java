@@ -1,4 +1,4 @@
-package arrays;
+package Classwork.Computer_Science_in_the_21st_Century.src.arrays;
 
 class Day2Practice1 {
 	public static void main(final String[] args) {

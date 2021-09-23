@@ -1,11 +1,11 @@
-package objectOriented.investments;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.investments;
 
 import java.util.ArrayList;
 
 import static java.lang.System.out;
 import static java.util.stream.IntStream.range;
 import static java.util.stream.IntStream.rangeClosed;
-import static objectOriented.investments.Investment.format;
+import static Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.investments.Investment.format;
 
 public class InvestmentSplitDriver {
 	/**

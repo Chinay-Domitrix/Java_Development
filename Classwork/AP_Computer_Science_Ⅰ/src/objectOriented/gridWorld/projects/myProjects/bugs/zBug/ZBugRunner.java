@@ -1,8 +1,8 @@
-package objectOriented.gridWorld.projects.myProjects.bugs.zBug;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.bugs.zBug;
 
-import info.gridworld.actor.ActorWorld;
-import info.gridworld.grid.Location;
-import info.gridworld.grid.UnboundedGrid;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.UnboundedGrid;
 
 import static java.awt.Color.MAGENTA;
 

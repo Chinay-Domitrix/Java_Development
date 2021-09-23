@@ -1,12 +1,12 @@
-package objectOriented.gridWorld.projects.myProjects.bugs.shyBug;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.bugs.shyBug;
 
-import info.gridworld.actor.Bug;
-import info.gridworld.actor.Flower;
-import info.gridworld.grid.Location;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Flower;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 
 import java.awt.*;
 
-import static info.gridworld.grid.Location.EAST;
+import static Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location.EAST;
 
 class ShyBug extends Bug {
 	/**

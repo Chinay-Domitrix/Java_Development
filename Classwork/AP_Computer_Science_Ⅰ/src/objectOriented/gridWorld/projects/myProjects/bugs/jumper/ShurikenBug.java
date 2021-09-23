@@ -1,17 +1,16 @@
-package objectOriented.gridWorld.projects.myProjects.bugs.jumper;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.bugs.jumper;
 
-import info.gridworld.actor.Bug;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
 
-import static info.gridworld.grid.Location.SOUTHEAST;
+import static Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location.SOUTHEAST;
 
 /**
- * This code made a bug make a box and cross pattern inside.
- * It is run by turning directions using a int variable
- * And it runs the length that this passed into the constructor
- * It starts initially at the SouthEast direction
- * There is a main if statement that is supposed to make sure the
- * program runs for the number of times told by the user
- * It takes in a length parameters between 5 and 10 to make a shuriken looking object
+ * This code made a bug make a box and cross pattern inside. It is run by
+ * turning directions using a int variable And it runs the length that this
+ * passed into the constructor It starts initially at the SouthEast direction
+ * There is a main if statement that is supposed to make sure the program runs
+ * for the number of times told by the user It takes in a length parameters
+ * between 5 and 10 to make a shuriken looking object
  */
 class ShurikenBug extends Bug {
 	private final int sideLength;

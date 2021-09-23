@@ -14,10 +14,10 @@
  * @author Cay Horstmann
  */
 
-package objectOriented.gridWorld.framework.info.gridworld.gui;
+package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.gui;
 
-import info.gridworld.grid.Grid;
-import info.gridworld.grid.Location;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
+import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -198,7 +198,7 @@ public class MenuMaker<T> {
 			else if (Grid.class.isAssignableFrom(type)) return currentGrid;
 			else {
 				try {
-					return type.newInstance();
+					return type.getEnclosingConstructor().newInstance();
 				} catch (Exception ex) {
 					return null;
 				}

@@ -1,4 +1,4 @@
-package stringMethods;
+package Classwork.Computer_Science_in_the_21st_Century.src.stringMethods;
 
 import java.util.Arrays;
 import java.util.Scanner;
