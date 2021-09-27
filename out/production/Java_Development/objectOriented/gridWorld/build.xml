@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project name="GridWorld" default="make-zip" basedir=".">
 	<property file="build.properties"/>
 	<property name="framework.dir" value="framework"/>

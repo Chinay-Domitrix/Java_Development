@@ -1,33 +1,26 @@
-package lucasNumbers;
+package lucasNumbers
 
-import static java.lang.Integer.parseInt;
-import static java.lang.System.out;
-import static java.math.BigInteger.ONE;
-import static java.math.BigInteger.TWO;
-import static java.util.Comparator.naturalOrder;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.File
+import java.io.FileNotFoundException
+import java.math.BigInteger
+import java.math.BigInteger.ONE
+import java.math.BigInteger.TWO
+import java.util.*
+import java.util.Comparator.naturalOrder
 
 class LucasNumbers {
-	public static void main(String[] args) {
-		try (Scanner fileReader = new Scanner(new File("Classwork/dataStructures/src/lucasNumbers/LucasNumbers.txt"))) {
-			var indices = new ArrayList<Integer>();
-			var sequence = new ArrayList<BigInteger>();
-			sequence.add(TWO);
-			sequence.add(ONE);
-			while (fileReader.hasNextLine())
-				indices.add(parseInt(fileReader.nextLine()));
-			indices.sort(naturalOrder());
-			for (int i = 2; i <= indices.get(indices.size() - 1); i++)
-				sequence.add(sequence.get(sequence.size() - 2).add(sequence.get(sequence.size() - 1)));
-			for (Integer index : indices)
-				out.println(sequence.get(index));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+	fun main() = try {
+		Scanner(File("Classwork/dataStructures/src/lucasNumbers/LucasNumbers.txt")).use {
+			val indices = ArrayList<Int>()
+			val sequence = ArrayList<BigInteger>()
+			sequence += TWO
+			sequence += ONE
+			while (it.hasNextLine()) indices += it.nextLine().toInt()
+			indices.sortWith(naturalOrder())
+			(2..indices[indices.size - 1]).forEach { _ -> sequence += sequence[sequence.size - 2].add(sequence[sequence.size - 1]) }
+			indices.forEach { index -> println(sequence[index]) }
 		}
+	} catch (e: FileNotFoundException) {
+		e.printStackTrace()
 	}
 }
