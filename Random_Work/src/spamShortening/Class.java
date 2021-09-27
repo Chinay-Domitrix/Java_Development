@@ -1,4 +1,4 @@
-package Random_Work.src.spamShortening;
+package spamShortening;
 
 public class Class {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.arrays.binarySearching;
+package arrays.binarySearching;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -21,8 +21,10 @@ public class Day1Practice3 {
 			if (array[middle] == target) {
 				found = true;
 				break;
-			} else if (array[middle] < target) low = middle + 1;
-			else if (array[middle] > target) high = middle - 1;
+			} else if (array[middle] < target)
+				low = middle + 1;
+			else if (array[middle] > target)
+				high = middle - 1;
 		}
 	}
 
@@ -55,9 +57,11 @@ public class Day1Practice3 {
 				}
 			}
 			binarySearch(arr, target);
-			out.println(found ? target + " is in the array. It took " + count + " tries." : target + " is not in the array. It took " + count + " tries.");
+			out.println(found ? target + " is in the array. It took " + count + " tries."
+					: target + " is not in the array. It took " + count + " tries.");
 			counter[1] += count;
 		}
-		out.printf("Linear Search Run Average: %s tries\nBinary Search Run Average: %s tries%n", counter[0] / 100.0, counter[1] / 100.0);
+		out.printf("Linear Search Run Average: %s tries\nBinary Search Run Average: %s tries%n", counter[0] / 100.0,
+				counter[1] / 100.0);
 	}
 }

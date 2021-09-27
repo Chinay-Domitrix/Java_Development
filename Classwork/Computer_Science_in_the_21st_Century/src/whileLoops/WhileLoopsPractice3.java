@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.whileLoops;
+package whileLoops;
 
 import java.util.Scanner;
 
@@ -16,7 +16,8 @@ class WhileLoopsPractice3 {
 				if (gradeIn != -1) {
 					grade += gradeIn;
 					counter++;
-				} else break;
+				} else
+					break;
 			} while (gradeIn != -1);
 			out.println("Your average, when rounded, is " + (Math.round((grade / counter))) + ".");
 		}

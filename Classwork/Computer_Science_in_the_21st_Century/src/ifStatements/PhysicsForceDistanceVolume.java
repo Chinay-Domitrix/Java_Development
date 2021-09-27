@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.ifStatements;
+package ifStatements;
 
 import java.util.Scanner;
 
@@ -27,7 +27,8 @@ class PhysicsForceDistanceVolume {
 				} else if (d.equals("NTP")) {
 					out.println("Please enter your force in Newtons. ");
 					dbl = NTP(in.nextDouble());
-				} else err.println("Error");
+				} else
+					err.println("Error");
 				break;
 			case "distance":
 			case "Distance":
@@ -40,7 +41,8 @@ class PhysicsForceDistanceVolume {
 				} else if (d.equals("MTF")) {
 					out.println("Please enter your distance in meters. ");
 					dbl = MTF(in.nextDouble());
-				} else err.println("Error");
+				} else
+					err.println("Error");
 				break;
 			case "volume":
 			case "Volume":
@@ -53,13 +55,15 @@ class PhysicsForceDistanceVolume {
 				} else if (d.equals("LTG")) {
 					out.println("Please enter your volume in liters. ");
 					dbl = LTG(in.nextDouble());
-				} else err.println("Error");
+				} else
+					err.println("Error");
 				break;
 			default:
 				err.println("Error");
 				break;
 		}
-		if (dbl != 0) out.println(dbl);
+		if (dbl != 0)
+			out.println(dbl);
 		in.close();
 	}
 

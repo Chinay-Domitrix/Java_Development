@@ -1,4 +1,4 @@
-package Classwork.dataStructures.amicableNumbers;
+package amicableNumbers;
 
 import static java.lang.System.out;
 import static java.util.Arrays.stream;

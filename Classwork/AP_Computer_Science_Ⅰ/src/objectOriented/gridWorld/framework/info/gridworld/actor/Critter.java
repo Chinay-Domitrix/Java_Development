@@ -14,9 +14,9 @@
  * @author Cay Horstmann
  */
 
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor;
+package objectOriented.gridWorld.framework.info.gridworld.actor;
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

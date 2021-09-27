@@ -17,11 +17,11 @@
  * @author Cay Horstmann
  */
 
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.gui;
+package objectOriented.gridWorld.framework.info.gridworld.gui;
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.world.World;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.world.World;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;

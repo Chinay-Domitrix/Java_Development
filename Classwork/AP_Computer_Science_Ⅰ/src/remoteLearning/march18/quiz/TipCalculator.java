@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.remoteLearning.march18.quiz;
+package remoteLearning.march18.quiz;
 
 interface TipHelper {
 	int tip(double percentage);

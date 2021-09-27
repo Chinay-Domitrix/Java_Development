@@ -1,8 +1,8 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.bugs.jumper;
+package objectOriented.gridWorld.projects.myProjects.bugs.jumper;
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
 
-import static Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location.SOUTHEAST;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.SOUTHEAST;
 
 /**
  * This code made a bug make a box and cross pattern inside. It is run by

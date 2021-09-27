@@ -1,6 +1,6 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.bugs.jumper;
+package objectOriented.gridWorld.projects.myProjects.bugs.jumper;
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
 
 class CBug extends Bug {
 	private final int sideLength;
@@ -18,14 +18,17 @@ class CBug extends Bug {
 
 	public void act() {
 		if (canMove() && (count < 5))
-			if ((count % 2) == 0) if (steps < sideLength) move();
-			else {
-				count++;
-				dir += (d2 * 90);
-				setDirection(dir);
-				steps = 0;
-			}
-			else if (steps < sideLength * 2) move();
+			if ((count % 2) == 0)
+				if (steps < sideLength)
+					move();
+				else {
+					count++;
+					dir += (d2 * 90);
+					setDirection(dir);
+					steps = 0;
+				}
+			else if (steps < sideLength * 2)
+				move();
 			else {
 				count++;
 				dir += d2 * 90;

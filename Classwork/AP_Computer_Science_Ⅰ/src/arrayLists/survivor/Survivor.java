@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.arrayLists.survivor;
+package arrayLists.survivor;
 
 class Survivor {
 	private Survivor() {

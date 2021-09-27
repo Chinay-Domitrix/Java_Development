@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.midYearSGOReview;
+package midYearSGOReview;
 
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.System.out;
@@ -12,7 +12,9 @@ class CriticalQuestionReviewDay2Program1 {
 			a[i] = (int) (Math.random() * 19) + 1;
 			sum += a[i];
 		}
-		for (int value : a) if (value < min) min = value;
+		for (int value : a)
+			if (value < min)
+				min = value;
 		out.printf("The minimum is %d and the sum is %d.%n", min, sum);
 	}
 }

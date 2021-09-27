@@ -1,9 +1,9 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.bugs.plusBug.braidingPlusBug;
+package objectOriented.gridWorld.projects.myProjects.bugs.plusBug.braidingPlusBug;
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.UnboundedGrid;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.bugs.plusBug.PlusBug;
+import objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.grid.UnboundedGrid;
+import objectOriented.gridWorld.projects.myProjects.bugs.plusBug.PlusBug;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,16 +13,18 @@ import static java.lang.System.out;
 import static java.util.stream.IntStream.range;
 
 /**
- * This program is intended by a scalable iteration of PlusBug, hence why it extends PlusBug. It allows the user to
- * choose how many bugs they want on the screen. The primary reason for the "Boxing" in the name is due to how the bugs
- * create boxes while executing their plus patterns.
+ * This program is intended by a scalable iteration of PlusBug, hence why it
+ * extends PlusBug. It allows the user to choose how many bugs they want on the
+ * screen. The primary reason for the "Boxing" in the name is due to how the
+ * bugs create boxes while executing their plus patterns.
  *
  * @see objectOriented.gridWorld.projects.myProjects.bugs.plusBug.PlusBug;
  */
 class BraidingPlusBug extends PlusBug {
 	/**
-	 * The heavyweight of the class, it does all of the computation and bug placement, and uses
-	 * {@linkplain #BraidingPlusBug(int, Location)} to access the superclass, {@linkplain PlusBug}.
+	 * The heavyweight of the class, it does all of the computation and bug
+	 * placement, and uses {@linkplain #BraidingPlusBug(int, Location)} to access
+	 * the superclass, {@linkplain PlusBug}.
 	 */
 	public BraidingPlusBug() {
 		var world = new ActorWorld(new UnboundedGrid<>());
@@ -43,7 +45,8 @@ class BraidingPlusBug extends PlusBug {
 	}
 
 	/**
-	 * The proxy for {@linkplain #BraidingPlusBug()}, allowing it to access the superclass.
+	 * The proxy for {@linkplain #BraidingPlusBug()}, allowing it to access the
+	 * superclass.
 	 *
 	 * @see PlusBug#PlusBug(int, Location)
 	 */

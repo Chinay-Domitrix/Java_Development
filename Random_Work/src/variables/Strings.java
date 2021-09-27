@@ -1,4 +1,4 @@
-package Random_Work.src.variables;
+package variables;
 
 import static java.lang.System.out;
 

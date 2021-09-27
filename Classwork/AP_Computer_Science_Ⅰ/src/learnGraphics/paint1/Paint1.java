@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.learnGraphics.paint1;
+package learnGraphics.paint1;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +21,8 @@ public class Paint1 extends JPanel {
 
 	private Paint1() {
 		JFrame frame = new JFrame("Paint1");
-		f = new Font("Comic Sans MS", PLAIN, 50);  // Set Font: https://docs.oracle.com/javase/7/docs/api/java/awt/Font.html
+		f = new Font("Comic Sans MS", PLAIN, 50); // Set Font:
+													// https://docs.oracle.com/javase/7/docs/api/java/awt/Font.html
 		frame.add(this); // Add Object to Frame, this will invoke the paintComponent method
 		frame.setSize(frameWidth, frameHeight);
 		frame.setVisible(true);
@@ -52,11 +53,14 @@ public class Paint1 extends JPanel {
 		g2d.drawOval(850, 500, 40, 80);
 		g2d.drawRect(850, 600, 140, 10);
 		g2d.setPaint(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
-		int[] xPoints = {510, 570, 620, 700, 380}, yPoints = {220, 400, 370, 580, 230};
+		int[] xPoints = { 510, 570, 620, 700, 380 }, yPoints = { 220, 400, 370, 580, 230 };
 		g2d.fillPolygon(xPoints, yPoints, xPoints.length);
 		g2d.setPaint(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
-		for (int i = 80; i < 600; i += 40) for (int j = i + 220; j < 700; j += 40) g2d.fillOval(i, j, 40, 40);
-		for (int i = 80; i < 600; i += 20) g2d.drawRect(i, i, 50 + (i / 10), 50 + (i / 10));
+		for (int i = 80; i < 600; i += 40)
+			for (int j = i + 220; j < 700; j += 40)
+				g2d.fillOval(i, j, 40, 40);
+		for (int i = 80; i < 600; i += 20)
+			g2d.drawRect(i, i, 50 + (i / 10), 50 + (i / 10));
 		g2d.setPaint(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
 		var numPoints = rand.nextInt(50) + 20;
 		int[] xArr = new int[numPoints], yArr = new int[numPoints];

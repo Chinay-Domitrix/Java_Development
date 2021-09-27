@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.forLoops;
+package forLoops;
 
 import javax.swing.*;
 import java.awt.*;
@@ -85,14 +85,16 @@ public class BallProject {
 				break;
 			case 5:
 				int change = 10;
-//				noinspection InfiniteLoopStatement
-				while (true) for (int i = 0; i <= 550; i += change) {
-					ypos += change;
-					ballCanvas.moveBall(xpos, ypos);
-					ballCanvas.repaint();
-					ballCanvas.delay(15.625);
-					if (i == 550) change *= -1;
-				}
+				// noinspection InfiniteLoopStatement
+				while (true)
+					for (int i = 0; i <= 550; i += change) {
+						ypos += change;
+						ballCanvas.moveBall(xpos, ypos);
+						ballCanvas.repaint();
+						ballCanvas.delay(15.625);
+						if (i == 550)
+							change *= -1;
+					}
 			case 6:
 				int xchange = 10;
 				int ychange = 10;
@@ -104,10 +106,14 @@ public class BallProject {
 						ballCanvas.moveBall(xpos, ypos);
 						ballCanvas.repaint();
 						ballCanvas.delay(15.625);
-						if (xpos == 500) xchange *= -1;
-						if (ypos == 550) ychange *= -1;
-						if (xpos == 0 && ypos != 0) xchange *= -1;
-						if (xpos != 0 && ypos == 0) ychange *= -1;
+						if (xpos == 500)
+							xchange *= -1;
+						if (ypos == 550)
+							ychange *= -1;
+						if (xpos == 0 && ypos != 0)
+							xchange *= -1;
+						if (xpos != 0 && ypos == 0)
+							ychange *= -1;
 						if (xpos == 0 && ypos == 0) {
 							xchange *= -1;
 							ychange *= -1;
@@ -115,7 +121,7 @@ public class BallProject {
 					}
 				break;
 			case 7: {
-//				noinspection InfiniteLoopStatement
+				// noinspection InfiniteLoopStatement
 				while (true) {
 					for (xpos = 0; xpos <= 550; xpos += 25) {
 						ballCanvas.moveBall(xpos, 550 - ((-((int) pow(xpos, 2)) << 1) / 275) - (4 * xpos));

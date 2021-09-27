@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.strings;
+package strings;
 
 /*
  * Use the Java documentation of Strings to complete the description for all of the methods below (those tested on the AP exam)
@@ -22,20 +22,19 @@ import static java.lang.System.out;
 public class StringMethodExamples {
 	public static void main(String[] args) {
 		String s = "Sample String";
-		String s2 = s + " 2";                                   // Example of constructor
+		String s2 = s + " 2"; // Example of constructor
 		out.printf("s = %s, s2 = %s%n", s, s2);
-		out.printf("s.length = %d, s2.length = %d%n", s.length(), s2.length());     // Example of length() method
-//		Give examples for the methods below:
-//		String substring(int from,int to)
+		out.printf("s.length = %d, s2.length = %d%n", s.length(), s2.length()); // Example of length() method
+		// Give examples for the methods below:
+		// String substring(int from,int to)
 		out.println();
-//		String substring(int from)
+		// String substring(int from)
 
-//		int indexOf(String str)
+		// int indexOf(String str)
 
-//		boolean equals(String other)
+		// boolean equals(String other)
 
-//		int compareTo(String other)
-
+		// int compareTo(String other)
 
 	}
 }

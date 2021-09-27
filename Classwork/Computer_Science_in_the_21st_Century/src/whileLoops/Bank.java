@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.whileLoops;
+package whileLoops;
 
 import java.util.Scanner;
 
@@ -18,8 +18,10 @@ class Bank {
 			if (pin == input) {
 				out.println("\nPIN accepted. You now have access to your account.");
 				break;
-			} else if (counter <= 3) out.println("\nIncorrect PIN. Try again.");
-			else err.println("You have run out of tries. Account locked.");
+			} else if (counter <= 3)
+				out.println("\nIncorrect PIN. Try again.");
+			else
+				err.println("You have run out of tries. Account locked.");
 		}
 		in.close();
 	}

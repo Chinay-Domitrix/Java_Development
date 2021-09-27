@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.investments;
+package objectOriented.investments;
 
 import java.util.Random;
 
@@ -40,7 +40,8 @@ final class Moonshot extends Investment {
 			yield = amount * multiplier;
 			addToYield(yield);
 			amount *= multiplier;
-		} else yield = 0;
+		} else
+			yield = 0;
 		out.printf("%s returned a yield of %s for a total of %s.%n", getName(), format(yield), format(amount));
 		return amount;
 	}

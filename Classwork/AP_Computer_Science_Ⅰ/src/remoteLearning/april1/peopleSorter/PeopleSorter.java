@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.remoteLearning.april1.peopleSorter;
+package remoteLearning.april1.peopleSorter;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,7 +27,9 @@ public class PeopleSorter {
 	}
 
 	private int linearSearch(Person p) {
-		for (var count = 0; count < people.size(); count++) if (people.get(count).equals(p)) return count;
+		for (var count = 0; count < people.size(); count++)
+			if (people.get(count).equals(p))
+				return count;
 		return -1;
 	}
 
@@ -36,9 +38,12 @@ public class PeopleSorter {
 		int count = 0, low = 0, high = people.size() - 1;
 		while (high >= low) {
 			count++;
-			if (people.get((low + high) / 2).equals(p)) break;
-			else if (people.get((low + high) / 2).compareTo(p) > 0) low = ((low + high) / 2) + 1;
-			else if (people.get((low + high) / 2).compareTo(p) < 0) high = ((low + high) / 2) - 1;
+			if (people.get((low + high) / 2).equals(p))
+				break;
+			else if (people.get((low + high) / 2).compareTo(p) > 0)
+				low = ((low + high) / 2) + 1;
+			else if (people.get((low + high) / 2).compareTo(p) < 0)
+				high = ((low + high) / 2) - 1;
 		}
 		return count;
 	}
@@ -49,7 +54,8 @@ public class PeopleSorter {
 			int minIndex = i;
 			for (int j = i + 1; j < people.size(); j++) {
 				count++;
-				if (people.get(j).compareTo(people.get(minIndex)) < 0) minIndex = j;
+				if (people.get(j).compareTo(people.get(minIndex)) < 0)
+					minIndex = j;
 			}
 			var pH = people.get(minIndex);
 			people.set(minIndex, people.get(i));
@@ -74,8 +80,10 @@ public class PeopleSorter {
 
 	private void print() {
 		var x = new StringBuilder();
-		for (var person : people) x.append(person).append("\n");
-		if (valueOf(x.charAt(x.length() - 1)).equalsIgnoreCase("\n")) x.deleteCharAt(x.length() - 1);
+		for (var person : people)
+			x.append(person).append("\n");
+		if (valueOf(x.charAt(x.length() - 1)).equalsIgnoreCase("\n"))
+			x.deleteCharAt(x.length() - 1);
 		out.println(x.toString().trim());
 	}
 

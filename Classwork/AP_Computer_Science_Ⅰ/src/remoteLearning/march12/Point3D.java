@@ -1,12 +1,15 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.remoteLearning.march12;
+package remoteLearning.march12;
 
 /**
- * The following Comparable class represents an ordered triple for x, y, z coordinates on
- * a 3D coordinate plane.
+ * The following Comparable class represents an ordered triple for x, y, z
+ * coordinates on a 3D coordinate plane.
  * <p>
  * <ol>
- * <li>Write a method called distanceToOrigin that takes no explicit parameters and returns a double representing the distance to the origin for that point based on class fields x, y, z</li>
- * <li>Write a compareTo that compares two 3D points based on distance to origin</li>
+ * <li>Write a method called distanceToOrigin that takes no explicit parameters
+ * and returns a double representing the distance to the origin for that point
+ * based on class fields x, y, z</li>
+ * <li>Write a compareTo that compares two 3D points based on distance to
+ * origin</li>
  * </ol>
  * <p>
  * Not sure how to find distance from origin? Try this link:
@@ -36,7 +39,6 @@ public class Point3D implements Comparable<Point3D> {
 	public String toString() {
 		return "(" + x + ',' + y + ',' + z + ')';
 	}
-
 
 	@Override
 	public int compareTo(Point3D other) {

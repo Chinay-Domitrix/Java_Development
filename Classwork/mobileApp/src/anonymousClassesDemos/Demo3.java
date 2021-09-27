@@ -1,4 +1,4 @@
-package Classwork.mobileApp.src.anonymousClassesDemos;
+package anonymousClassesDemos;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;

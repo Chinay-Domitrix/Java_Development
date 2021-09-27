@@ -14,11 +14,11 @@
  * @author Cay Horstmann
  */
 
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid;
+package objectOriented.gridWorld.framework.info.gridworld.grid;
 
 import java.util.ArrayList;
 
-import static Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location.*;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toCollection;
 
@@ -41,20 +41,23 @@ public abstract class AbstractGrid<E> implements Grid<E> {
 		ArrayList<Location> locs = new ArrayList<>();
 		int d = NORTH;
 		for (int i = 0; i < (FULL_CIRCLE / HALF_RIGHT); i++) {
-			if (isValid(loc.getAdjacentLocation(d))) locs.add(loc.getAdjacentLocation(d));
+			if (isValid(loc.getAdjacentLocation(d)))
+				locs.add(loc.getAdjacentLocation(d));
 			d += HALF_RIGHT;
 		}
 		return locs;
 	}
 
 	public ArrayList<Location> getEmptyAdjacentLocations(Location loc) {
-		return getValidAdjacentLocations(loc).stream().filter(neighborLoc -> get(neighborLoc) == null).collect(toCollection(ArrayList::new));
+		return getValidAdjacentLocations(loc).stream().filter(neighborLoc -> get(neighborLoc) == null)
+				.collect(toCollection(ArrayList::new));
 	}
 
 	public ArrayList<Location> getOccupiedAdjacentLocations(Location loc) {
 		ArrayList<Location> locations = new ArrayList<>();
 		for (Location neighborLoc : getValidAdjacentLocations(loc))
-			if (get(neighborLoc) != null) locations.add(neighborLoc);
+			if (get(neighborLoc) != null)
+				locations.add(neighborLoc);
 		return locations;
 	}
 
@@ -62,8 +65,8 @@ public abstract class AbstractGrid<E> implements Grid<E> {
 	 * Creates a string that describes this grid.
 	 *
 	 * @return a string with descriptions of all objects in this grid (not
-	 * necessarily in any particular order), in the format {loc=obj, loc=obj,
-	 * ...}
+	 *         necessarily in any particular order), in the format {loc=obj,
+	 *         loc=obj, ...}
 	 */
 	public String toString() {
 		return getOccupiedLocations().stream().map(loc -> loc + "=" + get(loc)).collect(joining(", ", "{", "}"));

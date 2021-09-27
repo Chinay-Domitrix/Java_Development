@@ -1,10 +1,10 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.investments;
+package objectOriented.investments;
 
 import java.util.ArrayList;
 
 import static java.lang.System.out;
 import static java.util.stream.IntStream.rangeClosed;
-import static Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.investments.Investment.format;
+import static objectOriented.investments.Investment.format;
 
 final class InvestmentDriver {
 	private static final int age = 16;

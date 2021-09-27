@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.coords;
+package objectOriented.coords;
 
 import static java.lang.Math.random;
 import static java.lang.System.out;

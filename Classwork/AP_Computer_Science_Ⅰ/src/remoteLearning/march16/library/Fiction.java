@@ -1,11 +1,12 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.remoteLearning.march16.library;
+package remoteLearning.march16.library;
 
 class Fiction extends Books implements Awards.Fiction {
 	private boolean booker;
 	private boolean nobel;
 	private boolean faulkner;
 
-	public Fiction(String author, String title, String publicationDate, boolean booker, boolean nobel, boolean faulkner) {
+	public Fiction(String author, String title, String publicationDate, boolean booker, boolean nobel,
+			boolean faulkner) {
 		this.author = author;
 		this.title = title;
 		this.publicationDate = publicationDate;

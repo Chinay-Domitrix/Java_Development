@@ -16,11 +16,11 @@
  * @author Cay Horstmann
  */
 
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.gui;
+package objectOriented.gridWorld.framework.info.gridworld.gui;
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.world.World;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.world.World;
 
 import javax.swing.*;
 import java.awt.*;
@@ -60,8 +60,7 @@ public class GUIController<T> {
 	private final Set<Class<?>> occupantClasses;
 
 	/**
-	 * Creates a new controller tied to the specified display and gui
-	 * frame.
+	 * Creates a new controller tied to the specified display and gui frame.
 	 *
 	 * @param parent     the frame for the world window
 	 * @param disp       the panel that displays the grid
@@ -77,7 +76,8 @@ public class GUIController<T> {
 		occupantClasses = new TreeSet<>(Comparator.comparing(Class::getName));
 		World<T> world = parentFrame.getWorld();
 		Grid<T> gr = world.getGrid();
-		for (Location loc : gr.getOccupiedLocations()) addOccupant(gr.get(loc));
+		for (Location loc : gr.getOccupiedLocations())
+			addOccupant(gr.get(loc));
 		world.getOccupantClasses().forEach(name -> {
 			try {
 				occupantClasses.add(forName(name));
@@ -105,7 +105,8 @@ public class GUIController<T> {
 	public void step() {
 		parentFrame.getWorld().step();
 		parentFrame.repaint();
-		if (++numStepsSoFar == numStepsToRun) stop();
+		if (++numStepsSoFar == numStepsToRun)
+			stop();
 		Grid<T> gr = parentFrame.getWorld().getGrid();
 		gr.getOccupiedLocations().stream().map(gr::get).forEach(this::addOccupant);
 	}
@@ -113,17 +114,16 @@ public class GUIController<T> {
 	private void addOccupant(T occupant) {
 		var cl = occupant.getClass();
 		do {
-			if ((cl.getModifiers() & ABSTRACT) == 0) occupantClasses.add(cl);
+			if ((cl.getModifiers() & ABSTRACT) == 0)
+				occupantClasses.add(cl);
 			cl = cl.getSuperclass();
-		}
-		while (cl != Object.class);
+		} while (cl != Object.class);
 	}
 
 	/**
-	 * Starts a timer to repeatedly carry out steps at the speed currently
-	 * indicated by the speed slider up Depending on the run option, it will
-	 * either carry out steps for some fixed number or indefinitely
-	 * until stopped.
+	 * Starts a timer to repeatedly carry out steps at the speed currently indicated
+	 * by the speed slider up Depending on the run option, it will either carry out
+	 * steps for some fixed number or indefinitely until stopped.
 	 */
 	public void run() {
 		display.setToolTipsEnabled(false); // hide tool tips while running
@@ -154,8 +154,7 @@ public class GUIController<T> {
 	}
 
 	/**
-	 * Builds the panel with the various controls (buttons and
-	 * slider).
+	 * Builds the panel with the various controls (buttons and slider).
 	 */
 	private void makeControls() {
 		controlPanel = new JPanel();
@@ -212,34 +211,36 @@ public class GUIController<T> {
 	private void locationClicked() {
 		World<T> world = parentFrame.getWorld();
 		Location loc = display.getCurrentLocation();
-		if ((loc != null) && !world.locationClicked(loc)) editLocation();
+		if ((loc != null) && !world.locationClicked(loc))
+			editLocation();
 		parentFrame.repaint();
 	}
 
 	/**
-	 * Edits the contents of the current location, by displaying the constructor
-	 * or method menu.
+	 * Edits the contents of the current location, by displaying the constructor or
+	 * method menu.
 	 */
 	public void editLocation() {
 		World<T> world = parentFrame.getWorld();
 		Location loc = display.getCurrentLocation();
-		if (loc != null) if (world.getGrid().get(loc) == null) {
-			MenuMaker<T> maker = new MenuMaker<>(parentFrame, resources, displayMap);
-			JPopupMenu popup = maker.makeConstructorMenu(occupantClasses, loc);
-			Point p = display.pointForLocation(loc);
-			popup.show(display, p.x, p.y);
-		} else {
-			MenuMaker<T> maker = new MenuMaker<>(parentFrame, resources, displayMap);
-			JPopupMenu popup = maker.makeMethodMenu(world.getGrid().get(loc), loc);
-			Point p = display.pointForLocation(loc);
-			popup.show(display, p.x, p.y);
-		}
+		if (loc != null)
+			if (world.getGrid().get(loc) == null) {
+				MenuMaker<T> maker = new MenuMaker<>(parentFrame, resources, displayMap);
+				JPopupMenu popup = maker.makeConstructorMenu(occupantClasses, loc);
+				Point p = display.pointForLocation(loc);
+				popup.show(display, p.x, p.y);
+			} else {
+				MenuMaker<T> maker = new MenuMaker<>(parentFrame, resources, displayMap);
+				JPopupMenu popup = maker.makeMethodMenu(world.getGrid().get(loc), loc);
+				Point p = display.pointForLocation(loc);
+				popup.show(display, p.x, p.y);
+			}
 		parentFrame.repaint();
 	}
 
 	/**
-	 * Edits the contents of the current location, by displaying the constructor
-	 * or method menu.
+	 * Edits the contents of the current location, by displaying the constructor or
+	 * method menu.
 	 */
 	public void deleteLocation() {
 		World<T> world = parentFrame.getWorld();

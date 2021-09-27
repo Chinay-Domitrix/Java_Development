@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.ifStatements;
+package ifStatements;
 
 import java.util.Scanner;
 
@@ -14,11 +14,13 @@ class DivisibleBy11OrNot {
 	}
 
 	private static void determine(double x) {
-		if ((x % 2 == 0) && (x % 11 == 0)) out.println("The number " + x + " is both even and divisible by 11.");
+		if ((x % 2 == 0) && (x % 11 == 0))
+			out.println("The number " + x + " is both even and divisible by 11.");
 		else if ((x % 2 == 0) || (x % 11 == 0))
 			out.println("The number " + x + " is either even and divisible by 11.");
 		else if ((x % 2 != 0) && (x % 11 != 0))
 			out.println("The number " + x + " is neither even and divisible by 11.");
-		else err.println("Error");
+		else
+			err.println("Error");
 	}
 }

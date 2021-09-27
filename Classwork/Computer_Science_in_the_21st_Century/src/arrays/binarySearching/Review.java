@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.arrays.binarySearching;
+package arrays.binarySearching;
 
 import java.util.Scanner;
 
@@ -13,9 +13,10 @@ public class Review {
 		int count = 0;
 		String redo;
 		main:
-		//noinspection ConstantConditions
+		// noinspection ConstantConditions
 		do {
-			out.print("How many values do you want in the array? Be warned, the smaller your pool of numbers, the lower the chance you have of winning. ");
+			out.print(
+					"How many values do you want in the array? Be warned, the smaller your pool of numbers, the lower the chance you have of winning. ");
 			int[] arr = new int[input.nextInt()];
 			setAll(arr, i -> (int) (random() * 10000) + 1);
 			out.print("What value do you want to search for? ");
@@ -38,8 +39,10 @@ public class Review {
 				if (arr[middle] == target) {
 					found = true;
 					break;
-				} else if (arr[middle] < target) low = middle + 1;
-				else if (arr[middle] > target) high = middle - 1;
+				} else if (arr[middle] < target)
+					low = middle + 1;
+				else if (arr[middle] > target)
+					high = middle - 1;
 			}
 			if (found) {
 				out.println(target + " is in the array. You win! It took " + count + " attempts.");

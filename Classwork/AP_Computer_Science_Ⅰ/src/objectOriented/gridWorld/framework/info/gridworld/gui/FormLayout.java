@@ -14,7 +14,7 @@
  * @author Cay Horstmann
  */
 
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.gui;
+package objectOriented.gridWorld.framework.info.gridworld.gui;
 
 import org.jetbrains.annotations.NotNull;
 

@@ -1,4 +1,4 @@
-package Random_Work.src.graphingCalculator;
+package graphingCalculator;
 
 public class Calculator {
 

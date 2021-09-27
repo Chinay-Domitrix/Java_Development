@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.remoteLearning.march16.library;
+package remoteLearning.march16.library;
 
 public interface Awards {
 	interface Fiction {

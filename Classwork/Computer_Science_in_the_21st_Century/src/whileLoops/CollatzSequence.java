@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.whileLoops;
+package whileLoops;
 
 import java.util.Scanner;
 
@@ -15,7 +15,8 @@ class CollatzSequence {
 		int counter = 0;
 		while (n != 1) {
 			counter++;
-			if (n % 2 == 0) n /= 2;
+			if (n % 2 == 0)
+				n /= 2;
 			else {
 				n *= 3;
 				n += 1;
@@ -25,7 +26,8 @@ class CollatzSequence {
 				h = counter;
 			}
 			out.printf("Step %d: %d\t", counter, n);
-			if ((counter % 10) == 0) out.println();
+			if ((counter % 10) == 0)
+				out.println();
 		}
 		range(0, 2).forEach(i -> out.println());
 		out.printf("The largest number was %d, which occurred on Step %d.%n", f, h);

@@ -1,8 +1,8 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.critters.crossCritter;
+package objectOriented.gridWorld.projects.myProjects.critters.crossCritter;
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Flower;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Flower;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 
 import static java.awt.Color.GREEN;
 import static java.awt.Color.PINK;

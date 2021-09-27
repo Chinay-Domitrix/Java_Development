@@ -1,4 +1,4 @@
-package Random_Work.src.graphingCalculator;
+package graphingCalculator;
 
 class CalculatorController {
 	private final CalculatorModel calcModel;

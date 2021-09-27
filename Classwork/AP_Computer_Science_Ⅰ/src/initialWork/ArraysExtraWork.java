@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.initialWork;
+package initialWork;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -28,10 +28,12 @@ class ArraysExtraWork {
 	private String program4() {
 		int[] x = new int[100];
 		setAll(x, i -> (int) (random() * 100) + 1);
-		//noinspection DuplicatedCode
+		// noinspection DuplicatedCode
 		for (int i = 0; i < x.length - 1; i++) {
 			int mindex = i;
-			for (int j = i + 1; j < x.length; j++) if (x[j] < x[mindex]) mindex = j;
+			for (int j = i + 1; j < x.length; j++)
+				if (x[j] < x[mindex])
+					mindex = j;
 			int ph = x[i];
 			x[i] = x[mindex];
 			x[mindex] = ph;
@@ -49,7 +51,8 @@ class ArraysExtraWork {
 			if (x[i] != x[i - 1]) {
 				counter = 0;
 				counter++;
-			} else if (x[i] == x[i - 1]) counter++;
+			} else if (x[i] == x[i - 1])
+				counter++;
 		return "The longest consecutive number chain was " + counter + " numbers long.";
 	}
 
@@ -57,16 +60,19 @@ class ArraysExtraWork {
 		int n = in.nextInt(), z = 0;
 		int[][] x = new int[n][n];
 		int[] y = new int[n * n];
-		for (int[] value : x) setAll(value, input -> (int) (random() * 1000) + 1);
+		for (int[] value : x)
+			setAll(value, input -> (int) (random() * 1000) + 1);
 		for (int[] value : x)
 			for (int i : value) {
 				y[z] = i;
 				z++;
 			}
-		//noinspection DuplicatedCode
+		// noinspection DuplicatedCode
 		for (int i = 0; i < y.length - 1; i++) {
 			int mindex = i;
-			for (int j = i + 1; j < y.length; j++) if (y[j] < y[mindex]) mindex = j;
+			for (int j = i + 1; j < y.length; j++)
+				if (y[j] < y[mindex])
+					mindex = j;
 			int ph = y[i];
 			y[i] = y[mindex];
 			y[mindex] = ph;

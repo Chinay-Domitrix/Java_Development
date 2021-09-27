@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.randomWork;
+package randomWork;
 
 import static java.lang.Integer.toBinaryString;
 import static java.lang.Math.abs;
@@ -8,13 +8,14 @@ import static java.lang.System.out;
 /**
  * This class illustrates the concept of Overflow with the int primitive.
  * <p>
- * Remember, an int like any other primitive represents a fixed number of binary digits
- * to hold a value up to Integer.MAX_VALUE=2147483647.
+ * Remember, an int like any other primitive represents a fixed number of binary
+ * digits to hold a value up to Integer.MAX_VALUE=2147483647.
  * <p>
- * Once it goes over that, some of the binary digits are displaced and you will get
- * unexpected behavior, like the int suddenly registering as negative.
+ * Once it goes over that, some of the binary digits are displaced and you will
+ * get unexpected behavior, like the int suddenly registering as negative.
  * <p>
- * For each iteration this will print the binary representation along with the integer.
+ * For each iteration this will print the binary representation along with the
+ * integer.
  */
 public class Overflow {
 	public static void main(String[] args) {
@@ -30,9 +31,11 @@ public class Overflow {
 				overflow = true;
 			}
 			out.printf("[%d] ", i);
-			if (abs(i) < 10000) out.print('\t'); // For formatting tabs
+			if (abs(i) < 10000)
+				out.print('\t'); // For formatting tabs
 			out.print("\tBin=>");
-			out.printf("%s Bin Digits [%d]%n", format("%32s", toBinaryString(i)).replace(" ", "0"), toBinaryString(i).length());
+			out.printf("%s Bin Digits [%d]%n", format("%32s", toBinaryString(i)).replace(" ", "0"),
+					toBinaryString(i).length());
 		}
 	}
 }

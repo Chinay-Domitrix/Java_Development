@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.randomWork;
+package randomWork;
 
 import org.jetbrains.annotations.Contract;
 

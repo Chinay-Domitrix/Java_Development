@@ -1,4 +1,4 @@
-package Random_Work.src.hackPHS2019;
+package hackPHS2019;
 
 import org.jetbrains.annotations.NotNull;
 

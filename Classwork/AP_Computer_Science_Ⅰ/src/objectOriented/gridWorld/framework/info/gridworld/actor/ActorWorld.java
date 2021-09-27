@@ -14,11 +14,11 @@
  * @author Cay Horstmann
  */
 
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor;
+package objectOriented.gridWorld.framework.info.gridworld.actor;
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.world.World;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.world.World;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

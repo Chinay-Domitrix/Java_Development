@@ -1,9 +1,9 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.bugs.zBug;
+package objectOriented.gridWorld.projects.myProjects.bugs.zBug;
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
 
-import static Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location.EAST;
-import static Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location.SOUTHWEST;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.EAST;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.SOUTHWEST;
 
 /**
  * A ZBug traces out a Z pattern of a given size.
@@ -14,9 +14,8 @@ class ZBug extends Bug {
 	private int segment; // which segment of the Z the ZBug is on
 
 	/**
-	 * Constructs a ZBug that traces a Z pattern in which each segment
-	 * of the Z has the given length
-	 * When the Z is drawn, the ZBug stops.
+	 * Constructs a ZBug that traces a Z pattern in which each segment of the Z has
+	 * the given length When the Z is drawn, the ZBug stops.
 	 *
 	 * @param length the segment length
 	 */
@@ -42,7 +41,8 @@ class ZBug extends Bug {
 				setDirection(EAST);
 				steps = 0;
 				segment++;
-			} else throw new IllegalStateException("Unexpected value: " + segment);
+			} else
+				throw new IllegalStateException("Unexpected value: " + segment);
 		}
 	}
-} 
+}

@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.parallelArrays;
+package parallelArrays;
 
 import java.util.Scanner;
 
@@ -14,8 +14,8 @@ public class Day2Practice2 {
 		final String[] name = new String[bounds];
 		final int[] age = new int[bounds], feet = new int[bounds];
 		final double[] weight = new double[bounds], inches = new double[bounds], avg = new double[4];
-		final int[] intSto = {0, 0};
-		final double[] doubleSto = {0.0, 0.0};
+		final int[] intSto = { 0, 0 };
+		final double[] doubleSto = { 0.0, 0.0 };
 		in.nextLine();
 		do {
 			print("Please enter a person's name. ");
@@ -51,8 +51,8 @@ public class Day2Practice2 {
 			avg[1] += (int) avg[2] / 12;
 			avg[2] %= 12;
 		}
-		println("The average age was roughly " + Math.round(avg[0])
-				+ " years. The average height was around " + Math.round(avg[1]) + " feet, " + Math.round(avg[2])
+		println("The average age was roughly " + Math.round(avg[0]) + " years. The average height was around "
+				+ Math.round(avg[1]) + " feet, " + Math.round(avg[2])
 				+ " inches. Finally, the average weight was approximately " + Math.round(avg[3]) + " pounds.");
 		in.close();
 	}

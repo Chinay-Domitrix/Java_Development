@@ -14,7 +14,7 @@
  * @author Cay Horstmann
  */
 
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor;
+package objectOriented.gridWorld.framework.info.gridworld.actor;
 
 import java.awt.*;
 

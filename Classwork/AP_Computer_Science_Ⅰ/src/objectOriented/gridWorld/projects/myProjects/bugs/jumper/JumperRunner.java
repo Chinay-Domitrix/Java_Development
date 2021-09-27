@@ -1,8 +1,8 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.bugs.jumper;
+package objectOriented.gridWorld.projects.myProjects.bugs.jumper;
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.BoundedGrid;
+import objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
+import objectOriented.gridWorld.framework.info.gridworld.grid.BoundedGrid;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class JumperRunner {
 	public static void main(String[] args) {
 		var world = new ActorWorld(new BoundedGrid<>(35, 60));
 		out.print("How many Jumpers? ");
-		try(Scanner s = new Scanner(in)){
+		try (Scanner s = new Scanner(in)) {
 			range(0, s.nextInt()).mapToObj(i -> new Jumper()).collect(toCollection(ArrayList::new)).forEach(world::add);
 			world.add(new CBug(5));
 			world.add(new HBug(5));

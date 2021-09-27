@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.whileLoops;
+package whileLoops;
 
 import java.util.Scanner;
 
@@ -11,11 +11,13 @@ class WhileAndForLoopConversions {
 			switch (in.nextInt()) {
 				case 0:
 					out.println();
-					for (int x = 1; x < 9; x++) out.printf("%dx%n", x);
+					for (int x = 1; x < 9; x++)
+						out.printf("%dx%n", x);
 					break;
 				case 1:
 					int z = 0;
-					for (int y = 0; y < 5; y++) z += y;
+					for (int y = 0; y < 5; y++)
+						z += y;
 					out.println(z);
 					break;
 				case 2:

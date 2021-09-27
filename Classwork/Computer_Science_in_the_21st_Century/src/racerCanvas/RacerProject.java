@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.racerCanvas;
+package racerCanvas;
 
 import javax.swing.*;
 import java.awt.*;
@@ -121,23 +121,24 @@ class RacerProject {
 				}
 			}
 		}
-//		Creates a new JFrame
+		// Creates a new JFrame
 		final RacerCanvas race = new RacerCanvas();
 		try (Scanner in = new Scanner(System.in)) {
-//		    Sets the path for the images (Must be modified to be usable on the user's device)
+			// Sets the path for the images (Must be modified to be usable on the user's
+			// device)
 			final String path = "C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\2018-19\\resources\\racerCanvas\\",
 					fileType = ".png";
-//		    Forces user to finalize the file path of the images
+			// Forces user to finalize the file path of the images
 			out.println(
 					"What is the exact name of the images? (On Chirag's laptop they are ISS, USAS, and Orbiter, in that order.)");
 			final String f1 = path + in.nextLine() + fileType, f2 = path + in.nextLine() + fileType,
 					f3 = path + in.nextLine() + fileType;
-//		    Sets the lap quantity
+			// Sets the lap quantity
 			out.print("How many laps will the racers do? ");
 			final int pL = in.nextInt();
-//		    Displays the images on the JFrame
+			// Displays the images on the JFrame
 			race.setFiles(f1, f2, f3);
-//			This is where most of my variables are initialized
+			// This is where most of my variables are initialized
 			int stationWin = 0;
 			int stationSecond = 0;
 			int stationLast = 0;
@@ -147,9 +148,9 @@ class RacerProject {
 			int satWin = 0;
 			int satSecond = 0;
 			int satLast = 0;
-//			Allows for the racers to do their laps
+			// Allows for the racers to do their laps
 			for (int i = 0; i < pL; i++) {
-//			    Sets the initial x-position
+				// Sets the initial x-position
 				int xpos1 = 0;
 				int xpos2 = 0;
 				int xpos3 = 0;
@@ -159,7 +160,7 @@ class RacerProject {
 				final int xpos1Add = (int) (random() * 11 + 5);
 				final int xpos2Add = (int) (random() * 11 + 5);
 				final int xpos3Add = (int) (random() * 11 + 5);
-//			    Primary functionality loop for the racers
+				// Primary functionality loop for the racers
 				do {
 					xpos1 += xpos1Add;
 					xpos2 += xpos2Add;
@@ -179,7 +180,7 @@ class RacerProject {
 					race.repaint();
 					race.delay();
 				} while ((xpos1 <= 800) || (xpos2 <= 800) || (xpos3 <= 800));
-//		    	Determines the round winners
+				// Determines the round winners
 				String third;
 				String second;
 				String winner;
@@ -226,12 +227,13 @@ class RacerProject {
 						stationLast++;
 					}
 				}
-//  			Sets the round winner text.
-				race.setPlaces(format("The %s is in first place. The %s is in second place. The %s is in third place.", winner, second, third));
-//	    		Gets the text to show up
+				// Sets the round winner text.
+				race.setPlaces(format("The %s is in first place. The %s is in second place. The %s is in third place.",
+						winner, second, third));
+				// Gets the text to show up
 				race.showText(true);
 				race.repaint();
-//			    Allows for the text to remain on the screen
+				// Allows for the text to remain on the screen
 				range(0, 75).forEach(j -> {
 					try {
 						race.delay();
@@ -239,12 +241,15 @@ class RacerProject {
 						e.printStackTrace();
 					}
 				});
-//			    Removes the text
+				// Removes the text
 				race.showText(false);
 			}
-//		    Sets the text for the final counts.
-			race.setPlaces(format("The Space Station won %d races, came second in %d races, and came last in %d races. The Shuttle won %d races, came second in %d races, and came last in %d races. The Satellite won %d races, came second in %d races, and came last in %d races.", stationWin, stationSecond, stationLast, shuttleWin, shuttleSecond, shuttleLast, satWin, satSecond, satLast));
-//		    Allows the text above to appear, but doesn't get rid of it
+			// Sets the text for the final counts.
+			race.setPlaces(format(
+					"The Space Station won %d races, came second in %d races, and came last in %d races. The Shuttle won %d races, came second in %d races, and came last in %d races. The Satellite won %d races, came second in %d races, and came last in %d races.",
+					stationWin, stationSecond, stationLast, shuttleWin, shuttleSecond, shuttleLast, satWin, satSecond,
+					satLast));
+			// Allows the text above to appear, but doesn't get rid of it
 			race.showText(true);
 			race.repaint();
 		}

@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.learnGraphics.pong;
+package learnGraphics.pong;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -16,13 +16,17 @@ class Paddle extends Sprite {
 	}
 
 	void pressed(KeyEvent e) {
-		if (e.getKeyCode() == VK_LEFT) setXA(-2);
-		else if (e.getKeyCode() == VK_RIGHT) setXA(2);
-		else if (e.getKeyCode() == VK_W && e.getModifiersEx() == CTRL_DOWN_MASK) exit(0);
+		if (e.getKeyCode() == VK_LEFT)
+			setXA(-2);
+		else if (e.getKeyCode() == VK_RIGHT)
+			setXA(2);
+		else if (e.getKeyCode() == VK_W && e.getModifiersEx() == CTRL_DOWN_MASK)
+			exit(0);
 	}
 
 	void released(KeyEvent e) {
-		if ((e.getKeyCode() == VK_LEFT) || (e.getKeyCode() == VK_RIGHT)) setXA(0);
+		if ((e.getKeyCode() == VK_LEFT) || (e.getKeyCode() == VK_RIGHT))
+			setXA(0);
 	}
 
 	void updatePosition() {

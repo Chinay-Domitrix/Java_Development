@@ -1,9 +1,9 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.critters.medusaCritter;
+package objectOriented.gridWorld.projects.myProjects.critters.medusaCritter;
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Flower;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
+import objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Flower;
 
 import static java.awt.Color.*;
 

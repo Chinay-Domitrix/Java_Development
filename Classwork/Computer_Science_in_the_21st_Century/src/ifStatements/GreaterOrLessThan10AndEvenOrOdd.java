@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.ifStatements;
+package ifStatements;
 
 import java.util.Scanner;
 

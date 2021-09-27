@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.learnGraphics.pong2;
+package learnGraphics.pong2;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,8 +32,10 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void increaseScoreForPlayer(int playerNumber) {
-		if (playerNumber == 1) score1++;
-		else score2++;
+		if (playerNumber == 1)
+			score1++;
+		else
+			score2++;
 	}
 
 	int getScore(int playerNumber) {

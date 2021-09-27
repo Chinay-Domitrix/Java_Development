@@ -16,10 +16,10 @@
  * @author Cay Horstmann
  */
 
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.gui;
+package objectOriented.gridWorld.framework.info.gridworld.gui;
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -42,7 +42,7 @@ import static java.text.MessageFormat.format;
 import static javax.swing.SwingConstants.VERTICAL;
 import static javax.swing.SwingUtilities.convertPoint;
 import static javax.swing.ToolTipManager.sharedInstance;
-import static Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.gui.PseudoInfiniteViewport.Pannable;
+import static objectOriented.gridWorld.framework.info.gridworld.gui.PseudoInfiniteViewport.Pannable;
 
 /**
  * A <code>GridPanel</code> is a panel containing a graphical display of the

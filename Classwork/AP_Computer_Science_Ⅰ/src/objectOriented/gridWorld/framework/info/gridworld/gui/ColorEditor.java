@@ -14,7 +14,7 @@
  * @author Cay Horstmann
  */
 
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.gui;
+package objectOriented.gridWorld.framework.info.gridworld.gui;
 
 import org.jetbrains.annotations.Contract;
 
@@ -32,7 +32,8 @@ import static java.util.stream.IntStream.range;
  * students.
  */
 public class ColorEditor extends PropertyEditorSupport {
-	private static final Color[] colorValues = new Color[]{BLACK, BLUE, CYAN, DARK_GRAY, GRAY, GREEN, LIGHT_GRAY, MAGENTA, ORANGE, PINK, RED, WHITE, YELLOW};
+	private static final Color[] colorValues = new Color[] { BLACK, BLUE, CYAN, DARK_GRAY, GRAY, GREEN, LIGHT_GRAY,
+			MAGENTA, ORANGE, PINK, RED, WHITE, YELLOW };
 	private static final ColorIcon[] colorIcons;
 
 	static {

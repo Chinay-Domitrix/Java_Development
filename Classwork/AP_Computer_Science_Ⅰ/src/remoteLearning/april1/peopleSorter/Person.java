@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.remoteLearning.april1.peopleSorter;
+package remoteLearning.april1.peopleSorter;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -36,6 +36,7 @@ class Person implements Comparable<Person> {
 
 	@Override
 	public int compareTo(@NotNull Person otherPerson) {
-		return (birthMonth.compareTo(otherPerson.birthMonth) != 0) ? birthMonth.compareTo(otherPerson.birthMonth) : compare(socialSecurityNumber, otherPerson.socialSecurityNumber);
+		return (birthMonth.compareTo(otherPerson.birthMonth) != 0) ? birthMonth.compareTo(otherPerson.birthMonth)
+				: compare(socialSecurityNumber, otherPerson.socialSecurityNumber);
 	}
 }

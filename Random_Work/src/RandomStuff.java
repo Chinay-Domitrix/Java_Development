@@ -1,5 +1,3 @@
-package Random_Work.src;
-
 import java.util.Random;
 
 import static java.lang.String.valueOf;

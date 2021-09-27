@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.initialWork;
+package initialWork;
 
 import java.util.Scanner;
 
@@ -30,7 +30,8 @@ public class Day1Review {
 				case 3:
 					range(1, 5).forEachOrdered(i -> {
 						iterate(5, j -> j > i, j -> j - 1).forEachOrdered(out::print);
-						if (i % 2 == 1) out.print('*');
+						if (i % 2 == 1)
+							out.print('*');
 						out.println();
 					});
 					break;
@@ -53,10 +54,11 @@ public class Day1Review {
 					for (int i = 1; i <= count; i++) {
 						out.print(y8 + "\t");
 						z8 = x8;
-						//noinspection SuspiciousNameCombination
+						// noinspection SuspiciousNameCombination
 						x8 = y8;
 						y8 += z8;
-						if (i % 5 == 0) out.println();
+						if (i % 5 == 0)
+							out.println();
 					}
 					break;
 				case 9:

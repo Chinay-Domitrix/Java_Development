@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.switchStatements;
+package switchStatements;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -23,13 +23,17 @@ class RockPaperScissorsLizardSpock {
 		String a = "Welcome to Rock, Paper, Scissors, Lizard, Spock! Please enter your first name, contestant. ";
 		out.print(a);
 		name = in.nextLine();
-		out.printf("Hello %s! How many rounds do you want? (Please enter an odd number from one to nine in numerical form.) ", name);
+		out.printf(
+				"Hello %s! How many rounds do you want? (Please enter an odd number from one to nine in numerical form.) ",
+				name);
 		rounds = in.nextInt();
-		if ((rounds == 0b10) || (rounds == 0b100) || (rounds == 0b110) || (rounds == 0b1000) || (rounds < 0b1) || (rounds > 0b1001))
+		if ((rounds == 0b10) || (rounds == 0b100) || (rounds == 0b110) || (rounds == 0b1000) || (rounds < 0b1)
+				|| (rounds > 0b1001))
 			throw new IllegalStateException("Unexpected value: " + rounds);
 		out.print("Please enter a difficulty level from one to nine in numerical form: ");
 		int diff = in.nextInt();
-		if ((diff < 0b1) || (diff > 0b1001)) throw new IllegalStateException(format("Unexpected value: %d", diff));
+		if ((diff < 0b1) || (diff > 0b1001))
+			throw new IllegalStateException(format("Unexpected value: %d", diff));
 		in.nextLine();
 		switch (diff) {
 			case 1:
@@ -63,11 +67,9 @@ class RockPaperScissorsLizardSpock {
 				throw new IllegalStateException("Unexpected value: " + diff);
 		}
 		if (compWins > playerWins)
-			out.printf('\n' +
-					"You lost the match, %s. Too bad... You can try again though!%n", name);
+			out.printf('\n' + "You lost the match, %s. Too bad... You can try again though!%n", name);
 		else if (playerWins > compWins)
-			out.printf('\n' +
-					"You won the match, %s! Congratulations!%n", name);
+			out.printf('\n' + "You won the match, %s! Congratulations!%n", name);
 		else
 			out.printf("It's a tie, %s.%n", name);
 	}
@@ -392,8 +394,7 @@ class RockPaperScissorsLizardSpock {
 			case "rock":
 			case "Rock":
 				out.println(compPicks);
-				if (compPicks.equals("Computer picks lizard")
-						|| compPicks.equals("Computer picks scissors")) {
+				if (compPicks.equals("Computer picks lizard") || compPicks.equals("Computer picks scissors")) {
 					out.println("You Win!");
 					playerWins++;
 				} else if (compPicks.equals("Computer picks rock"))
@@ -445,8 +446,7 @@ class RockPaperScissorsLizardSpock {
 			case "spock":
 			case "Spock":
 				out.println(compPicks);
-				if (compPicks.equals("Computer picks scissors")
-						|| compPicks.equals("Computer picks rock")) {
+				if (compPicks.equals("Computer picks scissors") || compPicks.equals("Computer picks rock")) {
 					out.println("You Win!");
 					playerWins++;
 				} else if (compPicks.equals("Computer picks Spock"))

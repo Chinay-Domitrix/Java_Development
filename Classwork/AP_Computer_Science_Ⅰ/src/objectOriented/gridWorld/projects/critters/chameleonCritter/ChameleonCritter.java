@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.critters.chameleonCritter;
+package objectOriented.gridWorld.projects.critters.chameleonCritter;
 
 /*
  * AP(r) Computer Science GridWorld Case Study:
@@ -18,9 +18,9 @@ package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.
  * @author Cay Horstmann
  */
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Critter;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Critter;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -35,8 +35,8 @@ import static java.util.Objects.requireNonNull;
  */
 public class ChameleonCritter extends Critter {
 	/**
-	 * Randomly selects a neighbor and changes this critter's color to be the
-	 * same as that neighbor's. If there are no neighbors, no action is taken.
+	 * Randomly selects a neighbor and changes this critter's color to be the same
+	 * as that neighbor's. If there are no neighbors, no action is taken.
 	 */
 	public void processActors(@NotNull ArrayList<Actor> actors) {
 		assert requireNonNull(actors).size() != 0;

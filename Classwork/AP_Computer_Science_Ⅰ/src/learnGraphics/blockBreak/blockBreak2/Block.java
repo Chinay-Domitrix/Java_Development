@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.learnGraphics.blockBreak.blockBreak2;/* This is a container object that can hold additional properties assosciated with a Rectangle */
+package learnGraphics.blockBreak.blockBreak2;/* This is a container object that can hold additional properties assosciated with a Rectangle */
 
 import java.awt.*;
 

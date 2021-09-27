@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.ifStatements;
+package ifStatements;
 
 import java.util.Scanner;
 
@@ -33,7 +33,8 @@ class LotsOfTwos {
 		} else if (d == 'r') {
 			e = Math.pow(b, 2);
 			out.println("The result when raising " + b + " by 2 is " + e + ".");
-		} else err.println("Error...");
+		} else
+			err.println("Error...");
 		in.close();
 	}
 }

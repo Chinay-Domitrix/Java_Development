@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.inheritance.rooms;
+package objectOriented.inheritance.rooms;
 
 import org.jetbrains.annotations.Contract;
 
@@ -28,13 +28,17 @@ final class Kitchen extends Room {
 
 	@Override
 	public boolean setSqFeet(int sqFeet) {
-		if (sqFeet >= MIN_SIZE) return super.setSqFeet(sqFeet);
+		if (sqFeet >= MIN_SIZE)
+			return super.setSqFeet(sqFeet);
 		err.println("Only values greater than or equal to seventy are accepted.");
 		return false;
 	}
 
 	@Override
 	public String toString() {
-		return format("%s and has a(n) " + getStoveType() + (getHasOven() ? " stove with an oven." : " stove without an oven."), super.toString().replace(".", ""));
+		return format(
+				"%s and has a(n) " + getStoveType()
+						+ (getHasOven() ? " stove with an oven." : " stove without an oven."),
+				super.toString().replace(".", ""));
 	}
 }

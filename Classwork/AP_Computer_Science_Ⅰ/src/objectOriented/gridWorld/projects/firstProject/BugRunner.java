@@ -1,23 +1,23 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.firstProject;/*
- * AP(r) Computer Science GridWorld Case Study:
- * Copyright(c) 2005-2006 Cay S. Horstmann (http://horstmann.com)
- *
- * This code is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * @author Cay Horstmann
- */
+package objectOriented.gridWorld.projects.firstProject;/*
+														* AP(r) Computer Science GridWorld Case Study:
+														* Copyright(c) 2005-2006 Cay S. Horstmann (http://horstmann.com)
+														*
+														* This code is free software; you can redistribute it and/or modify
+														* it under the terms of the GNU General Public License as published by
+														* the Free Software Foundation.
+														*
+														* This code is distributed in the hope that it will be useful,
+														* but WITHOUT ANY WARRANTY; without even the implied warranty of
+														* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+														* GNU General Public License for more details.
+														*
+														* @author Cay Horstmann
+														*/
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.UnboundedGrid;
+import objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
+import objectOriented.gridWorld.framework.info.gridworld.grid.UnboundedGrid;
 
 /**
  * This class runs a world that contains a bug and a rock, added at random

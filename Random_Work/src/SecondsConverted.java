@@ -1,5 +1,3 @@
-package Random_Work.src;
-
 import static java.lang.Math.random;
 import static java.lang.System.out;
 

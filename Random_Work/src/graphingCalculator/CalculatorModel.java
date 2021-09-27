@@ -1,4 +1,4 @@
-package Random_Work.src.graphingCalculator;
+package graphingCalculator;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;

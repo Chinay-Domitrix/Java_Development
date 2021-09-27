@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.arrays.selectionSorting;
+package arrays.selectionSorting;
 
 import java.util.Scanner;
 
@@ -15,7 +15,9 @@ class Day2Practice {
 		if (d.equalsIgnoreCase("ascending")) {
 			for (int i = 0; i < c.length - 1; i++) {
 				e = i;
-				for (int j = i + 1; j < c.length; j++) if (c[j] < c[e]) e = j;
+				for (int j = i + 1; j < c.length; j++)
+					if (c[j] < c[e])
+						e = j;
 				f = c[i];
 				c[i] = c[e];
 				c[e] = f;
@@ -25,15 +27,17 @@ class Day2Practice {
 				e = i;
 				// noinspection OverflowingLoopIndex
 				for (int j = c.length; j < i + 1; j--) {
-					//noinspection ConstantConditions
-					if (c[j] > c[e]) e = j;
+					// noinspection ConstantConditions
+					if (c[j] > c[e])
+						e = j;
 				}
 				f = c[i];
 				c[i] = c[e];
 				c[e] = f;
 			}
 		}
-		for (final char value : c) out.print(value + " ");
+		for (final char value : c)
+			out.print(value + " ");
 	}
 
 	private static void intSort(final Scanner a, final int b, final int[] c, final String d) {
@@ -43,22 +47,29 @@ class Day2Practice {
 		}
 		int f;
 		int e;
-		if (d.equalsIgnoreCase("ascending")) for (int i = 0; i < c.length - 1; i++) {
-			e = i;
-			for (int j = i + 1; j < c.length; j++) if (c[j] < c[e]) e = j;
-			f = c[i];
-			c[i] = c[e];
-			c[e] = f;
-		}
-		else if (d.equalsIgnoreCase("descending")) for (var i = c.length - 1; i >= 0; i--) {
-			e = i;
-			//noinspection OverflowingLoopIndex
-			for (var j = c.length - 1; j < i + 1; j--) if (c[j] > c[e]) e = j;
-			f = c[i];
-			c[i] = c[e];
-			c[e] = f;
-		}
-		for (final var value : c) out.print(value + " ");
+		if (d.equalsIgnoreCase("ascending"))
+			for (int i = 0; i < c.length - 1; i++) {
+				e = i;
+				for (int j = i + 1; j < c.length; j++)
+					if (c[j] < c[e])
+						e = j;
+				f = c[i];
+				c[i] = c[e];
+				c[e] = f;
+			}
+		else if (d.equalsIgnoreCase("descending"))
+			for (var i = c.length - 1; i >= 0; i--) {
+				e = i;
+				// noinspection OverflowingLoopIndex
+				for (var j = c.length - 1; j < i + 1; j--)
+					if (c[j] > c[e])
+						e = j;
+				f = c[i];
+				c[i] = c[e];
+				c[e] = f;
+			}
+		for (final var value : c)
+			out.print(value + " ");
 	}
 
 	public static void main(final String[] args) {
@@ -70,7 +81,9 @@ class Day2Practice {
 		input.nextLine();
 		out.print("Will the order be ascending or descending? ");
 		var order = input.nextLine();
-		if (datatype.equalsIgnoreCase("int")) intSort(input, bounds, new int[bounds], order);
-		else if (datatype.equalsIgnoreCase("char")) charSort(input, bounds, new char[bounds], order);
+		if (datatype.equalsIgnoreCase("int"))
+			intSort(input, bounds, new int[bounds], order);
+		else if (datatype.equalsIgnoreCase("char"))
+			charSort(input, bounds, new char[bounds], order);
 	}
 }

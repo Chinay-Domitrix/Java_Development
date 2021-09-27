@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.ifStatements;
+package ifStatements;
 
 import java.util.Scanner;
 
@@ -66,7 +66,7 @@ class Divider {
 				out.println("Your number is divisible evenly by all those numbers except 2, 5, and 7.");
 			else {
 				boolean b1 = (a % 2 != 0) && (a % 3 == 0) && (a % 5 != 0) && (a % 7 == 0) && (a % 11 != 0);
-				//noinspection DuplicateCondition
+				// noinspection DuplicateCondition
 				if (b1)
 					out.println("Your number is divisible evenly by all those numbers except 2, 5, and 11.");
 				else if ((a % 2 != 0) && (a % 3 == 0) && (a % 5 == 0) && (a % 7 != 0) && (a % 11 != 0))
@@ -89,7 +89,8 @@ class Divider {
 					out.println("Your number is only divisible evenly by 3.");
 				else if ((a % 2 != 0) && (a % 3 != 0) && (a % 5 != 0) && (a % 7 != 0) && (a % 11 != 0))
 					out.println("Your number is not divisible evenly by of those numbers.");
-				else out.println("Syntax or Computational Error.");
+				else
+					out.println("Syntax or Computational Error.");
 			}
 		}
 	}

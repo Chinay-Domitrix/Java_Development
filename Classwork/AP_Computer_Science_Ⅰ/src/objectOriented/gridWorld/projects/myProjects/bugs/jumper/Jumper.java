@@ -1,15 +1,15 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.bugs.jumper;
+package objectOriented.gridWorld.projects.myProjects.bugs.jumper;
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Flower;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Flower;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 
-import static Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location.RIGHT;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.RIGHT;
 import static java.awt.Color.RED;
 
 class Jumper extends Bug {

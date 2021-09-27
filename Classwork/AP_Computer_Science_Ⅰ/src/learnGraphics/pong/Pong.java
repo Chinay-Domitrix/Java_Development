@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.learnGraphics.pong;
+package learnGraphics.pong;
 
 import javax.swing.*;
 import java.awt.*;

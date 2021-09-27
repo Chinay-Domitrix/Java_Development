@@ -1,9 +1,9 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.critters.floristCritter;
+package objectOriented.gridWorld.projects.myProjects.critters.floristCritter;
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Critter;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Flower;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Critter;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Flower;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
 
 import java.util.ArrayList;
 

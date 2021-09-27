@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.strings;
+package strings;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -15,7 +15,8 @@ public class WordRearranger {
 
 	private static String task1(@NotNull String reversible) {
 		String returned = "";
-		for (int i = reversible.length() - 1; i >= 0; i--) returned += reversible.substring(i, i + 1);
+		for (int i = reversible.length() - 1; i >= 0; i--)
+			returned += reversible.substring(i, i + 1);
 		return returned;
 	}
 
@@ -29,7 +30,8 @@ public class WordRearranger {
 			}
 		stringArrayList.add(input);
 		var returned = "";
-		for (int i = stringArrayList.size() - 1; i >= 0; i--) returned += stringArrayList.get(i) + " ";
+		for (int i = stringArrayList.size() - 1; i >= 0; i--)
+			returned += stringArrayList.get(i) + " ";
 		return returned;
 	}
 }

@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.whileLoops;
+package whileLoops;
 
 import java.util.Scanner;
 
@@ -23,7 +23,8 @@ class WhileLoopsDay2Practice2A {
 				}
 
 			}
-			if (score == 0) out.println("You lose. The answer was " + randNum + ".");
+			if (score == 0)
+				out.println("You lose. The answer was " + randNum + ".");
 		}
 	}
 }

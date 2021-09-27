@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridExamples;
+package objectOriented.gridExamples;
 
 import java.util.Scanner;
 
@@ -70,7 +70,8 @@ class GridDriver extends Thread {
 	}
 
 	/**
-	 * Second iteration; modified code, runs on a {@code char} array and runs the additional two methods
+	 * Second iteration; modified code, runs on a {@code char} array and runs the
+	 * additional two methods
 	 */
 	private static void iteration2() {
 		x[1] = new Grid(numRows, numCols);

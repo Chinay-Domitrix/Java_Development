@@ -1,9 +1,9 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld;
+package objectOriented.gridWorld;
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.BoundedGrid;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.UnboundedGrid;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import objectOriented.gridWorld.framework.info.gridworld.grid.BoundedGrid;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.grid.UnboundedGrid;
 
 import static java.lang.System.out;
 
@@ -13,7 +13,8 @@ public class GridTester {
 		var ubg = new UnboundedGrid<>();
 		out.printf("bg rows = %d, bg cols = %d%n", bg.getNumRows(), bg.getNumCols());
 		out.printf("ubg rows = %d, ubg cols = %d%n", ubg.getNumRows(), ubg.getNumCols());
-		out.printf("bg.isValid(4,4)=%s%nubg.isValid(4,4)=%s%n", bg.isValid(new Location(4, 4)), ubg.isValid(new Location(4, 4)));
+		out.printf("bg.isValid(4,4)=%s%nubg.isValid(4,4)=%s%n", bg.isValid(new Location(4, 4)),
+				ubg.isValid(new Location(4, 4)));
 		bg.put(new Location(1, 1), new Bug());
 	}
 }

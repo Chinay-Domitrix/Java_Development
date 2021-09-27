@@ -7,8 +7,6 @@
 			<sourceFolder url="file://$MODULE_DIR$/Hello_World/src" isTestSource="false" />
 			<sourceFolder url="file://$MODULE_DIR$/Classwork/AP_Computer_Science_Ⅰ/src" isTestSource="false" />
 			<sourceFolder url="file://$MODULE_DIR$/Random_Work/hackPHS2019" isTestSource="false" />
-			<sourceFolder url="file://$MODULE_DIR$/Random_Work/projectEuler" isTestSource="false" />
-			<sourceFolder url="file://$MODULE_DIR$/Random_Work/src" isTestSource="false" />
 			<sourceFolder url="file://$MODULE_DIR$/Classwork/Computer_Science_in_the_21st_Century/images" type="java-resource" />
 			<sourceFolder url="file://$MODULE_DIR$/Classwork/mobileApp/src" isTestSource="false" />
 			<excludeFolder url="file://$MODULE_DIR$/.idea" />

@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.arrays;
+package arrays;
 
 import static java.lang.System.out;
 

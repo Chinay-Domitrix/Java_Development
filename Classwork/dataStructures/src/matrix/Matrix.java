@@ -1,4 +1,4 @@
-package Classwork.dataStructures.matrix;
+package matrix;
 
 import static java.util.Arrays.stream;
 
@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Matrix {
 	public static void main(String[] args) {
-		try (Scanner fileReader = new Scanner(new File("Classwork/dataStructures/matrix/MatrixInput.txt"))) {
+		try (var fileReader = new Scanner(new File("Classwork/dataStructures/matrix/MatrixInput.txt"))) {
 			while (fileReader.hasNextLine()) {
 				var matrixStrings = fileReader.nextLine().split("\t");
 				var array1 = parseArray(matrixStrings[0]);

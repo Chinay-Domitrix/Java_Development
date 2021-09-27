@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.coords;
+package objectOriented.coords;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ import static java.util.stream.Collectors.joining;
 import static java.util.stream.IntStream.range;
 
 class CoordinatePlane {
-	private static final int[] GRID_SIZES = {61, 41, 21};
+	private static final int[] GRID_SIZES = { 61, 41, 21 };
 	private final int numRows;
 	private final int numCols;
 	private final int xAxisIndex;
@@ -44,18 +44,19 @@ class CoordinatePlane {
 
 	public static void main(String[] args) {
 		var cp = new CoordinatePlane(GRID_SIZES[2]);
-		//cp.randomPoints(10, -10, 10);
-//		Graph with 'x'
-		//cp.graph("x");
-//		Uncomment when ready
-		//cp.linearGraph(1/2.0,-4);
+		// cp.randomPoints(10, -10, 10);
+		// Graph with 'x'
+		// cp.graph("x");
+		// Uncomment when ready
+		// cp.linearGraph(1/2.0,-4);
 		cp.linearGraph();
-//		Graph with 'x'
+		// Graph with 'x'
 		cp.graph('x');
 	}
 
 	/**
-	 * The key method that displays a graph with x-axis, y-axis and ArrayList of points
+	 * The key method that displays a graph with x-axis, y-axis and ArrayList of
+	 * points
 	 *
 	 * @param pointChar character used to graph points
 	 */
@@ -63,17 +64,17 @@ class CoordinatePlane {
 		blankGrid();
 		out.print("Graphing => ");
 		points.forEach(p -> {
-//			round to nearest int to graph
+			// round to nearest int to graph
 			var x = p.getXInt();
-//			round to nearest int to graph
+			// round to nearest int to graph
 			var y = p.getYInt();
 			out.printf("(%d,%d) ", x, y);
-//          Only graph points in range of grid
+			// Only graph points in range of grid
 			if ((x >= xMin) && (x <= xMax) && (y >= yMin) && (y <= yMax))
 				displayGrid[yAxisIndex - y][xAxisIndex + x] = pointChar;
 		});
 		out.println();
-//		prints new display grid
+		// prints new display grid
 		print();
 	}
 
@@ -106,9 +107,9 @@ class CoordinatePlane {
 	 * Fills points in form of line with a given slope and y-intercept
 	 */
 	private void linearGraph() {
-		//noinspection StatementWithEmptyBody
+		// noinspection StatementWithEmptyBody
 		for (var x = xMin; x <= xMax; x++) {
-			/*  TASK 2 - Write the loop to get this working */
+			/* TASK 2 - Write the loop to get this working */
 
 		}
 	}
@@ -144,6 +145,8 @@ class CoordinatePlane {
 	 * Fills all contents of displayGrid
 	 */
 	private void fillAll() {
-		for (var i = 0; i < numRows; i++) for (var j = 0; j < numCols; j++) displayGrid[i][j] = " ";
+		for (var i = 0; i < numRows; i++)
+			for (var j = 0; j < numCols; j++)
+				displayGrid[i][j] = " ";
 	}
 }

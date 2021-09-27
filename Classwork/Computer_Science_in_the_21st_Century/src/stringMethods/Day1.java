@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.stringMethods;
+package stringMethods;
 
 import java.util.Scanner;
 
@@ -16,12 +16,14 @@ public class Day1 {
 					err.println("That program does not exist");
 					break;
 				case 1:
-					for (int i = main.length() - 1; i >= 0; i--) out.print(main.charAt(i));
+					for (int i = main.length() - 1; i >= 0; i--)
+						out.print(main.charAt(i));
 					out.println();
 					break;
 				case 2:
 					StringBuilder mainInverted = new StringBuilder();
-					for (int i = main.length() - 1; i >= 0; i--) mainInverted.append(main.charAt(i));
+					for (int i = main.length() - 1; i >= 0; i--)
+						mainInverted.append(main.charAt(i));
 					out.println(mainInverted);
 					break;
 				case 3:
@@ -38,7 +40,8 @@ public class Day1 {
 					break;
 				case 5:
 					StringBuilder s = new StringBuilder();
-					for (int i = 0; i < main.length(); i += 2) s.append(main.charAt(i));
+					for (int i = 0; i < main.length(); i += 2)
+						s.append(main.charAt(i));
 					out.println(s);
 					break;
 				case 6:
@@ -48,14 +51,16 @@ public class Day1 {
 				case 7:
 					String[] c7 = main.split(" ");
 					int average = 0;
-					for (String x : c7) average += x.length();
+					for (String x : c7)
+						average += x.length();
 					average /= (double) c7.length;
 					out.print("The average word length is approximately" + round(average) + " words.");
 					break;
 				case 8:
 					String[] c8 = main.split(" ");
 					StringBuilder y = new StringBuilder();
-					for (int i = c8.length - 1; i >= 0; i--) y.append(c8[i]).append(' ');
+					for (int i = c8.length - 1; i >= 0; i--)
+						y.append(c8[i]).append(' ');
 					out.print(y.toString().trim());
 					break;
 			}

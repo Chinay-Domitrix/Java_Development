@@ -1,4 +1,4 @@
-package Classwork.dataStructures.reducer;
+package reducer;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.System.out;
@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Reducer {
 	public static void main(String... args) {
-		try (Scanner fileReader = new Scanner(new File("Classwork/Data_Structures/reducer/Reducer.txt"))) {
+		try (var fileReader = new Scanner(new File("Classwork/Data_Structures/reducer/Reducer.txt"))) {
 			while (fileReader.hasNextLine()) {
 				String[] nums = fileReader.next().split("/");
 				int numerator = parseInt(nums[0]), denominator = parseInt(nums[1]);

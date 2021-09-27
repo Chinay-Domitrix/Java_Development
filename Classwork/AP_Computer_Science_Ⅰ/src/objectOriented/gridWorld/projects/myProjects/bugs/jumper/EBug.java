@@ -1,6 +1,6 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.projects.myProjects.bugs.jumper;
+package objectOriented.gridWorld.projects.myProjects.bugs.jumper;
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
 
 class EBug extends Bug {
 	private final int steps;

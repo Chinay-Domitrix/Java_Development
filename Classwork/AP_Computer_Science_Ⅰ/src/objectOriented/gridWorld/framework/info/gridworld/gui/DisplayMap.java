@@ -17,7 +17,7 @@
  * @author Cay Horstmann
  */
 
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.gui;
+package objectOriented.gridWorld.framework.info.gridworld.gui;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -28,8 +28,8 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * <code>DisplayMap</code> is a collection that maps grid occupant
- * classes to objects that know how to display them. <br />
+ * <code>DisplayMap</code> is a collection that maps grid occupant classes to
+ * objects that know how to display them. <br />
  * This code is not tested on the AP CS A and AB exams. It contains GUI
  * implementation details that are not intended to be understood by AP CS
  * students.
@@ -42,8 +42,8 @@ public class DisplayMap {
 	 * Associates a display object with a grid occupant class.
 	 *
 	 * @param cl the occupant class
-	 * @return the ImageDisplay or (classname)Display object to display it,
-	 * or null if none was found
+	 * @return the ImageDisplay or (classname)Display object to display it, or null
+	 *         if none was found
 	 */
 
 	@Nullable
@@ -52,7 +52,8 @@ public class DisplayMap {
 			String className = cl.getName();
 			var dcl = Class.forName(className + "Display");
 			if (Display.class.isAssignableFrom(dcl)) {
-				@SuppressWarnings("deprecation") Display display = (Display) dcl.newInstance();
+				@SuppressWarnings("deprecation")
+				Display display = (Display) dcl.newInstance();
 				map.put(cl, display);
 				return display;
 			}

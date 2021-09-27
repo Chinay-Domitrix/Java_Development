@@ -14,15 +14,15 @@
  * @author Cay Horstmann
  */
 
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.actor;
+package objectOriented.gridWorld.framework.info.gridworld.actor;
 
-import static Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location.HALF_RIGHT;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.HALF_RIGHT;
 import static java.awt.Color.RED;
 
 import java.awt.Color;
 
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 
 /**
  * A <code>Bug</code> is an actor that can move and turn. It drops flowers as it

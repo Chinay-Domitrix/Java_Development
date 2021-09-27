@@ -1,4 +1,4 @@
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.inheritance.foot;
+package objectOriented.inheritance.foot;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -16,19 +16,26 @@ public class Boots extends Footwear {
 
 	public static void main(String[] args) {
 		Boots boots = new Boots("Winter Boots");
-		if (boots.putOn("both")) out.println("Both boots are on!");
-		else if (boots.putOn("left")) out.println("The left boot is on!");
-		else if (boots.putOn("right")) out.println("The right boot is on!");
-		else out.println("Input is invalid!");
+		if (boots.putOn("both"))
+			out.println("Both boots are on!");
+		else if (boots.putOn("left"))
+			out.println("The left boot is on!");
+		else if (boots.putOn("right"))
+			out.println("The right boot is on!");
+		else
+			out.println("Input is invalid!");
 	}
 
 	public boolean putOn(@NotNull String foot) {
-		if (foot.equalsIgnoreCase("left")) this.setLeftOn(true);
-		else if (foot.equalsIgnoreCase("right")) this.setRightOn(true);
+		if (foot.equalsIgnoreCase("left"))
+			this.setLeftOn(true);
+		else if (foot.equalsIgnoreCase("right"))
+			this.setRightOn(true);
 		else if (foot.equalsIgnoreCase("both")) {
 			this.setRightOn(true);
 			this.setLeftOn(true);
-		} else return false;
+		} else
+			return false;
 		return true;
 	}
 }

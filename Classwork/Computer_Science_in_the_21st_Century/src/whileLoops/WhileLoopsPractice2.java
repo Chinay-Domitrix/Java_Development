@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.whileLoops;
+package whileLoops;
 
 import static java.lang.System.out;
 
@@ -8,9 +8,10 @@ class WhileLoopsPractice2 {
 		int y = 10;
 		int counter = 0;
 		while (y > 0) {
-			if (x % 2 == 0) y /= x + 1;
+			if (x % 2 == 0)
+				y /= x + 1;
 			else
-				//noinspection SuspiciousNameCombination
+				// noinspection SuspiciousNameCombination
 				y += x;
 			x++;
 			counter++;

@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.arrays.binarySearching;
+package arrays.binarySearching;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -20,8 +20,10 @@ public class Day1Practice2 {
 			if (array[middle] == target) {
 				found = true;
 				break;
-			} else if (array[middle] < target) low = middle + 1;
-			else if (array[middle] > target) high = middle - 1;
+			} else if (array[middle] < target)
+				low = middle + 1;
+			else if (array[middle] > target)
+				high = middle - 1;
 		}
 	}
 
@@ -34,7 +36,8 @@ public class Day1Practice2 {
 		setAll(arr, i -> (int) ((random() * 10000) + 1));
 		for (int i = 0; i < arr.length; i++) {
 			out.print(arr[i] + "\t");
-			if (((i + 1) % 10) == 0) out.println();
+			if (((i + 1) % 10) == 0)
+				out.println();
 		}
 		final int target = (int) (random() * 10000 + 1), targetIndex = linearSearch(arr, target);
 		if (targetIndex != -1)
@@ -53,9 +56,11 @@ public class Day1Practice2 {
 		}
 		for (int i = 0; i < arr.length; i++) {
 			out.print(arr[i] + "\t");
-			if (((i + 1) % 10) == 0) out.println();
+			if (((i + 1) % 10) == 0)
+				out.println();
 		}
 		binarySearch(arr, target);
-		out.println(found ? (target + " is in the array. It took " + counter + " tries.") : (target + " is not in the array. It took 1000 tries."));
+		out.println(found ? (target + " is in the array. It took " + counter + " tries.")
+				: (target + " is not in the array. It took 1000 tries."));
 	}
 }

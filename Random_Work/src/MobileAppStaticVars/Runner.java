@@ -1,4 +1,4 @@
-package Random_Work.src.MobileAppStaticVars;
+package MobileAppStaticVars;
 
 import java.util.ArrayList;
 import java.util.Collections;

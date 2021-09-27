@@ -1,4 +1,4 @@
-package Classwork.Computer_Science_in_the_21st_Century.src.ifStatements;
+package ifStatements;
 
 import java.util.Scanner;
 
@@ -9,8 +9,10 @@ class EvenOrOdd {
 		Scanner in = new Scanner(System.in);
 		out.print("Please enter a number");
 		double a = in.nextDouble();
-		if (a % 2 == 0) out.println(a + " is even.");
-		else if (a % 2 != 0) out.println(a + " is odd.");
+		if (a % 2 == 0)
+			out.println(a + " is even.");
+		else if (a % 2 != 0)
+			out.println(a + " is odd.");
 		in.close();
 	}
 }

@@ -17,15 +17,15 @@
  * @author Cay Horstmann
  */
 
-package Classwork.AP_Computer_Science_Ⅰ.src.objectOriented.gridWorld.framework.info.gridworld.grid;
+package objectOriented.gridWorld.framework.info.gridworld.grid;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * An <code>UnboundedGrid</code> is a rectangular grid with an unbounded number of rows and
- * columns. <br />
+ * An <code>UnboundedGrid</code> is a rectangular grid with an unbounded number
+ * of rows and columns. <br />
  * The implementation of this class is testable on the AP CS AB exam.
  */
 public class UnboundedGrid<E> extends AbstractGrid<E> {
