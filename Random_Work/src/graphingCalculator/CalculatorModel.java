@@ -1,10 +1,11 @@
 package graphingCalculator;
 
+import java.util.ArrayList;
+import java.util.Stack;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-import java.util.ArrayList;
-import java.util.Stack;
 
 class CalculatorModel {
 	private final ScriptEngine solver;
