@@ -16,8 +16,7 @@ class PhysicsForceDistanceVolume {
 		out.println(a);
 		double dbl = 0;
 		switch (in.nextLine()) {
-			case "force":
-			case "Force":
+			case "force", "Force" -> {
 				c = "Do you want to convert from pounds to Newtons or from Newtons to pounds? (PTN and NTP, respectively) ";
 				out.println(c);
 				d = in.nextLine();
@@ -29,9 +28,8 @@ class PhysicsForceDistanceVolume {
 					dbl = NTP(in.nextDouble());
 				} else
 					err.println("Error");
-				break;
-			case "distance":
-			case "Distance":
+			}
+			case "distance", "Distance" -> {
 				c = "Do you want to convert from feet to meters or from meters to feet? (FTM and MTF, respectively) ";
 				out.println(c);
 				d = in.nextLine();
@@ -43,9 +41,8 @@ class PhysicsForceDistanceVolume {
 					dbl = MTF(in.nextDouble());
 				} else
 					err.println("Error");
-				break;
-			case "volume":
-			case "Volume":
+			}
+			case "volume", "Volume" -> {
 				c = "Do you want to convert from liters to gallons or from gallons to liters? (LTG and GTL, respectively) ";
 				out.println(c);
 				d = in.nextLine();
@@ -57,10 +54,8 @@ class PhysicsForceDistanceVolume {
 					dbl = LTG(in.nextDouble());
 				} else
 					err.println("Error");
-				break;
-			default:
-				err.println("Error");
-				break;
+			}
+			default -> err.println("Error");
 		}
 		if (dbl != 0)
 			out.println(dbl);

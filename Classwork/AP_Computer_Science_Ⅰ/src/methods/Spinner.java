@@ -82,7 +82,6 @@ class Spinner {
 		return min(a, b);
 	}
 
-	@NotNull
 	@Contract("_, _, _ -> new")
 	private int[] lowest(int a, int b, int c) {
 		int[] x = { a, b, c };

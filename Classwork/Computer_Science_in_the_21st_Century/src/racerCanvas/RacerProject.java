@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
+import java.io.Serial;
 import java.util.Scanner;
 
 import static java.awt.Color.black;
@@ -76,6 +77,7 @@ class RacerProject {
 			}
 
 			class DrawRacers extends JPanel {
+				@Serial
 				private static final long serialVersionUID = 1147664699985236040L;
 				final BufferedImage[] i;
 				final int[] racerX = new int[3];

@@ -1,12 +1,13 @@
-package exceptionTesting;
+package exceptionTesting
 
-public class ErrorStuff {
-	public static void main(String[] args) {
-		method();
-
+object ErrorStuff {
+	@JvmStatic
+	fun main(args: Array<String>) {
+		method()
 	}
 
-	static void method() throws ArithmeticException {
-		throw new ArithmeticException();
+	@Throws(ArithmeticException::class)
+	fun method() {
+		throw ArithmeticException()
 	}
 }

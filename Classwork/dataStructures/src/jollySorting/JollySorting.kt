@@ -1,29 +1,38 @@
-package jollySorting;
+package jollySorting
 
-import static java.util.Arrays.*;
+import java.io.File
+import java.io.FileNotFoundException
+import java.util.*
+import java.util.Arrays.*
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Arrays;
-import java.util.Scanner;
-
-class JollySorting {
-	public static void main(String... args) {
-		try (Scanner fileReader = new Scanner(new File("Classwork/dataStructures/src/jollySorting/JollySorting.txt"))) {
-			while (fileReader.hasNextLine()) {
-				var parse = stream(fileReader.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-				sort(parse);
-				var a = copyOfRange(parse, 0, (parse.length + 1) / 2);
-				var b = copyOfRange(parse, (parse.length + 1) / 2, parse.length);
-				var c = new int[parse.length];
-				for (int i = 0, j = 0; i < c.length; i += 2, j++)
-					c[i] = a[j];
-				for (int i = 1, j = 0; i < c.length; i += 2, j++)
-					c[i] = b[j];
-				System.out.println(Arrays.toString(c));
+fun main() = try {
+	Scanner(File("Classwork/dataStructures/src/jollySorting/JollySorting.txt")).use { fileReader ->
+		while (fileReader.hasNextLine()) {
+			val parse =
+				stream(fileReader.nextLine().split(" ".toRegex()).toTypedArray()).mapToInt(String::toInt).toArray()
+			sort(parse)
+			val a = copyOfRange(parse, 0, (parse.size + 1) / 2)
+			val b = copyOfRange(parse, (parse.size + 1) / 2, parse.size)
+			val c = IntArray(parse.size)
+			run {
+				var i = 0
+				var j = 0
+				while (i < c.size) {
+					c[i] = a[j]
+					i += 2
+					j++
+				}
 			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			var i = 1
+			var j = 0
+			while (i < c.size) {
+				c[i] = b[j]
+				i += 2
+				j++
+			}
+			println(c.contentToString())
 		}
 	}
+} catch (e: FileNotFoundException) {
+	e.printStackTrace()
 }

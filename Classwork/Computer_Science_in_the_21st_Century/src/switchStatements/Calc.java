@@ -12,18 +12,15 @@ class Calc {
 			out.println("Please enter a your values.");
 			double num1 = in.nextDouble(), num2 = in.nextDouble(), num3 = in.nextDouble();
 			switch (choose) {
-				case "add":
-				case "Add":
+				case "add", "Add" -> {
 					double sum = num1 + num2 + num3;
 					out.println(sum);
-					break;
-				case "average":
-				case "Average":
+				}
+				case "average", "Average" -> {
 					double average = (num1 + num2 + num3) / 3;
 					out.println(average);
-					break;
-				case "multiply":
-				case "Multiply":
+				}
+				case "multiply", "Multiply" -> {
 					if (num1 < num2) {
 						double ph = num1;
 						num1 = num2;
@@ -39,9 +36,8 @@ class Calc {
 					}
 					double product = num1 * num3;
 					out.println(product);
-					break;
-				case "subtract":
-				case "Subtract":
+				}
+				case "subtract", "Subtract" -> {
 					if (num1 < num2) {
 						double ph = num1;
 						num1 = num2;
@@ -57,9 +53,8 @@ class Calc {
 					}
 					double difference = num1 - num3;
 					out.println(difference);
-					break;
-				default:
-					out.println("Error");
+				}
+				default -> out.println("Error");
 			}
 		}
 	}

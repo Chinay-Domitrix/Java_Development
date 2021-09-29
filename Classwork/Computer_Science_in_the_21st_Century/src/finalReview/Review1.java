@@ -16,29 +16,14 @@ class Review1 {
 		setAll(x, i -> (int) ((random() * 10) + 1));
 		out.print("Which task do you want to run? ");
 		switch (input.nextInt()) {
-			default:
-				err.println("Error.");
-				break;
-			case 1:
-				t1();
-				break;
-			case 2:
-				t2();
-				break;
-			case 3:
-				t3();
-				break;
-			case 4:
-				out.println(t4(x));
-				break;
-			case 5:
-				t5();
-				break;
-			case 6:
-				out.println("The sum is " + t6(x));
-				break;
-			case 7:
-				out.println("The average is " + t7(x));
+			default -> err.println("Error.");
+			case 1 -> t1();
+			case 2 -> t2();
+			case 3 -> t3();
+			case 4 -> out.println(t4(x));
+			case 5 -> t5();
+			case 6 -> out.println("The sum is " + t6(x));
+			case 7 -> out.println("The average is " + t7(x));
 		}
 	}
 

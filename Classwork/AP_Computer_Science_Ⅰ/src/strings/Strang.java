@@ -43,7 +43,8 @@ public class Strang implements Comparable {
 		return chars.length;
 	}
 
-	public Strang substrang(int beginIndex) {
+	@Contract("_ -> new")
+	private @NotNull Strang substrang(int beginIndex) {
 		var returned = new char[chars.length - beginIndex];
 		range(beginIndex, length()).forEachOrdered(i -> returned[i - beginIndex] = chars[i]);
 		return new Strang(returned);

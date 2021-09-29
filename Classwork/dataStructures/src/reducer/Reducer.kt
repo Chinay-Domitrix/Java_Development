@@ -1,31 +1,26 @@
-package reducer;
+package reducer
 
-import static java.lang.Integer.parseInt;
-import static java.lang.System.out;
+import java.io.File
+import java.io.FileNotFoundException
+import java.util.*
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
-public class Reducer {
-	public static void main(String... args) {
-		try (var fileReader = new Scanner(new File("Classwork/Data_Structures/reducer/Reducer.txt"))) {
-			while (fileReader.hasNextLine()) {
-				String[] nums = fileReader.next().split("/");
-				int numerator = parseInt(nums[0]), denominator = parseInt(nums[1]);
-				nums = ((numerator / gcd(numerator, denominator)) + "/" + (denominator / gcd(numerator, denominator)))
-						.split("/");
-				numerator = parseInt(nums[0]);
-				denominator = parseInt(nums[1]);
-				out.println(((numerator / denominator == 0) ? "" : (numerator / denominator) + " ")
-						+ ((numerator % denominator == 0) ? "" : numerator % denominator) + '/' + denominator);
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+fun main() = try {
+	Scanner(File("Classwork/Data_Structures/reducer/Reducer.txt")).use {
+		while (it.hasNextLine()) {
+			var nums = it.next().split("/".toRegex()).toTypedArray()
+			var numerator = nums[0].toInt()
+			var denominator = nums[1].toInt()
+			nums = ((numerator / gcd(numerator, denominator)).toString() + "/" + denominator / gcd(
+				numerator,
+				denominator
+			)).split("/".toRegex()).toTypedArray()
+			numerator = nums[0].toInt()
+			denominator = nums[1].toInt()
+			println((if (numerator / denominator == 0) "" else (numerator / denominator).toString() + " ") + (if (numerator % denominator == 0) "" else numerator % denominator) + '/' + denominator)
 		}
 	}
-
-	public static int gcd(int a, int b) {
-		return (b == 0) ? a : gcd(b, a % b);
-	}
+} catch (e: FileNotFoundException) {
+	e.printStackTrace()
 }
+
+private fun gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
