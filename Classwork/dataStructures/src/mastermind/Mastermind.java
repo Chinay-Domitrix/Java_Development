@@ -22,7 +22,7 @@ public class Mastermind {
 						match++;
 					else
 						fail++;
-				System.out.println("Code: " + ((String) key[1]) + "\nGuess: " + Arrays.toString(current)
+				System.out.println("Code: " + key[1] + "\nGuess: " + Arrays.toString(current)
 						+ "\nCorrect Guesses: " + match + "\nIncorrect Guesses: " + fail);
 			}
 		} catch (FileNotFoundException e) {

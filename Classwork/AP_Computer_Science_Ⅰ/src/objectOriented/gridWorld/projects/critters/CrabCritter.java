@@ -25,10 +25,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.*;
 import static java.awt.Color.RED;
 import static java.lang.Math.random;
 import static java.util.stream.Collectors.toCollection;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.*;
 
 /**
  * A <code>CrabCritter</code> looks at a limited set of neighbors when it eats
@@ -86,7 +86,7 @@ public class CrabCritter extends Critter {
 	 *         in the given directions
 	 */
 	@NotNull
-	private ArrayList<Location> getLocationsInDirections(@NotNull int[] directions) {
+	private ArrayList<Location> getLocationsInDirections(int[] directions) {
 		var loc = getLocation();
 		ArrayList<Location> locationArrayList = new ArrayList<>();
 		for (int d : directions) {

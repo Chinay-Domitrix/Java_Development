@@ -1,11 +1,11 @@
 package matrix;
 
-import static java.util.Arrays.stream;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import static java.util.Arrays.stream;
 
 public class Matrix {
 	public static void main(String[] args) {
@@ -25,15 +25,15 @@ public class Matrix {
 		var rows = new StringBuilder(input).deleteCharAt(input.length() - 1).deleteCharAt(0).toString()
 				.replaceAll("},", "}/").split("/");
 		var intArrayList = new ArrayList<int[]>();
-		for (var i = 0; i < rows.length; i++)
+		for (String row : rows)
 			intArrayList.add(stream(
-					new StringBuilder(rows[i]).deleteCharAt(rows[i].length() - 1).deleteCharAt(0).toString().split(","))
-							.mapToInt(Integer::parseInt).toArray());
+					new StringBuilder(row).deleteCharAt(row.length() - 1).deleteCharAt(0).toString().split(","))
+					.mapToInt(Integer::parseInt).toArray());
 		return intArrayList.toArray(new int[0][0]);
 	}
 	
-	static int[][] add(int A[][], int B[][], int size) {
-		int C[][] = null;
+	static int[][] add(int[][] A, int[][] B, int size) {
+		int[][] C = null;
 		try {
 			C = new int[size][size];
 			for (var i = 0; i < size; i++)

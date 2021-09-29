@@ -10,43 +10,42 @@ final class WhileLoopsYouTry {
 			out.print("Which sub-program do you want to run? ");
 			int x, y = in.nextInt();
 			switch (y) {
-				case 1:
+				case 1 -> {
 					x = 1;
 					while (x < 10) {
 						out.print(x + " ");
 						x++;
 					}
-					break;
-				case 2:
+				}
+				case 2 -> {
 					x = 6;
 					while (x < 10) {
 						out.print(x + " ");
 						x++;
 					}
-					break;
-				case 3:
+				}
+				case 3 -> {
 					x = 10;
 					while (x > 0) {
 						out.print(x + " ");
 						x--;
 					}
-					break;
-				case 4:
+				}
+				case 4 -> {
 					x = 0;
 					while (x < 2) {
 						out.print(x + " ");
 						x++;
 					}
-					break;
-				case 5:
+				}
+				case 5 -> {
 					x = 5;
 					while (x < 31) {
 						out.print(x + " ");
 						x += 5;
 					}
-					break;
-				default:
-					throw new IllegalStateException("Unexpected value: " + y);
+				}
+				default -> throw new IllegalStateException("Unexpected value: " + y);
 			}
 		}
 	}

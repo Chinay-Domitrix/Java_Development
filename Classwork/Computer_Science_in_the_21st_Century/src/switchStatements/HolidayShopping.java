@@ -11,21 +11,12 @@ class HolidayShopping {
 			final double rprice = in.nextDouble();
 			out.print("Department Code: ");
 			final int code = in.nextInt();
-			double sprice;
-			switch (code) {
-				case 310:
-					sprice = rprice * 0.90;
-					break;
-				case 438:
-					sprice = rprice * 0.88;
-					break;
-				case 652:
-					sprice = rprice * 0.85;
-					break;
-				default:
-					sprice = rprice * 0.95;
-					break;
-			}
+			double sprice = switch (code) {
+				case 310 -> rprice * 0.90;
+				case 438 -> rprice * 0.88;
+				case 652 -> rprice * 0.85;
+				default -> rprice * 0.95;
+			};
 			out.println("Sale Price: $" + sprice);
 		}
 	}

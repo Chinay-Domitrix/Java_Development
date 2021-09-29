@@ -175,7 +175,7 @@ public class WorldFrame<T> extends JFrame {
 	public void setGrid(Grid<T> newGrid) {
 		Grid<T> oldGrid = world.getGrid();
 		Map<Location, T> occupants = oldGrid.getOccupiedLocations().stream()
-				.collect(toMap(loc -> loc, loc -> world.remove(loc), (a, b) -> b));
+				.collect(toMap(loc -> loc, world::remove, (a, b) -> b));
 		world.setGrid(newGrid);
 		occupants.keySet().stream().filter(newGrid::isValid).forEachOrdered(loc -> world.add(loc, occupants.get(loc)));
 		display.setGrid(newGrid);

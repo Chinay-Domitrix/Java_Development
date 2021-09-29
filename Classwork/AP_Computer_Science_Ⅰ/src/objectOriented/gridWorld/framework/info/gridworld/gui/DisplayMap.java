@@ -73,7 +73,7 @@ public class DisplayMap {
 	/**
 	 * Finds a display class that knows how to display the given object.
 	 *
-	 * @param obj the object to display
+	 * @param cl the object to display
 	 */
 	public Display findDisplayFor(Class<?> cl) {
 		// Go up through the class hierarchy for obj and see

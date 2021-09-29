@@ -1,38 +1,38 @@
-package anonymousClassesDemos;
+package anonymousClassesDemos
 
-import javax.swing.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent
+import java.awt.event.KeyListener
+import javax.swing.JFrame
+import javax.swing.JPanel
+import javax.swing.WindowConstants.EXIT_ON_CLOSE
 
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
-
-public class Demo3 extends JPanel {
-	private Demo3() {
-		var frame = new JFrame();
-		frame.add(this);
-		frame.setVisible(true);
-		frame.setSize(800, 400);
-		setFocusable(true);
-		addKeyListener(new KeyListener() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				System.out.println("3 " + e.getKeyChar());
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-				System.out.println("2 " + e.getKeyChar());
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-				System.out.println("1 " + e.getKeyChar());
-			}
-		});
-		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+class Demo3 private constructor() : JPanel() {
+	companion object {
+		@JvmStatic
+		fun main(args: Array<String>) {
+			Demo3()
+		}
 	}
 
-	public static void main(String... args) {
-		new Demo3();
+	init {
+		val frame = JFrame()
+		frame.add(this)
+		frame.isVisible = true
+		frame.setSize(800, 400)
+		isFocusable = true
+		addKeyListener(object : KeyListener {
+			override fun keyTyped(e: KeyEvent) {
+				println("3 " + e.keyChar)
+			}
+
+			override fun keyPressed(e: KeyEvent) {
+				println("2 " + e.keyChar)
+			}
+
+			override fun keyReleased(e: KeyEvent) {
+				println("1 " + e.keyChar)
+			}
+		})
+		frame.defaultCloseOperation = EXIT_ON_CLOSE
 	}
 }

@@ -12,12 +12,11 @@ class Day1YouTry {
 			String program = in.nextLine();
 			int counter;
 			switch (program) {
-				default:
+				default -> {
 					err.println("Error");
 					exit(0);
-					break;
-				case "o":
-				case "O":
+				}
+				case "o", "O" -> {
 					counter = 0;
 					for (int row = 0; row < a.length; row++) {
 						for (int col = 0; col < a[row].length; col++) {
@@ -28,9 +27,8 @@ class Day1YouTry {
 						counter = 0;
 						out.println();
 					}
-					break;
-				case "m":
-				case "M":
+				}
+				case "m", "M" -> {
 					counter = 1;
 					for (int row = 0; row < a.length; row++) {
 						for (int col = 0; col < a[row].length; col++) {
@@ -41,6 +39,7 @@ class Day1YouTry {
 						counter = 1;
 						out.println();
 					}
+				}
 			}
 		}
 	}
