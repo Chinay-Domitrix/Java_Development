@@ -1,24 +1,20 @@
-import java.util.ArrayList;
-
-import static java.lang.System.out;
-
-public class Elimination {
-	public static void main(String[] args) {
-		var x = new ArrayList<String>();
-		x.add(null);
-		for (var i = 1; i <= 2000; i++) x.set(i, Integer.toString(i));
-		out:
-		while (true) {
-			for (int i = 2; i <= 2000; i += 2) {
-				x.remove(i);
-				if (x.size() == 2) break out;
-			}
-			for (int i = 1; i <= 2000; i += 2) {
-				x.remove(i);
-				if (x.size() == 2) break out;
-			}
+fun main() {
+	val x = ArrayList<String?>()
+	x += null
+	(1..2000).forEach { x[it] = it.toString() }
+	out@ while (true) {
+		var i = 2
+		while (i <= 2000) {
+			x.removeAt(i)
+			if (x.size == 2) break@out
+			i += 2
 		}
-		out.println(x.get(1));
-
+		i = 1
+		while (i <= 2000) {
+			x.removeAt(i)
+			if (x.size == 2) break@out
+			i += 2
+		}
 	}
+	println(x[1])
 }

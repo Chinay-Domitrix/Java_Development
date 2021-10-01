@@ -1,23 +1,30 @@
-package practiceItObjectOrientedPrograms;
+package practiceItObjectOrientedPrograms
 
-import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.Contract
 
-class Stock {
-	private final String symbol;        // stock symbol, e.g. "YHOO"
-	private int totalShares;      // total shares purchased
-	private double totalCost;     // total cost for all shares
+internal class Stock @Contract(value = "null -> fail", pure = true) constructor(symbol: String?) {
+	/**
+	 * Stock symbol, e.g. "YHOO"
+	 */
+	@get:Contract(pure = true)
+	val symbol: String?
 
 	/**
-	 * Initializes a new Stock with no shares purchased.
-	 * Precondition: symbol != null
+	 * Total shares purchased
 	 */
-	@Contract(value = "null -> fail", pure = true)
-	public Stock(String symbol) {
-		assert symbol != null;
-		this.symbol = symbol;
-		totalShares = 0;
-		totalCost = 0;
-	}
+	@get:Contract(pure = true)
+	var totalShares: Int
+		/**
+		 * Returns this Stock's total number of shares purchased.
+		 */
+		private set
+
+	/**
+	 * Total cost for all shares
+	 */
+	@get:Contract(pure = true)
+	var totalCost: Double
+		private set
 
 	/**
 	 * Returns the total profit or loss earned on this stock,
@@ -27,45 +34,31 @@ class Stock {
 	 * @return profit the profit earned
 	 */
 	@Contract(pure = true)
-	public double getProfit(double currentPrice) {
-		assert !(currentPrice < 0.0);
-		return (totalShares * currentPrice) - totalCost;
-	}
-
-	// Records purchase of the given shares at the given price.
-	// pre: shares >= 0 && pricePerShare >= 0.0
-	public void purchase(int shares, double pricePerShare) {
-		assert shares >= 0 && !(pricePerShare < 0.0);
-		totalShares += shares;
-		totalCost += shares * pricePerShare;
+	fun getProfit(currentPrice: Double): Double {
+		assert(currentPrice >= 0.0)
+		return totalShares * currentPrice - totalCost
 	}
 
 	/**
-	 * Returns this Stock's symbol value.
-	 *
-	 * @return symbol the symbol of the stock
+	 * Records purchase of the given shares at the given price.<br></br>
+	 * pre: shares >= 0 && pricePerShare >= 0.0
 	 */
-	@Contract(pure = true)
-	public String getSymbol() {
-		return symbol;
+	fun purchase(shares: Int, pricePerShare: Double) {
+		assert(shares >= 0 && pricePerShare >= 0.0)
+		totalShares += shares
+		totalCost += shares * pricePerShare
 	}
 
 	/**
-	 * Returns this Stock's total number of shares purchased.
+	 * Initializes a new Stock with no shares purchased.
+	 * Precondition: symbol != null
 	 */
-	@Contract(pure = true)
-	public int getTotalShares() {
-		return totalShares;
+	init {
+		assert(symbol != null)
+		this.symbol = symbol
+		totalShares = 0
+		totalCost = 0.0
 	}
 
-	/**
-	 * Returns this Stock's total cost for all shares.
-	 */
-	@Contract(pure = true)
-	public double getTotalCost() {
-		return totalCost;
-	}
-
-// YOUR CODE GOES HERE
-
+//	YOUR CODE GOES HERE
 }
