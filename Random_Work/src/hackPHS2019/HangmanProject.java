@@ -1,14 +1,14 @@
 package hackPHS2019;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 import static java.lang.Math.*;
 import static java.lang.System.*;
 import static java.lang.Thread.sleep;
 import static java.util.Arrays.fill;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.iterate;
-
-import java.util.Arrays;
-import java.util.Scanner;
 
 final class HangmanProject {
 	/**
@@ -18,7 +18,7 @@ final class HangmanProject {
 	private static char[] hangman, guessList;
 	private static String main, redo = null, inputCopy = null;
 	private static int wins = 0, losses = 0;
-	private Scanner scanner = new Scanner(in);
+	private final Scanner scanner = new Scanner(in);
 
 	/**
 	 * This is where the game actually starts. Here, the method {@code game} is
@@ -142,7 +142,7 @@ final class HangmanProject {
 		 * For the same reason, the Strings are split so the user cannot visually
 		 * identify what they say without modifying the code.
 		 */
-		var winner = new String[] {
+		var winner = new String[]{
 				"YYYYYYY       YYYYYYY                                         "
 						+ "WWWWWWWW                           WWWWWWWW  iiii                     ",
 				"Y:::::Y       Y:::::Y                                         "
@@ -174,8 +174,8 @@ final class HangmanProject {
 				"    Y:::::::::::Y     oo:::::::::::oo    uu::::::::uu:::u     "
 						+ "           W:::W           W:::W           i::::::i   n::::n    n::::n",
 				"    YYYYYYYYYYYYY       ooooooooooo        uuuuuuuu  uuuu     "
-						+ "            WWW             WWW            iiiiiiii   nnnnnn    nnnnnn" };
-		var loser = new String[] {
+						+ "            WWW             WWW            iiiiiiii   nnnnnn    nnnnnn"};
+		var loser = new String[]{
 				"YYYYYYY       YYYYYYY                                         "
 						+ "LLLLLLLLLLL                                                                      ",
 				"Y:::::Y       Y:::::Y                                         "
@@ -207,7 +207,7 @@ final class HangmanProject {
 				"    Y:::::::::::Y     oo:::::::::::oo    uu::::::::uu:::u     "
 						+ "L::::::::::::::::::::::L  oo:::::::::::oo   s:::::::::::ss     ee:::::::::::::e  ",
 				"    YYYYYYYYYYYYY       ooooooooooo        uuuuuuuu  uuuu     "
-						+ "LLLLLLLLLLLLLLLLLLLLLLLL    ooooooooooo      sssssssssss         eeeeeeeeeeeeee  " };
+						+ "LLLLLLLLLLLLLLLLLLLLLLLL    ooooooooooo      sssssssssss         eeeeeeeeeeeeee  "};
 		/*
 		 * This determines whether or not the user has won the round after every
 		 * sub-round of the game.

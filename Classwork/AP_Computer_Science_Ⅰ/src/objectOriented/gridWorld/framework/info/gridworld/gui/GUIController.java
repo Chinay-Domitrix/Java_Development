@@ -49,15 +49,15 @@ public class GUIController<T> {
 	private static final int MIN_DELAY_MSECS = 10, MAX_DELAY_MSECS = 1000;
 	private static final int INITIAL_DELAY = 505;
 	private final Timer timer;
-	private JButton stepButton, runButton, stopButton;
-	private JComponent controlPanel;
 	private final GridPanel display;
 	private final WorldFrame<T> parentFrame;
-	private int numStepsToRun, numStepsSoFar;
 	private final ResourceBundle resources;
 	private final DisplayMap displayMap;
-	private boolean running;
 	private final Set<Class<?>> occupantClasses;
+	private JButton stepButton, runButton, stopButton;
+	private JComponent controlPanel;
+	private int numStepsToRun, numStepsSoFar;
+	private boolean running;
 
 	/**
 	 * Creates a new controller tied to the specified display and gui frame.

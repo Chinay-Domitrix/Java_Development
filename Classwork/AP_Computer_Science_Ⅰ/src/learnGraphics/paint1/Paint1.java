@@ -52,7 +52,7 @@ public class Paint1 extends JPanel {
 		g2d.drawOval(850, 500, 40, 80);
 		g2d.drawRect(850, 600, 140, 10);
 		g2d.setPaint(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
-		int[] xPoints = { 510, 570, 620, 700, 380 }, yPoints = { 220, 400, 370, 580, 230 };
+		int[] xPoints = {510, 570, 620, 700, 380}, yPoints = {220, 400, 370, 580, 230};
 		g2d.fillPolygon(xPoints, yPoints, xPoints.length);
 		g2d.setPaint(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
 		for (int i = 80; i < 600; i += 40)

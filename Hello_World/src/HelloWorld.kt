@@ -1,4 +1,3 @@
-
 import java.lang.Thread.sleep
 
 internal object HelloWorld {

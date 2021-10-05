@@ -139,7 +139,7 @@ public class Location implements Comparable {
 	 *
 	 * @param direction the direction in which to find a neighbor location
 	 * @return the adjacent location in the direction that is closest to
-	 *         <tt>direction</tt>
+	 * <tt>direction</tt>
 	 */
 	public Location getAdjacentLocation(int direction) {
 		// reduce mod 360 and round to closest multiple of 45
@@ -178,7 +178,7 @@ public class Location implements Comparable {
 	 *
 	 * @param target a location that is different from this location
 	 * @return the closest compass direction from this location toward
-	 *         <code>target</code>
+	 * <code>target</code>
 	 */
 	public int getDirectionToward(@NotNull Location target) {
 		int dx = requireNonNull(target).getCol() - getCol();
@@ -203,8 +203,8 @@ public class Location implements Comparable {
 	 *
 	 * @param other the other location to test
 	 * @return <code>true</code> if <code>other</code> is a <code>Location</code>
-	 *         with the same row and column as this location; <code>false</code>
-	 *         otherwise
+	 * with the same row and column as this location; <code>false</code>
+	 * otherwise
 	 */
 	@Contract(value = "null -> false", pure = true)
 	public boolean equals(Object other) {
@@ -232,8 +232,8 @@ public class Location implements Comparable {
 	 *
 	 * @param other the other location to test
 	 * @return a negative integer if this location is less than <code>other</code>,
-	 *         zero if the two locations are equal, or a positive integer if this
-	 *         location is greater than <code>other</code>
+	 * zero if the two locations are equal, or a positive integer if this
+	 * location is greater than <code>other</code>
 	 */
 	public int compareTo(@NotNull Object other) {
 		if (getRow() < ((Location) requireNonNull(other)).getRow())
@@ -247,7 +247,7 @@ public class Location implements Comparable {
 	 * Creates a String object which describes this location.
 	 *
 	 * @return a string with the row and column of this location, in the format of
-	 *         (row, column)
+	 * (row, column)
 	 */
 	public String toString() {
 		return format("(%d, %d)", getRow(), getCol());

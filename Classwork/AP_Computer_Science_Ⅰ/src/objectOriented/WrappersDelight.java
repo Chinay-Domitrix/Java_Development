@@ -46,8 +46,8 @@ final class WrappersDelight {
 			arrayList.add(true);
 		else if (a < 0)
 			arrayList.add(false);
-		// This constructor is just to throw an exception in case a zero is passed to
-		// this portion of the code.
+			// This constructor is just to throw an exception in case a zero is passed to
+			// this portion of the code.
 		else
 			throw new IllegalStateException("Unexpected value: " + 0);
 		if (b <= 0)

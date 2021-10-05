@@ -9,7 +9,7 @@ import static java.util.stream.IntStream.*;
 
 public class PalindromePal {
 	// Main string to test for palindromes. Default or set in Constructor.
-	private String str;
+	private final String str;
 
 	// Constructor
 	private PalindromePal(String s) {
@@ -52,13 +52,13 @@ public class PalindromePal {
 	private int countPalindromes(int length) {
 		return (length >= str.length()) ? 0
 				: (int) range(0, str.length() - length).filter(i -> isPalindrome(str.substring(i, i + length))).count(); // cannot
-																															// check
-																															// a
-																															// length
-																															// greater
-																															// than
-																															// the
-																															// string
+		// check
+		// a
+		// length
+		// greater
+		// than
+		// the
+		// string
 	}
 
 	// returns an ArrayList of all palindrome substrings of a given length

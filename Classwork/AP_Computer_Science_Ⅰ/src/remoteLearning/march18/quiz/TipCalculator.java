@@ -5,7 +5,7 @@ interface TipHelper {
 }
 
 public class TipCalculator implements TipHelper {
-	private double amount;
+	private final double amount;
 
 	public TipCalculator(double amount) {
 		this.amount = amount;

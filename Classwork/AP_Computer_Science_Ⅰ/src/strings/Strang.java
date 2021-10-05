@@ -29,7 +29,7 @@ public class Strang<E> implements Comparable<E> {
 	}
 
 	public static void main(String[] args) {
-		var c = new char[] { 'T', 'i', 'r', 'a', 'n', 'a', ' ', 'T', 'e', 'c', 'h' };
+		var c = new char[]{'T', 'i', 'r', 'a', 'n', 'a', ' ', 'T', 'e', 'c', 'h'};
 		var strang1 = new Strang<>(c);
 		// Example: charAt method
 		out.println("strang1.charAt(3) = " + strang1.charAt(3));

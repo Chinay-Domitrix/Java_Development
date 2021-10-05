@@ -54,7 +54,7 @@ class PongPanel extends JPanel implements KeyListener, ActionListener {
 			if (ball.getBounds().y + ball.getHeight() > paddle.getBounds().y && (ball.getBounds()
 					.intersects(paddle.getBounds().x, paddle.getBounds().y + 1, 2, paddle.getHeight() - 1)
 					|| ball.getBounds().intersects(paddle.getBounds().x + paddle.getWidth() - 1,
-							paddle.getBounds().y + 1, 2, paddle.getHeight() - 1)))
+					paddle.getBounds().y + 1, 2, paddle.getHeight() - 1)))
 				ball.setXA(-ball.getXA());
 			else {
 				ball.setYA(-ball.getYA());

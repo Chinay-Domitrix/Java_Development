@@ -10,13 +10,13 @@ import static java.lang.System.out;
 
 class NameAndDescriptor {
 	private NameAndDescriptor() {
-		final var NamesAndDescriptors = new String[][] {
-				new String[] { "Pranav", "Sashi", "Nick", "Arsh", "Kush", "Veer", "Dylan", "Yathin", "Omkar", "Tridib",
+		final var NamesAndDescriptors = new String[][]{
+				new String[]{"Pranav", "Sashi", "Nick", "Arsh", "Kush", "Veer", "Dylan", "Yathin", "Omkar", "Tridib",
 						"Joe", "Aditya", "Ishan", "Jill", "Abhinaya", "Chirag", "Harshitha", "Eshita", "Jeslin", "Amit",
-						"Sridula" },
-				new String[] { "Confused", "Memorable", "Robotics", "Interesting", "Procrastinator", "Happy", "Crazy",
+						"Sridula"},
+				new String[]{"Confused", "Memorable", "Robotics", "Interesting", "Procrastinator", "Happy", "Crazy",
 						"Table Tennis", "Basketball", "Hardworking", "Zombie", "Video Games", "Smart", "Athletic",
-						"Outgoing", "Curious", "Friendly", "Creative", "Badminton", "Artistic" } };
+						"Outgoing", "Curious", "Friendly", "Creative", "Badminton", "Artistic"}};
 		out.printf("%nYour score was %d.%n", logic(NamesAndDescriptors));
 	}
 
@@ -94,7 +94,7 @@ class NameAndDescriptor {
 	private static String pickName(@NotNull final String[]... a) {
 		final var b = a[0];
 		var name = b[(int) (random() * b.length - 1)];
-		final var c = new char[] { 'M', 'K' };
+		final var c = new char[]{'M', 'K'};
 		if (name.equals("Pranav"))
 			name += format(" %s", c[(int) (random() * c.length - 1)]);
 		return name;

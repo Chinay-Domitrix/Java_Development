@@ -47,7 +47,7 @@ public class CrabCritter extends Critter {
 	 * @return a list of actors occupying these locations
 	 */
 	public ArrayList<Actor> getActors() {
-		return getLocationsInDirections(new int[] { AHEAD, HALF_LEFT, HALF_RIGHT }).stream()
+		return getLocationsInDirections(new int[]{AHEAD, HALF_LEFT, HALF_RIGHT}).stream()
 				.filter(loc -> getGrid().get(loc) != null).map(loc -> getGrid().get(loc))
 				.collect(toCollection(ArrayList::new));
 	}
@@ -57,7 +57,7 @@ public class CrabCritter extends Critter {
 	 */
 	public ArrayList<Location> getMoveLocations() {
 		ArrayList<Location> locationArrayList = new ArrayList<>();
-		for (Location loc : getLocationsInDirections(new int[] { LEFT, RIGHT })) {
+		for (Location loc : getLocationsInDirections(new int[]{LEFT, RIGHT})) {
 			if (getGrid().get(loc) == null) {
 				locationArrayList.add(loc);
 			}
@@ -83,7 +83,7 @@ public class CrabCritter extends Critter {
 	 * @param directions - an array of directions (which are relative to the current
 	 *                   direction)
 	 * @return a set of valid locations that are neighbors of the current location
-	 *         in the given directions
+	 * in the given directions
 	 */
 	@NotNull
 	private ArrayList<Location> getLocationsInDirections(int[] directions) {

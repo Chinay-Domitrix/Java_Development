@@ -1,23 +1,20 @@
 package hackPHS2019;
 
+import org.jetbrains.annotations.NotNull;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+
 import static java.awt.Color.blue;
 import static java.awt.Font.PLAIN;
 import static java.util.Arrays.stream;
 import static java.util.Objects.requireNonNull;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
-import java.awt.Container;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-
-import org.jetbrains.annotations.NotNull;
-
 class ArcadeLogic {
 	private static Container contentPane;
-	private JFrame frame = new JFrame();
+	private final JFrame frame = new JFrame();
 
 	private ArcadeLogic() {
 		this(contentPane);
@@ -28,8 +25,8 @@ class ArcadeLogic {
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setSize(1000, 1000);
 		frame.setVisible(true);
-		var b = new JButton[] { new JButton("Tic-Tac-Toe"), new JButton("Hangman"),
-				new JButton("Rock Paper Scissors Lizard Spock") };
+		var b = new JButton[]{new JButton("Tic-Tac-Toe"), new JButton("Hangman"),
+				new JButton("Rock Paper Scissors Lizard Spock")};
 		var bFont = new Font("Comic Sans MS", PLAIN, 20);
 		var x = stream(b);
 		x.forEachOrdered(jButton -> {

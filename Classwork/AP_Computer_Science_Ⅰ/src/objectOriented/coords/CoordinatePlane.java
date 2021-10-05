@@ -10,7 +10,7 @@ import static java.util.stream.Collectors.joining;
 import static java.util.stream.IntStream.range;
 
 class CoordinatePlane {
-	private static final int[] GRID_SIZES = { 61, 41, 21 };
+	private static final int[] GRID_SIZES = {61, 41, 21};
 	private final int numRows;
 	private final int numCols;
 	private final int xAxisIndex;

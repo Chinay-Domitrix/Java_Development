@@ -22,9 +22,9 @@ import org.jetbrains.annotations.Contract;
 
 import java.awt.*;
 
-import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.*;
 import static java.awt.Color.BLUE;
 import static java.lang.String.format;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.*;
 
 /**
  * An <code>Actor</code> is an entity with a color and direction that can act.
@@ -92,7 +92,7 @@ public class Actor {
 	 * Gets the grid in which this actor is located.
 	 *
 	 * @return the grid of this actor, or <code>null</code> if this actor is not
-	 *         contained in a grid
+	 * contained in a grid
 	 */
 	public Grid<Actor> getGrid() {
 		return grid;
@@ -102,7 +102,7 @@ public class Actor {
 	 * Gets the location of this actor.
 	 *
 	 * @return the location of this actor, or <code>null</code> if this actor is not
-	 *         contained in a grid
+	 * contained in a grid
 	 */
 	public Location getLocation() {
 		return location;

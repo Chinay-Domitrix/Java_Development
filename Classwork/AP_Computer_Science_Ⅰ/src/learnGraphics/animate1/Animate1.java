@@ -64,8 +64,8 @@ public class Animate1 extends JPanel implements Runnable {
 		g2d.setFont(f);
 		g2d.drawString("Animation Example", 50, 50);
 		g2d.setPaint(YELLOW);
-		int[] xPoints = { 510, 570, 620, 700, 380 };
-		int[] yPoints = { 220, 400, 370, 580, 230 };
+		int[] xPoints = {510, 570, 620, 700, 380};
+		int[] yPoints = {220, 400, 370, 580, 230};
 		g2d.fillPolygon(xPoints, yPoints, xPoints.length);
 		for (int i = 80; i < 600; i += 40)
 			for (int j = i + 220; j < 700; j += 40) {

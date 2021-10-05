@@ -52,12 +52,12 @@ import static javax.swing.JOptionPane.*;
  * students.
  */
 public class MenuMaker<T> {
-	private T occupant;
-	private Grid<?> currentGrid;
-	private Location currentLocation;
 	private final WorldFrame<T> parent;
 	private final DisplayMap displayMap;
 	private final ResourceBundle resources;
+	private T occupant;
+	private Grid<?> currentGrid;
+	private Location currentLocation;
 
 	/**
 	 * Constructs a menu maker for a given world.
@@ -343,8 +343,8 @@ class PropertySheet extends JPanel {
 		defaultEditors.put(Color.class, new ColorEditor());
 	}
 
-	private PropertyEditor[] editors;
-	private Object[] values;
+	private final PropertyEditor[] editors;
+	private final Object[] values;
 
 	/**
 	 * Constructs a property sheet that shows the editable properties of a given
@@ -377,10 +377,8 @@ class PropertySheet extends JPanel {
 	 * Gets the property editor for a given property, and wires it so that it
 	 * updates the given object.
 	 *
-	 * @param bean       the object whose properties are being edited
-	 * @param descriptor the descriptor of the property to be edited
 	 * @return a property editor that edits the property with the given descriptor
-	 *         and updates the given object
+	 * and updates the given object
 	 */
 	public PropertyEditor getEditor(Class<?> type) {
 		PropertyEditor editor;
@@ -396,7 +394,7 @@ class PropertySheet extends JPanel {
 	 *
 	 * @param editor the editor to wrap
 	 * @return a button (if there is a custom editor), combo box (if the editor has
-	 *         tags), or text field (otherwise)
+	 * tags), or text field (otherwise)
 	 */
 	public Component getEditorComponent(@NotNull final PropertyEditor editor) {
 		String[] tags = editor.getTags();

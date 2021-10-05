@@ -10,8 +10,8 @@ public class NumberGrouping implements NumberComputation {
 	}
 
 	public static void main(String[] args) {
-		out.println(new NumberGrouping(new int[] { 1, 2, 3, 4 }).product());
-		out.println(new NumberGrouping(new int[] {}).product());
+		out.println(new NumberGrouping(new int[]{1, 2, 3, 4}).product());
+		out.println(new NumberGrouping(new int[]{}).product());
 	}
 
 	@Override

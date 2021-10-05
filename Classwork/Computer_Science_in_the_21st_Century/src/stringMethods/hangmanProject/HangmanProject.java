@@ -182,7 +182,7 @@ class HangmanProject {
 				"    Y:::::::::::Y     oo:::::::::::oo    uu::::::::uu:::u     "
 						+ "           W:::W           W:::W           i::::::i   n::::n    n::::n",
 				"    YYYYYYYYYYYYY       ooooooooooo        uuuuuuuu  uuuu     "
-						+ "            WWW             WWW            iiiiiiii   nnnnnn    nnnnnn" },
+						+ "            WWW             WWW            iiiiiiii   nnnnnn    nnnnnn"},
 				loser = {
 						"YYYYYYY       YYYYYYY                                         "
 								+ "LLLLLLLLLLL                                                                      ",
@@ -215,7 +215,7 @@ class HangmanProject {
 						"    Y:::::::::::Y     oo:::::::::::oo    uu::::::::uu:::u     "
 								+ "L::::::::::::::::::::::L  oo:::::::::::oo   s:::::::::::ss     ee:::::::::::::e  ",
 						"    YYYYYYYYYYYYY       ooooooooooo        uuuuuuuu  uuuu     "
-								+ "LLLLLLLLLLLLLLLLLLLLLLLL    ooooooooooo      sssssssssss         eeeeeeeeeeeeee  " };
+								+ "LLLLLLLLLLLLLLLLLLLLLLLL    ooooooooooo      sssssssssss         eeeeeeeeeeeeee  "};
 		/*
 		 * This determines whether or not the user has won the round after every
 		 * sub-round of the game.

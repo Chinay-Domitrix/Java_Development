@@ -255,10 +255,10 @@ class TicTacToeProject {
 		board.displayGame(false);
 		var scanner = new Scanner(in);
 		board.defineBoard(
-				new int[][] { { 0, 200, 600, 200 }, { 0, 400, 600, 400 }, { 200, 0, 200, 600 }, { 400, 0, 400, 600 } });
-		var fPs = new String[] {
+				new int[][]{{0, 200, 600, 200}, {0, 400, 600, 400}, {200, 0, 200, 600}, {400, 0, 400, 600}});
+		var fPs = new String[]{
 				"Classwork/Computer_Science_in_the_21st_Century/images/arrays/twoDimensionalArrays/ticTacToe/TicTacToeX.png",
-				"Classwork/Computer_Science_in_the_21st_Century/images/arrays/twoDimensionalArrays/ticTacToe/TicTacToeO.png" };
+				"Classwork/Computer_Science_in_the_21st_Century/images/arrays/twoDimensionalArrays/ticTacToe/TicTacToeO.png"};
 		board.setFiles(fPs[0], fPs[1]);
 		var play = new char[3][3];
 		for (int i = 0; i < 3; i++)
@@ -273,7 +273,8 @@ class TicTacToeProject {
 		switch (scanner.nextInt()) {
 			case 0:
 				do {
-					both: for (int i = 0; i < 2; i++)
+					both:
+					for (int i = 0; i < 2; i++)
 						do {
 							if (!deepToString(play).contains(" "))
 								break both;
@@ -426,18 +427,18 @@ class TicTacToeProject {
 				&& ((board[1][0] != 'x') || (board[1][1] != 'x') || (board[1][2] != 'x'))
 				&& ((board[2][0] != 'x') || (board[2][1] != 'x') || (board[2][2] != 'x')))
 				&& (((board[0][0] != 'x') || (board[1][0] != 'x') || (board[2][0] != 'x'))
-						&& ((board[0][1] != 'x') || (board[1][1] != 'x') || (board[2][1] != 'x'))
-						&& ((board[0][2] != 'x') || (board[1][2] != 'x') || (board[2][2] != 'x')))
+				&& ((board[0][1] != 'x') || (board[1][1] != 'x') || (board[2][1] != 'x'))
+				&& ((board[0][2] != 'x') || (board[1][2] != 'x') || (board[2][2] != 'x')))
 				&& (((board[0][0] != 'x') || (board[1][1] != 'x') || (board[2][2] != 'x'))
-						&& ((board[2][0] != 'x') || (board[1][1] != 'x') || (board[0][2] != 'x')))
+				&& ((board[2][0] != 'x') || (board[1][1] != 'x') || (board[0][2] != 'x')))
 				&& (((board[0][0] != 'o') || (board[0][1] != 'o') || (board[0][2] != 'o'))
-						&& ((board[1][0] != 'o') || (board[1][1] != 'o') || (board[1][2] != 'o'))
-						&& ((board[2][0] != 'o') || (board[2][1] != 'o') || (board[2][2] != 'o')))
+				&& ((board[1][0] != 'o') || (board[1][1] != 'o') || (board[1][2] != 'o'))
+				&& ((board[2][0] != 'o') || (board[2][1] != 'o') || (board[2][2] != 'o')))
 				&& (((board[0][0] != 'o') || (board[1][0] != 'o') || (board[2][0] != 'o'))
-						&& ((board[0][1] != 'o') || (board[1][1] != 'o') || (board[2][1] != 'o'))
-						&& ((board[0][2] != 'o') || (board[1][2] != 'o') || (board[2][2] != 'o')))
+				&& ((board[0][1] != 'o') || (board[1][1] != 'o') || (board[2][1] != 'o'))
+				&& ((board[0][2] != 'o') || (board[1][2] != 'o') || (board[2][2] != 'o')))
 				&& (((board[0][0] != 'o') || (board[1][1] != 'o') || (board[2][2] != 'o'))
-						&& ((board[2][0] != 'o') || (board[1][1] != 'o') || (board[0][2] != 'o')));
+				&& ((board[2][0] != 'o') || (board[1][1] != 'o') || (board[0][2] != 'o')));
 	}
 
 	private static void victory(char[][] board) {
@@ -446,23 +447,23 @@ class TicTacToeProject {
 				|| ((board[1][0] == 'x') && (board[1][1] == 'x') && (board[1][2] == 'x'))
 				|| ((board[2][0] == 'x') && (board[2][1] == 'x') && (board[2][2] == 'x')))
 				|| (((board[0][0] == 'x') && (board[1][0] == 'x') && (board[2][0] == 'x'))
-						|| ((board[0][1] == 'x') && (board[1][1] == 'x') && (board[2][1] == 'x'))
-						|| ((board[0][2] == 'x') && (board[1][2] == 'x') && (board[2][2] == 'x')))
+				|| ((board[0][1] == 'x') && (board[1][1] == 'x') && (board[2][1] == 'x'))
+				|| ((board[0][2] == 'x') && (board[1][2] == 'x') && (board[2][2] == 'x')))
 				|| (((board[0][0] == 'x') && (board[1][1] == 'x') && (board[2][2] == 'x'))
-						|| ((board[2][0] == 'x') && (board[1][1] == 'x') && (board[0][2] == 'x'))))
-								? "The winner is Player One"
-								: (((((board[0][0] == 'o') && (board[0][1] == 'o') && (board[0][2] == 'o'))
-										|| ((board[1][0] == 'o') && (board[1][1] == 'o') && (board[1][2] == 'o'))
-										|| ((board[2][0] == 'o') && (board[2][1] == 'o') && (board[2][2] == 'o')))
-										|| (((board[0][0] == 'o') && (board[1][0] == 'o') && (board[2][0] == 'o'))
-												|| ((board[0][1] == 'o') && (board[1][1] == 'o')
-														&& (board[2][1] == 'o'))
-												|| ((board[0][2] == 'o') && (board[1][2] == 'o')
-														&& (board[2][2] == 'o')))
-										|| (((board[0][0] == 'o') && (board[1][1] == 'o') && (board[2][2] == 'o'))
-												|| ((board[2][0] == 'o') && (board[1][1] == 'o')
-														&& (board[0][2] == 'o')))) ? "The winner is Player Two"
-																: "There is no winner"));
+				|| ((board[2][0] == 'x') && (board[1][1] == 'x') && (board[0][2] == 'x'))))
+				? "The winner is Player One"
+				: (((((board[0][0] == 'o') && (board[0][1] == 'o') && (board[0][2] == 'o'))
+				|| ((board[1][0] == 'o') && (board[1][1] == 'o') && (board[1][2] == 'o'))
+				|| ((board[2][0] == 'o') && (board[2][1] == 'o') && (board[2][2] == 'o')))
+				|| (((board[0][0] == 'o') && (board[1][0] == 'o') && (board[2][0] == 'o'))
+				|| ((board[0][1] == 'o') && (board[1][1] == 'o')
+				&& (board[2][1] == 'o'))
+				|| ((board[0][2] == 'o') && (board[1][2] == 'o')
+				&& (board[2][2] == 'o')))
+				|| (((board[0][0] == 'o') && (board[1][1] == 'o') && (board[2][2] == 'o'))
+				|| ((board[2][0] == 'o') && (board[1][1] == 'o')
+				&& (board[0][2] == 'o')))) ? "The winner is Player Two"
+				: "There is no winner"));
 	}
 
 	@Contract(pure = true)
@@ -497,7 +498,7 @@ class TicTacToeProject {
 			f = new JFrame("Tic-Tac-Toe");
 			f.setIconImage(new ImageIcon(
 					"C:\\Users\\china.DESKTOP-ISAVF5I\\Programming\\Java_Development\\Classwork\\Computer_Science_in_the_21st_Century\\images\\arrays.twoDimensionalArrays\\ticTacToe\\Tic-tac-toe.png")
-							.getImage());
+					.getImage());
 			f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			f.setSize(width, height);
 		}
@@ -536,7 +537,7 @@ class TicTacToeProject {
 				setBackground(RED);
 				try {
 					for (int i = 0; i < 2; i++)
-						images[i] = read(new File(new String[] { a, b }[i]));
+						images[i] = read(new File(new String[]{a, b}[i]));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

@@ -87,7 +87,7 @@ public class ActorWorld extends World<Actor> {
 	 *
 	 * @param loc the location from which to remove an actor
 	 * @return the removed actor, or null if there was no actor at the given
-	 *         location.
+	 * location.
 	 */
 	public Actor remove(Location loc) {
 		Actor occupant = getGrid().get(loc);

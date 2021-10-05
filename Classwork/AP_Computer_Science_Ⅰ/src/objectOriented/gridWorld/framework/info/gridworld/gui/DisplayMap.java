@@ -43,7 +43,7 @@ public class DisplayMap {
 	 *
 	 * @param cl the occupant class
 	 * @return the ImageDisplay or (classname)Display object to display it, or null
-	 *         if none was found
+	 * if none was found
 	 */
 
 	@Nullable

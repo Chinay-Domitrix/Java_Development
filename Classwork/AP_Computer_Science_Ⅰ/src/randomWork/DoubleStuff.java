@@ -25,7 +25,7 @@ public class DoubleStuff {
 		double three_seventhousandths = 3 / 7.0E3;
 		out.println("3 / 7000 = " + three_seventhousandths);
 		out.println("3 * 1/7000 == 3/7000? " + (3 * one_seventhousandth == three_seventhousandths)); // Why is this
-																										// false?
+		// false?
 		// Using tolerance to check "equality" to a certain degree
 		double tolerance = 1.0E-10;
 		out.println("3 * 1/7000 == 3/7000? " + (abs(3 * one_seventhousandth - three_seventhousandths) < tolerance));

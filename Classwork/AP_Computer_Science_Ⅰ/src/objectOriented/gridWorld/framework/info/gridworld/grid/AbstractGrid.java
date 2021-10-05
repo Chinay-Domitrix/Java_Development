@@ -18,9 +18,9 @@ package objectOriented.gridWorld.framework.info.gridworld.grid;
 
 import java.util.ArrayList;
 
-import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toCollection;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.*;
 
 /**
  * <code>AbstractGrid</code> contains the methods that are common to grid
@@ -65,8 +65,8 @@ public abstract class AbstractGrid<E> implements Grid<E> {
 	 * Creates a string that describes this grid.
 	 *
 	 * @return a string with descriptions of all objects in this grid (not
-	 *         necessarily in any particular order), in the format {loc=obj,
-	 *         loc=obj, ...}
+	 * necessarily in any particular order), in the format {loc=obj,
+	 * loc=obj, ...}
 	 */
 	public String toString() {
 		return getOccupiedLocations().stream().map(loc -> loc + "=" + get(loc)).collect(joining(", ", "{", "}"));
