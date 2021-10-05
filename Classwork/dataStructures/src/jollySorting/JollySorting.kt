@@ -6,7 +6,7 @@ import java.util.*
 import java.util.Arrays.*
 
 fun main() = try {
-	Scanner(File("Classwork/dataStructures/src/jollySorting/JollySorting.txt")).use {`
+	Scanner(File("Classwork/dataStructures/src/jollySorting/JollySorting.txt")).use {
 		while (it.hasNextLine()) {
 			val parse =
 				stream(it.nextLine().split(" ".toRegex()).toTypedArray()).mapToInt(String::toInt).toArray()

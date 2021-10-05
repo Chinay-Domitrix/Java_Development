@@ -1,14 +1,14 @@
 package matrix;
 
-import static java.lang.System.err;
-import static java.lang.System.out;
-import static java.util.Arrays.stream;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+
+import static java.lang.System.err;
+import static java.lang.System.out;
+import static java.util.Arrays.stream;
 
 public class Matrix {
 	public static void main(String[] args) {
@@ -33,7 +33,7 @@ public class Matrix {
 					for (var is : subtract(array1, array2))
 						out.println(stringifyMatrix(is));
 				}
-				if ((array1[0].length != array2.length)) 
+				if ((array1[0].length != array2.length))
 					err.println("Multiplication is not possible.");
 				else {
 					out.println("Product:");
@@ -56,7 +56,7 @@ public class Matrix {
 					.mapToInt(Integer::parseInt).toArray());
 		return intArrayList.toArray(new int[0][0]);
 	}
-	
+
 	static int[][] add(int[][] A, int[][] B) {
 		var C = new int[A.length][A[0].length];
 		for (var i = 0; i < A.length; i++)

@@ -84,9 +84,9 @@ class Spinner {
 
 	@Contract("_, _, _ -> new")
 	private int[] lowest(int a, int b, int c) {
-		int[] x = { a, b, c };
+		int[] x = {a, b, c};
 		sort(x);
-		return new int[] { x[1], x[2] };
+		return new int[]{x[1], x[2]};
 	}
 
 	@Contract(pure = true)

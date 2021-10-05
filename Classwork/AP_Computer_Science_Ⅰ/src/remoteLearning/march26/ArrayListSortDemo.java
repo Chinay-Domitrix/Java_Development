@@ -19,7 +19,7 @@ import static java.util.stream.IntStream.range;
  * change it to unit test.
  */
 public class ArrayListSortDemo {
-	private ArrayList<String> words;
+	private final ArrayList<String> words;
 
 	/**
 	 * Constructor initializes the ArrayList words with a given number of words of a

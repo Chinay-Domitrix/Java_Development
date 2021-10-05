@@ -6,8 +6,8 @@ import static java.lang.Integer.compare;
 import static java.lang.String.format;
 
 public class Student implements Comparable<Student> {
-	private String[] name;
-	private int idNumber;
+	private final String[] name;
+	private final int idNumber;
 
 	private Student(@NotNull String name, int idNumber) {
 		assert name.split("").length == 2;
@@ -24,14 +24,14 @@ public class Student implements Comparable<Student> {
 	 *
 	 * @param other the {@code Student} object to be compared to
 	 * @return the result of either a {@linkplain String#compareTo(String)} or a
-	 *         {@linkplain Integer#compare(int, int)}, depending on how similar the
-	 *         {@code Student} objects are
+	 * {@linkplain Integer#compare(int, int)}, depending on how similar the
+	 * {@code Student} objects are
 	 */
 	@Override
 	public int compareTo(@NotNull Student other) {
 		return (name[1].compareTo(other.name[1]) == 0)
 				? ((name[0].compareTo(other.name[0]) == 0) ? compare(idNumber, other.idNumber)
-						: name[0].compareTo(other.name[0]))
+				: name[0].compareTo(other.name[0]))
 				: name[1].compareTo(other.name[1]);
 	}
 

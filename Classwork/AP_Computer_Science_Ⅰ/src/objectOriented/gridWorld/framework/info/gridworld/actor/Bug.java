@@ -16,13 +16,13 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.actor;
 
-import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.HALF_RIGHT;
-import static java.awt.Color.RED;
-
-import java.awt.Color;
-
 import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
 import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+
+import java.awt.*;
+
+import static java.awt.Color.RED;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.HALF_RIGHT;
 
 /**
  * A <code>Bug</code> is an actor that can move and turn. It drops flowers as it

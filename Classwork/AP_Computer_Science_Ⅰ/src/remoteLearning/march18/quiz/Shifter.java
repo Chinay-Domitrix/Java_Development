@@ -5,7 +5,7 @@ import java.util.Random;
 import static java.util.stream.IntStream.range;
 
 public class Shifter {
-	private String word;
+	private final String word;
 	private int shiftAmount;
 
 	private Shifter(String word) {

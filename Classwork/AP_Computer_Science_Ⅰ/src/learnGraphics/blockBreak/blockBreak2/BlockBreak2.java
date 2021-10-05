@@ -37,7 +37,7 @@ public class BlockBreak2 extends JPanel implements KeyListener, Runnable {
 		// set other directions
 		var frame = new JFrame();
 		f = new Font("Comic Sans MS", BOLD, 32); // Set Font
-													// https://docs.oracle.com/javase/7/docs/api/java/awt/Font.html
+		// https://docs.oracle.com/javase/7/docs/api/java/awt/Font.html
 		frame.add(this);
 		frame.setSize(frameWidth, frameHeight);
 		frame.setVisible(true);
@@ -81,7 +81,7 @@ public class BlockBreak2 extends JPanel implements KeyListener, Runnable {
 		g2d.setFont(f); // NOTE: Font initialized in the constructor
 		g2d.drawString(msg, 100, 30); // Write text from msg String
 		g2d.setColor(new Color(0, 255, 130)); // Another way to set color. Parameters are red, green, blu on a scale of
-												// 0-255
+		// 0-255
 		ball1 = new Ellipse2D.Double(x1, y1, 25, 25); // Set the current position for ball1.
 		g2d.fill(ball1);
 	}

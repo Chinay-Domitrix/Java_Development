@@ -9,11 +9,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 
-import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.RIGHT;
 import static java.awt.Color.RED;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.RIGHT;
 
 class Jumper extends Bug {
-	private int step = 2;
+	private final int step = 2;
 	private int counter;
 
 	public Jumper() {

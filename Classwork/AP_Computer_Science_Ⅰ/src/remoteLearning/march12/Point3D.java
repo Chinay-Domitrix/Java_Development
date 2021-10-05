@@ -16,7 +16,9 @@ package remoteLearning.march12;
  * https://www.varsitytutors.com/hotmath/hotmath_help/topics/distance-formula-in-3d
  */
 public class Point3D implements Comparable<Point3D> {
-	private double x, y, z;
+	private final double x;
+	private final double y;
+	private final double z;
 
 	private Point3D(double x, double y, double z) {
 		this.x = x;

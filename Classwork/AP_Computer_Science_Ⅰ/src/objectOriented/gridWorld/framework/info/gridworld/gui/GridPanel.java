@@ -57,13 +57,13 @@ public class GridPanel extends JPanel implements Scrollable, Pannable {
 	private static final int DEFAULT_CELL_SIZE = 48;
 	private static final int DEFAULT_CELL_COUNT = 10;
 	private static final int TIP_DELAY = 1000;
+	private final Color backgroundColor = WHITE;
+	private final ResourceBundle resources;
+	private final DisplayMap displayMap;
 	private Grid<?> grid;
 	private int numRows, numCols, originRow, originCol;
 	private int cellSize; // the size of each cell, EXCLUDING the gridlines
 	private boolean toolTipsEnabled;
-	private final Color backgroundColor = WHITE;
-	private final ResourceBundle resources;
-	private final DisplayMap displayMap;
 	private Location currentLocation;
 	private Timer tipTimer;
 	private JToolTip tip;
@@ -313,7 +313,7 @@ public class GridPanel extends JPanel implements Scrollable, Pannable {
 	 *
 	 * @param p the Point in question (in display's coordinate system)
 	 * @return the Location beneath the event (which may not be a valid location in
-	 *         the grid)
+	 * the grid)
 	 */
 	public Location locationForPoint(@NotNull Point p) {
 		return new Location(yCoordToRow(p.y), xCoordToCol(p.x));

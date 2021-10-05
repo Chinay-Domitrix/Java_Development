@@ -1,5 +1,12 @@
 package hackPHS2019;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
 import static java.awt.Color.BLUE;
 import static java.awt.Color.RED;
 import static java.lang.Math.random;
@@ -11,27 +18,17 @@ import static java.util.Arrays.stream;
 import static javax.imageio.ImageIO.read;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
-
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 final class TicTacToeProject {
 	TicTacToeProject() {
 		var board = new TicTacToeBoard(620, 700);
 		board.displayGame(false);
 		try (var scanner = new Scanner(in)) {
-			final int[][] grid = new int[][] { new int[] { 0, 200, 600, 200 }, new int[] { 0, 400, 600, 400 },
-					new int[] { 200, 0, 200, 600 }, new int[] { 400, 0, 400, 600 } };
+			final int[][] grid = new int[][]{new int[]{0, 200, 600, 200}, new int[]{0, 400, 600, 400},
+					new int[]{200, 0, 200, 600}, new int[]{400, 0, 400, 600}};
 			board.defineBoard(grid);
 			var ifn = "TicTacToe";
 			var ft = ".png";
-			var fPs = new String[] { ifn + 'X' + ft, ifn + 'O' + ft };
+			var fPs = new String[]{ifn + 'X' + ft, ifn + 'O' + ft};
 			board.setFiles(fPs[0], fPs[1]);
 			var play = new char[3][3];
 			stream(play).forEachOrdered(chars -> fill(chars, ' '));

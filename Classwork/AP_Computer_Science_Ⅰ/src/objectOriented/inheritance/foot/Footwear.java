@@ -50,7 +50,7 @@ abstract class Footwear {
 	 * @param foot a String that is either "left" or "right" indicated the boolean
 	 *             set to on
 	 * @return boolean status of success or failure of operation (for example, it
-	 *         might fail if neither left or right are understood)
+	 * might fail if neither left or right are understood)
 	 */
 	abstract public boolean putOn(String foot);
 
@@ -90,7 +90,7 @@ abstract class Footwear {
 	 *
 	 * @param obj the reference object with which to compare.
 	 * @return {@code true} if this object is the same as the obj argument;
-	 *         {@code false} otherwise.
+	 * {@code false} otherwise.
 	 * @see #hashCode()
 	 * @see HashMap
 	 */

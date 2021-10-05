@@ -12,7 +12,7 @@ import static java.util.Arrays.sort;
 import static java.util.stream.IntStream.range;
 
 public class BlusterCritter extends Critter {
-	private int courage;
+	private final int courage;
 
 	BlusterCritter(int courage) {
 		this.courage = courage;

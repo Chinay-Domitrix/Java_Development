@@ -121,7 +121,7 @@ class Review1 {
 			t3P3Counter++;
 			out.println();
 		}
-		final int[] x = { 9, 8, 7, 6 };
+		final int[] x = {9, 8, 7, 6};
 		for (int i4 = x.length - 1; i4 >= 0; i4--) {
 			for (int j4 = 0; j4 <= i4; j4++)
 				out.print(x[j4]);

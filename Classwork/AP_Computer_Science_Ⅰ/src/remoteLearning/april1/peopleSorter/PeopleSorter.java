@@ -7,7 +7,7 @@ import static java.lang.String.valueOf;
 import static java.lang.System.out;
 
 public class PeopleSorter {
-	private ArrayList<Person> people;
+	private final ArrayList<Person> people;
 
 	private PeopleSorter() {
 		people = new ArrayList<>();

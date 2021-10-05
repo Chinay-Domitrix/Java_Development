@@ -1,22 +1,24 @@
 package hackPHS2019;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Scanner;
+
 import static java.lang.Math.random;
 import static java.lang.System.in;
 import static java.lang.System.out;
 import static java.lang.Thread.sleep;
 import static java.util.Objects.requireNonNull;
 
-import java.util.Scanner;
-
-import org.jetbrains.annotations.NotNull;
-
 final class RockPaperScissorsLizardSpock {
 	private static final Scanner scanner = new Scanner(in);
 	private int playerWins = 0;
 	private int compWins = 0;
 	private int counter = 0;
-	private int rounds;
-	private String compPicks = null, name, RPSLS;
+	private final int rounds;
+	private final String name;
+	private String compPicks = null;
+	private String RPSLS;
 
 	RockPaperScissorsLizardSpock() throws Exception {
 		out.print("Welcome to Rock, Paper, Scissors, Lizard, Spock! Please enter your first name, contestant. ");
@@ -50,7 +52,7 @@ final class RockPaperScissorsLizardSpock {
 		else
 			l9();
 		out.printf((compWins > playerWins) ? "\nYou lost the match, %s. Too bad... You can try again though!%n"
-				: ((playerWins > compWins) ? "\nYou won the match, %s! Congratulations!%n" : "It's a tie, %s.%n"),
+						: ((playerWins > compWins) ? "\nYou won the match, %s! Congratulations!%n" : "It's a tie, %s.%n"),
 				name);
 	}
 

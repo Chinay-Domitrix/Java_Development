@@ -19,6 +19,9 @@ import static javax.swing.JTabbedPane.TOP;
 import static javax.swing.JTabbedPane.WRAP_TAB_LAYOUT;
 
 class CalculatorView implements ActionListener {
+	private final CalculatorController calcControl;
+	private final Graphics2D g;
+	private final Font displayFont;
 	private JFrame frame;
 	private JPanel displayPanel;
 	private JPanel buttonPanel;
@@ -27,9 +30,6 @@ class CalculatorView implements ActionListener {
 	private JTextArea inputEquation;
 	private JTextArea equationDisplay;
 	private JTextArea graphEquation;
-	private final CalculatorController calcControl;
-	private final Graphics2D g;
-	private final Font displayFont;
 
 	/**
 	 * Sets up the overall frame for the Calculator, the two

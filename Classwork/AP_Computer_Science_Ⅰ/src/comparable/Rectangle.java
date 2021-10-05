@@ -5,7 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import static java.lang.Double.compare;
 
 public class Rectangle implements Comparable<Rectangle> {
-	private double length, width;
+	private final double length;
+	private final double width;
 
 	public Rectangle(double length, double width) {
 		this.length = length;

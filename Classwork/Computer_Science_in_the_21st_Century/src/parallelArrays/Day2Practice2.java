@@ -14,8 +14,8 @@ public class Day2Practice2 {
 		final String[] name = new String[bounds];
 		final int[] age = new int[bounds], feet = new int[bounds];
 		final double[] weight = new double[bounds], inches = new double[bounds], avg = new double[4];
-		final int[] intSto = { 0, 0 };
-		final double[] doubleSto = { 0.0, 0.0 };
+		final int[] intSto = {0, 0};
+		final double[] doubleSto = {0.0, 0.0};
 		in.nextLine();
 		do {
 			print("Please enter a person's name. ");

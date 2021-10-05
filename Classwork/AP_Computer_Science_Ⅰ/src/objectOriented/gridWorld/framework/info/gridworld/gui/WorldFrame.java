@@ -60,11 +60,11 @@ public class WorldFrame<T> extends JFrame {
 	private final GUIController<T> control;
 	private final GridPanel display;
 	private final JTextArea messageArea;
-	private ArrayList<JMenuItem> menuItemsDisabledDuringRun;
 	private final World<T> world;
 	private final ResourceBundle resources;
 	private final DisplayMap displayMap;
 	private final Set<Class<?>> gridClasses;
+	private ArrayList<JMenuItem> menuItemsDisabledDuringRun;
 	private JMenu newGridMenu;
 
 	/**
@@ -306,8 +306,8 @@ public class WorldFrame<T> extends JFrame {
 	private void showAboutPanel() {
 		StringBuilder html = new StringBuilder(
 				format(resources.getString("dialog.about.text"), resources.getString("version.id")));
-		String[] props = { "java.version", "java.vendor", "java.home", "os.name", "os.arch", "os.version", "user.name",
-				"user.home", "user.dir" };
+		String[] props = {"java.version", "java.vendor", "java.home", "os.name", "os.arch", "os.version", "user.name",
+				"user.home", "user.dir"};
 		html.append("<table border='1'>");
 		for (String prop : props)
 			try {
@@ -387,7 +387,7 @@ public class WorldFrame<T> extends JFrame {
 			area.setCaretPosition(0);
 			String copyOption = resources.getString("dialog.error.copy");
 			JOptionPane pane = new JOptionPane(new JScrollPane(area), ERROR_MESSAGE, YES_NO_OPTION, null,
-					new String[] { copyOption, resources.getString("cancel") });
+					new String[]{copyOption, resources.getString("cancel")});
 			pane.createDialog(WorldFrame.this, e.toString()).setVisible(true);
 			if (copyOption.equals(pane.getValue())) {
 				area.setSelectionStart(0);

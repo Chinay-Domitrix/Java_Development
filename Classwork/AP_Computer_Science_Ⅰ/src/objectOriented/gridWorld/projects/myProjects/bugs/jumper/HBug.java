@@ -2,9 +2,9 @@ package objectOriented.gridWorld.projects.myProjects.bugs.jumper;
 
 import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
 
-import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.SOUTH;
 import static java.lang.Thread.sleep;
 import static java.util.stream.IntStream.of;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.SOUTH;
 
 class HBug extends Bug {
 	private final int length;

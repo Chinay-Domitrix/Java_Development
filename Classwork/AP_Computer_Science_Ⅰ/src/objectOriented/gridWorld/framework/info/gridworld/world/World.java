@@ -36,9 +36,9 @@ public class World<T> {
 	private static final int DEFAULT_ROWS = 10;
 	private static final int DEFAULT_COLS = 10;
 	private static final Random generator = new Random();
-	private Grid<?> gr;
 	private final Set<String> occupantClassNames;
 	private final Set<String> gridClassNames;
+	private Grid<?> gr;
 	private String message;
 	private JFrame frame;
 
@@ -118,7 +118,7 @@ public class World<T> {
 	 *
 	 * @param loc the grid location that the user selected
 	 * @return true if the world consumes the click, or false if the GUI should
-	 *         invoke the Location->Edit menu action
+	 * invoke the Location->Edit menu action
 	 */
 	public boolean locationClicked(Location loc) {
 		return false;
@@ -136,7 +136,7 @@ public class World<T> {
 	 * @param loc         the selected location in the grid at the time the key was
 	 *                    pressed
 	 * @return true if the world consumes the key press, false if the GUI should
-	 *         consume it.
+	 * consume it.
 	 */
 	public boolean keyPressed(String description, Location loc) {
 		return false;

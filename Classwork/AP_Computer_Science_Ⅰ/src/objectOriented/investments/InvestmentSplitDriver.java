@@ -104,7 +104,7 @@ public class InvestmentSplitDriver {
 			out.println("You cannot invest more than 100%");
 			return 0;
 		}
-		var a = new double[] { cdP, mfP, bcP, psP, msP };
+		var a = new double[]{cdP, mfP, bcP, psP, msP};
 		return range(0, a.length).map(i -> (int) portfolio.get(i).invest1Year(a[i] * total)).sum();
 	}
 }

@@ -1,12 +1,13 @@
 package mastermind;
 
-import static java.lang.System.out;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+
+import static java.lang.System.out;
+
 public class Mastermind {
 	public static void main(String[] args) {
 		try (var fileReader = new Scanner(new File("Classwork/dataStructures/src/mastermind/Mastermind.txt"))) {
@@ -31,10 +32,10 @@ public class Mastermind {
 					key2.add(((char[]) key[0])[j]);
 					current2.add(current[j]);
 				}
-				for (var j = 0; j < current2.size(); j++)
-					if (key2.contains(current2.get(j))){
+				for (Character character : current2)
+					if (key2.contains(character)) {
 						matchT2++;
-						key2.remove(current2.get(j));
+						key2.remove(character);
 					} else
 						failT2++;
 				out.println("Code:\t" + ((String) key[1]).replaceAll(", ", "").replace("[", "").replace("]", "")

@@ -31,7 +31,7 @@ import static java.lang.String.format;
  * The implementation of this class is testable on the AP CS AB exam.
  */
 public class BoundedGrid<E> extends AbstractGrid<E> {
-	private Object[][] occupantArray; // the array storing the grid elements
+	private final Object[][] occupantArray; // the array storing the grid elements
 
 	/**
 	 * Constructs an empty bounded grid with the given dimensions. (Precondition:

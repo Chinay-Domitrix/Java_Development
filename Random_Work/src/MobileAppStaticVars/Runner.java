@@ -1,13 +1,13 @@
 package MobileAppStaticVars;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import static MobileAppStaticVars.StaticArrayLists.arrayList;
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Math.*;
 import static java.lang.System.out;
 import static java.util.Collections.shuffle;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 public class Runner {
 	public static void main(String[] args) {

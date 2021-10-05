@@ -29,7 +29,7 @@ final class PennyStock extends Investment {
 
 	@SuppressWarnings("SameParameterValue")
 	PennyStock(String name, double minimumInterest, double maximumInterest, double collapseChance,
-			double multiplierChance, int multiplier) {
+	           double multiplierChance, int multiplier) {
 		super(new Name(name));
 		this.minimumInterest *= minimumInterest;
 		this.maximumInterest *= maximumInterest;
@@ -43,21 +43,21 @@ final class PennyStock extends Investment {
 		var interestRate = new InterestRate(
 				((random() * ((maximumInterest - minimumInterest) + MIN_VALUE)) + minimumInterest) + "%");
 		var chance = new Random().nextInt(100) + 1;
-		double yield;
+		double totalYield;
 		if (chance >= 1 && chance <= collapseChance) {
-			yield = -amount;
-			addToYield(yield);
+			totalYield = -amount;
+			addToYield(totalYield);
 			amount = 0;
 		} else if (chance >= collapseChance + 1 && chance <= multiplierChance) {
-			yield = amount * multiplier;
-			addToYield(yield);
+			totalYield = amount * multiplier;
+			addToYield(totalYield);
 			amount *= multiplier;
 		} else {
-			yield = amount * interestRate.doubleValue();
-			addToYield(yield);
+			totalYield = amount * interestRate.doubleValue();
+			addToYield(totalYield);
 			amount *= doubleValue(interestRate) + 1;
 		}
-		out.printf("%s returned a %s yield of %s for a total of %s.%n", getName(), interestRate, format(yield),
+		out.printf("%s returned a %s yield of %s for a total of %s.%n", getName(), interestRate, format(totalYield),
 				format(amount));
 		return amount;
 	}
