@@ -5,11 +5,10 @@ import javax.swing.*;
 import static java.awt.Color.white;
 
 public class Pong extends JFrame {
-	private final static int WIDTH = 700, HEIGHT = 450;
 	private final PongPanel panel;
 
 	private Pong() {
-		setSize(WIDTH, HEIGHT);
+		setSize(700, 450);
 		setTitle("Pong");
 		setBackground(white);
 		setResizable(false);

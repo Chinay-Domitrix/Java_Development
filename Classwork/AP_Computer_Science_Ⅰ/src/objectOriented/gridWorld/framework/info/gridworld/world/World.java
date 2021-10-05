@@ -71,6 +71,7 @@ public class World<T> {
 	 *
 	 * @return the grid
 	 */
+	@SuppressWarnings("unchecked")
 	public Grid<T> getGrid() {
 		return (Grid<T>) gr;
 	}
@@ -80,7 +81,7 @@ public class World<T> {
 	 *
 	 * @param newGrid the new grid
 	 */
-	public void setGrid(Grid newGrid) {
+	public void setGrid(Grid<T> newGrid) {
 		gr = newGrid;
 		repaint();
 	}
@@ -186,8 +187,9 @@ public class World<T> {
 	 * @param loc      the location
 	 * @param occupant the occupant to add
 	 */
+	@SuppressWarnings("unchecked")
 	public void add(Location loc, Object occupant) {
-		var x = (T) occupant;
+		T x = (T) occupant;
 		getGrid().put(loc, x);
 		repaint();
 	}

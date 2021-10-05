@@ -19,7 +19,7 @@ import static java.util.stream.IntStream.range;
 
 
 */
-public class Strang implements Comparable {
+public class Strang<E> implements Comparable<E> {
 
 	private final char[] chars;
 
@@ -30,7 +30,7 @@ public class Strang implements Comparable {
 
 	public static void main(String[] args) {
 		var c = new char[] { 'T', 'i', 'r', 'a', 'n', 'a', ' ', 'T', 'e', 'c', 'h' };
-		var strang1 = new Strang(c);
+		var strang1 = new Strang<>(c);
 		// Example: charAt method
 		out.println("strang1.charAt(3) = " + strang1.charAt(3));
 		// #1 Create a method for length and uncomment below to run
@@ -44,10 +44,10 @@ public class Strang implements Comparable {
 	}
 
 	@Contract("_ -> new")
-	private @NotNull Strang substrang(int beginIndex) {
+	private @NotNull Strang<E> substrang(int beginIndex) {
 		var returned = new char[chars.length - beginIndex];
 		range(beginIndex, length()).forEachOrdered(i -> returned[i - beginIndex] = chars[i]);
-		return new Strang(returned);
+		return new Strang<>(returned);
 	}
 
 	public char charAt(int index) {

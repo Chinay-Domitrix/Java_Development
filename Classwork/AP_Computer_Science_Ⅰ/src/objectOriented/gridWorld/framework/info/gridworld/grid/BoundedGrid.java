@@ -72,6 +72,7 @@ public class BoundedGrid<E> extends AbstractGrid<E> {
 		return theLocations;
 	}
 
+	@SuppressWarnings("unchecked")
 	public E get(Location loc) {
 		assert isValid(loc) : "Location " + loc + " is not valid";
 		return (E) occupantArray[loc.getRow()][loc.getCol()]; // unavoidable warning

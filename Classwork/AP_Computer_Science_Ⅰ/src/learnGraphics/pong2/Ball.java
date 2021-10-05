@@ -25,8 +25,7 @@ public class Ball {
 
 	private void checkCollisionWithRacket() {
 		var panel = game.getPanel();
-		if (panel.getPlayer(1).getBounds().intersects(getBounds())
-				|| panel.getPlayer(2).getBounds().intersects(getBounds()))
+		if (panel.getPlayer(1).getBounds().intersects(getBounds()) || panel.getPlayer(2).getBounds().intersects(getBounds()))
 			xa *= -1;
 	}
 

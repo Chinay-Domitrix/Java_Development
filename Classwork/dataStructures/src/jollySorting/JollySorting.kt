@@ -6,10 +6,10 @@ import java.util.*
 import java.util.Arrays.*
 
 fun main() = try {
-	Scanner(File("Classwork/dataStructures/src/jollySorting/JollySorting.txt")).use { fileReader ->
-		while (fileReader.hasNextLine()) {
+	Scanner(File("Classwork/dataStructures/src/jollySorting/JollySorting.txt")).use {`
+		while (it.hasNextLine()) {
 			val parse =
-				stream(fileReader.nextLine().split(" ".toRegex()).toTypedArray()).mapToInt(String::toInt).toArray()
+				stream(it.nextLine().split(" ".toRegex()).toTypedArray()).mapToInt(String::toInt).toArray()
 			sort(parse)
 			val a = copyOfRange(parse, 0, (parse.size + 1) / 2)
 			val b = copyOfRange(parse, (parse.size + 1) / 2, parse.size)

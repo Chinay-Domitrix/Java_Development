@@ -31,10 +31,12 @@ class BraidingPlusBug extends PlusBug {
 		var locations = new ArrayList<Location>();
 		var previousLocation = new Location(0, 0);
 		out.print("How many PlusBugs do you want? ");
-		for (int i = 1; i <= new Scanner(in).nextInt(); i++) {
-			var newLocation = new Location(previousLocation.getRow() + i, previousLocation.getCol() + i);
-			locations.add(newLocation);
-			previousLocation = newLocation;
+		try (Scanner input = new Scanner(in)) {
+			for (int i = 1; i <= input.nextInt(); i++) {
+				var newLocation = new Location(previousLocation.getRow() + i, previousLocation.getCol() + i);
+				locations.add(newLocation);
+				previousLocation = newLocation;
+			}
 		}
 		var plusBugs = new ArrayList<BraidingPlusBug>();
 		range(0, locations.size()).forEachOrdered(i -> {

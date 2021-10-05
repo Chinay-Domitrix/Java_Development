@@ -1,12 +1,5 @@
 package hackPHS2019;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
-
 import static java.awt.Color.BLUE;
 import static java.awt.Color.RED;
 import static java.lang.Math.random;
@@ -18,16 +11,27 @@ import static java.util.Arrays.stream;
 import static javax.imageio.ImageIO.read;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 final class TicTacToeProject {
 	TicTacToeProject() {
 		var board = new TicTacToeBoard(620, 700);
 		board.displayGame(false);
 		try (var scanner = new Scanner(in)) {
-			final int[][] grid = new int[][]{new int[]{0, 200, 600, 200}, new int[]{0, 400, 600, 400}, new int[]{200, 0, 200, 600}, new int[]{400, 0, 400, 600}};
+			final int[][] grid = new int[][] { new int[] { 0, 200, 600, 200 }, new int[] { 0, 400, 600, 400 },
+					new int[] { 200, 0, 200, 600 }, new int[] { 400, 0, 400, 600 } };
 			board.defineBoard(grid);
 			var ifn = "TicTacToe";
 			var ft = ".png";
-			var fPs = new String[]{ifn + 'X' + ft, ifn + 'O' + ft};
+			var fPs = new String[] { ifn + 'X' + ft, ifn + 'O' + ft };
 			board.setFiles(fPs[0], fPs[1]);
 			var play = new char[3][3];
 			stream(play).forEachOrdered(chars -> fill(chars, ' '));
@@ -48,7 +52,8 @@ final class TicTacToeProject {
 							placePiece(placementIn, play, counter, pieces);
 							board.repaint();
 							board.delay();
-							if (play[pieces[0]][pieces[1]] != ' ') break;
+							if (play[pieces[0]][pieces[1]] != ' ')
+								break;
 						} while (play[pieces[0]][pieces[1]] == ' ');
 						do {
 							counter++;
@@ -59,7 +64,8 @@ final class TicTacToeProject {
 							placePiece(placementIn, play, counter, pieces);
 							board.repaint();
 							board.delay();
-							if (play[pieces[0]][pieces[1]] != ' ') break;
+							if (play[pieces[0]][pieces[1]] != ' ')
+								break;
 						} while (play[pieces[0]][pieces[1]] == ' ');
 					} while (play[pieces[0]][pieces[1]] == ' ');
 					break;
@@ -73,7 +79,8 @@ final class TicTacToeProject {
 							placePiece(placementIn, play, counter, pieces);
 							board.repaint();
 							board.delay();
-							if (play[pieces[0]][pieces[1]] != ' ') break;
+							if (play[pieces[0]][pieces[1]] != ' ')
+								break;
 						} while (play[pieces[0]][pieces[1]] == ' ');
 						do {
 							counter++;
@@ -84,7 +91,8 @@ final class TicTacToeProject {
 							placePiece(placementIn, play, counter, pieces);
 							board.repaint();
 							board.delay();
-							if (play[pieces[0]][pieces[1]] != ' ') break;
+							if (play[pieces[0]][pieces[1]] != ' ')
+								break;
 						} while (play[pieces[0]][pieces[1]] == ' ');
 					} while (play[pieces[0]][pieces[1]] == ' ');
 					break;
@@ -98,7 +106,8 @@ final class TicTacToeProject {
 							placePiece(placementIn, play, counter, pieces);
 							board.repaint();
 							board.delay();
-							if (play[pieces[0]][pieces[1]] != ' ') break;
+							if (play[pieces[0]][pieces[1]] != ' ')
+								break;
 						} while (play[pieces[0]][pieces[1]] == ' ');
 						do {
 							counter++;
@@ -108,7 +117,8 @@ final class TicTacToeProject {
 							placePiece(placementIn, play, counter, pieces);
 							board.repaint();
 							board.delay();
-							if (play[pieces[0]][pieces[1]] != ' ') break;
+							if (play[pieces[0]][pieces[1]] != ' ')
+								break;
 						} while (play[pieces[0]][pieces[1]] == ' ');
 					} while (play[pieces[0]][pieces[1]] == ' ');
 					break;
@@ -162,7 +172,7 @@ final class TicTacToeProject {
 	}
 
 	private void placePiece(int a, char[][] b, int c, int[] d) {
-		if ((a == 1) | (a == 2) | (a == 3) | (a == 4) | (a == 5) | (a == 6) | (a == 7) | (a == 8) | (a == 9))
+		if ((a >= 1) && (a <= 9))
 			b[d[0]][d[1]] = ((c % 2) == 0) ? 'o' : 'x';
 	}
 }

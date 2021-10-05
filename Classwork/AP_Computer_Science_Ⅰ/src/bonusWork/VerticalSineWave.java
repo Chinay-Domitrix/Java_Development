@@ -19,7 +19,9 @@ class VerticalSineWave {
 	private VerticalSineWave() {
 		out.println("This is a program that \"infinitely\" prints out a vertical sine wave.");
 		out.print("Do you want to start on the left or right? I want to start on the ");
-		startingSide = format("%s.", new Scanner(in).nextLine());
+		try (Scanner input = new Scanner(in)) {
+			startingSide = format("%s.", input.nextLine());
+		}
 	}
 
 	private VerticalSineWave(String startingSide) throws IllegalStateException {

@@ -21,8 +21,7 @@ public class Paint1 extends JPanel {
 
 	private Paint1() {
 		JFrame frame = new JFrame("Paint1");
-		f = new Font("Comic Sans MS", PLAIN, 50); // Set Font:
-													// https://docs.oracle.com/javase/7/docs/api/java/awt/Font.html
+		f = new Font("Comic Sans MS", PLAIN, 50); // Set Font: https://docs.oracle.com/javase/7/docs/api/java/awt/Font.html
 		frame.add(this); // Add Object to Frame, this will invoke the paintComponent method
 		frame.setSize(frameWidth, frameHeight);
 		frame.setVisible(true);
