@@ -6,7 +6,7 @@ import java.util.*
 import java.util.Arrays.stream
 
 fun main() = try {
-	Scanner(File("Classwork/Data_Structures/amicableNumbers/Amicable_Numbers.txt")).use { fileReader ->
+	Scanner(File("Classwork/dataStructures/src/amicableNumbers/Amicable_Numbers.txt")).use { fileReader ->
 		while (fileReader.hasNextLine()) {
 			val nums = stream(fileReader.nextLine().split(" ".toRegex()).toTypedArray()).mapToInt(String::toInt)
 				.toArray()

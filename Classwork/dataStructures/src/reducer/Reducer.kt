@@ -5,7 +5,7 @@ import java.io.FileNotFoundException
 import java.util.*
 
 fun main() = try {
-	Scanner(File("Classwork/Data_Structures/reducer/Reducer.txt")).use {
+	Scanner(File("Classwork/dataStructures/src/reducer/Reducer.txt")).use {
 		while (it.hasNextLine()) {
 			var nums = it.next().split("/".toRegex()).toTypedArray()
 			var numerator = nums[0].toInt()
