@@ -4,6 +4,18 @@
 	<groupId>org.chinaydomitrix</groupId>
 	<artifactId>Java_Development</artifactId>
 	<version>1.0-SNAPSHOT</version>
+	<name>Chinay's Java Development Repository</name>
+	<developers>
+		<developer>
+			<id>chinay</id>
+			<name>Chirag Baviskar</name>
+			<roles>
+				<role>Owner</role>
+				<role>Head Developer</role>
+			</roles>
+			<timezone>US Eastern Time</timezone>
+		</developer>
+	</developers>
 	<properties>
 		<maven.compiler.source>16</maven.compiler.source>
 		<maven.compiler.target>16</maven.compiler.target>
