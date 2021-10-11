@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/16"/>
+	<classpathentry kind="src" path="/Java_Development/Classwork/AP_Computer_Science_Ⅰ/src"/>
+	<classpathentry kind="src" path="/Java_Development/Classwork/Computer_Science_in_the_21st_Century/images"/>
+	<classpathentry kind="src" path="/Java_Development/Classwork/Computer_Science_in_the_21st_Century/src"/>
+	<classpathentry kind="src" path="/Java_Development/Classwork/dataStructures/src"/>
+	<classpathentry kind="src" path="/Java_Development/Classwork/mobileApp/src"/>
+	<classpathentry kind="src" path="/Java_Development/Hello_World/src"/>
+	<classpathentry kind="src" path="/Java_Development/Random_Work/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/KotlinJavaRuntime"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.jetbrains:annotations:22.0.0"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.5.31"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.jetbrains.kotlin:kotlin-stdlib:1.5.31"/>
+	<classpathentry kind="output" path="/bin"/>
+</classpath>

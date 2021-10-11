@@ -69,15 +69,14 @@ public class GUIController<T> {
 	 */
 	public GUIController(WorldFrame<T> parent, GridPanel disp, DisplayMap displayMap, ResourceBundle res) {
 		resources = res;
-		display = disp;
+		this.display = disp;
 		parentFrame = parent;
 		this.displayMap = displayMap;
 		makeControls();
 		occupantClasses = new TreeSet<>(Comparator.comparing(Class::getName));
 		World<T> world = parentFrame.getWorld();
 		Grid<T> gr = world.getGrid();
-		for (Location loc : gr.getOccupiedLocations())
-			addOccupant(gr.get(loc));
+		gr.getOccupiedLocations().stream().map(gr::get).forEach(this::addOccupant);
 		world.getOccupantClasses().forEach(name -> {
 			try {
 				occupantClasses.add(forName(name));
@@ -105,7 +104,7 @@ public class GUIController<T> {
 	public void step() {
 		parentFrame.getWorld().step();
 		parentFrame.repaint();
-		if (++numStepsSoFar == numStepsToRun)
+		if (numStepsSoFar++ == numStepsToRun)
 			stop();
 		Grid<T> gr = parentFrame.getWorld().getGrid();
 		gr.getOccupiedLocations().stream().map(gr::get).forEach(this::addOccupant);
@@ -149,7 +148,7 @@ public class GUIController<T> {
 		running = false;
 	}
 
-	public boolean isRunning() {
+	private boolean isRunning() {
 		return running;
 	}
 

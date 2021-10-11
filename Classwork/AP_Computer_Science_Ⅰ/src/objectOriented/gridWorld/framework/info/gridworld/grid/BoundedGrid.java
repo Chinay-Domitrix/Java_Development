@@ -57,8 +57,7 @@ public class BoundedGrid<E> extends AbstractGrid<E> {
 	}
 
 	public boolean isValid(@NotNull Location loc) {
-		return (0 <= loc.getRow()) && (loc.getRow() < getNumRows()) && (0 <= loc.getCol())
-				&& (loc.getCol() < getNumCols());
+		return (0 <= loc.getRow()) && (loc.getRow() < getNumRows()) && (0 <= loc.getCol()) && (loc.getCol() < getNumCols());
 	}
 
 	public ArrayList<Location> getOccupiedLocations() {

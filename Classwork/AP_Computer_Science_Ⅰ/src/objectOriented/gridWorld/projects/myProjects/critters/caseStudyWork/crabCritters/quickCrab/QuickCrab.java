@@ -10,8 +10,7 @@ public class QuickCrab extends CrabCritter {
 	public ArrayList<Location> getMoveLocations() {
 		ArrayList<Location> returned = new ArrayList<>(super.getMoveLocations());
 		super.getMoveLocations().stream()
-				.filter(x -> getGrid().isValid(x.getAdjacentLocation(getLocation().getDirectionToward(x)))
-						&& (getGrid().get(x.getAdjacentLocation(getLocation().getDirectionToward(x))) == null))
+				.filter(x -> getGrid().isValid(x.getAdjacentLocation(getLocation().getDirectionToward(x))) && (getGrid().get(x.getAdjacentLocation(getLocation().getDirectionToward(x))) == null))
 				.map(x -> x.getAdjacentLocation(getLocation().getDirectionToward(x))).forEachOrdered(returned::add);
 		return returned;
 	}

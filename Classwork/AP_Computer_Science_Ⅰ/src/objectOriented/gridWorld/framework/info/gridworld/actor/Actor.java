@@ -23,8 +23,8 @@ import org.jetbrains.annotations.Contract;
 import java.awt.*;
 
 import static java.awt.Color.BLUE;
-import static java.lang.String.format;
 import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.*;
+import static java.lang.String.format;
 
 /**
  * An <code>Actor</code> is an entity with a color and direction that can act.

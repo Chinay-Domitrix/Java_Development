@@ -52,7 +52,6 @@ public class DisplayMap {
 			String className = cl.getName();
 			var dcl = Class.forName(className + "Display");
 			if (Display.class.isAssignableFrom(dcl)) {
-				@SuppressWarnings("deprecation")
 				Display display = (Display) dcl.newInstance();
 				map.put(cl, display);
 				return display;

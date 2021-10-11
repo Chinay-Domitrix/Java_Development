@@ -91,8 +91,7 @@ public class CrabCritter extends Critter {
 		ArrayList<Location> locationArrayList = new ArrayList<>();
 		for (int d : directions) {
 			if (getGrid().isValid(loc.getAdjacentLocation(getDirection() + d))) {
-				Location adjacentLocation = loc.getAdjacentLocation(getDirection() + d);
-				locationArrayList.add(adjacentLocation);
+				locationArrayList.add(loc.getAdjacentLocation(getDirection() + d));
 			}
 		}
 		return locationArrayList;

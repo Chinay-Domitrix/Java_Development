@@ -29,6 +29,7 @@ import static java.awt.RenderingHints.KEY_ANTIALIASING;
 import static java.awt.RenderingHints.VALUE_ANTIALIAS_ON;
 import static java.lang.Math.sqrt;
 import static java.lang.String.format;
+import static objectOriented.gridWorld.framework.info.gridworld.gui.AbstractDisplay.getProperty;
 
 /**
  * The DefaultDisplay draws the object's text property with a background color
@@ -53,10 +54,10 @@ public class DefaultDisplay implements Display {
 	 * @param rect rectangle in which to draw
 	 */
 	public void draw(Object obj, Component comp, Graphics2D g2, Rectangle rect) {
-		Color color = (Color) AbstractDisplay.getProperty(obj, "color");
+		Color color = (Color) getProperty(obj, "color");
 		if ((color == null) && (obj instanceof Color))
 			color = (Color) obj;
-		Color textColor = (Color) AbstractDisplay.getProperty(obj, "textColor");
+		Color textColor = (Color) getProperty(obj, "textColor");
 		if (textColor == null)
 			textColor = BLACK;
 		if (color != null) {
@@ -65,7 +66,7 @@ public class DefaultDisplay implements Display {
 			if (color.equals(textColor))
 				textColor = new Color(255 - textColor.getRed(), 255 - textColor.getGreen(), 255 - textColor.getBlue());
 		}
-		String text = (String) AbstractDisplay.getProperty(obj, "text");
+		String text = (String) getProperty(obj, "text");
 		if (text == null && !(obj instanceof Color))
 			text = format("%s", obj);
 		if (text == null)

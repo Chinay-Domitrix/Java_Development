@@ -29,7 +29,6 @@ import static java.util.stream.Collectors.toCollection;
  * An <code>ActorWorld</code> is occupied by actors. <br />
  * This class is not tested on the AP CS A and AB exams.
  */
-
 public class ActorWorld extends World<Actor> {
 	private static final String DEFAULT_MESSAGE = "Click on a grid location to construct or manipulate an actor.";
 

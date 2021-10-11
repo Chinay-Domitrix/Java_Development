@@ -95,6 +95,7 @@ public class WorldFrame<T> extends JFrame {
 		setTitle(title);
 		setLocation(25, 15);
 		URL appIconUrl = getClass().getResource("GridWorld.gif");
+		assert appIconUrl != null;
 		ImageIcon appIcon = new ImageIcon(appIconUrl);
 		setIconImage(appIcon.getImage());
 		makeMenus();

@@ -25,7 +25,6 @@ import static java.awt.Color.PINK;
  * flowers as they move. <br />
  * The API of this class is testable on the AP CS A and AB exams.
  */
-
 public class Flower extends Actor {
 	private static final Color DEFAULT_COLOR = PINK;
 
@@ -52,7 +51,6 @@ public class Flower extends Actor {
 	 */
 	public void act() {
 		Color c = getColor();
-		int red = (int) (c.getRed() * 0.95), green = (int) (c.getGreen() * 0.95), blue = (int) (c.getBlue() * 0.95);
-		setColor(new Color(red, green, blue));
+		setColor(new Color((int) (c.getRed() * 0.95), (int) (c.getGreen() * 0.95), (int) (c.getBlue() * 0.95)));
 	}
 }

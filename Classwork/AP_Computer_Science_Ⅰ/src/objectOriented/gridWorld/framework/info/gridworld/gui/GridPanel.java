@@ -51,7 +51,6 @@ import static objectOriented.gridWorld.framework.info.gridworld.gui.PseudoInfini
  * implementation details that are not intended to be understood by AP CS
  * students.
  */
-
 public class GridPanel extends JPanel implements Scrollable, Pannable {
 	private static final int MIN_CELL_SIZE = 12;
 	private static final int DEFAULT_CELL_SIZE = 48;
@@ -72,7 +71,7 @@ public class GridPanel extends JPanel implements Scrollable, Pannable {
 	/**
 	 * Construct a new GridPanel object with no grid. The view will be empty.
 	 */
-	public GridPanel(DisplayMap map, ResourceBundle res) {
+	GridPanel(DisplayMap map, ResourceBundle res) {
 		displayMap = map;
 		resources = res;
 		setToolTipsEnabled(true);

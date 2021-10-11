@@ -49,16 +49,11 @@ public abstract class AbstractGrid<E> implements Grid<E> {
 	}
 
 	public ArrayList<Location> getEmptyAdjacentLocations(Location loc) {
-		return getValidAdjacentLocations(loc).stream().filter(neighborLoc -> get(neighborLoc) == null)
-				.collect(toCollection(ArrayList::new));
+		return getValidAdjacentLocations(loc).stream().filter(neighborLoc -> get(neighborLoc) == null).collect(toCollection(ArrayList::new));
 	}
 
 	public ArrayList<Location> getOccupiedAdjacentLocations(Location loc) {
-		ArrayList<Location> locations = new ArrayList<>();
-		for (Location neighborLoc : getValidAdjacentLocations(loc))
-			if (get(neighborLoc) != null)
-				locations.add(neighborLoc);
-		return locations;
+		return getValidAdjacentLocations(loc).stream().filter(neighborLoc -> get(neighborLoc) != null).collect(toCollection(ArrayList::new));
 	}
 
 	/**
