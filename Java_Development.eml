@@ -4,6 +4,9 @@
 		<excludeFolder url="file://$MODULE_DIR$/target"/>
 		<excludeFolder url="file://$MODULE_DIR$/.idea"/>
 	</contentEntry>
+	<lib name="gridworld.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/Classwork/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/gridworld.jar!/"/>
+	</lib>
 	<levels>
 		<level name="KotlinJavaRuntime" value="project"/>
 		<level name="Maven: org.jetbrains:annotations:22.0.0" value="project"/>

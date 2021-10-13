@@ -67,10 +67,10 @@ public class MenuMaker<T> {
 	 * @param displayMap the display map
 	 */
 	@Contract(pure = true)
-	public MenuMaker(WorldFrame<T> parent, ResourceBundle resources, DisplayMap displayMap) {
+	public MenuMaker(WorldFrame<T> parent, ResourceBundle resources, DisplayMap dispMap) {
 		this.parent = parent;
 		this.resources = resources;
-		this.displayMap = displayMap;
+		displayMap = dispMap;
 	}
 
 	/**

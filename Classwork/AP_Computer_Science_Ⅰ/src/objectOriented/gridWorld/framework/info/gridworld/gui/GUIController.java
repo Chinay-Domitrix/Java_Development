@@ -67,11 +67,11 @@ public class GUIController<T> {
 	 * @param displayMap the map for occupant displays
 	 * @param res        the resource bundle for message display
 	 */
-	public GUIController(WorldFrame<T> parent, GridPanel disp, DisplayMap displayMap, ResourceBundle res) {
+	public GUIController(WorldFrame<T> parent, GridPanel disp, DisplayMap dispMap, ResourceBundle res) {
 		resources = res;
-		this.display = disp;
+		display = disp;
 		parentFrame = parent;
-		this.displayMap = displayMap;
+		displayMap = dispMap;
 		makeControls();
 		occupantClasses = new TreeSet<>(Comparator.comparing(Class::getName));
 		World<T> world = parentFrame.getWorld();

@@ -29,12 +29,7 @@ import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.*;
  */
 public abstract class AbstractGrid<E> implements Grid<E> {
 	public ArrayList<E> getNeighbors(Location loc) {
-		ArrayList<E> es = new ArrayList<>();
-		for (Location location : getOccupiedAdjacentLocations(loc)) {
-			E e = get(location);
-			es.add(e);
-		}
-		return es;
+		return getOccupiedAdjacentLocations(loc).stream().map(this::get).collect(toCollection(ArrayList::new));
 	}
 
 	public ArrayList<Location> getValidAdjacentLocations(Location loc) {

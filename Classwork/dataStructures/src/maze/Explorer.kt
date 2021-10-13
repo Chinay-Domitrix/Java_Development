@@ -11,7 +11,7 @@ class Explorer(
 	/**
 	 * The `Explorer`'s direction, represented by an `int`
 	 */
-	var direction: Int,
+	var direction: Direction,
 	/**
 	 * The `Explorer`'s size
 	 */
@@ -21,14 +21,10 @@ class Explorer(
 	 */
 	val color: Color
 ) {
-
 	val rectangle: Rectangle
 		get() = Rectangle(location.x, location.y, size, size)
 
-	companion object {
-		const val DIRECTION_NORTH = 0
-		const val DIRECTION_EAST = 1
-		const val DIRECTION_SOUTH = 2
-		const val DIRECTION_WEST = 3
+	enum class Direction {
+		NORTH, EAST, SOUTH, WEST
 	}
 }

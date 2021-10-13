@@ -35,6 +35,7 @@ public class UnboundedGrid<E> extends AbstractGrid<E> {
 	 * Constructs an empty unbounded grid.
 	 */
 	public UnboundedGrid() {
+		super();
 		occupantMap = new HashMap<>();
 	}
 
