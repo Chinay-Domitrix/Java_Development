@@ -1,5 +1,6 @@
 package maze
 
+import maze.Explorer.Direction.*
 import java.awt.Color
 import java.awt.Rectangle
 
@@ -23,6 +24,15 @@ class Explorer(
 ) {
 	val rectangle: Rectangle
 		get() = Rectangle(location.x, location.y, size, size)
+
+	fun move(direction: Direction) = with(location) {
+		when (direction) {
+			NORTH -> y -= 1
+			EAST -> x += 1
+			SOUTH -> y += 1
+			WEST -> x -= 1
+		}
+	}
 
 	enum class Direction {
 		NORTH, EAST, SOUTH, WEST
