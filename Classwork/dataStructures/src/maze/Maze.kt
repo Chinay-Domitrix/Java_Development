@@ -22,8 +22,6 @@ class Maze private constructor() : JPanel(), KeyListener, MouseListener {
 		super.paintComponent(g)
 		g.color = black
 		g.fillRect(0, 0, 1600, 1600)
-		val xpos = 0
-		val ypos = 0
 		try {
 			Scanner(File("Classwork/dataStructures/src/maze/Maze.txt")).use { scanner ->
 				val temp = ArrayList<CharArray>()
@@ -49,30 +47,37 @@ class Maze private constructor() : JPanel(), KeyListener, MouseListener {
 	override fun keyPressed(e: KeyEvent) {
 		with(explorer.location) {
 			e.keyCode.run {
-				if (isValidMove(this)) when (this) {
-					VK_RIGHT -> {
-						mazeArray[x][y] = ' '
-						mazeArray[x + 1][y] = 'E'
-						explorer.move(EAST)
-					}
-					VK_LEFT -> {
-						mazeArray[x][y] = ' '
-						mazeArray[x - 1][y] = 'E'
-						explorer.move(WEST)
-					}
-					VK_UP -> {
-						mazeArray[x][y] = ' '
-						mazeArray[x][y - 1] = 'E'
-						explorer.move(NORTH)
-					}
-					VK_DOWN -> {
-						mazeArray[x][y] = ' '
-						mazeArray[x][y + 1] = 'E'
-						explorer.move(SOUTH)
-					}
+				/*if (isValidMove(this))*/ when (this) {
+				VK_RIGHT, VK_D -> {
+					println(location.toString())
+//						mazeArray[x][y] = ' '
+//						mazeArray[x + 1][y] = 'E'
+					explorer.move(EAST)
+				}
+				VK_LEFT, VK_A -> {
+
+					println(location.toString())
+//						mazeArray[x][y] = ' '
+//						mazeArray[x - 1][y] = 'E'
+					explorer.move(WEST)
+				}
+				VK_UP, VK_W -> {
+					println(location.toString())
+//						mazeArray[x][y] = ' '
+//						mazeArray[x][y - 1] = 'E'
+					explorer.move(NORTH)
+				}
+				VK_DOWN, VK_S -> {
+					println(location.toString())
+//						mazeArray[x][y] = ' '
+//						mazeArray[x][y + 1] = 'E'
+					explorer.move(SOUTH)
 				}
 			}
+			}
 		}
+
+		repaint()
 	}
 
 	override fun keyTyped(e: KeyEvent) {}
