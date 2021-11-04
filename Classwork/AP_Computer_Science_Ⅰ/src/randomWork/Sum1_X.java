@@ -6,12 +6,11 @@ import static java.lang.System.out;
 /**
  * This variable calculates the sum of 1/x for natural numbers x
  * <p>
- * Please inspect to understand how it works.  Then change the limit
- * variable from 10 to 20, 23, and 24.  NOTE: this may take a while for
- * higher numbers, be patient!
+ * Please inspect to understand how it works. Then change the limit variable
+ * from 10 to 20, 23, and 24. NOTE: this may take a while for higher numbers, be
+ * patient!
  * <p>
- * Observe the behavior.  What do you think is happening?
- * Be prepared to discuss.
+ * Observe the behavior. What do you think is happening? Be prepared to discuss.
  */
 public class Sum1_X {
 	public static void main(String[] args) {

@@ -11,7 +11,7 @@ import static java.util.stream.Collectors.toCollection;
 import static java.util.stream.IntStream.range;
 
 final class Randomize {
-	private String toJumble;
+	private final String toJumble;
 	private int shift;
 
 	private Randomize(String toJumble) {
@@ -25,8 +25,12 @@ final class Randomize {
 	}
 
 	public final String jumble() {
-		var chars = range(0, toJumble.length()).mapToObj(i -> toJumble.toUpperCase().charAt(i)).collect(toCollection(ArrayList::new));
-		range(0, chars.size()).forEachOrdered(i -> chars.set(i, (char) ((((int) chars.get(i) + shift) > 90) ? ((chars.get(i) + shift) - 26) : (chars.get(i) + shift))));
-		return range(0, chars.size()).mapToObj(i -> valueOf(isLowerCase(toJumble.charAt(i)) ? valueOf(toLowerCase(chars.get(i))) : chars.get(i))).collect(joining());
+		var chars = range(0, toJumble.length()).mapToObj(i -> toJumble.toUpperCase().charAt(i))
+				.collect(toCollection(ArrayList::new));
+		range(0, chars.size()).forEachOrdered(i -> chars.set(i,
+				(char) ((((int) chars.get(i) + shift) > 90) ? ((chars.get(i) + shift) - 26) : (chars.get(i) + shift))));
+		return range(0, chars.size()).mapToObj(
+						i -> valueOf(isLowerCase(toJumble.charAt(i)) ? valueOf(toLowerCase(chars.get(i))) : chars.get(i)))
+				.collect(joining());
 	}
 }

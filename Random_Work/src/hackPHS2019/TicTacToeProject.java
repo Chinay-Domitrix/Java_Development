@@ -23,7 +23,8 @@ final class TicTacToeProject {
 		var board = new TicTacToeBoard(620, 700);
 		board.displayGame(false);
 		try (var scanner = new Scanner(in)) {
-			final int[][] grid = new int[][]{new int[]{0, 200, 600, 200}, new int[]{0, 400, 600, 400}, new int[]{200, 0, 200, 600}, new int[]{400, 0, 400, 600}};
+			final int[][] grid = new int[][]{new int[]{0, 200, 600, 200}, new int[]{0, 400, 600, 400},
+					new int[]{200, 0, 200, 600}, new int[]{400, 0, 400, 600}};
 			board.defineBoard(grid);
 			var ifn = "TicTacToe";
 			var ft = ".png";
@@ -48,7 +49,8 @@ final class TicTacToeProject {
 							placePiece(placementIn, play, counter, pieces);
 							board.repaint();
 							board.delay();
-							if (play[pieces[0]][pieces[1]] != ' ') break;
+							if (play[pieces[0]][pieces[1]] != ' ')
+								break;
 						} while (play[pieces[0]][pieces[1]] == ' ');
 						do {
 							counter++;
@@ -59,7 +61,8 @@ final class TicTacToeProject {
 							placePiece(placementIn, play, counter, pieces);
 							board.repaint();
 							board.delay();
-							if (play[pieces[0]][pieces[1]] != ' ') break;
+							if (play[pieces[0]][pieces[1]] != ' ')
+								break;
 						} while (play[pieces[0]][pieces[1]] == ' ');
 					} while (play[pieces[0]][pieces[1]] == ' ');
 					break;
@@ -73,7 +76,8 @@ final class TicTacToeProject {
 							placePiece(placementIn, play, counter, pieces);
 							board.repaint();
 							board.delay();
-							if (play[pieces[0]][pieces[1]] != ' ') break;
+							if (play[pieces[0]][pieces[1]] != ' ')
+								break;
 						} while (play[pieces[0]][pieces[1]] == ' ');
 						do {
 							counter++;
@@ -84,7 +88,8 @@ final class TicTacToeProject {
 							placePiece(placementIn, play, counter, pieces);
 							board.repaint();
 							board.delay();
-							if (play[pieces[0]][pieces[1]] != ' ') break;
+							if (play[pieces[0]][pieces[1]] != ' ')
+								break;
 						} while (play[pieces[0]][pieces[1]] == ' ');
 					} while (play[pieces[0]][pieces[1]] == ' ');
 					break;
@@ -98,7 +103,8 @@ final class TicTacToeProject {
 							placePiece(placementIn, play, counter, pieces);
 							board.repaint();
 							board.delay();
-							if (play[pieces[0]][pieces[1]] != ' ') break;
+							if (play[pieces[0]][pieces[1]] != ' ')
+								break;
 						} while (play[pieces[0]][pieces[1]] == ' ');
 						do {
 							counter++;
@@ -108,7 +114,8 @@ final class TicTacToeProject {
 							placePiece(placementIn, play, counter, pieces);
 							board.repaint();
 							board.delay();
-							if (play[pieces[0]][pieces[1]] != ' ') break;
+							if (play[pieces[0]][pieces[1]] != ' ')
+								break;
 						} while (play[pieces[0]][pieces[1]] == ' ');
 					} while (play[pieces[0]][pieces[1]] == ' ');
 					break;
@@ -162,7 +169,7 @@ final class TicTacToeProject {
 	}
 
 	private void placePiece(int a, char[][] b, int c, int[] d) {
-		if ((a == 1) | (a == 2) | (a == 3) | (a == 4) | (a == 5) | (a == 6) | (a == 7) | (a == 8) | (a == 9))
+		if ((a >= 1) && (a <= 9))
 			b[d[0]][d[1]] = ((c % 2) == 0) ? 'o' : 'x';
 	}
 }

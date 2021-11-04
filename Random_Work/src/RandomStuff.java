@@ -9,6 +9,9 @@ public class RandomStuff {
 	}
 
 	public static String getAlphaNumericString(int n) {
-		return range(0, n).mapToObj(i -> valueOf("ABCDEFGHIJKLMNPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvxyz".charAt(new Random().nextInt("ABCDEFGHIJKLMNPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvxyz".length())))).collect(joining());
+		return range(0, n)
+				.mapToObj(i -> valueOf("ABCDEFGHIJKLMNPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvxyz".charAt(
+						new Random().nextInt("ABCDEFGHIJKLMNPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvxyz".length()))))
+				.collect(joining());
 	}
 }

@@ -9,25 +9,29 @@ import static java.util.stream.Collectors.joining;
 import static java.util.stream.IntStream.range;
 
 /**
- * This class has a private field that will hold an ArrayList of "words" which are randomly generated
- * Strings of a given length.  The constructor will fill the ArrayList as specified and print its initial
- * state.  You will write a selectionSort method to sort the words ArrayList and return the number of COMPARISONS
- * required to perform the sort.
+ * This class has a private field that will hold an ArrayList of "words" which
+ * are randomly generated Strings of a given length. The constructor will fill
+ * the ArrayList as specified and print its initial state. You will write a
+ * selectionSort method to sort the words ArrayList and return the number of
+ * COMPARISONS required to perform the sort.
  * <p>
- * The main method should run immediately, and you don't necessarily need to change it to unit test.
+ * The main method should run immediately, and you don't necessarily need to
+ * change it to unit test.
  */
 public class ArrayListSortDemo {
-	private ArrayList<String> words;
+	private final ArrayList<String> words;
 
 	/**
-	 * Constructor initializes the ArrayList words with a given number of words of a given length and prints them
+	 * Constructor initializes the ArrayList words with a given number of words of a
+	 * given length and prints them
 	 *
 	 * @param arrayListSize number of elements to add to ArrayList
 	 * @param wordLength    size of the random Strings that make up individual words
 	 */
 	private ArrayListSortDemo(int arrayListSize, int wordLength) {
 		words = new ArrayList<>();
-		range(0, arrayListSize).forEachOrdered(i -> words.add(range(0, wordLength).mapToObj(j -> valueOf((char) ((random() * 26) + 65))).collect(joining())));
+		range(0, arrayListSize).forEachOrdered(i -> words
+				.add(range(0, wordLength).mapToObj(j -> valueOf((char) ((random() * 26) + 65))).collect(joining())));
 		out.println(words);
 	}
 

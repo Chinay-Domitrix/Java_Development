@@ -1,10 +1,10 @@
 package objectOriented.gridWorld.projects.myProjects.bugs.jumper;
 
-import info.gridworld.actor.Bug;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
 
-import static info.gridworld.grid.Location.SOUTH;
 import static java.lang.Thread.sleep;
 import static java.util.stream.IntStream.of;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.SOUTH;
 
 class HBug extends Bug {
 	private final int length;
@@ -45,7 +45,8 @@ class HBug extends Bug {
 					}
 				}
 				count++;
-			} else count++;
+			} else
+				count++;
 			steps = 0;
 		}
 	}

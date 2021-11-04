@@ -26,9 +26,9 @@ import java.awt.*;
 import static java.awt.Color.lightGray;
 
 /**
- * A <code>PseudoInfiniteViewport</code> is a <code>JViewport</code>
- * subclass that translates scroll actions into pan actions across an unbounded
- * view. <br />
+ * A <code>PseudoInfiniteViewport</code> is a <code>JViewport</code> subclass
+ * that translates scroll actions into pan actions across an unbounded view.
+ * <br />
  * This code is not tested on the AP CS A and AB exams. It contains GUI
  * implementation details that are not intended to be understood by AP CS
  * students.
@@ -49,28 +49,32 @@ public class PseudoInfiniteViewport extends JViewport {
 	}
 
 	/**
-	 * Returns current view position (upper left). Overridden from JViewport to
-	 * use pan center point for unbounded view.
+	 * Returns current view position (upper left). Overridden from JViewport to use
+	 * pan center point for unbounded view.
 	 */
 	public Point getViewPosition() {
 		return viewIsUnbounded() ? getPanCenterPoint() : super.getViewPosition();
 	}
 
 	/**
-	 * Sets the view position (upper left) to a new point. Overridden from
-	 * JViewport to do a pan, instead of scroll, on an unbounded view.
+	 * Sets the view position (upper left) to a new point. Overridden from JViewport
+	 * to do a pan, instead of scroll, on an unbounded view.
 	 *
 	 * @param pt the Point to become the upper left
 	 */
 	public void setViewPosition(Point pt) {
-		boolean isAdjusting = scrollParent.getVerticalScrollBar().getValueIsAdjusting() || scrollParent.getHorizontalScrollBar().getValueIsAdjusting();
+		boolean isAdjusting = scrollParent.getVerticalScrollBar().getValueIsAdjusting()
+				|| scrollParent.getHorizontalScrollBar().getValueIsAdjusting();
 		boolean changed = true;
 		if (viewIsUnbounded()) {
 			int hDelta = pt.x - panPoint.x;
 			int vDelta = pt.y - panPoint.y;
-			if (hDelta != 0 && vDelta == 0) getPannableView().panBy(hDelta, vDelta);
-			else if (vDelta != 0 && hDelta == 0) getPannableView().panBy(hDelta, vDelta);
-			else changed = false; // no pan action was taken
+			if (hDelta != 0 && vDelta == 0)
+				getPannableView().panBy(hDelta, vDelta);
+			else if (vDelta != 0 && hDelta == 0)
+				getPannableView().panBy(hDelta, vDelta);
+			else
+				changed = false; // no pan action was taken
 			panPoint = pt;
 			if (!panPoint.equals(getPanCenterPoint()) && !isAdjusting) { // needs recentering
 				panPoint = getPanCenterPoint();
@@ -80,12 +84,13 @@ public class PseudoInfiniteViewport extends JViewport {
 			changed = !getViewPosition().equals(pt);
 			super.setViewPosition(pt);
 		}
-		if (changed || isAdjusting) getPannableView().showPanTip(); // briefly show tip
+		if (changed || isAdjusting)
+			getPannableView().showPanTip(); // briefly show tip
 	}
 
 	/**
-	 * Returns current view size. Overridden from JViewport to use preferred
-	 * virtual size for unbounded view.
+	 * Returns current view size. Overridden from JViewport to use preferred virtual
+	 * size for unbounded view.
 	 */
 	public Dimension getViewSize() {
 		return viewIsUnbounded() ? getView().getPreferredSize() : super.getViewSize();
@@ -110,8 +115,8 @@ public class PseudoInfiniteViewport extends JViewport {
 
 	/**
 	 * The Pannable interface contains those methods the view installed in a
-	 * PseudoInfiniteViewport needs to support to enable panning behavior along
-	 * with scrolling.
+	 * PseudoInfiniteViewport needs to support to enable panning behavior along with
+	 * scrolling.
 	 */
 	public interface Pannable {
 		void panBy(int hDelta, int vDelta);

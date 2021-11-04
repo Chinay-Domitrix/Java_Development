@@ -29,6 +29,7 @@ import static java.awt.RenderingHints.KEY_ANTIALIASING;
 import static java.awt.RenderingHints.VALUE_ANTIALIAS_ON;
 import static java.lang.Math.sqrt;
 import static java.lang.String.format;
+import static objectOriented.gridWorld.framework.info.gridworld.gui.AbstractDisplay.getProperty;
 
 /**
  * The DefaultDisplay draws the object's text property with a background color
@@ -41,13 +42,11 @@ public class DefaultDisplay implements Display {
 	private static final int MAX_TEXT_LENGTH = 8;
 
 	/**
-	 * Draw the given object. This implementation draws a string with
-	 * a background color. The background color is the value
-	 * of the color property, or, if there is no such property
-	 * and the object is an instance of Color, the object itself.
-	 * The string is the text property, or if there is no such
-	 * property, the result of calling toString. The string
-	 * is clipped to 8 characters.
+	 * Draw the given object. This implementation draws a string with a background
+	 * color. The background color is the value of the color property, or, if there
+	 * is no such property and the object is an instance of Color, the object
+	 * itself. The string is the text property, or if there is no such property, the
+	 * result of calling toString. The string is clipped to 8 characters.
 	 *
 	 * @param obj  object we want to draw
 	 * @param comp component on which to draw
@@ -55,20 +54,25 @@ public class DefaultDisplay implements Display {
 	 * @param rect rectangle in which to draw
 	 */
 	public void draw(Object obj, Component comp, Graphics2D g2, Rectangle rect) {
-		Color color = (Color) AbstractDisplay.getProperty(obj, "color");
-		if ((color == null) && (obj instanceof Color)) color = (Color) obj;
-		Color textColor = (Color) AbstractDisplay.getProperty(obj, "textColor");
-		if (textColor == null) textColor = BLACK;
+		Color color = (Color) getProperty(obj, "color");
+		if ((color == null) && (obj instanceof Color))
+			color = (Color) obj;
+		Color textColor = (Color) getProperty(obj, "textColor");
+		if (textColor == null)
+			textColor = BLACK;
 		if (color != null) {
 			g2.setPaint(color);
 			g2.fill(rect);
 			if (color.equals(textColor))
 				textColor = new Color(255 - textColor.getRed(), 255 - textColor.getGreen(), 255 - textColor.getBlue());
 		}
-		String text = (String) AbstractDisplay.getProperty(obj, "text");
-		if (text == null && !(obj instanceof Color)) text = format("%s", obj);
-		if (text == null) return;
-		if (text.length() > MAX_TEXT_LENGTH) text = format("%s...", text.substring(0, MAX_TEXT_LENGTH));
+		String text = (String) getProperty(obj, "text");
+		if (text == null && !(obj instanceof Color))
+			text = format("%s", obj);
+		if (text == null)
+			return;
+		if (text.length() > MAX_TEXT_LENGTH)
+			text = format("%s...", text.substring(0, MAX_TEXT_LENGTH));
 		paintCenteredText(g2, text, rect, 0.8, textColor);
 	}
 
@@ -78,8 +82,8 @@ public class DefaultDisplay implements Display {
 	 * @param g2         drawing surface
 	 * @param s          string to draw (centered)
 	 * @param rect       the bounding rectangle
-	 * @param fontHeight the desired height of the font. (The font will be
-	 *                   shrunk in increments of sqrt(2)/2 if the text is too large.)
+	 * @param fontHeight the desired height of the font. (The font will be shrunk in
+	 *                   increments of sqrt(2)/2 if the text is too large.)
 	 * @param color      the color in which to draw the text
 	 */
 	protected void paintCenteredText(Graphics2D g2, String s, Rectangle rect, double fontHeight, Color color) {
@@ -94,7 +98,8 @@ public class DefaultDisplay implements Display {
 			g2.setFont(new Font("SansSerif", BOLD, (int) (fontHeight * rect.height)));
 			var frc = g2.getFontRenderContext();
 			bounds = g2.getFont().getStringBounds(s, frc);
-			if (bounds.getWidth() > rect.getWidth()) fontHeight = (fontHeight * sqrt(2)) / 2;
+			if (bounds.getWidth() > rect.getWidth())
+				fontHeight = (fontHeight * sqrt(2)) / 2;
 			else {
 				done = true;
 				lm = g2.getFont().getLineMetrics(s, frc);

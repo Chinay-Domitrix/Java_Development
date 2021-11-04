@@ -38,7 +38,8 @@ class PongPanel extends JPanel implements KeyListener, ActionListener {
 	}
 
 	private void checkCollisionBallSides() {
-		if ((ball.getX() < 0) || (ball.getX() > (getWidth() - ball.getWidth() - (getInsets().left + getInsets().right))))
+		if ((ball.getX() < 0)
+				|| (ball.getX() > (getWidth() - ball.getWidth() - (getInsets().left + getInsets().right))))
 			ball.setXA(-ball.getXA());
 		else if (ball.getY() < 0)
 			ball.setYA(-ball.getYA());
@@ -50,9 +51,10 @@ class PongPanel extends JPanel implements KeyListener, ActionListener {
 
 	private void checkCollisionBallRacket() {
 		if (ball.getBounds().intersects(paddle.getBounds())) {
-			if (ball.getBounds().y + ball.getHeight() > paddle.getBounds().y &&
-					(ball.getBounds().intersects(paddle.getBounds().x, paddle.getBounds().y + 1, 2, paddle.getHeight() - 1) ||
-							ball.getBounds().intersects(paddle.getBounds().x + paddle.getWidth() - 1, paddle.getBounds().y + 1, 2, paddle.getHeight() - 1)))
+			if (ball.getBounds().y + ball.getHeight() > paddle.getBounds().y && (ball.getBounds()
+					.intersects(paddle.getBounds().x, paddle.getBounds().y + 1, 2, paddle.getHeight() - 1)
+					|| ball.getBounds().intersects(paddle.getBounds().x + paddle.getWidth() - 1,
+					paddle.getBounds().y + 1, 2, paddle.getHeight() - 1)))
 				ball.setXA(-ball.getXA());
 			else {
 				ball.setYA(-ball.getYA());

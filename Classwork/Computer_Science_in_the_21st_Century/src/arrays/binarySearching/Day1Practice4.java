@@ -16,8 +16,10 @@ public class Day1Practice4 {
 			if (array[middle] == target) {
 				found = true;
 				break;
-			} else if (array[middle] < target) low = middle + 1;
-			else if (array[middle] > target) high = middle - 1;
+			} else if (array[middle] < target)
+				low = middle + 1;
+			else if (array[middle] > target)
+				high = middle - 1;
 		}
 	}
 
@@ -40,11 +42,14 @@ public class Day1Practice4 {
 				}
 			}
 			binarySearch(arr, target);
-			out.println(found ? target + " is in the array. You win!." : target + " is not in the array. Sorry, you lose.");
+			out.println(
+					found ? target + " is in the array. You win!." : target + " is not in the array. Sorry, you lose.");
 			out.print("Do you want to play again? ");
 			final String looper = in.nextLine();
-			if (looper.equalsIgnoreCase("yes")) loop = false;
-			else if (looper.equalsIgnoreCase("no")) loop = true;
+			if (looper.equalsIgnoreCase("yes"))
+				loop = false;
+			else if (looper.equalsIgnoreCase("no"))
+				loop = true;
 			else {
 				out.println("Error while reading. Please input again");
 				loop = false;

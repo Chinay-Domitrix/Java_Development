@@ -311,7 +311,7 @@ class CalculatorModel {
 	 * the equation.
 	 */
 	private ArrayList<String> copyEquation() {
-		return (ArrayList<String>) currentEq.clone();
+		return new ArrayList<String>(currentEq);
 	}
 
 	/**

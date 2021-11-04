@@ -47,8 +47,8 @@ public class ImageDisplay extends AbstractDisplay {
 	private final Map<String, Image> tintedVersions = new HashMap<>();
 
 	/**
-	 * Constructs an object that knows how to display an image. Looks for the
-	 * named file first in the jar file, then in the current directory.
+	 * Constructs an object that knows how to display an image. Looks for the named
+	 * file first in the jar file, then in the current directory.
 	 * <p>
 	 * {@code imageFilename} name of file containing image
 	 */
@@ -61,8 +61,8 @@ public class ImageDisplay extends AbstractDisplay {
 	}
 
 	/**
-	 * Draws a unit-length object facing North. This implementation draws an
-	 * object by tinting, scaling, and rotating the image in the image file.
+	 * Draws a unit-length object facing North. This implementation draws an object
+	 * by tinting, scaling, and rotating the image in the image file.
 	 *
 	 * @param obj  object we want to draw
 	 * @param comp the component we're drawing on
@@ -70,10 +70,13 @@ public class ImageDisplay extends AbstractDisplay {
 	 */
 	public void draw(Object obj, Component comp, Graphics2D g2) {
 		Color color;
-		if (obj == null) color = null;
-		else color = (Color) getProperty(obj, "color");
+		if (obj == null)
+			color = null;
+		else
+			color = (Color) getProperty(obj, "color");
 		String imageSuffix = (String) getProperty(obj, "imageSuffix");
-		if (imageSuffix == null) imageSuffix = "";
+		if (imageSuffix == null)
+			imageSuffix = "";
 		// Compose image with color using an image filter.
 		Image tinted = tintedVersions.get(color + imageSuffix);
 		if (tinted == null) {// not cached, need new filter for color
@@ -88,7 +91,8 @@ public class ImageDisplay extends AbstractDisplay {
 					untinted = tintedVersions.get("");
 				}
 			}
-			if (color == null) tinted = untinted;
+			if (color == null)
+				tinted = untinted;
 			else {
 				FilteredImageSource src = new FilteredImageSource(untinted.getSource(), new TintFilter(color));
 				tinted = comp.createImage(src);

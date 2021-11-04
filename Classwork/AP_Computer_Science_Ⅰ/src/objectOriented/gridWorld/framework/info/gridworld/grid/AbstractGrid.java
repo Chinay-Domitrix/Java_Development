@@ -18,9 +18,9 @@ package objectOriented.gridWorld.framework.info.gridworld.grid;
 
 import java.util.ArrayList;
 
-import static info.gridworld.grid.Location.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toCollection;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.*;
 
 /**
  * <code>AbstractGrid</code> contains the methods that are common to grid
@@ -29,19 +29,15 @@ import static java.util.stream.Collectors.toCollection;
  */
 public abstract class AbstractGrid<E> implements Grid<E> {
 	public ArrayList<E> getNeighbors(Location loc) {
-		ArrayList<E> es = new ArrayList<>();
-		for (Location location : getOccupiedAdjacentLocations(loc)) {
-			E e = get(location);
-			es.add(e);
-		}
-		return es;
+		return getOccupiedAdjacentLocations(loc).stream().map(this::get).collect(toCollection(ArrayList::new));
 	}
 
 	public ArrayList<Location> getValidAdjacentLocations(Location loc) {
 		ArrayList<Location> locs = new ArrayList<>();
 		int d = NORTH;
 		for (int i = 0; i < (FULL_CIRCLE / HALF_RIGHT); i++) {
-			if (isValid(loc.getAdjacentLocation(d))) locs.add(loc.getAdjacentLocation(d));
+			if (isValid(loc.getAdjacentLocation(d)))
+				locs.add(loc.getAdjacentLocation(d));
 			d += HALF_RIGHT;
 		}
 		return locs;
@@ -52,18 +48,15 @@ public abstract class AbstractGrid<E> implements Grid<E> {
 	}
 
 	public ArrayList<Location> getOccupiedAdjacentLocations(Location loc) {
-		ArrayList<Location> locations = new ArrayList<>();
-		for (Location neighborLoc : getValidAdjacentLocations(loc))
-			if (get(neighborLoc) != null) locations.add(neighborLoc);
-		return locations;
+		return getValidAdjacentLocations(loc).stream().filter(neighborLoc -> get(neighborLoc) != null).collect(toCollection(ArrayList::new));
 	}
 
 	/**
 	 * Creates a string that describes this grid.
 	 *
 	 * @return a string with descriptions of all objects in this grid (not
-	 * necessarily in any particular order), in the format {loc=obj, loc=obj,
-	 * ...}
+	 * necessarily in any particular order), in the format {loc=obj,
+	 * loc=obj, ...}
 	 */
 	public String toString() {
 		return getOccupiedLocations().stream().map(loc -> loc + "=" + get(loc)).collect(joining(", ", "{", "}"));

@@ -18,21 +18,21 @@ package objectOriented.gridWorld.projects.critters;
  * @author Cay Horstmann
  */
 
-import info.gridworld.actor.Actor;
-import info.gridworld.actor.Critter;
-import info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Critter;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-import static info.gridworld.grid.Location.*;
 import static java.awt.Color.RED;
 import static java.lang.Math.random;
 import static java.util.stream.Collectors.toCollection;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.*;
 
 /**
- * A <code>CrabCritter</code> looks at a limited set of neighbors when it eats and moves.
- * <br />
+ * A <code>CrabCritter</code> looks at a limited set of neighbors when it eats
+ * and moves. <br />
  * This class is not tested on the AP CS A and AB exams.
  */
 public class CrabCritter extends Critter {
@@ -47,7 +47,9 @@ public class CrabCritter extends Critter {
 	 * @return a list of actors occupying these locations
 	 */
 	public ArrayList<Actor> getActors() {
-		return getLocationsInDirections(new int[]{AHEAD, HALF_LEFT, HALF_RIGHT}).stream().filter(loc -> getGrid().get(loc) != null).map(loc -> getGrid().get(loc)).collect(toCollection(ArrayList::new));
+		return getLocationsInDirections(new int[]{AHEAD, HALF_LEFT, HALF_RIGHT}).stream()
+				.filter(loc -> getGrid().get(loc) != null).map(loc -> getGrid().get(loc))
+				.collect(toCollection(ArrayList::new));
 	}
 
 	/**
@@ -71,24 +73,25 @@ public class CrabCritter extends Critter {
 			double r = random();
 			int angle = (r < 0.5) ? LEFT : RIGHT;
 			setDirection(getDirection() + angle);
-		} else super.makeMove(loc);
+		} else
+			super.makeMove(loc);
 	}
 
 	/**
-	 * Finds the valid adjacent locations of this critter in different
-	 * directions.
+	 * Finds the valid adjacent locations of this critter in different directions.
 	 *
-	 * @param directions - an array of directions (which are relative to the current direction)
-	 * @return a set of valid locations that are neighbors of the current location in the given directions
+	 * @param directions - an array of directions (which are relative to the current
+	 *                   direction)
+	 * @return a set of valid locations that are neighbors of the current location
+	 * in the given directions
 	 */
 	@NotNull
-	private ArrayList<Location> getLocationsInDirections(@NotNull int[] directions) {
+	private ArrayList<Location> getLocationsInDirections(int[] directions) {
 		var loc = getLocation();
 		ArrayList<Location> locationArrayList = new ArrayList<>();
 		for (int d : directions) {
 			if (getGrid().isValid(loc.getAdjacentLocation(getDirection() + d))) {
-				Location adjacentLocation = loc.getAdjacentLocation(getDirection() + d);
-				locationArrayList.add(adjacentLocation);
+				locationArrayList.add(loc.getAdjacentLocation(getDirection() + d));
 			}
 		}
 		return locationArrayList;

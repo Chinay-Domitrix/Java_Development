@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inherit-compiler-output="true" jdk="16" jdk_type="JavaSDK">
+	<contentEntry url="file://$MODULE_DIR$">
+		<excludeFolder url="file://$MODULE_DIR$/target"/>
+		<excludeFolder url="file://$MODULE_DIR$/.idea"/>
+		<excludeFolder url="file://$MODULE_DIR$/Classwork/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld"/>
+	</contentEntry>
+	<lib name="gridworld.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/Classwork/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/gridworld.jar!/"/>
+	</lib>
+	<levels>
+		<level name="KotlinJavaRuntime" value="project"/>
+		<level name="Maven: org.jetbrains:annotations:22.0.0" value="project"/>
+		<level name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.5.31" value="project"/>
+		<level name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.5.31" value="project"/>
+	</levels>
+</component>

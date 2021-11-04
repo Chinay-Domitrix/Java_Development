@@ -2,7 +2,7 @@ package learnGraphics.pong;
 
 import java.awt.*;
 
-class Sprite {
+public class Sprite {
 	private final int width, height;
 	private int x, y, xa, ya;
 

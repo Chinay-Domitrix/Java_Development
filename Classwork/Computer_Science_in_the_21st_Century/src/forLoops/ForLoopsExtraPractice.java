@@ -4,7 +4,7 @@ import static java.lang.System.out;
 
 class ForLoopsExtraPractice {
 	public static void main(String[] args) {
-//		Line 1
+		// Line 1
 		for (int i = 0; i < 2; i++) {
 			for (int j = 0; j < 20; j++)
 				out.print("*");
@@ -15,7 +15,7 @@ class ForLoopsExtraPractice {
 			out.print("*");
 		out.println();
 
-//		Line 2
+		// Line 2
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -27,7 +27,7 @@ class ForLoopsExtraPractice {
 		out.print("*");
 		out.println();
 
-//		Line 3
+		// Line 3
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -39,7 +39,7 @@ class ForLoopsExtraPractice {
 		out.print("*");
 		out.println();
 
-//		Line 4
+		// Line 4
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -51,7 +51,7 @@ class ForLoopsExtraPractice {
 		out.print("*");
 		out.println();
 
-//		Line 5
+		// Line 5
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -63,7 +63,7 @@ class ForLoopsExtraPractice {
 		out.print("*");
 		out.println();
 
-//		Line 6
+		// Line 6
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -74,7 +74,7 @@ class ForLoopsExtraPractice {
 		spacing(15);
 		out.print("*");
 		out.println();
-//	Line 7
+		// Line 7
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -85,7 +85,7 @@ class ForLoopsExtraPractice {
 		spacing(13);
 		out.print("*");
 		out.println();
-//	Line 8
+		// Line 8
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -96,7 +96,7 @@ class ForLoopsExtraPractice {
 		spacing(11);
 		out.print("*");
 		out.println();
-//	Line 9
+		// Line 9
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -107,7 +107,7 @@ class ForLoopsExtraPractice {
 		spacing(9);
 		out.print("*");
 		out.println();
-//	Line 10
+		// Line 10
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -118,7 +118,7 @@ class ForLoopsExtraPractice {
 		spacing(7);
 		out.print("*");
 		out.println();
-//	Line 11
+		// Line 11
 		out.print("*");
 		spacing(22);
 		for (int i = 0; i < 20; i++)
@@ -128,7 +128,7 @@ class ForLoopsExtraPractice {
 		for (int i = 0; i < 7; i++)
 			out.print("*");
 		out.println();
-//	Line 12
+		// Line 12
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -138,7 +138,7 @@ class ForLoopsExtraPractice {
 		for (int i = 0; i < 25; i++)
 			out.print("*");
 		out.println();
-//	Line 13
+		// Line 13
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -149,7 +149,7 @@ class ForLoopsExtraPractice {
 		spacing(21);
 		out.print("*");
 		out.println();
-//	Line 14
+		// Line 14
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -160,7 +160,7 @@ class ForLoopsExtraPractice {
 		spacing(19);
 		out.print("*");
 		out.println();
-//	Line 15
+		// Line 15
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -171,7 +171,7 @@ class ForLoopsExtraPractice {
 		spacing(17);
 		out.print("*");
 		out.println();
-//	Line 16
+		// Line 16
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -182,7 +182,7 @@ class ForLoopsExtraPractice {
 		spacing(15);
 		out.print("*");
 		out.println();
-//	Line 17
+		// Line 17
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -193,7 +193,7 @@ class ForLoopsExtraPractice {
 		spacing(13);
 		out.print("*");
 		out.println();
-//	Line 18
+		// Line 18
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -204,7 +204,7 @@ class ForLoopsExtraPractice {
 		spacing(11);
 		out.print("*");
 		out.println();
-//	Line 19
+		// Line 19
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -215,7 +215,7 @@ class ForLoopsExtraPractice {
 		spacing(9);
 		out.print("*");
 		out.println();
-//	Line 20
+		// Line 20
 		out.print("*");
 		spacing(22);
 		out.print("*");
@@ -226,7 +226,7 @@ class ForLoopsExtraPractice {
 		spacing(7);
 		out.print("*");
 		out.println();
-//	Line 21
+		// Line 21
 		for (int i = 0; i < 20; i++)
 			out.print("*");
 		spacing(3);

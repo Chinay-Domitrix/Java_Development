@@ -23,7 +23,8 @@ class WhileLoopsDay2Practice2A {
 				}
 
 			}
-			if (score == 0) out.println("You lose. The answer was " + randNum + ".");
+			if (score == 0)
+				out.println("You lose. The answer was " + randNum + ".");
 		}
 	}
 }

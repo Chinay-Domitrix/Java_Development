@@ -16,19 +16,17 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.actor;
 
-import info.gridworld.actor.Actor;
-import info.gridworld.actor.Flower;
-import info.gridworld.grid.Grid;
-import info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 
 import java.awt.*;
 
-import static info.gridworld.grid.Location.HALF_RIGHT;
 import static java.awt.Color.RED;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.HALF_RIGHT;
 
 /**
- * A <code>Bug</code> is an actor that can move and turn. It drops flowers as
- * it moves. <br />
+ * A <code>Bug</code> is an actor that can move and turn. It drops flowers as it
+ * moves. <br />
  * The implementation of this class is testable on the AP CS A and AB exams.
  */
 public class Bug extends Actor {
@@ -52,8 +50,10 @@ public class Bug extends Actor {
 	 * Moves if it can move, turns otherwise.
 	 */
 	public void act() {
-		if (canMove()) move();
-		else turn();
+		if (canMove())
+			move();
+		else
+			turn();
 	}
 
 	/**
@@ -69,10 +69,13 @@ public class Bug extends Actor {
 	 */
 	public void move() {
 		Grid<Actor> gr = getGrid();
-		if (gr == null) return;
+		if (gr == null)
+			return;
 		Location loc = getLocation(), next = loc.getAdjacentLocation(getDirection());
-		if (gr.isValid(next)) moveTo(next);
-		else removeSelfFromGrid();
+		if (gr.isValid(next))
+			moveTo(next);
+		else
+			removeSelfFromGrid();
 		Flower flower = new Flower(getColor());
 		flower.putSelfInGrid(gr, loc);
 	}
@@ -85,9 +88,11 @@ public class Bug extends Actor {
 	 */
 	public boolean canMove() {
 		Grid<Actor> gr = getGrid();
-		if (gr == null) return false;
+		if (gr == null)
+			return false;
 		Location loc = getLocation(), next = loc.getAdjacentLocation(getDirection());
-		if (!gr.isValid(next)) return false;
+		if (!gr.isValid(next))
+			return false;
 		Actor neighbor = gr.get(next);
 		return (neighbor == null) || (neighbor instanceof Flower);
 		// ok to move into empty location or onto flower

@@ -51,8 +51,8 @@ public class Day2Practice2 {
 			avg[1] += (int) avg[2] / 12;
 			avg[2] %= 12;
 		}
-		println("The average age was roughly " + Math.round(avg[0])
-				+ " years. The average height was around " + Math.round(avg[1]) + " feet, " + Math.round(avg[2])
+		println("The average age was roughly " + Math.round(avg[0]) + " years. The average height was around "
+				+ Math.round(avg[1]) + " feet, " + Math.round(avg[2])
 				+ " inches. Finally, the average weight was approximately " + Math.round(avg[3]) + " pounds.");
 		in.close();
 	}

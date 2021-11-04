@@ -16,14 +16,14 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.actor;
 
-import info.gridworld.grid.Grid;
-import info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 import org.jetbrains.annotations.Contract;
 
 import java.awt.*;
 
-import static info.gridworld.grid.Location.*;
 import static java.awt.Color.BLUE;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.*;
 import static java.lang.String.format;
 
 /**
@@ -78,18 +78,21 @@ public class Actor {
 	/**
 	 * Sets the current direction of this actor.
 	 *
-	 * @param newDirection the new direction. The direction of this actor is set to the angle between 0 and 359 degrees that is equivalent to <code>newDirection</code>.
+	 * @param newDirection the new direction. The direction of this actor is set to
+	 *                     the angle between 0 and 359 degrees that is equivalent to
+	 *                     <code>newDirection</code>.
 	 */
 	public void setDirection(int newDirection) {
 		direction = newDirection % FULL_CIRCLE;
-		if (direction < 0) direction += FULL_CIRCLE;
+		if (direction < 0)
+			direction += FULL_CIRCLE;
 	}
 
 	/**
 	 * Gets the grid in which this actor is located.
 	 *
-	 * @return the grid of this actor, or <code>null</code> if this actor is
-	 * not contained in a grid
+	 * @return the grid of this actor, or <code>null</code> if this actor is not
+	 * contained in a grid
 	 */
 	public Grid<Actor> getGrid() {
 		return grid;
@@ -98,18 +101,18 @@ public class Actor {
 	/**
 	 * Gets the location of this actor.
 	 *
-	 * @return the location of this actor, or <code>null</code> if this actor is
-	 * not contained in a grid
+	 * @return the location of this actor, or <code>null</code> if this actor is not
+	 * contained in a grid
 	 */
 	public Location getLocation() {
 		return location;
 	}
 
 	/**
-	 * Puts this actor into a grid. If there is another actor at the given
-	 * location, it is removed. <br />
-	 * Precondition: (1) This actor is not contained in a grid (2)
-	 * <code>loc</code> is valid in <code>gr</code>
+	 * Puts this actor into a grid. If there is another actor at the given location,
+	 * it is removed. <br />
+	 * Precondition: (1) This actor is not contained in a grid (2) <code>loc</code>
+	 * is valid in <code>gr</code>
 	 *
 	 * @param gr  the grid into which this actor should be placed
 	 * @param loc the location into which the actor should be placed
@@ -117,7 +120,8 @@ public class Actor {
 	public void putSelfInGrid(Grid<Actor> gr, Location loc) {
 		assert grid == null : "This actor is already contained in a grid.";
 		Actor actor = gr.get(loc);
-		if (actor != null) actor.removeSelfFromGrid();
+		if (actor != null)
+			actor.removeSelfFromGrid();
 		gr.put(loc, this);
 		grid = gr;
 		location = loc;
@@ -136,8 +140,8 @@ public class Actor {
 	}
 
 	/**
-	 * Moves this actor to a new location. If there is another actor at the
-	 * given location, it is removed. <br />
+	 * Moves this actor to a new location. If there is another actor at the given
+	 * location, it is removed. <br />
 	 * Precondition: (1) This actor is contained in a grid (2)
 	 * <code>newLocation</code> is valid in the grid of this actor
 	 *
@@ -147,16 +151,18 @@ public class Actor {
 		assert grid != null : "This actor is not in a grid.";
 		assert grid.get(location) == this : format("The grid contains a different actor at location %s.", location);
 		assert grid.isValid(newLocation) : format("Location %s is not valid.", newLocation);
-		if (newLocation.equals(location)) return;
+		if (newLocation.equals(location))
+			return;
 		grid.remove(location);
-		if (grid.get(newLocation) != null) grid.get(newLocation).removeSelfFromGrid();
+		if (grid.get(newLocation) != null)
+			grid.get(newLocation).removeSelfFromGrid();
 		location = newLocation;
 		grid.put(location, this);
 	}
 
 	/**
-	 * Reverses the direction of this actor. Override this method in subclasses
-	 * of <code>Actor</code> to define types of actors with different behavior
+	 * Reverses the direction of this actor. Override this method in subclasses of
+	 * <code>Actor</code> to define types of actors with different behavior
 	 */
 	public void act() {
 		setDirection(getDirection() + HALF_CIRCLE);

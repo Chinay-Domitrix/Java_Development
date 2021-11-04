@@ -29,15 +29,16 @@ final class MutualFund extends Investment {
 		this.fee = fee;
 	}
 
-
 	@Override
 	double invest1Year(double amount) {
-		var interestRate = new InterestRate(((random() * ((maximumInterest - minimumInterest) + MIN_VALUE)) + (minimumInterest)) + "%");
+		var interestRate = new InterestRate(
+				((random() * ((maximumInterest - minimumInterest) + MIN_VALUE)) + (minimumInterest)) + "%");
 		var yield = (amount * interestRate.doubleValue()) - fee;
 		addToYield(yield);
 		amount *= (doubleValue(interestRate) + 1);
 		amount -= 20;
-		out.printf("%s returned a %s yield of %s for a total of %s with the fee included.%n", getName(), interestRate, format(yield), format(amount));
+		out.printf("%s returned a %s yield of %s for a total of %s with the fee included.%n", getName(), interestRate,
+				format(yield), format(amount));
 		return amount;
 	}
 }

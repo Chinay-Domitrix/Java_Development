@@ -24,8 +24,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * An <code>UnboundedGrid</code> is a rectangular grid with an unbounded number of rows and
- * columns. <br />
+ * An <code>UnboundedGrid</code> is a rectangular grid with an unbounded number
+ * of rows and columns. <br />
  * The implementation of this class is testable on the AP CS AB exam.
  */
 public class UnboundedGrid<E> extends AbstractGrid<E> {
@@ -35,6 +35,7 @@ public class UnboundedGrid<E> extends AbstractGrid<E> {
 	 * Constructs an empty unbounded grid.
 	 */
 	public UnboundedGrid() {
+		super();
 		occupantMap = new HashMap<>();
 	}
 

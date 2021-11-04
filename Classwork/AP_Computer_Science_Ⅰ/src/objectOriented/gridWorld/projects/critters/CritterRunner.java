@@ -1,4 +1,5 @@
-package objectOriented.gridWorld.projects.critters;/*
+package objectOriented.gridWorld.projects.critters;
+/*
  * AP(r) Computer Science GridWorld Case Study:
  * Copyright(c) 2005-2006 Cay S. Horstmann (http://horstmann.com)
  *
@@ -16,11 +17,11 @@ package objectOriented.gridWorld.projects.critters;/*
  * @author Cay Horstmann
  */
 
-import info.gridworld.actor.ActorWorld;
-import info.gridworld.actor.Critter;
-import info.gridworld.actor.Flower;
-import info.gridworld.actor.Rock;
-import info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Critter;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Flower;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 
 import static java.awt.Color.*;
 

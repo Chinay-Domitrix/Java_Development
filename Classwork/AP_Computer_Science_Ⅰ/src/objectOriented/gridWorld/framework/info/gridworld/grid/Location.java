@@ -29,8 +29,8 @@ import static java.lang.String.format;
 import static java.util.Objects.requireNonNull;
 
 /**
- * A <code>Location</code> object represents the row and column of a location
- * in a two-dimensional grid. <br />
+ * A <code>Location</code> object represents the row and column of a location in
+ * a two-dimensional grid. <br />
  * The API of this class is testable on the AP CS A and AB exams.
  */
 @SuppressWarnings("rawtypes")
@@ -144,22 +144,27 @@ public class Location implements Comparable {
 	public Location getAdjacentLocation(int direction) {
 		// reduce mod 360 and round to closest multiple of 45
 		int adjustedDirection = (direction + (HALF_RIGHT >> 1)) % FULL_CIRCLE;
-		if (adjustedDirection < 0) adjustedDirection += FULL_CIRCLE;
+		if (adjustedDirection < 0)
+			adjustedDirection += FULL_CIRCLE;
 		adjustedDirection = (adjustedDirection / HALF_RIGHT) * HALF_RIGHT;
 		int dc = 0, dr = 0;
-		if (adjustedDirection == EAST) dc = 1;
+		if (adjustedDirection == EAST)
+			dc = 1;
 		else if (adjustedDirection == SOUTHEAST) {
 			dc = 1;
 			dr = 1;
-		} else if (adjustedDirection == SOUTH) dr = 1;
+		} else if (adjustedDirection == SOUTH)
+			dr = 1;
 		else if (adjustedDirection == SOUTHWEST) {
 			dc = -1;
 			dr = 1;
-		} else if (adjustedDirection == WEST) dc = -1;
+		} else if (adjustedDirection == WEST)
+			dc = -1;
 		else if (adjustedDirection == NORTHWEST) {
 			dc = -1;
 			dr = -1;
-		} else if (adjustedDirection == NORTH) dr = -1;
+		} else if (adjustedDirection == NORTH)
+			dr = -1;
 		else if (adjustedDirection == NORTHEAST) {
 			dc = 1;
 			dr = -1;
@@ -186,23 +191,25 @@ public class Location implements Comparable {
 		// prepare for truncating division by 45 degrees
 		compassAngle += HALF_RIGHT >> 1;
 		// wrap negative angles
-		if (compassAngle < 0) compassAngle += FULL_CIRCLE;
+		if (compassAngle < 0)
+			compassAngle += FULL_CIRCLE;
 		// round to nearest multiple of 45
 		return (compassAngle * HALF_RIGHT) / toIntExact(round(pow(HALF_RIGHT, 2)));
 	}
 
 	/**
-	 * Indicates whether some other <code>Location</code> object is "equal to"
-	 * this one.
+	 * Indicates whether some other <code>Location</code> object is "equal to" this
+	 * one.
 	 *
 	 * @param other the other location to test
-	 * @return <code>true</code> if <code>other</code> is a
-	 * <code>Location</code> with the same row and column as this location;
-	 * <code>false</code> otherwise
+	 * @return <code>true</code> if <code>other</code> is a <code>Location</code>
+	 * with the same row and column as this location; <code>false</code>
+	 * otherwise
 	 */
 	@Contract(value = "null -> false", pure = true)
 	public boolean equals(Object other) {
-		if (!(other instanceof Location)) return false;
+		if (!(other instanceof Location))
+			return false;
 		var otherLoc = (Location) other;
 		return new Location(getRow(), getCol()).equals(otherLoc);
 	}
@@ -217,27 +224,30 @@ public class Location implements Comparable {
 	}
 
 	/**
-	 * Compares this location to <code>other</code> for ordering. Returns a
-	 * negative integer, zero, or a positive integer as this location is less
-	 * than, equal to, or greater than <code>other</code>. Locations are
-	 * ordered in row-major order. <br />
+	 * Compares this location to <code>other</code> for ordering. Returns a negative
+	 * integer, zero, or a positive integer as this location is less than, equal to,
+	 * or greater than <code>other</code>. Locations are ordered in row-major order.
+	 * <br />
 	 * (Precondition: other is a <code>Location</code> object.)
 	 *
 	 * @param other the other location to test
-	 * @return a negative integer if this location is less than
-	 * <code>other</code>, zero if the two locations are equal, or a positive
-	 * integer if this location is greater than <code>other</code>
+	 * @return a negative integer if this location is less than <code>other</code>,
+	 * zero if the two locations are equal, or a positive integer if this
+	 * location is greater than <code>other</code>
 	 */
 	public int compareTo(@NotNull Object other) {
-		if (getRow() < ((Location) requireNonNull(other)).getRow()) return -1;
-		if (getRow() > ((Location) requireNonNull(other)).getRow()) return 1;
+		if (getRow() < ((Location) requireNonNull(other)).getRow())
+			return -1;
+		if (getRow() > ((Location) requireNonNull(other)).getRow())
+			return 1;
 		return compare(getCol(), ((Location) requireNonNull(other)).getCol());
 	}
 
 	/**
 	 * Creates a String object which describes this location.
 	 *
-	 * @return a string with the row and column of this location, in the format of (row, column)
+	 * @return a string with the row and column of this location, in the format of
+	 * (row, column)
 	 */
 	public String toString() {
 		return format("(%d, %d)", getRow(), getCol());

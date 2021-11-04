@@ -18,12 +18,14 @@ class QuadrilateralIf {
 		if (((a + b + c + d) == 360) && (a == 90) && (b == 90) && (c == 90) && (d == 90)) {
 			e = "You have either a rectangle or a square.";
 			out.println(e);
-		} else if ((a < 180) && (b < 180) && (c < 180) && (d < 180) && ((a + b + c + d) == 360) && (a == c) && (b == d) && (a != b) && (a != d) && (c != b) && (c != d)) {
+		} else if ((a < 180) && (b < 180) && (c < 180) && (d < 180) && ((a + b + c + d) == 360) && (a == c) && (b == d)
+				&& (a != b) && (a != d) && (c != b) && (c != d)) {
 			e = "You have a parallelogram.";
 			out.println(e);
 		} else if ((a < 180) && (b < 180) && (c < 180) && (d < 180) && ((a + b + c + d) == 360)) {
 			e = "You have a quadrilateral with no special qualities.";
 			out.println(e);
-		} else out.println("Error.");
+		} else
+			out.println("Error.");
 	}
 }

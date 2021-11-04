@@ -15,25 +15,26 @@ import static java.lang.Thread.sleep;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import static javax.swing.JFrame.MAXIMIZED_BOTH;
 
-
 /**
- * Requirements for today's task.  Total of two moving elements:
+ * Requirements for today's task. Total of two moving elements:
  * <ol>
- *     <li>Create another ball to move around and run into blocks called ball2</li>
- *     <li>Animate ball2 to move around in a different pattern from ball1 (some random behavior would be great) and knock out blocks</li>
- *     <li>Detect if ball2 hits a block and change its trajectory if it does</li>
+ * <li>Create another ball to move around and run into blocks called ball2</li>
+ * <li>Animate ball2 to move around in a different pattern from ball1 (some
+ * random behavior would be great) and knock out blocks</li>
+ * <li>Detect if ball2 hits a block and change its trajectory if it does</li>
  * </ol>
  * <p>
  * <p>
- * <b>NOTE:</b> You do not need to do anything special if ball1 hits ball2 at this point
+ * <b>NOTE:</b> You do not need to do anything special if ball1 hits ball2 at
+ * this point
  * <p>
  * <p>
  * You will need to change four basic things to meet these minimum requirements:
  * <ol>
- *     <li>Set x2 and y2 in the constructor</li>
- *     <li>Add code to the bottom of paintComponent to paint ball2</li>
- *     <li>In the run method, increment x2 and y2</li>
- *     <li>Detect and handle collisions of ball2</li>
+ * <li>Set x2 and y2 in the constructor</li>
+ * <li>Add code to the bottom of paintComponent to paint ball2</li>
+ * <li>In the run method, increment x2 and y2</li>
+ * <li>Detect and handle collisions of ball2</li>
  * </ol>
  */
 public class BlockBreak1 extends JPanel implements Runnable {
@@ -44,7 +45,6 @@ public class BlockBreak1 extends JPanel implements Runnable {
 	private int x1, y1;
 	private int x2, y2;
 	private Shape ball1, ball2;
-
 
 	private BlockBreak1() {
 		x1 = 5;
@@ -73,7 +73,8 @@ public class BlockBreak1 extends JPanel implements Runnable {
 		g2d.setPaint(GRAY);
 		g2d.fillRect(0, 0, getDefaultToolkit().getScreenSize().width, getDefaultToolkit().getScreenSize().height);
 		g2d.setColor(RED);
-		for (var r : blocks) g2d.fill(r);
+		for (var r : blocks)
+			g2d.fill(r);
 		g2d.setColor(BLUE);
 		g2d.setFont(f);
 		g2d.drawString(msg, 400, 30);
@@ -92,27 +93,37 @@ public class BlockBreak1 extends JPanel implements Runnable {
 		int incY2 = (int) (random() * 9) + 2;
 		while (true) {
 			x1 += incX1;
-			if (random() > 0.995) incY1 *= -1;
+			if (random() > 0.995)
+				incY1 *= -1;
 			y1 += incY1;
 			if (checkCollision(ball1)) {
 				incX1 *= -1;
 				incY1 *= -1;
 			}
-			if (x1 > (dimension.width - 30)) incX1 *= -1;
-			if (x1 <= 0) incX1 *= -1;
-			if (y1 > (dimension.height - 30)) incY1 *= -1;
-			if (y1 <= 0) incY1 *= -1;
+			if (x1 > (dimension.width - 30))
+				incX1 *= -1;
+			if (x1 <= 0)
+				incX1 *= -1;
+			if (y1 > (dimension.height - 30))
+				incY1 *= -1;
+			if (y1 <= 0)
+				incY1 *= -1;
 			x2 += incX2;
-			if (random() > 0.995) incY2 *= -1;
+			if (random() > 0.995)
+				incY2 *= -1;
 			y2 += incY2;
 			if (checkCollision(ball2)) {
 				incX2 *= -1;
 				incY2 *= -1;
 			}
-			if (x2 > (dimension.width - 30)) incX2 *= -1;
-			if (x2 <= 0) incX2 *= -1;
-			if (y2 > (dimension.height - 30)) incY2 *= -1;
-			if (y2 <= 0) incY2 *= -1;
+			if (x2 > (dimension.width - 30))
+				incX2 *= -1;
+			if (x2 <= 0)
+				incX2 *= -1;
+			if (y2 > (dimension.height - 30))
+				incY2 *= -1;
+			if (y2 <= 0)
+				incY2 *= -1;
 			msg = (blocks.size() > 0) ? (blocks.size() + " BLOCKS") : "NO MORE BLOCKS!";
 			try {
 				sleep(round((random() * 10) + 1));

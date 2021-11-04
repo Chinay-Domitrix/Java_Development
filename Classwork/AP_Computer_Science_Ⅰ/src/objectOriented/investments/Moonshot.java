@@ -31,17 +31,18 @@ final class Moonshot extends Investment {
 	@Override
 	double invest1Year(double amount) {
 		var chance = new Random().nextInt(100) + 1;
-		double yield;
+		double finalYield;
 		if (chance >= 1 && chance <= 80) {
-			yield = -amount;
-			addToYield(yield);
-			amount += yield;
+			finalYield = -amount;
+			addToYield(finalYield);
+			amount += finalYield;
 		} else if (chance == collapseChance + multiplierChance) {
-			yield = amount * multiplier;
-			addToYield(yield);
+			finalYield = amount * multiplier;
+			addToYield(finalYield);
 			amount *= multiplier;
-		} else yield = 0;
-		out.printf("%s returned a yield of %s for a total of %s.%n", getName(), format(yield), format(amount));
+		} else
+			finalYield = 0;
+		out.printf("%s returned a yield of %s for a total of %s.%n", getName(), format(finalYield), format(amount));
 		return amount;
 	}
 }

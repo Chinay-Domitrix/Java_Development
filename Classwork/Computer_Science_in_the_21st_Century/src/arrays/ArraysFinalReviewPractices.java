@@ -59,7 +59,8 @@ class ArraysFinalReviewPractices {
 							a[i] = ph;
 						}
 					}
-					for (int i42 : a) out.print(i42 + " ");
+					for (int i42 : a)
+						out.print(i42 + " ");
 					break;
 				case 4:
 					out.print("Original: ");
@@ -85,7 +86,8 @@ class ArraysFinalReviewPractices {
 							a[i] = ph;
 						}
 					}
-					for (int i41 : a) out.print(i41 + " ");
+					for (int i41 : a)
+						out.print(i41 + " ");
 					a = wipe.clone();
 					out.println();
 					out.print("Modification 3: ");
@@ -118,7 +120,8 @@ class ArraysFinalReviewPractices {
 							a[i] = ph;
 						}
 					}
-					for (int i39 : a) out.print(i39 + " ");
+					for (int i39 : a)
+						out.print(i39 + " ");
 					a = wipe.clone();
 					out.println();
 					out.print("Modification 3: ");
@@ -157,7 +160,8 @@ class ArraysFinalReviewPractices {
 							a[i] = ph;
 						}
 					}
-					for (int i36 : a) out.print(i36 + " ");
+					for (int i36 : a)
+						out.print(i36 + " ");
 					a = wipe.clone();
 					out.println();
 					out.print("Modification 3: ");
@@ -202,7 +206,8 @@ class ArraysFinalReviewPractices {
 							a[i] = ph;
 						}
 					}
-					for (int i32 : a) out.print(i32 + " ");
+					for (int i32 : a)
+						out.print(i32 + " ");
 					a = wipe.clone();
 					out.println();
 					out.print("Modification 3: ");
@@ -253,7 +258,8 @@ class ArraysFinalReviewPractices {
 							a[i] = ph;
 						}
 					}
-					for (int i27 : a) out.print(i27 + " ");
+					for (int i27 : a)
+						out.print(i27 + " ");
 					a = wipe.clone();
 					out.println();
 					out.print("Modification 3: ");
@@ -310,7 +316,8 @@ class ArraysFinalReviewPractices {
 							a[i] = ph;
 						}
 					}
-					for (int i21 : a) out.print(i21 + " ");
+					for (int i21 : a)
+						out.print(i21 + " ");
 					a = wipe.clone();
 					out.println();
 					out.print("Modification 3: ");
@@ -355,7 +362,8 @@ class ArraysFinalReviewPractices {
 							a[i - 1] = a[i];
 						}
 					}
-					for (int i15 : a) out.print(i15);
+					for (int i15 : a)
+						out.print(i15);
 					break;
 				case 10:
 					out.print("Original: ");
@@ -381,7 +389,8 @@ class ArraysFinalReviewPractices {
 							a[i] = ph;
 						}
 					}
-					for (int i14 : a) out.print(i14 + " ");
+					for (int i14 : a)
+						out.print(i14 + " ");
 					a = wipe.clone();
 					out.println();
 					out.print("Modification 3: ");
@@ -426,7 +435,8 @@ class ArraysFinalReviewPractices {
 							a[i - 1] = a[i];
 						}
 					}
-					for (int i8 : a) out.print(i8 + " ");
+					for (int i8 : a)
+						out.print(i8 + " ");
 					a = wipe.clone();
 					out.println();
 					out.print("Modification 9: ");
@@ -435,7 +445,8 @@ class ArraysFinalReviewPractices {
 						a[i] = a[a.length - (i + 1)];
 						a[a.length - (i + 1)] = ph;
 					}
-					for (int i7 : a) out.print(i7 + " ");
+					for (int i7 : a)
+						out.print(i7 + " ");
 					break;
 				case 11:
 					out.print("Original: ");
@@ -459,37 +470,51 @@ class ArraysFinalReviewPractices {
 							a[i] = ph;
 						}
 					}
-					for (int i6 : a) out.print(i6 + " ");
+					for (int i6 : a)
+						out.print(i6 + " ");
 					a = wipe.clone();
 					out.print("\nModification 3: ");
-					for (int i5 : a) if (i5 > max) max = i5;
+					for (int i5 : a)
+						if (i5 > max)
+							max = i5;
 					a = wipe.clone();
 					out.println("Maximum: " + max);
 					out.print("\nModification 4: ");
-					for (int i4 : a) if (i4 > max && i4 % 2 == 0) max = i4;
+					for (int i4 : a)
+						if (i4 > max && i4 % 2 == 0)
+							max = i4;
 					a = wipe.clone();
 					out.println("Maximum: " + max);
 					out.print("\nModification 5: ");
-					for (int i3 : a) if (i3 < min && i3 % 2 == 0) min = i3;
+					for (int i3 : a)
+						if (i3 < min && i3 % 2 == 0)
+							min = i3;
 					a = wipe.clone();
 					out.println("Minimum: " + min);
 					out.print("\nModification 6: ");
-					for (int i2 : a) if (i2 > max && i2 % 2 == 1) max = i2;
+					for (int i2 : a)
+						if (i2 > max && i2 % 2 == 1)
+							max = i2;
 					a = wipe.clone();
 					out.println("Maximum: " + max);
 					out.print("\nModification 7: ");
-					for (int i1 : a) if (i1 < min && i1 % 2 == 1) min = i1;
+					for (int i1 : a)
+						if (i1 < min && i1 % 2 == 1)
+							min = i1;
 					a = wipe.clone();
 					out.print("\nModification 8: ");
 					ph = 0;
 					for (int i = 0; i < a.length; i++) {
-						if (i == 0) ph = a[0];
+						if (i == 0)
+							ph = a[0];
 						else if (i == a.length - 1) {
 							a[i - 1] = a[i];
 							a[i] = ph;
-						} else a[i - 1] = a[i];
+						} else
+							a[i - 1] = a[i];
 					}
-					for (int element : a) out.print(element + " ");
+					for (int element : a)
+						out.print(element + " ");
 					a = wipe.clone();
 					out.print("\nModification 9: ");
 					for (int i = 0; i < (a.length / 2); i++) {
@@ -497,7 +522,8 @@ class ArraysFinalReviewPractices {
 						a[i] = a[a.length - (i + 1)];
 						a[a.length - (i + 1)] = ph;
 					}
-					for (int item : a) out.print(item + " ");
+					for (int item : a)
+						out.print(item + " ");
 					a = wipe.clone();
 					out.print("\nModification 10: ");
 					for (int i = 0; i < a.length; i++)
@@ -507,7 +533,8 @@ class ArraysFinalReviewPractices {
 								a[j] = a[j + 1];
 								a[j + 1] = ph;
 							}
-					for (int value : a) out.print(value + " ");
+					for (int value : a)
+						out.print(value + " ");
 					break;
 			}
 		}

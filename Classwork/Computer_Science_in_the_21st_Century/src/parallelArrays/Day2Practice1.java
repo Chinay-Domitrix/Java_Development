@@ -36,51 +36,26 @@ class Day2Practice1 {
 		out.print(a);
 	}
 
-	private static String statReturn(final Scanner in, final String z, final String[] n, final int[] w,
-	                                 final int[] l, final int[] g, final double[] i, final double[] s, final double[] b, final double[] era) {
+	private static String statReturn(final Scanner in, final String z, final String[] n, final int[] w, final int[] l,
+	                                 final int[] g, final double[] i, final double[] s, final double[] b, final double[] era) {
 		int a;
 		String r = null;
 		print("Which stat would you like? ");
 		final String sI = in.nextLine();
 		switch (z) {
-			case "Clayton Kershaw":
+			case "Clayton Kershaw" -> {
 				a = 0;
 				switch (sI) {
-					case "teams":
-					case "Teams":
-					case "wins":
-					case "Wins":
-						r = n[a] + " has " + w[a] + " wins.";
-						break;
-					case "losses":
-					case "Losses":
-						r = n[a] + " has " + l[a] + " losses.";
-						break;
-					case "games":
-					case "Games":
-						r = n[a] + " has played " + g[a] + " games.";
-						break;
-					case "ip":
-					case "IP":
-						r = n[a] + " has " + i[a] + " innings pitched.";
-						break;
-					case "k/9":
-					case "K/9":
-						r = n[a] + " has " + s[a] + " strikeouts per nine innings.";
-						break;
-					case "bb/9":
-					case "BB/9":
-					case "Bb/9":
-						r = n[a] + " has " + b[a] + " balls on bases per nine innings.";
-						break;
-					case "era":
-					case "Era":
-					case "ERA":
-						r = n[a] + " has a " + era[a] + " run average.";
-						break;
+					case "teams", "Teams", "wins", "Wins" -> r = n[a] + " has " + w[a] + " wins.";
+					case "losses", "Losses" -> r = n[a] + " has " + l[a] + " losses.";
+					case "games", "Games" -> r = n[a] + " has played " + g[a] + " games.";
+					case "ip", "IP" -> r = n[a] + " has " + i[a] + " innings pitched.";
+					case "k/9", "K/9" -> r = n[a] + " has " + s[a] + " strikeouts per nine innings.";
+					case "bb/9", "BB/9", "Bb/9" -> r = n[a] + " has " + b[a] + " balls on bases per nine innings.";
+					case "era", "Era", "ERA" -> r = n[a] + " has a " + era[a] + " run average.";
 				}
-				break;
-			case "Jake Arrieta":
+			}
+			case "Jake Arrieta" -> {
 				a = 1;
 				switch (sI) {
 					case "teams":
@@ -116,8 +91,8 @@ class Day2Practice1 {
 						r = n[a] + " has a " + era[a] + " run average.";
 						break;
 				}
-				break;
-			case "David Price":
+			}
+			case "David Price" -> {
 				a = 2;
 				switch (sI) {
 					case "teams":
@@ -153,8 +128,8 @@ class Day2Practice1 {
 						r = n[a] + " has a " + era[a] + " run average.";
 						break;
 				}
-				break;
-			case "Max Scherzer":
+			}
+			case "Max Scherzer" -> {
 				a = 3;
 				switch (sI) {
 					case "teams":
@@ -190,8 +165,8 @@ class Day2Practice1 {
 						r = n[a] + " has a " + era[a] + " run average.";
 						break;
 				}
-				break;
-			case "Chris Sale":
+			}
+			case "Chris Sale" -> {
 				a = 4;
 				switch (sI) {
 					case "teams":
@@ -227,8 +202,8 @@ class Day2Practice1 {
 						r = n[a] + " has a " + era[a] + " run average.";
 						break;
 				}
-				break;
-			case "Dallas Keuchel":
+			}
+			case "Dallas Keuchel" -> {
 				a = 5;
 				switch (sI) {
 					case "teams":
@@ -264,8 +239,8 @@ class Day2Practice1 {
 						r = n[a] + " has a " + era[a] + " run average.";
 						break;
 				}
-				break;
-			case "Zack Greinke":
+			}
+			case "Zack Greinke" -> {
 				a = 6;
 				switch (sI) {
 					case "teams":
@@ -301,8 +276,8 @@ class Day2Practice1 {
 						r = n[a] + " has a " + era[a] + " run average.";
 						break;
 				}
-				break;
-			case "Corey Kluber":
+			}
+			case "Corey Kluber" -> {
 				a = 7;
 				switch (sI) {
 					case "teams":
@@ -338,8 +313,8 @@ class Day2Practice1 {
 						r = n[a] + " has a " + era[a] + " run average.";
 						break;
 				}
-				break;
-			case "Gerrit Cole":
+			}
+			case "Gerrit Cole" -> {
 				a = 8;
 				switch (sI) {
 					case "teams":
@@ -375,7 +350,7 @@ class Day2Practice1 {
 						r = n[a] + " has a " + era[a] + " run average.";
 						break;
 				}
-				break;
+			}
 		}
 		return r;
 	}

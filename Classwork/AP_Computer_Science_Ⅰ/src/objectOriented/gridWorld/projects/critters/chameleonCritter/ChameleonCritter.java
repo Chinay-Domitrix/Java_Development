@@ -18,9 +18,9 @@ package objectOriented.gridWorld.projects.critters.chameleonCritter;
  * @author Cay Horstmann
  */
 
-import info.gridworld.actor.Actor;
-import info.gridworld.actor.Critter;
-import info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Critter;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -35,8 +35,8 @@ import static java.util.Objects.requireNonNull;
  */
 public class ChameleonCritter extends Critter {
 	/**
-	 * Randomly selects a neighbor and changes this critter's color to be the
-	 * same as that neighbor's. If there are no neighbors, no action is taken.
+	 * Randomly selects a neighbor and changes this critter's color to be the same
+	 * as that neighbor's. If there are no neighbors, no action is taken.
 	 */
 	public void processActors(@NotNull ArrayList<Actor> actors) {
 		assert requireNonNull(actors).size() != 0;

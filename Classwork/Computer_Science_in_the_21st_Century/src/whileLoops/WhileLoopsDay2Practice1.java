@@ -20,7 +20,7 @@ class WhileLoopsDay2Practice1 {
 			int input;
 			double counter = 0;
 			double grade = 0;
-			//noinspection ConstantConditions
+			// noinspection ConstantConditions
 			do {
 				sleep(500);
 				int num1 = (int) (Math.random() * 101) + 1;
@@ -43,9 +43,12 @@ class WhileLoopsDay2Practice1 {
 			double avg = grade / counter;
 			out.println("Let's see, " + name + "! You got " + (int) grade + " out of " + (int) counter + " correct.");
 			sleep(1000);
-			if (avg <= (counter * .5)) out.println("You DEFINITELY need to keep on practicing!");
-			else if ((avg > (counter * .5)) && (avg <= (counter * .75))) out.println("You ALMOST got it!");
-			else if (avg == counter) out.println("You've MASTERED multiplication!");
+			if (avg <= (counter * .5))
+				out.println("You DEFINITELY need to keep on practicing!");
+			else if ((avg > (counter * .5)) && (avg <= (counter * .75)))
+				out.println("You ALMOST got it!");
+			else if (avg == counter)
+				out.println("You've MASTERED multiplication!");
 		}
 	}
 }

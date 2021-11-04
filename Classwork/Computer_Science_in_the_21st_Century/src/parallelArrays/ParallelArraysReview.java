@@ -12,7 +12,7 @@ public class ParallelArraysReview {
 	public static void main(final String[] args) throws Throwable {
 		println("Name\t\tPPG\tAPG\tRPG\tSPG\tBPG");
 		Thread.sleep(1000);
-//		This prints the player statistics.
+		// This prints the player statistics.
 		for (int i = 0; i < name.length; i++) {
 			println(name[i] + "\t" + (int) Math.round(points[i] / (double) games[i] * 10) / 10.0 + "\t"
 					+ (int) Math.round(assists[i] / (double) games[i] * 10) / 10.0 + "\t"

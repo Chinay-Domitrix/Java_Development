@@ -16,16 +16,19 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  * <p>
  * Total of two moving elements:
  * <ol>
- *     <li>Must Print your name somewhere on canvas</li>
- *     <li>Must have one element with a predictable movement pattern</li>
- *     <li>Must have one element with a movement pattern that involves an element of randomness</li>
+ * <li>Must Print your name somewhere on canvas</li>
+ * <li>Must have one element with a predictable movement pattern</li>
+ * <li>Must have one element with a movement pattern that involves an element of
+ * randomness</li>
  * </ol>
  * <p>
  * <p>
  * You will need to change two basic things to meet these minimum requirements:
  * <ol>
- *     <li>Change the bottom of the paintComponent method to add a second animated object</li>
- *     <li>Change the run method to perform the math to find coordinates of animated object</li>
+ * <li>Change the bottom of the paintComponent method to add a second animated
+ * object</li>
+ * <li>Change the run method to perform the math to find coordinates of animated
+ * object</li>
  * </ol>
  */
 public class Animate1 extends JPanel implements Runnable {
@@ -69,7 +72,8 @@ public class Animate1 extends JPanel implements Runnable {
 				g2d.setPaint((random() < 0.05) ? magenta : pink);
 				g2d.fillOval(i, j, 40, 40);
 			}
-		for (int i = 80; i < 600; i += 20) g2d.drawRect(i, i, 50 + (i / 10), 50 + (i / 10));
+		for (int i = 80; i < 600; i += 20)
+			g2d.drawRect(i, i, 50 + (i / 10), 50 + (i / 10));
 		g2d.setPaint(CYAN);
 		int numPoints = (int) (random() * 50) + 20;
 		int[] xArr = new int[numPoints], yArr = new int[numPoints];
@@ -93,18 +97,28 @@ public class Animate1 extends JPanel implements Runnable {
 		while (true) {
 			x1 += incX;
 			y1 += incY;
-			if (random() > 0.99) incY *= -1;
-			if (x1 > (FRAME_WIDTH - 50)) incX *= -1;
-			if (x1 < 0) incX *= -1;
-			if (y1 > (FRAME_HEIGHT - 50)) incY *= -1;
-			if (y1 < 0) incY *= -1;
+			if (random() > 0.99)
+				incY *= -1;
+			if (x1 > (FRAME_WIDTH - 50))
+				incX *= -1;
+			if (x1 < 0)
+				incX *= -1;
+			if (y1 > (FRAME_HEIGHT - 50))
+				incY *= -1;
+			if (y1 < 0)
+				incY *= -1;
 			x2 += incX2;
 			y2 += incY2;
-			if (random() > 0.99) incY2 *= -1;
-			if (x2 > (FRAME_WIDTH - 50)) incX2 *= -1;
-			if (x2 < 0) incX2 *= -1;
-			if (y2 > (FRAME_HEIGHT - 50)) incY2 *= -1;
-			if (y2 < 0) incY2 *= -1;
+			if (random() > 0.99)
+				incY2 *= -1;
+			if (x2 > (FRAME_WIDTH - 50))
+				incX2 *= -1;
+			if (x2 < 0)
+				incX2 *= -1;
+			if (y2 > (FRAME_HEIGHT - 50))
+				incY2 *= -1;
+			if (y2 < 0)
+				incY2 *= -1;
 			try {
 				sleep(round((random() * 10) + 1));
 			} catch (InterruptedException e) {

@@ -46,14 +46,16 @@ import static java.util.Objects.requireNonNullElse;
 public abstract class AbstractDisplay implements Display {
 	@Contract("null, _ -> null")
 	public static Object getProperty(Object obj, String propertyName) {
-		if (obj == null) return null;
+		if (obj == null)
+			return null;
 		try {
 			BeanInfo info = Introspector.getBeanInfo(obj.getClass());
 			PropertyDescriptor[] descriptors = info.getPropertyDescriptors();
 			for (PropertyDescriptor descriptor : descriptors)
 				if (descriptor.getName().equals(propertyName)) {
 					Method getter = descriptor.getReadMethod();
-					if (getter == null) return null;
+					if (getter == null)
+						return null;
 					try {
 						return getter.invoke(obj);
 					} catch (Exception ex) {
@@ -68,9 +70,9 @@ public abstract class AbstractDisplay implements Display {
 	}
 
 	/**
-	 * Draw the given object. Subclasses should implement this method to draw
-	 * the occupant facing North in a cell of size (1,1) centered around (0,0) on
-	 * the drawing surface. (All scaling/rotating has been done beforehand).
+	 * Draw the given object. Subclasses should implement this method to draw the
+	 * occupant facing North in a cell of size (1,1) centered around (0,0) on the
+	 * drawing surface. (All scaling/rotating has been done beforehand).
 	 *
 	 * @param obj  the occupant we want to draw
 	 * @param comp the component on which to draw
@@ -79,9 +81,9 @@ public abstract class AbstractDisplay implements Display {
 	abstract public void draw(Object obj, Component comp, Graphics2D g2);
 
 	/**
-	 * Draw the given object. Scales and rotates the coordinate appropriately
-	 * then invokes the simple draw method above that is only responsible for
-	 * drawing a unit-length occupant facing North.
+	 * Draw the given object. Scales and rotates the coordinate appropriately then
+	 * invokes the simple draw method above that is only responsible for drawing a
+	 * unit-length occupant facing North.
 	 *
 	 * @param obj  the occupant we want to draw
 	 * @param comp the component on which to draw

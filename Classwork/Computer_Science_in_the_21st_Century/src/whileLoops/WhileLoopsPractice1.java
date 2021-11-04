@@ -15,9 +15,12 @@ class WhileLoopsPractice1 {
 		out.print("The powers of " + n + " that are less than 10000 are ");
 		int p = n;
 		while (p <= 10000) {
-			if ((p * pow(n, 2)) < 10000) out.print(p + ", ");
-			else if ((p * n) > 10000) out.print(p + ".");
-			else out.print(p + ", and ");
+			if ((p * pow(n, 2)) < 10000)
+				out.print(p + ", ");
+			else if ((p * n) > 10000)
+				out.print(p + ".");
+			else
+				out.print(p + ", and ");
 			p *= n;
 		}
 	}

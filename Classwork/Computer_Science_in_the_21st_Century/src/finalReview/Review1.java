@@ -16,29 +16,14 @@ class Review1 {
 		setAll(x, i -> (int) ((random() * 10) + 1));
 		out.print("Which task do you want to run? ");
 		switch (input.nextInt()) {
-			default:
-				err.println("Error.");
-				break;
-			case 1:
-				t1();
-				break;
-			case 2:
-				t2();
-				break;
-			case 3:
-				t3();
-				break;
-			case 4:
-				out.println(t4(x));
-				break;
-			case 5:
-				t5();
-				break;
-			case 6:
-				out.println("The sum is " + t6(x));
-				break;
-			case 7:
-				out.println("The average is " + t7(x));
+			default -> err.println("Error.");
+			case 1 -> t1();
+			case 2 -> t2();
+			case 3 -> t3();
+			case 4 -> out.println(t4(x));
+			case 5 -> t5();
+			case 6 -> out.println("The sum is " + t6(x));
+			case 7 -> out.println("The average is " + t7(x));
 		}
 	}
 
@@ -46,14 +31,17 @@ class Review1 {
 		out.print("Which loop type do you want to run? ");
 		final var lT = input.nextLine();
 		int x = 0;
-		if (lT.equalsIgnoreCase("for")) x = 1;
-		else if (lT.equalsIgnoreCase("while")) x = 2;
+		if (lT.equalsIgnoreCase("for"))
+			x = 1;
+		else if (lT.equalsIgnoreCase("while"))
+			x = 2;
 		else if (lT.equalsIgnoreCase("do/while") || lT.equalsIgnoreCase("do-while") || lT.equalsIgnoreCase("do while"))
 			x = 3;
 		int i = 2;
 		switch (x) {
 			case 1:
-				for (; i < 50; i += 2) out.print(i + ' ');
+				for (; i < 50; i += 2)
+					out.print(i + ' ');
 				break;
 			case 2:
 				while (i < 50) {
@@ -76,8 +64,10 @@ class Review1 {
 		out.print("Which loop type do you want to run? ");
 		final String lT = input.nextLine();
 		int x = 0;
-		if (lT.equalsIgnoreCase("for")) x = 1;
-		else if (lT.equalsIgnoreCase("while")) x = 2;
+		if (lT.equalsIgnoreCase("for"))
+			x = 1;
+		else if (lT.equalsIgnoreCase("while"))
+			x = 2;
 		else if (lT.equalsIgnoreCase("do/while") | lT.equalsIgnoreCase("do-while") | lT.equalsIgnoreCase("do while"))
 			x = 3;
 		int i = 0;
@@ -119,19 +109,22 @@ class Review1 {
 		}
 		out.println();
 		for (int i2 = 0; i2 < 4; i2++) {
-			for (int j2 = 0; j2 < 4; j2++) out.print(i2);
+			for (int j2 = 0; j2 < 4; j2++)
+				out.print(i2);
 			out.println();
 		}
 		out.println();
 		int t3P3Counter = 4;
 		for (int i3 = 1; i3 < 4; i3++) {
-			for (int j3 = 0; j3 <= i3; j3++) out.print(t3P3Counter);
+			for (int j3 = 0; j3 <= i3; j3++)
+				out.print(t3P3Counter);
 			t3P3Counter++;
 			out.println();
 		}
 		final int[] x = {9, 8, 7, 6};
 		for (int i4 = x.length - 1; i4 >= 0; i4--) {
-			for (int j4 = 0; j4 <= i4; j4++) out.print(x[j4]);
+			for (int j4 = 0; j4 <= i4; j4++)
+				out.print(x[j4]);
 			out.println();
 		}
 		out.println();
@@ -156,7 +149,8 @@ class Review1 {
 		out.println("a b c");
 		out.println("d e f");
 		out.print("g");
-		for (int i = 0; i < 2; i++) out.print("\t");
+		for (int i = 0; i < 2; i++)
+			out.print("\t");
 		out.println("h");
 		out.print("i");
 		out.println("j");
@@ -164,7 +158,8 @@ class Review1 {
 
 	private static int t6(final int[] x) {
 		int sum = stream(x).filter(y -> y % 2 == 0).sum();
-		if (x.length > 10) sum *= 2;
+		if (x.length > 10)
+			sum *= 2;
 		return sum;
 	}
 

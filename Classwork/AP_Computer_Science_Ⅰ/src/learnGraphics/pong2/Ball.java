@@ -55,7 +55,8 @@ public class Ball {
 			game.getPanel().increaseScoreForPlayer(2);
 			x = game.getWidth() / 2;
 			xa *= -1;
-		} else if (hasHitTopOrBottom()) ya *= -1;
+		} else if (hasHitTopOrBottom())
+			ya *= -1;
 	}
 
 	private void checkVictoryConditions() {

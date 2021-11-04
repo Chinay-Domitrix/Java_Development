@@ -1,10 +1,10 @@
 package objectOriented.gridWorld.projects.myProjects.critters.floristCritter;
 
-import info.gridworld.actor.ActorWorld;
-import info.gridworld.actor.Bug;
-import info.gridworld.actor.Flower;
-import info.gridworld.actor.Rock;
-import info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Flower;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 
 import static java.awt.Color.*;
 
@@ -18,7 +18,8 @@ public class FloristCritterRunner {
 		world.add(new Flower(ORANGE));
 		world.add(new Flower(MAGENTA));
 		world.add(new Flower(GREEN));
-		for (int i = 0; i < 5; i++) world.add(new Rock());
+		for (int i = 0; i < 5; i++)
+			world.add(new Rock());
 		world.add(new Bug());
 		world.add(new Location(5, 8), new FloristCritter());
 		world.show();

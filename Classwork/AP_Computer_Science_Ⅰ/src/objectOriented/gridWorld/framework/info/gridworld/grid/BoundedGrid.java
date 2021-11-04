@@ -26,16 +26,16 @@ import java.util.ArrayList;
 import static java.lang.String.format;
 
 /**
- * A <code>BoundedGrid</code> is a rectangular grid with a finite number of
- * rows and columns. <br />
+ * A <code>BoundedGrid</code> is a rectangular grid with a finite number of rows
+ * and columns. <br />
  * The implementation of this class is testable on the AP CS AB exam.
  */
 public class BoundedGrid<E> extends AbstractGrid<E> {
-	private Object[][] occupantArray; // the array storing the grid elements
+	private final Object[][] occupantArray; // the array storing the grid elements
 
 	/**
-	 * Constructs an empty bounded grid with the given dimensions.
-	 * (Precondition: <code>rows > 0</code> and <code>cols > 0</code>.)
+	 * Constructs an empty bounded grid with the given dimensions. (Precondition:
+	 * <code>rows > 0</code> and <code>cols > 0</code>.)
 	 *
 	 * @param rows number of rows in BoundedGrid
 	 * @param cols number of columns in BoundedGrid
@@ -66,10 +66,12 @@ public class BoundedGrid<E> extends AbstractGrid<E> {
 		// If there's an object at this location, put it in the array.
 		for (int r = 0; r < getNumRows(); r++)
 			for (int c = 0; c < getNumCols(); c++)
-				if (get(new Location(r, c)) != null) theLocations.add(new Location(r, c));
+				if (get(new Location(r, c)) != null)
+					theLocations.add(new Location(r, c));
 		return theLocations;
 	}
 
+	@SuppressWarnings("unchecked")
 	public E get(Location loc) {
 		assert isValid(loc) : "Location " + loc + " is not valid";
 		return (E) occupantArray[loc.getRow()][loc.getCol()]; // unavoidable warning

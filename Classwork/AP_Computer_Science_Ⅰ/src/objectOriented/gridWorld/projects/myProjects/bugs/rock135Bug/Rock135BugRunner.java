@@ -1,10 +1,9 @@
 package objectOriented.gridWorld.projects.myProjects.bugs.rock135Bug;
 
-import info.gridworld.actor.Actor;
-import info.gridworld.actor.ActorWorld;
-import info.gridworld.actor.Rock;
-import info.gridworld.grid.Location;
-
+import objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
+import objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 
 public class Rock135BugRunner {
 	public static void main(String[] args) {

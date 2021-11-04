@@ -33,7 +33,8 @@ class LotsOfTwos {
 		} else if (d == 'r') {
 			e = Math.pow(b, 2);
 			out.println("The result when raising " + b + " by 2 is " + e + ".");
-		} else err.println("Error...");
+		} else
+			err.println("Error...");
 		in.close();
 	}
 }

@@ -16,8 +16,8 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
-import info.gridworld.grid.Grid;
-import info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -52,12 +52,12 @@ import static javax.swing.JOptionPane.*;
  * students.
  */
 public class MenuMaker<T> {
-	private T occupant;
-	private Grid<?> currentGrid;
-	private Location currentLocation;
 	private final WorldFrame<T> parent;
 	private final DisplayMap displayMap;
 	private final ResourceBundle resources;
+	private T occupant;
+	private Grid<?> currentGrid;
+	private Location currentLocation;
 
 	/**
 	 * Constructs a menu maker for a given world.
@@ -67,10 +67,10 @@ public class MenuMaker<T> {
 	 * @param displayMap the display map
 	 */
 	@Contract(pure = true)
-	public MenuMaker(WorldFrame<T> parent, ResourceBundle resources, DisplayMap displayMap) {
+	public MenuMaker(WorldFrame<T> parent, ResourceBundle resources, DisplayMap dispMap) {
 		this.parent = parent;
 		this.resources = resources;
-		this.displayMap = displayMap;
+		displayMap = dispMap;
 	}
 
 	/**
@@ -89,7 +89,8 @@ public class MenuMaker<T> {
 		for (int i = 0; i < methods.length; i++) {
 			var dcl = methods[i].getDeclaringClass();
 			if (dcl != Object.class) {
-				if (i > 0 && dcl != oldDcl) menu.addSeparator();
+				if (i > 0 && dcl != oldDcl)
+					menu.addSeparator();
 				menu.add(new MethodItem(methods[i]));
 			}
 			oldDcl = dcl;
@@ -110,8 +111,10 @@ public class MenuMaker<T> {
 		JPopupMenu menu = new JPopupMenu();
 		boolean first = true;
 		for (Class<?> aClass : classes) {
-			if (first) first = false;
-			else menu.addSeparator();
+			if (first)
+				first = false;
+			else
+				menu.addSeparator();
 			var cons = aClass.getConstructors();
 			stream(cons).map(OccupantConstructorItem::new).forEachOrdered(menu::add);
 		}
@@ -119,8 +122,8 @@ public class MenuMaker<T> {
 	}
 
 	/**
-	 * Adds menu items that call all public constructors of a collection of
-	 * classes to a menu
+	 * Adds menu items that call all public constructors of a collection of classes
+	 * to a menu
 	 *
 	 * @param menu    the menu to which the items should be added
 	 * @param classes the collection of classes
@@ -128,8 +131,10 @@ public class MenuMaker<T> {
 	public void addConstructors(JMenu menu, @NotNull Collection<Class<?>> classes) {
 		boolean first = true;
 		for (var aClass : classes) {
-			if (first) first = false;
-			else menu.addSeparator();
+			if (first)
+				first = false;
+			else
+				menu.addSeparator();
 			var cons = aClass.getConstructors();
 			stream(cons).map(GridConstructorItem::new).forEachOrdered(menu::add);
 		}
@@ -142,17 +147,21 @@ public class MenuMaker<T> {
 			public int compare(Method m1, Method m2) {
 				int d1 = depth(m1.getDeclaringClass());
 				int d2 = depth(m2.getDeclaringClass());
-				if (d1 != d2) return d2 - d1;
+				if (d1 != d2)
+					return d2 - d1;
 				int d = m1.getName().compareTo(m2.getName());
-				if (d != 0) return d;
+				if (d != 0)
+					return d;
 				d1 = m1.getParameterTypes().length;
 				d2 = m2.getParameterTypes().length;
 				return d1 - d2;
 			}
 
 			private int depth(Class<?> cl) {
-				if (cl == null) return 0;
-				else return 1 + depth(cl.getSuperclass());
+				if (cl == null)
+					return 0;
+				else
+					return 1 + depth(cl.getSuperclass());
 			}
 		});
 		return methods;
@@ -165,12 +174,14 @@ public class MenuMaker<T> {
 		public String getDisplayString(Class<?> retType, String name, Class<?>[] paramTypes) {
 			StringBuffer b = new StringBuffer();
 			b.append("<html>");
-			if (retType != null) appendTypeName(b, retType.getName());
+			if (retType != null)
+				appendTypeName(b, retType.getName());
 			b.append(" <font color='blue'>");
 			appendTypeName(b, name);
 			b.append("</font>( ");
 			range(0, paramTypes.length).forEachOrdered(i -> {
-				if (i > 0) b.append(", ");
+				if (i > 0)
+					b.append(", ");
 				appendTypeName(b, paramTypes[i].getName());
 			});
 			b.append(" )</html>");
@@ -185,20 +196,28 @@ public class MenuMaker<T> {
 					b.append("<font color='gray'>").append(prefix).append("</font>");
 				}
 				b.append(name.substring(i + 1));
-			} else b.append(name);
+			} else
+				b.append(name);
 		}
 
 		public Object makeDefaultValue(Class<?> type) {
-			if (type == int.class) return 0;
-			else if (type == boolean.class) return FALSE;
-			else if (type == double.class) return (double) 0;
-			else if (type == String.class) return "";
-			else if (type == Color.class) return BLACK;
-			else if (type == Location.class) return currentLocation;
-			else if (Grid.class.isAssignableFrom(type)) return currentGrid;
+			if (type == int.class)
+				return 0;
+			else if (type == boolean.class)
+				return FALSE;
+			else if (type == double.class)
+				return (double) 0;
+			else if (type == String.class)
+				return "";
+			else if (type == Color.class)
+				return BLACK;
+			else if (type == Location.class)
+				return currentLocation;
+			else if (Grid.class.isAssignableFrom(type))
+				return currentGrid;
 			else {
 				try {
-					return type.newInstance();
+					return type.getEnclosingConstructor().newInstance();
 				} catch (Exception ex) {
 					return null;
 				}
@@ -217,7 +236,8 @@ public class MenuMaker<T> {
 		public Object invokeConstructor() {
 			var types = c.getParameterTypes();
 			Object[] values = new Object[types.length];
-			for (int i = 0; i < types.length; i++) values[i] = makeDefaultValue(types[i]);
+			for (int i = 0; i < types.length; i++)
+				values[i] = makeDefaultValue(types[i]);
 			if (types.length > 0) {
 				PropertySheet sheet = new PropertySheet(types, values);
 				showMessageDialog(this, sheet, resources.getString("dialog.method.params"), QUESTION_MESSAGE);
@@ -277,7 +297,8 @@ public class MenuMaker<T> {
 		public void actionPerformed(ActionEvent event) {
 			var types = m.getParameterTypes();
 			Object[] values = new Object[types.length];
-			for (int i = 0; i < types.length; i++) values[i] = makeDefaultValue(types[i]);
+			for (int i = 0; i < types.length; i++)
+				values[i] = makeDefaultValue(types[i]);
 			if (types.length > 0) {
 				PropertySheet sheet = new PropertySheet(types, values);
 				showMessageDialog(this, sheet, resources.getString("dialog.method.params"), QUESTION_MESSAGE);
@@ -291,7 +312,8 @@ public class MenuMaker<T> {
 					java.io.Serializable resultObject;
 					final int MAX_LENGTH = 50;
 					final int MAX_HEIGHT = 10;
-					if (resultString.length() < MAX_LENGTH) resultObject = resultString;
+					if (resultString.length() < MAX_LENGTH)
+						resultObject = resultString;
 					else {
 						int rows = min(MAX_HEIGHT, 1 + resultString.length() / MAX_LENGTH);
 						JTextArea pane = new JTextArea(rows, MAX_LENGTH);
@@ -299,7 +321,8 @@ public class MenuMaker<T> {
 						pane.setLineWrap(true);
 						resultObject = new JScrollPane(pane);
 					}
-					showMessageDialog(parent, resultObject, resources.getString("dialog.method.return"), INFORMATION_MESSAGE);
+					showMessageDialog(parent, resultObject, resources.getString("dialog.method.return"),
+							INFORMATION_MESSAGE);
 				}
 			} catch (InvocationTargetException ex) {
 				parent.new GUIExceptionHandler().handle(ex.getCause());
@@ -320,8 +343,8 @@ class PropertySheet extends JPanel {
 		defaultEditors.put(Color.class, new ColorEditor());
 	}
 
-	private PropertyEditor[] editors;
-	private Object[] values;
+	private final PropertyEditor[] editors;
+	private final Object[] values;
 
 	/**
 	 * Constructs a property sheet that shows the editable properties of a given
@@ -344,7 +367,8 @@ class PropertySheet extends JPanel {
 				if (editors[i] != null) {
 					editors[i].setValue(values[i]);
 					add(getEditorComponent(editors[i]));
-				} else add(new JLabel("?"));
+				} else
+					add(new JLabel("?"));
 			}
 		});
 	}
@@ -353,15 +377,14 @@ class PropertySheet extends JPanel {
 	 * Gets the property editor for a given property, and wires it so that it
 	 * updates the given object.
 	 *
-	 * @param bean       the object whose properties are being edited
-	 * @param descriptor the descriptor of the property to be edited
-	 * @return a property editor that edits the property with the given
-	 * descriptor and updates the given object
+	 * @return a property editor that edits the property with the given descriptor
+	 * and updates the given object
 	 */
 	public PropertyEditor getEditor(Class<?> type) {
 		PropertyEditor editor;
 		editor = defaultEditors.get(type);
-		if (editor != null) return editor;
+		if (editor != null)
+			return editor;
 		editor = findEditor(type);
 		return editor;
 	}
@@ -370,8 +393,8 @@ class PropertySheet extends JPanel {
 	 * Wraps a property editor into a component.
 	 *
 	 * @param editor the editor to wrap
-	 * @return a button (if there is a custom editor), combo box (if the editor
-	 * has tags), or text field (otherwise)
+	 * @return a button (if there is a custom editor), combo box (if the editor has
+	 * tags), or text field (otherwise)
 	 */
 	public Component getEditorComponent(@NotNull final PropertyEditor editor) {
 		String[] tags = editor.getTags();
@@ -383,7 +406,8 @@ class PropertySheet extends JPanel {
 			final JComboBox<? extends String> comboBox = new JComboBox<>(tags);
 			comboBox.setSelectedItem(text);
 			comboBox.addItemListener(event -> {
-				if (event.getStateChange() == SELECTED) editor.setAsText((String) comboBox.getSelectedItem());
+				if (event.getStateChange() == SELECTED)
+					editor.setAsText((String) comboBox.getSelectedItem());
 			});
 			return comboBox;
 		} else {

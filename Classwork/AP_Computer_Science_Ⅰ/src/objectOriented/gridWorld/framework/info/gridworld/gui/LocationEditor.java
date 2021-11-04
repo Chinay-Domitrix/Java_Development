@@ -16,7 +16,7 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
-import info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 
 import javax.swing.*;
 import java.awt.*;

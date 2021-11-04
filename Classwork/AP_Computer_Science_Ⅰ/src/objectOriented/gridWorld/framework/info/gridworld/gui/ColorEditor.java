@@ -32,7 +32,8 @@ import static java.util.stream.IntStream.range;
  * students.
  */
 public class ColorEditor extends PropertyEditorSupport {
-	private static final Color[] colorValues = new Color[]{BLACK, BLUE, CYAN, DARK_GRAY, GRAY, GREEN, LIGHT_GRAY, MAGENTA, ORANGE, PINK, RED, WHITE, YELLOW};
+	private static final Color[] colorValues = new Color[]{BLACK, BLUE, CYAN, DARK_GRAY, GRAY, GREEN, LIGHT_GRAY,
+			MAGENTA, ORANGE, PINK, RED, WHITE, YELLOW};
 	private static final ColorIcon[] colorIcons;
 
 	static {
@@ -41,7 +42,7 @@ public class ColorEditor extends PropertyEditorSupport {
 		range(0, colorValues.length).forEachOrdered(i -> colorIcons[i + 1] = new SolidColorIcon(colorValues[i]));
 	}
 
-	private JComboBox<? extends ColorIcon> combo;
+	private final JComboBox<? extends ColorIcon> combo;
 
 	public ColorEditor() {
 		combo = new JComboBox<>(colorIcons);

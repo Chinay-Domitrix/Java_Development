@@ -18,7 +18,8 @@ public class NumberGrouping implements NumberComputation {
 	public int product() {
 		if (array.length > 0) {
 			var product = 1;
-			for (int i : array) product *= i;
+			for (int i : array)
+				product *= i;
 			return product;
 		}
 		throw new ArrayIndexOutOfBoundsException("Array cannot be of size 0");

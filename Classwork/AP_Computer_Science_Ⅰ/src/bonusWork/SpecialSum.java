@@ -7,7 +7,9 @@ import static java.lang.System.out;
 class SpecialSum {
 	public static void main(String... args) {
 		var sum = 0;
-		for (var i = 1; i <= 1000000; i++) if ((i % sumDigits(i)) == 0) sum += i;
+		for (var i = 1; i <= 1000000; i++)
+			if ((i % sumDigits(i)) == 0)
+				sum += i;
 		out.println(sum);
 	}
 

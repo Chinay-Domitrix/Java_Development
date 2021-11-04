@@ -20,8 +20,10 @@ class Spinner {
 			out.printf("Spin 3: %d\tSpin 4: %d%n", s2, s3);
 			boolean b = false;
 			int c = lowest(s1, s2);
-			if (c == s1) b = isFirstGreaterOrEqual(product(c, s3), (int) pow(s2, 2));
-			else if (c == s2) b = isFirstGreaterOrEqual(product(c, s3), (int) pow(s1, 2));
+			if (c == s1)
+				b = isFirstGreaterOrEqual(product(c, s3), (int) pow(s2, 2));
+			else if (c == s2)
+				b = isFirstGreaterOrEqual(product(c, s3), (int) pow(s1, 2));
 			try {
 				sleep(1000);
 			} catch (InterruptedException e) {
@@ -38,9 +40,12 @@ class Spinner {
 			c[1] = (b[0] == s2) || (b[1] == s2);
 			c[2] = (b[0] == s3) || (b[1] == s3);
 			boolean d = false;
-			if (!c[0]) d = isFirstGreaterOrEqual((b[0] * b[1]), (s1 * s4));
-			else if (!c[1]) d = isFirstGreaterOrEqual(product(b[0], b[1]), product(s2, s4));
-			else if (!c[2]) d = isFirstGreaterOrEqual(product(b[0], b[1]), product(s3, s4));
+			if (!c[0])
+				d = isFirstGreaterOrEqual((b[0] * b[1]), (s1 * s4));
+			else if (!c[1])
+				d = isFirstGreaterOrEqual(product(b[0], b[1]), product(s2, s4));
+			else if (!c[2])
+				d = isFirstGreaterOrEqual(product(b[0], b[1]), product(s3, s4));
 			try {
 				sleep(1000);
 			} catch (InterruptedException e) {
@@ -77,7 +82,6 @@ class Spinner {
 		return min(a, b);
 	}
 
-	@NotNull
 	@Contract("_, _, _ -> new")
 	private int[] lowest(int a, int b, int c) {
 		int[] x = {a, b, c};

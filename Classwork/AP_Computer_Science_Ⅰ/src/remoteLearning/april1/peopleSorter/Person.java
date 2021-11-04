@@ -36,6 +36,7 @@ class Person implements Comparable<Person> {
 
 	@Override
 	public int compareTo(@NotNull Person otherPerson) {
-		return (birthMonth.compareTo(otherPerson.birthMonth) != 0) ? birthMonth.compareTo(otherPerson.birthMonth) : compare(socialSecurityNumber, otherPerson.socialSecurityNumber);
+		return (birthMonth.compareTo(otherPerson.birthMonth) != 0) ? birthMonth.compareTo(otherPerson.birthMonth)
+				: compare(socialSecurityNumber, otherPerson.socialSecurityNumber);
 	}
 }

@@ -1,7 +1,7 @@
 package objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.chameleonCritters.fadingChameleonCritter;
 
-import info.gridworld.actor.ActorWorld;
-import info.gridworld.actor.Rock;
+import objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
 
 import static java.awt.Color.*;
 

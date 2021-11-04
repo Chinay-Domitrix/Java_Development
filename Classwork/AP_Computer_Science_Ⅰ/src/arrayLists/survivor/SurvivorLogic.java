@@ -38,22 +38,26 @@ final class SurvivorLogic {
 			var random = toIntExact(round((random() * 99) + 2));
 			for (var i = 0; i < survivorLogic.size(); i++)
 				if (((survivorLogic.get(i) % random) == 0) && (survivorLogic.get(i) != 0)) {
-					out.printf("Round #%d removed %d because (%d %% %d==0)%n", counter, survivorLogic.get(i), survivorLogic.get(i), random);
+					out.printf("Round #%d removed %d because (%d %% %d==0)%n", counter, survivorLogic.get(i),
+							survivorLogic.get(i), random);
 					survivorLogic.remove(i);
 					i--;
 					bounds--;
 				}
 			counter++;
 			out.println(survivorLogic);
-			if (bounds == 1) out.printf("The winner after %d rounds is %d.%n", counter, survivorLogic.get(0));
-			else if (bounds < 1) out.println("There is no winner this round.");
+			if (bounds == 1)
+				out.printf("The winner after %d rounds is %d.%n", counter, survivorLogic.get(0));
+			else if (bounds < 1)
+				out.println("There is no winner this round.");
 		} while (bounds > 1);
 		specialSauceCounter.add(counter);
 	}
 
 	private String specialSauce() {
 		var x = specialSauceCounter.stream().mapToInt(integer -> integer).sum();
-		return format("The average number of tries it took to finish the %d%s was %s tries.", runs, (runs == 1) ? "round" : "rounds", x / (double) runs);
+		return format("The average number of tries it took to finish the %d%s was %s tries.", runs,
+				(runs == 1) ? "round" : "rounds", x / (double) runs);
 	}
 
 	private void accept(int i) {

@@ -33,19 +33,21 @@ final class BlueChipStock extends Investment {
 
 	@Override
 	double invest1Year(double amount) {
-		var interestRate = new InterestRate(((random() * ((maximumInterest - minimumInterest) + MIN_VALUE)) + minimumInterest) + "%");
+		var interestRate = new InterestRate(
+				((random() * ((maximumInterest - minimumInterest) + MIN_VALUE)) + minimumInterest) + "%");
 		var chance = new Random().nextInt(100) + 1;
-		double yield;
+		double totalYield;
 		if (chance >= 1 && chance <= collapseChance) {
-			yield = -amount;
-			addToYield(yield);
+			totalYield = -amount;
+			addToYield(totalYield);
 			amount = 0;
 		} else {
-			yield = amount * interestRate.doubleValue();
-			addToYield(yield);
+			totalYield = amount * interestRate.doubleValue();
+			addToYield(totalYield);
 			amount *= doubleValue(interestRate) + 1;
 		}
-		out.printf("%s returned a %s yield of %s for a total of %s.%n", getName(), interestRate, format(yield), format(amount));
+		out.printf("%s returned a %s yield of %s for a total of %s.%n", getName(), interestRate, format(totalYield),
+				format(amount));
 		return amount;
 	}
 }

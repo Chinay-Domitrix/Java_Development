@@ -14,22 +14,24 @@ public class WordRearranger {
 	}
 
 	private static String task1(@NotNull String reversible) {
-		String returned = "";
-		for (int i = reversible.length() - 1; i >= 0; i--) returned += reversible.substring(i, i + 1);
-		return returned;
+		StringBuilder returned = new StringBuilder();
+		for (int i = reversible.length() - 1; i >= 0; i--)
+			returned.append(reversible.charAt(i));
+		return returned.toString();
 	}
 
 	public static String task2(@NotNull String input) {
 		var stringArrayList = new ArrayList<String>();
 		for (int i = 0; i < input.length(); i++)
-			if (input.substring(i, i + 1).equals(" ")) {
+			if (input.charAt(i) == ' ') {
 				stringArrayList.add(input.substring(0, i));
 				input = input.substring(i + 1);
 				i = 0;
 			}
 		stringArrayList.add(input);
-		var returned = "";
-		for (int i = stringArrayList.size() - 1; i >= 0; i--) returned += stringArrayList.get(i) + " ";
-		return returned;
+		StringBuilder returned = new StringBuilder();
+		for (int i = stringArrayList.size() - 1; i >= 0; i--)
+			returned.append(stringArrayList.get(i)).append(" ");
+		return returned.toString();
 	}
 }

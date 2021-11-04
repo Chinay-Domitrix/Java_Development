@@ -21,8 +21,8 @@ class HangmanProject {
 
 	private HangmanProject() {
 		/*
-		 * This is where the game actually starts. Here, the method "game" is invoked and
-		 * the Scanner is passed on to "game", and eventually "logic."
+		 * This is where the game actually starts. Here, the method "game" is invoked
+		 * and the Scanner is passed on to "game", and eventually "logic."
 		 */
 		game();
 	}
@@ -88,8 +88,8 @@ class HangmanProject {
 				inputCopy = input;
 			}
 			/*
-			 * This is just in case the user added any leading or trailing spaces, since they
-			 * hold the potential to throw off the random word algorithm.
+			 * This is just in case the user added any leading or trailing spaces, since
+			 * they hold the potential to throw off the random word algorithm.
 			 */
 			input = input.trim();
 			/*
@@ -105,8 +105,8 @@ class HangmanProject {
 			hangman = new char[main.length()];
 			fill(hangman, '_');
 			/*
-			 * This is the array keeping track of the letters the user has already
-			 * guessed, and then displays it along with the rest of the game's UI.
+			 * This is the array keeping track of the letters the user has already guessed,
+			 * and then displays it along with the rest of the game's UI.
 			 */
 			guessList = new char[52];
 			fill(guessList, ' ');
@@ -228,8 +228,8 @@ class HangmanProject {
 		 */
 		int counter = 6;
 		/*
-		 * This is the variable in charge of keeping track of the indexes of the list of used
-		 * letters.
+		 * This is the variable in charge of keeping track of the indexes of the list of
+		 * used letters.
 		 */
 		int guessListIndexes = 0;
 		/*
@@ -240,14 +240,16 @@ class HangmanProject {
 			 * This loop prints out the letters guessed so far. As seen in the method
 			 * "game," the blanks are represented as underscores.
 			 */
-			for (char x : hangman) out.print(x + " ");
+			for (char x : hangman)
+				out.print(x + " ");
 			out.println();
 			/*
 			 * The following four lines make it possible to print out the letters which have
 			 * been guessed as a StringBuilder, which is a companion class to String.
 			 */
 			StringBuilder guessed = new StringBuilder();
-			for (char x : guessList) guessed.append(x).append(" ");
+			for (char x : guessList)
+				guessed.append(x).append(" ");
 			guessed = new StringBuilder(guessed.toString().trim());
 			/*
 			 * This is where I print out the remaining number of misses, the letters guessed
@@ -266,7 +268,8 @@ class HangmanProject {
 				 * This for loop is what adds the letter to the array which is printed as the
 				 * letters and underscores.
 				 */
-				for (int i = main.indexOf(guess); i >= 0; i = main.indexOf(guess, i + 1)) hangman[i] = guess;
+				for (int i = main.indexOf(guess); i >= 0; i = main.indexOf(guess, i + 1))
+					hangman[i] = guess;
 			} else {
 				out.println("No " + guess + '!');
 				counter--;
@@ -299,8 +302,10 @@ class HangmanProject {
 			}
 			/* The following five lines determine whether or not the round is complete. */
 			StringBuilder y = new StringBuilder();
-			for (char x : hangman) y.append(x);
-			if (y.indexOf("_") < 0) breaker = true;
+			for (char x : hangman)
+				y.append(x);
+			if (y.indexOf("_") < 0)
+				breaker = true;
 			/*
 			 * This if statement prints win ASCII art if the user wins the round, and then
 			 * breaks the loop in order to go back to the method "game."
@@ -308,7 +313,8 @@ class HangmanProject {
 			if (breaker) {
 				out.println();
 				wins++;
-				for (String x : winner) out.println(x);
+				for (String x : winner)
+					out.println(x);
 				break;
 			}
 		} while (counter > 0);
@@ -318,7 +324,8 @@ class HangmanProject {
 		 */
 		if (counter == 0) {
 			out.println("You were hung! The word was " + main + '.');
-			for (String x : loser) out.println(x);
+			for (String x : loser)
+				out.println(x);
 			losses++;
 		}
 	}

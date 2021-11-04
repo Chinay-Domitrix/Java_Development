@@ -16,10 +16,10 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.world;
 
-import info.gridworld.grid.BoundedGrid;
-import info.gridworld.grid.Grid;
-import info.gridworld.grid.Location;
-import info.gridworld.gui.WorldFrame;
+import objectOriented.gridWorld.framework.info.gridworld.grid.BoundedGrid;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.gui.WorldFrame;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -32,13 +32,13 @@ import java.util.TreeSet;
  * <br />
  * This class is not tested on the AP CS A and AB exams.
  */
-public class World<T> extends info.gridworld.world.World<T> {
+public class World<T> {
 	private static final int DEFAULT_ROWS = 10;
 	private static final int DEFAULT_COLS = 10;
 	private static final Random generator = new Random();
-	private Grid<?> gr;
 	private final Set<String> occupantClassNames;
 	private final Set<String> gridClassNames;
+	private Grid<?> gr;
 	private String message;
 	private JFrame frame;
 
@@ -62,7 +62,8 @@ public class World<T> extends info.gridworld.world.World<T> {
 		if (frame == null) {
 			frame = new WorldFrame<>(this);
 			frame.setVisible(true);
-		} else frame.repaint();
+		} else
+			frame.repaint();
 	}
 
 	/**
@@ -70,6 +71,7 @@ public class World<T> extends info.gridworld.world.World<T> {
 	 *
 	 * @return the grid
 	 */
+	@SuppressWarnings("unchecked")
 	public Grid<T> getGrid() {
 		return (Grid<T>) gr;
 	}
@@ -79,7 +81,7 @@ public class World<T> extends info.gridworld.world.World<T> {
 	 *
 	 * @param newGrid the new grid
 	 */
-	public void setGrid(Grid newGrid) {
+	public void setGrid(Grid<T> newGrid) {
 		gr = newGrid;
 		repaint();
 	}
@@ -104,16 +106,15 @@ public class World<T> extends info.gridworld.world.World<T> {
 	}
 
 	/**
-	 * This method is called when the user clicks on the step button, or when
-	 * run mode has been activated by clicking the run button.
+	 * This method is called when the user clicks on the step button, or when run
+	 * mode has been activated by clicking the run button.
 	 */
 	public void step() {
 		repaint();
 	}
 
 	/**
-	 * This method is called when the user clicks on a location in the
-	 * WorldFrame.
+	 * This method is called when the user clicks on a location in the WorldFrame.
 	 *
 	 * @param loc the grid location that the user selected
 	 * @return true if the world consumes the click, or false if the GUI should
@@ -125,12 +126,17 @@ public class World<T> extends info.gridworld.world.World<T> {
 
 	/**
 	 * This method is called when a key was pressed. Override it if your world wants
-	 * to consume some keys (e.g. "1"-"9" for Sudoku). Don't consume plain arrow keys,
-	 * or the user loses the ability to move the selection square with the keyboard.
+	 * to consume some keys (e.g. "1"-"9" for Sudoku). Don't consume plain arrow
+	 * keys, or the user loses the ability to move the selection square with the
+	 * keyboard.
 	 *
-	 * @param description the string describing the key, in <a href="http://java.sun.com/javase/6/docs/api/javax/swing/KeyStroke.html#getKeyStroke(java.lang.String)">this format</a>.
-	 * @param loc         the selected location in the grid at the time the key was pressed
-	 * @return true if the world consumes the key press, false if the GUI should consume it.
+	 * @param description the string describing the key, in <a href=
+	 *                    "http://java.sun.com/javase/6/docs/api/javax/swing/KeyStroke.html#getKeyStroke(java.lang.String)">this
+	 *                    format</a>.
+	 * @param loc         the selected location in the grid at the time the key was
+	 *                    pressed
+	 * @return true if the world consumes the key press, false if the GUI should
+	 * consume it.
 	 */
 	public boolean keyPressed(String description, Location loc) {
 		return false;
@@ -152,19 +158,25 @@ public class World<T> extends info.gridworld.world.World<T> {
 				for (int j = 0; j < cols; j++)
 					if (gr.isValid(new Location(i, j)) && (gr.get(new Location(i, j)) == null))
 						emptyLocs.add(new Location(i, j));
-			if (emptyLocs.size() == 0) return null;
+			if (emptyLocs.size() == 0)
+				return null;
 			int r = generator.nextInt(emptyLocs.size());
 			return emptyLocs.get(r);
 		} else {// unbounded grid
 			while (true) {
 				// keep generating a random location until an empty one is found
 				int r;
-				if (rows < 0) r = (int) (DEFAULT_ROWS * generator.nextGaussian());
-				else r = generator.nextInt(rows);
+				if (rows < 0)
+					r = (int) (DEFAULT_ROWS * generator.nextGaussian());
+				else
+					r = generator.nextInt(rows);
 				int c;
-				if (cols < 0) c = (int) (DEFAULT_COLS * generator.nextGaussian());
-				else c = generator.nextInt(cols);
-				if (gr.isValid(new Location(r, c)) && (gr.get(new Location(r, c)) == null)) return new Location(r, c);
+				if (cols < 0)
+					c = (int) (DEFAULT_COLS * generator.nextGaussian());
+				else
+					c = generator.nextInt(cols);
+				if (gr.isValid(new Location(r, c)) && (gr.get(new Location(r, c)) == null))
+					return new Location(r, c);
 			}
 		}
 	}
@@ -175,8 +187,9 @@ public class World<T> extends info.gridworld.world.World<T> {
 	 * @param loc      the location
 	 * @param occupant the occupant to add
 	 */
+	@SuppressWarnings("unchecked")
 	public void add(Location loc, Object occupant) {
-		var x = (T) occupant;
+		T x = (T) occupant;
 		getGrid().put(loc, x);
 		repaint();
 	}
@@ -212,8 +225,8 @@ public class World<T> extends info.gridworld.world.World<T> {
 	}
 
 	/**
-	 * Gets a set of grid classes that should be used by the world frame for
-	 * this world.
+	 * Gets a set of grid classes that should be used by the world frame for this
+	 * world.
 	 *
 	 * @return the set of grid class names
 	 */
@@ -232,7 +245,8 @@ public class World<T> extends info.gridworld.world.World<T> {
 	}
 
 	private void repaint() {
-		if (frame != null) frame.repaint();
+		if (frame != null)
+			frame.repaint();
 	}
 
 	/**
@@ -246,20 +260,27 @@ public class World<T> extends info.gridworld.world.World<T> {
 		int cmin = 0;
 		int cmax = gr.getNumCols() - 1;
 		// unbounded grid
-		if ((rmax < 0) || (cmax < 0)) for (var loc : gr.getOccupiedLocations()) {
-			int r = loc.getRow();
-			int c = loc.getCol();
-			assert (r != rmin) && (r != rmax);
-			assert (c != cmin) && (c != cmax);
-			if (r < rmin) rmin = r;
-			else rmax = r;
-			if (c < cmin) cmin = c;
-			else cmax = c;
-		}
+		if ((rmax < 0) || (cmax < 0))
+			for (var loc : gr.getOccupiedLocations()) {
+				int r = loc.getRow();
+				int c = loc.getCol();
+				assert (r != rmin) && (r != rmax);
+				assert (c != cmin) && (c != cmax);
+				if (r < rmin)
+					rmin = r;
+				else
+					rmax = r;
+				if (c < cmin)
+					cmin = c;
+				else
+					cmax = c;
+			}
 		for (int i = rmin; i <= rmax; i++) {
 			for (int j = cmin; j < cmax; j++)
-				if (gr.get(new Location(i, j)) == null) s.append(' ');
-				else s.append(gr.get(new Location(i, j)).toString(), 0, 1);
+				if (gr.get(new Location(i, j)) == null)
+					s.append(' ');
+				else
+					s.append(gr.get(new Location(i, j)).toString(), 0, 1);
 			s.append('\n');
 		}
 		return s.toString();

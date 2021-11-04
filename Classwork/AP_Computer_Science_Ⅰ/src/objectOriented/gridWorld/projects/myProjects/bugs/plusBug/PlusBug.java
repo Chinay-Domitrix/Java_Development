@@ -1,7 +1,7 @@
 package objectOriented.gridWorld.projects.myProjects.bugs.plusBug;
 
-import info.gridworld.actor.Bug;
-import info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 
 import java.util.Objects;
 
@@ -17,10 +17,10 @@ public class PlusBug extends Bug {
 		this(1, new Location(1, 1));
 	}
 
-	protected PlusBug(int stemSize, Location origin) {
+	protected PlusBug(int stemSize, Location origin2) {
 		steps = 0;
 		this.stemSize = stemSize;
-		this.origin = origin;
+		this.origin = origin2;
 	}
 
 	public void act() {
@@ -28,22 +28,24 @@ public class PlusBug extends Bug {
 			move();
 			steps++;
 		} else {
-			if (Objects.equals(origin, getLocation())) range(0, 2).forEachOrdered(i -> {
-				turn();
-				try {
-					sleep(250);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			});
-			else range(0, 4).forEachOrdered(i -> {
-				turn();
-				try {
-					sleep(250);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			});
+			if (Objects.equals(origin, getLocation()))
+				range(0, 2).forEachOrdered(i -> {
+					turn();
+					try {
+						sleep(250);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				});
+			else
+				range(0, 4).forEachOrdered(i -> {
+					turn();
+					try {
+						sleep(250);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				});
 			steps = 0;
 		}
 	}

@@ -18,11 +18,11 @@ final class HangmanProject {
 	private static char[] hangman, guessList;
 	private static String main, redo = null, inputCopy = null;
 	private static int wins = 0, losses = 0;
-	private Scanner scanner = new Scanner(in);
+	private final Scanner scanner = new Scanner(in);
 
 	/**
-	 * This is where the game actually starts. Here, the method {@code game} is invoked and
-	 * the Scanner is passed on to "game", and eventually "logic."
+	 * This is where the game actually starts. Here, the method {@code game} is
+	 * invoked and the Scanner is passed on to "game", and eventually "logic."
 	 */
 	HangmanProject() throws InterruptedException {
 		game();
@@ -30,11 +30,11 @@ final class HangmanProject {
 
 	/**
 	 * This method runs all of the initial processes required for the game to run,
-	 * then passes logic flow to the method {@code logic} to run the game itself, and then
-	 * takes over again for the (potential) home stretch.
+	 * then passes logic flow to the method {@code logic} to run the game itself,
+	 * and then takes over again for the (potential) home stretch.
 	 */
 	private void game() throws InterruptedException {
-//		This is the loop allowing the user to play another round.
+		// This is the loop allowing the user to play another round.
 		do {
 			/*
 			 * This String declaration is the declaration of the String used for the user's
@@ -55,15 +55,19 @@ final class HangmanProject {
 					 */
 					out.print("Do want to reuse your words? ");
 					var reuse = scanner.nextLine();
-					if (reuse.equalsIgnoreCase("yes") || reuse.equalsIgnoreCase("y")) recycle = true;
-					else if (reuse.equalsIgnoreCase("no") || reuse.equalsIgnoreCase("n")) continue;
-					else throw new IllegalStateException("Unexpected value: " + reuse);
+					if (reuse.equalsIgnoreCase("yes") || reuse.equalsIgnoreCase("y"))
+						recycle = true;
+					else if (reuse.equalsIgnoreCase("no") || reuse.equalsIgnoreCase("n"))
+						continue;
+					else
+						throw new IllegalStateException("Unexpected value: " + reuse);
 				}
 				/*
 				 * This if/else is what actually recycles the words, if the user wants to.
 				 * Otherwise, the user has to input more words.
 				 */
-				if (recycle) input = inputCopy;
+				if (recycle)
+					input = inputCopy;
 				else {
 					out.print("Please enter your words and separate them with only spaces. ");
 					input = scanner.nextLine();
@@ -75,8 +79,8 @@ final class HangmanProject {
 				inputCopy = input;
 			}
 			/*
-			 * This is just in case the user added any leading or trailing spaces, since they
-			 * hold the potential to throw off the random word algorithm.
+			 * This is just in case the user added any leading or trailing spaces, since
+			 * they hold the potential to throw off the random word algorithm.
 			 */
 			input = input.trim();
 			/*
@@ -93,8 +97,8 @@ final class HangmanProject {
 			hangman = new char[main.length()];
 			fill(hangman, '_');
 			/*
-			 * This is the array keeping track of the letters the user has already
-			 * guessed, and then displays it along with the rest of the game's UI.
+			 * This is the array keeping track of the letters the user has already guessed,
+			 * and then displays it along with the rest of the game's UI.
 			 */
 			guessList = new char[52];
 			fill(guessList, ' ');
@@ -102,8 +106,8 @@ final class HangmanProject {
 			if (Arrays.toString(guessList).equals("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"))
 				err.println("Overload Error.");
 			/*
-			 * This passes control to the method {@link #logic}, which will be pass back at the
-			 * end of the invocation of the {@link #logic} method
+			 * This passes control to the method {@link #logic}, which will be pass back at
+			 * the end of the invocation of the {@link #logic} method
 			 */
 			logic(scanner);
 			/*
@@ -216,8 +220,8 @@ final class HangmanProject {
 		 */
 		var counter = 6;
 		/*
-		 * This is the variable in charge of keeping track of the indexes of the list of used
-		 * letters.
+		 * This is the variable in charge of keeping track of the indexes of the list of
+		 * used letters.
 		 */
 		var guessListIndexes = 0;
 		/*
@@ -228,14 +232,16 @@ final class HangmanProject {
 			 * This loop prints out the letters guessed so far. As seen in the method
 			 * "game," the blanks are represented as underscores.
 			 */
-			for (var x : hangman) out.print(x + " ");
+			for (var x : hangman)
+				out.print(x + " ");
 			out.println();
 			/*
 			 * The following four lines make it possible to print out the letters which have
 			 * been guessed as a StringBuilder, which is a companion class to String.
 			 */
 			var guessed = new StringBuilder();
-			for (var x : guessList) guessed.append(x).append(" ");
+			for (var x : guessList)
+				guessed.append(x).append(" ");
 			guessed = new StringBuilder(guessed.toString().trim());
 			/*
 			 * This is where I print out the remaining number of misses, the letters guessed
@@ -254,7 +260,8 @@ final class HangmanProject {
 				 * This for loop is what adds the letter to the array which is printed as the
 				 * letters and underscores.
 				 */
-				iterate(main.indexOf(guess), i -> i >= 0, i -> main.indexOf(guess, i + 1)).forEachOrdered(i -> hangman[i] = guess);
+				iterate(main.indexOf(guess), i -> i >= 0, i -> main.indexOf(guess, i + 1))
+						.forEachOrdered(i -> hangman[i] = guess);
 			} else {
 				out.printf("No %s!%n", guess);
 				counter--;
@@ -284,8 +291,10 @@ final class HangmanProject {
 			sleep(750);
 			/* The following five lines determine whether or not the round is complete. */
 			var y = new StringBuilder();
-			for (var x : hangman) y.append(x);
-			if (y.indexOf("_") < 0) breaker = true;
+			for (var x : hangman)
+				y.append(x);
+			if (y.indexOf("_") < 0)
+				breaker = true;
 			/*
 			 * This if statement prints win ASCII art if the user wins the round, and then
 			 * breaks the loop in order to go back to the method "game."

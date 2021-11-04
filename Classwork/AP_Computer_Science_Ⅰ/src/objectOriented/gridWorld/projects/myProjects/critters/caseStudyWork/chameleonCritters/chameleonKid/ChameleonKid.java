@@ -1,11 +1,11 @@
 package objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.chameleonCritters.chameleonKid;
 
-import info.gridworld.actor.Actor;
+import objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
 import objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.chameleonCritters.fadingChameleonCritter.FadingChameleonCritter;
 
 import java.util.ArrayList;
 
-import static info.gridworld.grid.Location.HALF_CIRCLE;
+import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.HALF_CIRCLE;
 
 class ChameleonKid extends FadingChameleonCritter {
 	public ArrayList<Actor> getActors() {
@@ -16,8 +16,10 @@ class ChameleonKid extends FadingChameleonCritter {
 			behind = getActor(getDirection() + HALF_CIRCLE);
 		} catch (IllegalArgumentException ignored) {
 		}
-		if (getValid(getDirection()) && (ahead != null)) x.add(ahead);
-		if (getValid(getDirection() + HALF_CIRCLE) && (behind != null)) x.add(behind);
+		if (getValid(getDirection()) && (ahead != null))
+			x.add(ahead);
+		if (getValid(getDirection() + HALF_CIRCLE) && (behind != null))
+			x.add(behind);
 		return x;
 	}
 

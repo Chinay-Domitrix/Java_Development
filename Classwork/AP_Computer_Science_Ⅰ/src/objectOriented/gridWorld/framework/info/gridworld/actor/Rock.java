@@ -46,9 +46,10 @@ public class Rock extends Actor {
 	}
 
 	/**
-	 * Overrides the <code>act</code> method in the <code>Actor</code> class
-	 * to do nothing.
+	 * Overrides the <code>act</code> method in the <code>Actor</code> class to do
+	 * nothing.
 	 */
+	@Override
 	public void act() {
 	}
 }

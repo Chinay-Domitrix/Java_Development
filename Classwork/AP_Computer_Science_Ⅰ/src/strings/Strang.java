@@ -19,7 +19,7 @@ import static java.util.stream.IntStream.range;
 
 
 */
-public class Strang implements Comparable {
+public class Strang<E> implements Comparable<E> {
 
 	private final char[] chars;
 
@@ -30,12 +30,12 @@ public class Strang implements Comparable {
 
 	public static void main(String[] args) {
 		var c = new char[]{'T', 'i', 'r', 'a', 'n', 'a', ' ', 'T', 'e', 'c', 'h'};
-		var strang1 = new Strang(c);
-//		Example: charAt method
+		var strang1 = new Strang<>(c);
+		// Example: charAt method
 		out.println("strang1.charAt(3) = " + strang1.charAt(3));
-//		#1 Create a method for length and uncomment below to run
+		// #1 Create a method for length and uncomment below to run
 		out.println("stb.length() = " + strang1.length());
-//		#2 Create a method for substrang and uncomment to run
+		// #2 Create a method for substrang and uncomment to run
 		out.printf("strang1.substrang(2) = %s%n", strang1.substrang(2));
 	}
 
@@ -43,10 +43,11 @@ public class Strang implements Comparable {
 		return chars.length;
 	}
 
-	public Strang substrang(int beginIndex) {
+	@Contract("_ -> new")
+	private @NotNull Strang<E> substrang(int beginIndex) {
 		var returned = new char[chars.length - beginIndex];
 		range(beginIndex, length()).forEachOrdered(i -> returned[i - beginIndex] = chars[i]);
-		return new Strang(returned);
+		return new Strang<>(returned);
 	}
 
 	public char charAt(int index) {
@@ -58,9 +59,9 @@ public class Strang implements Comparable {
 	}
 
 	/**
-	 * This is a place holder to allow the method to compile
-	 * need to rewrite to perform actual comparison function
-	 * just leave it for now, we will return to it later
+	 * This is a place holder to allow the method to compile need to rewrite to
+	 * perform actual comparison function just leave it for now, we will return to
+	 * it later
 	 */
 	public int compareTo(@NotNull Object other) {
 		return 0; /* Leave untouched for now */

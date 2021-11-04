@@ -16,8 +16,8 @@ package objectOriented.gridWorld.projects.boxBug;/*
  * @author Barbara Cloud Wells
  */
 
-import info.gridworld.actor.ActorWorld;
-import info.gridworld.grid.Location;
+import objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
+import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
 
 import static java.awt.Color.ORANGE;
 

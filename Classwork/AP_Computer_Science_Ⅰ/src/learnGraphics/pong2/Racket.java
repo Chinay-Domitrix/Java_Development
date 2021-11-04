@@ -12,24 +12,30 @@ public class Racket {
 	Racket(Pong game, int up, int down, int x) {
 		this.game = game;
 		this.x = x;
-		y = game.getHeight() / 2;
+		this.y = game.getHeight() / 2;
 		this.up = up;
 		this.down = down;
 	}
 
 	void update() {
-		if (y > 0 && y < game.getHeight() - HEIGHT - 29) y += ya;
-		else if (y == 0) y++;
-		else if (y == game.getHeight() - HEIGHT - 29) y--;
+		if (y > 0 && y < (game.getHeight() - HEIGHT - 29))
+			y += ya;
+		else if (y == 0)
+			y++;
+		else if (y == (game.getHeight() - HEIGHT - 29))
+			y--;
 	}
 
 	void pressed(int keyCode) {
-		if (keyCode == up) ya = -1;
-		else if (keyCode == down) ya = 1;
+		if (keyCode == up)
+			ya = -1;
+		else if (keyCode == down)
+			ya = 1;
 	}
 
 	void released(int keyCode) {
-		if ((keyCode == up) || (keyCode == down)) ya = 0;
+		if ((keyCode == up) || (keyCode == down))
+			ya = 0;
 	}
 
 	public Rectangle getBounds() {

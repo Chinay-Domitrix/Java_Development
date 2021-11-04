@@ -9,8 +9,10 @@ class EvenOrOdd {
 		Scanner in = new Scanner(System.in);
 		out.print("Please enter a number");
 		double a = in.nextDouble();
-		if (a % 2 == 0) out.println(a + " is even.");
-		else if (a % 2 != 0) out.println(a + " is odd.");
+		if (a % 2 == 0)
+			out.println(a + " is even.");
+		else if (a % 2 != 0)
+			out.println(a + " is odd.");
 		in.close();
 	}
 }

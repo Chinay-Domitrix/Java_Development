@@ -13,8 +13,10 @@ class Day2Practice1 {
 			for (int col = 0; col < 5; col++) {
 				a[row][col] = (int) (Math.random() * 71) + 7;
 				sum += a[row][col];
-				if (a[row][col] < range[0]) range[0] = a[row][col];
-				if (a[row][col] > range[1]) range[1] = a[row][col];
+				if (a[row][col] < range[0])
+					range[0] = a[row][col];
+				if (a[row][col] > range[1])
+					range[1] = a[row][col];
 			}
 			out.println();
 		}

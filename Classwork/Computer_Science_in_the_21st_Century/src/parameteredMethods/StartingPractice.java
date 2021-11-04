@@ -4,7 +4,9 @@ import static java.lang.System.out;
 
 class StartingPractice {
 	public static void main(String[] args) {
-		double division = division(Math.random(), Math.random()), average = average(Math.random(), Math.random(), Math.random(), Math.random(), Math.random()), exponentialGrowthDouble = exponentialGrowthDouble(Math.random());
+		double division = division(Math.random(), Math.random()),
+				average = average(Math.random(), Math.random(), Math.random(), Math.random(), Math.random()),
+				exponentialGrowthDouble = exponentialGrowthDouble(Math.random());
 		int exponentialGrowthInt = exponentialGrowthInt((int) (Math.random() * ((100 - 1) + 1)) + 1);
 		out.println(division + "\n" + average + "\n" + exponentialGrowthInt + "\n" + exponentialGrowthDouble);
 	}

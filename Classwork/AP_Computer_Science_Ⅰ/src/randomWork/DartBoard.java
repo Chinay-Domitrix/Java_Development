@@ -14,7 +14,8 @@ public class DartBoard {
 		while (abs(PI - circleArea) > tolerance) {
 			totalDarts++;
 			var x = new Random();
-			if (sqrt(pow(x.nextDouble(), 2) + pow(x.nextDouble(), 2)) < 1) circleDarts++;
+			if (sqrt(pow(x.nextDouble(), 2) + pow(x.nextDouble(), 2)) < 1)
+				circleDarts++;
 			circleArea = (4 * circleDarts) / (double) totalDarts;
 			out.println(circleArea);
 		}

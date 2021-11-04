@@ -18,8 +18,10 @@ class Bank {
 			if (pin == input) {
 				out.println("\nPIN accepted. You now have access to your account.");
 				break;
-			} else if (counter <= 3) out.println("\nIncorrect PIN. Try again.");
-			else err.println("You have run out of tries. Account locked.");
+			} else if (counter <= 3)
+				out.println("\nIncorrect PIN. Try again.");
+			else
+				err.println("You have run out of tries. Account locked.");
 		}
 		in.close();
 	}

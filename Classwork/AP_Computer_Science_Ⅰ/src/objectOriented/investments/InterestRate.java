@@ -13,7 +13,8 @@ final class InterestRate {
 	private final double interestRate;
 
 	InterestRate(String interestRate) {
-		this.interestRate = parseDouble(new StringBuilder(interestRate).deleteCharAt(interestRate.indexOf("%")).toString()) / 100;
+		this.interestRate = parseDouble(
+				new StringBuilder(interestRate).deleteCharAt(interestRate.indexOf("%")).toString()) / 100;
 	}
 
 	@Contract(pure = true)
@@ -30,6 +31,7 @@ final class InterestRate {
 	@Contract(pure = true)
 	@Override
 	public String toString() {
-		return format("%s%%", (Double.toString(interestRate).length() <= 3) ? interestRate : new BigDecimal(interestRate * 100).setScale(2, HALF_UP));
+		return format("%s%%", (Double.toString(interestRate).length() <= 3) ? interestRate
+				: new BigDecimal(interestRate * 100).setScale(2, HALF_UP));
 	}
 }
