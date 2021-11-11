@@ -1,4 +1,4 @@
-package maze
+package mazeAttempts.maze
 
 import java.awt.Polygon
 

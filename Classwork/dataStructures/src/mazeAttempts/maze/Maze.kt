@@ -1,4 +1,4 @@
-package maze
+package mazeAttempts.maze
 
 import java.awt.Color.*
 import java.awt.Graphics
@@ -34,7 +34,7 @@ class Maze : JPanel(), KeyListener, MouseListener {
 		k = 0
 		if (draw3D == false) {
 			maze = Array(34) { arrayOfNulls<String>(34) }
-//			maze = new String[lineArr.length][lineArr[0].split("").length];
+//			mazeAttempts.maze = new String[lineArr.length][lineArr[0].split("").length];
 			for (i in lineArr.indices) lineArr[0]?.split("".toRegex())?.toTypedArray()?.indices?.forEach {
 				maze[i][it] = lineArr[i]?.split("".toRegex())?.toTypedArray()?.get(it)
 				if (maze[i][it] == "#") g.setColor(WHITE) else if (maze[i][it] == "1" && isPainted == false) {
@@ -72,7 +72,7 @@ class Maze : JPanel(), KeyListener, MouseListener {
 				var n = 0
 				while (n < 5) {
 					try {
-						//if(maze[expR-1][expC-(5-n)] == "#"){
+						//if(mazeAttempts.maze[expR-1][expC-(5-n)] == "#"){
 						//	walls.add(getFront(5-n));
 						//}
 						if (maze[explorerY!! + 1][explorerX!! + n] == "#") walls.add(getRight(n))
@@ -87,7 +87,7 @@ class Maze : JPanel(), KeyListener, MouseListener {
 				var n = 0
 				while (n < 5) {
 					try {
-						//if(maze[expR-1][expC-(5-n)] == "#"){
+						//if(mazeAttempts.maze[expR-1][expC-(5-n)] == "#"){
 						//	walls.add(getFront(5-n));
 						//}
 						if (maze[explorerY!! + n][explorerX!! - 1] == "#") walls.add(getRight(n))
@@ -102,7 +102,7 @@ class Maze : JPanel(), KeyListener, MouseListener {
 				var n = 0
 				while (n < 5) {
 					try {
-						//if(maze[expR-1][expC-(5-n)] == "#"){
+						//if(mazeAttempts.maze[expR-1][expC-(5-n)] == "#"){
 						//	walls.add(getFront(5-n));
 						//}
 						if (maze[explorerY!! + 1][explorerX!! - n] == "#") walls.add(getRight(n))
@@ -117,7 +117,7 @@ class Maze : JPanel(), KeyListener, MouseListener {
 				var n = 0
 				while (n < 5) {
 					try {
-						//if(maze[expR-1][expC-(5-n)] == "#"){
+						//if(mazeAttempts.maze[expR-1][expC-(5-n)] == "#"){
 						//	walls.add(getFront(5-n));
 						//}
 						if (maze[explorerY!! - n][explorerX!! + 1] == "#") walls.add(getRight(n))
@@ -132,7 +132,7 @@ class Maze : JPanel(), KeyListener, MouseListener {
 				var n = 0
 				while (n < 5) {
 					try {
-						//if(maze[expR-1][expC-(5-n)] == "#"){
+						//if(mazeAttempts.maze[expR-1][expC-(5-n)] == "#"){
 						//	walls.add(getFront(5-n));
 						//}
 						if (maze[explorerY!! - n][explorerX!! + 1] == "#") walls.add(getRight(n))
@@ -147,7 +147,7 @@ class Maze : JPanel(), KeyListener, MouseListener {
 				var n = 0
 				while (n < 5) {
 					try {
-						//if(maze[expR-1][expC-(5-n)] == "#"){
+						//if(mazeAttempts.maze[expR-1][expC-(5-n)] == "#"){
 						//	walls.add(getFront(5-n));
 						//}
 						if (maze[explorerY!! + 1][explorerX!! - n] == "#") walls.add(getRight(n))
@@ -162,7 +162,7 @@ class Maze : JPanel(), KeyListener, MouseListener {
 				var n = 0
 				while (n < 5) {
 					try {
-						//if(maze[expR-1][expC-(5-n)] == "#"){
+						//if(mazeAttempts.maze[expR-1][expC-(5-n)] == "#"){
 						//	walls.add(getFront(5-n));
 						//}
 						if (maze[explorerY!! + n][explorerX!! - 1] == "#") walls.add(getRight(n))
@@ -238,7 +238,7 @@ class Maze : JPanel(), KeyListener, MouseListener {
 		frame.addKeyListener(this)
 		frame.addMouseListener(this)
 		try {
-			val reader = BufferedReader(FileReader("Classwork/dataStructures/src/maze/Maze.txt"))
+			val reader = BufferedReader(FileReader("Classwork/dataStructures/src/mazeAttempts/Maze.txt"))
 			while (reader.readLine().also { line = it } != null) {
 				lineArr[k] = line
 				lineCount++
@@ -277,7 +277,7 @@ class Maze : JPanel(), KeyListener, MouseListener {
 	var explorer = Explorer(Location(1, 2), 0, 13, white)
 	fun setBoard() {
 		try {
-			Scanner(File("Classwork/dataStructures/src/maze/Maze.txt")).use {
+			Scanner(File("Classwork/dataStructures/src/mazeAttempts.maze/Maze.txt")).use {
 				var txt: String
 				do {
 					txt = it.nextLine()

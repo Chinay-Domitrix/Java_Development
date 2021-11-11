@@ -1,4 +1,4 @@
-package maze2
+package mazeAttempts.maze2
 
 import java.awt.Color
 import java.awt.Rectangle

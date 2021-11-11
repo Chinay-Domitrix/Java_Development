@@ -1,4 +1,4 @@
-package maze
+package mazeAttempts.maze
 
 import java.awt.Color
 import java.awt.Rectangle
@@ -39,7 +39,7 @@ class Explorer(var color: Color, var location: Location, var size: Int, var dir:
 	val rectangle: Rectangle get() = Rectangle(location.x * size, location.y * size, size, size)
 }
 /*
-import maze.Explorer.Direction.*
+import mazeAttempts.maze.Explorer.Direction.*
 import java.awt.Color
 import java.awt.Rectangle
 

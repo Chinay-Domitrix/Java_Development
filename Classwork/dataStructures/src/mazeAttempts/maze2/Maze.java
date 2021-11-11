@@ -1,4 +1,4 @@
-package maze2;
+package mazeAttempts.maze2;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 import static java.awt.Color.*;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Maze extends JPanel implements KeyListener, MouseListener {
 	JFrame frame;
@@ -31,13 +32,13 @@ public class Maze extends JPanel implements KeyListener, MouseListener {
 	public Maze() {
 		frame = new JFrame();
 		frame.add(this);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setSize(1600, 1000);
 		frame.setVisible(true);
 		frame.addKeyListener(this);
 		frame.addMouseListener(this);
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader("Classwork/dataStructures/src/maze/Maze.txt"));
+			BufferedReader reader = new BufferedReader(new FileReader("Classwork/dataStructures/src/mazeAttempts/Maze.txt"));
 			if ((line = reader.readLine()) != null) {
 				do {
 					lineArr[k] = line;
@@ -114,7 +115,7 @@ public class Maze extends JPanel implements KeyListener, MouseListener {
 			case 0: //east
 				for (int n = 0; n < 5; n++) {
 					try {
-						/*if (maze[expR - 1][expC - (5 - n)] == "#") {
+						/*if (mazeAttempts.maze[expR - 1][expC - (5 - n)] == "#") {
 							walls.add(getFront(5 - n));
 						}*/
 						if (maze[expC + 1][expR + n].equals("#")) {
@@ -131,7 +132,7 @@ public class Maze extends JPanel implements KeyListener, MouseListener {
 			case 1: //south
 				for (int n = 0; n < 5; n++) {
 					try {
-						//if(maze[expR-1][expC-(5-n)] == "#"){
+						//if(mazeAttempts.maze[expR-1][expC-(5-n)] == "#"){
 						//	walls.add(getFront(5-n));
 						//}
 						if (maze[expC + n][expR - 1].equals("#")) {
@@ -148,7 +149,7 @@ public class Maze extends JPanel implements KeyListener, MouseListener {
 			case 2: //west
 				for (int n = 0; n < 5; n++) {
 					try {
-						//if(maze[expR-1][expC-(5-n)] == "#"){
+						//if(mazeAttempts.maze[expR-1][expC-(5-n)] == "#"){
 						//	walls.add(getFront(5-n));
 						//}
 						if (maze[expC + 1][expR - n].equals("#")) {
@@ -165,7 +166,7 @@ public class Maze extends JPanel implements KeyListener, MouseListener {
 			case 3: //north
 				for (int n = 0; n < 5; n++) {
 					try {
-						//if(maze[expR-1][expC-(5-n)] == "#"){
+						//if(mazeAttempts.maze[expR-1][expC-(5-n)] == "#"){
 						//	walls.add(getFront(5-n));
 						//}
 						if (maze[expC - n][expR + 1].equals("#")) {
@@ -182,7 +183,7 @@ public class Maze extends JPanel implements KeyListener, MouseListener {
 			case -1: //north
 				for (int n = 0; n < 5; n++) {
 					try {
-						//if(maze[expR-1][expC-(5-n)] == "#"){
+						//if(mazeAttempts.maze[expR-1][expC-(5-n)] == "#"){
 						//	walls.add(getFront(5-n));
 						//}
 						if (maze[expC - n][expR + 1].equals("#")) {
@@ -199,7 +200,7 @@ public class Maze extends JPanel implements KeyListener, MouseListener {
 			case -2: //west
 				for (int n = 0; n < 5; n++) {
 					try {
-						//if(maze[expR-1][expC-(5-n)] == "#"){
+						//if(mazeAttempts.maze[expR-1][expC-(5-n)] == "#"){
 						//	walls.add(getFront(5-n));
 						//}
 						if (maze[expC + 1][expR - n].equals("#")) {
@@ -216,7 +217,7 @@ public class Maze extends JPanel implements KeyListener, MouseListener {
 			case -3: //south
 				for (int n = 0; n < 5; n++) {
 					try {
-						//if(maze[expR-1][expC-(5-n)] == "#"){
+						//if(mazeAttempts.maze[expR-1][expC-(5-n)] == "#"){
 						//	walls.add(getFront(5-n));
 						//}
 						if (maze[expC + n][expR - 1].equals("#")) {
@@ -268,7 +269,6 @@ public class Maze extends JPanel implements KeyListener, MouseListener {
 		if (draw3D) createWalls();
 		exp.move(e.getKeyCode(), maze, draw3D);
 		repaint();
-
 	}
 
 	public void keyReleased(KeyEvent e) {
