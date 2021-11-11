@@ -264,6 +264,7 @@ public class Maze extends JPanel implements KeyListener, MouseListener {
 		return new Wall(rLocs, cLocs, "Ceil", 255 - n * shrink, 255 - n * shrink, 255 - n * shrink);
 	}
 
+	@Override
 	public void keyPressed(@NotNull KeyEvent e) {
 		if (e.getKeyCode() == 32) draw3D = !draw3D;
 		if (draw3D) createWalls();
@@ -271,30 +272,37 @@ public class Maze extends JPanel implements KeyListener, MouseListener {
 		repaint();
 	}
 
+	@Override
 	public void keyReleased(KeyEvent e) {
 
 	}
 
+	@Override
 	public void keyTyped(KeyEvent e) {
 
 	}
 
+	@Override
 	public void mouseClicked(MouseEvent e) {
 
 	}
 
+	@Override
 	public void mousePressed(MouseEvent e) {
 
 	}
 
+	@Override
 	public void mouseReleased(MouseEvent e) {
 
 	}
 
+	@Override
 	public void mouseEntered(MouseEvent e) {
 
 	}
 
+	@Override
 	public void mouseExited(MouseEvent e) {
 
 	}
