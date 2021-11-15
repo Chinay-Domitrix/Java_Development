@@ -1,9 +1,5 @@
 package mazeAttempts.maze5;
 
-import javax.media.CannotRealizeException;
-import javax.media.Manager;
-import javax.media.NoPlayerException;
-import javax.media.Player;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
@@ -55,7 +51,7 @@ public class Maze extends JPanel implements KeyListener, MouseListener {
 		frame = new JFrame();
 		frame.add(this);
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		Player player = null;
+		/*Player player = null;
 		try {
 			player = Manager.createRealizedPlayer(new File("Classwork/dataStructures/src/mazeAttempts/Background-Music.mp3").toURI().toURL());
 		} catch (IOException e) {
@@ -65,7 +61,7 @@ public class Maze extends JPanel implements KeyListener, MouseListener {
 		} catch (CannotRealizeException e) {
 			e.printStackTrace();
 		}
-		player.start();
+		player.start();*/
 		frame.setSize(1500, 800);
 		frame.setVisible(true);
 		frame.addKeyListener(this);

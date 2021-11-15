@@ -1,5 +1,6 @@
 package stack.starWarsCharacters
 
+import java.io.File
 import java.io.FileNotFoundException
 import java.lang.System.`in`
 import java.util.*
@@ -10,24 +11,14 @@ fun main() {
 		val femaleCharacters = Stack<Character>()
 		val droids = Stack<Character>()
 		val validBirthYears = Stack<Character>()
-		val scanner = Scanner(`in`)
+		val scanner = Scanner(File("Classwork/dataStructures/src/stack/starWarsCharacters/StarWarsCharacters.csv"))
 		scanner.nextLine()
 		ArrayList<Character>().also {
 			while (scanner.hasNextLine()) {
-				var mutableList = scanner.nextLine().split(",").toMutableList()
-				mutableList.indices.forEach {
-					if (mutableList[it].toCharArray()[0] == '\"') {
-						mutableList[it] = mutableList[it].substring(
-							1,
-							mutableList[it].length - 1
-						) + "," + mutableList[it + 1].substring(
-							0,
-							mutableList[it + 1].length - 2
-						)
-						mutableList.removeAt(it + 1)
-					}
-				}
-				it += Character(mutableList[0], mutableList[5], mutableList[6], mutableList[7], mutableList[8])
+				var list = scanner.nextLine().split(Regex("\",(?=([^\\\"]*\\\"[^\\\"]*\\\")*[^\\\"]*\$)\""))
+				list = list.map { it.replace("\"", "") }
+				println(list)
+				it += Character(list[0], list[5], list[6], list[7], list[8])
 			}
 		}.forEach {
 			if (it.gender.equals("Male", ignoreCase = true)) maleCharacters.push(it)
@@ -60,7 +51,7 @@ fun main() {
 	}
 }
 
-data class Character(
+ class Character(
 	val name: String,
 	val birthYear: String,
 	val gender: String,

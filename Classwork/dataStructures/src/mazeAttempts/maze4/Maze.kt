@@ -290,23 +290,19 @@ class Maze : JPanel(), KeyListener {
 	}
 }
 
-class Explorer(
-	var location: Location,
-	var direction: Int,
-	var size: Int,
-	var color: Color,
+class Explorer(var location: Location, var direction: Int, var size: Int, var color: Color) {
 	val rect: Rectangle = Rectangle(size, size, location.c, location.r)
-)
-
-fun Explorer.move(key: Int, list: ArrayList<String>) {
-	if (key == VK_LEFT) if (direction == 0) direction = 3 else direction -= 1
-	if (key == VK_RIGHT) if (direction == 3) direction = 0 else direction += 1
-	if (key == VK_UP) when (direction) {
-		0 -> if (list[location.r - 1][location.c] != '#') location.r = location.r - 1
-		1 -> if (list[location.r][location.c + 1] != '#') location.c = location.c + 1
-		2 -> if (list[location.r + 1][location.c] != '#') location.r = location.r + 1
-		3 -> if (list[location.r][location.c - 1] != '#') location.c = location.c - 1
+	fun move(key: Int, list: ArrayList<String>) {
+		if (key == VK_LEFT) if (direction == 0) direction = 3 else direction -= 1
+		if (key == VK_RIGHT) if (direction == 3) direction = 0 else direction += 1
+		if (key == VK_UP) when (direction) {
+			0 -> if (list[location.r - 1][location.c] != '#') location.r = location.r - 1
+			1 -> if (list[location.r][location.c + 1] != '#') location.c = location.c + 1
+			2 -> if (list[location.r + 1][location.c] != '#') location.r = location.r + 1
+			3 -> if (list[location.r][location.c - 1] != '#') location.c = location.c - 1
+		}
 	}
+
 }
 
 data class Location(var r: Int, var c: Int) {
@@ -322,42 +318,35 @@ data class Location(var r: Int, var c: Int) {
 	override fun hashCode() = 31 * r + c
 }
 
-class Wall(
-	val rows: IntArray,
-	val cols: IntArray,
-	val type: String,
-	var r: Int,
-	var g: Int,
-	var b: Int,
-	val dist: Int = 50,
-	val polygon: Polygon = Polygon(cols, rows, rows.size),
-	val color: Color = Color(r, g, b)
-)
-
-val Wall.paint: GradientPaint
-	get() {
-		var endR = r - dist
-		var endG = g - dist
-		var endB = b - dist
-		if (r < 0) r = 0
-		if (g < 0) g = 0
-		if (b < 0) b = 0
-		if (endR < 0) endR = 0
-		if (endG < 0) endG = 0
-		if (endB < 0) endB = 0
-		return if (type.indexOf("Left") >= 0 || type.indexOf("Right") >= 0) GradientPaint(
-			cols[0].toFloat(),
-			rows[0].toFloat(),
-			Color(r, b, g),
-			cols[1].toFloat(),
-			rows[0].toFloat(),
-			Color(endR, endG, endB)
-		) else GradientPaint(
-			cols[0].toFloat(),
-			rows[0].toFloat(),
-			Color(r, b, g),
-			cols[0].toFloat(),
-			rows[1].toFloat(),
-			Color(endR, endG, endB)
-		)
-	}
+class Wall(val rows: IntArray, val cols: IntArray, val type: String, var r: Int, var g: Int, var b: Int) {
+	val dist = 50
+	val polygon = Polygon(cols, rows, rows.size)
+	val color = Color(r, g, b)
+	val paint: GradientPaint
+		get() {
+			var endR = r - dist
+			var endG = g - dist
+			var endB = b - dist
+			if (r < 0) r = 0
+			if (g < 0) g = 0
+			if (b < 0) b = 0
+			if (endR < 0) endR = 0
+			if (endG < 0) endG = 0
+			if (endB < 0) endB = 0
+			return if (type.indexOf("Left") >= 0 || type.indexOf("Right") >= 0) GradientPaint(
+				cols[0].toFloat(),
+				rows[0].toFloat(),
+				Color(r, b, g),
+				cols[1].toFloat(),
+				rows[0].toFloat(),
+				Color(endR, endG, endB)
+			) else GradientPaint(
+				cols[0].toFloat(),
+				rows[0].toFloat(),
+				Color(r, b, g),
+				cols[0].toFloat(),
+				rows[1].toFloat(),
+				Color(endR, endG, endB)
+			)
+		}
+}

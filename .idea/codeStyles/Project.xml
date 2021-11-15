@@ -61,7 +61,7 @@
     </codeStyleSettings>
     <codeStyleSettings language="Markdown">
       <indentOptions>
-        <option name="USE_TAB_CHARACTER" value="true" />
+        <option name="TAB_SIZE" value="2" />
         <option name="SMART_TABS" value="true" />
       </indentOptions>
     </codeStyleSettings>
@@ -119,10 +119,8 @@
       <option name="SPACE_WITHIN_BRACKETS" value="false" />
       <option name="SPACE_WITHIN_BRACES" value="false" />
       <indentOptions>
-        <option name="INDENT_SIZE" value="4" />
         <option name="CONTINUATION_INDENT_SIZE" value="8" />
         <option name="USE_TAB_CHARACTER" value="true" />
-        <option name="SMART_TABS" value="true" />
       </indentOptions>
     </codeStyleSettings>
   </code_scheme>
