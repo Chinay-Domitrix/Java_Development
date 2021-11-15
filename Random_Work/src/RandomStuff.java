@@ -1,17 +1,13 @@
-import java.util.Random;
-
-import static java.lang.String.valueOf;
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.IntStream.range;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RandomStuff {
 	public static void main(String[] args) {
-	}
-
-	public static String getAlphaNumericString(int n) {
-		return range(0, n)
-				.mapToObj(i -> valueOf("ABCDEFGHIJKLMNPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvxyz".charAt(
-						new Random().nextInt("ABCDEFGHIJKLMNPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvxyz".length()))))
-				.collect(joining());
+		String s = "a1, a2, a3, \"a4,a5\", a6";
+		Pattern pattern = Pattern.compile("\s*(\"[^\"]*\"|[^,]*)\s*");
+		Matcher matcher = pattern.matcher(s);
+		while (matcher.find()) {
+			System.out.println(matcher.group(1));
+		}
 	}
 }
