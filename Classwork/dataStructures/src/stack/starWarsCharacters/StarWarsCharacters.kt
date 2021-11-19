@@ -2,6 +2,7 @@ package stack.starWarsCharacters
 
 import java.io.File
 import java.io.FileNotFoundException
+import java.lang.System.out
 import java.util.*
 
 fun main() {
@@ -13,10 +14,16 @@ fun main() {
 		val scanner = Scanner(File("Classwork/dataStructures/src/stack/starWarsCharacters/StarWarsCharacters.csv"))
 		scanner.nextLine()
 		ArrayList<Character>().apply {
-			while (scanner.hasNextLine()) {
-				val list = scanner.nextLine().split(Regex(",(?=(?:(?:[^\"]*\"){2})*[^\"]*\$)"))
-					.apply { forEach { it.replace("\"", "") } }
-				this += Character(list[0], list[5], list[6], list[7], list[8])
+			while (scanner.hasNextLine()) with(
+				scanner.nextLine().split(Regex(",(?=(?:(?:[^\"]*\"){2})*[^\"]*\$)"))
+					.apply { forEach { it.replace("\"", "") } }) {
+				this@apply += Character(
+					this[0],
+					this[5],
+					this[6],
+					this[7],
+					this[8]
+				)
 			}
 		}.forEach {
 			if (it.gender.equals("Male", true)) maleCharacters.push(it)
@@ -24,25 +31,20 @@ fun main() {
 			if (it.species.equals("Droid", true)) droids.push(it)
 			if (!it.birthYear.equals("NA", true)) validBirthYears.push(it)
 		}
-		println("Male Characters\nName\t\t\t\t\tHomeworld")
-		while (!maleCharacters.empty()) {
-			val temp = maleCharacters.pop()
-			println("${temp.name}\t\t\t${temp.homeWorld}")
-		}
-		println("\nFemale Characters\nName\t\t\t\t\tHomeworld")
-		while (!femaleCharacters.empty()) {
-			val temp = femaleCharacters.pop()
-			println("${temp.name}\t\t\t${temp.homeWorld}")
-		}
-		println("\nDroids\nName\t\t\t\tHomeworld")
-		while (!droids.empty()) {
-			val temp = droids.pop()
-			println("${temp.name}\t\t\t\t${temp.homeWorld}")
-		}
-		println("\nAges\nName\t\t\t\t\tHomeworld\t\t\t\t\tBirth Year")
-		while (!validBirthYears.empty()) {
-			val temp = validBirthYears.pop()
-			println("${temp.name}\t\t\t${temp.homeWorld}\t\t\t\t\t${temp.birthYear}")
+		out.printf("Male Characters%n%-32s%-32s%n", "Name", "Homeworld")
+		while (!maleCharacters.empty()) with(maleCharacters.pop()) { out.printf("%-32s%-32s%n", name, homeWorld) }
+		out.printf("%nFemale Characters%n%-32s%-32s%n", "Name", "Homeworld")
+		while (!femaleCharacters.empty()) with(femaleCharacters.pop()) { out.printf("%-32s%-32s%n", name, homeWorld) }
+		out.printf("%nDroids%n%-32s%-32s%n", "Name", "Homeworld")
+		while (!droids.empty()) with(droids.pop()) { out.printf("%-32s%-32s%n", name, homeWorld) }
+		out.printf("%nAges%n%-32s%-32s%-32s%n", "Name", "Homeworld", "Birth Year")
+		while (!validBirthYears.empty()) with(validBirthYears.pop()) {
+			out.printf(
+				"%-32s%-32s%-32s%n",
+				name,
+				homeWorld,
+				birthYear
+			)
 		}
 	} catch (e: FileNotFoundException) {
 		e.printStackTrace()

@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="CompilerConfiguration">
-    <annotationProcessing>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="Java_Development" />
-      </profile>
-    </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Java_Development" target="16" />
-    </bytecodeTargetLevel>
-  </component>
+	<component name="CompilerConfiguration">
+		<annotationProcessing>
+			<profile name="Maven default annotation processors profile" enabled="true">
+				<sourceOutputDir name="target/generated-sources/annotations"/>
+				<sourceTestOutputDir name="target/generated-test-sources/test-annotations"/>
+				<outputRelativeToContentRoot value="true"/>
+				<module name="Java_Development"/>
+			</profile>
+		</annotationProcessing>
+		<bytecodeTargetLevel>
+			<module name="APComputerScienceA" target="1.5"/>
+			<module name="Classwork" target="1.5"/>
+			<module name="CS21stCentury" target="1.5"/>
+			<module name="DataStructures" target="1.5"/>
+			<module name="HelloWorld" target="1.5"/>
+			<module name="Java_Development" target="16"/>
+			<module name="RandomWork" target="1.5"/>
+		</bytecodeTargetLevel>
+	</component>
 </project>
