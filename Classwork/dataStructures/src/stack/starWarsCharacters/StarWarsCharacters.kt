@@ -32,17 +32,39 @@ fun main() {
 			if (!it.birthYear.equals("NA", true)) validBirthYears.push(it)
 		}
 		out.printf("Male Characters%n%-32s%-32s%n", "Name", "Homeworld")
-		while (!maleCharacters.empty()) with(maleCharacters.pop()) { out.printf("%-32s%-32s%n", name, homeWorld) }
+		while (!maleCharacters.empty()) with(maleCharacters.pop()) {
+			if (!homeWorld.equals(
+					"NA",
+					true
+				)
+			) out.printf("%-32s%-32s%n", name, homeWorld) else out.printf("%-32s%-32s%n", name, "N/A")
+		}
 		out.printf("%nFemale Characters%n%-32s%-32s%n", "Name", "Homeworld")
-		while (!femaleCharacters.empty()) with(femaleCharacters.pop()) { out.printf("%-32s%-32s%n", name, homeWorld) }
+		while (!femaleCharacters.empty()) with(femaleCharacters.pop()) {
+			if (!homeWorld.equals(
+					"NA",
+					true
+				)
+			) out.printf("%-32s%-32s%n", name, homeWorld) else out.printf("%-32s%-32s%n", name, "N/A")
+		}
 		out.printf("%nDroids%n%-32s%-32s%n", "Name", "Homeworld")
-		while (!droids.empty()) with(droids.pop()) { out.printf("%-32s%-32s%n", name, homeWorld) }
+		while (!droids.empty()) with(droids.pop()) {
+			if (!homeWorld.equals("NA", true)) out.printf(
+				"%-32s%-32s%n",
+				name,
+				homeWorld
+			) else out.printf("%-32s%-32s%n", name, "N/A")
+		}
 		out.printf("%nAges%n%-32s%-32s%-32s%n", "Name", "Homeworld", "Birth Year")
 		while (!validBirthYears.empty()) with(validBirthYears.pop()) {
-			out.printf(
+			if (!homeWorld.equals(
+					"NA",
+					true
+				)
+			) out.printf("%-32s%-32s%-32s%n", name, homeWorld, birthYear) else out.printf(
 				"%-32s%-32s%-32s%n",
 				name,
-				homeWorld,
+				"N/A",
 				birthYear
 			)
 		}
