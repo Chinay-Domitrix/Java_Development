@@ -12,11 +12,9 @@
 	<LINK HREF="../../../stylesheet.css" REL="stylesheet" TITLE="Style" TYPE="text/css">
 
 	<SCRIPT type="text/javascript">
-		function windowTitle() {
-			if (location.href.indexOf('is-external=true') === -1) {
-				parent.document.title = "ActorWorld";
-			}
-		}
+		const windowTitle = () => {
+			if (location.href.indexOf('is-external=true') === -1) parent.document.title = "ActorWorld";
+		};
 	</SCRIPT>
 	<NOSCRIPT>
 	</NOSCRIPT>

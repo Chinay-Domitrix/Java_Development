@@ -16,10 +16,10 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.world;
 
-import objectOriented.gridWorld.framework.info.gridworld.grid.BoundedGrid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
-import objectOriented.gridWorld.framework.info.gridworld.gui.WorldFrame;
+import info.gridworld.grid.BoundedGrid;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.Location;
+import info.gridworld.gui.WorldFrame;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ import java.util.TreeSet;
  * <br />
  * This class is not tested on the AP CS A and AB exams.
  */
-public class World<T> {
+public class World<T> extends info.gridworld.world.World<T> {
 	private static final int DEFAULT_ROWS = 10;
 	private static final int DEFAULT_COLS = 10;
 	private static final Random generator = new Random();
@@ -60,7 +60,7 @@ public class World<T> {
 	 */
 	public void show() {
 		if (frame == null) {
-			frame = new WorldFrame<>(this);
+			frame = new WorldFrame<T>(this);
 			frame.setVisible(true);
 		} else
 			frame.repaint();

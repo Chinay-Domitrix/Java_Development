@@ -19,17 +19,19 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
+import info.gridworld.gui.Display;
+
 import java.awt.*;
 import java.awt.font.LineMetrics;
 import java.awt.geom.Rectangle2D;
 
+import static info.gridworld.gui.AbstractDisplay.getProperty;
 import static java.awt.Color.BLACK;
 import static java.awt.Font.BOLD;
 import static java.awt.RenderingHints.KEY_ANTIALIASING;
 import static java.awt.RenderingHints.VALUE_ANTIALIAS_ON;
 import static java.lang.Math.sqrt;
 import static java.lang.String.format;
-import static objectOriented.gridWorld.framework.info.gridworld.gui.AbstractDisplay.getProperty;
 
 /**
  * The DefaultDisplay draws the object's text property with a background color

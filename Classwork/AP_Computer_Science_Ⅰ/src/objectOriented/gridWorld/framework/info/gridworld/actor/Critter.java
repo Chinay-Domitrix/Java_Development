@@ -16,7 +16,7 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.actor;
 
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import info.gridworld.grid.Location;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

@@ -1,18 +1,12 @@
 package practiceItObjectOrientedPrograms
 
-import org.jetbrains.annotations.Contract
-
-internal class Stock @Contract(value = "null -> fail", pure = true) constructor(symbol: String?) {
+internal class Stock constructor(symbol: String?) {
 	/**
 	 * Stock symbol, e.g. "YHOO"
 	 */
-	@get:Contract(pure = true)
 	val symbol: String?
 
-	/**
-	 * Total shares purchased
-	 */
-	@get:Contract(pure = true)
+
 	var totalShares: Int
 		/**
 		 * Returns this Stock's total number of shares purchased.
@@ -22,7 +16,6 @@ internal class Stock @Contract(value = "null -> fail", pure = true) constructor(
 	/**
 	 * Total cost for all shares
 	 */
-	@get:Contract(pure = true)
 	var totalCost: Double
 		private set
 
@@ -33,7 +26,6 @@ internal class Stock @Contract(value = "null -> fail", pure = true) constructor(
 	 *
 	 * @return profit the profit earned
 	 */
-	@Contract(pure = true)
 	fun getProfit(currentPrice: Double): Double {
 		assert(currentPrice >= 0.0)
 		return totalShares * currentPrice - totalCost

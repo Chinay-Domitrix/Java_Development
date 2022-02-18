@@ -19,6 +19,8 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.grid;
 
+import info.gridworld.grid.Location;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;

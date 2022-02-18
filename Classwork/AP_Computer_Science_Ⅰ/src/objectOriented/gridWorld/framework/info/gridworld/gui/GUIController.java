@@ -18,9 +18,11 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
-import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
-import objectOriented.gridWorld.framework.info.gridworld.world.World;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.Location;
+import info.gridworld.gui.DisplayMap;
+import info.gridworld.gui.GridPanel;
+import info.gridworld.world.World;
 
 import javax.swing.*;
 import java.awt.*;
@@ -62,10 +64,10 @@ public class GUIController<T> {
 	/**
 	 * Creates a new controller tied to the specified display and gui frame.
 	 *
-	 * @param parent     the frame for the world window
-	 * @param disp       the panel that displays the grid
-	 * @param displayMap the map for occupant displays
-	 * @param res        the resource bundle for message display
+	 * @param parent  the frame for the world window
+	 * @param disp    the panel that displays the grid
+	 * @param dispMap the map for occupant displays
+	 * @param res     the resource bundle for message display
 	 */
 	public GUIController(WorldFrame<T> parent, GridPanel disp, DisplayMap dispMap, ResourceBundle res) {
 		resources = res;

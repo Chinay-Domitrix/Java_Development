@@ -18,6 +18,7 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
+import info.gridworld.gui.AbstractDisplay;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;

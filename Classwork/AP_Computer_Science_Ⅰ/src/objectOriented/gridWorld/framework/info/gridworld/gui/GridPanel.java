@@ -18,8 +18,9 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
-import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.Location;
+import info.gridworld.gui.Display;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -31,6 +32,7 @@ import java.awt.font.LineMetrics;
 import java.awt.geom.Rectangle2D;
 import java.util.ResourceBundle;
 
+import static info.gridworld.gui.PseudoInfiniteViewport.Pannable;
 import static java.awt.Color.*;
 import static java.awt.Font.BOLD;
 import static java.awt.RenderingHints.KEY_ANTIALIASING;
@@ -42,7 +44,6 @@ import static java.text.MessageFormat.format;
 import static javax.swing.SwingConstants.VERTICAL;
 import static javax.swing.SwingUtilities.convertPoint;
 import static javax.swing.ToolTipManager.sharedInstance;
-import static objectOriented.gridWorld.framework.info.gridworld.gui.PseudoInfiniteViewport.Pannable;
 
 /**
  * A <code>GridPanel</code> is a panel containing a graphical display of the

@@ -16,8 +16,9 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
-import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.Location;
+import info.gridworld.gui.DisplayMap;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -64,7 +65,7 @@ public class MenuMaker<T> {
 	 *
 	 * @param parent     the frame in which the world is displayed
 	 * @param resources  the resource bundle
-	 * @param displayMap the display map
+	 * @param dispMap the display map
 	 */
 	@Contract(pure = true)
 	public MenuMaker(WorldFrame<T> parent, ResourceBundle resources, DisplayMap dispMap) {

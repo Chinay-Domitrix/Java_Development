@@ -16,14 +16,13 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.actor;
 
-import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
-import org.jetbrains.annotations.Contract;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.Location;
 
 import java.awt.*;
 
 import static java.awt.Color.BLUE;
-import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.*;
+import static info.gridworld.grid.Location.*;
 import static java.lang.String.format;
 
 /**
@@ -40,7 +39,6 @@ public class Actor {
 	/**
 	 * Constructs a blue actor that is facing north.
 	 */
-	@Contract(pure = true)
 	public Actor() {
 		color = BLUE;
 		direction = NORTH;

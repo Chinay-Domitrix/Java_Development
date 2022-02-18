@@ -1,1 +1,0 @@
-While the recording may be slow, the ball had to move at that speed to enable bouncing off the paddle without any of the issues of it phasing through the paddle.

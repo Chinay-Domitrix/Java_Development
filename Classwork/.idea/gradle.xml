@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+	<component name="GradleMigrationSettings" migrationVersion="1"/>
+	<component name="GradleSettings">
+		<option name="linkedExternalProjectsSettings">
+			<GradleProjectSettings>
+				<option name="delegatedBuild" value="true"/>
+				<option name="testRunner" value="GRADLE"/>
+				<option name="distributionType" value="DEFAULT_WRAPPED"/>
+				<option name="externalProjectPath" value="$PROJECT_DIR$"/>
+				<option name="gradleHome" value="$PROJECT_DIR$/../../../../../../../Gradle/gradle-7.3.3"/>
+				<option name="modules">
+					<set>
+						<option value="$PROJECT_DIR$"/>
+						<option value="$PROJECT_DIR$/AP_Computer_Science_Ⅰ"/>
+						<option value="$PROJECT_DIR$/Computer_Science_in_the_21st_Century"/>
+						<option value="$PROJECT_DIR$/Data_Structures"/>
+						<option value="$PROJECT_DIR$/Mobile_App"/>
+					</set>
+				</option>
+			</GradleProjectSettings>
+		</option>
+	</component>
+</project>

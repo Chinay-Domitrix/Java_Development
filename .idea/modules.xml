@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-	<component name="ProjectModuleManager">
-		<modules>
-			<module fileurl="file://$PROJECT_DIR$/Classwork/AP_Computer_Science_Ⅰ/APComputerScienceA.iml"
-			        filepath="$PROJECT_DIR$/Classwork/AP_Computer_Science_Ⅰ/APComputerScienceA.iml"/>
-			<module fileurl="file://$PROJECT_DIR$/Classwork/Computer_Science_in_the_21st_Century/CS21stCentury.iml"
-			        filepath="$PROJECT_DIR$/Classwork/Computer_Science_in_the_21st_Century/CS21stCentury.iml"/>
-			<module fileurl="file://$PROJECT_DIR$/Classwork/Classwork.iml"
-			        filepath="$PROJECT_DIR$/Classwork/Classwork.iml"/>
-			<module fileurl="file://$PROJECT_DIR$/Classwork/dataStructures/DataStructures.iml"
-			        filepath="$PROJECT_DIR$/Classwork/dataStructures/DataStructures.iml"/>
-			<module fileurl="file://$PROJECT_DIR$/Hello_World/HelloWorld.iml"
-			        filepath="$PROJECT_DIR$/Hello_World/HelloWorld.iml"/>
-			<module fileurl="file://$PROJECT_DIR$/Java_Development.iml" filepath="$PROJECT_DIR$/Java_Development.iml"/>
-			<module fileurl="file://$PROJECT_DIR$/Random_Work/RandomWork.iml"
-			        filepath="$PROJECT_DIR$/Random_Work/RandomWork.iml"/>
-		</modules>
-	</component>
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Classwork/AP_Computer_Science_Ⅰ/APComputerScienceA.iml" filepath="$PROJECT_DIR$/Classwork/AP_Computer_Science_Ⅰ/APComputerScienceA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Classwork/Computer_Science_in_the_21st_Century/CS21stCentury.iml" filepath="$PROJECT_DIR$/Classwork/Computer_Science_in_the_21st_Century/CS21stCentury.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Classwork/Classwork.iml" filepath="$PROJECT_DIR$/Classwork/Classwork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Classwork/dataStructures/DataStructures.iml" filepath="$PROJECT_DIR$/Classwork/dataStructures/DataStructures.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hello_World/HelloWorld.iml" filepath="$PROJECT_DIR$/Hello_World/HelloWorld.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Java_Development.iml" filepath="$PROJECT_DIR$/Java_Development.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Random_Work/RandomWork.iml" filepath="$PROJECT_DIR$/Random_Work/RandomWork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Classwork/mobileApp/mobileApp.iml" filepath="$PROJECT_DIR$/Classwork/mobileApp/mobileApp.iml" />
+    </modules>
+  </component>
 </project>

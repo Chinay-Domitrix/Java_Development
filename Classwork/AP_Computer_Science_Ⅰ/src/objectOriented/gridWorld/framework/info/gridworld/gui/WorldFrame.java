@@ -19,9 +19,11 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
-import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
-import objectOriented.gridWorld.framework.info.gridworld.world.World;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.Location;
+import info.gridworld.gui.DisplayMap;
+import info.gridworld.gui.GridPanel;
+import info.gridworld.world.World;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;

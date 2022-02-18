@@ -18,6 +18,7 @@
 
 package objectOriented.gridWorld.framework.info.gridworld.gui;
 
+import info.gridworld.gui.Display;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
