@@ -1,6 +1,6 @@
 package objectOriented.gridWorld.projects.myProjects.bugs.jumper;
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import info.gridworld.actor.Bug;
 
 class CBug extends Bug {
 	private final int sideLength;

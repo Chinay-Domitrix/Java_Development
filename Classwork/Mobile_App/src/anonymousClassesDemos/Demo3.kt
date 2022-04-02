@@ -24,6 +24,6 @@ class Demo3() : JPanel() {
 	}
 }
 
-fun main(args: Array<String>) {
+fun main() {
 	Demo3()
 }

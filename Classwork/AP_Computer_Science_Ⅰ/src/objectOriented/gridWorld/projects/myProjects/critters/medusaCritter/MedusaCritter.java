@@ -1,12 +1,12 @@
 package objectOriented.gridWorld.projects.myProjects.critters.medusaCritter;
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
-import objectOriented.gridWorld.framework.info.gridworld.actor.Critter;
-import objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
-import objectOriented.gridWorld.framework.info.gridworld.grid.AbstractGrid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.BoundedGrid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import info.gridworld.actor.Actor;
+import info.gridworld.actor.Critter;
+import info.gridworld.actor.Rock;
+import info.gridworld.grid.AbstractGrid;
+import info.gridworld.grid.BoundedGrid;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.Location;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;

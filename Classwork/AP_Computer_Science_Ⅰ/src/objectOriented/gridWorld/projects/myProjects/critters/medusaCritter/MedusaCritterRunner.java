@@ -1,9 +1,9 @@
 package objectOriented.gridWorld.projects.myProjects.critters.medusaCritter;
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
-import objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
-import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
-import objectOriented.gridWorld.framework.info.gridworld.actor.Flower;
+import info.gridworld.actor.Actor;
+import info.gridworld.actor.ActorWorld;
+import info.gridworld.actor.Bug;
+import info.gridworld.actor.Flower;
 
 import static java.awt.Color.*;
 

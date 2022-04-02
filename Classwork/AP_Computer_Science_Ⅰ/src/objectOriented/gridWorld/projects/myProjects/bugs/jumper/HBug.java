@@ -1,6 +1,6 @@
 package objectOriented.gridWorld.projects.myProjects.bugs.jumper;
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import info.gridworld.actor.Bug;
 
 import static java.lang.Thread.sleep;
 import static java.util.stream.IntStream.of;

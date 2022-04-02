@@ -16,7 +16,7 @@ package objectOriented.gridWorld.projects.boxBug;/*
  * @author Barbara Cloud Wells
  */
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import info.gridworld.actor.Bug;
 
 /**
  * A <code>BoxBug</code> traces out a square "box" of a given size. <br />

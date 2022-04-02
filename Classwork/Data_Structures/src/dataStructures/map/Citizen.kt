@@ -30,15 +30,39 @@ class Citizen(
 	private var streetNumber = try {
 		streetNumber.toInt()
 	} catch (e: NumberFormatException) {
-		e.printStackTrace()
 		-1
 	}
 	var propertyValue = 0.0
-	var age = 0.0
-	private var ageAtFirstMarriage = 0
-	private var attendSchool = false
-	private var canRead: Boolean
-	private var yearImmigrated = 0
+	var age = try {
+		age.toDouble()
+	} catch (e: NumberFormatException) {
+		when {
+			(age == "") || (age[0] == '.') || (age == "un") -> -1.0
+			(age[1] == ' ') && ("/" in age) -> age.substring(0 until age.indexOf(" ")).toDouble() + when {
+				"*" in age.substring((age.indexOf(" ") + 1) until age.indexOf("/")) -> 0.5
+				else -> try {
+					age.substring(age.indexOf(" ") + 1 until age.indexOf("/"))
+						.toDouble() / age.substring(age.indexOf("/") + 1).toDouble()
+				} catch (e: NumberFormatException) {
+					-1.0
+				}
+			}
+			"*" in age -> age.substring(0, age.indexOf("*")).toDouble()
+			else -> age.substring(0, age.indexOf("/")).toDouble() / age.substring(age.indexOf("/") + 1).toDouble()
+		}
+	}
+	private var ageAtFirstMarriage = try {
+		ageAtFirstMarriage.toInt()
+	} catch (e: NumberFormatException) {
+		-1
+	}
+	private var attendSchool = attendSchool == "Yes"
+	private var canRead = canRead == "Yes"
+	private var yearImmigrated = try {
+		yearImmigrated.toInt()
+	} catch (e: NumberFormatException) {
+		-1
+	}
 
 	init {
 		var tempPropertyValue = propertyValue
@@ -52,56 +76,6 @@ class Citizen(
 				).toDouble() / substring(indexOf('/') + 1).toDouble())
 			}
 		}
-		/*this.age = if ('/' !in age) age.trim().toDouble() else with(age.trim()) {
-			if (this.isNotEmpty()) {
-				try {
-					if (' ' in this) with(this.split(' ')) {
-						((this[0].toDouble() + with(
-							this[1].split(
-								'/'
-							)
-						) {
-							this[0].toDouble() / this[1].toDouble()
-						}) * 100).roundToInt() / 100.0
-					}
-					else with(this.split('/')) { (this[0].toDouble() / this[1].toDouble() * 100).roundToInt() / 100.0 }
-				} catch (e: NumberFormatException) {
-					e.printStackTrace()
-					-1.0
-				}
-			} else -1.0
-		}*/
-		try {
-			this.age = age.toDouble()
-		} catch (e: NumberFormatException) {
-			this.age = when {
-				(age[0] == '.') || (age == "un") -> -1.0
-				(age[1] == ' ') && ("/" in age) -> age.substring(0, age.indexOf(" ")).toDouble() + when {
-					"*" in age.substring(age.indexOf(" ") + 1 until age.indexOf("/")) -> 0.5
-					else -> try {
-						age.substring(age.indexOf(" ") + 1 until age.indexOf("/"))
-							.toDouble() / age.substring(age.indexOf("/") + 1).toDouble()
-					} catch (e: NumberFormatException) {
-						-1.0
-					}
-				}
-				"*" in age -> age.substring(0, age.indexOf("*")).toDouble()
-				else -> age.substring(0, age.indexOf("/")).toDouble() / age.substring(age.indexOf("/") + 1).toDouble()
-			}
-		}
-		this.ageAtFirstMarriage = try {
-			ageAtFirstMarriage.toInt()
-		} catch (e: NumberFormatException) {
-			-1
-		}
-		this.attendSchool = attendSchool == "Yes"
-		this.canRead = canRead == "Yes"
-		this.yearImmigrated = try {
-			yearImmigrated.toInt()
-		} catch (e: NumberFormatException) {
-			-1
-		}
-		println(this)
 	}
 
 	override fun compareTo(other: Citizen) = when {
@@ -139,82 +113,91 @@ class Citizen(
 		"Citizen(firstName='$firstName', lastName='$lastName', street='$street', relation='$relation', rentOrOwn='$rentOrOwn', sex='$sex', maritalStatus='$maritalStatus', birthplace='$birthplace', fatherBirthplace='$fatherBirthplace', motherBirthplace='$motherBirthplace', motherTongue='$motherTongue', industry='$industry', transcriberRemarks='$transcriberRemarks', streetNumber=$streetNumber, propertyValue=$propertyValue, age=$age, ageAtFirstMarriage=$ageAtFirstMarriage, attendSchool=$attendSchool, canRead=$canRead, yearImmigrated=$yearImmigrated, occupation='$occupation')"
 }
 
-val citizens = ArrayList<Citizen>()
-val citizensByStreet = TreeMap<String, TreeSet<Citizen>>()
-val citizensByBirthplace = TreeMap<String, PriorityQueue<Double>>()
-val citizensByMotherTongue = TreeMap<String, ArrayList<String>>()
-val citizensByOccupation = TreeMap<String, HashSet<String>>()
-val citizensBySex = TreeMap<String, HashSet<String>>()
-val citizensByRentOrOwn = TreeMap<String, TreeSet<Double>>()
-val reader =
-	Scanner(File("C:\\Users\\chira\\OneDrive\\Documents\\Programming\\Java_Development\\Classwork\\Data_Structures\\src\\dataStructures\\map\\Data.tsv"))
+val citizens by lazy { ArrayList<Citizen>() }
+val citizensByStreet by lazy { TreeMap<String, TreeSet<Citizen>>() }
+val citizensByBirthplace by lazy { TreeMap<String, PriorityQueue<Double>>() }
+val citizensByMotherTongue by lazy { TreeMap<String, ArrayList<String>>() }
+val citizensByOccupation by lazy { TreeMap<String, HashSet<String>>() }
+val citizensBySex by lazy { TreeMap<String, HashSet<String>>() }
+val citizensByRentOrOwn by lazy { TreeMap<String, TreeSet<Double>>() }
+val citizensInsights by lazy { TreeMap<String, TreeMap<String, String>>() }
+val reader by lazy { Scanner(File("C:\\Users\\chira\\OneDrive\\Documents\\Programming\\Java_Development\\Classwork\\Data_Structures\\src\\dataStructures\\map\\Data.tsv")).also { it.nextLine() } }
 
-fun main() = mutableListOf<MutableList<String>>().apply {
-	var x = 0
-	while (reader.hasNextLine()) this += reader.nextLine().split("\t".toRegex()).toMutableList().apply {
-		(0 until this.size).asSequence().filter { this[it] == "\".\"" }.forEach { this[it] = "" }
-		(0 until this.size).asSequence().filter { this[it] == "\"\"" }.forEach { this[it] = "" }
-	}.also {
-		x++
-		if (it.size != 34) err.println("Error: Row $x has ${it.size} columns")
-	}
-	forEach {
-		citizens += Citizen(
-			it[5].replace("\"", "").replace("*", ""),
-			it[4].replace("\"", "").replace("*", ""),
-			it[0].replace("\"", "").replace("*", ""),
-			it[1].replace("\"", "").replace("*", ""),
-			it[6].replace("\"", "").replace("*", ""),
-			it[7].replace("\"", "").replace("*", ""),
-			it[8].replace("\"", "").replace("*", ""),
-			it[11].replace("\"", "").replace("*", ""),
-			it[13].replace("\"", "").replace("*", ""),
-			it[14].replace("\"", "").replace("*", ""),
-			it[15].replace("\"", "").replace("*", ""),
-			it[16].replace("\"", "").replace("*", ""),
-			it[17].replace("\"", "").replace("*", ""),
-			it[18].replace("\"", "").replace("*", ""),
-			it[19].replace("\"", "").replace("*", ""),
-			it[20].replace("\"", "").replace("*", ""),
-			it[21].replace("\"", "").replace("*", ""),
-			it[22].replace("\"", "").replace("*", ""),
-			it[25].replace("\"", "").replace("*", ""),
-			it[26].replace("\"", "").replace("*", ""),
-			it[33].replace("\"", "").replace("*", "")
-		)
-	}
-}.forEach(::println)
-	/*
-	 * Using the file Data.csv:
-	 *
-	 * Fill a TreeMap (using street name as the key) with a TreeSet of Citizens. Use an iterator to display all the citizens who lived on each street.
-	 *
-	 * Fill a TreeMap (using birthplace as the key) with a PriorityQueue of Citizens ages (a double) from that birthplace. Use an iterator to display the ages for each birthplace (except for Pennsylvania – just display a count of citizens who were born in Pennsylvania).
-	 *
-	 * Fill a new TreeMap (using mother tongue as the key) with an ArrayList of Citizens names (last name, first name as a String) who speak that mother tongue. Use an iterator to display the counts of all Citizens names who speak each of the mother tongues.
-	 *
-	 * Fill a new TreeMap (using occupation as the key) with a HashSet of father’s birthplaces (a String) who work that occupation. Use an iterator to display all the Citizens father’s birthplaces who work the respective occupations.
-	 *
-	 * Fill a new TreeMap (using sex as the key) with a HashSet of transcriber’s remarks (as a String) as the values. Display all the transcriber’s remarks for each sex.
-	 *
-	 * Fill a new TreeMap (using rent or own as the key) with an TreeSet of values of properties (or rent amounts) (a double – keep in mind that values like 23 1⁄2 need to be converted into a double). Display all the values of the properties (or rent amounts) as doubles based on rent or own status.
-	 */.apply {
-		citizens.forEach {
-			citizensByStreet.getOrPut(it.street, ::TreeSet) += it
-			citizensByBirthplace.getOrPut(it.birthplace, ::PriorityQueue) += it.age
-			citizensByMotherTongue.getOrPut(it.motherTongue, ::ArrayList) += "${it.lastName}, ${it.firstName}"
-			citizensByOccupation.getOrPut(it.occupation, ::HashSet) += it.fatherBirthplace
-			citizensBySex.getOrPut(it.sex, ::HashSet) += it.transcriberRemarks
-			citizensByRentOrOwn.getOrPut(it.rentOrOwn, ::TreeSet) += it.propertyValue
+fun main() {
+	mutableListOf<MutableList<String>>().apply {
+		var x = 0
+		while (reader.hasNextLine()) this += reader.nextLine().split('\t').toMutableList().apply {
+			(0 until this.size).asSequence().filter { this[it] == "\".\"" }.forEach { this[it] = "" }
+				.also { (0 until this.size).asSequence().filter { this[it] == "\"\"" }.forEach { this[it] = "" } }
+		}.also { i -> x++.also { if (i.size != 34) err.println("Error: Row $it has ${i.size} columns") } }
+		for (params in this) {
+			for (i in listOf(5, 4, 0, 1, 6, 7, 8, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 25, 26, 33)) params[i] =
+				params[i].replace("\"", "")
+			citizens += Citizen(
+				params[5],
+				params[4],
+				params[0],
+				params[1],
+				params[6],
+				params[7],
+				params[8],
+				params[11],
+				params[13],
+				params[14],
+				params[15],
+				params[16],
+				params[17],
+				params[18],
+				params[19],
+				params[20],
+				params[21],
+				params[22],
+				params[25],
+				params[26],
+				params[33]
+			)
+		}
+	}.apply {
+		for (citizen in citizens) {
+			citizensByStreet.getOrPut(citizen.street, ::TreeSet) += citizen
+			citizensByBirthplace.getOrPut(citizen.birthplace, ::PriorityQueue) += citizen.age
+			citizensByMotherTongue.getOrPut(
+				citizen.motherTongue, ::ArrayList
+			) += "${citizen.lastName}, ${citizen.firstName}"
+			citizensByOccupation.getOrPut(citizen.occupation, ::HashSet) += citizen.fatherBirthplace
+			citizensBySex.getOrPut(citizen.sex, ::HashSet) += citizen.transcriberRemarks
+			citizensByRentOrOwn.getOrPut(citizen.rentOrOwn, ::TreeSet) += citizen.propertyValue
+			citizensInsights.getOrPut(citizen.sex, ::TreeMap) += citizen.industry to citizen.occupation
 		}
 		println("By Street")
-		citizensByStreet.forEach { (_, value) ->
-			value.forEach {
-				println(
-					String.format(
-						"\t%-20s%-20s", "${it.lastName}, ${it.firstName}", it.street
-					)
-				)
-			}
-		}
+		for ((_, citizens) in citizensByStreet) for (citizen in citizens) println(
+			"\t%-32s%s".format(
+				"${citizen.lastName}, ${citizen.firstName}", citizen.street
+			)
+		)
+		println("By Birthplace")
+		for ((birthplace, citizenAges) in citizensByBirthplace) if (birthplace == "Pennsylvania") "\t%-32s%d".format(
+			birthplace, citizenAges.size
+		) else for (citizenAge in citizenAges) println("\t%-32s%f".format(birthplace, citizenAge.toFloat()))
+		println("\nBy Mother Tongue")
+		for ((language, citizens) in citizensByMotherTongue) println("\t%-32s%d".format(language, citizens.size))
+		println("\nBy Occupation")
+		for ((occupation, fatherBirthplaces) in citizensByOccupation) for (fatherBirthplace in fatherBirthplaces) println(
+			"\t%-32s%s".format(occupation, fatherBirthplace)
+		)
+		println("\nBy Sex")
+		for ((sex, remarks) in citizensBySex) for (remark in remarks) println("\t%-32s%s".format(sex, remark))
+		println("\nBy Rent or Own")
+		for ((rentOrOwn, propertyValues) in citizensByRentOrOwn) for (propertyValue in propertyValues) println(
+			"\t%-32s%s".format(
+				rentOrOwn, propertyValue
+			)
+		)
+		println("\nCitizens Insights")
+		for ((sex, treeMap) in citizensInsights) for ((industry, occupation) in treeMap) println(
+			"\t%-32s%-32s%s".format(
+				sex, industry, occupation
+			)
+		)
 	}
+}

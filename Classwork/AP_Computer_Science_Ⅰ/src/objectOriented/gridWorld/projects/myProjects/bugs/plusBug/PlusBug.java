@@ -1,7 +1,7 @@
 package objectOriented.gridWorld.projects.myProjects.bugs.plusBug;
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import info.gridworld.actor.Bug;
+import info.gridworld.grid.Location;
 
 import java.util.Objects;
 

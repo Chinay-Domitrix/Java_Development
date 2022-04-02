@@ -1,8 +1,8 @@
 package objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.rockHound;
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
-import objectOriented.gridWorld.framework.info.gridworld.actor.Critter;
-import objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
+import info.gridworld.actor.Actor;
+import info.gridworld.actor.Critter;
+import info.gridworld.actor.Rock;
 
 import java.util.ArrayList;
 

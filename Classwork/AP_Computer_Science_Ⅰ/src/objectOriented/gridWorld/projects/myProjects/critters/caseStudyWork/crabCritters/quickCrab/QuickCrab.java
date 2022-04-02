@@ -1,6 +1,6 @@
 package objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.crabCritters.quickCrab;
 
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import info.gridworld.grid.Location;
 import objectOriented.gridWorld.projects.critters.CrabCritter;
 
 import java.util.ArrayList;

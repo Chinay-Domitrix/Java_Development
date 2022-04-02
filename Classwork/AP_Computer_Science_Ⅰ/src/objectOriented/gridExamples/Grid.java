@@ -55,8 +55,7 @@ class Grid {
 	 * @param s the given {@code String}
 	 */
 	void fill(String s) {
-		for (var i = 0; i < numRows; i++)
-			Arrays.fill(grid[i], s);
+		range(0, numRows).forEach(i -> Arrays.fill(grid[i], s));
 	}
 
 	/**
@@ -84,8 +83,7 @@ class Grid {
 	 * @param s the {@code String} to be printed
 	 */
 	void paintDiagonalToRight(String s) {
-		if (numRows != numCols)
-			return;
+		if (numRows != numCols) return;
 		range(0, numRows).forEachOrdered(i -> grid[i][i] = s);
 	}
 
@@ -104,8 +102,7 @@ class Grid {
 	 * @param s the {@code String} to be printed
 	 */
 	private void paintDiagonalToLeft(String s) {
-		if (numRows != numCols)
-			return;
+		if (numRows != numCols) return;
 		var counter = 0;
 		for (var i = numCols - 1; i >= 0; i--) {
 			grid[counter][i] = s;
@@ -190,8 +187,7 @@ class Grid {
 	}
 
 	void remove() {
-		if (numRows != numCols)
-			return;
+		if (numRows != numCols) return;
 		var breaker = " ".repeat(max(0, numCols)).repeat(max(0, numRows));
 		var counter = 0;
 		do {
@@ -206,8 +202,7 @@ class Grid {
 			var printed = x.toString().split("\n");
 			if (!y.equals(breaker))
 				out.println(Arrays.toString(printed).replace("[", "").replace("]", "").replace(", ", "\n"));
-			if (y.equals(breaker))
-				break;
+			if (y.equals(breaker)) break;
 			counter++;
 		} while (true);
 		out.println("It took " + counter + " tries to clear the grid.");

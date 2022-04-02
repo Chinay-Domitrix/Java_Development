@@ -1,8 +1,8 @@
 package objectOriented.gridWorld.projects.myProjects.critters.crossCritter;
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
-import objectOriented.gridWorld.framework.info.gridworld.actor.Flower;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import info.gridworld.actor.ActorWorld;
+import info.gridworld.actor.Flower;
+import info.gridworld.grid.Location;
 
 import static java.awt.Color.GREEN;
 import static java.awt.Color.PINK;

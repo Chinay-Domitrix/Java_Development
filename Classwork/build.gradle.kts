@@ -27,4 +27,3 @@ allprojects {
 		maxHeapSize = "1G"
 	}
 }
-

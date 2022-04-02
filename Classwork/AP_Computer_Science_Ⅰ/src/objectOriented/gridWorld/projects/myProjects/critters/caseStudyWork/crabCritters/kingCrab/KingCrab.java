@@ -1,6 +1,6 @@
 package objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.crabCritters.kingCrab;
 
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import info.gridworld.grid.Location;
 import objectOriented.gridWorld.projects.critters.CrabCritter;
 import org.jetbrains.annotations.NotNull;
 

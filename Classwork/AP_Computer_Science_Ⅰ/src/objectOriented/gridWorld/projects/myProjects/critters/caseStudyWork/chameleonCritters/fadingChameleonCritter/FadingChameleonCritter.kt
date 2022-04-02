@@ -1,6 +1,6 @@
 package objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.chameleonCritters.fadingChameleonCritter
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.Actor
+import info.gridworld.actor.Actor
 import objectOriented.gridWorld.projects.critters.chameleonCritter.ChameleonCritter
 import java.util.*
 

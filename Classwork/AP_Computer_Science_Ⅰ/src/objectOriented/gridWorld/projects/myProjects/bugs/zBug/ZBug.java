@@ -1,6 +1,6 @@
 package objectOriented.gridWorld.projects.myProjects.bugs.zBug;
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
+import info.gridworld.actor.Bug;
 
 import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.EAST;
 import static objectOriented.gridWorld.framework.info.gridworld.grid.Location.SOUTHWEST;

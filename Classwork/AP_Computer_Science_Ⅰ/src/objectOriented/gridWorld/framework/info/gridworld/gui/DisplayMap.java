@@ -54,7 +54,7 @@ public class DisplayMap {
 			String className = cl.getName();
 			var dcl = Class.forName(className + "Display");
 			if (Display.class.isAssignableFrom(dcl)) {
-				Display display = (Display) dcl.newInstance();
+				Display display = (Display) dcl.getDeclaredConstructor().newInstance();
 				map.put(cl, display);
 				return display;
 			}

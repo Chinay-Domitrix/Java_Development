@@ -1,10 +1,10 @@
 package objectOriented.gridWorld.projects.myProjects.bugs.jumper;
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.Actor;
-import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
-import objectOriented.gridWorld.framework.info.gridworld.actor.Flower;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Grid;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import info.gridworld.actor.Actor;
+import info.gridworld.actor.Bug;
+import info.gridworld.actor.Flower;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.Location;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;

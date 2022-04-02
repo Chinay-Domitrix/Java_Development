@@ -17,11 +17,11 @@ package objectOriented.gridWorld.projects.critters;
  * @author Cay Horstmann
  */
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
-import objectOriented.gridWorld.framework.info.gridworld.actor.Critter;
-import objectOriented.gridWorld.framework.info.gridworld.actor.Flower;
-import objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import info.gridworld.actor.ActorWorld;
+import info.gridworld.actor.Critter;
+import info.gridworld.actor.Flower;
+import info.gridworld.actor.Rock;
+import info.gridworld.grid.Location;
 
 import static java.awt.Color.*;
 

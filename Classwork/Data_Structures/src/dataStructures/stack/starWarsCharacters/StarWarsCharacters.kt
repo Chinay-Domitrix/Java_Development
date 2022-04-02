@@ -16,7 +16,7 @@ fun main() {
 		ArrayList<Character>().apply {
 			while (scanner.hasNextLine()) with(
 				scanner.nextLine().split(Regex(",(?=(?:(?:[^\"]*\"){2})*[^\"]*\$)"))
-					.apply { forEach { it.replace("\"", "") } }) {
+					.onEach { it.replace("\"", "") }) {
 				this@apply += Character(
 					this[0],
 					this[5],

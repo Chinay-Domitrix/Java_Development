@@ -1,8 +1,8 @@
 package objectOriented.gridWorld.projects.myProjects.critters.caseStudyWork.blusterCritter;
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
-import objectOriented.gridWorld.framework.info.gridworld.actor.Flower;
-import objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
+import info.gridworld.actor.ActorWorld;
+import info.gridworld.actor.Flower;
+import info.gridworld.actor.Rock;
 
 import static java.awt.Color.*;
 

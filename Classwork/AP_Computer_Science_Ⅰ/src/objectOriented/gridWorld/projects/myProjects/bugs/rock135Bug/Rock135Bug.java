@@ -1,7 +1,7 @@
 package objectOriented.gridWorld.projects.myProjects.bugs.rock135Bug;
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.Bug;
-import objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
+import info.gridworld.actor.Bug;
+import info.gridworld.actor.Rock;
 
 import java.awt.*;
 import java.util.Random;

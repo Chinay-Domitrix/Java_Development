@@ -1,8 +1,8 @@
 package objectOriented.gridWorld.projects.myProjects.bugs.shyBug;
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
-import objectOriented.gridWorld.framework.info.gridworld.actor.Rock;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
+import info.gridworld.actor.ActorWorld;
+import info.gridworld.actor.Rock;
+import info.gridworld.grid.Location;
 
 import java.awt.*;
 import java.util.Random;

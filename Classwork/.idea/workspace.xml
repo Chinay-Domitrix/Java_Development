@@ -8,310 +8,80 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89962327-b59f-4f90-9aec-28024db730dd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinScripting.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_13_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_annotations_22_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_6_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_6_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_6_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk8_1_6_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_coroutines_core_jvm_1_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/gridworld.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jetbrains_kotlinx_coroutines_core.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Computer_Science_in_the_21st_Century/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Computer_Science_in_the_21st_Century/src/stringMethods/random/Lanterns.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/codeWars/random/RegexBinaryDivision.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/codeWars/sets/Bouncy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/codeWars/sets/Course.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/codeWars/sets/DetectPangram.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/codeWars/sets/IntTunes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/codeWars/sets/Kahumo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/codeWars/sets/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/codeWars/sets/Robot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/codeWars/sets/SumByFactors.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/codeWars/sets/TwiceLinear.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/codeWars/sets/WhichAreIn.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/dataStructures/map/Citizen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/dataStructures/map/Data.tsv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/dataStructures/queue/cars/CarData.tsv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/dataStructures/queue/cars/Cars.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/dataStructures/queue/planes/PassengerInfo.tsv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/dataStructures/queue/planes/Planes.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/dataStructures/set/Intersections&amp;UnionsOfSets.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/dataStructures/stack/Base10ToBase2.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/dataStructures/stack/ReverseString.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/dataStructures/stack/starWarsCharacters/StarWarsCharacters.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/dataStructures/stack/starWarsCharacters/StarWarsCharacters.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/juliaSet/Julia.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/juliaSet/julia.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/juliaSet/julia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/juliaSet/reset.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/Background-Music.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/Maze.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/background-music.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze/Explorer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze/Location.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze/Maze.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze/Wall.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze2/Explorer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze2/Location.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze2/Maze.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze2/Wall.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze3/Maze.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze4/Maze.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze5/Maze.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze6/Maze.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/prep/amicableNumbers/AmicableNumbers.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/prep/amicableNumbers/Amicable_Numbers.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/prep/jollySorting/JollySorting.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/prep/jollySorting/JollySorting.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/prep/lucasNumbers/LucasNumbers.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/prep/lucasNumbers/LucasNumbers.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/prep/mastermind/Mastermind.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/prep/mastermind/Mastermind.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/prep/matrix/Matrix.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/prep/matrix/MatrixInput.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/prep/reducer/Reducer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/prep/reducer/Reducer.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/prep/timeTravel/TimeTravel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/prep/timeTravel/TimeTravel.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/superListAttempts/superList/SuperList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/superListAttempts/superList/SuperListRunner.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_Structures/src/superListAttempts/superList/testing/SuperList.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile_App/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile_App/src/anonymousClassesDemos/Demo1.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile_App/src/anonymousClassesDemos/Demo2.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile_App/src/anonymousClassesDemos/Demo3.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile_App/src/anonymousClassesDemos/Demo4.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile_App/src/exceptionTesting/ErrorStuff.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Random_Work/src/testing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/GridTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/GridTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/actor/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/actor/Actor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/actor/ActorWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/actor/ActorWorld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/actor/Bug.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/actor/Bug.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/actor/Critter.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/actor/Critter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/grid/AbstractGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/grid/AbstractGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/grid/BoundedGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/grid/BoundedGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/grid/UnboundedGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/grid/UnboundedGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/AbstractDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/AbstractDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/DefaultDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/DefaultDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_coroutines_core_jvm_1_6_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_coroutines_core_jvm_1_6_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridExamples/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridExamples/Grid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/DisplayMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/DisplayMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/GUIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/GridPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/GridPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/ImageDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/ImageDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/LocationEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/LocationEditor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/MenuMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/MenuMaker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/WorldFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/gui/WorldFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/framework/info/gridworld/world/World.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/javadoc/info/gridworld/actor/Actor.html" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/javadoc/info/gridworld/actor/Actor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/javadoc/info/gridworld/actor/ActorWorld.html" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/javadoc/info/gridworld/actor/ActorWorld.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/javadoc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/javadoc/overview-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Computer_Science_in_the_21st_Century/src/RandomTesting.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/mazeAttempts/Background-Music.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/mazeAttempts/Maze.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/mazeAttempts/background-music.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/mazeAttempts/maze/Explorer.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/mazeAttempts/maze/Location.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/mazeAttempts/maze/Maze.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/mazeAttempts/maze/Wall.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/mazeAttempts/maze2/Explorer.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/mazeAttempts/maze2/Location.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/mazeAttempts/maze2/Maze.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/mazeAttempts/maze2/Wall.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/mazeAttempts/maze3/Maze.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/mazeAttempts/maze4/Maze.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/mazeAttempts/maze5/Maze.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/mazeAttempts/maze6/Maze.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/prep/amicableNumbers/AmicableNumbers.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/prep/amicableNumbers/Amicable_Numbers.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/prep/jollySorting/JollySorting.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/prep/jollySorting/JollySorting.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/prep/lucasNumbers/LucasNumbers.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/prep/lucasNumbers/LucasNumbers.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/prep/mastermind/Mastermind.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/prep/mastermind/Mastermind.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/prep/matrix/Matrix.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/prep/matrix/MatrixInput.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/prep/reducer/Reducer.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/prep/reducer/Reducer.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/prep/timeTravel/TimeTravel.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/prep/timeTravel/TimeTravel.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/queue/cars/CarData.tsv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/queue/cars/Cars.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/queue/planes/PassengerInfo.tsv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/queue/planes/Planes.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/stack/Base10ToBase2.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/stack/ReverseString.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/stack/starWarsCharacters/StarWarsCharacters.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataStructures/src/stack/starWarsCharacters/StarWarsCharacters.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobileApp/src/anonymousClassesDemos/Demo1.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobileApp/src/anonymousClassesDemos/Demo2.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobileApp/src/anonymousClassesDemos/Demo3.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobileApp/src/anonymousClassesDemos/Demo4.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobileApp/src/exceptionTesting/ErrorStuff.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Java_Development.eml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Random_Work/src/RandomStuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Random_Work/src/RandomStuff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Random_Work/src/practiceItObjectOrientedPrograms/Stock.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Random_Work/src/practiceItObjectOrientedPrograms/Stock.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/learnGraphics/paint1/paintbrush_1f58c.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/learnGraphics/pong/Pong Result Speed Reasoning.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/build.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/build.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/framework/info/gridworld/actor/Actor.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/framework/info/gridworld/actor/BoxBug.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/framework/info/gridworld/actor/Bug.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/framework/info/gridworld/actor/Critter.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/framework/info/gridworld/actor/Flower.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/framework/info/gridworld/actor/Rock.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/framework/info/gridworld/grid/BoundedGrid.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/framework/info/gridworld/grid/UnboundedGrid.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/framework/info/gridworld/gui/GridWorld.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/framework/info/gridworld/gui/WorldFrameResources.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/gridworld.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/allclasses-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/allclasses-noframe.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/constant-values.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/deprecated-list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/help-doc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/index-all.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/actor/Actor.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/actor/ActorWorld.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/actor/Bug.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/actor/Critter.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/actor/Flower.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/actor/Rock.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/actor/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/actor/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/actor/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/grid/AbstractGrid.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/grid/BoundedGrid.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/grid/Grid.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/grid/Location.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/grid/UnboundedGrid.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/grid/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/grid/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/grid/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/world/World.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/world/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/world/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/info/gridworld/world/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/overview-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/overview-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/overview-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/package-list" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/resources/inherit.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/javadoc/stylesheet.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/projects/boxBug/BoxBug.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/projects/critters/CrabCritter.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/projects/critters/chameleonCritter/ChameleonCritter.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/projects/myProjects/bugs/jumper/Jumper.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/blusterCritter/BlusterCritter Result.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/chameleonCritters/chameleonKid/ChameleonKid Result.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/chameleonCritters/fadingChameleonCritter/FadingChameleonCritter Result.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/crabCritters/kingCrab/KingCrab Result.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/crabCritters/quickCrab/QuickCrab Result.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/rockHound/RockHound Result.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/objectOriented/gridWorld/projects/myProjects/critters/medusaCritter/MedusaCritter.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/preWinterBreakJSPractice/HolidayLoops.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/preWinterBreakJSPractice/stocking.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/AP_Computer_Science_Ⅰ/preWinterBreakJSPractice/tree.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Computer_Science_in_the_21st_Century/parallelArrays/ParallelArraysDay2Practice1Test1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Computer_Science_in_the_21st_Century/parallelArrays/ParallelArraysDay2Practice1Test2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Computer_Science_in_the_21st_Century/parallelArrays/ParallelArraysDay2Practice2Test1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Computer_Science_in_the_21st_Century/parallelArrays/ParallelArraysDay2Practice2Test2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Computer_Science_in_the_21st_Century/stringMethods/PracticeItSubmission1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Computer_Science_in_the_21st_Century/stringMethods/PracticeItSubmission2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Hello_World/HelloWorld.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Hello_World/META-INF/Hello_World.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Java_Development/randomStuff/RandomStuff.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Java_Development/randomStuff/RandomStuffKotlin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Java_Development/staticVars/Runner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Java_Development/staticVars/StaticArrayLists.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/63164bb66f2c9c65db1b1f7cf554a968.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/63164bb66f2c9c65db1b1f7cf554a968.svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/Calculator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/Color Blender.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/Elimination.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/FirebaseTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/META-INF/Random_Work.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/MathML.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/MobileAppStaticVars/Runner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/MobileAppStaticVars/StaticArrayLists.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/QBRatingProgramScanner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/RandomStuff.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/Result.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/ScoreInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/SecondsConverted.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/Solution.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/Stats.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/VisualizingAlgorithms.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/de/vogella/rss/model/Feed.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/de/vogella/rss/model/FeedMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/de/vogella/rss/read/RSSFeedParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/de/vogella/rss/tests/ReadTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/graphingCalculator/Calculator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/graphingCalculator/CalculatorController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/graphingCalculator/CalculatorModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/graphingCalculator/CalculatorView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/hackPHS2019/ArcadeLogic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/hackPHS2019/HangmanProject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/hackPHS2019/RockPaperScissorsLizardSpock.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/hackPHS2019/Tic-tac-toe.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/hackPHS2019/TicTacToeBoard$DrawTicTacToeBoard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/hackPHS2019/TicTacToeBoard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/hackPHS2019/TicTacToeO.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/hackPHS2019/TicTacToeProject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/hackPHS2019/TicTacToeX.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/practiceItObjectOrientedPrograms/Stock.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/practiceItObjectOrientedPrograms/TimeSpan.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/randomStuff/RandomStuff.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/randomStuff/RandomStuffKotlin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/spamShortening/Class.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/spamShortening/Spam2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/svgs/cat.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/svgs/gradient.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/svgs/gradient.svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/svgs/monitor.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/svgs/screwdriver-and-wrench.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Random_Work/variables/Strings.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/mobileApp/META-INF/mobileApp.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/mobileApp/anonymousClassesDemos/Demo1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/mobileApp/anonymousClassesDemos/Demo2$KeyPushingThing.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/mobileApp/anonymousClassesDemos/Demo2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/mobileApp/anonymousClassesDemos/Demo3$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/mobileApp/anonymousClassesDemos/Demo3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/mobileApp/anonymousClassesDemos/Demo4$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/mobileApp/anonymousClassesDemos/Demo4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/mobileApp/exceptionTesting/ErrorStuff.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/mobileApp/staticVars/Runner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/mobileApp/staticVars/StaticArrayLists.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/mobileApp/thread/ThreadTest$main$thread$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/mobileApp/thread/ThreadTest$main$thread1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/mobileApp/thread/ThreadTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/boxBug/BoxBug.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/boxBug/BoxBug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/boxBug/BoxBugRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/boxBug/BoxBugRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/critters/CrabCritter.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/critters/CrabCritter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/critters/CrabRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/critters/CrabRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/critters/CritterRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/critters/CritterRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/critters/chameleonCritter/ChameleonCritter.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/critters/chameleonCritter/ChameleonCritter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/critters/chameleonCritter/ChameleonRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/critters/chameleonCritter/ChameleonRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/firstProject/BugRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/firstProject/BugRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/jumper/CBug.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/jumper/CBug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/jumper/EBug.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/jumper/EBug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/jumper/HBug.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/jumper/HBug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/jumper/Jumper.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/jumper/Jumper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/jumper/JumperRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/jumper/JumperRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/jumper/ShurikenBug.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/jumper/ShurikenBug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/plusBug/PlusBug.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/plusBug/PlusBug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/plusBug/PlusBugRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/plusBug/PlusBugRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/plusBug/braidingPlusBug/BraidingPlusBug.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/plusBug/braidingPlusBug/BraidingPlusBug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/rock135Bug/Rock135Bug.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/rock135Bug/Rock135Bug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/rock135Bug/Rock135BugRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/rock135Bug/Rock135BugRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/shyBug/ShyBug.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/shyBug/ShyBug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/shyBug/ShyBugRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/shyBug/ShyBugRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/zBug/ZBug.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/zBug/ZBug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/zBug/ZBugRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/bugs/zBug/ZBugRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/blusterCritter/BlusterCritter.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/blusterCritter/BlusterCritter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/blusterCritter/BlusterCritterRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/blusterCritter/BlusterCritterRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/chameleonCritters/chameleonKid/ChameleonKid.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/chameleonCritters/chameleonKid/ChameleonKid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/chameleonCritters/chameleonKid/ChameleonKidRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/chameleonCritters/chameleonKid/ChameleonKidRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/chameleonCritters/fadingChameleonCritter/FadingChameleonCritter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/chameleonCritters/fadingChameleonCritter/FadingChameleonCritter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/chameleonCritters/fadingChameleonCritter/FadingChameleonRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/chameleonCritters/fadingChameleonCritter/FadingChameleonRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/crabCritters/kingCrab/KingCrab.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/crabCritters/kingCrab/KingCrab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/crabCritters/kingCrab/KingCrabRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/crabCritters/kingCrab/KingCrabRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/crabCritters/quickCrab/QuickCrab.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/crabCritters/quickCrab/QuickCrab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/crabCritters/quickCrab/QuickCrabRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/crabCritters/quickCrab/QuickCrabRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/rockHound/RockHound.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/rockHound/RockHound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/rockHound/RockHoundRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/caseStudyWork/rockHound/RockHoundRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/crossCritter/CrossCritter.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/crossCritter/CrossCritter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/crossCritter/CrossCritterRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/crossCritter/CrossCritterRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/diagonalCritter/DiagonalCritter.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/diagonalCritter/DiagonalCritter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/floristCritter/FloristCritter.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/floristCritter/FloristCritter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/floristCritter/FloristCritterRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/floristCritter/FloristCritterRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/medusaCritter/MedusaCritter.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/medusaCritter/MedusaCritter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/medusaCritter/MedusaCritterRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP_Computer_Science_Ⅰ/src/objectOriented/gridWorld/projects/myProjects/critters/medusaCritter/MedusaCritterRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/dataStructures/map/Citizen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Structures/src/dataStructures/map/Citizen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/dataStructures/stack/starWarsCharacters/StarWarsCharacters.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Structures/src/dataStructures/stack/starWarsCharacters/StarWarsCharacters.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/juliaSet/Julia.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/juliaSet/julia.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/juliaSet/julia.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/juliaSet/reset.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/Background-Music.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/Maze.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/background-music.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze/Explorer.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze/Location.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze/Maze.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze/Wall.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze2/Explorer.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze2/Location.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze2/Maze.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze2/Wall.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze3/Maze.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze4/Maze.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze5/Maze.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/mazeAttempts/maze6/Maze.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/superListAttempts/superList/SuperList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/superListAttempts/superList/SuperListRunner.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Structures/src/superListAttempts/superList/testing/SuperList.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile_App/src/anonymousClassesDemos/Demo2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Mobile_App/src/anonymousClassesDemos/Demo2.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile_App/src/anonymousClassesDemos/Demo3.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Mobile_App/src/anonymousClassesDemos/Demo3.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -350,11 +120,6 @@
                 <item name="Classwork" type="f1a62948:ProjectNode" />
                 <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Classwork" type="f1a62948:ProjectNode" />
-                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
-              </path>
             </expand>
             <select />
           </tree_state>
@@ -366,8 +131,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Jupyter Notebook" />
-        <option value="Class" />
         <option value="Kotlin File" />
+        <option value="Class" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -387,18 +152,22 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Data_Structures/src/dataStructures/map/Data.tsv" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$USER_HOME$/.jdks/openjdk-17.0.2/lib/src.zip!/java.base/java/lang/String.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/Data_Structures/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.6.10/884efb386c94b1ee8e2ca37335264a0ffb155250/kotlin-stdlib-common-1.6.10-sources.jar!/kotlin/text/StringBuilder.kt" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.6.10/a6284476c56bd752eb0020e062c78c930abdc168/kotlin-stdlib-1.6.10-sources.jar!/kotlin/String.kt" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/.jdks/openjdk-17.0.2/lib/src.zip!/java.base/java/lang/CharSequence.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/settings.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.6.10/a6284476c56bd752eb0020e062c78c930abdc168/kotlin-stdlib-1.6.10-sources.jar!/kotlin/Comparable.kt" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.6.0/9f54cd61cb3434898d895a336190e0107d4d1840/kotlinx-coroutines-core-jvm-1.6.0-sources.jar!/jvmMain/debug/AgentPremain.kt" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/Data_Structures/src/dataStructures/map/Citizen.kt" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Data_Structures/src/juliaSet/Julia.kt" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/Temp/FedCensus1930_CambriaCountyPA.txt" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$USER_HOME$/.jdks/openjdk-17.0.2/lib/src.zip!/java.base/java/util/TreeMap.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.6.10/a6284476c56bd752eb0020e062c78c930abdc168/kotlin-stdlib-1.6.10-sources.jar!/kotlin/Any.kt" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/Data_Structures/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Data_Structures/src/dataStructures/map/Citizen.kt" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/settings.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Data_Structures/src/dataStructures/map/Data.tsv" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$USER_HOME$/.jdks/openjdk-17.0.2/lib/src.zip!/java.desktop/javax/swing/JScrollPane.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.6.10/a6284476c56bd752eb0020e062c78c930abdc168/kotlin-stdlib-1.6.10-sources.jar!/kotlin/CharSequence.kt" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.6.10/884efb386c94b1ee8e2ca37335264a0ffb155250/kotlin-stdlib-common-1.6.10-sources.jar!/kotlin/text/Strings.kt" root0="SKIP_INSPECTION" />
   </component>
   <component name="KotlinCodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
@@ -431,13 +200,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="add_unversioned_files" value="$PROJECT_DIR$/.idea/modules/Data_Structures/Classwork.Data_Structures.iml" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/.idea/modules/Data_Structures/Classwork.Data_Structures.iml&#10;C:/Users/chira/OneDrive/Documents/Programming/Java_Development/Classwork/Data_Structures/build/reports/tests/test/js/report.js" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="kotlin" />
     <property name="com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable" value="SELECTIVE" />
     <property name="database.data.extractors.current.export.id" value="Tab-separated (TSV)_id" />
     <property name="database.data.extractors.current.id" value="Tab-separated (TSV)_id" />
     <property name="last.edited.regexp" value="Sample Text" />
-    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/Temp/FedCensus1930_CambriaCountyPA.txt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../MiscellaneousProjects/create-react-kotlin-app" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -448,6 +217,19 @@
     <property name="settings.editor.selected.configurable" value="IntelliLang.Configuration" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\chira\OneDrive\Documents\Programming\Java_Development\Classwork\Data_Structures\src\projects\musicBox\sounds\Glockenspiel" />
+      <recent name="C:\Users\chira\OneDrive\Documents\Programming\Java_Development\Classwork\Data_Structures\src\projects\musicBox\sounds\Oboe" />
+      <recent name="C:\Users\chira\OneDrive\Documents\Programming\Java_Development\Classwork\Data_Structures\src\projects\minesweeper\images" />
+      <recent name="C:\Users\chira\OneDrive\Documents\Programming\Java_Development\Classwork\Data_Structures\src" />
+      <recent name="C:\Users\chira\OneDrive\Documents\Programming\Java_Development\Classwork\Data_Structures\src\projects\mazeAttempts\maze6" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="projects.minesweeper" />
+      <recent name="projects.superList.testing" />
+      <recent name="projects.mazeAttempts.maze2" />
+      <recent name="projects.mazeAttempts.maze" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="superListAttempts.superList.testing" />
     </key>
@@ -455,14 +237,21 @@
   <component name="RubyModuleManagerSettings">
     <option name="blackListedRootsPaths">
       <list>
-        <option value="$PROJECT_DIR$/Data_Structures" />
-        <option value="$PROJECT_DIR$/Mobile_App" />
-        <option value="$PROJECT_DIR$/Computer_Science_in_the_21st_Century" />
         <option value="$PROJECT_DIR$/AP_Computer_Science_Ⅰ" />
+        <option value="$PROJECT_DIR$/Computer_Science_in_the_21st_Century" />
+        <option value="$PROJECT_DIR$/Mobile_App" />
+        <option value="$PROJECT_DIR$/Data_Structures" />
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Kotlin.CitizenKt">
+  <component name="RunManager" selected="Kotlin.MusicBoxKt">
+    <configuration name="ApproximatePiKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="projects.monteCarlo.ApproximatePiKt" />
+      <module name="Classwork.Data_Structures.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CitizenKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dataStructures.map.CitizenKt" />
       <module name="Classwork.Data_Structures.main" />
@@ -470,41 +259,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Intersections_UnionsOfSetsKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dataStructures.set.Intersections_UnionsOfSetsKt" />
-      <module name="Classwork.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JollySortingKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="prep.jollySorting.JollySortingKt" />
+    <configuration name="KotlinExtensionsKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="KotlinExtensionsKt" />
       <module name="Classwork.Data_Structures.main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JuliaKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="juliaSet.JuliaKt" />
-      <module name="Classwork.main" />
+    <configuration name="MinesweeperKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="projects.minesweeper.MinesweeperKt" />
+      <module name="Classwork.Data_Structures.main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SumByFactorsKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="codeWars.sets.SumByFactorsKt" />
-      <module name="Classwork.main" />
+    <configuration name="MusicBoxKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="projects.musicBox.MusicBoxKt" />
+      <module name="Classwork.Data_Structures.main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.MusicBoxKt" />
+        <item itemvalue="Kotlin.MinesweeperKt" />
+        <item itemvalue="Kotlin.KotlinExtensionsKt" />
         <item itemvalue="Kotlin.CitizenKt" />
-        <item itemvalue="Kotlin.SumByFactorsKt" />
-        <item itemvalue="Kotlin.JuliaKt" />
-        <item itemvalue="Kotlin.JollySortingKt" />
-        <item itemvalue="Kotlin.Intersections_UnionsOfSetsKt" />
+        <item itemvalue="Kotlin.ApproximatePiKt" />
       </list>
     </recent_temporary>
   </component>
@@ -548,11 +330,52 @@
       <workItem from="1645014840507" duration="5405000" />
       <workItem from="1645122975077" duration="3776000" />
       <workItem from="1645189717745" duration="2656000" />
+      <workItem from="1645314684807" duration="10993000" />
+      <workItem from="1645370034344" duration="6306000" />
+      <workItem from="1645455850563" duration="5244000" />
+      <workItem from="1645556152023" duration="630000" />
+      <workItem from="1645569091682" duration="17128000" />
+      <workItem from="1645624376881" duration="48000" />
+      <workItem from="1645624506746" duration="664000" />
+      <workItem from="1645801812188" duration="593000" />
+      <workItem from="1645900543755" duration="7860000" />
+      <workItem from="1646138342583" duration="4712000" />
+      <workItem from="1646311579659" duration="2297000" />
+      <workItem from="1646347513001" duration="2850000" />
+      <workItem from="1646363748781" duration="3437000" />
+      <workItem from="1646656308454" duration="6343000" />
+      <workItem from="1646745226248" duration="87000" />
+      <workItem from="1647002047989" duration="4968000" />
+      <workItem from="1647203187130" duration="1843000" />
+      <workItem from="1647231931187" duration="339000" />
+      <workItem from="1647292428592" duration="5129000" />
+      <workItem from="1647308020787" duration="6114000" />
+      <workItem from="1647399741546" duration="804000" />
+      <workItem from="1647557374566" duration="305000" />
+      <workItem from="1647566386301" duration="1070000" />
+      <workItem from="1648262981851" duration="808000" />
+      <workItem from="1648554288065" duration="4403000" />
+      <workItem from="1648595568070" duration="2249000" />
+      <workItem from="1648644388687" duration="557000" />
+      <workItem from="1648726929348" duration="4675000" />
+      <workItem from="1648917044121" duration="634000" />
+      <workItem from="1648920814562" duration="575000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,8 +1,8 @@
 package objectOriented.gridWorld.projects.myProjects.bugs.plusBug;
 
-import objectOriented.gridWorld.framework.info.gridworld.actor.ActorWorld;
-import objectOriented.gridWorld.framework.info.gridworld.grid.Location;
-import objectOriented.gridWorld.framework.info.gridworld.grid.UnboundedGrid;
+import info.gridworld.actor.ActorWorld;
+import info.gridworld.grid.Location;
+import info.gridworld.grid.UnboundedGrid;
 
 public class PlusBugRunner {
 	private PlusBugRunner() {
