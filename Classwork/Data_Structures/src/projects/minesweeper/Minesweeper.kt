@@ -12,7 +12,7 @@ import java.awt.event.MouseEvent.BUTTON3
 import java.awt.event.MouseListener
 import javax.swing.*
 import kotlin.properties.Delegates.notNull
-import kotlin.random.Random
+import kotlin.random.Random.Default.nextInt
 
 class Minesweeper : JFrame(), ActionListener, MouseListener {
 	private var boardPanel: JPanel? = null
@@ -142,16 +142,16 @@ class Minesweeper : JFrame(), ActionListener, MouseListener {
 	private fun setBombsAndNums(selectedRow: Int, selectedCol: Int) {
 		var count = numMines
 		while (count > 0) {
-			val row = Random.nextInt(dimR)
-			val col = Random.nextInt(dimC)
+			val row = nextInt(dimR)
+			val col = nextInt(dimC)
 			val state = "${board[row][col]!!.getClientProperty("state")}".toInt()
 			if ((state == 0) && ((row != selectedRow) || (col != selectedCol))) {
 				board[row][col]!!.putClientProperty("state", -1)
 				count--
 			}
 		}
-		for (i in 0 until dimR) {
-			for (j in 0 until dimC) {
+		(0 until dimR).forEach { i ->
+			(0 until dimC).forEach { j ->
 				count = 0
 				var state = "${board[i][j]!!.getClientProperty("state")}".toInt()
 				if (state != -1) {

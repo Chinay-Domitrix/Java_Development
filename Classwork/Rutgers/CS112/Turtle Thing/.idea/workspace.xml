@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="345f2b6d-7917-407a-9c83-f0bbd0f8f120" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../.idea/libraries/Gradle__org_jetbrains_annotations_23_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_coroutines_core_jvm_1_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../.idea/libraries/Gradle__org_json_json_20220320.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../AP_Computer_Science_Ⅰ/src/learnGraphics/pong/Paddle.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../AP_Computer_Science_Ⅰ/src/learnGraphics/pong/Pong.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../AP_Computer_Science_Ⅰ/src/learnGraphics/pong/PongPanel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../AP_Computer_Science_Ⅰ/src/learnGraphics/pong/Sprite.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Data_Structures/src/projects/graphs/Graphs.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Data_Structures/src/projects/treeSet/TreeRunner.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Data_Structures/src/projects/treeSet/TreeSet.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/algs4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DrunkenTurtles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Turtle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/binaryTreeCameras/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/checkIfAStringContainsAllBinaryCodesOfSizeK/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/checkIfNumbersAreAscendingInASentence/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/countCompleteTreeNodes/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/countOddNumbersAnAnIntervalRange/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/intersectionOfTwoLinkedLists/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/lengthOfLastWord/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/longestPalindromicSubtring/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/longestSubstringWithoutRepeatingCharacters/Solution.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/longestSubstringWithoutRepeatingCharacters/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/longestValidParentheses/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/maximumErasureValue/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/maximumProductOfWordLengths/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/mergeSortedArray/Solution.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/mergeSortedArray/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/minimumMovesToEqualArrayElementsII/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/minimumNumberOfSwapsToMakeTheStringBalanced/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/minimumOperationsToReduceXToZero/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/missingNumber/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/nQueens/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/numberOf1Bits/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/numberOfStepsToReduceANumberToZero/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/prefixAndSuffixSearch/WordFilter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/rangeSumQuery2DImmutable/NumMatrix.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/removePalindromicSubsequences/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/runningSumOf1DArray/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/sudokuSolver/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/transposeMatrix/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/triangle/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/twoSum/Solution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Random_Work/src/leetCode/twoSumTwoInputArrayIsSorted/Solution.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Gradle__org_jetbrains_annotations_22_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_coroutines_core_jvm_1_6_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../AP_Computer_Science_Ⅰ/src/learnGraphics/pong/Paddle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../AP_Computer_Science_Ⅰ/src/learnGraphics/pong/Pong.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../AP_Computer_Science_Ⅰ/src/learnGraphics/pong/PongPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../AP_Computer_Science_Ⅰ/src/learnGraphics/pong/Sprite.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Data_Structures/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Data_Structures/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Data_Structures/src/KotlinExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Data_Structures/src/projects/graphs/data/CityDistances.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Data_Structures/src/projects/minesweeper/Minesweeper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Data_Structures/src/projects/minesweeper/Minesweeper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Data_Structures/src/projects/monteCarlo/ApproximatePi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Data_Structures/src/randomStuff/monteCarlo/ApproximatePi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Data_Structures/src/projects/musicBox/MusicBox.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Data_Structures/src/projects/musicBox/MusicBox.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../../../build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Random_Work/src/RandomStuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Random_Work/src/RandomStuff.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="1iuxkomy" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2EjFWo9plhsBkNjTePPX2IsPcSG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="abbreviatePackageNames" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Project.color&quot;: &quot;4c3b04&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/chira/OneDrive/Documents/Programming/Java_Development/Classwork/Rutgers/CS112/Turtle Thing/lib/algs4.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;ruby.rails.projectView.checked&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;
+  }
+}</component>
+  <component name="RubyModuleManagerSettings">
+    <option name="blackListedRootsPaths">
+      <list>
+        <option value="$PROJECT_DIR$" />
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="DrunkenTurtles" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DrunkenTurtles" />
+      <module name="Turtle Thing" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.DrunkenTurtles" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="345f2b6d-7917-407a-9c83-f0bbd0f8f120" name="Changes" comment="" />
+      <created>1663101120341</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663101120341</updated>
+      <workItem from="1663101122017" duration="1001000" />
+      <workItem from="1663102753213" duration="716000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

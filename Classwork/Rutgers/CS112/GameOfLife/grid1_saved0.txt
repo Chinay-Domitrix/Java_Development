@@ -1,0 +1,13 @@
+10
+10
+12
+false  false  false  false  false  false  false  false  false  false  
+false  false  false  false  false  false  false  false  false  false  
+false  false  false  false  true   true   true   false  false  false  
+false  false  false  false  false  false  false  false  false  false  
+false  false  true   false  false  false  false  false  true   false  
+false  false  true   false  false  false  false  false  true   false  
+false  false  true   false  false  false  false  false  true   false  
+false  false  false  false  false  false  false  false  false  false  
+false  false  false  false  true   true   true   false  false  false  
+false  false  false  false  false  false  false  false  false  false  

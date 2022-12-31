@@ -11,8 +11,9 @@ allprojects {
 	apply<IdeaPlugin>()
 	repositories(RepositoryHandler::mavenCentral)
 	dependencies {
-		implementation("org.jetbrains:annotations:22.0.0")
+		implementation("org.jetbrains:annotations:23.0.0")
 		implementation("junit:junit:4.13.2")
+		implementation("org.json:json:20220320")
 	}
 	tasks.withType<JavaCompile> {
 		sourceCompatibility = "17"
@@ -27,3 +28,4 @@ allprojects {
 		maxHeapSize = "1G"
 	}
 }
+repositories(RepositoryHandler::mavenCentral)

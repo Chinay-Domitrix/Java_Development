@@ -1,0 +1,15 @@
+row loop
+	col loop
+		student s at current position in studentsSitting
+		is s null?
+			not null so
+				is musicalChairs null?
+					not null so
+						musicalChairs is now a new SNode(s, null)
+					is null so
+						SNode current is now the value of musicalChairs
+						while current's next value is not null
+							set current to its next value
+						set current's next value to a new SNode(s, null)
+				set the value of studentsSitting at the current position to null
+				set the value of seatingAvailability at the current position to true
